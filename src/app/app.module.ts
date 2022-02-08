@@ -18,6 +18,7 @@ import { AddSeizureComponent } from './epilepsy/add-seizure/add-seizure.componen
 import { HomeComponent } from './home/home.component';
 import { CalendarComponent } from './reports/calendar/calendar.component';
 import { ChartsComponent } from './reports/charts/charts.component';
+import { CompareValidatorDirective } from './validators/compare-validator.directive';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ChartsComponent } from './reports/charts/charts.component';
     AddEventComponent,
     ChartsComponent,
     CalendarComponent,
+    CompareValidatorDirective,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,7 @@ import { ChartsComponent } from './reports/charts/charts.component';
     FlexLayoutModule,
     FormsModule,
   ],
+  exports: [CompareValidatorDirective],
   providers: [],
   bootstrap: [AppComponent],
 })
