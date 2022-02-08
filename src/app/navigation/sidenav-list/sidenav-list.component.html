@@ -1,0 +1,10 @@
+<mat-nav-list>
+  <a mat-list-item class="mat-title" routerLink="/" (click)="onClose()"
+    ><mat-icon svgIcon="logo" class="logo"></mat-icon> <span>Lime Tracker</span></a
+  >
+  <a mat-list-item routerLink="/signup" (click)="onClose()">Signup</a>
+  <a mat-list-item routerLink="/login" (click)="onClose()">Login</a>
+  <mat-list-item>
+    <button mat-icon-button (click)="onClose()">Logout</button>
+  </mat-list-item>
+</mat-nav-list>
