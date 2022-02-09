@@ -1,11 +1,19 @@
-<section class="signup-form" fxLayoutAlign="center center" fxFill>
+<section class="signup-form" fxLayoutAlign="center center">
   <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
-    <mat-card fxFlex>
+    <mat-card>
       <mat-card-header>
-        <mat-card-title fxFlex fxLayoutAlign="start center">
+        <mat-card-title>
+          <div fxFlex fxLayoutAlign="start center">
             <mat-icon svgIcon="logo" class="logo"></mat-icon>
             <span>Lime Tracker</span>
+          </div>
         </mat-card-title>
+        <mat-card-subtitle *ngIf="!signUpMode"
+          >Welcome again!</mat-card-subtitle
+        >
+        <mat-card-subtitle *ngIf="signUpMode"
+          >Register to the best epilepsy journal!</mat-card-subtitle
+        >
       </mat-card-header>
       <img
         mat-card-image
@@ -45,7 +53,7 @@
           />
           <mat-error>Has to be at least 6 characters long</mat-error>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field *ngIf="signUpMode">
           <input
             type="password"
             name="confirm-password"
@@ -72,7 +80,7 @@
           color="primary"
           [disabled]="!signupForm.valid"
         >
-          Register
+          {{ signUpMode ? "Register" : "Login" }}
         </button>
       </mat-card-actions>
     </mat-card>

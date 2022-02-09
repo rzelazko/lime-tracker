@@ -15,9 +15,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthFormComponent } from './auth/auth-form/auth-form.component';
 import { AuthComponent } from './auth/auth.component';
-import { LoginComponent } from './auth/login/login.component';
-import { SignupComponent } from './auth/signup/signup.component';
 import { AddEventComponent } from './epilepsy/add-event/add-event.component';
 import { AddMedicamentComponent } from './epilepsy/add-medicament/add-medicament.component';
 import { AddSeizureComponent } from './epilepsy/add-seizure/add-seizure.component';
@@ -36,18 +35,17 @@ import { CompareValidatorDirective } from './validators/compare-validator.direct
     AddEventComponent,
     AddMedicamentComponent,
     AddSeizureComponent,
+    AuthComponent,
+    AuthFormComponent,
     CalendarComponent,
     ChartsComponent,
     EpilepsyComponent,
     HeaderComponent,
     HomeComponent,
-    LoginComponent,
     SidenavListComponent,
-    SignupComponent,
 
     // directives
     CompareValidatorDirective,
-    AuthComponent,
   ],
   imports: [
     // angular

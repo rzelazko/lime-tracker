@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
-import { LoginComponent } from './auth/login/login.component';
-import { SignupComponent } from './auth/signup/signup.component';
 import { AddEventComponent } from './epilepsy/add-event/add-event.component';
 import { AddMedicamentComponent } from './epilepsy/add-medicament/add-medicament.component';
 import { AddSeizureComponent } from './epilepsy/add-seizure/add-seizure.component';

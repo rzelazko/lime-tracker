@@ -1,10 +1,10 @@
 <main fxFlex fxFill fxLayoutAlign="center start">
 <mat-tab-group mat-align-tabs="center">
   <mat-tab label="Login">
-    <app-login></app-login>
+    <app-auth-form [signUpMode]="false"></app-auth-form>
   </mat-tab>
   <mat-tab label="New User">
-    <app-signup fxFill></app-signup>
+    <app-auth-form [signUpMode]="true"></app-auth-form>
   </mat-tab>
 </mat-tab-group>
 </main>
