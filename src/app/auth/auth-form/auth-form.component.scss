@@ -2,9 +2,9 @@
 @import "src/app/app-theme-variables";
 
 .auth-form {
-  margin: 1em 0;
+  margin: 1em;
   mat-card {
-    width: 90vw;
+    width: 80vw;
     max-width: 400px;
     mat-card-title {
       color: mat.get-color-from-palette($app-primary, 'text');
