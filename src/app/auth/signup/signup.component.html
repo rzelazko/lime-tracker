@@ -1,8 +1,11 @@
-<section class="signup-form" fxLayoutAlign="center center">
+<section class="signup-form" fxLayoutAlign="center center" fxFill>
   <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
     <mat-card fxFlex>
       <mat-card-header>
-        <mat-card-title>Sign-up to Lime Tracker</mat-card-title>
+        <mat-card-title fxFlex fxLayoutAlign="start center">
+            <mat-icon svgIcon="logo" class="logo"></mat-icon>
+            <span>Lime Tracker</span>
+        </mat-card-title>
       </mat-card-header>
       <img
         mat-card-image

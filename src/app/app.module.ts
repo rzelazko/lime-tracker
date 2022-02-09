@@ -9,45 +9,58 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AddEventComponent } from './epilepsy/add-event/add-event.component';
 import { AddMedicamentComponent } from './epilepsy/add-medicament/add-medicament.component';
 import { AddSeizureComponent } from './epilepsy/add-seizure/add-seizure.component';
-import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './navigation/header/header.component';
-import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
-import { CalendarComponent } from './reports/calendar/calendar.component';
-import { ChartsComponent } from './reports/charts/charts.component';
+import { CalendarComponent } from './epilepsy/calendar/calendar.component';
+import { ChartsComponent } from './epilepsy/charts/charts.component';
+import { EpilepsyComponent } from './epilepsy/epilepsy.component';
+import { HomeComponent } from './epilepsy/home/home.component';
+import { HeaderComponent } from './epilepsy/navigation/header/header.component';
+import { SidenavListComponent } from './epilepsy/navigation/sidenav-list/sidenav-list.component';
 import { CompareValidatorDirective } from './validators/compare-validator.directive';
 
 @NgModule({
   declarations: [
+    // components
     AppComponent,
-    SignupComponent,
-    LoginComponent,
-    HomeComponent,
-    AddSeizureComponent,
-    AddMedicamentComponent,
     AddEventComponent,
-    ChartsComponent,
+    AddMedicamentComponent,
+    AddSeizureComponent,
     CalendarComponent,
+    ChartsComponent,
+    EpilepsyComponent,
     HeaderComponent,
+    HomeComponent,
+    LoginComponent,
     SidenavListComponent,
+    SignupComponent,
+
+    // directives
     CompareValidatorDirective,
+    AuthComponent,
   ],
   imports: [
-    BrowserModule,
+    // angular
     AppRoutingModule,
     BrowserAnimationsModule,
-    FlexLayoutModule,
+    BrowserModule,
     FormsModule,
     HttpClientModule,
+
+    // flex
+    FlexLayoutModule,
+
+    // material
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
@@ -55,6 +68,7 @@ import { CompareValidatorDirective } from './validators/compare-validator.direct
     MatInputModule,
     MatListModule,
     MatSidenavModule,
+    MatTabsModule,
     MatToolbarModule,
   ],
   exports: [CompareValidatorDirective],
