@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class AuthFormComponent implements OnInit {
   @Input() signUpMode: boolean = false;
+  @Input() imageUrl?: string;
 
   constructor(private router: Router) {}
 

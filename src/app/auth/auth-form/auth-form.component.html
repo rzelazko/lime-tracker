@@ -15,9 +15,9 @@
           >Register to the best epilepsy journal!</mat-card-subtitle
         >
       </mat-card-header>
-      <img
+      <img *ngIf="imageUrl"
         mat-card-image
-        src="https://source.unsplash.com/random/400x200/?lime"
+        [src]="imageUrl"
       />
       <mat-card-content fxLayout="column" fxLayoutGap="1rem">
         <mat-form-field>
