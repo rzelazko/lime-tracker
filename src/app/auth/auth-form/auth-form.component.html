@@ -1,5 +1,5 @@
-<section class="signup-form" fxLayoutAlign="center center">
-  <form #signupForm="ngForm" (ngSubmit)="onSubmit(signupForm)">
+<section class="auth-form" fxLayoutAlign="center center">
+  <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
     <mat-card>
       <mat-card-header>
         <mat-card-title>
@@ -79,7 +79,7 @@
           type="submit"
           mat-raised-button
           color="primary"
-          [disabled]="!signupForm.valid"
+          [disabled]="!authForm.valid"
         >
           {{ signUpMode ? "Register" : "Login" }}
         </button>
