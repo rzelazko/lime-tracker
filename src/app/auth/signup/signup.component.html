@@ -49,7 +49,7 @@
             id="confirm-password"
             placeholder="Confirm password"
             required
-            compareValidator="password"
+            [compareValidator]="passwordInput"
             matInput
             ngModel
             #confirmPasswordInput="ngModel"
