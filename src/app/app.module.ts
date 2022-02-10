@@ -20,9 +20,9 @@ import { AuthComponent } from './auth/auth.component';
 import { AddEventComponent } from './epilepsy/add-event/add-event.component';
 import { AddMedicamentComponent } from './epilepsy/add-medicament/add-medicament.component';
 import { AddSeizureComponent } from './epilepsy/add-seizure/add-seizure.component';
-import { CalendarComponent } from './epilepsy/calendar/calendar.component';
 import { ChartsComponent } from './epilepsy/charts/charts.component';
 import { EpilepsyComponent } from './epilepsy/epilepsy.component';
+import { EventsComponent } from './epilepsy/events/events.component';
 import { HomeComponent } from './epilepsy/home/home.component';
 import { HeaderComponent } from './epilepsy/navigation/header/header.component';
 import { SidenavListComponent } from './epilepsy/navigation/sidenav-list/sidenav-list.component';
@@ -37,9 +37,9 @@ import { CompareValidatorDirective } from './validators/compare-validator.direct
     AddSeizureComponent,
     AuthComponent,
     AuthFormComponent,
-    CalendarComponent,
     ChartsComponent,
     EpilepsyComponent,
+    EventsComponent,
     HeaderComponent,
     HomeComponent,
     SidenavListComponent,

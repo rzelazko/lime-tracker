@@ -4,9 +4,9 @@ import { AuthComponent } from './auth/auth.component';
 import { AddEventComponent } from './epilepsy/add-event/add-event.component';
 import { AddMedicamentComponent } from './epilepsy/add-medicament/add-medicament.component';
 import { AddSeizureComponent } from './epilepsy/add-seizure/add-seizure.component';
-import { CalendarComponent } from './epilepsy/calendar/calendar.component';
 import { ChartsComponent } from './epilepsy/charts/charts.component';
 import { EpilepsyComponent } from './epilepsy/epilepsy.component';
+import { EventsComponent } from './epilepsy/events/events.component';
 import { HomeComponent } from './epilepsy/home/home.component';
 
 const routes: Routes = [
@@ -17,7 +17,7 @@ const routes: Routes = [
     children: [
       { path: '', component: HomeComponent },
       { path: 'charts', component: ChartsComponent },
-      { path: 'calendar', component: CalendarComponent },
+      { path: 'events', component: EventsComponent },
       { path: 'add-seizure', component: AddSeizureComponent },
       { path: 'add-medicament', component: AddMedicamentComponent },
       { path: 'add-event', component: AddEventComponent },
