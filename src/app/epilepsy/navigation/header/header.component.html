@@ -5,14 +5,17 @@
     </button>
   </div>
   <div>
-    <a mat-button routerLink="/epilepsy"
-      ><mat-icon svgIcon="logo" class="logo"></mat-icon
-      ><span class="mat-title">Lime Tracker</span></a
-    >
+    <a mat-button routerLink="/epilepsy">
+      <mat-icon svgIcon="logo" class="logo"></mat-icon>
+      <span class="mat-title">Lime Tracker</span>
+    </a>
   </div>
-  <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+  <div fxFlex fxLayout fxLayoutAlign="flex-end" fxLayoutGap=".5em" fxHide.xs>
+    <a mat-button routerLink="/epilepsy">Dashboard</a>
     <a mat-button routerLink="/epilepsy/charts">Charts</a>
     <a mat-button routerLink="/epilepsy/events">Events</a>
-    <a mat-button>Logout</a>
+    <a mat-icon-button (click)="onLogout()"
+      ><mat-icon>logout</mat-icon></a
+    >
   </div>
 </mat-toolbar>

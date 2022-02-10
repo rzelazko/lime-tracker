@@ -7,6 +7,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 })
 export class SidenavListComponent implements OnInit {
   @Output() sidenavClose = new EventEmitter<void>();
+  @Output() logout = new EventEmitter<void>();
 
   constructor() { }
 
@@ -17,4 +18,7 @@ export class SidenavListComponent implements OnInit {
     this.sidenavClose.emit();
   }
 
+  onLogout() {
+    this.logout.emit();
+  }
 }
