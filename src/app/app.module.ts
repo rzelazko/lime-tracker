@@ -4,6 +4,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -21,9 +22,9 @@ import { AddEventComponent } from './epilepsy/add-event/add-event.component';
 import { AddMedicamentComponent } from './epilepsy/add-medicament/add-medicament.component';
 import { AddSeizureComponent } from './epilepsy/add-seizure/add-seizure.component';
 import { ChartsComponent } from './epilepsy/charts/charts.component';
+import { DashboardComponent } from './epilepsy/dashboard/dashboard.component';
 import { EpilepsyComponent } from './epilepsy/epilepsy.component';
 import { EventsComponent } from './epilepsy/events/events.component';
-import { HomeComponent } from './epilepsy/home/home.component';
 import { HeaderComponent } from './epilepsy/navigation/header/header.component';
 import { SidenavListComponent } from './epilepsy/navigation/sidenav-list/sidenav-list.component';
 import { CompareValidatorDirective } from './validators/compare-validator.directive';
@@ -38,10 +39,10 @@ import { CompareValidatorDirective } from './validators/compare-validator.direct
     AuthComponent,
     AuthFormComponent,
     ChartsComponent,
+    DashboardComponent,
     EpilepsyComponent,
     EventsComponent,
     HeaderComponent,
-    HomeComponent,
     SidenavListComponent,
 
     // directives
@@ -61,6 +62,7 @@ import { CompareValidatorDirective } from './validators/compare-validator.direct
     // material
     MatButtonModule,
     MatCardModule,
+    MatChipsModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,

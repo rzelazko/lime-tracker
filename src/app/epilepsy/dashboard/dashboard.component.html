@@ -1,0 +1,41 @@
+<mat-toolbar class="page-header" role="heading">
+  <h1>Dashboard</h1>
+</mat-toolbar>
+
+<section
+  fxLayout="column"
+  fxLayout.gt-xs="row"
+  fxLayoutGap="1em"
+  fxLayoutAlign="start center"
+  fxLayoutAlign.gt-xs="center"
+>
+  <mat-card>
+    <mat-card-title-group>
+      <mat-card-title>Last seizure</mat-card-title>
+      <mat-card-subtitle>{{ lastSeizure | date: "short" }}</mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-content>
+      Time since last seizure:
+      <strong>
+        <span *ngIf="daysSinceLastSeizure">{{ daysSinceLastSeizure }}d</span>
+        <span *ngIf="hoursSinceLastSeizure">{{ hoursSinceLastSeizure }}h</span>
+        <span *ngIf="minSinceLastSeizure">{{ minSinceLastSeizure }} min</span>
+      </strong>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-title-group>
+      <mat-card-title>Current medicaments</mat-card-title>
+    </mat-card-title-group>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngFor="let medicament of medicaments">
+          <mat-icon mat-list-icon>medication</mat-icon>
+          <div mat-line>{{ medicament.name }}</div>
+          <div mat-line>{{ medicament.dose }}</div>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</section>
