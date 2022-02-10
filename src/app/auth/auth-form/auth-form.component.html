@@ -51,7 +51,7 @@
             ngModel
             #passwordInput="ngModel"
           />
-          <mat-error *ngIf="!signUpMode">Please provide your passowrd</mat-error>
+          <mat-error *ngIf="!signUpMode">Please provide valid passowrd</mat-error>
           <mat-error *ngIf="signUpMode">Has to be at least 6 characters long</mat-error>
         </mat-form-field>
         <mat-form-field *ngIf="signUpMode">
