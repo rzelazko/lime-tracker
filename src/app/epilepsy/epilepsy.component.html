@@ -3,7 +3,7 @@
     <app-sidenav-list (sidenavClose)="sidenav.close()" (logout)="onLogout()"></app-sidenav-list>
   </mat-sidenav>
   <mat-sidenav-content fxLayout="column">
-    <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+    <app-header (sidenavToggle)="sidenav.toggle()" (logout)="onLogout()"></app-header>
     <main>
       <router-outlet></router-outlet>
     </main>
