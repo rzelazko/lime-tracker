@@ -6,8 +6,8 @@
   fxLayout="column"
   fxLayout.gt-xs="row"
   fxLayoutGap="1em"
-  fxLayoutAlign="start center"
-  fxLayoutAlign.gt-xs="center"
+  fxLayoutAlign="center center"
+  fxLayoutAlign.gt-xs="center start"
 >
   <mat-card>
     <mat-card-title-group>
@@ -15,12 +15,12 @@
       <mat-card-subtitle>{{ lastSeizure | date: "short" }}</mat-card-subtitle>
     </mat-card-title-group>
     <mat-card-content>
-      Time since last seizure:
-      <strong>
-        <span *ngIf="daysSinceLastSeizure">{{ daysSinceLastSeizure }}d</span>
-        <span *ngIf="hoursSinceLastSeizure">{{ hoursSinceLastSeizure }}h</span>
+      <h3>Time since last seizure:</h3>
+      <p class="mat-display-3">
+        <span *ngIf="daysSinceLastSeizure">{{ daysSinceLastSeizure }}d </span>
+        <span *ngIf="hoursSinceLastSeizure">{{ hoursSinceLastSeizure }}h </span>
         <span *ngIf="minSinceLastSeizure">{{ minSinceLastSeizure }} min</span>
-      </strong>
+      </p>
     </mat-card-content>
   </mat-card>
 
@@ -37,5 +37,16 @@
         </mat-list-item>
       </mat-list>
     </mat-card-content>
+  </mat-card>
+</section>
+
+<section fxLayout="row" fxLayoutAlign="center center">
+  <mat-card>
+    <mat-card-subtitle>Any changes?</mat-card-subtitle>
+    <mat-card-actions>
+      <button mat-raised-button color="warn">Attack!</button>
+      <button mat-raised-button color="primary">Medicament</button>
+      <button mat-raised-button color="basic">Event</button>
+    </mat-card-actions>
   </mat-card>
 </section>
