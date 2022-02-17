@@ -1,3 +1,11 @@
+mat-sidenav-container {
+  max-width: 90em;
+}
+
+main {
+  max-width: 60em;
+}
+
 mat-sidenav-container, mat-sidenav-content, mat-sidenav {
   height: 100%;
 }

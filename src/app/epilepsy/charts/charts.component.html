@@ -1,4 +1,8 @@
-<div id="chart">
+<mat-toolbar class="page-header" role="heading">
+  <h1>Charts</h1>
+</mat-toolbar>
+
+<main id="chart">
   <apx-chart
     [series]="chartOptions.series"
     [chart]="chartOptions.chart"
@@ -13,4 +17,4 @@
     [tooltip]="chartOptions.tooltip"
     [legend]="chartOptions.legend"
   ></apx-chart>
-</div>
+</main>
