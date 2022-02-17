@@ -1,11 +1,20 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   ApexAxisChartSeries,
-  ApexChart, ApexDataLabels, ApexFill, ApexLegend, ApexMarkers, ApexStroke, ApexTitleSubtitle, ApexTooltip,
-  ApexXAxis, ApexYAxis, ChartComponent
+  ApexChart,
+  ApexDataLabels,
+  ApexFill,
+  ApexLegend,
+  ApexMarkers,
+  ApexStroke,
+  ApexTitleSubtitle,
+  ApexTooltip,
+  ApexXAxis,
+  ApexYAxis,
+  ChartComponent,
 } from 'ng-apexcharts';
 
-export type ChartOptions = {
+export type AppChartOptions = {
   series: ApexAxisChartSeries;
   chart: ApexChart;
   xaxis: ApexXAxis;
@@ -14,9 +23,84 @@ export type ChartOptions = {
   yaxis: ApexYAxis | ApexYAxis[];
   dataLabels: ApexDataLabels;
   title: ApexTitleSubtitle;
+  subtitle: ApexTitleSubtitle;
   legend: ApexLegend;
   fill: ApexFill;
   tooltip: ApexTooltip;
+};
+
+export type AppChart = {
+  name: string;
+  data: { x: string; y: number }[];
+  labels?: string[];
+};
+
+const appKepraSerie: AppChart = {
+  name: 'Kepra',
+  data: [
+    { x: 'Jan', y: 100 },
+    { x: 'Feb', y: 100 },
+    { x: 'Mar', y: 100 },
+    { x: 'Apr', y: 100 },
+    { x: 'May', y: 125 },
+    { x: 'Jun', y: 125 },
+    { x: 'Jul', y: 125 },
+    { x: 'Aug', y: 125 },
+    { x: 'Sep', y: 125 },
+    { x: 'Oct', y: 125 },
+    { x: 'Nov', y: 125 },
+    { x: 'Dec', y: 125 },
+  ],
+};
+
+const appAttackSerie: AppChart = {
+  name: 'Attacks',
+  data: [
+    { x: 'Jan', y: 1 },
+    { x: 'Feb', y: 2 },
+    { x: 'Mar', y: 0 },
+    { x: 'Apr', y: 1 },
+    { x: 'May', y: 0 },
+    { x: 'Jun', y: 3 },
+    { x: 'Jul', y: 1 },
+    { x: 'Aug', y: 3 },
+    { x: 'Sep', y: 5 },
+    { x: 'Oct', y: 1 },
+    { x: 'Nov', y: 2 },
+    { x: 'Dec', y: 5 },
+  ],
+};
+
+const appEventsSerie: AppChart = {
+  name: 'Events',
+  data: [
+    { x: 'Jan', y: -1 },
+    { x: 'Feb', y: 2 },
+    { x: 'Mar', y: -1 },
+    { x: 'Apr', y: 1 },
+    { x: 'May', y: -1 },
+    { x: 'Jun', y: -1 },
+    { x: 'Jul', y: -1 },
+    { x: 'Aug', y: -1 },
+    { x: 'Sep', y: -1 },
+    { x: 'Oct', y: 1 },
+    { x: 'Nov', y: -1 },
+    { x: 'Dec', y: -1 },
+  ],
+  labels: [
+    '', // Jan
+    'CBD, Neurologist visit', // Feb - 2
+    '', // Mar
+    'Lot of stress with X', // Apr - 1
+    '', // May
+    '', // Jun
+    '', // Jul
+    '', // Aug
+    '', // Sep
+    'Started new job', // Oct - 1
+    '', // Nov
+    '', // Dec
+  ],
 };
 
 @Component({
@@ -26,7 +110,7 @@ export type ChartOptions = {
 })
 export class ChartsComponent implements OnInit {
   @ViewChild('chart') chart?: ChartComponent;
-  public chartOptions: ChartOptions;
+  public chartOptions: AppChartOptions;
 
   constructor() {
     this.chartOptions = {
@@ -35,21 +119,26 @@ export class ChartsComponent implements OnInit {
         type: 'line',
       },
       dataLabels: {
-        enabled: false
+        enabled: false,
       },
       stroke: {
-        width: [1, 1, 4]
+        width: [1, 1, 4],
       },
       title: {
-        text: "Sizures - Medicaments - Events (2021)",
-        align: "left",
-        offsetX: 110
+        text: 'Sizures - Medicaments - Events',
+        align: 'left',
+        offsetX: 110,
+      },
+      subtitle: {
+        text: 'January - December 2021',
+        align: 'left',
+        offsetX: 110,
       },
       fill: {
         type: 'solid',
       },
       markers: {
-        size: [6, 2],
+        size: [6, 6],
       },
       tooltip: {
         shared: false,
@@ -59,26 +148,18 @@ export class ChartsComponent implements OnInit {
         show: true,
       },
       xaxis: {
-        type: 'numeric',
-        min: 1,
-        max: 12,
-        /*tickAmount: 1,
-      labels: {
-        formatter: function (value) {
-          return value;
-        }
-      }*/
+        type: 'category',
       },
       yaxis: [
         {
-          opposite: true,
+          opposite: false,
           axisTicks: {
             show: true,
           },
           axisBorder: {
             show: true,
           },
-          seriesName: 'Kepra',
+          seriesName: appAttackSerie.name,
         },
         {
           opposite: true,
@@ -88,115 +169,50 @@ export class ChartsComponent implements OnInit {
           axisBorder: {
             show: true,
           },
-          seriesName: 'Attacks',
+          seriesName: appKepraSerie.name,
         },
         {
+          show: false,
           axisTicks: {
-            show: true,
+            show: false,
           },
           axisBorder: {
-            show: true,
+            show: false,
           },
-          seriesName: 'Events',
+          seriesName: appEventsSerie.name,
+          min: 0,
+          tickAmount: 2,
+          labels: {
+            formatter: function (
+              value: number,
+              opts: { dataPointIndex: number }
+            ) {
+              if (
+                appEventsSerie.labels &&
+                appEventsSerie.labels[opts.dataPointIndex]
+              ) {
+                return appEventsSerie.labels[opts.dataPointIndex];
+              }
+              return value.toFixed(0);
+            },
+          },
         },
       ],
       series: [
         {
-          name: 'Kepra',
-          type: 'line',
-          data: [
-            {
-              x: 1,
-              y: 100,
-            },
-            {
-              x: 2,
-              y: 100,
-            },
-            {
-              x: 3,
-              y: 100,
-            },
-            {
-              x: 4,
-              y: 100,
-            },
-            {
-              x: 5,
-              y: 125,
-            },
-            {
-              x: 6,
-              y: 125,
-            },
-            {
-              x: 7,
-              y: 125,
-            },
-            {
-              x: 8,
-              y: 125,
-            },
-            {
-              x: 9,
-              y: 125,
-            },
-            {
-              x: 10,
-              y: 125,
-            },
-            {
-              x: 11,
-              y: 125,
-            },
-            {
-              x: 12,
-              y: 125,
-            },
-          ],
-        },
-        {
-          name: 'Attacks',
+          name: appAttackSerie.name,
           type: 'column',
-          data: [
-            { x: 1, y: 1 },
-            { x: 2, y: 2 },
-            { x: 3, y: 0 },
-            { x: 4, y: 1 },
-            { x: 5, y: 0 },
-            { x: 6, y: 3 },
-            { x: 8, y: 3 },
-            { x: 9, y: 5 },
-            { x: 10, y: 2 },
-            { x: 11, y: 1 },
-            { x: 12, y: 5 },
-          ],
+          data: appAttackSerie.data,
         },
         {
-          name: 'Events',
+          name: appKepraSerie.name,
+          type: 'line',
+          data: appKepraSerie.data,
+        },
+        {
+          name: appEventsSerie.name,
           type: 'scatter',
-          data: [
-            {
-              x: 1,
-              y: 2,
-            },
-            {
-              x: 5,
-              y: 1,
-            },
-            {
-              x: 6,
-              y: 1,
-            },
-            {
-              x: 8,
-              y: 1,
-            },
-            {
-              x: 11,
-              y: 1,
-            },
-          ],
+          data: appEventsSerie.data,
         },
       ],
     };
