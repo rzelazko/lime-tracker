@@ -14,6 +14,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgApexchartsModule } from 'ng-apexcharts';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthFormComponent } from './auth/auth-form/auth-form.component';
@@ -58,6 +59,9 @@ import { CompareValidatorDirective } from './validators/compare-validator.direct
 
     // flex
     FlexLayoutModule,
+
+    // apex charts
+    NgApexchartsModule,
 
     // material
     MatButtonModule,
