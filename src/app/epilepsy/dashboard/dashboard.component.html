@@ -52,7 +52,20 @@
           <mat-list-item *ngFor="let medicament of medicaments">
             <mat-icon mat-list-icon>medication</mat-icon>
             <div mat-line>{{ medicament.name }}</div>
-            <div mat-line class="dose">{{ medicament.doses.morning }} - {{ medicament.doses.noon }} - {{ medicament.doses.evening }}</div>
+            <div
+              mat-line
+              class="dose"
+              [matTooltip]="
+                medicament.doses.morning +
+                ' - ' +
+                medicament.doses.noon +
+                ' - ' +
+                medicament.doses.evening
+              "
+            >
+              {{ medicament.doses.morning }} - {{ medicament.doses.noon }} -
+              {{ medicament.doses.evening }}
+            </div>
           </mat-list-item>
         </mat-list>
       </mat-card-content>
