@@ -2,51 +2,60 @@
   <h1>Dashboard</h1>
 </mat-toolbar>
 
-<section
-  fxLayout="column"
-  fxLayout.gt-xs="row"
-  fxLayoutGap="1em"
-  fxLayoutAlign="center center"
-  fxLayoutAlign.gt-xs="center stretch"
->
-  <mat-card>
-    <mat-card-title-group>
-      <mat-card-title>Last seizure</mat-card-title>
-      <mat-card-subtitle>{{ lastSeizure | date: "short" }}</mat-card-subtitle>
-    </mat-card-title-group>
-    <mat-card-content>
-      <h3>Time since last seizure:</h3>
-      <p class="mat-display-3">
-        <span *ngIf="daysSinceLastSeizure">{{ daysSinceLastSeizure }}d </span>
-        <span *ngIf="hoursSinceLastSeizure">{{ hoursSinceLastSeizure }}h </span>
-        <span *ngIf="minSinceLastSeizure">{{ minSinceLastSeizure }} min</span>
-      </p>
-    </mat-card-content>
-  </mat-card>
+<main>
+  <section class="actions" fxLayout="column" fxLayoutAlign="center stretch">
+    <mat-card>
+      <mat-card-content fxLayout="row wrap" fxLayoutAlign="space-around center">
+        <button mat-raised-button color="warn">
+          <span>Attack!</span>
+        </button>
+        <button mat-raised-button color="primary">
+          <span>Medicament</span>
+        </button>
+        <button mat-raised-button color="basic">
+          <span>Event</span>
+        </button>
+      </mat-card-content>
+    </mat-card>
+  </section>
 
-  <mat-card>
-    <mat-card-title-group>
-      <mat-card-title>Current medicaments</mat-card-title>
-    </mat-card-title-group>
-    <mat-card-content>
-      <mat-list>
-        <mat-list-item *ngFor="let medicament of medicaments">
-          <mat-icon mat-list-icon>medication</mat-icon>
-          <div mat-line>{{ medicament.name }}</div>
-          <div mat-line>{{ medicament.dose }}</div>
-        </mat-list-item>
-      </mat-list>
-    </mat-card-content>
-  </mat-card>
-</section>
+  <section
+    class="info"
+    fxLayout="column"
+    fxLayout.gt-xs="row"
+    fxLayoutGap="1em"
+    fxLayoutAlign="center stretch"
+  >
+    <mat-card>
+      <mat-card-title-group>
+        <mat-card-title>Last seizure</mat-card-title>
+        <mat-card-subtitle>{{ lastSeizure | date: "short" }}</mat-card-subtitle>
+      </mat-card-title-group>
+      <mat-card-content>
+        <h3>Time since last seizure:</h3>
+        <p class="mat-display-3">
+          <span *ngIf="daysSinceLastSeizure">{{ daysSinceLastSeizure }}d </span>
+          <span *ngIf="hoursSinceLastSeizure"
+            >{{ hoursSinceLastSeizure }}h
+          </span>
+          <span *ngIf="minSinceLastSeizure">{{ minSinceLastSeizure }} min</span>
+        </p>
+      </mat-card-content>
+    </mat-card>
 
-<section fxLayout="row" fxLayoutAlign="center center">
-  <mat-card>
-    <mat-card-subtitle>Any changes?</mat-card-subtitle>
-    <mat-card-actions>
-      <button mat-raised-button color="warn">Attack!</button>
-      <button mat-raised-button color="primary">Medicament</button>
-      <button mat-raised-button color="basic">Event</button>
-    </mat-card-actions>
-  </mat-card>
-</section>
+    <mat-card class="medicaments">
+      <mat-card-title-group>
+        <mat-card-title>Current medicaments</mat-card-title>
+      </mat-card-title-group>
+      <mat-card-content>
+        <mat-list fxLayout="row wrap">
+          <mat-list-item *ngFor="let medicament of medicaments">
+            <mat-icon mat-list-icon>medication</mat-icon>
+            <div mat-line>{{ medicament.name }}</div>
+            <div mat-line class="dose">{{ medicament.doses.morning }} - {{ medicament.doses.noon }} - {{ medicament.doses.evening }}</div>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </section>
+</main>

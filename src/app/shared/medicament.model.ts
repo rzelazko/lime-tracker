@@ -1,4 +1,8 @@
 export interface Medicament {
   name: string;
-  dose: number;
+  doses: {
+    morning: number;
+    noon: number;
+    evening: number;
+  }
 }

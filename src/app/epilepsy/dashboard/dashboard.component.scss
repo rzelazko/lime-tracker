@@ -1,7 +1,44 @@
+@use "@angular/material" as mat;
+@import "~@angular/flex-layout/mq";
+@import "src/app/app-theme-variables";
+
+main {
+  max-width: 60em;
+}
+
 section {
   padding: 1rem 1rem 0;
+}
+
+section.actions {
+  button {
+    margin: 0.5em;
+    width: 10em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+section.info {
   mat-card {
-    width: 20rem;
-    max-width: 90%;
+    width: auto;
+  }
+
+  mat-card.medicaments {
+    .dose {
+      color: mat.get-color-from-palette($app-foreground, "secondary-text");
+    }
+
+    mat-list-item {
+      width: 10em;
+    }
+  }
+}
+
+@include layout-bp(gt-xs) {
+  section.info {
+    mat-card {
+      width: 100%;
+    }
   }
 }

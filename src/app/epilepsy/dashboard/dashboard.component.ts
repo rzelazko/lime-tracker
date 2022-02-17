@@ -18,8 +18,9 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     const now = new Date();
     this.medicaments.push(
-      { name: 'Kepra', dose: 100 },
-      { name: 'Lamitrin', dose: 1500 }
+      { name: 'Kepra', doses: {morning: 100, noon: 0, evening: 150 }},
+      { name: 'Lamitrin', doses: {morning: 1500, noon: 0, evening: 1000 } },
+      { name: 'Topamax', doses: {morning: 125, noon: 0, evening: 125 }}
     );
     this.lastSeizure = new Date(
       now.getFullYear(),

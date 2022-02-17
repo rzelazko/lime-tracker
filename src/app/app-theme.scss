@@ -4,15 +4,4 @@
 
 @import "src/app/app-theme-variables";
 
-$app-theme: mat.define-light-theme(
-  (
-    color: (
-      primary: $app-primary,
-      accent: $app-accent,
-      warn: $app-warn,
-    ),
-    typography: $app-typography,
-  )
-);
-
 @include mat.all-component-themes($app-theme);
