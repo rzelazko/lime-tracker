@@ -1,0 +1,11 @@
+@use "@angular/material" as mat;
+@import "~@angular/flex-layout/mq";
+@import "src/app/app-theme-variables";
+
+.mat-list-icon {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.mat-line-secondary {
+  color: mat.get-color-from-palette($app-foreground, "secondary-text");
+}

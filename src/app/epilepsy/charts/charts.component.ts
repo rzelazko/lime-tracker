@@ -1,41 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {
-  ApexAxisChartSeries,
-  ApexChart,
-  ApexDataLabels,
-  ApexFill,
-  ApexLegend,
-  ApexMarkers,
-  ApexStroke,
-  ApexTitleSubtitle,
-  ApexTooltip,
-  ApexXAxis,
-  ApexYAxis,
-  ChartComponent,
-} from 'ng-apexcharts';
+import { ChartComponent } from 'ng-apexcharts';
+import { ChartOptions } from './chart-options.model';
+import { Chart } from './chart.model';
 
-export type AppChartOptions = {
-  series: ApexAxisChartSeries;
-  chart: ApexChart;
-  xaxis: ApexXAxis;
-  markers: ApexMarkers;
-  stroke: ApexStroke;
-  yaxis: ApexYAxis | ApexYAxis[];
-  dataLabels: ApexDataLabels;
-  title: ApexTitleSubtitle;
-  subtitle: ApexTitleSubtitle;
-  legend: ApexLegend;
-  fill: ApexFill;
-  tooltip: ApexTooltip;
-};
-
-export type AppChart = {
-  name: string;
-  data: { x: string; y: number }[];
-  labels?: string[];
-};
-
-const appKepraSerie: AppChart = {
+const appKepraSerie: Chart = {
   name: 'Kepra',
   data: [
     { x: 'Jan', y: 100 },
@@ -53,7 +21,7 @@ const appKepraSerie: AppChart = {
   ],
 };
 
-const appAttackSerie: AppChart = {
+const appAttackSerie: Chart = {
   name: 'Attacks',
   data: [
     { x: 'Jan', y: 1 },
@@ -71,7 +39,7 @@ const appAttackSerie: AppChart = {
   ],
 };
 
-const appEventsSerie: AppChart = {
+const appEventsSerie: Chart = {
   name: 'Events',
   data: [
     { x: 'Jan', y: -1 },
@@ -110,20 +78,13 @@ const appEventsSerie: AppChart = {
 })
 export class ChartsComponent implements OnInit {
   @ViewChild('chart') chart?: ChartComponent;
-  public chartOptions: AppChartOptions;
+  public chartOptions: ChartOptions;
 
   constructor() {
     this.chartOptions = {
-      chart: {
-        height: 350,
-        type: 'line',
-      },
-      dataLabels: {
-        enabled: false,
-      },
-      stroke: {
-        width: [1, 1, 4],
-      },
+      chart: { height: 350, type: 'line' },
+      dataLabels: { enabled: false },
+      stroke: { width: [1, 1, 4] },
       title: {
         text: 'Sizures - Medicaments - Events',
         align: 'left',
@@ -134,63 +95,34 @@ export class ChartsComponent implements OnInit {
         align: 'left',
         offsetX: 110,
       },
-      fill: {
-        type: 'solid',
-      },
-      markers: {
-        size: [6, 6],
-      },
-      tooltip: {
-        shared: false,
-        intersect: true,
-      },
-      legend: {
-        show: true,
-      },
-      xaxis: {
-        type: 'category',
-      },
+      fill: { type: 'solid' },
+      markers: { size: [6, 6] },
+      tooltip: { shared: false, intersect: true },
+      legend: { show: true },
+      xaxis: { type: 'category' },
       yaxis: [
         {
           opposite: false,
-          axisTicks: {
-            show: true,
-          },
-          axisBorder: {
-            show: true,
-          },
+          axisTicks: { show: true },
+          axisBorder: { show: true },
           seriesName: appAttackSerie.name,
         },
         {
           opposite: true,
-          axisTicks: {
-            show: true,
-          },
-          axisBorder: {
-            show: true,
-          },
+          axisTicks: { show: true },
+          axisBorder: { show: true },
           seriesName: appKepraSerie.name,
         },
         {
           show: false,
-          axisTicks: {
-            show: false,
-          },
-          axisBorder: {
-            show: false,
-          },
+          axisTicks: { show: false },
+          axisBorder: { show: false },
           seriesName: appEventsSerie.name,
           min: 0,
           tickAmount: 2,
           labels: {
-            formatter: function (
-              value: number,
-              opts: { dataPointIndex: number }
-            ) {
-              if (
-                appEventsSerie.labels &&
-                appEventsSerie.labels[opts.dataPointIndex]
-              ) {
+            formatter: function (value: number, opts: { dataPointIndex: number }) {
+              if (appEventsSerie.labels && appEventsSerie.labels[opts.dataPointIndex]) {
                 return appEventsSerie.labels[opts.dataPointIndex];
               }
               return value.toFixed(0);

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
+import { Duration, Moment } from 'moment';
 import { Medicament } from './../../shared/medicament.model';
 
 @Component({
@@ -8,34 +10,19 @@ import { Medicament } from './../../shared/medicament.model';
 })
 export class DashboardComponent implements OnInit {
   medicaments: Medicament[] = [];
-  lastSeizure?: Date;
-  daysSinceLastSeizure: number = 0;
-  hoursSinceLastSeizure: number = 0;
-  minSinceLastSeizure: number = 0;
+  lastSeizure?: Moment;
+  timeSinceLastSeizure?: Duration;
 
   constructor() {}
 
   ngOnInit(): void {
-    const now = new Date();
+    const now = moment();
     this.medicaments.push(
-      { name: 'Kepra', doses: {morning: 100, noon: 0, evening: 150 }},
-      { name: 'Lamitrin', doses: {morning: 1500, noon: 0, evening: 1000 } },
-      { name: 'Topamax', doses: {morning: 125, noon: 0, evening: 125 }}
+      { name: 'Kepra', doses: {morning: 100, noon: 0, evening: 150 }, startDate: moment('2021-06-01')},
+      { name: 'Lamitrin', doses: {morning: 1500, noon: 0, evening: 1000 }, startDate: moment('2021-06-01') },
+      { name: 'Topamax', doses: {morning: 125, noon: 0, evening: 125 }, startDate: moment('2021-09-01')}
     );
-    this.lastSeizure = new Date(
-      now.getFullYear(),
-      now.getMonth(),
-      5,
-      now.getHours(),
-      now.getMinutes(),
-      now.getSeconds()
-    );
-    let timeSinceLastSeizure = new Date(
-      now.getTime() - this.lastSeizure.getTime()
-    );
-
-    this.daysSinceLastSeizure = timeSinceLastSeizure.getDate();
-    this.hoursSinceLastSeizure = timeSinceLastSeizure.getHours();
-    this.minSinceLastSeizure = timeSinceLastSeizure.getMinutes();
+    this.lastSeizure = now.clone().subtract(5, 'days');
+    this.timeSinceLastSeizure = moment.duration(now.diff(this.lastSeizure));
   }
 }

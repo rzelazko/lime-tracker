@@ -21,12 +21,16 @@ section.info {
   }
 
   mat-card.medicaments {
+    mat-list-item {
+      width: 10em;
+    }
+
     .dose {
       color: mat.get-color-from-palette($app-foreground, "secondary-text");
     }
 
-    mat-list-item {
-      width: 10em;
+    .mat-list-icon {
+      color: rgba(0, 0, 0, 0.5);
     }
   }
 }

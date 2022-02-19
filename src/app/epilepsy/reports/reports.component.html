@@ -1,0 +1,41 @@
+<mat-toolbar class="page-header" role="heading">
+  <h1>
+    Reports
+    <span *ngIf="report">
+      from {{ report.dateStart.format("L") }} to {{ report.dateEnd.format("L") }}
+    </span>
+  </h1>
+</mat-toolbar>
+
+<main>
+  <p *ngIf="!report">No reports found!</p>
+
+  <mat-list *ngIf="report">
+    <ng-container *ngFor="let subReport of report.subReports">
+      <div mat-subheader>
+        {{ subReport.dateStart.format("LL") }} - {{ subReport.dateEnd.format("LL") }}
+      </div>
+
+      <mat-list-item *ngFor="let case of subReport.cases">
+          <mat-icon *ngIf="case.event" mat-list-icon>event</mat-icon>
+          <div *ngIf="case.event" mat-line>{{ case.event.name }}</div>
+          <div *ngIf="case.event" mat-line class="mat-line-secondary">{{ case.event.occurred.format("LLL") }}</div>
+
+          <mat-icon *ngIf="case.attack" mat-list-icon>warning</mat-icon>
+          <div *ngIf="case.attack" mat-line>Seizure occured: {{ case.attack.occured.format("LLL") }}</div>
+          <div *ngIf="case.attack" mat-line class="mat-line-secondary">{{ case.attack.type }}</div>
+          <div *ngIf="case.attack" mat-line class="mat-line-secondary">Duration: {{ case.attack.duration.humanize() }}</div>
+
+          <mat-icon *ngIf="case.medicament" mat-list-icon>medication</mat-icon>
+          <div *ngIf="case.medicament" mat-line>
+            {{ case.medicament.name }}:
+            {{case.medicament.doses.morning}} - {{case.medicament.doses.noon}} - {{case.medicament.doses.evening}}
+          </div>
+          <div *ngIf="case.medicament" mat-line class="mat-line-secondary">{{ case.medicament.startDate.format('LL') }}</div>
+
+      </mat-list-item>
+
+        <mat-divider></mat-divider>
+    </ng-container>
+  </mat-list>
+</main>

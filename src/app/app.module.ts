@@ -25,9 +25,9 @@ import { AddSeizureComponent } from './epilepsy/add-seizure/add-seizure.componen
 import { ChartsComponent } from './epilepsy/charts/charts.component';
 import { DashboardComponent } from './epilepsy/dashboard/dashboard.component';
 import { EpilepsyComponent } from './epilepsy/epilepsy.component';
-import { EventsComponent } from './epilepsy/events/events.component';
 import { HeaderComponent } from './epilepsy/navigation/header/header.component';
 import { SidenavListComponent } from './epilepsy/navigation/sidenav-list/sidenav-list.component';
+import { ReportsComponent } from './epilepsy/reports/reports.component';
 import { CompareValidatorDirective } from './validators/compare-validator.directive';
 
 @NgModule({
@@ -42,8 +42,8 @@ import { CompareValidatorDirective } from './validators/compare-validator.direct
     ChartsComponent,
     DashboardComponent,
     EpilepsyComponent,
-    EventsComponent,
     HeaderComponent,
+    ReportsComponent,
     SidenavListComponent,
 
     // directives
