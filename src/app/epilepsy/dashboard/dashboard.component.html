@@ -30,13 +30,13 @@
       <mat-card-title-group>
         <mat-card-title>Last seizure</mat-card-title>
         <mat-card-subtitle *ngIf="!lastSeizure">unknown</mat-card-subtitle>
-        <mat-card-subtitle *ngIf="lastSeizure">{{ lastSeizure.format('LL') }}</mat-card-subtitle>
+        <mat-card-subtitle *ngIf="lastSeizure">{{ lastSeizure | moment:'LL' }}</mat-card-subtitle>
       </mat-card-title-group>
       <mat-card-content>
         <h3>Time since last seizure:</h3>
         <p *ngIf="!timeSinceLastSeizure">unknown</p>
         <p class="mat-display-3" *ngIf="timeSinceLastSeizure">
-          {{timeSinceLastSeizure.humanize()}}
+          {{timeSinceLastSeizure | humanize }}
         </p>
       </mat-card-content>
     </mat-card>

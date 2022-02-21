@@ -28,6 +28,8 @@ import { EpilepsyComponent } from './epilepsy/epilepsy.component';
 import { HeaderComponent } from './epilepsy/navigation/header/header.component';
 import { SidenavListComponent } from './epilepsy/navigation/sidenav-list/sidenav-list.component';
 import { ReportsComponent } from './epilepsy/reports/reports.component';
+import { HumanizePipe } from './shared/pipes/humanize.pipe';
+import { MomentPipe } from './shared/pipes/moment.pipe';
 import { CompareValidatorDirective } from './validators/compare-validator.directive';
 
 @NgModule({
@@ -48,6 +50,10 @@ import { CompareValidatorDirective } from './validators/compare-validator.direct
 
     // directives
     CompareValidatorDirective,
+
+    // pipes
+    HumanizePipe,
+    MomentPipe,
   ],
   imports: [
     // angular
