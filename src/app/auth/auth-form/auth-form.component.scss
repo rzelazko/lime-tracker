@@ -15,5 +15,9 @@
         padding-right: .25em;
       }
     }
+
+    img {
+      background-color: mat.get-color-from-palette($app-primary, 50);
+    }
   }
 }
