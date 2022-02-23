@@ -6,15 +6,15 @@
   <section class="actions" fxLayout="column" fxLayoutAlign="center stretch">
     <mat-card>
       <mat-card-content fxLayout="row wrap" fxLayoutAlign="space-around center">
-        <button mat-raised-button color="warn">
-          <span>Attack!</span>
-        </button>
-        <button mat-raised-button color="primary">
-          <span>Medicament</span>
-        </button>
-        <button mat-raised-button color="basic">
-          <span>Event</span>
-        </button>
+        <a mat-raised-button color="warn" routerLink="/epilepsy/seizures/add">
+          Attack!
+        </a>
+        <a mat-raised-button color="primary" routerLink="/epilepsy/medicaments/add">
+          Medicament
+        </a>
+        <a mat-raised-button color="basic" routerLink="/epilepsy/events/add">
+          Event
+        </a>
       </mat-card-content>
     </mat-card>
   </section>

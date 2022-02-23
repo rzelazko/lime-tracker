@@ -6,8 +6,19 @@
     <mat-icon>auto_graph</mat-icon> <span>Charts</span>
   </a>
   <a mat-list-item routerLink="/epilepsy/reports" routerLinkActive="active" (click)="onClose()">
-    <mat-icon>event</mat-icon> <span>Reports</span>
+    <mat-icon>summarize</mat-icon> <span>Reports</span>
   </a>
+  <mat-divider></mat-divider>
+  <a mat-list-item routerLink="/epilepsy/seizures" routerLinkActive="active" (click)="onClose()">
+    <mat-icon>warning</mat-icon> <span>Seizures</span>
+  </a>
+  <a mat-list-item routerLink="/epilepsy/medicaments" routerLinkActive="active" (click)="onClose()">
+    <mat-icon>medication</mat-icon> <span>Medicaments</span>
+  </a>
+  <a mat-list-item routerLink="/epilepsy/events" routerLinkActive="active" (click)="onClose()">
+    <mat-icon>event</mat-icon> <span>Events</span>
+  </a>
+  <mat-divider></mat-divider>
   <mat-list-item>
     <button mat-icon-button (click)="onLogout()">
       <mat-icon>logout</mat-icon> <span>Logout</span>
