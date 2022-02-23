@@ -18,3 +18,5 @@ $app-theme: mat.define-light-theme(
 
 $app-foreground: map-get($app-theme, 'foreground');
 $app-background: map-get($app-theme, 'background');
+
+$app-icon-opacity: 0.7;

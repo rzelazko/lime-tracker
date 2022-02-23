@@ -8,6 +8,10 @@ mat-nav-list {
   }
 }
 
+mat-icon {
+  opacity: $app-icon-opacity;
+}
+
 .active {
   color: mat.get-color-from-palette($app-primary, 'darker');
   background: mat.get-color-from-palette($app-primary, 'lighter', .15);

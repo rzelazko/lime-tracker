@@ -3,7 +3,7 @@
 @import "src/app/app-theme-variables";
 
 .mat-list-icon {
-  color: rgba(0, 0, 0, 0.5);
+  opacity: $app-icon-opacity;
 }
 
 .mat-line-secondary {
