@@ -1,14 +1,11 @@
 <mat-nav-list>
-  <a mat-list-item class="mat-title" routerLink="/epilepsy" (click)="onClose()">
-    <mat-icon svgIcon="logo" class="logo"></mat-icon> <span>Lime Tracker</span>
-  </a>
-  <a mat-list-item routerLink="/epilepsy" (click)="onClose()">
+  <a mat-list-item routerLink="/epilepsy" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="onClose()">
     <mat-icon>dashboard</mat-icon> <span>Dashboard</span>
   </a>
-  <a mat-list-item routerLink="/epilepsy/charts" (click)="onClose()">
+  <a mat-list-item routerLink="/epilepsy/charts" routerLinkActive="active" (click)="onClose()">
     <mat-icon>auto_graph</mat-icon> <span>Charts</span>
   </a>
-  <a mat-list-item routerLink="/epilepsy/reports" (click)="onClose()">
+  <a mat-list-item routerLink="/epilepsy/reports" routerLinkActive="active" (click)="onClose()">
     <mat-icon>event</mat-icon> <span>Reports</span>
   </a>
   <mat-list-item>

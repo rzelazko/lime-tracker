@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <div fxHide.gt-xs>
+  <div fxHide.gt-sm>
     <button mat-icon-button (click)="onToggleSidenav()">
       <mat-icon>menu</mat-icon>
     </button>
@@ -10,10 +10,7 @@
       <span class="mat-title">Lime Tracker</span>
     </a>
   </div>
-  <div fxFlex fxLayout fxLayoutAlign="flex-end" fxLayoutGap=".5em" fxHide.xs>
-    <a mat-button routerLink="/epilepsy">Dashboard</a>
-    <a mat-button routerLink="/epilepsy/charts">Charts</a>
-    <a mat-button routerLink="/epilepsy/reports">Reports</a>
+  <div fxFlex fxLayout fxLayoutAlign="flex-end" fxLayoutGap=".5em" fxHide fxShow.gt-sm>
     <a mat-icon-button (click)="onLogout()">
       <mat-icon>logout</mat-icon>
     </a>

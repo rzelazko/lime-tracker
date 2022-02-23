@@ -25,8 +25,8 @@ import { AddSeizureComponent } from './epilepsy/add-seizure/add-seizure.componen
 import { ChartsComponent } from './epilepsy/charts/charts.component';
 import { DashboardComponent } from './epilepsy/dashboard/dashboard.component';
 import { EpilepsyComponent } from './epilepsy/epilepsy.component';
-import { HeaderComponent } from './epilepsy/navigation/header/header.component';
-import { SidenavListComponent } from './epilepsy/navigation/sidenav-list/sidenav-list.component';
+import { HeaderComponent } from './epilepsy/layout/header/header.component';
+import { SidenavComponent } from './epilepsy/layout/sidenav/sidenav.component';
 import { ReportsComponent } from './epilepsy/reports/reports.component';
 import { HumanizePipe } from './shared/pipes/humanize.pipe';
 import { MomentPipe } from './shared/pipes/moment.pipe';
@@ -46,7 +46,7 @@ import { CompareValidatorDirective } from './validators/compare-validator.direct
     EpilepsyComponent,
     HeaderComponent,
     ReportsComponent,
-    SidenavListComponent,
+    SidenavComponent,
 
     // directives
     CompareValidatorDirective,
