@@ -3,13 +3,14 @@
 </mat-toolbar>
 
 <main>
-  <form #eventForm="ngForm" (ngSubmit)="onSubmit(eventForm)" fxFlex fxLayout="column" fxLayoutAlign="start start">
+  <form #eventForm="ngForm" (ngSubmit)="onSubmit(eventForm)" fxFlex fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="1em">
     <mat-form-field appearance="fill">
+      <mat-label>Event name</mat-label>
       <input
         type="text"
         name="name"
         id="name"
-        placeholder="Event name"
+        placeholder="Event"
         required
         matInput
         ngModel
