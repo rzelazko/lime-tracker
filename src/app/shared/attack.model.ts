@@ -1,7 +1,7 @@
 import { Duration, Moment } from "moment";
 
 export interface Attack {
-  occured: Moment;
+  occurred: Moment;
   type: string;
   duration: Duration;
 }

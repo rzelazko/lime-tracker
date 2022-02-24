@@ -8,7 +8,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -21,6 +23,7 @@ import { AuthFormComponent } from './auth/auth-form/auth-form.component';
 import { AuthComponent } from './auth/auth.component';
 import { HeaderComponent } from './epilepsy/components/header/header.component';
 import { SidenavComponent } from './epilepsy/components/sidenav/sidenav.component';
+import { TableComponent } from './epilepsy/components/table/table.component';
 import { EpilepsyComponent } from './epilepsy/epilepsy.component';
 import { ChartsComponent } from './epilepsy/pages/charts/charts.component';
 import { DashboardComponent } from './epilepsy/pages/dashboard/dashboard.component';
@@ -60,6 +63,7 @@ import { CompareValidatorDirective } from './validators/compare-validator.direct
     SidenavComponent,
     SeizuresAddComponent,
     SeizuresListComponent,
+    TableComponent,
   ],
   imports: [
     // angular
@@ -82,7 +86,9 @@ import { CompareValidatorDirective } from './validators/compare-validator.direct
     MatIconModule,
     MatInputModule,
     MatListModule,
+    MatPaginatorModule,
     MatSidenavModule,
+    MatTableModule,
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,

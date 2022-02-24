@@ -22,7 +22,7 @@
           <div *ngIf="case.event" mat-line class="mat-line-secondary">{{ case.event.occurred | moment:'LLL' }}</div>
 
           <mat-icon *ngIf="case.attack" mat-list-icon>warning</mat-icon>
-          <div *ngIf="case.attack" mat-line>Seizure occured: {{ case.attack.occured | moment:'LLL' }}</div>
+          <div *ngIf="case.attack" mat-line>Seizure occured: {{ case.attack.occurred | moment:'LLL' }}</div>
           <div *ngIf="case.attack" mat-line class="mat-line-secondary">{{ case.attack.type }}</div>
           <div *ngIf="case.attack" mat-line class="mat-line-secondary">Duration: {{ case.attack.duration | humanize }}</div>
 
