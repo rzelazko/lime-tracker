@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { Duration, Moment } from 'moment';
-import { Medicament } from './../../shared/medicament.model';
+import { Medicament } from './../../../shared/medicament.model';
 
 @Component({
   selector: 'app-dashboard',
