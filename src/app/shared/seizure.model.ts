@@ -1,6 +1,6 @@
 import { Duration, Moment } from "moment";
 
-export interface Attack {
+export interface Seizure {
   occurred: Moment;
   type: string;
   duration: Duration;
