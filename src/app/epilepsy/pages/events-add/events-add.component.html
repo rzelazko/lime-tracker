@@ -3,4 +3,42 @@
 </mat-toolbar>
 
 <main>
+  <form #eventForm="ngForm" (ngSubmit)="onSubmit(eventForm)" fxFlex fxLayout="column" fxLayoutAlign="start start">
+    <mat-form-field appearance="fill">
+      <input
+        type="text"
+        name="name"
+        id="name"
+        placeholder="Event name"
+        required
+        matInput
+        ngModel
+        #nameInput="ngModel"
+      />
+      <mat-error *ngIf="nameInput.hasError('required')">Event name is required</mat-error>
+      <mat-error *ngIf="!nameInput.hasError('required')">Event name is invalid</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Event occurred</mat-label>
+      <input
+        name="occurred"
+        id="occurred"
+        [matDatepicker]="picker"
+        required
+        matInput
+        ngModel
+        #occurredInput="ngModel"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+
+      <mat-error *ngIf="occurredInput.hasError('required')">Event occurred is required</mat-error>
+      <mat-error *ngIf="!occurredInput.hasError('required')">Event occurred is invalid</mat-error>
+    </mat-form-field>
+
+    <button type="submit" mat-raised-button color="primary" [disabled]="!eventForm.valid">
+      Add event
+    </button>
+  </form>
 </main>
