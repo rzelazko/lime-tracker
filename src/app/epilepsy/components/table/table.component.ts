@@ -13,6 +13,7 @@ export class TableComponent implements OnInit {
   @Input() public displayedColumns: String[] = [];
   @Input() public addBtnLink = '';
   @Input() public addBtnText = '';
+  @Input() public updateLinkPrefix = '';
 
   constructor() {}
 

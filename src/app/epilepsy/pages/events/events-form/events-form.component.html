@@ -1,9 +1,16 @@
 <mat-toolbar class="page-header" role="heading">
-  <h1>Add Event</h1>
+  <h1>{{ updatedObject ? "Update Event" : "Add Event" }}</h1>
 </mat-toolbar>
 
 <main>
-  <form #eventForm="ngForm" (ngSubmit)="onSubmit(eventForm)" fxFlex fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="1em">
+  <form
+    #eventForm="ngForm"
+    (ngSubmit)="onSubmit(eventForm)"
+    fxFlex
+    fxLayout="column"
+    fxLayoutAlign="start start"
+    fxLayoutGap="1em"
+  >
     <mat-form-field appearance="fill">
       <mat-label>Event name</mat-label>
       <input
@@ -38,8 +45,12 @@
       <mat-error *ngIf="!occurredInput.hasError('required')">Event occurred is invalid</mat-error>
     </mat-form-field>
 
-    <button type="submit" mat-raised-button color="primary" [disabled]="!eventForm.valid">
-      Add event
-    </button>
+    <div>
+      <button type="submit" mat-raised-button color="primary" [disabled]="!eventForm.valid">
+        {{ updatedObject ? "Update" : "Add event" }}
+      </button>
+
+      <a mat-raised-button routerLink="/epilepsy/events">Cancel</a>
+    </div>
   </form>
 </main>

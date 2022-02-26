@@ -27,7 +27,7 @@ export class ReportsComponent implements OnInit {
             { seizure: { occurred: moment('2021-12-15T14:24:00'), type: 'Type A', duration: moment.duration(180, 'seconds') } },
             { seizure: { occurred: moment('2021-12-10T14:24:00'), type: 'Type B', duration: moment.duration(240, 'seconds') } },
             { seizure: { occurred: moment('2021-12-05T14:24:00'), type: 'Type A', duration: moment.duration(300, 'seconds') } },
-            { event: { name: 'A lot of stress', occurred: moment('2021-04-12T04:00:00') } },
+            { event: { id: 1, name: 'A lot of stress', occurred: moment('2021-04-12T04:00:00') } },
           ],
         },
         {
@@ -35,7 +35,7 @@ export class ReportsComponent implements OnInit {
           dateEnd: moment('2021-11-30'),
           cases: [
             { seizure: { occurred: moment('2021-11-30T12:24:00'), type: 'Type A', duration: moment.duration(180, 'seconds') } },
-            { event: { name: 'Start taking CBD oil', occurred: moment('2021-11-17T14:24:00') } },
+            { event: { id: 1, name: 'Start taking CBD oil', occurred: moment('2021-11-17T14:24:00') } },
             { seizure: { occurred: moment('2021-11-01T03:24:00'), type: 'Type B', duration: moment.duration(460, 'seconds') } },
           ],
         },
