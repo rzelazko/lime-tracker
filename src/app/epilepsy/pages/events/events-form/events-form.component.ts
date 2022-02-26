@@ -3,11 +3,11 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-events-add',
-  templateUrl: './events-add.component.html',
-  styleUrls: ['./events-add.component.scss'],
+  selector: 'app-events-form',
+  templateUrl: './events-form.component.html',
+  styleUrls: ['./events-form.component.scss'],
 })
-export class EventsAddComponent implements OnInit {
+export class EventsFormComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {}

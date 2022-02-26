@@ -29,16 +29,16 @@ import { TableComponent } from './epilepsy/components/table/table.component';
 import { EpilepsyComponent } from './epilepsy/epilepsy.component';
 import { ChartsComponent } from './epilepsy/pages/charts/charts.component';
 import { DashboardComponent } from './epilepsy/pages/dashboard/dashboard.component';
-import { EventsAddComponent } from './epilepsy/pages/events-add/events-add.component';
-import { EventsListComponent } from './epilepsy/pages/events-list/events-list.component';
-import { MedicamentsListComponent } from './epilepsy/pages/medicament-list/medicaments-list.component';
-import { MedicamentsAddComponent } from './epilepsy/pages/medicaments-add/medicaments-add.component';
+import { EventsFormComponent } from './epilepsy/pages/events/events-form/events-form.component';
+import { EventsComponent } from './epilepsy/pages/events/events.component';
+import { MedicamentsComponent } from './epilepsy/pages/medicaments/medicaments.component';
 import { ReportsComponent } from './epilepsy/pages/reports/reports.component';
-import { SeizuresAddComponent } from './epilepsy/pages/seizures-add/seizures-add.component';
-import { SeizuresListComponent } from './epilepsy/pages/seizures-list/seizures-list.component';
+import { SeizuresComponent } from './epilepsy/pages/seizures/seizures.component';
 import { HumanizePipe } from './shared/pipes/humanize.pipe';
 import { MomentPipe } from './shared/pipes/moment.pipe';
 import { CompareValidatorDirective } from './validators/compare-validator.directive';
+import { MedicamentsFormComponent } from './epilepsy/pages/medicaments/medicaments-form/medicaments-form.component';
+import { SeizuresFormComponent } from './epilepsy/pages/seizures/seizures-form/seizures-form.component';
 
 @NgModule({
   declarations: [
@@ -56,16 +56,16 @@ import { CompareValidatorDirective } from './validators/compare-validator.direct
     ChartsComponent,
     DashboardComponent,
     EpilepsyComponent,
-    EventsAddComponent,
-    EventsListComponent,
+    EventsFormComponent,
+    EventsComponent,
     HeaderComponent,
-    MedicamentsAddComponent,
-    MedicamentsListComponent,
+    MedicamentsComponent,
     ReportsComponent,
     SidenavComponent,
-    SeizuresAddComponent,
-    SeizuresListComponent,
+    SeizuresComponent,
     TableComponent,
+    MedicamentsFormComponent,
+    SeizuresFormComponent,
   ],
   imports: [
     // angular

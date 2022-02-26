@@ -3,11 +3,11 @@ import * as moment from 'moment';
 import { Seizure } from 'src/app/shared/seizure.model';
 
 @Component({
-  selector: 'app-seizures-list',
-  templateUrl: './seizures-list.component.html',
-  styleUrls: ['./seizures-list.component.scss'],
+  selector: 'app-seizures',
+  templateUrl: './seizures.component.html',
+  styleUrls: ['./seizures.component.scss'],
 })
-export class SeizuresListComponent implements OnInit {
+export class SeizuresComponent implements OnInit {
   public data: Seizure[] = [
     {
       occurred: moment('2021-12-24T14:24:00'),

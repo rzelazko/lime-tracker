@@ -3,11 +3,11 @@ import * as moment from 'moment';
 import { Event } from 'src/app/shared/event.model';
 
 @Component({
-  selector: 'app-events-list',
-  templateUrl: './events-list.component.html',
-  styleUrls: ['./events-list.component.scss'],
+  selector: 'app-events',
+  templateUrl: './events.component.html',
+  styleUrls: ['./events.component.scss'],
 })
-export class EventsListComponent implements OnInit {
+export class EventsComponent implements OnInit {
   public data: Event[] = [
     { name: 'A lot of stress', occurred: moment('2021-04-12T04:00:00') },
     { name: 'Start taking CBD oil', occurred: moment('2021-11-17T14:24:00') },

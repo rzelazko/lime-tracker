@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
-import { Medicament } from './../../../shared/medicament.model';
+import { Medicament } from '../../../shared/medicament.model';
 
 @Component({
-  selector: 'app-medicaments-list',
-  templateUrl: './medicaments-list.component.html',
-  styleUrls: ['./medicaments-list.component.scss'],
+  selector: 'app-medicaments',
+  templateUrl: './medicaments.component.html',
+  styleUrls: ['./medicaments.component.scss'],
 })
-export class MedicamentsListComponent implements OnInit {
+export class MedicamentsComponent implements OnInit {
   public data: Medicament[] = [
     {
       name: 'Topamax',

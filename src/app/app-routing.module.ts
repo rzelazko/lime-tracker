@@ -5,12 +5,12 @@ import { EpilepsyComponent } from './epilepsy/epilepsy.component';
 import { ChartsComponent } from './epilepsy/pages/charts/charts.component';
 import { DashboardComponent } from './epilepsy/pages/dashboard/dashboard.component';
 import { EventsAddComponent as EventsAddComponent } from './epilepsy/pages/events-add/events-add.component';
-import { EventsListComponent as EventsListComponent } from './epilepsy/pages/events-list/events-list.component';
-import { MedicamentsListComponent as MedicamentsListComponent } from './epilepsy/pages/medicament-list/medicaments-list.component';
+import { EventsComponent as EventsComponent } from './epilepsy/pages/events/events.component';
+import { MedicamentsComponent as MedicamentsComponent } from './epilepsy/pages/medicaments/medicaments.component';
 import { MedicamentsAddComponent as MedicamentsAddComponent } from './epilepsy/pages/medicaments-add/medicaments-add.component';
 import { ReportsComponent } from './epilepsy/pages/reports/reports.component';
 import { SeizuresAddComponent as SeizuresAddComponent } from './epilepsy/pages/seizures-add/seizures-add.component';
-import { SeizuresListComponent as SeizuresListComponent } from './epilepsy/pages/seizures-list/seizures-list.component';
+import { SeizuresComponent as SeizuresComponent } from './epilepsy/pages/seizures/seizures.component';
 
 const routes: Routes = [
   { path: '', component: AuthComponent },
@@ -21,11 +21,11 @@ const routes: Routes = [
       { path: '', component: DashboardComponent },
       { path: 'charts', component: ChartsComponent },
       { path: 'reports', component: ReportsComponent },
-      { path: 'seizures', component: SeizuresListComponent },
+      { path: 'seizures', component: SeizuresComponent },
       { path: 'seizures/add', component: SeizuresAddComponent },
-      { path: 'medicaments', component: MedicamentsListComponent },
+      { path: 'medicaments', component: MedicamentsComponent },
       { path: 'medicaments/add', component: MedicamentsAddComponent },
-      { path: 'events', component: EventsListComponent },
+      { path: 'events', component: EventsComponent },
       { path: 'events/add', component: EventsAddComponent },
     ],
   },
