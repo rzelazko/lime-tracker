@@ -56,6 +56,7 @@ export class ReportsComponent implements OnInit {
             { seizure: { occurred: moment('2021-09-02T19:24:00'), type: 'Type B', duration: moment.duration(300, 'seconds') } },
             {
               medicament: {
+                id: 1,
                 name: 'Topamax',
                 doses: { morning: 125, noon: 0, evening: 150 },
                 startDate: moment('2021-09-01'),
@@ -85,6 +86,7 @@ export class ReportsComponent implements OnInit {
           cases: [
             {
               medicament: {
+                id: 2,
                 name: 'Kepra',
                 doses: { morning: 100, noon: 0, evening: 150 },
                 startDate: moment('2021-06-01'),
@@ -92,6 +94,7 @@ export class ReportsComponent implements OnInit {
             },
             {
               medicament: {
+                id: 3,
                 name: 'Lamitrin',
                 doses: { morning: 1500, noon: 0, evening: 1000 },
                 startDate: moment('2021-06-01'),
@@ -99,6 +102,7 @@ export class ReportsComponent implements OnInit {
             },
             {
               medicament: {
+                id: 4,
                 name: 'Topamax',
                 doses: { morning: 125, noon: 0, evening: 125 },
                 startDate: moment('2021-06-01'),

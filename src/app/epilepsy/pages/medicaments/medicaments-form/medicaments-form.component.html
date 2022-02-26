@@ -1,1 +1,104 @@
-<p>medicaments-form works!</p>
+<mat-toolbar class="page-header" role="heading">
+  <h1>{{ updatedObject ? "Update Medicament" : "Add Medicament" }}</h1>
+</mat-toolbar>
+
+<main>
+  <form
+    #medicamentForm="ngForm"
+    (ngSubmit)="onSubmit(medicamentForm)"
+    fxFlex
+    fxLayout="column"
+    fxLayoutAlign="start start"
+    fxLayoutGap="1em"
+  >
+    <mat-form-field appearance="fill">
+      <mat-label>Medicament name</mat-label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        placeholder="Event"
+        required
+        matInput
+        ngModel
+        #nameInput="ngModel"
+      />
+      <mat-error *ngIf="nameInput.hasError('required')">Medicament name is required</mat-error>
+      <mat-error *ngIf="!nameInput.hasError('required')">Medicament name is invalid</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Morning dose</mat-label>
+      <input
+        type="text"
+        name="doseMorning"
+        id="doseMorning"
+        placeholder="Morning"
+        required
+        matInput
+        ngModel
+        #doseMorningInput="ngModel"
+      />
+      <mat-error *ngIf="doseMorningInput.hasError('required')">Morning dose is required</mat-error>
+      <mat-error *ngIf="!doseMorningInput.hasError('required')">Morning dose is invalid</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Noon dose</mat-label>
+      <input
+        type="text"
+        name="doseNoon"
+        id="doseNoon"
+        placeholder="Noon"
+        required
+        matInput
+        ngModel
+        #doseNoonInput="ngModel"
+      />
+      <mat-error *ngIf="doseNoonInput.hasError('required')">Noon dose is required</mat-error>
+      <mat-error *ngIf="!doseNoonInput.hasError('required')">Noon dose is invalid</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Evening dose</mat-label>
+      <input
+        type="text"
+        name="doseEvening"
+        id="doseEvening"
+        placeholder="Evening"
+        required
+        matInput
+        ngModel
+        #doseEveningInput="ngModel"
+      />
+      <mat-error *ngIf="doseEveningInput.hasError('required')">Evening dose is required</mat-error>
+      <mat-error *ngIf="!doseEveningInput.hasError('required')">Evening dose is invalid</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Start date</mat-label>
+      <input
+        name="startDate"
+        id="startDate"
+        [matDatepicker]="picker"
+        required
+        matInput
+        ngModel
+        #startDateInput="ngModel"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+
+      <mat-error *ngIf="startDateInput.hasError('required')">Start date is required</mat-error>
+      <mat-error *ngIf="!startDateInput.hasError('required')">Start date is invalid</mat-error>
+    </mat-form-field>
+
+    <div>
+      <button type="submit" mat-raised-button color="primary" [disabled]="!medicamentForm.valid">
+        {{ updatedObject ? "Update" : "Add medicament" }}
+      </button>
+
+      <a mat-raised-button routerLink="/epilepsy/medicaments">Cancel</a>
+    </div>
+  </form>
+</main>
