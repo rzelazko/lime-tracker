@@ -1,1 +1,66 @@
-<p>seizures-form works!</p>
+<mat-toolbar class="page-header" role="heading">
+  <h1>{{ updatedObject ? "Update Seizure" : "Add Seizure" }}</h1>
+</mat-toolbar>
+
+<main>
+  <form
+    #seizureForm="ngForm"
+    (ngSubmit)="onSubmit(seizureForm)"
+    fxFlex
+    fxLayout="column"
+    fxLayoutAlign="start start"
+    fxLayoutGap="1em"
+  >
+    <mat-form-field appearance="fill">
+      <mat-label>Occurred</mat-label>
+      <input
+        name="occurred"
+        id="occurred"
+        [matDatepicker]="picker"
+        required
+        matInput
+        ngModel
+        #occurredInput="ngModel"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="occurredInput.hasError('required')">Seizure occurred is required</mat-error>
+      <mat-error *ngIf="!occurredInput.hasError('required')">Seizure occurred is invalid</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Type</mat-label>
+      <mat-select name="type" id="type" required ngModel #typeInput="ngModel">
+        <mat-option *ngFor="let type of seizureTypes" [value]="type">
+          {{type}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="typeInput.hasError('required')">Seizure type is required</mat-error>
+      <mat-error *ngIf="!typeInput.hasError('required')">Seizure type is invalid</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Duration</mat-label>
+      <input
+        type="text"
+        name="duration"
+        id="duration"
+        placeholder="Duration"
+        required
+        matInput
+        ngModel
+        #durationInput="ngModel"
+      />
+      <mat-error *ngIf="durationInput.hasError('required')">Seizure duration is required</mat-error>
+      <mat-error *ngIf="!durationInput.hasError('required')">Seizure duration is invalid</mat-error>
+    </mat-form-field>
+
+    <div>
+      <button type="submit" mat-raised-button color="primary" [disabled]="!seizureForm.valid">
+        {{ updatedObject ? "Update" : "Add seizure" }}
+      </button>
+
+      <a mat-raised-button routerLink="/epilepsy/seizures">Cancel</a>
+    </div>
+  </form>
+</main>
