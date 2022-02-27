@@ -4,7 +4,7 @@
 
 <table mat-table [dataSource]="dataSource">
   <ng-container matColumnDef="occurred">
-    <th mat-header-cell *matHeaderCellDef>Occured</th>
+    <th mat-header-cell *matHeaderCellDef>Occurred</th>
     <td mat-cell *matCellDef="let element">{{ element.occurred | moment: "LLL" }}</td>
   </ng-container>
 
