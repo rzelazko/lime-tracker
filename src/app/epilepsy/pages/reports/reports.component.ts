@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
-import { Report } from './report.model';
+import { Report, SubReport } from './report.model';
 
 @Component({
   selector: 'app-reports',
@@ -9,6 +9,7 @@ import { Report } from './report.model';
 })
 export class ReportsComponent implements OnInit {
   public report?: Report;
+  public allCases = 0;
 
   constructor() {}
 
@@ -115,5 +116,7 @@ export class ReportsComponent implements OnInit {
         },
       ],
     };
+
+    this.allCases = this.report.subReports.reduce((previous: number, current: SubReport) => previous + current.cases.length, 0);
   }
 }

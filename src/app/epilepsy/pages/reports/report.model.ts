@@ -6,9 +6,17 @@ import { Medicament } from 'src/app/shared/medicament.model';
 export interface Report {
   dateStart: Moment;
   dateEnd: Moment;
-  subReports: {
-    dateStart: Moment;
-    dateEnd: Moment;
-    cases: { event?: Event; medicament?: Medicament; seizure?: Seizure }[];
-  }[];
-}
+  subReports: SubReport[];
+};
+
+export interface SubReport {
+  dateStart: Moment;
+  dateEnd: Moment;
+  cases: ReportCase[];
+};
+
+export interface ReportCase {
+  event?: Event;
+  medicament?: Medicament;
+  seizure?: Seizure;
+};
