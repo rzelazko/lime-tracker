@@ -40,6 +40,7 @@ import { SeizuresComponent } from './epilepsy/pages/seizures/seizures.component'
 import { HumanizePipe } from './shared/pipes/humanize.pipe';
 import { MomentPipe } from './shared/pipes/moment.pipe';
 import { CompareValidatorDirective } from './validators/compare-validator.directive';
+import { DurationInputComponent } from './epilepsy/components/duration-input/duration-input.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { CompareValidatorDirective } from './validators/compare-validator.direct
     AuthFormComponent,
     ChartsComponent,
     DashboardComponent,
+    DurationInputComponent,
     EpilepsyComponent,
     EventsFormComponent,
     EventsComponent,

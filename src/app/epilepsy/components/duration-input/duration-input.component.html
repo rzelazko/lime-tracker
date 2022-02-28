@@ -1,0 +1,44 @@
+<mat-form-field appearance="fill">
+  <mat-label>Hours</mat-label>
+  <input
+    type="number"
+    name="hours"
+    (ngModelChange)="check('hours')"
+    [disabled]="disabled"
+    placeholder="0"
+    required
+    matInput
+    ngModel
+    #durationHours="ngModel"
+  />
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+  <mat-label>Minutes</mat-label>
+  <input
+    type="number"
+    name="minutes"
+    (ngModelChange)="check('minutes')"
+    [disabled]="disabled"
+    placeholder="0"
+    required
+    matInput
+    ngModel
+    #durationMinutes="ngModel"
+  />
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+  <mat-label>Seconds</mat-label>
+  <input
+    type="number"
+    name="seconds"
+    (ngModelChange)="check('seconds')"
+    [disabled]="disabled"
+    placeholder="0"
+    required
+    matInput
+    ngModel
+    #durationSeconds="ngModel"
+  />
+</mat-form-field>
