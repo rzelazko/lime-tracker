@@ -93,7 +93,8 @@ export class SeizuresFormComponent implements OnInit {
     Promise.resolve().then(() => {
       if (this.updatedObject) {
         this.seizureForm.setValue({
-          occurred: this.updatedObject.occurred,
+          occurredDate: this.updatedObject.occurred,
+          occurredTime: this.updatedObject.occurred.format("hh:mm"),
           type: this.updatedObject.type,
           duration: this.updatedObject.duration
         });

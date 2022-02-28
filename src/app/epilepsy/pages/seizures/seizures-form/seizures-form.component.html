@@ -12,27 +12,51 @@
     fxLayoutGap="1em"
   >
     <mat-form-field appearance="fill">
-      <mat-label>Occurred</mat-label>
+      <mat-label>Occurred date</mat-label>
       <input
-        name="occurred"
-        id="occurred"
+        type="text"
+        name="occurredDate"
+        id="occurredDate"
         [matDatepicker]="picker"
         required
         matInput
         ngModel
-        #occurredInput="ngModel"
+        #occurredDateInput="ngModel"
       />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-      <mat-error *ngIf="occurredInput.hasError('required')">Seizure occurred is required</mat-error>
-      <mat-error *ngIf="!occurredInput.hasError('required')">Seizure occurred is invalid</mat-error>
+      <mat-error *ngIf="occurredDateInput.hasError('required')">
+        Occurred date is required
+      </mat-error>
+      <mat-error *ngIf="!occurredDateInput.hasError('required')">
+        Occurred date is invalid
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Occurred time</mat-label>
+      <input
+        type="time"
+        name="occurredTime"
+        id="occurredTime"
+        required
+        matInput
+        ngModel
+        #occurredTimeInput="ngModel"
+      />
+      <mat-error *ngIf="occurredTimeInput.hasError('required')">
+        Occurred time is required
+      </mat-error>
+      <mat-error *ngIf="!occurredTimeInput.hasError('required')">
+        Occurred time is invalid
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Type</mat-label>
       <mat-select name="type" id="type" required ngModel #typeInput="ngModel">
         <mat-option *ngFor="let type of seizureTypes" [value]="type">
-          {{type}}
+          {{ type }}
         </mat-option>
       </mat-select>
       <mat-error *ngIf="typeInput.hasError('required')">Seizure type is required</mat-error>
