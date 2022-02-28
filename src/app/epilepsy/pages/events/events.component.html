@@ -3,5 +3,13 @@
 </mat-toolbar>
 
 <main>
-  <app-table [dataSource]="data" [displayedColumns]="columns" addBtnLink="/epilepsy/events/add" addBtnText="Add event" updateLinkPrefix="/epilepsy/events/update"></app-table>
+  <app-table
+    [dataSource]="data"
+    [displayedColumns]="columns"
+    addBtnLink="/epilepsy/events/add"
+    addBtnText="Add event"
+    updateLinkPrefix="/epilepsy/events/update"
+    occurredFormat="LL"
+  ></app-table>
 </main>
+Ó

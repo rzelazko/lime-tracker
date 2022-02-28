@@ -14,6 +14,7 @@ export class TableComponent implements OnInit {
   @Input() public addBtnLink = '';
   @Input() public addBtnText = '';
   @Input() public updateLinkPrefix = '';
+  @Input() public occurredFormat = 'LLL';
 
   constructor() {}
 
