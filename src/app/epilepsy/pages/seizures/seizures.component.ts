@@ -8,6 +8,7 @@ const MOCK_SEIZURES: Seizure[] = [
     occurred: moment('2021-12-24T14:24:00'),
     type: 'Type F',
     duration: moment.duration(4, 'minutes'),
+    trigger: 'Lights',
   },
   {
     id: 2,
@@ -26,12 +27,14 @@ const MOCK_SEIZURES: Seizure[] = [
     occurred: moment('2021-12-10T14:24:00'),
     type: 'Type B',
     duration: moment.duration(1, 'minutes'),
+    trigger: 'Lights',
   },
   {
     id: 5,
     occurred: moment('2021-12-05T14:24:00'),
     type: 'Type A',
     duration: moment.duration(3, 'minutes'),
+    trigger: 'Period',
   },
   {
     id: 6,
@@ -56,6 +59,7 @@ const MOCK_SEIZURES: Seizure[] = [
     occurred: moment('2021-09-02T19:24:00'),
     type: 'Type B',
     duration: moment.duration(34, 'minutes'),
+    trigger: 'Forgotten medicament'
   },
 ];
 
@@ -68,7 +72,7 @@ export class SeizuresComponent implements OnInit {
   public data: Seizure[] = MOCK_SEIZURES;
 
   public columns = [
-    'occurred', 'type', 'duration', 'actions'
+    'occurred', 'type', 'trigger', 'duration', 'actions'
   ]
 
   constructor() {}

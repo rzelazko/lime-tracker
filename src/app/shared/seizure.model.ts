@@ -4,5 +4,6 @@ export interface Seizure {
   id: number,
   occurred: Moment;
   type: string;
+  trigger?: string;
   duration: Duration;
 }

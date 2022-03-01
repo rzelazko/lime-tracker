@@ -14,12 +14,20 @@ const MOCK_SEIZURE_TYPES: String[] = [
   'Type F',
 ];
 
+const MOCK_SEIZURE_TRIGGERS: String[] = [
+  'Lights',
+  'Period',
+  'Forgotten medicament',
+  ''
+];
+
 const MOCK_SEIZURES: Seizure[] = [
   {
     id: 1,
     occurred: moment('2021-12-24T14:24:00'),
     type: 'Type F',
     duration: moment.duration(4, 'minutes'),
+    trigger: 'Lights',
   },
   {
     id: 2,
@@ -38,12 +46,14 @@ const MOCK_SEIZURES: Seizure[] = [
     occurred: moment('2021-12-10T14:24:00'),
     type: 'Type B',
     duration: moment.duration(1, 'minutes'),
+    trigger: 'Lights',
   },
   {
     id: 5,
     occurred: moment('2021-12-05T14:24:00'),
     type: 'Type A',
     duration: moment.duration(3, 'minutes'),
+    trigger: 'Period',
   },
   {
     id: 6,
@@ -68,6 +78,7 @@ const MOCK_SEIZURES: Seizure[] = [
     occurred: moment('2021-09-02T19:24:00'),
     type: 'Type B',
     duration: moment.duration(34, 'minutes'),
+    trigger: 'Forgotten medicament'
   },
 ];
 
@@ -80,6 +91,7 @@ export class SeizuresFormComponent implements OnInit {
   @ViewChild('seizureForm') seizureForm!: NgForm;
   public updatedObject?: Seizure;
   public seizureTypes = MOCK_SEIZURE_TYPES;
+  public seizureTriggers = MOCK_SEIZURE_TRIGGERS;
   public d:Duration = moment.duration(1);
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
@@ -98,6 +110,7 @@ export class SeizuresFormComponent implements OnInit {
           occurredDate: this.updatedObject.occurred,
           occurredTime: this.updatedObject.occurred.format("hh:mm"),
           seizureType: this.updatedObject.type,
+          seizureTrigger: this.updatedObject.trigger,
           duration: this.updatedObject.duration.minutes()
         });
       }

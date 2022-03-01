@@ -53,17 +53,6 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Type</mat-label>
-      <mat-select name="seizureType" id="seizureType" required ngModel #typeInput="ngModel">
-        <mat-option *ngFor="let type of seizureTypes" [value]="type">
-          {{ type }}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="typeInput.hasError('required')">Seizure type is required</mat-error>
-      <mat-error *ngIf="!typeInput.hasError('required')">Seizure type is invalid</mat-error>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
       <mat-label>Duration (min)</mat-label>
       <input
         type="number"
@@ -77,6 +66,28 @@
       />
       <mat-error *ngIf="durationInput.hasError('required')">Seizure duration is required</mat-error>
       <mat-error *ngIf="!durationInput.hasError('required')">Seizure duration is invalid</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Type</mat-label>
+      <mat-select name="seizureType" id="seizureType" required ngModel #typeInput="ngModel">
+        <mat-option *ngFor="let type of seizureTypes" [value]="type">
+          {{ type }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="typeInput.hasError('required')">Seizure type is required</mat-error>
+      <mat-error *ngIf="!typeInput.hasError('required')">Seizure type is invalid</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Trigger</mat-label>
+      <mat-select name="seizureTrigger" id="seizureTrigger" ngModel #triggerInput="ngModel">
+        <mat-option *ngFor="let trigger of seizureTriggers" [value]="trigger">
+          {{ trigger }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="triggerInput.hasError('required')">Seizure trigger is required</mat-error>
+      <mat-error *ngIf="!triggerInput.hasError('required')">Seizure trigger is invalid</mat-error>
     </mat-form-field>
 
     <div>
