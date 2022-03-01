@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Seizure } from 'src/app/shared/seizure.model';
 import { Event } from 'src/app/shared/event.model';
 import { Medicament } from 'src/app/shared/medicament.model';
@@ -11,6 +11,7 @@ import { ConfirmDeleteDialogComponent } from '../dialogs/confirm-delete-dialog/c
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
+  @Output('onDelete') public deleteEvent = new EventEmitter<Event | Medicament | Seizure>();
   @Input() public dataSource: (Event | Medicament | Seizure)[] = [];
   @Input() public displayedColumns: String[] = [];
   @Input() public addBtnLink = '';
@@ -23,10 +24,12 @@ export class TableComponent implements OnInit {
   ngOnInit(): void {}
 
   onDelete(element: Event | Medicament | Seizure): void {
-    this.dialog.open(ConfirmDeleteDialogComponent, {
-      data: {
-        ...element,
-      },
+    const dialogRef = this.dialog.open(ConfirmDeleteDialogComponent, { data: { ...element } });
+
+    dialogRef.afterClosed().subscribe(confirmed => {
+      if (confirmed) {
+        this.deleteEvent.emit(element);
+      }
     });
   }
 }

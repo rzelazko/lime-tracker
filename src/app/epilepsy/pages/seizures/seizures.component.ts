@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
+import { Event } from 'src/app/shared/event.model';
+import { Medicament } from 'src/app/shared/medicament.model';
 import { Seizure } from 'src/app/shared/seizure.model';
 
 const MOCK_SEIZURES: Seizure[] = [
@@ -59,7 +61,7 @@ const MOCK_SEIZURES: Seizure[] = [
     occurred: moment('2021-09-02T19:24:00'),
     type: 'Type B',
     duration: moment.duration(34, 'minutes'),
-    trigger: 'Forgotten medicament'
+    trigger: 'Forgotten medicament',
   },
 ];
 
@@ -71,11 +73,13 @@ const MOCK_SEIZURES: Seizure[] = [
 export class SeizuresComponent implements OnInit {
   public data: Seizure[] = MOCK_SEIZURES;
 
-  public columns = [
-    'occurred', 'type', 'trigger', 'duration', 'actions'
-  ]
+  public columns = ['occurred', 'type', 'trigger', 'duration', 'actions'];
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  onDelete(object: Event | Medicament | Seizure) {
+    console.log('Delete', object);
+  }
 }

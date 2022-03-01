@@ -1,7 +1,7 @@
 import { isSeizure } from './../../../../shared/seizure.model';
 import { isMedicament } from './../../../../shared/medicament.model';
 import { isEvent } from './../../../../shared/event.model';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { Seizure } from 'src/app/shared/seizure.model';
 import { Event } from 'src/app/shared/event.model';
 import { Medicament } from 'src/app/shared/medicament.model';
@@ -15,6 +15,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class ConfirmDeleteDialogComponent implements OnInit {
   public type: string;
   public title: string;
+
   constructor(@Inject(MAT_DIALOG_DATA) private data: Event | Medicament | Seizure) {
     if (isEvent(data)) {
       this.type = 'event';

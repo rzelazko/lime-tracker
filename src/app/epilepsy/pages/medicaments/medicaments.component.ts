@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
+import { Event } from 'src/app/shared/event.model';
+import { Seizure } from 'src/app/shared/seizure.model';
 import { Medicament } from '../../../shared/medicament.model';
 
 const MOCK_MEDICAMENTS: Medicament[] = [
@@ -37,11 +39,13 @@ const MOCK_MEDICAMENTS: Medicament[] = [
 export class MedicamentsComponent implements OnInit {
   public data: Medicament[] = MOCK_MEDICAMENTS;
 
-  public columns = [
-    'name', 'dose', 'startDate', 'actions'
-  ];
+  public columns = ['name', 'dose', 'startDate', 'actions'];
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  onDelete(object: Event | Medicament | Seizure) {
+    console.log('Delete', object);
+  }
 }
