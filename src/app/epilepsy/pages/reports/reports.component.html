@@ -20,14 +20,17 @@
         <mat-icon *ngIf="case.event" mat-list-icon>event</mat-icon>
         <div *ngIf="case.event" mat-line>{{ case.event.name }}</div>
         <div *ngIf="case.event" mat-line class="mat-line-secondary">
-          {{ case.event.occurred | moment: "LLL" }}
+          {{ case.event.occurred | moment: "LL" }}
         </div>
 
         <mat-icon *ngIf="case.seizure" mat-list-icon>warning</mat-icon>
         <div *ngIf="case.seizure" mat-line>
           Seizure occured: {{ case.seizure.occurred | moment: "LLL" }}
         </div>
-        <div *ngIf="case.seizure" mat-line class="mat-line-secondary">{{ case.seizure.type }}</div>
+        <div *ngIf="case.seizure" mat-line class="mat-line-secondary">
+          <span>Type: {{ case.seizure.type }}</span>
+          <span *ngIf="case.seizure.trigger"> | Trigger: {{ case.seizure.trigger }}</span>
+        </div>
         <div *ngIf="case.seizure" mat-line class="mat-line-secondary">
           Duration: {{ case.seizure.duration | humanize }}
         </div>

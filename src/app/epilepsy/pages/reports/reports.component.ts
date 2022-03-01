@@ -1,3 +1,4 @@
+import { trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { Report, SubReport } from './report.model';
@@ -25,7 +26,7 @@ export class ReportsComponent implements OnInit {
           cases: [
             { seizure: { id: 1, occurred: moment('2021-12-24T14:24:00'), type: 'Type F', duration: moment.duration(460, 'seconds') } },
             { seizure: { id: 1, occurred: moment('2021-12-22T14:24:00'), type: 'Type D', duration: moment.duration(300, 'seconds') } },
-            { seizure: { id: 1, occurred: moment('2021-12-15T14:24:00'), type: 'Type A', duration: moment.duration(180, 'seconds') } },
+            { seizure: { id: 1, occurred: moment('2021-12-15T14:24:00'), type: 'Type A', duration: moment.duration(180, 'seconds'), trigger: 'A lot of stress'  } },
             { seizure: { id: 1, occurred: moment('2021-12-10T14:24:00'), type: 'Type B', duration: moment.duration(240, 'seconds') } },
             { seizure: { id: 1, occurred: moment('2021-12-05T14:24:00'), type: 'Type A', duration: moment.duration(300, 'seconds') } },
             { event: { id: 1, name: 'A lot of stress', occurred: moment('2021-04-12T04:00:00') } },
