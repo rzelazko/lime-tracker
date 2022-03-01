@@ -1,3 +1,4 @@
+import { trigger } from '@angular/animations';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -92,14 +93,14 @@ export class SeizuresFormComponent implements OnInit {
   public updatedObject?: Seizure;
   public seizureTypes = MOCK_SEIZURE_TYPES;
   public seizureTriggers = MOCK_SEIZURE_TRIGGERS;
-  public d:Duration = moment.duration(1);
+  private id?:number;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    const id: number = +this.activatedRoute.snapshot.params['id'];
-    if (id) {
-      this.updatedObject = MOCK_SEIZURES.filter((seizure) => seizure.id === id)[0];
+    this.id = +this.activatedRoute.snapshot.params['id'];
+    if (this.id) {
+      this.updatedObject = MOCK_SEIZURES.filter((seizure) => seizure.id === this.id)[0];
     }
   }
 
@@ -110,7 +111,7 @@ export class SeizuresFormComponent implements OnInit {
           occurredDate: this.updatedObject.occurred,
           occurredTime: this.updatedObject.occurred.format("hh:mm"),
           seizureType: this.updatedObject.type,
-          seizureTrigger: this.updatedObject.trigger,
+          seizureTrigger: this.updatedObject.trigger || '',
           duration: this.updatedObject.duration.minutes()
         });
       }
@@ -118,7 +119,14 @@ export class SeizuresFormComponent implements OnInit {
   }
 
   onSubmit(form: NgForm): void {
-    console.log(form); // TODO use reactive form to get duration value
+    const formData: Seizure = {
+      id: this.id || undefined,
+      occurred: moment(form.value.occurredDate).hours(form.value.occurredTime.split(':')[0]).minutes(form.value.occurredTime.split(':')[1]),
+      duration: form.value.duration,
+      type: form.value.seizureType,
+      trigger: form.value.seizureTrigger || undefined
+    };
+    console.log(formData);
     this.router.navigate(['/epilepsy/seizures']);
   }
 }
