@@ -10,3 +10,6 @@ export interface Medicament {
   },
   startDate: Moment
 }
+
+export const isMedicament = (variable: any): variable is Medicament =>
+  (variable as Medicament).doses !== undefined;

@@ -7,3 +7,6 @@ export interface Seizure {
   type: string;
   trigger?: string;
 }
+
+export const isSeizure = (variable: any): variable is Seizure =>
+  (variable as Seizure).duration !== undefined;

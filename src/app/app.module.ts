@@ -6,6 +6,7 @@ import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -24,6 +25,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthFormComponent } from './auth/auth-form/auth-form.component';
 import { AuthComponent } from './auth/auth.component';
+import { ConfirmDeleteDialogComponent } from './epilepsy/components/dialogs/confirm-delete-dialog/confirm-delete-dialog.component';
 import { HeaderComponent } from './epilepsy/components/header/header.component';
 import { SidenavComponent } from './epilepsy/components/sidenav/sidenav.component';
 import { TableComponent } from './epilepsy/components/table/table.component';
@@ -55,6 +57,7 @@ import { CompareValidatorDirective } from './validators/compare-validator.direct
     AuthComponent,
     AuthFormComponent,
     ChartsComponent,
+    ConfirmDeleteDialogComponent,
     DashboardComponent,
     EpilepsyComponent,
     EventsFormComponent,
@@ -87,6 +90,7 @@ import { CompareValidatorDirective } from './validators/compare-validator.direct
     MatButtonModule,
     MatCardModule,
     MatDatepickerModule,
+    MatDialogModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
@@ -103,5 +107,6 @@ import { CompareValidatorDirective } from './validators/compare-validator.direct
   exports: [CompareValidatorDirective],
   providers: [],
   bootstrap: [AppComponent],
+  entryComponents: [ConfirmDeleteDialogComponent],
 })
 export class AppModule {}
