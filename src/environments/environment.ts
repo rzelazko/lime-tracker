@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyBBHyGuDdYAGTbty08_XK2lFqbpR6fPQjc',
+    authDomain: 'lime-tracker-com.firebaseapp.com',
+    databaseURL: 'https://lime-tracker-com-default-rtdb.europe-west1.firebasedatabase.app',
+    projectId: 'lime-tracker-com',
+    storageBucket: 'lime-tracker-com.appspot.com',
+    messagingSenderId: '500993644333',
+    appId: '1:500993644333:web:86ebcf9190780497fae5a4',
+    measurementId: 'G-ZEDQ00W5ZT',
+  },
 };
 
 /*
