@@ -107,6 +107,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "lime-tracker:build:production",
+            "firebaseProject": "lime-tracker-com",
+            "firebaseHostingSite": "lime-tracker-com"
+          }
         }
       }
     }

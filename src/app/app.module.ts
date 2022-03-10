@@ -1,7 +1,15 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireAnalyticsModule, UserTrackingService } from '@angular/fire/compat/analytics';
+import {
+  AngularFireAuthModule,
+  USE_EMULATOR as USE_AUTH_EMULATOR,
+} from '@angular/fire/compat/auth';
+import {
+  AngularFirestoreModule,
+  USE_EMULATOR as USE_FIRESTORE_EMULATOR,
+} from '@angular/fire/compat/firestore';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
@@ -46,6 +54,12 @@ import { HumanizePipe } from './shared/pipes/humanize.pipe';
 import { MomentPipe } from './shared/pipes/moment.pipe';
 import { CompareValidatorDirective } from './validators/compare-validator.directive';
 
+let resolvePersistenceEnabled: (enabled: boolean) => void;
+
+export const persistenceEnabled = new Promise<boolean>((resolve) => {
+  resolvePersistenceEnabled = resolve;
+});
+
 @NgModule({
   declarations: [
     // directives
@@ -85,7 +99,9 @@ import { CompareValidatorDirective } from './validators/compare-validator.direct
 
     // firebase
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAnalyticsModule,
     AngularFirestoreModule,
+    AngularFireAuthModule,
 
     // flex
     FlexLayoutModule,
@@ -112,7 +128,17 @@ import { CompareValidatorDirective } from './validators/compare-validator.direct
     MatTooltipModule,
   ],
   exports: [CompareValidatorDirective],
-  providers: [],
+  providers: [
+    UserTrackingService,
+    {
+      provide: USE_AUTH_EMULATOR,
+      useValue: environment.useEmulators ? ['localhost', 9099] : undefined,
+    },
+    {
+      provide: USE_FIRESTORE_EMULATOR,
+      useValue: environment.useEmulators ? ['localhost', 8080] : undefined,
+    },
+  ],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmDeleteDialogComponent],
 })

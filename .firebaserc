@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "lime-tracker-com": {
+      "hosting": {
+        "lime-tracker": [
+          "lime-tracker-com"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "lime-tracker-com"
+  }
+}
