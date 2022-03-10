@@ -1,11 +1,11 @@
-import { isSeizure } from './../../../../shared/seizure.model';
-import { isMedicament } from './../../../../shared/medicament.model';
-import { isEvent } from './../../../../shared/event.model';
-import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
-import { Seizure } from 'src/app/shared/seizure.model';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Event } from 'src/app/shared/event.model';
 import { Medicament } from 'src/app/shared/medicament.model';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Seizure } from 'src/app/shared/seizure.model';
+import { isEvent } from './../../../../shared/event.model';
+import { isMedicament } from './../../../../shared/medicament.model';
+import { isSeizure } from './../../../../shared/seizure.model';
 
 @Component({
   selector: 'app-confirm-delete-dialog',
