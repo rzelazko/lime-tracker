@@ -1,15 +1,14 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFireAnalyticsModule, UserTrackingService } from '@angular/fire/compat/analytics';
+import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { connectAuthEmulator, getAuth, provideAuth } from '@angular/fire/auth';
 import {
-  AngularFireAuthModule,
-  USE_EMULATOR as USE_AUTH_EMULATOR,
-} from '@angular/fire/compat/auth';
-import {
-  AngularFirestoreModule,
-  USE_EMULATOR as USE_FIRESTORE_EMULATOR,
-} from '@angular/fire/compat/firestore';
+  connectFirestoreEmulator,
+  enableMultiTabIndexedDbPersistence,
+  getFirestore,
+  provideFirestore,
+} from '@angular/fire/firestore';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
@@ -98,10 +97,26 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     ReactiveFormsModule,
 
     // firebase
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAnalyticsModule,
-    AngularFirestoreModule,
-    AngularFireAuthModule,
+    provideAnalytics(() => getAnalytics()),
+    provideAuth(() => {
+      const auth = getAuth();
+      if (environment.useEmulators) {
+        connectAuthEmulator(auth, 'http://localhost:9099', { disableWarnings: true });
+      }
+      return auth;
+    }),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => {
+      const firestore = getFirestore();
+      if (environment.useEmulators) {
+        connectFirestoreEmulator(firestore, 'localhost', 8080);
+      }
+      enableMultiTabIndexedDbPersistence(firestore).then(
+        () => resolvePersistenceEnabled(true),
+        () => resolvePersistenceEnabled(false)
+      );
+      return firestore;
+    }),
 
     // flex
     FlexLayoutModule,
@@ -128,17 +143,7 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     MatTooltipModule,
   ],
   exports: [CompareValidatorDirective],
-  providers: [
-    UserTrackingService,
-    {
-      provide: USE_AUTH_EMULATOR,
-      useValue: environment.useEmulators ? ['localhost', 9099] : undefined,
-    },
-    {
-      provide: USE_FIRESTORE_EMULATOR,
-      useValue: environment.useEmulators ? ['localhost', 8080] : undefined,
-    },
-  ],
+  providers: [],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmDeleteDialogComponent],
 })
