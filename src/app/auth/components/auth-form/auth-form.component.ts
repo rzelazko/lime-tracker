@@ -1,7 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { LoginData } from '../../models/login-data.model';
-import { RegisterData } from '../../models/register-data.model';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup, NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { FirebaseError } from 'firebase/app';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { AuthData } from '../../models/auth-data.model';
 
 @Component({
   selector: 'app-auth-form',
@@ -9,27 +11,43 @@ import { RegisterData } from '../../models/register-data.model';
   styleUrls: ['./auth-form.component.scss'],
 })
 export class AuthFormComponent implements OnInit {
-  @Input() signUpMode: boolean = false;
-  @Input() imageUrl?: string;
-  @Output() onRegister = new EventEmitter<RegisterData>();
-  @Output() onLogin = new EventEmitter<LoginData>();
+  @Input() public signUpMode: boolean = false;
+  @Input() public imageUrl?: string;
+  public isLoading = false;
+  public error?: string;
+  public authData: AuthData = {
+    email: '',
+    password: '',
+    confirmPassword: '',
+    name: '',
+  };
 
-  constructor() {}
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {}
 
-  onSubmit(form: NgForm): void {
+  onSubmit(): void {
+    this.isLoading = true;
     if (this.signUpMode) {
-      this.onRegister.next({
-        name: form.value.name,
-        email: form.value.email,
-        password: form.value.password,
-      });
+      this.authService
+        .register(this.authData)
+        .then(() => this.router.navigate(['auth', 'register', 'confirm']))
+        .catch((error) => this.handleError(error))
+        .finally(() => (this.isLoading = false));
     } else {
-      this.onLogin.next({
-        email: form.value.email,
-        password: form.value.password,
-      });
+      this.authService
+        .login(this.authData)
+        .then(() => this.router.navigate(['epilepsy']))
+        .catch((error) => this.handleError(error))
+        .finally(() => (this.isLoading = false));
+    }
+  }
+
+  private handleError(error: Error) {
+    if (error instanceof FirebaseError) {
+      this.error = (error as FirebaseError).code;
+    } else {
+      this.error = error.message;
     }
   }
 }

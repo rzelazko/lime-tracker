@@ -7,12 +7,11 @@ import {
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
-  User,
+  User
 } from '@angular/fire/auth';
 import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/operators';
-import { LoginData } from '../../auth/models/login-data.model';
-import { RegisterData } from '../../auth/models/register-data.model';
+import { AuthData } from './../../auth/models/auth-data.model';
 import { UserService } from './user.service';
 
 @Injectable({
@@ -29,7 +28,7 @@ export class AuthService {
     this.isLoggedOut$ = this.isLoggedIn$.pipe(map((loggedIn) => !loggedIn));
   }
 
-  login({ email, password }: LoginData) {
+  login({ email, password }: AuthData) {
     return signInWithEmailAndPassword(this.auth, email, password);
   }
 
@@ -37,7 +36,7 @@ export class AuthService {
     return signOut(this.auth);
   }
 
-  async register({ email, password, name }: RegisterData) {
+  async register({ name, email, password }: AuthData) {
     const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
     await updateProfile(userCredential.user, { displayName: name });
     await this.userService.initUserDetails(userCredential.user.uid);

@@ -8,18 +8,7 @@ import { AuthService } from '../../../shared/services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
-  constructor(private router: Router, private authService: AuthService) {}
+export class LoginComponent implements OnInit {  constructor() {}
 
   ngOnInit(): void {}
-
-  onSubmit(data: LoginData) {
-    this.authService
-      .login(data)
-      .then(() => this.router.navigate(['epilepsy']))
-      .catch((error) => {
-        console.log(error);
-        // TODO handle error
-      });
-  }
 }

@@ -9,17 +9,7 @@ import { AuthService } from '../../../shared/services/auth.service';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  constructor(private router: Router, private authService: AuthService) {}
+   constructor() {}
 
   ngOnInit(): void {}
-
-  onSubmit(data: RegisterData) {
-    this.authService
-      .register(data)
-      .then(() => this.router.navigate(['auth', 'register', 'confirm']))
-      .catch((error) => {
-        console.log(error);
-        // TODO handle error
-      });
-  }
 }

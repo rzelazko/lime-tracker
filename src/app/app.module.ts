@@ -7,7 +7,7 @@ import {
   connectFirestoreEmulator,
   enableMultiTabIndexedDbPersistence,
   getFirestore,
-  provideFirestore,
+  provideFirestore
 } from '@angular/fire/firestore';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,6 +21,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
@@ -143,6 +144,7 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     MatListModule,
     MatMomentDateModule,
     MatPaginatorModule,
+    MatProgressSpinnerModule,
     MatSelectModule,
     MatSidenavModule,
     MatTableModule,
