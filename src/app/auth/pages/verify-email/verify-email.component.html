@@ -1,0 +1,28 @@
+<section fxLayoutAlign="center center">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <div fxFlex fxLayoutAlign="start center">
+          <mat-icon svgIcon="logo" class="logo"></mat-icon>
+          <span>Lime Tracker</span>
+        </div>
+      </mat-card-title>
+      <mat-card-subtitle>Almoast there</mat-card-subtitle>
+    </mat-card-header>
+    <img
+      mat-card-image
+      width="400"
+      height="200"
+      src="https://source.unsplash.com/random/400x200/?limes"
+    />
+    <mat-card-content>
+      <h1>Thank You for Registering!</h1>
+      <p>
+        We have sent a confirmation email to
+        <strong>{{ (auth.authenticatedUser$ | async)?.email ?? "unknown" }}</strong>
+        .
+      </p>
+      <p>Please check your email and click on the link to verfiy your email address.</p>
+    </mat-card-content>
+  </mat-card>
+</section>

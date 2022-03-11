@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
-import { Event } from 'src/app/shared/event.model';
-import { Medicament } from 'src/app/shared/medicament.model';
-import { Seizure } from 'src/app/shared/seizure.model';
+import { Event } from 'src/app/shared/models/event.model';
+import { Medicament } from 'src/app/shared/models/medicament.model';
+import { Seizure } from 'src/app/shared/models/seizure.model';
 
 const MOCK_SEIZURES: Seizure[] = [
   {

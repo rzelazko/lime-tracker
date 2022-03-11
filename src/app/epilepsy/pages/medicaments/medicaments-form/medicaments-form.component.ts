@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
-import { Medicament } from 'src/app/shared/medicament.model';
+import { Medicament } from 'src/app/shared/models/medicament.model';
 
 const MOCK_MEDICAMENTS: Medicament[] = [
   {

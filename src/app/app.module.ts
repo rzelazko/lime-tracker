@@ -33,8 +33,11 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthFormComponent } from './auth/auth-form/auth-form.component';
 import { AuthComponent } from './auth/auth.component';
+import { AuthFormComponent } from './auth/components/auth-form/auth-form.component';
+import { LoginComponent } from './auth/pages/login/login.component';
+import { RegisterComponent } from './auth/pages/register/register.component';
+import { VerifyEmailComponent } from './auth/pages/verify-email/verify-email.component';
 import { ConfirmDeleteDialogComponent } from './epilepsy/components/dialogs/confirm-delete-dialog/confirm-delete-dialog.component';
 import { HeaderComponent } from './epilepsy/components/header/header.component';
 import { SidenavComponent } from './epilepsy/components/sidenav/sidenav.component';
@@ -49,9 +52,10 @@ import { MedicamentsComponent } from './epilepsy/pages/medicaments/medicaments.c
 import { ReportsComponent } from './epilepsy/pages/reports/reports.component';
 import { SeizuresFormComponent } from './epilepsy/pages/seizures/seizures-form/seizures-form.component';
 import { SeizuresComponent } from './epilepsy/pages/seizures/seizures.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HumanizePipe } from './shared/pipes/humanize.pipe';
 import { MomentPipe } from './shared/pipes/moment.pipe';
-import { CompareValidatorDirective } from './validators/compare-validator.directive';
+import { CompareValidatorDirective } from './shared/validators/compare-validator.directive';
 
 let resolvePersistenceEnabled: (enabled: boolean) => void;
 
@@ -86,6 +90,10 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     TableComponent,
     MedicamentsFormComponent,
     SeizuresFormComponent,
+    LoginComponent,
+    RegisterComponent,
+    VerifyEmailComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     // angular
@@ -97,6 +105,7 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     ReactiveFormsModule,
 
     // firebase
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => {
       const auth = getAuth();
@@ -105,7 +114,6 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
       }
       return auth;
     }),
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => {
       const firestore = getFirestore();
       if (environment.useEmulators) {

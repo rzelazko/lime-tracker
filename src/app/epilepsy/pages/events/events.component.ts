@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
-import { Event } from 'src/app/shared/event.model';
-import { Medicament } from 'src/app/shared/medicament.model';
-import { Seizure } from 'src/app/shared/seizure.model';
+import { Event } from 'src/app/shared/models/event.model';
+import { Medicament } from 'src/app/shared/models/medicament.model';
+import { Seizure } from 'src/app/shared/models/seizure.model';
 
 const MOCK_EVENTS: Event[] = [
   { id: 1, name: 'A lot of stress', occurred: moment('2021-04-12T04:00:00') },

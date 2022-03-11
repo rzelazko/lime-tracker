@@ -2,7 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
-import { Event } from '../../../../shared/event.model';
+import { Event } from '../../../../shared/models/event.model';
 
 const MOCK_EVENTS: Event[] = [
   { id: 1, name: 'A lot of stress', occurred: moment('2021-04-12T04:00:00') },

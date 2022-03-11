@@ -1,19 +1,33 @@
-import { EventsFormComponent } from './epilepsy/pages/events/events-form/events-form.component';
-import { MedicamentsFormComponent } from './epilepsy/pages/medicaments/medicaments-form/medicaments-form.component';
-import { SeizuresFormComponent } from './epilepsy/pages/seizures/seizures-form/seizures-form.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './auth/auth.component';
+import { LoginComponent } from './auth/pages/login/login.component';
+import { RegisterComponent } from './auth/pages/register/register.component';
+import { VerifyEmailComponent } from './auth/pages/verify-email/verify-email.component';
 import { EpilepsyComponent } from './epilepsy/epilepsy.component';
 import { ChartsComponent } from './epilepsy/pages/charts/charts.component';
 import { DashboardComponent } from './epilepsy/pages/dashboard/dashboard.component';
-import { EventsComponent as EventsComponent } from './epilepsy/pages/events/events.component';
-import { MedicamentsComponent as MedicamentsComponent } from './epilepsy/pages/medicaments/medicaments.component';
+import { EventsFormComponent } from './epilepsy/pages/events/events-form/events-form.component';
+import { EventsComponent } from './epilepsy/pages/events/events.component';
+import { MedicamentsFormComponent } from './epilepsy/pages/medicaments/medicaments-form/medicaments-form.component';
+import { MedicamentsComponent } from './epilepsy/pages/medicaments/medicaments.component';
 import { ReportsComponent } from './epilepsy/pages/reports/reports.component';
-import { SeizuresComponent as SeizuresComponent } from './epilepsy/pages/seizures/seizures.component';
+import { SeizuresFormComponent } from './epilepsy/pages/seizures/seizures-form/seizures-form.component';
+import { SeizuresComponent } from './epilepsy/pages/seizures/seizures.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
-  { path: '', component: AuthComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'auth' },
+  {
+    path: 'auth',
+    component: AuthComponent,
+    children: [
+      { path: '', pathMatch: 'full', redirectTo: 'login' },
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: 'register/confirm', component: VerifyEmailComponent },
+    ],
+  },
   {
     path: 'epilepsy',
     component: EpilepsyComponent,
@@ -32,6 +46,7 @@ const routes: Routes = [
       { path: 'events/update/:id', component: EventsFormComponent },
     ],
   },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

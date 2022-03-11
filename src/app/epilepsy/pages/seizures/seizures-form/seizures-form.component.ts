@@ -1,10 +1,8 @@
-import { trigger } from '@angular/animations';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
-import { Duration } from 'moment';
-import { Seizure } from 'src/app/shared/seizure.model';
+import { Seizure } from 'src/app/shared/models/seizure.model';
 
 const MOCK_SEIZURE_TYPES: String[] = [
   'Type A',

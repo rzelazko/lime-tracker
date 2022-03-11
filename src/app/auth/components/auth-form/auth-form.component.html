@@ -1,4 +1,4 @@
-<section class="auth-form" fxLayoutAlign="center center">
+<section fxLayoutAlign="center center">
   <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
     <mat-card>
       <mat-card-header>
@@ -8,20 +8,29 @@
             <span>Lime Tracker</span>
           </div>
         </mat-card-title>
-        <mat-card-subtitle *ngIf="!signUpMode"
-          >Welcome again!</mat-card-subtitle
-        >
-        <mat-card-subtitle *ngIf="signUpMode"
-          >Register to the best epilepsy journal!</mat-card-subtitle
-        >
+        <mat-card-subtitle *ngIf="!signUpMode">Welcome again!</mat-card-subtitle>
+        <mat-card-subtitle *ngIf="signUpMode">
+          Register to the best epilepsy journal!
+        </mat-card-subtitle>
       </mat-card-header>
-      <img *ngIf="imageUrl"
-        mat-card-image
-        width="400"
-        height="200"
-        [src]="imageUrl"
-      />
+      <img *ngIf="imageUrl" mat-card-image width="400" height="200" [src]="imageUrl" />
       <mat-card-content fxLayout="column" fxLayoutGap="1rem">
+        <mat-form-field *ngIf="signUpMode">
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Your name"
+            min="1"
+            max="100"
+            required
+            matInput
+            ngModel
+            #nameInput="ngModel"
+          />
+          <mat-error *ngIf="nameInput.hasError('required')">Your name is required</mat-error>
+          <mat-error *ngIf="!nameInput.hasError('required')">Your name is invalid</mat-error>
+        </mat-form-field>
         <mat-form-field>
           <input
             type="email"
@@ -29,17 +38,14 @@
             id="email"
             placeholder="Your email"
             email
+            max="255"
             required
             matInput
             ngModel
             #emailInput="ngModel"
           />
-          <mat-error *ngIf="emailInput.hasError('required')"
-            >Email is required</mat-error
-          >
-          <mat-error *ngIf="!emailInput.hasError('required')"
-            >Email is invalid</mat-error
-          >
+          <mat-error *ngIf="emailInput.hasError('required')">Email is required</mat-error>
+          <mat-error *ngIf="!emailInput.hasError('required')">Email is invalid</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input
@@ -49,12 +55,13 @@
             placeholder="Your password"
             required
             minlength="6"
+            max="100"
             matInput
             ngModel
             #passwordInput="ngModel"
           />
           <mat-error *ngIf="!signUpMode">Please provide valid passowrd</mat-error>
-          <mat-error *ngIf="signUpMode">Has to be at least 6 characters long</mat-error>
+          <mat-error *ngIf="signUpMode">Has to be 6 - 100 characters long</mat-error>
         </mat-form-field>
         <mat-form-field *ngIf="signUpMode">
           <input
@@ -77,12 +84,7 @@
         </mat-form-field>
       </mat-card-content>
       <mat-card-actions>
-        <button
-          type="submit"
-          mat-raised-button
-          color="primary"
-          [disabled]="!authForm.valid"
-        >
+        <button type="submit" mat-raised-button color="primary" [disabled]="!authForm.valid">
           {{ signUpMode ? "Register" : "Login" }}
         </button>
       </mat-card-actions>

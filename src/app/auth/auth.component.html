@@ -1,10 +1,25 @@
 <main fxFlex fxFill fxLayoutAlign="center start">
-<mat-tab-group mat-align-tabs="center">
-  <mat-tab label="Login">
-    <app-auth-form [signUpMode]="false" imageUrl="https://source.unsplash.com/random/400x200/?lime"></app-auth-form>
-  </mat-tab>
-  <mat-tab label="New User">
-    <app-auth-form [signUpMode]="true" imageUrl="https://source.unsplash.com/random/400x200/?limes"></app-auth-form>
-  </mat-tab>
-</mat-tab-group>
+  <div>
+    <nav mat-tab-nav-bar [tabPanel]="tabPanel" mat-align-tabs="center">
+      <a
+        mat-tab-link
+        routerLink="/auth/login"
+        routerLinkActive
+        #routeLogin="routerLinkActive"
+        [active]="routeLogin.isActive"
+        >Login</a
+      >
+      <a
+        mat-tab-link
+        routerLink="/auth/register"
+        routerLinkActive
+        #routeRegister="routerLinkActive"
+        [active]="routeRegister.isActive"
+        >New User</a
+      >
+    </nav>
+    <mat-tab-nav-panel #tabPanel>
+      <router-outlet></router-outlet>
+    </mat-tab-nav-panel>
+  </div>
 </main>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { Duration, Moment } from 'moment';
-import { Medicament } from './../../../shared/medicament.model';
+import { Medicament } from 'src/app/shared/models/medicament.model';
 
 const MOCK_MEDICAMENTS: Medicament[] = [
   { id: 1, name: 'Kepra', doses: {morning: 100, noon: 0, evening: 150 }, startDate: moment('2021-06-01')},

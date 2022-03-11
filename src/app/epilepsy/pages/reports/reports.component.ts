@@ -1,4 +1,3 @@
-import { trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { Report, SubReport } from './report.model';
