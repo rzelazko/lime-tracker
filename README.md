@@ -3,7 +3,7 @@
 Lime Tracker empowers people with epilepsy for better understanding of sickness development.
 Application is an extensive seizure tracker, helping to understand epilepsy changes through data visualization.
 
-## Technical details
+## Technologies Used
 
 Angular version: 13.x
 NodeJS version: 16.x
