@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MediaObserver } from '@angular/flex-layout';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-epilepsy',
@@ -8,12 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./epilepsy.component.scss'],
 })
 export class EpilepsyComponent implements OnInit {
-  constructor(public media: MediaObserver, private router: Router) {}
+  constructor(public media: MediaObserver) {}
 
-  ngOnInit(): void {
-  }
-
-  onLogout() {
-    this.router.navigate(['/']);
-  }
+  ngOnInit(): void {}
 }

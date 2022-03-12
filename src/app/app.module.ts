@@ -7,7 +7,7 @@ import {
   connectFirestoreEmulator,
   enableMultiTabIndexedDbPersistence,
   getFirestore,
-  provideFirestore
+  provideFirestore,
 } from '@angular/fire/firestore';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -37,6 +37,7 @@ import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import { AuthFormComponent } from './auth/components/auth-form/auth-form.component';
 import { LoginComponent } from './auth/pages/login/login.component';
+import { LogoutComponent } from './auth/pages/logout/logout.component';
 import { RegisterComponent } from './auth/pages/register/register.component';
 import { VerifyEmailComponent } from './auth/pages/verify-email/verify-email.component';
 import { ConfirmDeleteDialogComponent } from './epilepsy/components/dialogs/confirm-delete-dialog/confirm-delete-dialog.component';
@@ -84,6 +85,7 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     EventsFormComponent,
     EventsComponent,
     HeaderComponent,
+    LogoutComponent,
     MedicamentsComponent,
     ReportsComponent,
     SidenavComponent,
@@ -92,9 +94,9 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     MedicamentsFormComponent,
     SeizuresFormComponent,
     LoginComponent,
+    PageNotFoundComponent,
     RegisterComponent,
     VerifyEmailComponent,
-    PageNotFoundComponent,
   ],
   imports: [
     // angular

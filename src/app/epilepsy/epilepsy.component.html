@@ -1,8 +1,8 @@
-<app-header (sidenavToggle)="sidenav.toggle()" (logout)="onLogout()"></app-header>
+<app-header (sidenavToggle)="sidenav.toggle()"></app-header>
 <mat-sidenav-container>
   <mat-sidenav #sidenav role="navigation" [mode]="media.isActive('gt-sm') ? 'side' : 'over'" [opened]="media.isActive('gt-sm')">
-    <app-sidenav *ngIf="media.isActive('gt-sm')" (logout)="onLogout()"></app-sidenav>
-    <app-sidenav *ngIf="!media.isActive('gt-sm')" (sidenavClose)="sidenav.close()" (logout)="onLogout()"></app-sidenav>
+    <app-sidenav *ngIf="media.isActive('gt-sm')"></app-sidenav>
+    <app-sidenav *ngIf="!media.isActive('gt-sm')" (sidenavClose)="sidenav.close()"></app-sidenav>
   </mat-sidenav>
   <mat-sidenav-content fxLayout="column">
     <main>
