@@ -33,15 +33,15 @@ const redirectUnauthorizedOrUnverifiedUser: AuthPipeGenerator = () =>
       if (user.emailVerified) {
         return true;
       }
-      return ['auth', 'register', 'confirm'];
+      return ['register', 'confirm'];
     }
-    return ['auth', 'login'];
+    return ['login'];
   });
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'auth' },
   {
-    path: 'auth',
+    path: '',
     component: AuthComponent,
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'login' },

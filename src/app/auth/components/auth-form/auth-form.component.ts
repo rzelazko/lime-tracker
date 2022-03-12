@@ -30,7 +30,7 @@ export class AuthFormComponent implements OnInit {
     if (this.signUpMode) {
       this.authService
         .register(this.authData)
-        .then(() => this.router.navigate(['auth', 'register', 'confirm']))
+        .then(() => this.router.navigate(['register', 'confirm']))
         .catch((error) => this.handleError(error))
         .finally(() => (this.isLoading = false));
     } else {

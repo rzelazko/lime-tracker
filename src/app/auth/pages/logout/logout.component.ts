@@ -15,6 +15,6 @@ export class LogoutComponent implements OnInit {
   }
 
   logout() {
-    this.auth.logout().then(() => this.router.navigate(['auth', 'login'])); // TODO catch error & show some kind of model
+    this.auth.logout().then(() => this.router.navigate(['login'])); // TODO catch error & show some kind of model
   }
 }
