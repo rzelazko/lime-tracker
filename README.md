@@ -38,6 +38,7 @@ Run `ng build` to build the project for production deployment. The build artifac
 - Add some Rodo, privacy policy, etc. on login & dashboard (add footer?)
 - Add user profile management
 - Add screenshot and better description to README
+- Favicon, app manifest, etc
 - I18N (rememeber: default seizure types)
 - Setup custom domain for hosting
 - Create valid [firestore.rules](firestore.rules)
