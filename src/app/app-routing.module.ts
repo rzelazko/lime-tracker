@@ -39,7 +39,7 @@ const redirectUnauthorizedOrUnverifiedUser: AuthPipeGenerator = () =>
   });
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'auth' },
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
   {
     path: '',
     component: AuthComponent,

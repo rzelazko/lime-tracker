@@ -1,4 +1,101 @@
-<app-auth-form
-  [signUpMode]="true"
-  imageUrl="https://source.unsplash.com/random/400x200/?lime,leaf"
-></app-auth-form>
+<section fxLayoutAlign="center center">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <div fxFlex fxLayoutAlign="start center">
+            <mat-icon svgIcon="logo" class="logo"></mat-icon>
+            <span>Lime Tracker</span>
+          </div>
+        </mat-card-title>
+        <mat-card-subtitle>Register to the best epilepsy journal!</mat-card-subtitle>
+      </mat-card-header>
+
+      <img
+        mat-card-image
+        width="400"
+        height="200"
+        src="https://source.unsplash.com/random/400x200/?lime,leaf"
+      />
+
+      <ng-container *ngIf="isLoading">
+        <mat-card-content fxLayout="column" fxLayoutGap="1rem" fxLayoutAlign="center center">
+          <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+        </mat-card-content>
+      </ng-container>
+
+      <ng-container *ngIf="!isLoading">
+        <!-- form body -->
+
+        <mat-card-content fxLayout="column" fxLayoutGap="1rem">
+          <mat-error *ngIf="error">
+            <ng-container [ngSwitch]="error">
+              <span *ngSwitchCase="'auth/email-already-in-use'">Email already taken</span>
+              <span *ngSwitchCase="'auth/weak-password'">Password is too weak</span>
+              <span *ngSwitchCase="'auth/network-request-failed'">
+                Connection to backend failed. Please try again, and if the problem persists, contact
+                the <a href="https://www.webperfekt.pl/">administrator</a>.
+              </span>
+              <span *ngSwitchDefault>
+                Registration failed - try different data. If problem persists please contact the
+                <a href="https://www.webperfekt.pl/">administrator</a>.
+              </span>
+            </ng-container>
+          </mat-error>
+
+          <mat-form-field>
+            <input type="text" id="name" formControlName="name" placeholder="Your name" matInput />
+            <mat-error *ngIf="hasError('name', 'required')">Your name is required</mat-error>
+            <mat-error *ngIf="!hasError('name', 'required')">Your name is invalid</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input
+              type="email"
+              id="email"
+              formControlName="email"
+              placeholder="Your email"
+              matInput
+            />
+            <mat-error *ngIf="hasError('email', 'required')">Email is required</mat-error>
+            <mat-error *ngIf="!hasError('email', 'required')">Email is invalid</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input
+              type="password"
+              id="password"
+              formControlName="password"
+              placeholder="Your password"
+              matInput
+            />
+            <mat-error>Has to be 6 - 100 characters long</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input
+              type="password"
+              id="confirmPassword"
+              formControlName="confirmPassword"
+              placeholder="Confirm password"
+              matInput
+            />
+            <mat-error *ngIf="hasError('confirmPassword', 'required')">
+              Confirm password is required
+            </mat-error>
+            <mat-error *ngIf="!hasError('confirmPassword', 'required')">
+              Password and confirm password must be the same
+            </mat-error>
+          </mat-form-field>
+        </mat-card-content>
+        <mat-card-actions>
+          <button type="submit" mat-raised-button color="primary" [disabled]="!registerForm.valid">
+            Register
+          </button>
+        </mat-card-actions>
+
+        <!-- /form body -->
+      </ng-container>
+    </mat-card>
+  </form>
+</section>

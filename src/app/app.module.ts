@@ -35,7 +35,6 @@ import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
-import { AuthFormComponent } from './auth/components/auth-form/auth-form.component';
 import { LoginComponent } from './auth/pages/login/login.component';
 import { LogoutComponent } from './auth/pages/logout/logout.component';
 import { RegisterComponent } from './auth/pages/register/register.component';
@@ -58,7 +57,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ErrorModalComponent } from './shared/error-modal/error-modal.component';
 import { HumanizePipe } from './shared/pipes/humanize.pipe';
 import { MomentPipe } from './shared/pipes/moment.pipe';
-import { CompareValidatorDirective } from './shared/validators/compare-validator.directive';
 
 let resolvePersistenceEnabled: (enabled: boolean) => void;
 
@@ -68,9 +66,6 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
 
 @NgModule({
   declarations: [
-    // directives
-    CompareValidatorDirective,
-
     // pipes
     HumanizePipe,
     MomentPipe,
@@ -78,7 +73,6 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     // components
     AppComponent,
     AuthComponent,
-    AuthFormComponent,
     ChartsComponent,
     ConfirmDeleteDialogComponent,
     DashboardComponent,
@@ -156,7 +150,7 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     MatToolbarModule,
     MatTooltipModule,
   ],
-  exports: [CompareValidatorDirective],
+  exports: [],
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [ConfirmDeleteDialogComponent, ErrorModalComponent],
