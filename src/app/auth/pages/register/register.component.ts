@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FirebaseError } from 'firebase/app';
 import { CompareValidator } from 'src/app/shared/validators/compare-validator';
@@ -25,6 +25,8 @@ export class RegisterComponent implements OnInit {
     }
   );
 
+  @ViewChild('formDirective') private formDirective?: NgForm;
+
   constructor(private fb: FormBuilder, private router: Router, private auth: AuthService) {}
 
   ngOnInit(): void {}
@@ -48,7 +50,12 @@ export class RegisterComponent implements OnInit {
     } else {
       this.error = error.message;
     }
-    this.registerForm.get('password')?.setValue('');
-    this.registerForm.get('confirmPassword')?.setValue('');
+    const formData = {
+      ...this.registerForm.value,
+      password: '',
+      confirmPassword: '',
+    };
+    this.formDirective?.resetForm();
+    this.registerForm.patchValue(formData);
   }
 }

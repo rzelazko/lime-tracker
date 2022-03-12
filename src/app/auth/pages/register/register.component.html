@@ -1,5 +1,5 @@
 <section fxLayoutAlign="center center">
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" #formDirective="ngForm">
     <mat-card>
       <mat-card-header>
         <mat-card-title>

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FirebaseError } from 'firebase/app';
 import { AuthService } from '../../../shared/services/auth.service';
@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
     email: ['', [Validators.required, Validators.email, Validators.maxLength(255)]],
     password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(100)]],
   });
+
+  @ViewChild('formDirective') private formDirective?: NgForm;
 
   constructor(private fb: FormBuilder, private router: Router, private auth: AuthService) {}
 
@@ -40,5 +42,11 @@ export class LoginComponent implements OnInit {
     } else {
       this.error = error.message;
     }
+    const formData = {
+      ...this.loginForm.value,
+      password: '',
+    };
+    this.formDirective?.resetForm();
+    this.loginForm.patchValue(formData);
   }
 }
