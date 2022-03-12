@@ -43,6 +43,7 @@ export class AuthFormComponent implements OnInit {
   }
 
   private handleError(error: Error) {
+    console.log(error);
     if (error instanceof FirebaseError) {
       this.error = (error as FirebaseError).code;
     } else {

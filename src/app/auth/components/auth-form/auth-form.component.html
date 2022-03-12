@@ -23,15 +23,29 @@
 
       <ng-container *ngIf="!isLoading">
         <mat-card-content fxLayout="column" fxLayoutGap="1rem">
-
           <mat-error *ngIf="signUpMode && error">
-          <ng-container [ngSwitch]="error">
-            <span *ngSwitchCase="'auth/email-already-in-use'">Email already taken</span>
-            <span *ngSwitchCase="'auth/weak-password'">Password is too weak</span>
-            <span *ngSwitchDefault>Registration failed - try agian later</span>
-          </ng-container>
+            <ng-container [ngSwitch]="error">
+              <span *ngSwitchCase="'auth/email-already-in-use'">Email already taken</span>
+              <span *ngSwitchCase="'auth/weak-password'">Password is too weak</span>
+              <span *ngSwitchCase="'auth/network-request-failed'">
+                Connection to backend failed. Please contact
+                <a href="https://www.webperfekt.pl/">administrator</a>.
+              </span>
+              <span *ngSwitchDefault
+                >Registration failed - try agian later. If problem persists please contact
+                <a href="https://www.webperfekt.pl/">administrator</a>.
+              </span>
+            </ng-container>
           </mat-error>
-          <mat-error *ngIf="!signUpMode && error">Authentication failed - please provide valid credentials</mat-error>
+          <mat-error *ngIf="!signUpMode && error">
+            <ng-container [ngSwitch]="error">
+              <span *ngSwitchCase="'auth/network-request-failed'">
+                Connection to backend failed. Please contact
+                <a href="https://www.webperfekt.pl/">administrator</a>.
+              </span>
+              <span *ngSwitchDefault>Authentication failed - please provide valid credentials</span>
+            </ng-container>
+          </mat-error>
 
           <mat-form-field *ngIf="signUpMode">
             <input
