@@ -18,9 +18,10 @@
     <mat-card-content>
       <h1>Thank You for Registering!</h1>
       <p>
-        We have sent a confirmation email to
-        <strong>{{ (auth.authenticatedUser$ | async)?.email ?? "unknown" }}</strong>
-        .
+        We have sent a confirmation email to:
+      </p>
+      <p class="account">
+        {{ (auth.authenticatedUser$ | async)?.email ?? "unknown" }}
       </p>
       <p>Please check your email and click on the link to verfiy your email address.</p>
     </mat-card-content>
