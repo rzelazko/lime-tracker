@@ -43,4 +43,4 @@ Run `ng build` to build the project for production deployment. The build artifac
 - Setup custom domain for hosting
 - Create valid [firestore.rules](firestore.rules)
 - Use Firestore instead of dummy data (unlock DB)
-- Make auth form reactive - put to own component instead of common one
+- Reset password on form error (ex. invalid credentails)
