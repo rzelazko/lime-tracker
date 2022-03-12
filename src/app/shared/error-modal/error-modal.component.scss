@@ -1,0 +1,6 @@
+@use '@angular/material' as mat;
+@import "src/app/app-theme-variables";
+
+h1 {
+  color: mat.get-color-from-palette($app-warn, 'text');
+}

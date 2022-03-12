@@ -28,11 +28,11 @@
               <span *ngSwitchCase="'auth/email-already-in-use'">Email already taken</span>
               <span *ngSwitchCase="'auth/weak-password'">Password is too weak</span>
               <span *ngSwitchCase="'auth/network-request-failed'">
-                Connection to backend failed. Please contact
-                <a href="https://www.webperfekt.pl/">administrator</a>.
+                Connection to backend failed. Please try again, and if the problem persists, contact
+                the <a href="https://www.webperfekt.pl/">administrator</a>.
               </span>
-              <span *ngSwitchDefault
-                >Registration failed - try agian later. If problem persists please contact
+              <span *ngSwitchDefault>
+                Registration failed - try different data. If problem persists please contact the
                 <a href="https://www.webperfekt.pl/">administrator</a>.
               </span>
             </ng-container>
@@ -40,8 +40,8 @@
           <mat-error *ngIf="!signUpMode && error">
             <ng-container [ngSwitch]="error">
               <span *ngSwitchCase="'auth/network-request-failed'">
-                Connection to backend failed. Please contact
-                <a href="https://www.webperfekt.pl/">administrator</a>.
+                Connection to backend failed. Please try again, and if the problem persists, contact
+                the <a href="https://www.webperfekt.pl/">administrator</a>.
               </span>
               <span *ngSwitchDefault>Authentication failed - please provide valid credentials</span>
             </ng-container>

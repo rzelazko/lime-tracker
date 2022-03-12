@@ -41,5 +41,4 @@ Run `ng build` to build the project for production deployment. The build artifac
 - Setup custom domain for hosting
 - Create valid [firestore.rules](firestore.rules)
 - Use Firestore instead of dummy data (unlock DB)
-- Add error handling to logut
 - Make auth form reactive - put to own component instead of common one

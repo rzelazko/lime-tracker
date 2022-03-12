@@ -55,6 +55,7 @@ import { ReportsComponent } from './epilepsy/pages/reports/reports.component';
 import { SeizuresFormComponent } from './epilepsy/pages/seizures/seizures-form/seizures-form.component';
 import { SeizuresComponent } from './epilepsy/pages/seizures/seizures.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ErrorModalComponent } from './shared/error-modal/error-modal.component';
 import { HumanizePipe } from './shared/pipes/humanize.pipe';
 import { MomentPipe } from './shared/pipes/moment.pipe';
 import { CompareValidatorDirective } from './shared/validators/compare-validator.directive';
@@ -84,6 +85,7 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     EpilepsyComponent,
     EventsFormComponent,
     EventsComponent,
+    ErrorModalComponent,
     HeaderComponent,
     LogoutComponent,
     MedicamentsComponent,
@@ -157,6 +159,6 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
   exports: [CompareValidatorDirective],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ConfirmDeleteDialogComponent],
+  entryComponents: [ConfirmDeleteDialogComponent, ErrorModalComponent],
 })
 export class AppModule {}
