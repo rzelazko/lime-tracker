@@ -16,7 +16,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { concatMap, flatMap, map, mergeMap, switchMap, take } from 'rxjs/operators';
 import { AuthData } from './../../auth/models/auth-data.model';
 import { filterNullOrUndefined } from './filter-is-null';
-import { UserService } from './user.service';
+import { UsersService } from './users.service';
 
 @Injectable({
   providedIn: 'root',
@@ -27,7 +27,7 @@ export class AuthService {
   public authenticatedUser$: Observable<User | null>;
   public authenticatedUserData$: Observable<UserData | null>;
 
-  constructor(private auth: Auth, private userService: UserService) {
+  constructor(private auth: Auth, private userService: UsersService) {
     this.authenticatedUser$ = authState(auth);
     this.isLoggedIn$ = this.authenticatedUser$.pipe(map((user) => !!user));
     this.isLoggedOut$ = this.isLoggedIn$.pipe(map((loggedIn) => !loggedIn));

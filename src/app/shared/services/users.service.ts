@@ -15,7 +15,7 @@ import { convertSnapshot, convertToTimestamps } from './firebase-utils';
 @Injectable({
   providedIn: 'root',
 })
-export class UserService {
+export class UsersService {
   constructor(private firestore: Firestore) {}
 
   initUserDetails(userId: string) {
