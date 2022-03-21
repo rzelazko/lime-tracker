@@ -8,6 +8,7 @@ export interface UserData extends UserDetails {
 
 export interface UserDetails extends UserDetailsEmailVerification {
   seizureTypes: string[];
+  seizureTriggers: string[];
 }
 
 export interface UserDetailsEmailVerification {
