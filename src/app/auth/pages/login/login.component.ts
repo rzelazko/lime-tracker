@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
   }
 
   private handleError(error: Error): void {
-    if (error instanceof FirebaseError) {
+    if (error instanceof FirebaseError) { // TODO move this Firebase logic to service
       this.error = (error as FirebaseError).code;
     } else {
       this.error = error.message;
