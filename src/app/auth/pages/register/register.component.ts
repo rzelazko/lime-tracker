@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { FirebaseError } from 'firebase/app';
 import { CompareValidator } from 'src/app/shared/validators/compare-validator';
 import { AuthService } from '../../../shared/services/auth.service';
 
@@ -45,11 +44,7 @@ export class RegisterComponent implements OnInit {
   }
 
   private handleError(error: Error): void {
-    if (error instanceof FirebaseError) { // TODO move this Firebase logic to service
-      this.error = (error as FirebaseError).code;
-    } else {
-      this.error = error.message;
-    }
+    this.error = error.message;
     const formData = {
       ...this.registerForm.value,
       password: '',

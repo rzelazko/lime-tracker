@@ -7,10 +7,11 @@ import {
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
-  User
+  User,
 } from '@angular/fire/auth';
+import { FirebaseError } from 'firebase/app';
 import { Observable } from 'rxjs/internal/Observable';
-import { map } from 'rxjs/operators';
+import { concatMap, filter, map, take } from 'rxjs/operators';
 import { AuthData } from './../../auth/models/auth-data.model';
 import { UserService } from './user.service';
 
@@ -28,8 +29,12 @@ export class AuthService {
     this.isLoggedOut$ = this.isLoggedIn$.pipe(map((loggedIn) => !loggedIn));
   }
 
-  login({ email, password }: AuthData) {
-    return signInWithEmailAndPassword(this.auth, email, password);
+  async login({ email, password }: AuthData) {
+    try {
+      await signInWithEmailAndPassword(this.auth, email, password);
+    } catch (error) {
+      this.rethrowUnwrappedFirebaseError(error);
+    }
   }
 
   logout() {
@@ -37,9 +42,21 @@ export class AuthService {
   }
 
   async register({ name, email, password }: AuthData) {
-    const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
-    await updateProfile(userCredential.user, { displayName: name });
-    await this.userService.initUserDetails(userCredential.user.uid);
-    await sendEmailVerification(userCredential.user);
+    try {
+      const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
+      await updateProfile(userCredential.user, { displayName: name });
+      await this.userService.initUserDetails(userCredential.user.uid);
+      await sendEmailVerification(userCredential.user);
+    } catch (error) {
+      this.rethrowUnwrappedFirebaseError(error);
+    }
+  }
+
+  private rethrowUnwrappedFirebaseError(error: any) {
+    if (error instanceof FirebaseError) {
+      throw new Error((error as FirebaseError).code);
+    } else {
+      throw error;
+    }
   }
 }

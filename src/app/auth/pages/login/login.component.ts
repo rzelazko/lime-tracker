@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { FirebaseError } from 'firebase/app';
 import { AuthService } from '../../../shared/services/auth.service';
 
 @Component({
@@ -37,11 +36,7 @@ export class LoginComponent implements OnInit {
   }
 
   private handleError(error: Error): void {
-    if (error instanceof FirebaseError) { // TODO move this Firebase logic to service
-      this.error = (error as FirebaseError).code;
-    } else {
-      this.error = error.message;
-    }
+    this.error = error.message;
     const formData = {
       ...this.loginForm.value,
       password: '',
