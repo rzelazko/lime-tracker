@@ -43,4 +43,5 @@ Run `ng build` to build the project for production deployment. The build artifac
 - I18N (rememeber: default seizure types)
 - Setup custom domain for hosting
 - Create valid [firestore.rules](firestore.rules)
+- Re-create users in emulator
 - Use Firestore instead of dummy data (unlock DB)
