@@ -1,5 +1,7 @@
-mat-card-content .account {
+mat-card-content .userData {
   overflow: hidden;
   text-overflow: ellipsis;
-  font-weight: bold;
+  span {
+    font-weight: bold;
+  }
 }

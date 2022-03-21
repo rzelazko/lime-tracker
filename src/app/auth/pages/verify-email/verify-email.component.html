@@ -15,20 +15,45 @@
       height="200"
       src="https://source.unsplash.com/random/400x200/?limes"
     />
-    <mat-card-content>
-      <h1>Thank You for Registering!</h1>
-      <p>
-        We have sent a confirmation email to:
-      </p>
-      <p class="account">
-        {{ (auth.authenticatedUser$ | async)?.email ?? "unknown" }}
-      </p>
-      <p>Please check your email and click on the link to verfiy your email address.</p>
-    </mat-card-content>
-    <mat-card-actions>
-      <a mat-raised-button color="secondary" routerLink="/logout">
-        <span>Log in</span>
-      </a>
-    </mat-card-actions>
+
+    <ng-container *ngIf="auth.authenticatedUserData$ | async as userData; else loading">
+      <mat-card-content>
+        <h1>Thank You for Registering!</h1>
+
+        <p>We have sent a confirmation email.</p>
+
+        <p class="userData">
+          To <span>{{ userData.email }}</span>.
+        </p>
+
+        <p class="userData" *ngIf="userData.emailVerficationDate">
+          At <span>{{ userData.emailVerficationDate | moment: "LLL" }}</span>.
+          <small>Resend possible after an hour.</small>
+        </p>
+
+        <p>Please check your email and click on the link to verify your email address.</p>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <ng-container *ngIf="oneHourAgo$ | async as hourAgo">
+          <button
+            mat-raised-button
+            color="secondary"
+            (click)="onEmailSend()"
+            *ngIf="userData.emailVerficationDate && userData.emailVerficationDate.isBefore(hourAgo)"
+          >
+            Re-send confirmation email
+          </button>
+        </ng-container>
+
+        <a mat-raised-button color="secondary" routerLink="/logout"> Log in </a>
+      </mat-card-actions>
+    </ng-container>
+
+    <ng-template #loading>
+      <mat-card-content>
+        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+      </mat-card-content>
+    </ng-template>
   </mat-card>
 </section>
