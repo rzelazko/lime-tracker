@@ -53,8 +53,13 @@ export class AuthService {
     try {
       const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
       await updateProfile(userCredential.user, { displayName: name });
-      await this.userService.initUserDetails(userCredential.user.uid);
-      this.sendVerificationEmail();
+      this.userService
+        .initUserDetails(userCredential.user.uid)
+        .pipe(
+          take(1),
+          map(() => this.sendVerificationEmail())
+        )
+        .subscribe();
     } catch (error) {
       this.rethrowUnwrappedFirebaseError(error);
     }

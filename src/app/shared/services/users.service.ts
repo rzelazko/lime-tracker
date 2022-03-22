@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { doc, docSnapshots, Firestore, setDoc, updateDoc } from '@angular/fire/firestore';
 import { User } from 'firebase/auth';
 import * as moment from 'moment';
 import { map } from 'rxjs';
@@ -10,33 +9,32 @@ import {
   UserDetails,
   UserDetailsEmailVerification
 } from '../../auth/models/user-details.model';
-import { convertSnapshot, convertToTimestamps } from './firebase-utils';
+import { FirestoreService } from './firestore.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  constructor(private firestore: Firestore) {}
+  constructor(private firestoreService: FirestoreService) {}
 
   initUserDetails(userId: string) {
     const userDetails: UserDetails = {
       seizureTypes: DEFAULT_SEIZURE_TYPES,
       seizureTriggers: DEFAULT_SEIZURE_TRIGGERS,
     };
-    return setDoc(doc(this.firestore, 'users', userId), userDetails);
+    return this.firestoreService.set(`users/${userId}`, userDetails);
   }
 
   getUserDetails(user: User) {
-    const userRef = doc(this.firestore, 'users', user.uid);
-    return docSnapshots(userRef).pipe(
-      map((result) => convertSnapshot<UserData>(result, { email: user.email }))
-    );
+    return this.firestoreService
+      .get<Partial<UserData>>(`users/${user.uid}`)
+      .pipe(map((result) => ({ ...result, email: user.email } as UserData)));
   }
 
   verificationEmailSent(userId: string) {
     const userDetails: UserDetailsEmailVerification = {
       emailVerficationDate: moment(),
     };
-    return updateDoc(doc(this.firestore, 'users', userId), convertToTimestamps(userDetails));
+    return this.firestoreService.update(`users/${userId}`, userDetails);
   }
 }

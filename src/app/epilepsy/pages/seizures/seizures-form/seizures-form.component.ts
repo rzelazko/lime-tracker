@@ -1,107 +1,56 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
+import { Subscription, take } from 'rxjs';
 import { Seizure } from 'src/app/shared/models/seizure.model';
-
-const MOCK_SEIZURE_TYPES: String[] = [
-  'Type A',
-  'Type B',
-  'Type C',
-  'Type D',
-  'Type E',
-  'Type F',
-];
-
-const MOCK_SEIZURE_TRIGGERS: String[] = [
-  'Lights',
-  'Period',
-  'Forgotten medicament',
-  ''
-];
-
-const MOCK_SEIZURES: Seizure[] = [
-  {
-    id: 1,
-    occurred: moment('2021-12-24T14:24:00'),
-    type: 'Type F',
-    duration: moment.duration(4, 'minutes'),
-    trigger: 'Lights',
-  },
-  {
-    id: 2,
-    occurred: moment('2021-12-22T14:24:00'),
-    type: 'Type D',
-    duration: moment.duration(6, 'minutes'),
-  },
-  {
-    id: 3,
-    occurred: moment('2021-12-15T14:24:00'),
-    type: 'Type A',
-    duration: moment.duration(2, 'minutes'),
-  },
-  {
-    id: 4,
-    occurred: moment('2021-12-10T14:24:00'),
-    type: 'Type B',
-    duration: moment.duration(1, 'minutes'),
-    trigger: 'Lights',
-  },
-  {
-    id: 5,
-    occurred: moment('2021-12-05T14:24:00'),
-    type: 'Type A',
-    duration: moment.duration(3, 'minutes'),
-    trigger: 'Period',
-  },
-  {
-    id: 6,
-    occurred: moment('2021-09-30T11:24:00'),
-    type: 'Type A',
-    duration: moment.duration(5, 'minutes'),
-  },
-  {
-    id: 7,
-    occurred: moment('2021-09-27T19:24:00'),
-    type: 'Type B',
-    duration: moment.duration(8, 'minutes'),
-  },
-  {
-    id: 8,
-    occurred: moment('2021-09-17T19:24:00'),
-    type: 'Type C',
-    duration: moment.duration(12, 'minutes'),
-  },
-  {
-    id: 9,
-    occurred: moment('2021-09-02T19:24:00'),
-    type: 'Type B',
-    duration: moment.duration(34, 'minutes'),
-    trigger: 'Forgotten medicament'
-  },
-];
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { SeizuresService } from 'src/app/shared/services/seizures.service';
 
 @Component({
   selector: 'app-seizures-form',
   templateUrl: './seizures-form.component.html',
   styleUrls: ['./seizures-form.component.scss'],
 })
-export class SeizuresFormComponent implements OnInit {
+export class SeizuresFormComponent implements OnInit, OnDestroy {
   @ViewChild('seizureForm') seizureForm!: NgForm;
-  public updatedObject?: Seizure;
-  public seizureTypes = MOCK_SEIZURE_TYPES;
-  public seizureTriggers = MOCK_SEIZURE_TRIGGERS;
-  private id?:number;
+  public updatedObject?:Seizure; // TODO get rid of it if not needed
+  public error?: string;
+  private id?: string;
+  private formSubscription?: Subscription;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
+  constructor(
+    public auth: AuthService,
+    private seizureService: SeizuresService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.id = +this.activatedRoute.snapshot.params['id'];
+    this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id) {
-      this.updatedObject = MOCK_SEIZURES.filter((seizure) => seizure.id === this.id)[0];
+      this.seizureService.get(this.id).pipe(take(1)).subscribe(
+        seizure => {
+          this.seizureForm.setValue({
+            occurredDate: seizure.occurred,
+            occurredTime: seizure.occurred.format('hh:mm'),
+            seizureType: seizure.type,
+            seizureTrigger: seizure.trigger || '',
+            duration: seizure.duration.minutes(),
+          })
+        }
+      );
+      // TODO orignal: this.updatedObject = MOCK_SEIZURES.filter((seizure) => seizure.id === this.id)[0];
     }
   }
 
+  ngOnDestroy(): void {
+    if (this.formSubscription) {
+      this.formSubscription.unsubscribe();
+    }
+  }
+
+  /* TODO this update doesn't work at all
   ngAfterViewInit() {
     Promise.resolve().then(() => {
       if (this.updatedObject) {
@@ -114,17 +63,22 @@ export class SeizuresFormComponent implements OnInit {
         });
       }
     });
-  }
+  }*/
 
   onSubmit(form: NgForm): void {
     const formData: Seizure = {
-      id: this.id || undefined,
-      occurred: moment(form.value.occurredDate).hours(form.value.occurredTime.split(':')[0]).minutes(form.value.occurredTime.split(':')[1]),
+      // TODO id: this.id || undefined,
+      occurred: moment(form.value.occurredDate)
+        .hours(form.value.occurredTime.split(':')[0])
+        .minutes(form.value.occurredTime.split(':')[1]),
       duration: form.value.duration,
       type: form.value.seizureType,
-      trigger: form.value.seizureTrigger || undefined
+      trigger: form.value.seizureTrigger || undefined,
     };
     console.log(formData);
-    this.router.navigate(['/epilepsy/seizures']);
+    this.formSubscription = this.seizureService.create(formData).subscribe({
+      next: () => this.router.navigate(['/epilepsy/seizures']),
+      error: (error) => (this.error = error.message),
+    });
   }
 }

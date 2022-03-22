@@ -3,12 +3,16 @@
 </mat-toolbar>
 
 <main>
-  <app-table
-    [dataSource]="data"
+  <app-table *ngIf="data$ | async as results; else loading"
+    [dataSource]="results"
     [displayedColumns]="columns"
     addBtnLink="/epilepsy/seizures/add"
     addBtnText="Add seizure"
     updateLinkPrefix="/epilepsy/seizures/update"
     (onDelete)="onDelete($event)"
   ></app-table>
+
+  <ng-template #loading>
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </ng-template>
 </main>

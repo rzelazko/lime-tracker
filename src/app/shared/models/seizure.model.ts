@@ -1,7 +1,7 @@
 import { Duration, Moment } from "moment";
 
 export interface Seizure {
-  id?: number,
+  id?: string, // TODO mandatory
   occurred: Moment;
   duration: Duration;
   type: string;

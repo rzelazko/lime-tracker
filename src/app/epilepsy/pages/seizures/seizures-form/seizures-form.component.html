@@ -10,7 +10,13 @@
     fxLayout="column"
     fxLayoutAlign="start start"
     fxLayoutGap="1em"
+    *ngIf="auth.authenticatedUserData$ | async as userData; else loading"
   >
+
+  <mat-error *ngIf="error">
+      <span>Error: {{error}}</span>
+  </mat-error>
+
     <mat-form-field appearance="fill">
       <mat-label>Occurred date</mat-label>
       <input
@@ -59,6 +65,7 @@
         name="duration"
         id="duration"
         placeholder="5"
+        min="1"
         required
         matInput
         ngModel
@@ -71,7 +78,7 @@
     <mat-form-field appearance="fill">
       <mat-label>Type</mat-label>
       <mat-select name="seizureType" id="seizureType" required ngModel #typeInput="ngModel">
-        <mat-option *ngFor="let type of seizureTypes" [value]="type">
+        <mat-option *ngFor="let type of userData.seizureTypes" [value]="type">
           {{ type }}
         </mat-option>
       </mat-select>
@@ -82,7 +89,8 @@
     <mat-form-field appearance="fill">
       <mat-label>Trigger</mat-label>
       <mat-select name="seizureTrigger" id="seizureTrigger" ngModel #triggerInput="ngModel">
-        <mat-option *ngFor="let trigger of seizureTriggers" [value]="trigger">
+        <mat-option></mat-option>
+        <mat-option *ngFor="let trigger of userData.seizureTriggers" [value]="trigger">
           {{ trigger }}
         </mat-option>
       </mat-select>
@@ -98,4 +106,8 @@
       <a mat-raised-button routerLink="/epilepsy/seizures">Cancel</a>
     </div>
   </form>
+
+  <ng-template #loading>
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </ng-template>
 </main>
