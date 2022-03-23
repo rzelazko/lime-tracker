@@ -6,25 +6,25 @@ import { Medicament } from 'src/app/shared/models/medicament.model';
 
 const MOCK_MEDICAMENTS: Medicament[] = [
   {
-    id: 1,
+    id: "1",
     name: 'Topamax',
     doses: { morning: 125, noon: 0, evening: 150 },
     startDate: moment('2021-09-01'),
   },
   {
-    id: 2,
+    id: "2",
     name: 'Kepra',
     doses: { morning: 100, noon: 0, evening: 150 },
     startDate: moment('2021-06-01'),
   },
   {
-    id: 3,
+    id: "3",
     name: 'Lamitrin',
     doses: { morning: 1500, noon: 0, evening: 1000 },
     startDate: moment('2021-06-01'),
   },
   {
-    id: 4,
+    id: "4",
     name: 'Topamax',
     doses: { morning: 125, noon: 0, evening: 125 },
     startDate: moment('2021-06-01'),
@@ -43,7 +43,7 @@ export class MedicamentsFormComponent implements OnInit {
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    const id: number = +this.activatedRoute.snapshot.params['id'];
+    const id: string = this.activatedRoute.snapshot.params['id'];
     if (id) {
       this.updatedObject = MOCK_MEDICAMENTS.filter((medicament) => medicament.id === id)[0];
     }

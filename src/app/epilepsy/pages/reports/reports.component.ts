@@ -28,7 +28,7 @@ export class ReportsComponent implements OnInit {
             { seizure: { id: "1", occurred: moment('2021-12-15T14:24:00'), type: 'Type A', duration: moment.duration(180, 'seconds'), trigger: 'A lot of stress'  } },
             { seizure: { id: "1", occurred: moment('2021-12-10T14:24:00'), type: 'Type B', duration: moment.duration(240, 'seconds') } },
             { seizure: { id: "1", occurred: moment('2021-12-05T14:24:00'), type: 'Type A', duration: moment.duration(300, 'seconds') } },
-            { event: { id: 1, name: 'A lot of stress', occurred: moment('2021-04-12T04:00:00') } },
+            { event: { id: "1", name: 'A lot of stress', occurred: moment('2021-04-12T04:00:00') } },
           ],
         },
         {
@@ -36,7 +36,7 @@ export class ReportsComponent implements OnInit {
           dateEnd: moment('2021-11-30'),
           cases: [
             { seizure: { id: "1", occurred: moment('2021-11-30T12:24:00'), type: 'Type A', duration: moment.duration(180, 'seconds') } },
-            { event: { id: 1, name: 'Start taking CBD oil', occurred: moment('2021-11-17T14:24:00') } },
+            { event: { id: "1", name: 'Start taking CBD oil', occurred: moment('2021-11-17T14:24:00') } },
             { seizure: { id: "1", occurred: moment('2021-11-01T03:24:00'), type: 'Type B', duration: moment.duration(460, 'seconds') } },
           ],
         },
@@ -57,7 +57,7 @@ export class ReportsComponent implements OnInit {
             { seizure: { id: "1", occurred: moment('2021-09-02T19:24:00'), type: 'Type B', duration: moment.duration(300, 'seconds') } },
             {
               medicament: {
-                id: 1,
+                id: "1",
                 name: 'Topamax',
                 doses: { morning: 125, noon: 0, evening: 150 },
                 startDate: moment('2021-09-01'),
@@ -87,7 +87,7 @@ export class ReportsComponent implements OnInit {
           cases: [
             {
               medicament: {
-                id: 2,
+                id: "2",
                 name: 'Kepra',
                 doses: { morning: 100, noon: 0, evening: 150 },
                 startDate: moment('2021-06-01'),
@@ -95,7 +95,7 @@ export class ReportsComponent implements OnInit {
             },
             {
               medicament: {
-                id: 3,
+                id: "3",
                 name: 'Lamitrin',
                 doses: { morning: 1500, noon: 0, evening: 1000 },
                 startDate: moment('2021-06-01'),
@@ -103,7 +103,7 @@ export class ReportsComponent implements OnInit {
             },
             {
               medicament: {
-                id: 4,
+                id: "4",
                 name: 'Topamax',
                 doses: { morning: 125, noon: 0, evening: 125 },
                 startDate: moment('2021-06-01'),

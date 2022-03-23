@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { Event } from 'src/app/shared/models/event.model';
 import { Medicament } from 'src/app/shared/models/medicament.model';
@@ -10,9 +11,10 @@ import { SeizuresService } from 'src/app/shared/services/seizures.service';
   templateUrl: './seizures.component.html',
   styleUrls: ['./seizures.component.scss'],
 })
-export class SeizuresComponent implements OnInit {
-  public data$: Observable<Seizure[]>;
-  public columns = ['occurred', 'type', 'trigger', 'duration', 'actions'];
+export class SeizuresComponent implements OnInit, OnDestroy {
+  data$: Observable<Seizure[]>;
+  columns = ['occurred', 'type', 'trigger', 'duration', 'actions'];
+  private deleteSubscription?: Subscription;
 
   constructor(private seizureService: SeizuresService) {
     this.data$ = seizureService.list();
@@ -20,7 +22,13 @@ export class SeizuresComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  ngOnDestroy(): void {
+    if (this.deleteSubscription) {
+      this.deleteSubscription.unsubscribe();
+    }
+  }
+
   onDelete(object: Event | Medicament | Seizure) {
-    console.log('Delete', object);
+    this.deleteSubscription = this.seizureService.delete(object.id).subscribe();
   }
 }

@@ -1,7 +1,7 @@
 import { Moment } from 'moment';
 
 export interface Event {
-  id: number;
+  id: string;
   name: string;
   occurred: Moment;
 }

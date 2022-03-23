@@ -1,7 +1,7 @@
 import { Moment } from "moment";
 
 export interface Medicament {
-  id: number,
+  id: string,
   name: string;
   doses: {
     morning: number;

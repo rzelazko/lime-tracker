@@ -5,8 +5,8 @@ import { Medicament } from 'src/app/shared/models/medicament.model';
 import { Seizure } from 'src/app/shared/models/seizure.model';
 
 const MOCK_EVENTS: Event[] = [
-  { id: 1, name: 'A lot of stress', occurred: moment('2021-04-12T04:00:00') },
-  { id: 2, name: 'Start taking CBD oil', occurred: moment('2021-11-17T14:24:00') },
+  { id: "1", name: 'A lot of stress', occurred: moment('2021-04-12T04:00:00') },
+  { id: "2", name: 'Start taking CBD oil', occurred: moment('2021-11-17T14:24:00') },
 ];
 
 @Component({

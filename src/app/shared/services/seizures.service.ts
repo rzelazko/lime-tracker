@@ -25,6 +25,10 @@ export class SeizuresService {
     return this.firestoreService.set(`seizures/${id}`, seizure);
   }
 
+  delete(id: string) {
+    return this.firestoreService.delete(`seizures/${id}`);
+  }
+
   list() {
     return this.firestoreService
       .list<Seizure>('seizures')
