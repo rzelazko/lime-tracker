@@ -1,11 +1,11 @@
 <mat-toolbar class="page-header" role="heading">
-  <h1>{{ updatedObject ? "Update Seizure" : "Add Seizure" }}</h1>
+  <h1>{{ id ? "Update Seizure" : "Add Seizure" }}</h1>
 </mat-toolbar>
 
 <main>
   <form
-    #seizureForm="ngForm"
-    (ngSubmit)="onSubmit(seizureForm)"
+   [formGroup]="form"
+    (ngSubmit)="onSubmit()"
     fxFlex
     fxLayout="column"
     fxLayoutAlign="start start"
@@ -21,20 +21,17 @@
       <mat-label>Occurred date</mat-label>
       <input
         type="text"
-        name="occurredDate"
+        formControlName="occurredDate"
         id="occurredDate"
         [matDatepicker]="picker"
-        required
         matInput
-        ngModel
-        #occurredDateInput="ngModel"
       />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-      <mat-error *ngIf="occurredDateInput.hasError('required')">
+      <mat-error *ngIf="hasError('occurredDateInput', 'required')">
         Occurred date is required
       </mat-error>
-      <mat-error *ngIf="!occurredDateInput.hasError('required')">
+      <mat-error *ngIf="!hasError('occurredDateInput', 'required')">
         Occurred date is invalid
       </mat-error>
     </mat-form-field>
@@ -43,17 +40,14 @@
       <mat-label>Occurred time</mat-label>
       <input
         type="time"
-        name="occurredTime"
+        formControlName="occurredTime"
         id="occurredTime"
-        required
         matInput
-        ngModel
-        #occurredTimeInput="ngModel"
       />
-      <mat-error *ngIf="occurredTimeInput.hasError('required')">
+      <mat-error *ngIf="hasError('occurredTimeInput', 'required')">
         Occurred time is required
       </mat-error>
-      <mat-error *ngIf="!occurredTimeInput.hasError('required')">
+      <mat-error *ngIf="!hasError('occurredTimeInput', 'required')">
         Occurred time is invalid
       </mat-error>
     </mat-form-field>
@@ -62,45 +56,42 @@
       <mat-label>Duration (min)</mat-label>
       <input
         type="number"
-        name="duration"
+        formControlName="duration"
         id="duration"
         placeholder="5"
         min="1"
-        required
         matInput
-        ngModel
-        #durationInput="ngModel"
       />
-      <mat-error *ngIf="durationInput.hasError('required')">Seizure duration is required</mat-error>
-      <mat-error *ngIf="!durationInput.hasError('required')">Seizure duration is invalid</mat-error>
+      <mat-error *ngIf="hasError('durationInput', 'required')">Seizure duration is required</mat-error>
+      <mat-error *ngIf="!hasError('durationInput','required')">Seizure duration is invalid</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Type</mat-label>
-      <mat-select name="seizureType" id="seizureType" required ngModel #typeInput="ngModel">
+      <mat-select formControlName="seizureType" id="seizureType">
         <mat-option *ngFor="let type of userData.seizureTypes" [value]="type">
           {{ type }}
         </mat-option>
       </mat-select>
-      <mat-error *ngIf="typeInput.hasError('required')">Seizure type is required</mat-error>
-      <mat-error *ngIf="!typeInput.hasError('required')">Seizure type is invalid</mat-error>
+      <mat-error *ngIf="hasError('typeInput', 'required')">Seizure type is required</mat-error>
+      <mat-error *ngIf="!hasError('typeInput', 'required')">Seizure type is invalid</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Trigger</mat-label>
-      <mat-select name="seizureTrigger" id="seizureTrigger" ngModel #triggerInput="ngModel">
+      <mat-select formControlName="seizureTrigger" id="seizureTrigger">
         <mat-option></mat-option>
         <mat-option *ngFor="let trigger of userData.seizureTriggers" [value]="trigger">
           {{ trigger }}
         </mat-option>
       </mat-select>
-      <mat-error *ngIf="triggerInput.hasError('required')">Seizure trigger is required</mat-error>
-      <mat-error *ngIf="!triggerInput.hasError('required')">Seizure trigger is invalid</mat-error>
+      <mat-error *ngIf="hasError('triggerInput', 'required')">Seizure trigger is required</mat-error>
+      <mat-error *ngIf="!hasError('triggerInput', 'required')">Seizure trigger is invalid</mat-error>
     </mat-form-field>
 
     <div>
-      <button type="submit" mat-raised-button color="primary" [disabled]="!seizureForm.valid">
-        {{ updatedObject ? "Update" : "Add seizure" }}
+      <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid">
+        {{ id ? "Update" : "Add seizure" }}
       </button>
 
       <a mat-raised-button routerLink="/epilepsy/seizures">Cancel</a>

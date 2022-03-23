@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
-import { Subscription, take } from 'rxjs';
+import { Subscription, take, Observable } from 'rxjs';
 import { Seizure } from 'src/app/shared/models/seizure.model';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { SeizuresService } from 'src/app/shared/services/seizures.service';
@@ -13,72 +13,75 @@ import { SeizuresService } from 'src/app/shared/services/seizures.service';
   styleUrls: ['./seizures-form.component.scss'],
 })
 export class SeizuresFormComponent implements OnInit, OnDestroy {
-  @ViewChild('seizureForm') seizureForm!: NgForm;
-  public updatedObject?:Seizure; // TODO get rid of it if not needed
-  public error?: string;
-  private id?: string;
-  private formSubscription?: Subscription;
+  error?: string;
+  form: FormGroup;
+  id?: string;
+  private submitSubscription?: Subscription;
 
   constructor(
     public auth: AuthService,
     private seizureService: SeizuresService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
-  ) {}
+    private activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {
+    this.form = this.fb.group({
+      occurredDate: ['', [Validators.required]],
+      occurredTime: ['', [Validators.required]],
+      duration: ['', [Validators.required, Validators.min(1)]],
+      seizureType: ['', [Validators.required]],
+      seizureTrigger: [''],
+    });
+  }
 
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id) {
-      this.seizureService.get(this.id).pipe(take(1)).subscribe(
-        seizure => {
-          this.seizureForm.setValue({
-            occurredDate: seizure.occurred,
-            occurredTime: seizure.occurred.format('hh:mm'),
-            seizureType: seizure.type,
-            seizureTrigger: seizure.trigger || '',
-            duration: seizure.duration.minutes(),
-          })
-        }
-      );
-      // TODO orignal: this.updatedObject = MOCK_SEIZURES.filter((seizure) => seizure.id === this.id)[0];
+      this.seizureService
+        .read(this.id)
+        .pipe(take(1))
+        .subscribe((result) => {
+          this.form.setValue({
+            occurredDate: result.occurred.toDate(),
+            occurredTime: result.occurred.format('hh:mm'),
+            duration: result.duration.minutes(),
+            seizureType: result.type,
+            seizureTrigger: result.trigger,
+          });
+        });
     }
   }
 
   ngOnDestroy(): void {
-    if (this.formSubscription) {
-      this.formSubscription.unsubscribe();
+    if (this.submitSubscription) {
+      this.submitSubscription.unsubscribe();
     }
   }
 
-  /* TODO this update doesn't work at all
-  ngAfterViewInit() {
-    Promise.resolve().then(() => {
-      if (this.updatedObject) {
-        this.seizureForm.setValue({
-          occurredDate: this.updatedObject.occurred,
-          occurredTime: this.updatedObject.occurred.format("hh:mm"),
-          seizureType: this.updatedObject.type,
-          seizureTrigger: this.updatedObject.trigger || '',
-          duration: this.updatedObject.duration.minutes()
-        });
-      }
-    });
-  }*/
-
-  onSubmit(form: NgForm): void {
-    const formData: Seizure = {
-      // TODO id: this.id || undefined,
-      occurred: moment(form.value.occurredDate)
-        .hours(form.value.occurredTime.split(':')[0])
-        .minutes(form.value.occurredTime.split(':')[1]),
-      duration: form.value.duration,
-      type: form.value.seizureType,
-      trigger: form.value.seizureTrigger || undefined,
+  onSubmit(): void {
+    const formData: Partial<Seizure> = {
+      occurred: moment(this.form.value.occurredDate)
+        .hours(this.form.value.occurredTime.split(':')[0])
+        .minutes(this.form.value.occurredTime.split(':')[1]),
+      duration: this.form.value.duration,
+      type: this.form.value.seizureType,
+      trigger: this.form.value.seizureTrigger || undefined,
     };
-    console.log(formData);
-    this.formSubscription = this.seizureService.create(formData).subscribe({
+
+    let submitObservable$: Observable<any>;
+    if (this.id) {
+      submitObservable$ = this.seizureService.update(this.id, formData);
+    } else {
+      submitObservable$ = this.seizureService.create(formData);
+    }
+
+    this.submitSubscription = submitObservable$.subscribe({
       next: () => this.router.navigate(['/epilepsy/seizures']),
       error: (error) => (this.error = error.message),
     });
+  }
+
+  hasError(path: string, errorCode: string) {
+    return this.form.get(path)?.hasError(errorCode);
   }
 }

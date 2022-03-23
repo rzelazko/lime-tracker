@@ -15,16 +15,20 @@ export class SeizuresService {
     return this.firestoreService.add('seizures', seizure);
   }
 
+  read(id: string) {
+    return this.firestoreService
+      .get<Seizure>(`seizures/${id}`)
+      .pipe(map((data) => this.convertDuration(data)));
+  }
+
+  update(id: string, seizure: Partial<Seizure>) {
+    return this.firestoreService.set(`seizures/${id}`, seizure);
+  }
+
   list() {
     return this.firestoreService
       .list<Seizure>('seizures')
       .pipe(map((data) => this.convertDurations(data)));
-  }
-
-  get(id: string) {
-    return this.firestoreService
-      .get<Seizure>(`seizures/${id}`)
-      .pipe(map((data) => this.convertDuration(data)));
   }
 
   private convertDurations(data: Seizure[]) {
