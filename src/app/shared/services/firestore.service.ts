@@ -1,30 +1,18 @@
 import { Injectable } from '@angular/core';
 import {
-  Firestore,
-  collectionData,
-  collection,
-  QueryConstraint,
-  docSnapshots,
-  collectionSnapshots,
+  collection, collectionSnapshots, docSnapshots, Firestore, QueryConstraint
 } from '@angular/fire/firestore';
 import {
   addDoc,
   CollectionReference,
   deleteDoc,
-  doc,
-  DocumentReference,
-  DocumentSnapshot,
-  getDoc,
-  query,
-  setDoc,
-  SnapshotMetadata,
-  Timestamp,
-  updateDoc,
+  doc, DocumentSnapshot, query,
+  setDoc, Timestamp,
+  updateDoc
 } from '@firebase/firestore';
-import { enableIndexedDbPersistence } from 'firebase/firestore';
 import * as moment from 'moment';
 import { Moment } from 'moment';
-import { defer, map, tap } from 'rxjs';
+import { defer, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

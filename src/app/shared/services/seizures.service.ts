@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { orderBy } from 'firebase/firestore';
 import * as moment from 'moment';
 import { map } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
@@ -44,7 +45,7 @@ export class SeizuresService {
     return this.authService.authenticatedUserId$.pipe(
       mergeMap((uid) =>
         this.firestoreService
-          .list<Seizure>(`users/${uid}/seizures`)
+          .list<Seizure>(`users/${uid}/seizures`, orderBy('occurred', 'desc'))
           .pipe(map((data) => this.convertDurations(data)))
       )
     );
