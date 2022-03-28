@@ -1,5 +1,5 @@
 <section class="add-section" *ngIf="addBtnLink">
-  <a mat-raised-button color="primary" routerLink="{{addBtnLink}}"> {{addBtnText}} </a>
+  <a mat-raised-button color="primary" routerLink="{{ addBtnLink }}"> {{ addBtnText }} </a>
 </section>
 
 <table mat-table [dataSource]="dataSource">
@@ -43,13 +43,19 @@
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef>Actions</th>
     <td mat-cell *matCellDef="let element">
-      <a mat-icon-button color="primary" routerLink="{{updateLinkPrefix}}/{{element.id}}"><mat-icon>edit</mat-icon></a>
+      <a mat-icon-button color="primary" routerLink="{{ updateLinkPrefix }}/{{ element.id }}"
+        ><mat-icon>edit</mat-icon></a
+      >
       <a mat-icon-button color="warn" (click)="onDelete(element)"><mat-icon>delete</mat-icon></a>
     </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="9999">No data</td>
+  </tr>
 </table>
 
 <mat-paginator [length]="dataSource.length" [pageSize]="30"></mat-paginator>

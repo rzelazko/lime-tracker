@@ -49,5 +49,4 @@ Run `ng build` to build the project for production deployment. The build artifac
 - Firestore service: `enableIndexedDbPersistence`
 - Table on small screen looks bad - actions should be in the same line
 - Support for pagination
-- Empty seizure table - add some _No data_ info
 
