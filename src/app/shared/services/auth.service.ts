@@ -1,4 +1,3 @@
-import { UserData, UserDetails } from './../../auth/models/user-details.model';
 import { Injectable } from '@angular/core';
 import {
   Auth,
@@ -13,8 +12,9 @@ import {
 import { FirebaseError } from 'firebase/app';
 import { concat, from } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
-import { concatMap, flatMap, map, mergeMap, switchMap, take } from 'rxjs/operators';
+import { map, mergeMap, take } from 'rxjs/operators';
 import { AuthData } from './../../auth/models/auth-data.model';
+import { UserData } from './../../auth/models/user-details.model';
 import { filterNullOrUndefined } from './filter-is-null';
 import { UsersService } from './users.service';
 
@@ -25,12 +25,17 @@ export class AuthService {
   public isLoggedIn$: Observable<boolean>;
   public isLoggedOut$: Observable<boolean>;
   public authenticatedUser$: Observable<User | null>;
+  public authenticatedUserId$: Observable<string | null>;
   public authenticatedUserData$: Observable<UserData | null>;
 
   constructor(private auth: Auth, private userService: UsersService) {
     this.authenticatedUser$ = authState(auth);
     this.isLoggedIn$ = this.authenticatedUser$.pipe(map((user) => !!user));
     this.isLoggedOut$ = this.isLoggedIn$.pipe(map((loggedIn) => !loggedIn));
+    this.authenticatedUserId$ = this.authenticatedUser$.pipe(
+      filterNullOrUndefined(),
+      map((user) => user.uid)
+    );
     this.authenticatedUserData$ = this.authenticatedUser$.pipe(
       filterNullOrUndefined(),
       mergeMap((user) => this.userService.getUserDetails(user))

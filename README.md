@@ -50,7 +50,5 @@ Run `ng build` to build the project for production deployment. The build artifac
 - Table on small screen looks bad - actions should be in the same line
 - Support for pagination
 - Empty seizure table - add some _No data_ info
-- Seizure should be collection under `users/{uid}/seizures`
-- User should see only his own seizures
 - Seizures table should be order by occurred
 
