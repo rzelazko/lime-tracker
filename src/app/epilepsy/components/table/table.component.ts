@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 import { Event } from 'src/app/shared/models/event.model';
 import { Medicament } from 'src/app/shared/models/medicament.model';
 import { Seizure } from 'src/app/shared/models/seizure.model';
@@ -11,13 +12,17 @@ import { ConfirmDeleteDialogComponent } from '../confirm-delete-dialog/confirm-d
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
-  @Output('onDelete') public deleteEvent = new EventEmitter<Event | Medicament | Seizure>();
-  @Input() public dataSource: (Event | Medicament | Seizure)[] = [];
-  @Input() public displayedColumns: String[] = [];
-  @Input() public addBtnLink = '';
-  @Input() public addBtnText = '';
-  @Input() public updateLinkPrefix = '';
-  @Input() public occurredFormat = 'LLL';
+  static readonly PAGE_SIZE = 100;
+  @Output('onDelete') deleteEvent = new EventEmitter<Event | Medicament | Seizure>();
+  @Output('onLoadMore') loadMoreEvent = new EventEmitter<void>();
+  @Input() dataSource?: any;
+  @Input() displayedColumns: String[] = [];
+  @Input() addBtnLink = '';
+  @Input() addBtnText = '';
+  @Input() updateLinkPrefix = '';
+  @Input() occurredFormat = 'LLL';
+  @Input() loading = false;
+  @Input() hasMore = false;
 
   constructor(private dialog: MatDialog) {}
 
@@ -31,5 +36,9 @@ export class TableComponent implements OnInit {
         this.deleteEvent.emit(element);
       }
     });
+  }
+
+  onLoadMore() {
+    this.loadMoreEvent.emit();
   }
 }

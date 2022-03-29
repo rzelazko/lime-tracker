@@ -52,4 +52,3 @@ Run `ng build` to build the project for production deployment. The build artifac
 - Firestore service: `enableIndexedDbPersistence`
 - Use Firestore instead of dummy data - seizures
 - Table on small screen looks bad - actions should be in the same line
-- Add load more instead of pagination

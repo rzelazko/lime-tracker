@@ -1,10 +1,10 @@
 <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
-<mat-sidenav-container>
+<mat-sidenav-container fxLayout="column">
   <mat-sidenav #sidenav role="navigation" [mode]="media.isActive('gt-sm') ? 'side' : 'over'" [opened]="media.isActive('gt-sm')">
     <app-sidenav *ngIf="media.isActive('gt-sm')"></app-sidenav>
     <app-sidenav *ngIf="!media.isActive('gt-sm')" (sidenavClose)="sidenav.close()"></app-sidenav>
   </mat-sidenav>
-  <mat-sidenav-content fxLayout="column">
+  <mat-sidenav-content>
     <main>
       <router-outlet></router-outlet>
     </main>

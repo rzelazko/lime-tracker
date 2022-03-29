@@ -1,4 +1,4 @@
-<section class="add-section" *ngIf="addBtnLink">
+<section *ngIf="addBtnLink" class="add">
   <a mat-raised-button color="primary" routerLink="{{ addBtnLink }}"> {{ addBtnText }} </a>
 </section>
 
@@ -43,10 +43,12 @@
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef>Actions</th>
     <td mat-cell *matCellDef="let element">
-      <a mat-icon-button color="primary" routerLink="{{ updateLinkPrefix }}/{{ element.id }}"
-        ><mat-icon>edit</mat-icon></a
-      >
-      <a mat-icon-button color="warn" (click)="onDelete(element)"><mat-icon>delete</mat-icon></a>
+      <a mat-icon-button color="primary" routerLink="{{ updateLinkPrefix }}/{{ element.id }}">
+        <mat-icon>edit</mat-icon>
+      </a>
+      <a mat-icon-button color="warn" (click)="onDelete(element)">
+        <mat-icon>delete</mat-icon>
+      </a>
     </td>
   </ng-container>
 
@@ -54,8 +56,18 @@
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
   <tr class="mat-row" *matNoDataRow>
-    <td class="mat-cell" colspan="9999">No data</td>
+    <td class="mat-cell" colspan="9999">
+      <span *ngIf="loading">Loading</span>
+      <span *ngIf="!loading">No data</span>
+    </td>
   </tr>
 </table>
 
-<mat-paginator [length]="dataSource.length" [pageSize]="30"></mat-paginator>
+<ng-container *ngIf="loading">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</ng-container>
+
+<section *ngIf="!loading && hasMore" class="load">
+  <button mat-raised-button (click)="onLoadMore()">Load more</button>
+</section>
+

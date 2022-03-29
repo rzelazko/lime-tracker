@@ -1,18 +1,25 @@
 import { Injectable } from '@angular/core';
 import {
-  collection, collectionSnapshots, docSnapshots, Firestore, QueryConstraint
+  collection,
+  collectionSnapshots,
+  docSnapshots,
+  Firestore,
+  QueryConstraint,
 } from '@angular/fire/firestore';
 import {
   addDoc,
   CollectionReference,
   deleteDoc,
-  doc, DocumentSnapshot, query,
-  setDoc, Timestamp,
-  updateDoc
+  doc,
+  DocumentSnapshot,
+  query,
+  setDoc,
+  Timestamp,
+  updateDoc,
 } from '@firebase/firestore';
 import * as moment from 'moment';
 import { Moment } from 'moment';
-import { defer, map } from 'rxjs';
+import { defer, filter, map, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -32,8 +39,10 @@ export class FirestoreService {
 
   list<T>(path: string, ...q: QueryConstraint[]) {
     const ref = collection(this.firestore, path) as CollectionReference<Partial<T>>;
-    return collectionSnapshots<Partial<T>>(query<Partial<T>>(ref, ...q))
-      .pipe(map((data) => this.convertSnapshots<T>(data)));
+    return collectionSnapshots<Partial<T>>(query<Partial<T>>(ref, ...q)).pipe(
+      filter((data) => !data[0]?.metadata.fromCache), // nasty hack to avoid subscribe called twice for the same data
+      map((data) => this.convertSnapshots<T>(data))
+    );
   }
 
   add(path: string, data: any) {
@@ -46,11 +55,15 @@ export class FirestoreService {
     return defer(() => setDoc(ref, this.toFirebaseCompatible(data)));
   }
 
-  get<T>(path: string) {
+  getRaw<T>(path: string) {
     const ref = doc(this.firestore, path);
     return docSnapshots(ref).pipe(
-      map((result) => this.convertSnapshot<T>(result))
+      filter((data) => !data.metadata.fromCache), // nasty hack to avoid subscribe called twice for the same data
     );
+  }
+
+  get<T>(path: string) {
+    return this.getRaw<T>(path).pipe(map((result) => this.convertSnapshot<T>(result)));
   }
 
   update(path: string, data: any) {
@@ -72,7 +85,7 @@ export class FirestoreService {
   private convertSnapshot<T>(result: DocumentSnapshot) {
     return <T>{
       id: result.id,
-      ...this.convertFromTimestamps(result.data())
+      ...this.convertFromTimestamps(result.data()),
     };
   }
 

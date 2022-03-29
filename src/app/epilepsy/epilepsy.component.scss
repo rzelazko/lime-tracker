@@ -3,5 +3,5 @@ main {
 }
 
 mat-sidenav-container, mat-sidenav-content, mat-sidenav {
-  height: 100%;
+  min-height: 90vh;
 }

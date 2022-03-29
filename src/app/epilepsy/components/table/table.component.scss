@@ -1,7 +1,12 @@
 table {
   width: 100%;
+  margin-bottom: 2em;
 }
 
-.add-section {
+section.add {
   margin: 2em 1em;
+}
+
+section.load {
+  margin: 0 1em 2em;
 }
