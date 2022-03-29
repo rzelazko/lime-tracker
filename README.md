@@ -51,4 +51,3 @@ Run `ng build` to build the project for production deployment. The build artifac
 - Use Firestore instead of dummy data - medicaments
 - Firestore service: `enableIndexedDbPersistence`
 - Use Firestore instead of dummy data - seizures
-- Table on small screen looks bad - actions should be in the same line
