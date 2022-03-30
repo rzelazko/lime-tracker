@@ -49,4 +49,3 @@ Run `ng build` to build the project for production deployment. The build artifac
 - Use Firestore instead of dummy data - reports
 - Switching pages events -> medicaments -> events doesn't work
 - Remove TODO any in Table component
-- Use Firestore instead of dummy data - events

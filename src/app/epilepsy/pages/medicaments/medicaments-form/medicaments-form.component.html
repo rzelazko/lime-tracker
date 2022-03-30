@@ -4,7 +4,7 @@
 
 <main>
   <form
-   [formGroup]="form"
+    [formGroup]="form"
     (ngSubmit)="onSubmit()"
     fxFlex
     fxLayout="column"
@@ -12,26 +12,15 @@
     fxLayoutGap="1em"
     *ngIf="auth.authenticatedUserData$ | async as userData; else loading"
   >
-
-  <mat-error *ngIf="error">
-      <span>Error: {{error}}</span>
-  </mat-error>
+    <mat-error *ngIf="error">
+      <span>Error: {{ error }}</span>
+    </mat-error>
 
     <mat-form-field appearance="fill">
       <mat-label>Medicament name</mat-label>
-      <input
-        type="text"
-        formControlName="name"
-        id="name"
-        placeholder="Medicamentum"
-        matInput
-      />
-      <mat-error *ngIf="hasError('nameInput', 'required')">
-        Medicament name is required
-      </mat-error>
-      <mat-error *ngIf="!hasError('nameInput', 'required')">
-        Medicament name is invalid
-      </mat-error>
+      <input type="text" formControlName="name" id="name" placeholder="Medicamentum" matInput />
+      <mat-error *ngIf="hasError('nameInput', 'required')">Medicament name is required</mat-error>
+      <mat-error *ngIf="!hasError('nameInput', 'required')">Medicament name is invalid</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -62,12 +51,8 @@
         min="0"
         matInput
       />
-      <mat-error *ngIf="hasError('doseNoonInput', 'required')">
-        Noon dose is required
-      </mat-error>
-      <mat-error *ngIf="!hasError('doseNoonInput', 'required')">
-        Noon dose is invalid
-      </mat-error>
+      <mat-error *ngIf="hasError('doseNoonInput', 'required')">Noon dose is required</mat-error>
+      <mat-error *ngIf="!hasError('doseNoonInput', 'required')">Noon dose is invalid</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -90,21 +75,12 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Start date</mat-label>
-      <input
-      formControlName="startDate"
-        id="startDate"
-        [matDatepicker]="picker"
-        matInput
-      />
+      <input formControlName="startDate" id="startDate" [matDatepicker]="picker" matInput />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
 
-      <mat-error *ngIf="hasError('startDateInput', 'required')">
-        Start date is required
-      </mat-error>
-      <mat-error *ngIf="!hasError('startDateInput', 'required')">
-        Start date is invalid
-      </mat-error>
+      <mat-error *ngIf="hasError('startDateInput', 'required')">Start date is required</mat-error>
+      <mat-error *ngIf="!hasError('startDateInput', 'required')">Start date is invalid</mat-error>
     </mat-form-field>
 
     <div>

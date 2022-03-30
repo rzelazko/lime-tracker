@@ -1,56 +1,58 @@
 <mat-toolbar class="page-header" role="heading">
-  <h1>{{ updatedObject ? "Update Event" : "Add Event" }}</h1>
+  <h1>{{ id ? "Update Event" : "Add Event" }}</h1>
 </mat-toolbar>
 
 <main>
   <form
-    #eventForm="ngForm"
-    (ngSubmit)="onSubmit(eventForm)"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
     fxFlex
     fxLayout="column"
     fxLayoutAlign="start start"
     fxLayoutGap="1em"
+    *ngIf="auth.authenticatedUserData$ | async as userData; else loading"
   >
+    <mat-error *ngIf="error">
+      <span>Error: {{ error }}</span>
+    </mat-error>
+
     <mat-form-field appearance="fill">
       <mat-label>Event name</mat-label>
       <input
         type="text"
-        name="name"
+        formControlName="name"
         id="name"
-        placeholder="Event"
-        required
+        placeholder="Important event name"
         matInput
-        ngModel
-        #nameInput="ngModel"
       />
-      <mat-error *ngIf="nameInput.hasError('required')">Event name is required</mat-error>
-      <mat-error *ngIf="!nameInput.hasError('required')">Event name is invalid</mat-error>
+      <mat-error *ngIf="hasError('nameInput', 'required')">Event name is required</mat-error>
+      <mat-error *ngIf="!hasError('nameInput', 'required')">Event name is invalid</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Event occurred</mat-label>
-      <input
-        name="occurred"
-        id="occurred"
-        [matDatepicker]="picker"
-        required
-        matInput
-        ngModel
-        #occurredInput="ngModel"
-      />
+      <input formControlName="occurred" id="occurred" [matDatepicker]="picker" required matInput />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
 
-      <mat-error *ngIf="occurredInput.hasError('required')">Event occurred is required</mat-error>
-      <mat-error *ngIf="!occurredInput.hasError('required')">Event occurred is invalid</mat-error>
+      <mat-error *ngIf="hasError('occurredInput', 'required')">
+        Event occurred is required
+      </mat-error>
+      <mat-error *ngIf="!hasError('occurredInput', 'required')">
+        Event occurred is invalid
+      </mat-error>
     </mat-form-field>
 
     <div>
-      <button type="submit" mat-raised-button color="primary" [disabled]="!eventForm.valid">
-        {{ updatedObject ? "Update" : "Add event" }}
+      <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid">
+        {{ id ? "Update" : "Add event" }}
       </button>
 
       <a mat-raised-button routerLink="/epilepsy/events">Cancel</a>
     </div>
   </form>
+
+  <ng-template #loading>
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </ng-template>
 </main>

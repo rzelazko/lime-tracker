@@ -1,29 +1,60 @@
-import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment';
+import { EventsService } from './../../../shared/services/events.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { Subscription } from 'rxjs';
 import { Event } from 'src/app/shared/models/event.model';
 import { Medicament } from 'src/app/shared/models/medicament.model';
 import { Seizure } from 'src/app/shared/models/seizure.model';
-
-const MOCK_EVENTS: Event[] = [
-  { id: "1", name: 'A lot of stress', occurred: moment('2021-04-12T04:00:00') },
-  { id: "2", name: 'Start taking CBD oil', occurred: moment('2021-11-17T14:24:00') },
-];
+import { TableComponent } from '../../components/table/table.component';
+import { MedicamentsService } from './../../../shared/services/medicaments.service';
 
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.scss'],
 })
-export class EventsComponent implements OnInit {
-  public data: Event[] = MOCK_EVENTS;
-
+export class EventsComponent implements OnInit, OnDestroy {
+  dataSource = new MatTableDataSource<Event>();
+  loading = false;
+  hasMore = false;
   public columns = ['name', 'occurred', 'actions'];
+  private dataSubscription?: Subscription;
+  private deleteSubscription?: Subscription;
 
-  constructor() {}
+  constructor(private eventsService: EventsService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.onLoadMore();
+  }
+
+  onLoadMore(): void {
+    this.loading = true;
+    this.dataSubscription = this.eventsService
+      .listConcatenated(TableComponent.PAGE_SIZE)
+      .subscribe((evnentsPage) => {
+        this.dataSource.data = evnentsPage.data;
+        this.loading = false;
+        this.hasMore = evnentsPage.hasMore;
+      });
+  }
+
+  ngOnDestroy(): void {
+    if (this.deleteSubscription) {
+      this.deleteSubscription.unsubscribe();
+    }
+    if (this.dataSubscription) {
+      this.dataSubscription.unsubscribe();
+    }
+  }
 
   onDelete(object: Event | Medicament | Seizure) {
-    console.log('Delete', object);
+    this.loading = true;
+    this.deleteSubscription = this.eventsService
+      .delete(object.id)
+      .subscribe((eventsPage) => {
+        this.dataSource.data = eventsPage.data;
+        this.loading = false;
+        this.hasMore = eventsPage.hasMore;
+      });
   }
 }

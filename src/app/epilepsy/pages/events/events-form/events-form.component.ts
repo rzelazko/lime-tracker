@@ -1,45 +1,77 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
+import { Observable, Subscription, take } from 'rxjs';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { EventsService } from 'src/app/shared/services/events.service';
 import { Event } from '../../../../shared/models/event.model';
-
-const MOCK_EVENTS: Event[] = [
-  { id: "1", name: 'A lot of stress', occurred: moment('2021-04-12T04:00:00') },
-  { id: "2", name: 'Start taking CBD oil', occurred: moment('2021-11-17T14:24:00') },
-];
 
 @Component({
   selector: 'app-events-form',
   templateUrl: './events-form.component.html',
   styleUrls: ['./events-form.component.scss'],
 })
-export class EventsFormComponent implements OnInit, AfterViewInit {
-  @ViewChild('eventForm') eventForm!: NgForm;
-  public updatedObject?: Event;
+export class EventsFormComponent implements OnInit {
+  error?: string;
+  form: FormGroup;
+  id?: string;
+  private submitSubscription?: Subscription;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
-
-  ngOnInit(): void {
-    const id: string = this.activatedRoute.snapshot.params['id'];
-    if (id) {
-      this.updatedObject = MOCK_EVENTS.filter((event) => event.id === id)[0];
-    }
-  }
-
-  ngAfterViewInit() {
-    Promise.resolve().then(() => {
-      if (this.updatedObject) {
-        this.eventForm.setValue({
-          name: this.updatedObject.name,
-          occurred: this.updatedObject.occurred,
-        });
-      }
+  constructor(
+    public auth: AuthService,
+    private eventsService: EventsService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private fb: FormBuilder
+  ) {
+    this.form = this.fb.group({
+      name: ['', [Validators.required]],
+      occurred: ['', [Validators.required]],
     });
   }
 
-  onSubmit(form: NgForm): void {
-    console.log(form);
-    this.router.navigate(['/epilepsy/events']);
+  ngOnInit(): void {
+    this.id = this.activatedRoute.snapshot.params['id'];
+    if (this.id) {
+      this.eventsService
+        .read(this.id)
+        .pipe(take(1))
+        .subscribe((result) => {
+          this.form.setValue({
+            name: result.name,
+            occurred: result.occurred.toDate(),
+          });
+        });
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.submitSubscription) {
+      this.submitSubscription.unsubscribe();
+    }
+  }
+
+  onSubmit(): void {
+    const formData: Partial<Event> = {
+      name: this.form.value.name,
+      occurred: moment(this.form.value.occurred),
+    };
+
+    let submitObservable$: Observable<any>;
+    if (this.id) {
+      submitObservable$ = this.eventsService.update(this.id, formData);
+    } else {
+      submitObservable$ = this.eventsService.create(formData);
+    }
+
+    this.submitSubscription = submitObservable$.subscribe({
+      next: () => this.router.navigate(['/epilepsy/events']),
+      error: (error) => (this.error = error.message),
+    });
+  }
+
+  hasError(path: string, errorCode: string) {
+    return this.form.get(path)?.hasError(errorCode);
   }
 }
