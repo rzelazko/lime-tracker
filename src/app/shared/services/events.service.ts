@@ -3,32 +3,35 @@ import { Injectable } from '@angular/core';
 import { CrudService } from './crud.service';
 import { PageData } from '../models/page-data.model';
 import { map } from 'rxjs';
+import { AuthService } from './auth.service';
+import { FirestoreService } from './firestore.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EventsService {
-  constructor(private crudService: CrudService<Event>) {
-    crudService.init('events', 'occurred');
+export class EventsService extends CrudService<Event> {
+  constructor(authService: AuthService, firestoreService: FirestoreService) {
+    super(authService, firestoreService);
+    this.init('events', 'occurred');
   }
 
-  create(event: Partial<Event>) {
-    return this.crudService.create(event);
+  override create(event: Partial<Event>) {
+    return super.create(event);
   }
 
-  read(id: string) {
-    return this.crudService.read(id);
+  override read(id: string) {
+    return super.read(id);
   }
 
-  update(id: string, event: Partial<Event>) {
-    return this.crudService.update(id, event);
+  override update(id: string, event: Partial<Event>) {
+    return super.update(id, event);
   }
 
-  delete(id: string) {
-    return this.crudService.delete(id);
+  override delete(id: string) {
+    return super.delete(id);
   }
 
-  listConcatenated(pageSize: number) {
-    return this.crudService.listConcatenated(pageSize);
+  override listConcatenated(pageSize: number) {
+    return super.listConcatenated(pageSize);
   }
 }

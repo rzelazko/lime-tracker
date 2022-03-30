@@ -3,30 +3,33 @@ import * as moment from 'moment';
 import { map } from 'rxjs';
 import { PageData } from '../models/page-data.model';
 import { Seizure } from '../models/seizure.model';
+import { AuthService } from './auth.service';
 import { CrudService } from './crud.service';
+import { FirestoreService } from './firestore.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class SeizuresService {
-  constructor(private crudService: CrudService<Seizure>) {
-    crudService.init('seizures', 'occurred');
+export class SeizuresService  extends CrudService<Seizure> {
+  constructor(authService: AuthService, firestoreService: FirestoreService) {
+    super(authService, firestoreService);
+    this.init('seizures', 'occurred');
   }
 
-  create(seizure: Partial<Seizure>) {
-    return this.crudService.create(seizure);
+  override create(seizure: Partial<Seizure>) {
+    return super.create(seizure);
   }
 
-  read(id: string) {
-    return this.crudService.read(id).pipe(map((data) => this.convertDuration(data)));
+  override read(id: string) {
+    return super.read(id).pipe(map((data) => this.convertDuration(data)));
   }
 
-  update(id: string, seizure: Partial<Seizure>) {
-    return this.crudService.update(id, seizure);
+  override update(id: string, seizure: Partial<Seizure>) {
+    return super.update(id, seizure);
   }
 
-  delete(id: string) {
-    return this.crudService.delete(id).pipe(
+  override delete(id: string) {
+    return super.delete(id).pipe(
       map(
         (pageData): PageData<Seizure> => ({
           hasMore: pageData.hasMore,
@@ -36,8 +39,8 @@ export class SeizuresService {
     );
   }
 
-  listConcatenated(pageSize: number) {
-    return this.crudService.listConcatenated(pageSize).pipe(
+  override listConcatenated(pageSize: number) {
+    return super.listConcatenated(pageSize).pipe(
       map(
         (pageData): PageData<Seizure> => ({
           hasMore: pageData.hasMore,

@@ -8,9 +8,6 @@ import { Identifiable } from '../models/identifiable.model';
 import { PageData } from '../models/page-data.model';
 import { FirestoreService } from './firestore.service';
 
-@Injectable({
-  providedIn: 'root',
-})
 export class CrudService<T extends Identifiable> {
   private collectionPath: string;
   private orderByField: string;
