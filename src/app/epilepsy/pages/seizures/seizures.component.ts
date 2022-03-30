@@ -37,6 +37,11 @@ export class SeizuresComponent implements OnInit, OnDestroy {
       });
   }
 
+  onRefresh(): void {
+    this.seizuresService.resetConcatenatedPage();
+    this.onLoadMore();
+  }
+
   ngOnDestroy(): void {
     if (this.deleteSubscription) {
       this.deleteSubscription.unsubscribe();

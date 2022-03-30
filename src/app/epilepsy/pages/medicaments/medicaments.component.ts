@@ -37,6 +37,11 @@ export class MedicamentsComponent implements OnInit, OnDestroy {
       });
   }
 
+  onRefresh(): void {
+    this.medicamentsService.resetConcatenatedPage();
+    this.onLoadMore();
+  }
+
   ngOnDestroy(): void {
     if (this.deleteSubscription) {
       this.deleteSubscription.unsubscribe();

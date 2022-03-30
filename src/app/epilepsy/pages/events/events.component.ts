@@ -37,6 +37,11 @@ export class EventsComponent implements OnInit, OnDestroy {
       });
   }
 
+  onRefresh(): void {
+    this.eventsService.resetConcatenatedPage();
+    this.onLoadMore();
+  }
+
   ngOnDestroy(): void {
     if (this.deleteSubscription) {
       this.deleteSubscription.unsubscribe();

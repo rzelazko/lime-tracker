@@ -71,3 +71,6 @@
   <button mat-raised-button (click)="onLoadMore()">Load more</button>
 </section>
 
+<section *ngIf="!loading && !hasMore" class="load">
+  <button mat-raised-button (click)="onRefresh()">Refresh data</button>
+</section>

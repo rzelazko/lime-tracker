@@ -111,7 +111,7 @@ export class CrudService<T extends Identifiable> {
     );
   }
 
-  private resetConcatenatedPage() {
+  resetConcatenatedPage() {
     this.concatPagelastId = '';
     this.concatPageData = { hasMore: false, data: [] };
   }

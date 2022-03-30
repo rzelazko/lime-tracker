@@ -15,6 +15,7 @@ export class TableComponent implements OnInit {
   static readonly PAGE_SIZE = 100;
   @Output('onDelete') deleteEvent = new EventEmitter<Event | Medicament | Seizure>();
   @Output('onLoadMore') loadMoreEvent = new EventEmitter<void>();
+  @Output('onRefresh') refreshEvent = new EventEmitter<void>();
   @Input() dataSource?: MatTableDataSource<Event | Medicament | Seizure>;
   @Input() displayedColumns: String[] = [];
   @Input() addBtnLink = '';
@@ -40,5 +41,9 @@ export class TableComponent implements OnInit {
 
   onLoadMore() {
     this.loadMoreEvent.emit();
+  }
+
+  onRefresh() {
+    this.refreshEvent.emit();
   }
 }
