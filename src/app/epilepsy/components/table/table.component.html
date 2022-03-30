@@ -2,7 +2,7 @@
   <a mat-raised-button color="primary" routerLink="{{ addBtnLink }}"> {{ addBtnText }} </a>
 </section>
 
-<table mat-table [dataSource]="dataSource">
+<table mat-table [dataSource]="dataSource" *ngIf="dataSource">
   <ng-container matColumnDef="occurred">
     <th mat-header-cell *matHeaderCellDef>Occurred</th>
     <td mat-cell *matCellDef="let element">{{ element.occurred | moment: occurredFormat }}</td>

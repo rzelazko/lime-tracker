@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 import { Event } from 'src/app/shared/models/event.model';
 import { Medicament } from 'src/app/shared/models/medicament.model';
 import { Seizure } from 'src/app/shared/models/seizure.model';
@@ -14,7 +15,7 @@ export class TableComponent implements OnInit {
   static readonly PAGE_SIZE = 100;
   @Output('onDelete') deleteEvent = new EventEmitter<Event | Medicament | Seizure>();
   @Output('onLoadMore') loadMoreEvent = new EventEmitter<void>();
-  @Input() dataSource?: any; // TODO not any?
+  @Input() dataSource?: MatTableDataSource<Event | Medicament | Seizure>;
   @Input() displayedColumns: String[] = [];
   @Input() addBtnLink = '';
   @Input() addBtnText = '';

@@ -1,4 +1,3 @@
-import { EventsService } from './../../../shared/services/events.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
@@ -6,7 +5,7 @@ import { Event } from 'src/app/shared/models/event.model';
 import { Medicament } from 'src/app/shared/models/medicament.model';
 import { Seizure } from 'src/app/shared/models/seizure.model';
 import { TableComponent } from '../../components/table/table.component';
-import { MedicamentsService } from './../../../shared/services/medicaments.service';
+import { EventsService } from './../../../shared/services/events.service';
 
 @Component({
   selector: 'app-events',
@@ -14,7 +13,7 @@ import { MedicamentsService } from './../../../shared/services/medicaments.servi
   styleUrls: ['./events.component.scss'],
 })
 export class EventsComponent implements OnInit, OnDestroy {
-  dataSource = new MatTableDataSource<Event>();
+  dataSource = new MatTableDataSource<Event | Medicament | Seizure>();
   loading = false;
   hasMore = false;
   public columns = ['name', 'occurred', 'actions'];
@@ -49,12 +48,10 @@ export class EventsComponent implements OnInit, OnDestroy {
 
   onDelete(object: Event | Medicament | Seizure) {
     this.loading = true;
-    this.deleteSubscription = this.eventsService
-      .delete(object.id)
-      .subscribe((eventsPage) => {
-        this.dataSource.data = eventsPage.data;
-        this.loading = false;
-        this.hasMore = eventsPage.hasMore;
-      });
+    this.deleteSubscription = this.eventsService.delete(object.id).subscribe((eventsPage) => {
+      this.dataSource.data = eventsPage.data;
+      this.loading = false;
+      this.hasMore = eventsPage.hasMore;
+    });
   }
 }

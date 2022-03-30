@@ -13,7 +13,7 @@ import { MedicamentsService } from './../../../shared/services/medicaments.servi
   styleUrls: ['./medicaments.component.scss'],
 })
 export class MedicamentsComponent implements OnInit, OnDestroy {
-  dataSource = new MatTableDataSource<Medicament>();
+  dataSource = new MatTableDataSource<Event | Medicament | Seizure>();
   loading = false;
   hasMore = false;
   public columns = ['name', 'dose', 'startDate', 'actions'];

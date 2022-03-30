@@ -13,7 +13,7 @@ import { TableComponent } from '../../components/table/table.component';
   styleUrls: ['./seizures.component.scss'],
 })
 export class SeizuresComponent implements OnInit, OnDestroy {
-  dataSource = new MatTableDataSource<Seizure>();
+  dataSource = new MatTableDataSource<Event | Medicament | Seizure>();
   loading = false;
   hasMore = false;
   columns = ['occurred', 'type', 'trigger', 'duration', 'actions'];
