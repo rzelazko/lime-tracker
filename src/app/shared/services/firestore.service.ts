@@ -4,7 +4,7 @@ import {
   collectionSnapshots,
   docSnapshots,
   Firestore,
-  QueryConstraint,
+  QueryConstraint
 } from '@angular/fire/firestore';
 import {
   addDoc,
@@ -15,26 +15,20 @@ import {
   query,
   setDoc,
   Timestamp,
-  updateDoc,
+  updateDoc
 } from '@firebase/firestore';
 import * as moment from 'moment';
 import { Moment } from 'moment';
-import { defer, filter, map, tap } from 'rxjs';
+import { defer, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirestoreService {
-  constructor(private firestore: Firestore) {
-    this.enableIndexedDbPersistence();
-  }
+  constructor(private firestore: Firestore) {}
 
   createId() {
     return doc(collection(this.firestore, 'id')).id;
-  }
-
-  enableIndexedDbPersistence() {
-    // TODO enableIndexedDbPersistence(this.firestore)
   }
 
   list<T>(path: string, ...q: QueryConstraint[]) {
