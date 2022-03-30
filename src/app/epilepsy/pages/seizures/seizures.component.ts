@@ -20,7 +20,7 @@ export class SeizuresComponent implements OnInit, OnDestroy {
   private dataSubscription?: Subscription;
   private deleteSubscription?: Subscription;
 
-  constructor(private seizureService: SeizuresService) {}
+  constructor(private seizuresService: SeizuresService) {}
 
   ngOnInit(): void {
     this.onLoadMore();
@@ -28,7 +28,7 @@ export class SeizuresComponent implements OnInit, OnDestroy {
 
   onLoadMore(): void {
     this.loading = true;
-    this.dataSubscription = this.seizureService
+    this.dataSubscription = this.seizuresService
       .listConcatenated(TableComponent.PAGE_SIZE)
       .subscribe((seizuresPage) => {
         this.dataSource.data = seizuresPage.data;
@@ -48,7 +48,7 @@ export class SeizuresComponent implements OnInit, OnDestroy {
 
   onDelete(object: Event | Medicament | Seizure) {
     this.loading = true;
-    this.deleteSubscription = this.seizureService.delete(object.id).subscribe((seizuresPage) => {
+    this.deleteSubscription = this.seizuresService.delete(object.id).subscribe((seizuresPage) => {
       this.dataSource.data = seizuresPage.data;
       this.loading = false;
       this.hasMore = seizuresPage.hasMore;

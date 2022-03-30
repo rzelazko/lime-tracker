@@ -1,51 +1,59 @@
-import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { Subscription } from 'rxjs';
 import { Event } from 'src/app/shared/models/event.model';
 import { Medicament } from 'src/app/shared/models/medicament.model';
 import { Seizure } from 'src/app/shared/models/seizure.model';
-
-const MOCK_MEDICAMENTS: Medicament[] = [
-  {
-    id: "1",
-    name: 'Topamax',
-    doses: { morning: 125, noon: 0, evening: 150 },
-    startDate: moment('2021-09-01'),
-  },
-  {
-    id: "2",
-    name: 'Kepra',
-    doses: { morning: 100, noon: 0, evening: 150 },
-    startDate: moment('2021-06-01'),
-  },
-  {
-    id: "3",
-    name: 'Lamitrin',
-    doses: { morning: 1500, noon: 0, evening: 1000 },
-    startDate: moment('2021-06-01'),
-  },
-  {
-    id: "4",
-    name: 'Topamax',
-    doses: { morning: 125, noon: 0, evening: 125 },
-    startDate: moment('2021-06-01'),
-  },
-];
+import { TableComponent } from '../../components/table/table.component';
+import { MedicamentsService } from './../../../shared/services/medicaments.service';
 
 @Component({
   selector: 'app-medicaments',
   templateUrl: './medicaments.component.html',
   styleUrls: ['./medicaments.component.scss'],
 })
-export class MedicamentsComponent implements OnInit {
-  public data: Medicament[] = MOCK_MEDICAMENTS;
-
+export class MedicamentsComponent implements OnInit, OnDestroy {
+  dataSource = new MatTableDataSource<Medicament>();
+  loading = false;
+  hasMore = false;
   public columns = ['name', 'dose', 'startDate', 'actions'];
+  private dataSubscription?: Subscription;
+  private deleteSubscription?: Subscription;
 
-  constructor() {}
+  constructor(private medicamentsService: MedicamentsService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.onLoadMore();
+  }
+
+  onLoadMore(): void {
+    this.loading = true;
+    this.dataSubscription = this.medicamentsService
+      .listConcatenated(TableComponent.PAGE_SIZE)
+      .subscribe((medicamentsPage) => {
+        this.dataSource.data = medicamentsPage.data;
+        this.loading = false;
+        this.hasMore = medicamentsPage.hasMore;
+      });
+  }
+
+  ngOnDestroy(): void {
+    if (this.deleteSubscription) {
+      this.deleteSubscription.unsubscribe();
+    }
+    if (this.dataSubscription) {
+      this.dataSubscription.unsubscribe();
+    }
+  }
 
   onDelete(object: Event | Medicament | Seizure) {
-    console.log('Delete', object);
+    this.loading = true;
+    this.deleteSubscription = this.medicamentsService
+      .delete(object.id)
+      .subscribe((medicamentsPage) => {
+        this.dataSource.data = medicamentsPage.data;
+        this.loading = false;
+        this.hasMore = medicamentsPage.hasMore;
+      });
   }
 }

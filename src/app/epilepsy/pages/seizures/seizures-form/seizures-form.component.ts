@@ -20,7 +20,7 @@ export class SeizuresFormComponent implements OnInit, OnDestroy {
 
   constructor(
     public auth: AuthService,
-    private seizureService: SeizuresService,
+    private seizuresService: SeizuresService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder
@@ -37,7 +37,7 @@ export class SeizuresFormComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id) {
-      this.seizureService
+      this.seizuresService
         .read(this.id)
         .pipe(take(1))
         .subscribe((result) => {
@@ -70,9 +70,9 @@ export class SeizuresFormComponent implements OnInit, OnDestroy {
 
     let submitObservable$: Observable<any>;
     if (this.id) {
-      submitObservable$ = this.seizureService.update(this.id, formData);
+      submitObservable$ = this.seizuresService.update(this.id, formData);
     } else {
-      submitObservable$ = this.seizureService.create(formData);
+      submitObservable$ = this.seizuresService.create(formData);
     }
 
     this.submitSubscription = submitObservable$.subscribe({

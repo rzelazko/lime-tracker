@@ -38,7 +38,7 @@ Run `ng build` to build the project for production deployment. The build artifac
 - Add some Rodo, privacy policy, etc. on login & dashboard (add footer?)
 - Add user profile management
 - Add reset passoword
-- Add screenshot and better description to README
+- Add screenshot and better description to README (ex. run firebase emulator on local)
 - Favicon, app manifest, etc
 - I18N (rememeber: default seizure types)
 - Setup custom domain for hosting
@@ -47,5 +47,6 @@ Run `ng build` to build the project for production deployment. The build artifac
 - Use Firestore instead of dummy data - dashboard
 - Use Firestore instead of dummy data - charts
 - Use Firestore instead of dummy data - reports
+- Switching pages events -> medicaments -> events doesn't work
+- Remove TODO any in Table component
 - Use Firestore instead of dummy data - events
-- Use Firestore instead of dummy data - medicaments

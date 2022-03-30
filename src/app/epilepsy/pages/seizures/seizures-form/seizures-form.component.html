@@ -4,7 +4,7 @@
 
 <main>
   <form
-   [formGroup]="form"
+    [formGroup]="form"
     (ngSubmit)="onSubmit()"
     fxFlex
     fxLayout="column"
@@ -12,10 +12,9 @@
     fxLayoutGap="1em"
     *ngIf="auth.authenticatedUserData$ | async as userData; else loading"
   >
-
-  <mat-error *ngIf="error">
-      <span>Error: {{error}}</span>
-  </mat-error>
+    <mat-error *ngIf="error">
+      <span>Error: {{ error }}</span>
+    </mat-error>
 
     <mat-form-field appearance="fill">
       <mat-label>Occurred date</mat-label>
@@ -38,12 +37,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Occurred time</mat-label>
-      <input
-        type="time"
-        formControlName="occurredTime"
-        id="occurredTime"
-        matInput
-      />
+      <input type="time" formControlName="occurredTime" id="occurredTime" matInput />
       <mat-error *ngIf="hasError('occurredTimeInput', 'required')">
         Occurred time is required
       </mat-error>
@@ -62,8 +56,12 @@
         min="1"
         matInput
       />
-      <mat-error *ngIf="hasError('durationInput', 'required')">Seizure duration is required</mat-error>
-      <mat-error *ngIf="!hasError('durationInput','required')">Seizure duration is invalid</mat-error>
+      <mat-error *ngIf="hasError('durationInput', 'required')">
+        Seizure duration is required
+      </mat-error>
+      <mat-error *ngIf="!hasError('durationInput', 'required')">
+        Seizure duration is invalid
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -85,8 +83,12 @@
           {{ trigger }}
         </mat-option>
       </mat-select>
-      <mat-error *ngIf="hasError('triggerInput', 'required')">Seizure trigger is required</mat-error>
-      <mat-error *ngIf="!hasError('triggerInput', 'required')">Seizure trigger is invalid</mat-error>
+      <mat-error *ngIf="hasError('triggerInput', 'required')">
+        Seizure trigger is required
+      </mat-error>
+      <mat-error *ngIf="!hasError('triggerInput', 'required')">
+        Seizure trigger is invalid
+      </mat-error>
     </mat-form-field>
 
     <div>

@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatTableDataSource } from '@angular/material/table';
 import { Event } from 'src/app/shared/models/event.model';
 import { Medicament } from 'src/app/shared/models/medicament.model';
 import { Seizure } from 'src/app/shared/models/seizure.model';
@@ -12,10 +11,10 @@ import { ConfirmDeleteDialogComponent } from '../confirm-delete-dialog/confirm-d
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
-  static readonly PAGE_SIZE = 10;
+  static readonly PAGE_SIZE = 100;
   @Output('onDelete') deleteEvent = new EventEmitter<Event | Medicament | Seizure>();
   @Output('onLoadMore') loadMoreEvent = new EventEmitter<void>();
-  @Input() dataSource?: any;
+  @Input() dataSource?: any; // TODO not any?
   @Input() displayedColumns: String[] = [];
   @Input() addBtnLink = '';
   @Input() addBtnText = '';
@@ -31,7 +30,7 @@ export class TableComponent implements OnInit {
   onDelete(element: Event | Medicament | Seizure): void {
     const dialogRef = this.dialog.open(ConfirmDeleteDialogComponent, { data: { ...element } });
 
-    dialogRef.afterClosed().subscribe(confirmed => {
+    dialogRef.afterClosed().subscribe((confirmed) => {
       if (confirmed) {
         this.deleteEvent.emit(element);
       }

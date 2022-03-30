@@ -4,11 +4,14 @@
 
 <main>
   <app-table
-    [dataSource]="data"
+    [dataSource]="dataSource"
     [displayedColumns]="columns"
     addBtnLink="/epilepsy/medicaments/add"
     addBtnText="Add medicament"
     updateLinkPrefix="/epilepsy/medicaments/update"
+    [loading]="loading"
+    [hasMore]="hasMore"
     (onDelete)="onDelete($event)"
+    (onLoadMore)="onLoadMore()"
   ></app-table>
 </main>

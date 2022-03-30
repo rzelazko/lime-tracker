@@ -1,104 +1,122 @@
 <mat-toolbar class="page-header" role="heading">
-  <h1>{{ updatedObject ? "Update Medicament" : "Add Medicament" }}</h1>
+  <h1>{{ id ? "Update Medicament" : "Add Medicament" }}</h1>
 </mat-toolbar>
 
 <main>
   <form
-    #medicamentForm="ngForm"
-    (ngSubmit)="onSubmit(medicamentForm)"
+   [formGroup]="form"
+    (ngSubmit)="onSubmit()"
     fxFlex
     fxLayout="column"
     fxLayoutAlign="start start"
     fxLayoutGap="1em"
+    *ngIf="auth.authenticatedUserData$ | async as userData; else loading"
   >
+
+  <mat-error *ngIf="error">
+      <span>Error: {{error}}</span>
+  </mat-error>
+
     <mat-form-field appearance="fill">
       <mat-label>Medicament name</mat-label>
       <input
         type="text"
-        name="name"
+        formControlName="name"
         id="name"
-        placeholder="Event"
-        required
+        placeholder="Medicamentum"
         matInput
-        ngModel
-        #nameInput="ngModel"
       />
-      <mat-error *ngIf="nameInput.hasError('required')">Medicament name is required</mat-error>
-      <mat-error *ngIf="!nameInput.hasError('required')">Medicament name is invalid</mat-error>
+      <mat-error *ngIf="hasError('nameInput', 'required')">
+        Medicament name is required
+      </mat-error>
+      <mat-error *ngIf="!hasError('nameInput', 'required')">
+        Medicament name is invalid
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Morning dose</mat-label>
       <input
-        type="text"
-        name="doseMorning"
+        type="number"
+        formControlName="doseMorning"
         id="doseMorning"
-        placeholder="Morning"
-        required
+        placeholder="100"
+        min="0"
         matInput
-        ngModel
-        #doseMorningInput="ngModel"
       />
-      <mat-error *ngIf="doseMorningInput.hasError('required')">Morning dose is required</mat-error>
-      <mat-error *ngIf="!doseMorningInput.hasError('required')">Morning dose is invalid</mat-error>
+      <mat-error *ngIf="hasError('doseMorningInput', 'required')">
+        Morning dose is required
+      </mat-error>
+      <mat-error *ngIf="!hasError('doseMorningInput', 'required')">
+        Morning dose is invalid
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Noon dose</mat-label>
       <input
-        type="text"
-        name="doseNoon"
+        type="number"
+        formControlName="doseNoon"
         id="doseNoon"
-        placeholder="Noon"
-        required
+        placeholder="0"
+        min="0"
         matInput
-        ngModel
-        #doseNoonInput="ngModel"
       />
-      <mat-error *ngIf="doseNoonInput.hasError('required')">Noon dose is required</mat-error>
-      <mat-error *ngIf="!doseNoonInput.hasError('required')">Noon dose is invalid</mat-error>
+      <mat-error *ngIf="hasError('doseNoonInput', 'required')">
+        Noon dose is required
+      </mat-error>
+      <mat-error *ngIf="!hasError('doseNoonInput', 'required')">
+        Noon dose is invalid
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Evening dose</mat-label>
       <input
-        type="text"
-        name="doseEvening"
+        type="number"
+        formControlName="doseEvening"
         id="doseEvening"
-        placeholder="Evening"
-        required
+        placeholder="200"
+        min="0"
         matInput
-        ngModel
-        #doseEveningInput="ngModel"
       />
-      <mat-error *ngIf="doseEveningInput.hasError('required')">Evening dose is required</mat-error>
-      <mat-error *ngIf="!doseEveningInput.hasError('required')">Evening dose is invalid</mat-error>
+      <mat-error *ngIf="hasError('doseEveningInput', 'required')">
+        Evening dose is required
+      </mat-error>
+      <mat-error *ngIf="!hasError('doseEveningInput', 'required')">
+        Evening dose is invalid
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Start date</mat-label>
       <input
-        name="startDate"
+      formControlName="startDate"
         id="startDate"
         [matDatepicker]="picker"
-        required
         matInput
-        ngModel
-        #startDateInput="ngModel"
       />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
 
-      <mat-error *ngIf="startDateInput.hasError('required')">Start date is required</mat-error>
-      <mat-error *ngIf="!startDateInput.hasError('required')">Start date is invalid</mat-error>
+      <mat-error *ngIf="hasError('startDateInput', 'required')">
+        Start date is required
+      </mat-error>
+      <mat-error *ngIf="!hasError('startDateInput', 'required')">
+        Start date is invalid
+      </mat-error>
     </mat-form-field>
 
     <div>
-      <button type="submit" mat-raised-button color="primary" [disabled]="!medicamentForm.valid">
-        {{ updatedObject ? "Update" : "Add medicament" }}
+      <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid">
+        {{ id ? "Update" : "Add medicament" }}
       </button>
 
       <a mat-raised-button routerLink="/epilepsy/medicaments">Cancel</a>
     </div>
   </form>
+
+  <ng-template #loading>
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </ng-template>
 </main>
