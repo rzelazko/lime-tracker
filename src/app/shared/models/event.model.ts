@@ -1,7 +1,7 @@
 import { Moment } from 'moment';
+import { Identifiable } from './identifiable.model';
 
-export interface Event {
-  id: string;
+export interface Event extends Identifiable {
   name: string;
   occurred: Moment;
 }

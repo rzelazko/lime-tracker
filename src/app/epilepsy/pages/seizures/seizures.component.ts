@@ -14,12 +14,9 @@ import { TableComponent } from '../../components/table/table.component';
 })
 export class SeizuresComponent implements OnInit, OnDestroy {
   dataSource = new MatTableDataSource<Seizure>();
-  loadedData: Seizure[] = [];
   loading = false;
   hasMore = false;
   columns = ['occurred', 'type', 'trigger', 'duration', 'actions'];
-  private page = 0;
-  private lastId = "";
   private dataSubscription?: Subscription;
   private deleteSubscription?: Subscription;
 
@@ -32,14 +29,11 @@ export class SeizuresComponent implements OnInit, OnDestroy {
   onLoadMore(): void {
     this.loading = true;
     this.dataSubscription = this.seizureService
-      .list(TableComponent.PAGE_SIZE, this.lastId)
-      .subscribe((data) => {
-        this.loadedData = this.loadedData.concat(data);
-        this.dataSource.data = this.loadedData;
-        this.lastId = this.loadedData.length > 0 ? this.loadedData[this.loadedData.length - 1].id : "";
-        this.page++;
+      .listConcatenated(TableComponent.PAGE_SIZE)
+      .subscribe((seizuresPage) => {
+        this.dataSource.data = seizuresPage.data;
         this.loading = false;
-        this.hasMore = data.length > 0 && data.length >= TableComponent.PAGE_SIZE;
+        this.hasMore = seizuresPage.hasMore;
       });
   }
 
@@ -53,6 +47,11 @@ export class SeizuresComponent implements OnInit, OnDestroy {
   }
 
   onDelete(object: Event | Medicament | Seizure) {
-    this.deleteSubscription = this.seizureService.delete(object.id).subscribe();
+    this.loading = true;
+    this.deleteSubscription = this.seizureService.delete(object.id).subscribe((seizuresPage) => {
+      this.dataSource.data = seizuresPage.data;
+      this.loading = false;
+      this.hasMore = seizuresPage.hasMore;
+    });
   }
 }

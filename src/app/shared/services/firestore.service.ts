@@ -40,7 +40,6 @@ export class FirestoreService {
   list<T>(path: string, ...q: QueryConstraint[]) {
     const ref = collection(this.firestore, path) as CollectionReference<Partial<T>>;
     return collectionSnapshots<Partial<T>>(query<Partial<T>>(ref, ...q)).pipe(
-      filter((data) => !data[0]?.metadata.fromCache), // nasty hack to avoid subscribe called twice for the same data
       map((data) => this.convertSnapshots<T>(data))
     );
   }
@@ -57,9 +56,7 @@ export class FirestoreService {
 
   getRaw<T>(path: string) {
     const ref = doc(this.firestore, path);
-    return docSnapshots(ref).pipe(
-      filter((data) => !data.metadata.fromCache), // nasty hack to avoid subscribe called twice for the same data
-    );
+    return docSnapshots(ref);
   }
 
   get<T>(path: string) {

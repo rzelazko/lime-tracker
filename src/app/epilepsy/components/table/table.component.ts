@@ -12,7 +12,7 @@ import { ConfirmDeleteDialogComponent } from '../confirm-delete-dialog/confirm-d
   styleUrls: ['./table.component.scss'],
 })
 export class TableComponent implements OnInit {
-  static readonly PAGE_SIZE = 100;
+  static readonly PAGE_SIZE = 10;
   @Output('onDelete') deleteEvent = new EventEmitter<Event | Medicament | Seizure>();
   @Output('onLoadMore') loadMoreEvent = new EventEmitter<void>();
   @Input() dataSource?: any;

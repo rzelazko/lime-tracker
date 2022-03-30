@@ -1,7 +1,7 @@
 import { Duration, Moment } from "moment";
+import { Identifiable } from "./identifiable.model";
 
-export interface Seizure {
-  id: string,
+export interface Seizure extends Identifiable {
   occurred: Moment;
   duration: Duration;
   type: string;

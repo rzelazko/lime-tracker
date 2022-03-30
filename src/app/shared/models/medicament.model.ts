@@ -1,7 +1,7 @@
 import { Moment } from "moment";
+import { Identifiable } from "./identifiable.model";
 
-export interface Medicament {
-  id: string,
+export interface Medicament extends Identifiable {
   name: string;
   doses: {
     morning: number;
