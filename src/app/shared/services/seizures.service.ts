@@ -12,8 +12,7 @@ import { FirestoreService } from './firestore.service';
 })
 export class SeizuresService  extends CrudService<Seizure> {
   constructor(authService: AuthService, firestoreService: FirestoreService) {
-    super(authService, firestoreService);
-    this.init('seizures', 'occurred');
+    super('seizures', 'occurred', authService, firestoreService);
   }
 
   override create(seizure: Partial<Seizure>) {

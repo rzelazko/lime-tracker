@@ -11,8 +11,7 @@ import { FirestoreService } from './firestore.service';
 })
 export class EventsService extends CrudService<Event> {
   constructor(authService: AuthService, firestoreService: FirestoreService) {
-    super(authService, firestoreService);
-    this.init('events', 'occurred');
+    super('events', 'occurred', authService, firestoreService);
   }
 
   override create(event: Partial<Event>) {

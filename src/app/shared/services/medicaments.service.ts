@@ -11,8 +11,7 @@ import { FirestoreService } from './firestore.service';
 })
 export class MedicamentsService extends CrudService<Medicament> {
   constructor(authService: AuthService, firestoreService: FirestoreService) {
-    super(authService, firestoreService);
-    this.init('medicaments', 'startDate');
+    super('medicaments', 'startDate', authService, firestoreService);
   }
 
   override create(medicament: Partial<Medicament>) {

@@ -9,21 +9,17 @@ import { PageData } from '../models/page-data.model';
 import { FirestoreService } from './firestore.service';
 
 export class CrudService<T extends Identifiable> {
-  private collectionPath: string;
-  private orderByField: string;
   private concatPagelastId: string;
   private concatPageData: PageData<T>;
 
-  constructor(private authService: AuthService, private firestoreService: FirestoreService) {
-    this.collectionPath = '-call-init-method-to-set-me-up-';
-    this.orderByField = '-call-init-method-to-set-me-up-';
+  constructor(
+    private collectionPath: string,
+    private orderByField: string,
+    private authService: AuthService,
+    private firestoreService: FirestoreService
+  ) {
     this.concatPagelastId = '';
     this.concatPageData = { hasMore: false, data: [] };
-  }
-
-  init(collectionPath: string, orderByField: string): void {
-    this.collectionPath = collectionPath;
-    this.orderByField = orderByField;
   }
 
   create(data: Partial<T>) {
