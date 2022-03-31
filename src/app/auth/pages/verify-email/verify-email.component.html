@@ -16,7 +16,7 @@
       src="https://source.unsplash.com/random/400x200/?limes"
     />
 
-    <ng-container *ngIf="auth.authenticatedUserData$ | async as userData; else loading">
+    <ng-container *ngIf="auth.userData$ | async as userData; else loading">
       <mat-card-content>
         <h1>Thank You for Registering!</h1>
 

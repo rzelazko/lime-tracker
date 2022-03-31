@@ -38,7 +38,7 @@ export class MedicamentsComponent implements OnInit, OnDestroy {
   }
 
   onRefresh(): void {
-    this.medicamentsService.resetConcatenatedPage();
+    this.medicamentsService.resetConcatenated();
     this.onLoadMore();
   }
 

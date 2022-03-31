@@ -38,7 +38,7 @@ export class EventsComponent implements OnInit, OnDestroy {
   }
 
   onRefresh(): void {
-    this.eventsService.resetConcatenatedPage();
+    this.eventsService.resetConcatenated();
     this.onLoadMore();
   }
 

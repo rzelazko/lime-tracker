@@ -38,7 +38,7 @@ export class SeizuresComponent implements OnInit, OnDestroy {
   }
 
   onRefresh(): void {
-    this.seizuresService.resetConcatenatedPage();
+    this.seizuresService.resetConcatenated();
     this.onLoadMore();
   }
 
