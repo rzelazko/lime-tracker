@@ -35,6 +35,7 @@ Run `ng build` to build the project for production deployment. The build artifac
 
 ## TODO 
 
+- Add authentication persistance (via Firebase browser persistance)
 - Add some Rodo, privacy policy, etc. on login & dashboard (add footer?)
 - Add user profile management
 - Add reset passoword
