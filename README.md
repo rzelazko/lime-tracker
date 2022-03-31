@@ -38,6 +38,7 @@ Run `ng build` to build the project for production deployment. The build artifac
 - Add some Rodo, privacy policy, etc. on login & dashboard (add footer?)
 - Add user profile management
 - Add reset passoword
+- Move URLs to single place
 - Cancel button on form go back to either dashboard or table (not always table)
 - Add screenshot and better description to README (ex. run firebase emulator on local)
 - Favicon, app manifest, etc
