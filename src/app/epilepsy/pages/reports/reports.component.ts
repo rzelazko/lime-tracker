@@ -1,8 +1,8 @@
-import { ReportsService } from '../../../shared/services/reports.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import * as moment from 'moment';
+import { Observable } from 'rxjs';
 import { Report } from '../../../shared/models/report.model';
-import { take, Subscription, Observable } from 'rxjs';
+import { ReportsService } from '../../../shared/services/reports.service';
 
 @Component({
   selector: 'app-reports',
@@ -10,6 +10,8 @@ import { take, Subscription, Observable } from 'rxjs';
   styleUrls: ['./reports.component.scss'],
 })
 export class ReportsComponent implements OnInit, OnDestroy {
+  selectedYear?: number;
+  currentYear = moment().year();
   report$: Observable<Report>;
 
   constructor(private reportsService: ReportsService) {
@@ -19,4 +21,9 @@ export class ReportsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {}
 
   ngOnDestroy(): void {}
+
+  onYearSelect(year?: number) {
+    this.selectedYear = year;
+    this.report$ = this.reportsService.getReports(year);
+  }
 }

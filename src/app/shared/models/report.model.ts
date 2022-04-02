@@ -4,8 +4,8 @@ import { Medicament } from 'src/app/shared/models/medicament.model';
 import { Seizure } from 'src/app/shared/models/seizure.model';
 
 export interface Report {
-  dateStart: Moment;
-  dateEnd: Moment;
+  dateFrom: Moment;
+  dateTo: Moment;
   monthsData: MonthsData[];
 }
 
@@ -29,6 +29,7 @@ export function reportCaseDate(reportCase: ReportCase): Moment {
   } else if (reportCase.seizure) {
     result = reportCase.seizure.occurred;
   } else {
+    // should be impossible - we have only 3 types of cases
     throw `Object type unsupported: ${JSON.stringify(reportCase)}`;
   }
 

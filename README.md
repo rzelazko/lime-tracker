@@ -35,9 +35,12 @@ Run `ng build` to build the project for production deployment. The build artifac
 
 ## TODO 
 
+:warning: Most important on the bottom
+
 - Add authentication persistance (via Firebase browser persistance)
 - Add some Rodo, privacy policy, etc. on login & dashboard (add footer?)
 - Add user profile management
+- Replace `throw`s with error handling (ex. reports page)
 - Add reset passoword
 - Move URLs to single place
 - Cancel button on form go back to either dashboard or table (not always table)
@@ -50,5 +53,4 @@ Run `ng build` to build the project for production deployment. The build artifac
 - Use Firestore instead of dummy data - dashboard
 - Use Firestore instead of dummy data - charts
 - Use Firestore instead of dummy data - reports:
-  - Remove `console.log` in `reports.service`
-  - Replace paginator with years selector
+  - Fix date range: ex: until: 12/31/2021 (from 12/01/2020) (also too many months on the list)

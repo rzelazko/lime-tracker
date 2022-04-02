@@ -52,10 +52,6 @@ export class CrudService<T extends Identifiable> {
       );
   }
 
-  defaultOrderBy() {
-    return orderBy(this.orderByField, 'desc');
-  }
-
   listCollection(queryConstraint: QueryConstraint[]) {
     return this.firestoreService.list<T>(
       `users/${this.authService.user().uid}/${this.collectionPath}`,
@@ -64,7 +60,7 @@ export class CrudService<T extends Identifiable> {
   }
 
   listSinglePage(pageSize: number, startAfterId: string) {
-    let queryConstraint: QueryConstraint[] = [this.defaultOrderBy(), limit(pageSize)];
+    let queryConstraint: QueryConstraint[] = [orderBy(this.orderByField, 'desc'), limit(pageSize)];
 
     let listCollection$: Observable<T[]>;
     if (startAfterId) {
@@ -108,7 +104,7 @@ export class CrudService<T extends Identifiable> {
     this.concatPageData = { hasMore: false, data: [] };
   }
 
-  private elementInArray(element:Identifiable) {
+  private elementInArray(element: Identifiable) {
     return this.concatPageData.data.some((data) => data.id === element.id);
   }
 }
