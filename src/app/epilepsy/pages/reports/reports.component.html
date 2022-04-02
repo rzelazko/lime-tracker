@@ -1,5 +1,5 @@
 <nav mat-tab-nav-bar>
-  <a mat-tab-link (click)="onYearSelect()" [active]="!selectedYear">Last 12 months</a>
+  <a mat-tab-link (click)="onYearSelect()" [active]="!selectedYear">Last year</a>
   <a
     mat-tab-link
     (click)="onYearSelect(currentYear - 1)"
@@ -45,7 +45,7 @@
 
           <mat-icon *ngIf="case.seizure" mat-list-icon>warning</mat-icon>
           <div *ngIf="case.seizure" mat-line>
-            Seizure occured: {{ case.seizure.occurred | moment: "LLL" }}
+            Seizure: {{ case.seizure.occurred | moment: "LLL" }}
           </div>
           <div *ngIf="case.seizure" mat-line class="mat-line-secondary">
             <span>Type: {{ case.seizure.type }}</span>

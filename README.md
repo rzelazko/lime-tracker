@@ -40,6 +40,7 @@ Run `ng build` to build the project for production deployment. The build artifac
 - Add authentication persistance (via Firebase browser persistance)
 - Add some Rodo, privacy policy, etc. on login & dashboard (add footer?)
 - Add user profile management
+- Reports pagination in URL, ex: `/epilepsy/reports/2021` - router link instead of tab `(click)`
 - Replace `throw`s with error handling (ex. reports page)
 - Add reset passoword
 - Move URLs to single place
@@ -52,5 +53,4 @@ Run `ng build` to build the project for production deployment. The build artifac
 - Change `emailVerificationDate` to indicate it is sending date (not verification) & edit emulator users
 - Use Firestore instead of dummy data - dashboard
 - Use Firestore instead of dummy data - charts
-- Use Firestore instead of dummy data - reports:
-  - Fix date range: ex: until: 12/31/2021 (from 12/01/2020) (also too many months on the list)
+

@@ -19,25 +19,43 @@ export class ReportsService {
 
   getReports(year?: number): Observable<Report> {
     const lastReportDay = year ? moment().year(year).endOf('year') : moment();
+    lastReportDay.hours(0).minutes(0).seconds(0).milliseconds(0);
     const report: Report = {
       dateTo: moment(lastReportDay),
-      dateFrom: moment(lastReportDay).endOf('month').subtract(1, 'year').startOf('month'),
+      dateFrom: moment(lastReportDay).subtract(1, 'year').add(1, 'day').startOf('month'),
       monthsData: [
-        { month: moment(lastReportDay), data: [] }, // i = 0, current month
-        { month: moment(lastReportDay).subtract(1, 'month'), data: [] }, // i = 1, previous month
-        { month: moment(lastReportDay).subtract(2, 'month'), data: [] }, // i = 2, current month - 2
-        { month: moment(lastReportDay).subtract(3, 'month'), data: [] }, // i = 3, current month - 3
-        { month: moment(lastReportDay).subtract(4, 'month'), data: [] }, // i = 4, current month - 4
-        { month: moment(lastReportDay).subtract(5, 'month'), data: [] }, // i = 5, current month - 5
-        { month: moment(lastReportDay).subtract(6, 'month'), data: [] }, // i = 6, current month - 6
-        { month: moment(lastReportDay).subtract(7, 'month'), data: [] }, // i = 7, current month - 7
-        { month: moment(lastReportDay).subtract(8, 'month'), data: [] }, // i = 8, current month - 8
-        { month: moment(lastReportDay).subtract(9, 'month'), data: [] }, // i = 9, current month - 9
-        { month: moment(lastReportDay).subtract(10, 'month'), data: [] }, // i = 10, current month - 10
-        { month: moment(lastReportDay).subtract(11, 'month'), data: [] }, // i = 11, current month - 11
-        { month: moment(lastReportDay).subtract(12, 'month'), data: [] }, // i = 11, current month - 12
+        { month: moment(lastReportDay).startOf('month'), data: [] }, // `monthIndex` = `0` <- current month
       ],
     };
+
+    /**
+     * `monthIndex` is index of `report.monthsData` array
+     * `monthIndex` = `0` <- current month
+     * `monthIndex` = `1` <- current month - 1 (previous month)
+     * `monthIndex` = `2` <- current month - 2
+     * etc
+     *
+     * It is used to add Seizure, Medicament & Event to valid montly report without iterating through array to find a place.
+     *
+     * Instead we can compute place in the montly array by:
+     *
+     * ```
+     * (dateTo.month + 12 - seizure/event/medicament.month) % 12
+     * ```
+     *
+     */
+    let monthIndex = 1;
+    while (
+      report.monthsData[report.monthsData.length - 1].month.isAfter(report.dateFrom)
+    ) {
+      // Fill `report.monthData` with placeholders,
+      // until whole range of dates from `report.dateFrom` has been covered
+      report.monthsData.push({
+        month: moment(lastReportDay).subtract(monthIndex, 'month').startOf('month'),
+        data: [],
+      });
+      monthIndex++;
+    }
 
     return merge(
       this.medicamentsService
@@ -75,7 +93,7 @@ export class ReportsService {
         for (const reportCase of reportCases) {
           const caseDate = reportCaseDate(reportCase);
           if (caseDate.isBetween(report.dateFrom, report.dateTo)) {
-            const monthIndex = (moment().month() + 12 - caseDate.month()) % 12;
+            const monthIndex = (report.dateTo.month() + 12 - caseDate.month()) % 12;
 
             if (!this.elementInReport(report, monthIndex, reportCase)) {
               report.monthsData[monthIndex].data.push(reportCase);
