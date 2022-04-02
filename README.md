@@ -49,8 +49,6 @@ Run `ng build` to build the project for production deployment. The build artifac
 - Change `emailVerificationDate` to indicate it is sending date (not verification) & edit emulator users
 - Use Firestore instead of dummy data - dashboard
 - Use Firestore instead of dummy data - charts
-- Use Firestore instead of dummy data - reports
+- Use Firestore instead of dummy data - reports:
   - Remove `console.log` in `reports.service`
-  - Report for last 12 months instead of calendar year
   - Replace paginator with years selector
-- Verify if user details do not have nested collection
