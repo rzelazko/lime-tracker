@@ -57,6 +57,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ErrorModalComponent } from './shared/error-modal/error-modal.component';
 import { HumanizePipe } from './shared/pipes/humanize.pipe';
 import { MomentPipe } from './shared/pipes/moment.pipe';
+import { StartOfPipe } from './shared/pipes/start-of.pipe';
+import { EndOfPipe } from './shared/pipes/end-of.pipe';
 
 let resolvePersistenceEnabled: (enabled: boolean) => void;
 
@@ -67,8 +69,10 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
 @NgModule({
   declarations: [
     // pipes
+    EndOfPipe,
     HumanizePipe,
     MomentPipe,
+    StartOfPipe,
 
     // components
     AppComponent,

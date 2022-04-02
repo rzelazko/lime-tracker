@@ -4,15 +4,8 @@ import { Medicament } from 'src/app/shared/models/medicament.model';
 import { Seizure } from 'src/app/shared/models/seizure.model';
 
 export interface Report {
-  dateStart: Moment;
-  dateEnd: Moment;
-  subReports: SubReport[];
-};
-
-export interface SubReport {
-  dateStart: Moment;
-  dateEnd: Moment;
-  cases: ReportCase[];
+  year: number;
+  monthsData: ReportCase[][];
 };
 
 export interface ReportCase {

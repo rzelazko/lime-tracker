@@ -49,7 +49,7 @@ export class SeizuresService  extends CrudService<Seizure> {
     );
   }
 
-  private convertDurations(data: Seizure[]) {
+  convertDurations(data: Seizure[]) {
     return data.map((seizure) => this.convertDuration(seizure));
   }
 
