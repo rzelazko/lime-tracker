@@ -27,7 +27,7 @@ export class UsersService {
 
   getUserDetails(user: User) {
     return this.firestoreService
-      .get<Partial<UserData>>(`users/${user.uid}`)
+      .get<UserData>(`users/${user.uid}`)
       .pipe(map((result) => ({ ...result, email: user.email } as UserData)));
   }
 
