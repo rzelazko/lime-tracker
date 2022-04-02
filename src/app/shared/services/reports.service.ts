@@ -16,22 +16,24 @@ export class ReportsService {
     private seizuresService: SeizuresService
   ) {}
 
-  getReports(year?: number): Observable<Report> {
+  getReports(): Observable<Report> {
+    const lastReportDay = moment();
     const report: Report = {
-      year: year || moment().year(),
+      dateStart: moment(lastReportDay),
+      dateEnd: moment(lastReportDay).subtract(1, 'year'),
       monthsData: [
-        [], // Jan
-        [], // Feb
-        [], // Mar
-        [], // Apr
-        [], // May
-        [], // Jun
-        [], // Jul
-        [], // Aug
-        [], // Sep
-        [], // Oct
-        [], // Nov
-        [], // Dec
+        { month: moment(lastReportDay), data: [] }, // i = 0, current month
+        { month: moment(lastReportDay).subtract(1, 'month'), data: [] }, // i = 1, previous month
+        { month: moment(lastReportDay).subtract(2, 'month'), data: [] }, // i = 2, current month - 2
+        { month: moment(lastReportDay).subtract(3, 'month'), data: [] }, // i = 3, current month - 3
+        { month: moment(lastReportDay).subtract(4, 'month'), data: [] }, // i = 4, current month - 4
+        { month: moment(lastReportDay).subtract(5, 'month'), data: [] }, // i = 5, current month - 5
+        { month: moment(lastReportDay).subtract(6, 'month'), data: [] }, // i = 6, current month - 6
+        { month: moment(lastReportDay).subtract(7, 'month'), data: [] }, // i = 7, current month - 7
+        { month: moment(lastReportDay).subtract(8, 'month'), data: [] }, // i = 8, current month - 8
+        { month: moment(lastReportDay).subtract(9, 'month'), data: [] }, // i = 9, current month - 9
+        { month: moment(lastReportDay).subtract(10, 'month'), data: [] }, // i = 10, current month - 10
+        { month: moment(lastReportDay).subtract(11, 'month'), data: [] }, // i = 11, current month - 11
       ],
     };
 
@@ -56,29 +58,32 @@ export class ReportsService {
       map((reportCases) => {
         for (const reportCase of reportCases) {
           const caseDate = reportCaseDate(reportCase);
+          const monthIndex = (moment().month() - caseDate.month()) % 12;
 
-          if (!this.elementInReport(report, caseDate.month(), reportCase)) {
-            report.monthsData[caseDate.month()].push(reportCase);
+          if (!this.elementInReport(report, monthIndex, reportCase)) {
+            report.monthsData[monthIndex].data.push(reportCase);
           }
         }
 
         return report;
       }),
+      tap((report) => console.log(report)), // TODO remove me
       map((report) => ({
-        year: report.year,
-        monthsData: report.monthsData.map((monthData) =>
-          monthData.sort(
+        dateStart: report.dateStart,
+        dateEnd: report.dateEnd,
+        monthsData: report.monthsData.map((monthData) => ({
+          month: monthData.month,
+          data: monthData.data.sort(
             (a: ReportCase, b: ReportCase) =>
               reportCaseDate(b).valueOf() - reportCaseDate(a).valueOf()
-          )
-        ),
-      })),
-      tap((report) => console.log(report)) // TODO remove me
+          ),
+        })),
+      }))
     );
   }
 
   private elementInReport(report: Report, month: number, element: ReportCase) {
-    return report.monthsData[month].some(
+    return report.monthsData[month].data.some(
       (data) =>
         (data.medicament && element.medicament && data.medicament.id === element.medicament.id) ||
         (data.event && element.event && data.event.id === element.event.id) ||

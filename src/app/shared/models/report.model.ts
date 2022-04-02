@@ -4,8 +4,14 @@ import { Medicament } from 'src/app/shared/models/medicament.model';
 import { Seizure } from 'src/app/shared/models/seizure.model';
 
 export interface Report {
-  year: number;
-  monthsData: ReportCase[][];
+  dateStart: Moment;
+  dateEnd: Moment;
+  monthsData: MonthsData[];
+}
+
+export interface MonthsData {
+  month: Moment;
+  data: ReportCase[];
 }
 
 export interface ReportCase {

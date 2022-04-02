@@ -3,7 +3,7 @@
     <h1>
       Reports
       <span *ngIf="report">
-        from {{ report.year | startOf | moment: "L" }} to {{ report.year | endOf | moment: "L" }}
+        from {{ report.dateStart | startOf | moment: "L" }} until {{ report.dateEnd | endOf | moment: "L" }}
       </span>
     </h1>
   </mat-toolbar>
@@ -12,14 +12,13 @@
     <p *ngIf="!report">No reports found!</p>
 
     <mat-list *ngIf="report">
-      <ng-container *ngFor="let monthData of report.monthsData.slice().reverse(); index as reverseMonth">
-        <ng-container *ngIf="monthData.length">
+      <ng-container *ngFor="let monthData of report.monthsData; index as monthIndex">
         <div mat-subheader>
-          {{ report.year | startOf: 11 - reverseMonth | moment: "LL" }} -
-          {{ report.year | endOf: 11 - reverseMonth | moment: "LL" }}
+          {{ monthData.month | startOf | moment: "LL" }} -
+          {{ monthData.month | endOf | moment: "LL" }}
         </div>
 
-        <mat-list-item *ngFor="let case of monthData">
+        <mat-list-item *ngFor="let case of monthData.data">
           <mat-icon *ngIf="case.event" mat-list-icon>event</mat-icon>
           <div *ngIf="case.event" mat-line>{{ case.event.name }}</div>
           <div *ngIf="case.event" mat-line class="mat-line-secondary">
@@ -47,9 +46,12 @@
             {{ case.medicament.startDate | moment: "LL" }}
           </div>
         </mat-list-item>
+        <mat-list-item *ngIf="!monthData.data.length">
+          <mat-icon mat-list-icon>info_outline</mat-icon>
+          <div mat-line class="mat-line-secondary">No data</div>
+        </mat-list-item>
 
         <mat-divider></mat-divider>
-      </ng-container>
       </ng-container>
     </mat-list>
   </main>
