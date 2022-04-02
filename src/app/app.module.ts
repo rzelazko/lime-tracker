@@ -20,7 +20,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
-import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -55,10 +54,10 @@ import { SeizuresFormComponent } from './epilepsy/pages/seizures/seizures-form/s
 import { SeizuresComponent } from './epilepsy/pages/seizures/seizures.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ErrorModalComponent } from './shared/error-modal/error-modal.component';
+import { EndOfPipe } from './shared/pipes/end-of.pipe';
 import { HumanizePipe } from './shared/pipes/humanize.pipe';
 import { MomentPipe } from './shared/pipes/moment.pipe';
 import { StartOfPipe } from './shared/pipes/start-of.pipe';
-import { EndOfPipe } from './shared/pipes/end-of.pipe';
 
 let resolvePersistenceEnabled: (enabled: boolean) => void;
 
@@ -145,7 +144,6 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     MatInputModule,
     MatListModule,
     MatMomentDateModule,
-    MatPaginatorModule,
     MatProgressSpinnerModule,
     MatSelectModule,
     MatSidenavModule,

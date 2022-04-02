@@ -52,8 +52,5 @@ Run `ng build` to build the project for production deployment. The build artifac
 - Use Firestore instead of dummy data - reports
   - Remove `console.log` in `reports.service`
   - Report for last 12 months instead of calendar year
-  - Remove paginator from `app.module`
   - Replace paginator with years selector
-  - Sort each date range with TS [sample](https://www.cloudhadoop.com/2018/09/typescript-array-sort-method-with.html)
-  - Check if we still need `isSeizure`, etc
 - Verify if user details do not have nested collection
