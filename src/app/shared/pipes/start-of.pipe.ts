@@ -8,9 +8,9 @@ import { Moment } from 'moment';
 export class StartOfPipe implements PipeTransform {
   transform(year: number, month?: number): Moment {
     let date = moment().year(year);
-    if (month) {
+    if (month || month === 0) {
       date.month(month);
     }
-    return date.startOf(month ? 'month' : 'year');
+    return date.startOf(month || month === 0 ? 'month' : 'year');
   }
 }
