@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
-import { Moment } from 'moment';
 import { map, merge, Observable, tap } from 'rxjs';
-import { Report, ReportCase } from '../models/report.model';
+import { Report, ReportCase, reportCaseDate } from '../models/report.model';
 import { EventsService } from './events.service';
 import { MedicamentsService } from './medicaments.service';
 import { SeizuresService } from './seizures.service';
@@ -56,16 +55,7 @@ export class ReportsService {
     ).pipe(
       map((reportCases) => {
         for (const reportCase of reportCases) {
-          let caseDate: Moment;
-          if (reportCase.medicament) {
-            caseDate = reportCase.medicament.startDate;
-          } else if (reportCase.event) {
-            caseDate = reportCase.event.occurred;
-          } else if (reportCase.seizure) {
-            caseDate = reportCase.seizure.occurred;
-          } else {
-            throw 'Unsupported report case type';
-          }
+          const caseDate = reportCaseDate(reportCase);
 
           if (!this.elementInReport(report, caseDate.month(), reportCase)) {
             report.monthsData[caseDate.month()].push(reportCase);
@@ -74,6 +64,15 @@ export class ReportsService {
 
         return report;
       }),
+      map((report) => ({
+        year: report.year,
+        monthsData: report.monthsData.map((monthData) =>
+          monthData.sort(
+            (a: ReportCase, b: ReportCase) =>
+              reportCaseDate(b).valueOf() - reportCaseDate(a).valueOf()
+          )
+        ),
+      })),
       tap((report) => console.log(report)) // TODO remove me
     );
   }

@@ -12,11 +12,11 @@
     <p *ngIf="!report">No reports found!</p>
 
     <mat-list *ngIf="report">
-      <ng-container *ngFor="let monthData of report.monthsData; index as month">
+      <ng-container *ngFor="let monthData of report.monthsData.slice().reverse(); index as reverseMonth">
         <ng-container *ngIf="monthData.length">
         <div mat-subheader>
-          {{ report.year | startOf: month | moment: "LL" }} -
-          {{ report.year | endOf: month | moment: "LL" }}
+          {{ report.year | startOf: 11 - reverseMonth | moment: "LL" }} -
+          {{ report.year | endOf: 11 - reverseMonth | moment: "LL" }}
         </div>
 
         <mat-list-item *ngFor="let case of monthData">
