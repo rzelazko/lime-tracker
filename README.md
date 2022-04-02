@@ -49,4 +49,9 @@ Run `ng build` to build the project for production deployment. The build artifac
 - Change `emailVerificationDate` to indicate it is sending date (not verification) & edit emulator users
 - Use Firestore instead of dummy data - dashboard
 - Use Firestore instead of dummy data - charts
-- Use Firestore instead of dummy data - reports (remove paginator from module)
+- Use Firestore instead of dummy data - reports
+  - Remove paginator from `app.module`
+  - Replace paginator with years selector
+  - Sort each date range with TS [sample](https://www.cloudhadoop.com/2018/09/typescript-array-sort-method-with.html)
+  - Add all medicaments/events/seizures to valid date range
+- Verify if user details do not have nested collection
