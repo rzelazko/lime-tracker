@@ -58,7 +58,7 @@ export class ReportsService {
       map((reportCases) => {
         for (const reportCase of reportCases) {
           const caseDate = reportCaseDate(reportCase);
-          const monthIndex = (moment().month() - caseDate.month()) % 12;
+          const monthIndex = (moment().month() + 12 - caseDate.month()) % 12;
 
           if (!this.elementInReport(report, monthIndex, reportCase)) {
             report.monthsData[monthIndex].data.push(reportCase);
