@@ -6,15 +6,9 @@
   <section class="actions" fxLayout="column" fxLayoutAlign="center stretch">
     <mat-card>
       <mat-card-content fxLayout="row wrap" fxLayoutAlign="space-around center">
-        <a mat-raised-button color="warn" routerLink="/epilepsy/seizures/add">
-          Attack!
-        </a>
-        <a mat-raised-button color="primary" routerLink="/epilepsy/medicaments/add">
-          Medicament
-        </a>
-        <a mat-raised-button color="basic" routerLink="/epilepsy/events/add">
-          Event
-        </a>
+        <a mat-raised-button color="warn" routerLink="/epilepsy/seizures/add"> Attack! </a>
+        <a mat-raised-button color="primary" routerLink="/epilepsy/medicaments/add"> Medicament </a>
+        <a mat-raised-button color="basic" routerLink="/epilepsy/events/add"> Event </a>
       </mat-card-content>
     </mat-card>
   </section>
@@ -26,27 +20,43 @@
     fxLayoutGap="1em"
     fxLayoutAlign="center stretch"
   >
-    <mat-card class="last-seizure">
+    <mat-card
+      class="last-seizure"
+      *ngIf="lastSeizure$ | async as lastSeizure; else loadingSeizures"
+    >
       <mat-card-title-group>
         <mat-card-title>Last seizure</mat-card-title>
-        <mat-card-subtitle *ngIf="!lastSeizure">unknown</mat-card-subtitle>
-        <mat-card-subtitle *ngIf="lastSeizure">{{ lastSeizure | moment:'LL' }}</mat-card-subtitle>
+        <mat-card-subtitle *ngIf="lastSeizure.length === 1">{{
+          lastSeizure[0].occurred | moment: "LL"
+        }}</mat-card-subtitle>
       </mat-card-title-group>
       <mat-card-content>
         <h3>Time since last seizure:</h3>
-        <p *ngIf="!timeSinceLastSeizure">unknown</p>
-        <p class="mat-display-3" *ngIf="timeSinceLastSeizure">
-          {{timeSinceLastSeizure | humanize }}
+        <p class="mat-display-3" *ngIf="lastSeizure.length !== 1">unknown</p>
+        <p class="mat-display-3" *ngIf="lastSeizure.length === 1">
+          {{ lastSeizure[0].occurred | timeSince | humanize }}
         </p>
       </mat-card-content>
     </mat-card>
+
+    <ng-template #loadingSeizures>
+      <mat-card class="last-seizure">
+        <mat-card-title-group>
+          <mat-card-title>Last seizure</mat-card-title>
+        </mat-card-title-group>
+        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+      </mat-card>
+    </ng-template>
 
     <mat-card class="medicaments">
       <mat-card-title-group>
         <mat-card-title>Current medicaments</mat-card-title>
       </mat-card-title-group>
       <mat-card-content>
-        <mat-list fxLayout="row wrap">
+        <mat-list
+          fxLayout="row wrap"
+          *ngIf="medicaments$ | async as medicaments; else loadingMedicament"
+        >
           <mat-list-item *ngFor="let medicament of medicaments">
             <mat-icon mat-list-icon>medication</mat-icon>
             <div mat-line>{{ medicament.name }}</div>
@@ -65,7 +75,16 @@
               {{ medicament.doses.evening }}
             </div>
           </mat-list-item>
+
+          <mat-list-item *ngIf="!medicaments.length">
+            <mat-icon mat-list-icon>info_outline</mat-icon>
+            <div mat-line>No data</div>
+          </mat-list-item>
         </mat-list>
+
+        <ng-template #loadingMedicament>
+          <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+        </ng-template>
       </mat-card-content>
     </mat-card>
   </section>

@@ -58,6 +58,7 @@ import { EndOfPipe } from './shared/pipes/end-of.pipe';
 import { HumanizePipe } from './shared/pipes/humanize.pipe';
 import { MomentPipe } from './shared/pipes/moment.pipe';
 import { StartOfPipe } from './shared/pipes/start-of.pipe';
+import { TimeSincePipe } from './shared/pipes/time-since.pipe';
 
 let resolvePersistenceEnabled: (enabled: boolean) => void;
 
@@ -96,6 +97,7 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     PageNotFoundComponent,
     RegisterComponent,
     VerifyEmailComponent,
+    TimeSincePipe,
   ],
   imports: [
     // angular

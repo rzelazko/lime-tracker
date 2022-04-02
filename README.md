@@ -51,6 +51,6 @@ Run `ng build` to build the project for production deployment. The build artifac
 - Setup custom domain for hosting
 - Create valid [firestore.rules](firestore.rules)
 - Change `emailVerificationDate` to indicate it is sending date (not verification) & edit emulator users
-- Use Firestore instead of dummy data - dashboard
 - Use Firestore instead of dummy data - charts
+- Use some kind of flag to notify if medicament needs to be archived (see TODO in `dashboard.component.html`)
 
