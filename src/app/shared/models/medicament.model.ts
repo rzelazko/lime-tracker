@@ -8,7 +8,8 @@ export interface Medicament extends Identifiable {
     noon: number;
     evening: number;
   },
-  startDate: Moment
+  startDate: Moment,
+  archived: boolean
 }
 
 export const isMedicament = (variable: any): variable is Medicament =>

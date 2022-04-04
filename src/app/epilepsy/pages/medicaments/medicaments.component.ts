@@ -16,7 +16,7 @@ export class MedicamentsComponent implements OnInit, OnDestroy {
   dataSource = new MatTableDataSource<Event | Medicament | Seizure>();
   loading = false;
   hasMore = false;
-  public columns = ['name', 'dose', 'startDate', 'actions'];
+  public columns = ['name', 'dose', 'startDate', 'archived', 'actions'];
   private dataSubscription?: Subscription;
   private deleteSubscription?: Subscription;
 

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { formFieldHasError } from 'src/app/shared/services/form-field-has-error';
 import { AuthService } from '../../../shared/services/auth.service';
 
 @Component({
@@ -32,7 +33,7 @@ export class LoginComponent implements OnInit {
   }
 
   hasError(path: string, errorCode: string) {
-    return this.loginForm.get(path)?.hasError(errorCode);
+    return formFieldHasError(this.loginForm, path, errorCode);
   }
 
   private handleError(error: Error): void {

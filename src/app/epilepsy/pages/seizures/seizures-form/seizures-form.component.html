@@ -27,10 +27,10 @@
       />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
-      <mat-error *ngIf="hasError('occurredDateInput', 'required')">
+      <mat-error *ngIf="hasError('occurredDate', 'required')">
         Occurred date is required
       </mat-error>
-      <mat-error *ngIf="!hasError('occurredDateInput', 'required')">
+      <mat-error *ngIf="hasError('occurredDate', '!required')">
         Occurred date is invalid
       </mat-error>
     </mat-form-field>
@@ -38,10 +38,10 @@
     <mat-form-field appearance="fill">
       <mat-label>Occurred time</mat-label>
       <input type="time" formControlName="occurredTime" id="occurredTime" matInput />
-      <mat-error *ngIf="hasError('occurredTimeInput', 'required')">
+      <mat-error *ngIf="hasError('occurredTime', 'required')">
         Occurred time is required
       </mat-error>
-      <mat-error *ngIf="!hasError('occurredTimeInput', 'required')">
+      <mat-error *ngIf="hasError('occurredTime', '!required')">
         Occurred time is invalid
       </mat-error>
     </mat-form-field>
@@ -56,10 +56,10 @@
         min="1"
         matInput
       />
-      <mat-error *ngIf="hasError('durationInput', 'required')">
+      <mat-error *ngIf="hasError('duration', 'required')">
         Seizure duration is required
       </mat-error>
-      <mat-error *ngIf="!hasError('durationInput', 'required')">
+      <mat-error *ngIf="hasError('duration', '!required')">
         Seizure duration is invalid
       </mat-error>
     </mat-form-field>
@@ -71,8 +71,8 @@
           {{ type }}
         </mat-option>
       </mat-select>
-      <mat-error *ngIf="hasError('typeInput', 'required')">Seizure type is required</mat-error>
-      <mat-error *ngIf="!hasError('typeInput', 'required')">Seizure type is invalid</mat-error>
+      <mat-error *ngIf="hasError('type', 'required')">Seizure type is required</mat-error>
+      <mat-error *ngIf="hasError('type', '!required')">Seizure type is invalid</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -83,10 +83,10 @@
           {{ trigger }}
         </mat-option>
       </mat-select>
-      <mat-error *ngIf="hasError('triggerInput', 'required')">
+      <mat-error *ngIf="hasError('trigger', 'required')">
         Seizure trigger is required
       </mat-error>
-      <mat-error *ngIf="!hasError('triggerInput', 'required')">
+      <mat-error *ngIf="hasError('trigger', '!required')">
         Seizure trigger is invalid
       </mat-error>
     </mat-form-field>

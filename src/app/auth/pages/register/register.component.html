@@ -46,7 +46,7 @@
           <mat-form-field>
             <input type="text" id="name" formControlName="name" placeholder="Your name" matInput />
             <mat-error *ngIf="hasError('name', 'required')">Your name is required</mat-error>
-            <mat-error *ngIf="!hasError('name', 'required')">Your name is invalid</mat-error>
+            <mat-error *ngIf="hasError('name', '!required')">Your name is invalid</mat-error>
           </mat-form-field>
 
           <mat-form-field>
@@ -58,7 +58,7 @@
               matInput
             />
             <mat-error *ngIf="hasError('email', 'required')">Email is required</mat-error>
-            <mat-error *ngIf="!hasError('email', 'required')">Email is invalid</mat-error>
+            <mat-error *ngIf="hasError('email', '!required')">Email is invalid</mat-error>
           </mat-form-field>
 
           <mat-form-field>
@@ -83,7 +83,7 @@
             <mat-error *ngIf="hasError('confirmPassword', 'required')">
               Confirm password is required
             </mat-error>
-            <mat-error *ngIf="!hasError('confirmPassword', 'required')">
+            <mat-error *ngIf="hasError('confirmPassword', '!required')">
               Password and confirm password must be the same
             </mat-error>
           </mat-form-field>

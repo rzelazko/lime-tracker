@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import { Subscription, take, Observable } from 'rxjs';
 import { Seizure } from 'src/app/shared/models/seizure.model';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { formFieldHasError } from 'src/app/shared/services/form-field-has-error';
 import { SeizuresService } from 'src/app/shared/services/seizures.service';
 
 @Component({
@@ -82,6 +83,6 @@ export class SeizuresFormComponent implements OnInit, OnDestroy {
   }
 
   hasError(path: string, errorCode: string) {
-    return this.form.get(path)?.hasError(errorCode);
+    return formFieldHasError(this.form, path, errorCode);
   }
 }

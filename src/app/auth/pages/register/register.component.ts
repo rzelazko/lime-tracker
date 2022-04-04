@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { formFieldHasError } from 'src/app/shared/services/form-field-has-error';
 import { CompareValidator } from 'src/app/shared/validators/compare-validator';
 import { AuthService } from '../../../shared/services/auth.service';
 
@@ -40,7 +41,7 @@ export class RegisterComponent implements OnInit {
   }
 
   hasError(path: string, errorCode: string) {
-    return this.registerForm.get(path)?.hasError(errorCode);
+    return formFieldHasError(this.registerForm, path, errorCode);
   }
 
   private handleError(error: Error): void {

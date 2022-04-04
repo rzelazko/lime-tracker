@@ -18,8 +18,8 @@
     <mat-form-field appearance="fill">
       <mat-label>Medicament name</mat-label>
       <input type="text" formControlName="name" id="name" placeholder="Medicamentum" matInput />
-      <mat-error *ngIf="hasError('nameInput', 'required')">Medicament name is required</mat-error>
-      <mat-error *ngIf="!hasError('nameInput', 'required')">Medicament name is invalid</mat-error>
+      <mat-error *ngIf="hasError('name', 'required')">Medicament name is required</mat-error>
+      <mat-error *ngIf="hasError('name', '!required')">Medicament name is invalid</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -32,10 +32,10 @@
         min="0"
         matInput
       />
-      <mat-error *ngIf="hasError('doseMorningInput', 'required')">
+      <mat-error *ngIf="hasError('doseMorning', 'required')">
         Morning dose is required
       </mat-error>
-      <mat-error *ngIf="!hasError('doseMorningInput', 'required')">
+      <mat-error *ngIf="hasError('doseMorning', '!required')">
         Morning dose is invalid
       </mat-error>
     </mat-form-field>
@@ -50,8 +50,8 @@
         min="0"
         matInput
       />
-      <mat-error *ngIf="hasError('doseNoonInput', 'required')">Noon dose is required</mat-error>
-      <mat-error *ngIf="!hasError('doseNoonInput', 'required')">Noon dose is invalid</mat-error>
+      <mat-error *ngIf="hasError('doseNoon', 'required')">Noon dose is required</mat-error>
+      <mat-error *ngIf="hasError('doseNoon', '!required')">Noon dose is invalid</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -64,10 +64,10 @@
         min="0"
         matInput
       />
-      <mat-error *ngIf="hasError('doseEveningInput', 'required')">
+      <mat-error *ngIf="hasError('doseEvening', 'required')">
         Evening dose is required
       </mat-error>
-      <mat-error *ngIf="!hasError('doseEveningInput', 'required')">
+      <mat-error *ngIf="hasError('doseEvening', '!required')">
         Evening dose is invalid
       </mat-error>
     </mat-form-field>
@@ -78,9 +78,20 @@
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
 
-      <mat-error *ngIf="hasError('startDateInput', 'required')">Start date is required</mat-error>
-      <mat-error *ngIf="!hasError('startDateInput', 'required')">Start date is invalid</mat-error>
+      <mat-error *ngIf="hasError('startDate', 'required')">Start date is required</mat-error>
+      <mat-error *ngIf="hasError('startDate', '!required')">Start date is invalid</mat-error>
     </mat-form-field>
+
+      <mat-checkbox
+        formControlName="archived"
+        id="archived"
+        matInput
+      >
+      Archived
+    </mat-checkbox>
+      <mat-error *ngIf="hasError('archived', 'required')">Archived is required</mat-error>
+      <mat-error *ngIf="hasError('archived', '!required')">Archived valule is invalid</mat-error>
+
 
     <div>
       <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid">

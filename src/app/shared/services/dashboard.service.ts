@@ -1,8 +1,7 @@
-import { SeizuresService } from 'src/app/shared/services/seizures.service';
-import { Medicament } from './../models/medicament.model';
 import { Injectable } from '@angular/core';
 import { limit, orderBy, where } from 'firebase/firestore';
-import { map, tap } from 'rxjs';
+import { map } from 'rxjs';
+import { SeizuresService } from 'src/app/shared/services/seizures.service';
 import { MedicamentsService } from './medicaments.service';
 
 @Injectable({
@@ -15,27 +14,15 @@ export class DashboardService {
   ) {}
 
   currentMedicaments() {
-    return this.medicamentsService.listCollection([orderBy('startDate', 'desc')]).pipe(
-      map((medicaments) => {
-        const uniqueMedicamentsOnly: Medicament[] = [];
-        for (const medicament of medicaments) {
-          const newerInMedicamentList = uniqueMedicamentsOnly.some(
-            (uniqueMedicament) => uniqueMedicament.name === medicament.name
-          );
-          if (!newerInMedicamentList) {
-            // TODO use some kind of flag instead
-            uniqueMedicamentsOnly.push(medicament);
-          }
-        }
-
-        return uniqueMedicamentsOnly;
-      })
-    );
+    return this.medicamentsService.listCollection([
+      orderBy('startDate', 'desc'),
+      where('archived', '==', false),
+    ]);
   }
 
-  lastSeizure() {
-    return this.seizuresService.listCollection([orderBy('occurred', 'desc'), limit(1)]).pipe(
-      map((seizures) => this.seizuresService.convertDurations(seizures))
-    );
+  lastSeizures() {
+    return this.seizuresService
+      .listCollection([orderBy('occurred', 'desc'), limit(1)])
+      .pipe(map((seizures) => this.seizuresService.convertDurations(seizures)));
   }
 }

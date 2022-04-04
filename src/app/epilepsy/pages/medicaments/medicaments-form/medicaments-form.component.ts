@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import { Observable, Subscription, take } from 'rxjs';
 import { Medicament } from 'src/app/shared/models/medicament.model';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { formFieldHasError } from 'src/app/shared/services/form-field-has-error';
 import { MedicamentsService } from 'src/app/shared/services/medicaments.service';
 
 @Component({
@@ -31,6 +32,7 @@ export class MedicamentsFormComponent implements OnInit {
       doseNoon: ['', [Validators.required, Validators.min(0)]],
       doseEvening: ['', [Validators.required, Validators.min(0)]],
       startDate: ['', [Validators.required]],
+      archived: [false]
     });
   }
 
@@ -47,6 +49,7 @@ export class MedicamentsFormComponent implements OnInit {
             doseNoon: result.doses.noon,
             doseEvening: result.doses.evening,
             startDate: result.startDate.toDate(),
+            archived: result.archived
           });
         });
     }
@@ -67,6 +70,7 @@ export class MedicamentsFormComponent implements OnInit {
         evening: +this.form.value.doseEvening,
       },
       startDate: moment(this.form.value.startDate),
+      archived: this.form.value.archived
     };
 
     let submitObservable$: Observable<any>;
@@ -83,6 +87,6 @@ export class MedicamentsFormComponent implements OnInit {
   }
 
   hasError(path: string, errorCode: string) {
-    return this.form.get(path)?.hasError(errorCode);
+    return formFieldHasError(this.form, path, errorCode);
   }
 }

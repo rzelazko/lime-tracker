@@ -47,7 +47,7 @@
               matInput
             />
             <mat-error *ngIf="hasError('email', 'required')">Email is required</mat-error>
-            <mat-error *ngIf="!hasError('email', 'required')">Email is invalid</mat-error>
+            <mat-error *ngIf="hasError('email', '!required')">Email is invalid</mat-error>
           </mat-form-field>
 
           <mat-form-field>

@@ -12,12 +12,12 @@ import { DashboardService } from './../../../shared/services/dashboard.service';
 })
 export class DashboardComponent implements OnInit {
   medicaments$: Observable<Medicament[]>;
-  lastSeizure$: Observable<Seizure[]>;
+  lastSeizures$: Observable<Seizure[]>;
   timeSinceLastSeizure?: Duration;
 
   constructor(dashboardService: DashboardService) {
     this.medicaments$ = dashboardService.currentMedicaments();
-    this.lastSeizure$ = dashboardService.lastSeizure();
+    this.lastSeizures$ = dashboardService.lastSeizures();
   }
 
   ngOnInit(): void {}

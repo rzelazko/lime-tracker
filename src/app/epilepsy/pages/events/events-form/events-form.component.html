@@ -24,8 +24,8 @@
         placeholder="Important event name"
         matInput
       />
-      <mat-error *ngIf="hasError('nameInput', 'required')">Event name is required</mat-error>
-      <mat-error *ngIf="!hasError('nameInput', 'required')">Event name is invalid</mat-error>
+      <mat-error *ngIf="hasError('name', 'required')">Event name is required</mat-error>
+      <mat-error *ngIf="hasError('name', '!required')">Event name is invalid</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -34,10 +34,10 @@
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
 
-      <mat-error *ngIf="hasError('occurredInput', 'required')">
+      <mat-error *ngIf="hasError('occurred', 'required')">
         Event occurred is required
       </mat-error>
-      <mat-error *ngIf="!hasError('occurredInput', 'required')">
+      <mat-error *ngIf="hasError('occurred', '!required')">
         Event occurred is invalid
       </mat-error>
     </mat-form-field>

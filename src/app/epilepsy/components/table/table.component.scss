@@ -1,3 +1,7 @@
+@use "@angular/material" as mat;
+@import "~@angular/flex-layout/mq";
+@import "src/app/app-theme-variables";
+
 table {
   width: 100%;
   margin-bottom: 2em;
@@ -5,6 +9,14 @@ table {
 
 td.actions {
   white-space: nowrap;
+}
+
+td.disabled {
+  color: mat.get-color-from-palette($app-foreground, "secondary-text");
+}
+
+td.lineThrough {
+  text-decoration: line-through;
 }
 
 section.add {

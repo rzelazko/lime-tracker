@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import { Observable, Subscription, take } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { EventsService } from 'src/app/shared/services/events.service';
+import { formFieldHasError } from 'src/app/shared/services/form-field-has-error';
 import { Event } from '../../../../shared/models/event.model';
 
 @Component({
@@ -72,6 +73,6 @@ export class EventsFormComponent implements OnInit {
   }
 
   hasError(path: string, errorCode: string) {
-    return this.form.get(path)?.hasError(errorCode);
+    return formFieldHasError(this.form, path, errorCode);
   }
 }
