@@ -43,12 +43,9 @@ export class MedicamentsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.deleteSubscription) {
-      this.deleteSubscription.unsubscribe();
-    }
-    if (this.dataSubscription) {
-      this.dataSubscription.unsubscribe();
-    }
+    this.medicamentsService.resetConcatenated();
+    this.deleteSubscription?.unsubscribe();
+    this.dataSubscription?.unsubscribe();
   }
 
   onDelete(object: Event | Medicament | Seizure) {

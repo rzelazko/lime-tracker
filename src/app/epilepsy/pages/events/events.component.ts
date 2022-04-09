@@ -43,12 +43,9 @@ export class EventsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.deleteSubscription) {
-      this.deleteSubscription.unsubscribe();
-    }
-    if (this.dataSubscription) {
-      this.dataSubscription.unsubscribe();
-    }
+    this.eventsService.resetConcatenated();
+    this.deleteSubscription?.unsubscribe();
+    this.dataSubscription?.unsubscribe();
   }
 
   onDelete(object: Event | Medicament | Seizure) {
