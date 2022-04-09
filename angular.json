@@ -36,7 +36,10 @@
             ],
             "scripts": [
               "node_modules/apexcharts/dist/apexcharts.min.js"
-            ]
+            ],
+            "allowedCommonJsDependencies": [
+              "moment-range"
+           ]
           },
           "configurations": {
             "production": {
