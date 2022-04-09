@@ -50,5 +50,3 @@ Run `ng build` to build the project for production deployment. The build artifac
 - I18N (rememeber: default seizure types)
 - Setup custom domain for hosting
 - Create valid [firestore.rules](firestore.rules)
-- Medicaments instead of `archived` use `dateEnd` field
-  - Update charts
