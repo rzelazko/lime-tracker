@@ -1,4 +1,3 @@
-import { Timestamp } from "firebase/firestore";
 import { Moment } from "moment";
 
 export interface UserData extends UserDetails {

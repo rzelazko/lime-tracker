@@ -38,6 +38,7 @@ Run `ng build` to build the project for production deployment. The build artifac
 :warning: Most important on the bottom
 
 - Add authentication persistance (via Firebase browser persistance)
+- Add schema validation to [firestore.rules](firestore.rules)
 - Add some Rodo, privacy policy, etc. on login & dashboard (add footer?)
 - Add user profile management
 - Reports pagination in URL, ex: `/epilepsy/reports/2021` - router link instead of tab `(click)`
@@ -49,4 +50,3 @@ Run `ng build` to build the project for production deployment. The build artifac
 - Favicon, app manifest, etc
 - I18N (rememeber: default seizure types)
 - Setup custom domain for hosting
-- Create valid [firestore.rules](firestore.rules)
