@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { ErrorModalComponent } from 'src/app/shared/error-modal/error-modal.component';
-import { AuthService } from 'src/app/shared/services/auth.service';
-import { EventsService } from './../../../shared/services/events.service';
-import { MedicamentsService } from './../../../shared/services/medicaments.service';
-import { SeizuresService } from './../../../shared/services/seizures.service';
+import { ErrorModalComponent } from '../../../shared/error-modal/error-modal.component';
+import { AuthService } from '../../../shared/services/auth.service';
+import { EventsService } from '../../../shared/services/events.service';
+import { MedicamentsService } from '../../../shared/services/medicaments.service';
+import { SeizuresService } from '../../../shared/services/seizures.service';
 
 @Component({
   selector: 'app-logout',

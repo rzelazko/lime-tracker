@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { Event } from 'src/app/shared/models/event.model';
-import { Medicament } from 'src/app/shared/models/medicament.model';
-import { Seizure } from 'src/app/shared/models/seizure.model';
+import { Event } from '../../../shared/models/event.model';
+import { Medicament } from '../../../shared/models/medicament.model';
+import { Seizure } from '../../../shared/models/seizure.model';
 import { ConfirmDeleteDialogComponent } from '../confirm-delete-dialog/confirm-delete-dialog.component';
 
 @Component({

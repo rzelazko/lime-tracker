@@ -1,11 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Event } from 'src/app/shared/models/event.model';
-import { Medicament } from 'src/app/shared/models/medicament.model';
-import { Seizure } from 'src/app/shared/models/seizure.model';
-import { isEvent } from '../../../shared/models/event.model';
-import { isMedicament } from '../../../shared/models/medicament.model';
-import { isSeizure } from '../../../shared/models/seizure.model';
+import { Event, isEvent } from '../../../shared/models/event.model';
+import { isMedicament, Medicament } from '../../../shared/models/medicament.model';
+import { isSeizure, Seizure } from '../../../shared/models/seizure.model';
 
 @Component({
   selector: 'app-confirm-delete-dialog',

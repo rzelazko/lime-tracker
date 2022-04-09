@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
-import { Event } from 'src/app/shared/models/event.model';
-import { Medicament } from 'src/app/shared/models/medicament.model';
-import { Seizure } from 'src/app/shared/models/seizure.model';
+import { Event } from '../../../shared/models/event.model';
+import { Medicament } from '../../../shared/models/medicament.model';
+import { Seizure } from '../../../shared/models/seizure.model';
+import { MedicamentsService } from '../../../shared/services/medicaments.service';
 import { TableComponent } from '../../components/table/table.component';
-import { MedicamentsService } from './../../../shared/services/medicaments.service';
 
 @Component({
   selector: 'app-medicaments',

@@ -1,13 +1,11 @@
-import { Event } from 'src/app/shared/models/event.model';
 import { Injectable } from '@angular/core';
-import { CrudService } from './crud.service';
-import { PageData } from '../models/page-data.model';
-import { map } from 'rxjs';
+import { Event } from '../../shared/models/event.model';
 import { AuthService } from './auth.service';
+import { CrudService } from './crud.service';
 import { FirestoreService } from './firestore.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EventsService extends CrudService<Event> {
   constructor(authService: AuthService, firestoreService: FirestoreService) {

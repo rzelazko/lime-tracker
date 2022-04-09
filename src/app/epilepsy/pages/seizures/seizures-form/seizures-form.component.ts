@@ -1,12 +1,13 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
-import { Subscription, take, Observable } from 'rxjs';
-import { Seizure } from 'src/app/shared/models/seizure.model';
-import { AuthService } from 'src/app/shared/services/auth.service';
-import { formFieldHasError } from 'src/app/shared/services/form-field-has-error';
-import { SeizuresService } from 'src/app/shared/services/seizures.service';
+import { Observable, Subscription, take } from 'rxjs';
+import { Seizure } from '../../../../shared/models/seizure.model';
+import { AuthService } from '../../../../shared/services/auth.service';
+import { formFieldHasError } from '../../../../shared/services/form-field-has-error';
+import { SeizuresService } from '../../../../shared/services/seizures.service';
+import { DatesValidator } from '../../../../shared/validators/dates-validator';
 
 @Component({
   selector: 'app-seizures-form',
@@ -14,6 +15,8 @@ import { SeizuresService } from 'src/app/shared/services/seizures.service';
   styleUrls: ['./seizures-form.component.scss'],
 })
 export class SeizuresFormComponent implements OnInit, OnDestroy {
+  static readonly DATE_TIME_FORMAT = 'YYYY-MM-DDTHH:mm';
+  today = moment().format(SeizuresFormComponent.DATE_TIME_FORMAT);
   error?: string;
   form: FormGroup;
   id?: string;
@@ -27,8 +30,7 @@ export class SeizuresFormComponent implements OnInit, OnDestroy {
     private fb: FormBuilder
   ) {
     this.form = this.fb.group({
-      occurredDate: ['', [Validators.required]],
-      occurredTime: ['', [Validators.required]],
+      occurred: ['', [Validators.required, DatesValidator.inThePast()]],
       duration: ['', [Validators.required, Validators.min(1)]],
       seizureType: ['', [Validators.required]],
       seizureTrigger: [''],
@@ -43,8 +45,7 @@ export class SeizuresFormComponent implements OnInit, OnDestroy {
         .pipe(take(1))
         .subscribe((result) => {
           this.form.setValue({
-            occurredDate: result.occurred.toDate(),
-            occurredTime: result.occurred.format('hh:mm'),
+            occurred: result.occurred.format(SeizuresFormComponent.DATE_TIME_FORMAT),
             duration: result.duration.minutes(),
             seizureType: result.type,
             seizureTrigger: result.trigger,
@@ -61,9 +62,7 @@ export class SeizuresFormComponent implements OnInit, OnDestroy {
 
   onSubmit(): void {
     const formData: Partial<Seizure> = {
-      occurred: moment(this.form.value.occurredDate)
-        .hours(this.form.value.occurredTime.split(':')[0])
-        .minutes(this.form.value.occurredTime.split(':')[1]),
+      occurred: moment(this.form.value.occurred),
       duration: this.form.value.duration,
       type: this.form.value.seizureType,
       trigger: this.form.value.seizureTrigger || undefined,

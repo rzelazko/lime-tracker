@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { AuthService } from 'src/app/shared/services/auth.service';
+import { AuthService } from './shared/services/auth.service';
 
 @Component({
   selector: 'app-root',

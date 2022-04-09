@@ -1,13 +1,11 @@
-import { Medicament } from 'src/app/shared/models/medicament.model';
 import { Injectable } from '@angular/core';
-import { CrudService } from './crud.service';
-import { PageData } from '../models/page-data.model';
-import { map } from 'rxjs';
+import { Medicament } from '../../shared/models/medicament.model';
 import { AuthService } from './auth.service';
+import { CrudService } from './crud.service';
 import { FirestoreService } from './firestore.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MedicamentsService extends CrudService<Medicament> {
   constructor(authService: AuthService, firestoreService: FirestoreService) {

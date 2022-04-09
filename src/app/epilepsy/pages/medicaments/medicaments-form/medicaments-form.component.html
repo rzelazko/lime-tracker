@@ -32,12 +32,8 @@
         min="0"
         matInput
       />
-      <mat-error *ngIf="hasError('doseMorning', 'required')">
-        Morning dose is required
-      </mat-error>
-      <mat-error *ngIf="hasError('doseMorning', '!required')">
-        Morning dose is invalid
-      </mat-error>
+      <mat-error *ngIf="hasError('doseMorning', 'required')">Morning dose is required</mat-error>
+      <mat-error *ngIf="hasError('doseMorning', '!required')">Morning dose is invalid</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
@@ -64,34 +60,32 @@
         min="0"
         matInput
       />
-      <mat-error *ngIf="hasError('doseEvening', 'required')">
-        Evening dose is required
-      </mat-error>
-      <mat-error *ngIf="hasError('doseEvening', '!required')">
-        Evening dose is invalid
-      </mat-error>
+      <mat-error *ngIf="hasError('doseEvening', 'required')">Evening dose is required</mat-error>
+      <mat-error *ngIf="hasError('doseEvening', '!required')">Evening dose is invalid</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Start date</mat-label>
-      <input formControlName="startDate" id="startDate" [matDatepicker]="picker" matInput />
+      <input
+        formControlName="startDate"
+        id="startDate"
+        [matDatepicker]="picker"
+        [max]="today.toDate()"
+        matInput
+      />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
 
       <mat-error *ngIf="hasError('startDate', 'required')">Start date is required</mat-error>
-      <mat-error *ngIf="hasError('startDate', '!required')">Start date is invalid</mat-error>
+      <mat-error *ngIf="hasError('startDate', 'invalid')">Start date is invalid</mat-error>
+      <mat-error *ngIf="hasError('startDate', 'future')">
+        Start date cannot be in the future
+      </mat-error>
     </mat-form-field>
 
-      <mat-checkbox
-        formControlName="archived"
-        id="archived"
-        matInput
-      >
-      Archived
-    </mat-checkbox>
-      <mat-error *ngIf="hasError('archived', 'required')">Archived is required</mat-error>
-      <mat-error *ngIf="hasError('archived', '!required')">Archived valule is invalid</mat-error>
-
+    <mat-checkbox formControlName="archived" id="archived" matInput> Archived </mat-checkbox>
+    <mat-error *ngIf="hasError('archived', 'required')">Archived is required</mat-error>
+    <mat-error *ngIf="hasError('archived', '!required')">Archived valule is invalid</mat-error>
 
     <div>
       <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid">

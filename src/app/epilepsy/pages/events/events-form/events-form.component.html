@@ -30,15 +30,20 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Event occurred</mat-label>
-      <input formControlName="occurred" id="occurred" [matDatepicker]="picker" required matInput />
+      <input
+        formControlName="occurred"
+        id="occurred"
+        [matDatepicker]="picker"
+        [max]="today.toDate()"
+        matInput
+      />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
 
-      <mat-error *ngIf="hasError('occurred', 'required')">
-        Event occurred is required
-      </mat-error>
-      <mat-error *ngIf="hasError('occurred', '!required')">
-        Event occurred is invalid
+      <mat-error *ngIf="hasError('occurred', 'required')">Event occurred is required</mat-error>
+      <mat-error *ngIf="hasError('occurred', 'invalid')">Event occurred is invalid</mat-error>
+      <mat-error *ngIf="hasError('occurred', 'future')">
+        Event occurred cannot be in the future
       </mat-error>
     </mat-form-field>
 

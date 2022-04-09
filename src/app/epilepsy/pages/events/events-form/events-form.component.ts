@@ -3,10 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { Observable, Subscription, take } from 'rxjs';
-import { AuthService } from 'src/app/shared/services/auth.service';
-import { EventsService } from 'src/app/shared/services/events.service';
-import { formFieldHasError } from 'src/app/shared/services/form-field-has-error';
 import { Event } from '../../../../shared/models/event.model';
+import { AuthService } from '../../../../shared/services/auth.service';
+import { EventsService } from '../../../../shared/services/events.service';
+import { formFieldHasError } from '../../../../shared/services/form-field-has-error';
+import { DatesValidator } from '../../../../shared/validators/dates-validator';
 
 @Component({
   selector: 'app-events-form',
@@ -14,6 +15,7 @@ import { Event } from '../../../../shared/models/event.model';
   styleUrls: ['./events-form.component.scss'],
 })
 export class EventsFormComponent implements OnInit {
+  today = moment();
   error?: string;
   form: FormGroup;
   id?: string;
@@ -28,7 +30,7 @@ export class EventsFormComponent implements OnInit {
   ) {
     this.form = this.fb.group({
       name: ['', [Validators.required]],
-      occurred: ['', [Validators.required]],
+      occurred: ['', [Validators.required, DatesValidator.inThePast()]],
     });
   }
 

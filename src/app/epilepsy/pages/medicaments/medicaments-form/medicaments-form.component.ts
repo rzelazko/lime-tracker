@@ -3,10 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { Observable, Subscription, take } from 'rxjs';
-import { Medicament } from 'src/app/shared/models/medicament.model';
-import { AuthService } from 'src/app/shared/services/auth.service';
-import { formFieldHasError } from 'src/app/shared/services/form-field-has-error';
-import { MedicamentsService } from 'src/app/shared/services/medicaments.service';
+import { Medicament } from '../../../../shared/models/medicament.model';
+import { AuthService } from '../../../../shared/services/auth.service';
+import { formFieldHasError } from '../../../../shared/services/form-field-has-error';
+import { MedicamentsService } from '../../../../shared/services/medicaments.service';
+import { DatesValidator } from '../../../../shared/validators/dates-validator';
 
 @Component({
   selector: 'app-medicaments-form',
@@ -14,6 +15,7 @@ import { MedicamentsService } from 'src/app/shared/services/medicaments.service'
   styleUrls: ['./medicaments-form.component.scss'],
 })
 export class MedicamentsFormComponent implements OnInit {
+  today = moment();
   error?: string;
   form: FormGroup;
   id?: string;
@@ -31,8 +33,8 @@ export class MedicamentsFormComponent implements OnInit {
       doseMorning: ['', [Validators.required, Validators.min(0)]],
       doseNoon: ['', [Validators.required, Validators.min(0)]],
       doseEvening: ['', [Validators.required, Validators.min(0)]],
-      startDate: ['', [Validators.required]],
-      archived: [false]
+      startDate: ['', [Validators.required, DatesValidator.inThePast()]],
+      archived: [false],
     });
   }
 
@@ -49,7 +51,7 @@ export class MedicamentsFormComponent implements OnInit {
             doseNoon: result.doses.noon,
             doseEvening: result.doses.evening,
             startDate: result.startDate.toDate(),
-            archived: result.archived
+            archived: result.archived,
           });
         });
     }
@@ -70,7 +72,7 @@ export class MedicamentsFormComponent implements OnInit {
         evening: +this.form.value.doseEvening,
       },
       startDate: moment(this.form.value.startDate),
-      archived: this.form.value.archived
+      archived: this.form.value.archived,
     };
 
     let submitObservable$: Observable<any>;

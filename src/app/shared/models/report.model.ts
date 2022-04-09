@@ -1,7 +1,7 @@
 import { Moment } from 'moment';
-import { Event } from 'src/app/shared/models/event.model';
-import { Medicament } from 'src/app/shared/models/medicament.model';
-import { Seizure } from 'src/app/shared/models/seizure.model';
+import { Event } from '../../shared/models/event.model';
+import { Medicament } from '../../shared/models/medicament.model';
+import { Seizure } from '../../shared/models/seizure.model';
 
 export interface Report {
   dateFrom: Moment;
