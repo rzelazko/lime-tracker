@@ -1,20 +1,9 @@
+<app-yearsnav (onYearSelect)="onYearSelect($event)"></app-yearsnav>
+
 <mat-toolbar class="page-header" role="heading">
   <h1>Charts</h1>
 </mat-toolbar>
 
 <main id="chart">
-  <apx-chart
-    [series]="chartOptions.series"
-    [chart]="chartOptions.chart"
-    [xaxis]="chartOptions.xaxis"
-    [markers]="chartOptions.markers"
-    [stroke]="chartOptions.stroke"
-    [yaxis]="chartOptions.yaxis"
-    [dataLabels]="chartOptions.dataLabels"
-    [title]="chartOptions.title"
-    [subtitle]="chartOptions.subtitle"
-    [fill]="chartOptions.fill"
-    [tooltip]="chartOptions.tooltip"
-    [legend]="chartOptions.legend"
-  ></apx-chart>
+  <app-chart-summary [selectedYear]="selectedYear"></app-chart-summary>
 </main>

@@ -1,0 +1,17 @@
+<nav mat-tab-nav-bar>
+  <a mat-tab-link (click)="onYearSelect()" [active]="!selectedYear">Last year</a>
+  <a
+    mat-tab-link
+    (click)="onYearSelect(currentYear - 1)"
+    [active]="selectedYear === currentYear - 1"
+  >
+    {{ currentYear - 1 }}
+  </a>
+  <a
+    mat-tab-link
+    (click)="onYearSelect(currentYear - 2)"
+    [active]="selectedYear === currentYear - 2"
+  >
+    {{ currentYear - 2 }}
+  </a>
+</nav>

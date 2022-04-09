@@ -1,0 +1,19 @@
+<mat-progress-spinner mode="indeterminate" *ngIf="!summaryChart"></mat-progress-spinner>
+
+<mat-error *ngIf="error">{{ error }}</mat-error>
+
+<apx-chart
+  *ngIf="!error && summaryChart"
+  [series]="summaryChart.series"
+  [chart]="summaryChart.chart"
+  [xaxis]="summaryChart.xaxis"
+  [markers]="summaryChart.markers"
+  [stroke]="summaryChart.stroke"
+  [yaxis]="summaryChart.yaxis"
+  [dataLabels]="summaryChart.dataLabels"
+  [title]="summaryChart.title"
+  [subtitle]="summaryChart.subtitle"
+  [fill]="summaryChart.fill"
+  [tooltip]="summaryChart.tooltip"
+  [legend]="summaryChart.legend"
+></apx-chart>

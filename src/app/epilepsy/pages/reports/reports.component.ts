@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import * as moment from 'moment';
 import { Observable } from 'rxjs';
 import { Report } from '../../../shared/models/report.model';
 import { ReportsService } from '../../../shared/services/reports.service';
@@ -11,7 +10,6 @@ import { ReportsService } from '../../../shared/services/reports.service';
 })
 export class ReportsComponent implements OnInit, OnDestroy {
   selectedYear?: number;
-  currentYear = moment().year();
   report$: Observable<Report>;
 
   constructor(private reportsService: ReportsService) {

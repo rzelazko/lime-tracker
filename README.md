@@ -41,7 +41,7 @@ Run `ng build` to build the project for production deployment. The build artifac
 - Add some Rodo, privacy policy, etc. on login & dashboard (add footer?)
 - Add user profile management
 - Reports pagination in URL, ex: `/epilepsy/reports/2021` - router link instead of tab `(click)`
-- Replace `throw`s with error handling (ex. reports page)
+- Replace `throw`s with error handling (ex. reports page). Add error handling to Seizures, etc.
 - Add reset passoword
 - Move URLs to single place
 - Cancel button on form go back to either dashboard or table (not always table)
@@ -53,4 +53,4 @@ Run `ng build` to build the project for production deployment. The build artifac
 - Change `emailVerificationDate` to indicate it is sending date (not verification) & edit emulator users
 - Medicaments: add query to automaticaly mark as archived medicaments which are duplicated (on add or edit). See `dashboard.service.ts/currentMedicaments` for commit `Implement archive field in medicaments`
 - Medicaments: archive icon on should be clickable
-- Use Firestore instead of dummy data - charts
+- On empty user add seizure, go to dashboard, remove, go to dashboard and again - `Can't use a DocumentSnapshot that doesn't exist for startAfter()`

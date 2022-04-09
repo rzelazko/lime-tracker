@@ -44,6 +44,7 @@ import { HeaderComponent } from './epilepsy/components/header/header.component';
 import { SidenavComponent } from './epilepsy/components/sidenav/sidenav.component';
 import { TableComponent } from './epilepsy/components/table/table.component';
 import { EpilepsyComponent } from './epilepsy/epilepsy.component';
+import { ChartSummaryComponent } from './epilepsy/pages/charts/chart-summary/chart-summary.component';
 import { ChartsComponent } from './epilepsy/pages/charts/charts.component';
 import { DashboardComponent } from './epilepsy/pages/dashboard/dashboard.component';
 import { EventsFormComponent } from './epilepsy/pages/events/events-form/events-form.component';
@@ -60,6 +61,7 @@ import { HumanizePipe } from './shared/pipes/humanize.pipe';
 import { MomentPipe } from './shared/pipes/moment.pipe';
 import { StartOfPipe } from './shared/pipes/start-of.pipe';
 import { TimeSincePipe } from './shared/pipes/time-since.pipe';
+import { YearsnavComponent } from './epilepsy/components/yearsnav/yearsnav.component';
 
 let resolvePersistenceEnabled: (enabled: boolean) => void;
 
@@ -79,6 +81,7 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     AppComponent,
     AuthComponent,
     ChartsComponent,
+    ChartSummaryComponent,
     ConfirmDeleteDialogComponent,
     DashboardComponent,
     EpilepsyComponent,
@@ -86,19 +89,20 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     EventsComponent,
     ErrorModalComponent,
     HeaderComponent,
+    LoginComponent,
     LogoutComponent,
     MedicamentsComponent,
+    MedicamentsFormComponent,
+    PageNotFoundComponent,
+    RegisterComponent,
     ReportsComponent,
     SidenavComponent,
     SeizuresComponent,
-    TableComponent,
-    MedicamentsFormComponent,
     SeizuresFormComponent,
-    LoginComponent,
-    PageNotFoundComponent,
-    RegisterComponent,
-    VerifyEmailComponent,
+    TableComponent,
     TimeSincePipe,
+    VerifyEmailComponent,
+    YearsnavComponent,
   ],
   imports: [
     // angular

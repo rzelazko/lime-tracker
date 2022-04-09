@@ -10,7 +10,7 @@ import { FirestoreService } from './firestore.service';
 @Injectable({
   providedIn: 'root',
 })
-export class SeizuresService  extends CrudService<Seizure> {
+export class SeizuresService extends CrudService<Seizure> {
   constructor(authService: AuthService, firestoreService: FirestoreService) {
     super('seizures', 'occurred', authService, firestoreService);
   }
@@ -49,11 +49,11 @@ export class SeizuresService  extends CrudService<Seizure> {
     );
   }
 
-  convertDurations(data: Seizure[]) {
+  convertDurations(data: Seizure[]): Seizure[] {
     return data.map((seizure) => this.convertDuration(seizure));
   }
 
-  private convertDuration(data: Seizure) {
+  private convertDuration(data: Seizure): Seizure {
     return {
       ...data,
       duration: moment.duration(data.duration, 'minutes'),

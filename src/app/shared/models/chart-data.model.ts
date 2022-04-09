@@ -1,5 +1,5 @@
-export type Chart = {
-  name: string;
+export type ChartData = {
+  name?: string;
   data: { x: string; y: number }[];
   labels?: string[];
 };

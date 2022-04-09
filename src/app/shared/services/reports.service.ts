@@ -22,7 +22,7 @@ export class ReportsService {
     lastReportDay.hours(0).minutes(0).seconds(0).milliseconds(0);
     const report: Report = {
       dateTo: moment(lastReportDay),
-      dateFrom: moment(lastReportDay).subtract(1, 'year').add(1, 'day').startOf('month'),
+      dateFrom: moment(lastReportDay).endOf('month').subtract(1, 'year').add(1, 'day').startOf('month'),
       monthsData: [
         { month: moment(lastReportDay).startOf('month'), data: [] }, // `monthIndex` = `0` <- current month
       ],
