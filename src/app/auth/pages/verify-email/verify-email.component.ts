@@ -18,7 +18,7 @@ export class VerifyEmailComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onEmailSend() {
-    this.auth.sendVerificationEmail();
+  async onEmailSend() {
+    await this.auth.sendVerificationEmail();
   }
 }

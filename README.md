@@ -55,4 +55,3 @@ Run `ng build` to build the project for production deployment. The build artifac
   - Update dashboard
   - Update list
   - Update form (with adjust in automated archive mechanism)
-- Change `emailVerificationDate` to indicate it is sending date (not verification) & edit emulator users

@@ -33,7 +33,7 @@ export class UsersService {
 
   verificationEmailSent(userId: string) {
     const userDetails: UserDetailsEmailVerification = {
-      emailVerficationDate: moment(),
+      emailVerificationSent: moment(),
     };
     return this.firestoreService.update(`users/${userId}`, userDetails);
   }

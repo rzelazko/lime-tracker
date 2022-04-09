@@ -26,8 +26,8 @@
           To <span>{{ userData.email }}</span>.
         </p>
 
-        <p class="userData" *ngIf="userData.emailVerficationDate">
-          At <span>{{ userData.emailVerficationDate | moment: "LLL" }}</span>.
+        <p class="userData" *ngIf="userData.emailVerificationSent">
+          At <span>{{ userData.emailVerificationSent | moment: "LLL" }}</span>.
           <small>Resend possible after an hour.</small>
         </p>
 
@@ -40,7 +40,7 @@
             mat-raised-button
             color="secondary"
             (click)="onEmailSend()"
-            *ngIf="userData.emailVerficationDate && userData.emailVerficationDate.isBefore(hourAgo)"
+            *ngIf="userData.emailVerificationSent && userData.emailVerificationSent.isBefore(hourAgo)"
           >
             Re-send confirmation email
           </button>

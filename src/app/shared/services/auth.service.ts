@@ -10,9 +10,9 @@ import {
   User,
 } from '@angular/fire/auth';
 import { FirebaseError } from 'firebase/app';
-import { BehaviorSubject, concat, from } from 'rxjs';
+import { BehaviorSubject, concat, firstValueFrom, from } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
-import { map, take } from 'rxjs/operators';
+import { concatMap, map, take } from 'rxjs/operators';
 import { AuthData } from '../../auth/models/auth-data.model';
 import { UserData } from '../../auth/models/user-details.model';
 import { UsersService } from './users.service';
@@ -41,10 +41,7 @@ export class AuthService {
     this.authState$.subscribe((user) => {
       if (user) {
         this.userSubject$.next(user);
-        this.userService
-          .getUserDetails(user)
-          .pipe(take(1))
-          .subscribe((userData) => this.userData$.next(userData));
+        this.updateUserData(user);
       } else {
         this.userSubject$.next(null);
       }
@@ -67,23 +64,24 @@ export class AuthService {
     try {
       const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
       await updateProfile(userCredential.user, { displayName: name });
-      this.userService
-        .initUserDetails(userCredential.user.uid)
-        .pipe(
-          take(1),
-          map(() => this.sendVerificationEmail())
-        )
-        .subscribe();
+      await firstValueFrom(this.userService.initUserDetails(userCredential.user.uid));
+      await this.sendVerificationEmail();
     } catch (error) {
       this.rethrowUnwrappedFirebaseError(error);
     }
   }
 
-  sendVerificationEmail() {
-    concat(
-      this.userService.verificationEmailSent(this.user().uid),
-      from(sendEmailVerification(this.user()))
-    );
+  async sendVerificationEmail() {
+    await sendEmailVerification(this.user());
+    await firstValueFrom(this.userService.verificationEmailSent(this.user().uid));
+    this.updateUserData(this.user());
+  }
+
+  private updateUserData(user: User) {
+    this.userService
+      .getUserDetails(user)
+      .pipe(take(1))
+      .subscribe((userData) => this.userData$.next(userData));
   }
 
   private rethrowUnwrappedFirebaseError(error: any) {

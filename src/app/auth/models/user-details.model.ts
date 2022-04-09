@@ -12,5 +12,5 @@ export interface UserDetails extends UserDetailsEmailVerification {
 }
 
 export interface UserDetailsEmailVerification {
-  emailVerficationDate?: Moment;
+  emailVerificationSent?: Moment;
 }
