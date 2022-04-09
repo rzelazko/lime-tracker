@@ -50,5 +50,9 @@ Run `ng build` to build the project for production deployment. The build artifac
 - I18N (rememeber: default seizure types)
 - Setup custom domain for hosting
 - Create valid [firestore.rules](firestore.rules)
+- Medicaments instead of `archived` use `dateEnd` field
+  - Update charts
+  - Update dashboard
+  - Update list
+  - Update form (with adjust in automated archive mechanism)
 - Change `emailVerificationDate` to indicate it is sending date (not verification) & edit emulator users
-- Medicaments: add query to automaticaly mark as archived medicaments which are duplicated (on add or edit). See `dashboard.service.ts/currentMedicaments` for commit `Implement archive field in medicaments`

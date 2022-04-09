@@ -1,5 +1,5 @@
 import { startAfter } from '@angular/fire/firestore';
-import { limit, orderBy, QueryConstraint } from 'firebase/firestore';
+import { DocumentReference, limit, orderBy, QueryConstraint } from 'firebase/firestore';
 import { map, Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { AuthService } from '../../shared/services/auth.service';
@@ -12,51 +12,39 @@ export class CrudService<T extends Identifiable> {
   private concatPageData: PageData<T>;
 
   constructor(
-    private collectionPath: string,
-    private orderByField: string,
-    private authService: AuthService,
-    private firestoreService: FirestoreService
+    private collectionPathPostfix: string,
+    protected orderByField: string,
+    protected authService: AuthService,
+    protected firestoreService: FirestoreService
   ) {
     this.concatPagelastId = '';
     this.concatPageData = { hasMore: false, data: [] };
   }
 
-  create(data: Partial<T>) {
+  create(data: Partial<T>): Observable<DocumentReference<any> | void> {
     return this.firestoreService
-      .add(`users/${this.authService.user().uid}/${this.collectionPath}`, data)
+      .add(this.collectionPath(), data)
       .pipe(tap(() => this.resetConcatenated()));
   }
 
   read(id: string) {
-    return this.firestoreService.get<T>(
-      `users/${this.authService.user().uid}/${this.collectionPath}/${id}`
-    );
+    return this.firestoreService.get<T>(`${this.collectionPath()}/${id}`);
   }
 
   update(id: string, data: Partial<T>) {
     return this.firestoreService
-      .update(`users/${this.authService.user().uid}/${this.collectionPath}/${id}`, data)
+      .update(`${this.collectionPath()}/${id}`, data)
       .pipe(tap(() => this.resetConcatenated()));
   }
 
   delete(id: string) {
     return this.firestoreService
-      .delete(`users/${this.authService.user().uid}/${this.collectionPath}/${id}`)
-      .pipe(
-        map(
-          (): PageData<T> => ({
-            hasMore: this.concatPageData.hasMore,
-            data: this.concatPageData.data.filter((data) => data.id !== id),
-          })
-        )
-      );
+      .delete(`${this.collectionPath()}/${id}`)
+      .pipe(tap(() => this.resetConcatenated()));
   }
 
   listCollection(queryConstraint: QueryConstraint[]) {
-    return this.firestoreService.list<T>(
-      `users/${this.authService.user().uid}/${this.collectionPath}`,
-      ...queryConstraint
-    );
+    return this.firestoreService.list<T>(`${this.collectionPath()}`, ...queryConstraint);
   }
 
   listSinglePage(pageSize: number, startAfterId: string) {
@@ -65,7 +53,7 @@ export class CrudService<T extends Identifiable> {
     let listCollection$: Observable<T[]>;
     if (startAfterId) {
       listCollection$ = this.firestoreService
-        .getRaw(`users/${this.authService.user().uid}/${this.collectionPath}/${startAfterId}`)
+        .getRaw(`${this.collectionPath()}/${startAfterId}`)
         .pipe(
           switchMap((startAfterDoc) =>
             this.listCollection([...queryConstraint, startAfter(startAfterDoc)])
@@ -102,6 +90,10 @@ export class CrudService<T extends Identifiable> {
   resetConcatenated() {
     this.concatPagelastId = '';
     this.concatPageData = { hasMore: false, data: [] };
+  }
+
+  protected collectionPath() {
+    return `users/${this.authService.user().uid}/${this.collectionPathPostfix}`;
   }
 
   private elementInArray(element: Identifiable) {

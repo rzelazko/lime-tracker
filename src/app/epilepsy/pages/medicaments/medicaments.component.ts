@@ -54,11 +54,7 @@ export class MedicamentsComponent implements OnInit, OnDestroy {
     this.loading = true;
     this.deleteSubscription = this.medicamentsService
       .delete(object.id)
-      .subscribe((medicamentsPage) => {
-        this.dataSource.data = medicamentsPage.data;
-        this.loading = false;
-        this.hasMore = medicamentsPage.hasMore;
-      });
+      .subscribe(() => this.onRefresh());
   }
 
   onArchive(medicament: Medicament) {

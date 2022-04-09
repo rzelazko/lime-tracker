@@ -1,4 +1,8 @@
 import { Injectable } from '@angular/core';
+import { orderBy, where } from 'firebase/firestore';
+import {
+  mergeMap, take, tap
+} from 'rxjs';
 import { Medicament } from '../../shared/models/medicament.model';
 import { AuthService } from './auth.service';
 import { CrudService } from './crud.service';
@@ -13,7 +17,26 @@ export class MedicamentsService extends CrudService<Medicament> {
   }
 
   override create(medicament: Partial<Medicament>) {
-    return super.create(medicament);
+    return this.listCollection([
+      orderBy('startDate', 'desc'),
+      where('startDate', '<', medicament.startDate?.toDate()),
+      where('name', '==', medicament.name),
+      where('archived', '==', false),
+    ]).pipe(
+      take(1),
+      mergeMap((medicamentsToUpdate: Medicament[]) => {
+        this.firestoreService.startTransaction();
+        for (const medicamentToUpdate of medicamentsToUpdate) {
+          this.firestoreService.appendUpdateToTransaction(
+            `${this.collectionPath()}/${medicamentToUpdate.id}`,
+            { archived: true }
+          );
+        }
+        this.firestoreService.appendAddToTransaction(this.collectionPath(), medicament);
+        return this.firestoreService.commitTransaction();
+      }),
+      tap(() => this.resetConcatenated())
+    );
   }
 
   override read(id: string) {

@@ -28,14 +28,7 @@ export class SeizuresService extends CrudService<Seizure> {
   }
 
   override delete(id: string) {
-    return super.delete(id).pipe(
-      map(
-        (pageData): PageData<Seizure> => ({
-          hasMore: pageData.hasMore,
-          data: this.convertDurations(pageData.data),
-        })
-      )
-    );
+    return super.delete(id);
   }
 
   override listConcatenated(pageSize: number) {

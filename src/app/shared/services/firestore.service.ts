@@ -4,7 +4,8 @@ import {
   collectionSnapshots,
   docSnapshots,
   Firestore,
-  QueryConstraint
+  QueryConstraint,
+  writeBatch
 } from '@angular/fire/firestore';
 import {
   addDoc,
@@ -15,7 +16,8 @@ import {
   query,
   setDoc,
   Timestamp,
-  updateDoc
+  updateDoc,
+  WriteBatch
 } from '@firebase/firestore';
 import * as moment from 'moment';
 import { Moment } from 'moment';
@@ -25,11 +27,8 @@ import { defer, map } from 'rxjs';
   providedIn: 'root',
 })
 export class FirestoreService {
+  private batch?: WriteBatch;
   constructor(private firestore: Firestore) {}
-
-  createId() {
-    return doc(collection(this.firestore, 'id')).id;
-  }
 
   list<T>(path: string, ...q: QueryConstraint[]) {
     const ref = collection(this.firestore, path) as CollectionReference<Partial<T>>;
@@ -65,6 +64,35 @@ export class FirestoreService {
   delete(path: string) {
     const ref = doc(this.firestore, path);
     return defer(() => deleteDoc(ref));
+  }
+
+  startTransaction() {
+    this.batch = writeBatch(this.firestore);
+  }
+
+  appendAddToTransaction(path: string, data: any) {
+    if (!this.batch) {
+      this.startTransaction();
+    }
+    const ref = doc(collection(this.firestore, path));
+    this.batch?.set(ref, this.toFirebaseCompatible(data));
+  }
+
+  appendUpdateToTransaction(path: string, data: any) {
+    if (!this.batch) {
+      this.startTransaction();
+    }
+    const ref = doc(this.firestore, path);
+    this.batch?.update(ref, this.toFirebaseCompatible(data));
+  }
+
+  commitTransaction() {
+    return defer(() => {
+      if (this.batch) {
+        return this.batch.commit();
+      }
+      throw `Transaction has not been started - cannot commit!`;
+    });
   }
 
   private convertSnapshots<T>(results: any) {

@@ -50,10 +50,8 @@ export class SeizuresComponent implements OnInit, OnDestroy {
 
   onDelete(object: Event | Medicament | Seizure) {
     this.loading = true;
-    this.deleteSubscription = this.seizuresService.delete(object.id).subscribe((seizuresPage) => {
-      this.dataSource.data = seizuresPage.data;
-      this.loading = false;
-      this.hasMore = seizuresPage.hasMore;
-    });
+    this.deleteSubscription = this.seizuresService
+      .delete(object.id)
+      .subscribe(() => this.onRefresh());
   }
 }
