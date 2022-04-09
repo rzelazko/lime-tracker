@@ -16,6 +16,7 @@ export class TableComponent implements OnInit {
   @Output('onDelete') deleteEvent = new EventEmitter<Event | Medicament | Seizure>();
   @Output('onLoadMore') loadMoreEvent = new EventEmitter<void>();
   @Output('onRefresh') refreshEvent = new EventEmitter<void>();
+  @Output('onArchive') archiveEvent = new EventEmitter<Medicament>();
   @Input() dataSource?: MatTableDataSource<Event | Medicament | Seizure>;
   @Input() displayedColumns: String[] = [];
   @Input() addBtnLink = '';
@@ -37,6 +38,11 @@ export class TableComponent implements OnInit {
         this.deleteEvent.emit(element);
       }
     });
+  }
+
+
+  onArchive(element: Medicament): void {
+    this.archiveEvent.emit(element);
   }
 
   onLoadMore() {

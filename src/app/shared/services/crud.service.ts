@@ -35,7 +35,7 @@ export class CrudService<T extends Identifiable> {
 
   update(id: string, data: Partial<T>) {
     return this.firestoreService
-      .set(`users/${this.authService.user().uid}/${this.collectionPath}/${id}`, data)
+      .update(`users/${this.authService.user().uid}/${this.collectionPath}/${id}`, data)
       .pipe(tap(() => this.resetConcatenated()));
   }
 

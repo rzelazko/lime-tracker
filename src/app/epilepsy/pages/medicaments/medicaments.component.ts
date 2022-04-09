@@ -19,6 +19,7 @@ export class MedicamentsComponent implements OnInit, OnDestroy {
   public columns = ['name', 'dose', 'startDate', 'archived', 'actions'];
   private dataSubscription?: Subscription;
   private deleteSubscription?: Subscription;
+  private archiveSubscription?: Subscription;
 
   constructor(private medicamentsService: MedicamentsService) {}
 
@@ -46,6 +47,7 @@ export class MedicamentsComponent implements OnInit, OnDestroy {
     this.medicamentsService.resetConcatenated();
     this.deleteSubscription?.unsubscribe();
     this.dataSubscription?.unsubscribe();
+    this.archiveSubscription?.unsubscribe();
   }
 
   onDelete(object: Event | Medicament | Seizure) {
@@ -57,5 +59,12 @@ export class MedicamentsComponent implements OnInit, OnDestroy {
         this.loading = false;
         this.hasMore = medicamentsPage.hasMore;
       });
+  }
+
+  onArchive(medicament: Medicament) {
+    this.loading = true;
+    this.archiveSubscription = this.medicamentsService
+      .update(medicament.id, { archived: !medicament.archived })
+      .subscribe(() => this.onRefresh());
   }
 }
