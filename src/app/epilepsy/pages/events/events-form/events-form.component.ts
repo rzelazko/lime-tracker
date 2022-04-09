@@ -50,9 +50,7 @@ export class EventsFormComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    if (this.submitSubscription) {
-      this.submitSubscription.unsubscribe();
-    }
+    this.submitSubscription?.unsubscribe();
   }
 
   onSubmit(): void {

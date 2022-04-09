@@ -24,42 +24,21 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Morning dose</mat-label>
-      <input
-        type="number"
-        formControlName="doseMorning"
-        id="doseMorning"
-        placeholder="100"
-        min="0"
-        matInput
-      />
+      <input type="number" formControlName="doseMorning" placeholder="100" min="0" matInput />
       <mat-error *ngIf="hasError('doseMorning', 'required')">Morning dose is required</mat-error>
       <mat-error *ngIf="hasError('doseMorning', '!required')">Morning dose is invalid</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Noon dose</mat-label>
-      <input
-        type="number"
-        formControlName="doseNoon"
-        id="doseNoon"
-        placeholder="0"
-        min="0"
-        matInput
-      />
+      <input type="number" formControlName="doseNoon" placeholder="0" min="0" matInput />
       <mat-error *ngIf="hasError('doseNoon', 'required')">Noon dose is required</mat-error>
       <mat-error *ngIf="hasError('doseNoon', '!required')">Noon dose is invalid</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Evening dose</mat-label>
-      <input
-        type="number"
-        formControlName="doseEvening"
-        id="doseEvening"
-        placeholder="200"
-        min="0"
-        matInput
-      />
+      <input type="number" formControlName="doseEvening" placeholder="200" min="0" matInput />
       <mat-error *ngIf="hasError('doseEvening', 'required')">Evening dose is required</mat-error>
       <mat-error *ngIf="hasError('doseEvening', '!required')">Evening dose is invalid</mat-error>
     </mat-form-field>
@@ -68,9 +47,8 @@
       <mat-label>Start date</mat-label>
       <input
         formControlName="startDate"
-        id="startDate"
         [matDatepicker]="picker"
-        [max]="today.toDate()"
+        [max]="form.get('endDate')?.value || today.toDate()"
         matInput
       />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -81,11 +59,34 @@
       <mat-error *ngIf="hasError('startDate', 'future')">
         Start date cannot be in the future
       </mat-error>
+      <mat-error *ngIf="!hasError('startDate', 'future') && hasError('startDate', 'matDatepickerMax')">
+        Start date cannot be after end date
+      </mat-error>
     </mat-form-field>
 
-    <mat-checkbox formControlName="archived" id="archived" matInput> Archived </mat-checkbox>
-    <mat-error *ngIf="hasError('archived', 'required')">Archived is required</mat-error>
-    <mat-error *ngIf="hasError('archived', '!required')">Archived valule is invalid</mat-error>
+    <mat-checkbox formControlName="archived" matInput>Archived</mat-checkbox>
+
+    <mat-form-field appearance="fill" *ngIf="form.get('archived')?.value">
+      <mat-label>End date</mat-label>
+      <input
+        formControlName="endDate"
+        [matDatepicker]="picker"
+        [max]="today.toDate()"
+        [min]="form.get('startDate')?.value"
+        matInput
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+
+      <mat-error *ngIf="hasError('endDate', 'required')">End date is required</mat-error>
+      <mat-error *ngIf="hasError('endDate', 'invalid')">End date is invalid</mat-error>
+      <mat-error *ngIf="hasError('endDate', 'future') || hasError('endDate', 'matDatepickerMax')">
+        End date cannot be in the future
+      </mat-error>
+      <mat-error *ngIf="hasError('endDate', 'isBefore') || hasError('endDate', 'matDatepickerMin')">
+        End date cannot be before start date
+      </mat-error>
+    </mat-form-field>
 
     <div>
       <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid">

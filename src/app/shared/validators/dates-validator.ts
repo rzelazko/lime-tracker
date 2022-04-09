@@ -1,9 +1,9 @@
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
 import * as moment from 'moment';
 
 export class DatesValidator {
   static inThePast = () => {
-    return (control: FormControl) => {
+    return (control: FormControl): ValidationErrors | null => {
       if (control.value) {
         const controlValue = moment(control.value);
 
@@ -18,4 +18,26 @@ export class DatesValidator {
       return null;
     };
   };
+
+  static startAndEnd(startControlName: string, endControlName: string) {
+    return (formGroup: FormGroup): ValidationErrors | null => {
+      const startDateField = formGroup.controls[startControlName];
+      const endDateField = formGroup.controls[endControlName];
+
+      if (startDateField && startDateField.value && endDateField && endDateField.value && !startDateField.errors && (!endDateField.errors || endDateField.errors['isBefore'])) {
+        const startDate = moment(startDateField.value);
+        const endDate = moment(endDateField.value);
+
+        if (startDate.isValid() && endDate.isValid()) {
+          if (endDate.isBefore(startDate)) {
+            endDateField.setErrors({isBefore: true});
+          } else {
+            endDateField.setErrors(null);
+          }
+        }
+      }
+
+      return null; // TODO endDate should be after startDate, deprecated fb.build (in register.component & medic-form), medi.tpl to update with err
+    };
+  }
 }

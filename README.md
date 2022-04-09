@@ -52,6 +52,3 @@ Run `ng build` to build the project for production deployment. The build artifac
 - Create valid [firestore.rules](firestore.rules)
 - Medicaments instead of `archived` use `dateEnd` field
   - Update charts
-  - Update dashboard
-  - Update list
-  - Update form (with adjust in automated archive mechanism)

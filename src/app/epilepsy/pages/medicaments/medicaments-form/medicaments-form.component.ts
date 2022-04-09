@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { Observable, Subscription, take } from 'rxjs';
@@ -20,6 +21,7 @@ export class MedicamentsFormComponent implements OnInit {
   form: FormGroup;
   id?: string;
   private submitSubscription?: Subscription;
+  private archivedSubscription?: Subscription;
 
   constructor(
     public auth: AuthService,
@@ -34,11 +36,26 @@ export class MedicamentsFormComponent implements OnInit {
       doseNoon: ['', [Validators.required, Validators.min(0)]],
       doseEvening: ['', [Validators.required, Validators.min(0)]],
       startDate: ['', [Validators.required, DatesValidator.inThePast()]],
-      archived: [false],
+      archived: [false, []],
+      endDate: ['', []],
+    },
+    {
+      validator: DatesValidator.startAndEnd('startDate', 'endDate'),
     });
   }
 
   ngOnInit(): void {
+    this.archivedSubscription = this.form.get('archived')?.valueChanges.subscribe((archived) => {
+      if (archived) {
+        this.form.get('endDate')?.setValidators([Validators.required, DatesValidator.inThePast()]);
+      } else {
+        this.form.get('endDate')?.reset();
+        this.form.get('endDate')?.clearValidators();
+      }
+      this.form.get('endDate')?.updateValueAndValidity();
+      this.form.updateValueAndValidity();
+    });
+
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id) {
       this.medicamentsService
@@ -52,15 +69,15 @@ export class MedicamentsFormComponent implements OnInit {
             doseEvening: result.doses.evening,
             startDate: result.startDate.toDate(),
             archived: result.archived,
+            endDate: result.endDate?.toDate() || null
           });
         });
     }
   }
 
   ngOnDestroy(): void {
-    if (this.submitSubscription) {
-      this.submitSubscription.unsubscribe();
-    }
+    this.submitSubscription?.unsubscribe();
+    this.archivedSubscription?.unsubscribe();
   }
 
   onSubmit(): void {
@@ -72,7 +89,8 @@ export class MedicamentsFormComponent implements OnInit {
         evening: +this.form.value.doseEvening,
       },
       startDate: moment(this.form.value.startDate),
-      archived: this.form.value.archived,
+      archived: this.form.value.archived && this.form.value.endDate,
+      endDate: this.form.value.archived ? this.form.value.endDate : null
     };
 
     let submitObservable$: Observable<any>;
@@ -87,6 +105,8 @@ export class MedicamentsFormComponent implements OnInit {
       error: (error) => (this.error = error.message),
     });
   }
+
+  onArchivedChange(ob: MatCheckboxChange) {}
 
   hasError(path: string, errorCode: string) {
     return formFieldHasError(this.form, path, errorCode);

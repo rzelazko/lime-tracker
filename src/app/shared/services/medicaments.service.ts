@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { orderBy, where } from 'firebase/firestore';
+import * as moment from 'moment';
 import {
   mergeMap, take, tap
 } from 'rxjs';
@@ -29,7 +30,7 @@ export class MedicamentsService extends CrudService<Medicament> {
         for (const medicamentToUpdate of medicamentsToUpdate) {
           this.firestoreService.appendUpdateToTransaction(
             `${this.collectionPath()}/${medicamentToUpdate.id}`,
-            { archived: true }
+            { archived: true, endDate: moment(medicament.startDate).subtract(1, 'day') }
           );
         }
         this.firestoreService.appendAddToTransaction(this.collectionPath(), medicament);

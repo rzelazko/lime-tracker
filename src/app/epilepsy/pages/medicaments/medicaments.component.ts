@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import * as moment from 'moment';
 import { Subscription } from 'rxjs';
 import { Event } from '../../../shared/models/event.model';
 import { Medicament } from '../../../shared/models/medicament.model';
@@ -59,8 +60,12 @@ export class MedicamentsComponent implements OnInit, OnDestroy {
 
   onArchive(medicament: Medicament) {
     this.loading = true;
+    const newArchived = !medicament.archived;
+    const newEndDate = newArchived ? moment() : undefined;
+    const updated: Partial<Medicament> = {archived: newArchived, endDate: newEndDate};
+
     this.archiveSubscription = this.medicamentsService
-      .update(medicament.id, { archived: !medicament.archived })
+      .update(medicament.id, updated)
       .subscribe(() => this.onRefresh());
   }
 }

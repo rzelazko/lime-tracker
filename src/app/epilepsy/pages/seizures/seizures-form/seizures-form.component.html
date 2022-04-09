@@ -29,7 +29,6 @@
       <input
         type="number"
         formControlName="duration"
-        id="duration"
         placeholder="5"
         min="1"
         matInput
@@ -40,7 +39,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Type</mat-label>
-      <mat-select formControlName="seizureType" id="seizureType">
+      <mat-select formControlName="seizureType">
         <mat-option *ngFor="let type of userData.seizureTypes" [value]="type">
           {{ type }}
         </mat-option>
@@ -51,7 +50,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Trigger</mat-label>
-      <mat-select formControlName="seizureTrigger" id="seizureTrigger">
+      <mat-select formControlName="seizureTrigger">
         <mat-option></mat-option>
         <mat-option *ngFor="let trigger of userData.seizureTriggers" [value]="trigger">
           {{ trigger }}

@@ -55,9 +55,7 @@ export class SeizuresFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.submitSubscription) {
-      this.submitSubscription.unsubscribe();
-    }
+    this.submitSubscription?.unsubscribe();
   }
 
   onSubmit(): void {
