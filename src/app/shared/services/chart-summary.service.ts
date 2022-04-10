@@ -74,7 +74,6 @@ export class ChartSummaryService {
       .listCollection([
         orderBy('startDate', 'desc'),
         where('startDate', '<=', this.dateFrom.toDate()),
-        limit(1),
       ])
       .pipe(
         mergeMap((medicamentFromPreviousRange: Medicament[]) =>
@@ -85,10 +84,7 @@ export class ChartSummaryService {
               where('startDate', '<=', this.dateTo.toDate()),
             ])
             .pipe(
-              map((medicaments) =>
-                medicamentFromPreviousRange.length
-                  ? [...medicaments, medicamentFromPreviousRange[0]]
-                  : medicaments
+              map((medicaments) => medicaments.concat(...medicamentFromPreviousRange)
               )
             )
         )
