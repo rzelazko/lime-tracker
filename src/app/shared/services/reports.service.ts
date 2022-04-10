@@ -92,7 +92,7 @@ export class ReportsService {
       map((reportCases) => {
         for (const reportCase of reportCases) {
           const caseDate = reportCaseDate(reportCase);
-          if (caseDate.isBetween(report.dateFrom, report.dateTo)) {
+          if (caseDate.isBetween(report.dateFrom, report.dateTo, undefined, "[]")) {
             const monthIndex = (report.dateTo.month() + 12 - caseDate.month()) % 12;
 
             if (!this.elementInReport(report, monthIndex, reportCase)) {
