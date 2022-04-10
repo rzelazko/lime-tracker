@@ -3,7 +3,7 @@ import { ApexAxisChartSeries, ApexYAxis } from 'ng-apexcharts';
 import { firstValueFrom, map } from 'rxjs';
 import { ChartData } from '../../../../shared/models/chart-data.model';
 import { ChartOptions } from '../../../../shared/models/chart-options.model';
-import { SummaryChartService } from '../../../../shared/services/summary-chart.service';
+import { ChartSummaryService } from '../../../../shared/services/chart-summary.service';
 
 @Component({
   selector: 'app-chart-summary',
@@ -15,28 +15,28 @@ export class ChartSummaryComponent implements OnInit, OnChanges {
   error?: string;
   summaryChart?: ChartOptions;
 
-  constructor(private summaryChartService: SummaryChartService) {
-    this.summaryChartService.setYear(this.selectedYear);
+  constructor(private chartSummaryService: ChartSummaryService) {
+    this.chartSummaryService.setYear(this.selectedYear);
   }
 
   async ngOnChanges(_changes: SimpleChanges): Promise<void> {
     this.summaryChart = undefined;
-    this.summaryChartService.setYear(this.selectedYear);
+    this.chartSummaryService.setYear(this.selectedYear);
     try {
-      const medicamentsData = await firstValueFrom(this.summaryChartService.medicamentSeries());
+      const medicamentsData = await firstValueFrom(this.chartSummaryService.medicamentSeries());
       const eventsData = await firstValueFrom(
-        this.summaryChartService
+        this.chartSummaryService
           .eventsSerie()
           .pipe(map((data) => ({ name: $localize`:@@title-events:Events`, ...data })))
       );
       const seizuresData = await firstValueFrom(
-        this.summaryChartService
+        this.chartSummaryService
           .seizureSerie()
           .pipe(map((data) => ({ name: $localize`:@@title-seizures:Seizures`, ...data })))
       );
 
       this.initSummaryChart(
-        this.summaryChartService.subtitle(),
+        this.chartSummaryService.subtitle(),
         medicamentsData,
         eventsData,
         seizuresData

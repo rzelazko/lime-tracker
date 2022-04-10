@@ -27,7 +27,7 @@ interface MedicamentRange
 @Injectable({
   providedIn: 'root',
 })
-export class SummaryChartService {
+export class ChartSummaryService {
   private static readonly DEFAULT_RANGE_FORMAT = 'MM/YY';
   private dateTo: moment.Moment;
   private dateFrom: moment.Moment;
@@ -45,7 +45,7 @@ export class SummaryChartService {
     if (this.dateFrom.year() === this.dateTo.year()) {
       return 'MMM';
     } else {
-      return SummaryChartService.DEFAULT_RANGE_FORMAT;
+      return ChartSummaryService.DEFAULT_RANGE_FORMAT;
     }
   }
 
