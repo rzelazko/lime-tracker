@@ -62,6 +62,7 @@ import { MomentPipe } from './shared/pipes/moment.pipe';
 import { StartOfPipe } from './shared/pipes/start-of.pipe';
 import { TimeSincePipe } from './shared/pipes/time-since.pipe';
 import { YearsnavComponent } from './epilepsy/components/yearsnav/yearsnav.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 let resolvePersistenceEnabled: (enabled: boolean) => void;
 
@@ -71,13 +72,13 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
 
 @NgModule({
   declarations: [
-    // pipes
+    // Pipes
     EndOfPipe,
     HumanizePipe,
     MomentPipe,
     StartOfPipe,
 
-    // components
+    // Components
     AppComponent,
     AuthComponent,
     ChartsComponent,
@@ -105,7 +106,7 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     YearsnavComponent,
   ],
   imports: [
-    // angular
+    // Angular
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
@@ -113,7 +114,7 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     HttpClientModule,
     ReactiveFormsModule,
 
-    // firebase
+    // Firebase
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => {
@@ -135,13 +136,13 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
       return firestore;
     }),
 
-    // flex
+    // Flex
     FlexLayoutModule,
 
-    // apex charts
+    // Apex charts
     NgApexchartsModule,
 
-    // material
+    // Material
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
@@ -159,6 +160,14 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+
+    // Progressive Web App
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   exports: [],
   providers: [],
