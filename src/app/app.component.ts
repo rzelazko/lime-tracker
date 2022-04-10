@@ -10,7 +10,7 @@ import { AuthService } from './shared/services/auth.service';
 })
 export class AppComponent implements OnInit {
   title = 'lime-tracker';
-  logoURL = '../assets/lime.svg';
+  logoURL = 'assets/lime.svg';
 
   constructor(
     private matIconRegistry: MatIconRegistry,

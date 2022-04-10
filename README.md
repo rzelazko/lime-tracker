@@ -71,4 +71,3 @@ Perform full deplyment (hosting, security rules, etc.) with `firebase deploy` or
 - I18n: M triggers & types as defaults
 - I18n: moment
 - Seizures - multiple triggers
-- Missing logo on PL version
