@@ -1,7 +1,7 @@
 export const DEFAULT_SEIZURE_TYPES = [
-  "Absence seizure",
-  "Tonic-clonic seizure",
-  "Simple focal seizure",
-  "Complex focal seizure",
-  "Secondary generalized seizure"
+  $localize`:@@seizure-type-absence:Absence seizure`,
+  $localize`:@@seizure-type-tonic-clonic:Tonic-clonic seizure`,
+  $localize`:@@seizure-type-simple-focal:Simple focal seizure`,
+  $localize`:@@seizure-type-complex-focal:Complex focal seizure`,
+  $localize`:@@seizure-type-secondary-generalized:Secondary generalized seizure`
 ];

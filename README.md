@@ -17,6 +17,12 @@ Run Firebase Emulator: `npm run firebase-emulator`. View Emulator UI at `http://
 
 Run in separte console `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+#### I18N
+
+Extract translation: `ng extract-i18n --output-path src/locale`.
+
+Install Visual Studio Code extension: [Angular Localization Helper](https://marketplace.visualstudio.com/items?itemName=manux54.angular-localization-helper). Use command pallete run `Angular i18n: Sync`
+
 ### Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
@@ -58,4 +64,9 @@ Perform full deplyment (hosting, security rules, etc.) with `firebase deploy` or
 - Move URLs to single place
 - Cancel button on form go back to either dashboard or table (not always table)
 - Add screenshots to README
-- I18N (rememeber: default seizure types)
+- Add possibility to view older data than 2 years
+- I18n: add language switcher
+- I18n: set default language from browser instead of rewrite in [firebase.json](./firebase.json)
+- I18n: use `pl-PL` in Angular configuration & `pl` in [firebase.json](./firebase.json)
+- I18n: M triggers & types as defaults
+- I18n: moment

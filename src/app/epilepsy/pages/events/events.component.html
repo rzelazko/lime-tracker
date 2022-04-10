@@ -1,5 +1,5 @@
 <mat-toolbar class="page-header" role="heading">
-  <h1>Events</h1>
+  <h1 i18n="@@title-events">Events</h1>
 </mat-toolbar>
 
 <main>
@@ -8,6 +8,7 @@
     [displayedColumns]="columns"
     addBtnLink="/epilepsy/events/add"
     addBtnText="Add event"
+    i18n-addBtnText="@@action-add-event"
     updateLinkPrefix="/epilepsy/events/update"
     occurredFormat="LL"
     [loading]="loading"

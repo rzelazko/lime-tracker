@@ -7,12 +7,12 @@ import {
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
-  User,
+  User
 } from '@angular/fire/auth';
 import { FirebaseError } from 'firebase/app';
-import { BehaviorSubject, concat, firstValueFrom, from } from 'rxjs';
+import { BehaviorSubject, firstValueFrom } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
-import { concatMap, map, take } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { AuthData } from '../../auth/models/auth-data.model';
 import { UserData } from '../../auth/models/user-details.model';
 import { UsersService } from './users.service';

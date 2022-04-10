@@ -1,15 +1,14 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ApexAxisChartSeries, ApexYAxis } from 'ng-apexcharts';
-import { firstValueFrom, map, Observable } from 'rxjs';
+import { firstValueFrom, map } from 'rxjs';
 import { ChartData } from '../../../../shared/models/chart-data.model';
 import { ChartOptions } from '../../../../shared/models/chart-options.model';
 import { SummaryChartService } from '../../../../shared/services/summary-chart.service';
 
-
 @Component({
   selector: 'app-chart-summary',
   templateUrl: './chart-summary.component.html',
-  styleUrls: ['./chart-summary.component.scss']
+  styleUrls: ['./chart-summary.component.scss'],
 })
 export class ChartSummaryComponent implements OnInit, OnChanges {
   @Input() selectedYear?: number;
@@ -26,10 +25,14 @@ export class ChartSummaryComponent implements OnInit, OnChanges {
     try {
       const medicamentsData = await firstValueFrom(this.summaryChartService.medicamentSeries());
       const eventsData = await firstValueFrom(
-        this.summaryChartService.eventsSerie().pipe(map((data) => ({ name: 'Events', ...data })))
+        this.summaryChartService
+          .eventsSerie()
+          .pipe(map((data) => ({ name: $localize`:@@title-events:Events`, ...data })))
       );
       const seizuresData = await firstValueFrom(
-        this.summaryChartService.seizureSerie().pipe(map((data) => ({ name: 'Seizures', ...data })))
+        this.summaryChartService
+          .seizureSerie()
+          .pipe(map((data) => ({ name: $localize`:@@title-seizures:Seizures`, ...data })))
       );
 
       this.initSummaryChart(
@@ -43,9 +46,7 @@ export class ChartSummaryComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   private initSummaryChart(
     subtitle: string,
@@ -68,7 +69,7 @@ export class ChartSummaryComponent implements OnInit, OnChanges {
         axisBorder: { show: true },
         seriesName: seizuresData.name,
         title: {
-          text: seizuresData.name
+          text: seizuresData.name,
         },
       });
     }
@@ -79,7 +80,7 @@ export class ChartSummaryComponent implements OnInit, OnChanges {
         axisBorder: { show: true },
         seriesName: medicamentData.name,
         title: {
-          text: `${medicamentData.name} (per day)`
+          text: $localize`:@@chart-summary-med-per-day:${medicamentData.name} (per day)`,
         },
         labels: {
           formatter: (value: number, opts: { dataPointIndex: number }) =>
@@ -94,7 +95,7 @@ export class ChartSummaryComponent implements OnInit, OnChanges {
         axisBorder: { show: false },
         seriesName: eventsData.name,
         title: {
-          text: eventsData.name
+          text: eventsData.name,
         },
         min: 0,
         tickAmount: 2,
@@ -134,7 +135,7 @@ export class ChartSummaryComponent implements OnInit, OnChanges {
       dataLabels: { enabled: false },
       stroke: { width: [1, 1, 4] },
       title: {
-        text: 'Seizures, medicaments & events',
+        text: $localize`:@@chart-summary-title:Seizures, medicaments & events`,
         align: 'left',
         offsetX: 110,
       },

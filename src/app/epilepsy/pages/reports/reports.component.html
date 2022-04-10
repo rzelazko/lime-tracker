@@ -3,15 +3,14 @@
 <ng-container *ngIf="report$ | async as report; else loading">
   <mat-toolbar class="page-header" role="heading">
     <h1>
-      Reports
-      <span *ngIf="report">
-        until {{ report.dateTo | moment: "L" }} (from {{ report.dateFrom | moment: "L" }})
-      </span>
+      <ng-container i18n="@@title-reports">Reports</ng-container>
+      <span *ngIf="report"> </span>
+      <span *ngIf="report" i18n="@@title-reports-until-from">until {{ report.dateTo | moment: "L" }} (from {{ report.dateFrom | moment: "L" }})</span>
     </h1>
   </mat-toolbar>
 
   <main>
-    <p *ngIf="!report">No reports found!</p>
+    <p *ngIf="!report" i18n="@@reports-no-data">No reports found!</p>
 
     <mat-list *ngIf="report">
       <ng-container *ngFor="let monthData of report.monthsData; index as monthIndex">
@@ -28,16 +27,12 @@
           </div>
 
           <mat-icon *ngIf="case.seizure" mat-list-icon>warning</mat-icon>
-          <div *ngIf="case.seizure" mat-line>
-            Seizure: {{ case.seizure.occurred | moment: "LLL" }}
-          </div>
+          <div *ngIf="case.seizure" mat-line i18n="@@reports-seizure-name">Seizure: {{ case.seizure.occurred | moment: "LLL" }}</div>
           <div *ngIf="case.seizure" mat-line class="mat-line-secondary">
-            <span>Type: {{ case.seizure.type }}</span>
-            <span *ngIf="case.seizure.trigger"> | Trigger: {{ case.seizure.trigger }}</span>
+            <span i18n="@@reports-seizure-type">Type: {{ case.seizure.type }}</span>
+            <span *ngIf="case.seizure.trigger" i18n="@@reports-seizure-trigger">| Trigger: {{ case.seizure.trigger }}</span>
           </div>
-          <div *ngIf="case.seizure" mat-line class="mat-line-secondary">
-            Duration: {{ case.seizure.duration | humanize }}
-          </div>
+          <div *ngIf="case.seizure" mat-line class="mat-line-secondary" i18n="@@reports-seizure-duration">Duration: {{ case.seizure.duration | humanize }}</div>
 
           <mat-icon *ngIf="case.medicament" mat-list-icon>medication</mat-icon>
           <div *ngIf="case.medicament" mat-line>
@@ -50,7 +45,7 @@
         </mat-list-item>
         <mat-list-item *ngIf="!monthData.data.length">
           <mat-icon mat-list-icon>info_outline</mat-icon>
-          <div mat-line class="mat-line-secondary">No data</div>
+          <div mat-line class="mat-line-secondary" i18n="@@no-data">No data</div>
         </mat-list-item>
 
         <mat-divider></mat-divider>

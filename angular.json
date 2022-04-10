@@ -16,10 +16,19 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "pl": {
+            "translation": "src/locale/messages.pl.xlf"
+          }
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "localize": true,
             "outputPath": "dist/lime-tracker",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -40,7 +49,7 @@
             ],
             "allowedCommonJsDependencies": [
               "moment-range"
-           ],
+            ],
             "serviceWorker": true,
             "ngswConfigPath": "ngsw-config.json"
           },
@@ -73,6 +82,12 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "en": {
+              "localize": ["en-US"]
+            },
+            "pl": {
+              "localize": ["pl"]
             }
           },
           "defaultConfiguration": "production"
@@ -85,6 +100,12 @@
             },
             "development": {
               "browserTarget": "lime-tracker:build:development"
+            },
+            "en": {
+              "browserTarget": "lime-tracker:build:development,en"
+            },
+            "pl": {
+              "browserTarget": "lime-tracker:build:development,pl"
             }
           },
           "defaultConfiguration": "development"

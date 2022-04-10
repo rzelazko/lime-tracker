@@ -7,46 +7,38 @@
           <span>Lime Tracker</span>
         </div>
       </mat-card-title>
-      <mat-card-subtitle>Almoast there</mat-card-subtitle>
+      <mat-card-subtitle i18n="@@verify-welcome">Almoast there</mat-card-subtitle>
     </mat-card-header>
-    <img
-      mat-card-image
-      width="400"
-      height="200"
-      src="https://source.unsplash.com/random/400x200/?limes"
-    />
+    <img mat-card-image width="400" height="200" src="https://source.unsplash.com/random/400x200/?limes" />
 
     <ng-container *ngIf="auth.userData$ | async as userData; else loading">
       <mat-card-content>
-        <h1>Thank You for Registering!</h1>
+        <h1 i18n="@@verify-header">Thank You for Registering!</h1>
 
-        <p>We have sent a confirmation email.</p>
+        <p i18n="@@verify-email-sent">We have sent a confirmation email.</p>
 
         <p class="userData">
-          To <span>{{ userData.email }}</span>.
+          <ng-container i18n="@@verify-email-sent-to">To</ng-container>
+          <span> {{ userData.email }}</span>.
         </p>
 
         <p class="userData" *ngIf="userData.emailVerificationSent">
-          At <span>{{ userData.emailVerificationSent | moment: "LLL" }}</span>.
-          <small>Resend possible after an hour.</small>
+          <ng-container i18n="@@verify-email-sent-date">At</ng-container>
+          <span> {{ userData.emailVerificationSent | moment: "LLL" }}</span>.
+          <small i18n="@@verify-email-resend-info">Resend possible after an hour.</small>
         </p>
 
-        <p>Please check your email and click on the link to verify your email address.</p>
+        <p i18n="@@verify-check-email">Please check your email and click on the link to verify your email address.</p>
       </mat-card-content>
 
       <mat-card-actions>
         <ng-container *ngIf="oneHourAgo$ | async as hourAgo">
-          <button
-            mat-raised-button
-            color="secondary"
-            (click)="onEmailSend()"
+          <button mat-raised-button color="secondary" (click)="onEmailSend()"
             *ngIf="userData.emailVerificationSent && userData.emailVerificationSent.isBefore(hourAgo)"
-          >
-            Re-send confirmation email
-          </button>
+            i18n="@@verify-button-resend">Re-send confirmation email</button>
         </ng-container>
 
-        <a mat-raised-button color="secondary" routerLink="/logout"> Log in </a>
+        <a mat-raised-button color="secondary" routerLink="/logout" i18n="@@login-action">Log in</a>
       </mat-card-actions>
     </ng-container>
 

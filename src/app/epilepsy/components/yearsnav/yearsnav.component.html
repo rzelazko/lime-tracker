@@ -1,5 +1,7 @@
 <nav mat-tab-nav-bar>
-  <a mat-tab-link (click)="onYearSelect()" [active]="!selectedYear">Last year</a>
+  <a mat-tab-link (click)="onYearSelect()" [active]="!selectedYear" i18n="@@tab-last-year"
+    >Last year</a
+  >
   <a
     mat-tab-link
     (click)="onYearSelect(currentYear - 1)"

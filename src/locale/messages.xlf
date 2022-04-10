@@ -1,0 +1,1109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="action-login" datatype="html">
+        <source>Log in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/auth.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/login/login.component.html</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="action-register" datatype="html">
+        <source>Register</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/auth.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
+          <context context-type="linenumber">117</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seizure-trigger-lights" datatype="html">
+        <source>Lights</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/models/default-seizure-triggers.model.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seizure-trigger-period" datatype="html">
+        <source>Period</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/models/default-seizure-triggers.model.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seizure-trigger-forgotten-medicament" datatype="html">
+        <source>Forgotten medicament</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/models/default-seizure-triggers.model.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seizure-type-absence" datatype="html">
+        <source>Absence seizure</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/models/default-seizure-types.model.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seizure-type-tonic-clonic" datatype="html">
+        <source>Tonic-clonic seizure</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/models/default-seizure-types.model.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seizure-type-simple-focal" datatype="html">
+        <source>Simple focal seizure</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/models/default-seizure-types.model.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seizure-type-complex-focal" datatype="html">
+        <source>Complex focal seizure</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/models/default-seizure-types.model.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seizure-type-secondary-generalized" datatype="html">
+        <source>Secondary generalized seizure</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/models/default-seizure-types.model.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="login-welcome" datatype="html">
+        <source>Welcome again!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/login/login.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-connection" datatype="html">
+        <source>Connection to backend failed. Please try again, and if the problem persists, contact the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a href=&quot;https://www.webperfekt.pl/&quot;&gt;"/>administrator<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/login/login.component.html</context>
+          <context context-type="linenumber">34,35</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
+          <context context-type="linenumber">42,43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="login-error-auth" datatype="html">
+        <source>Authentication failed - please provide valid credentials</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/login/login.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="placeholder-email" datatype="html">
+        <source>Your email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/login/login.component.html</context>
+          <context context-type="linenumber">47</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-email-required" datatype="html">
+        <source>Email is required</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/login/login.component.html</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
+          <context context-type="linenumber">77</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-email-invalid" datatype="html">
+        <source>Email is invalid</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/login/login.component.html</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
+          <context context-type="linenumber">80</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="placeholder-password" datatype="html">
+        <source>Your password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/login/login.component.html</context>
+          <context context-type="linenumber">63</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
+          <context context-type="linenumber">88</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-provide-password" datatype="html">
+        <source>Please provide valid passowrd</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/login/login.component.html</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="register-welcome" datatype="html">
+        <source>Register to the best epilepsy journal!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-email-taken" datatype="html">
+        <source>Email already taken</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-passwrod-weak" datatype="html">
+        <source>Password is too weak</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="register-error-default" datatype="html">
+        <source>Registration failed - try different data. If problem persists please contact the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a href=&quot;https://www.webperfekt.pl/&quot;&gt;"/>administrator<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
+          <context context-type="linenumber">46,47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="placeholder-name" datatype="html">
+        <source>Your name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
+          <context context-type="linenumber">56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-name-required" datatype="html">
+        <source>Your name is required</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
+          <context context-type="linenumber">61</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-name-invalid" datatype="html">
+        <source>Your name is invalid</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-password-6-100" datatype="html">
+        <source>Has to be 6 - 100 characters long</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
+          <context context-type="linenumber">92</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="placeholder-confirm-password" datatype="html">
+        <source>Confirm password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
+          <context context-type="linenumber">99</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-confirm-password-required" datatype="html">
+        <source>Confirm password is required</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
+          <context context-type="linenumber">106</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-confirm-password-not-the-same" datatype="html">
+        <source>Password and confirm password must be the same</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
+          <context context-type="linenumber">111</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verify-welcome" datatype="html">
+        <source>Almoast there</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/verify-email/verify-email.component.html</context>
+          <context context-type="linenumber">10,11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verify-header" datatype="html">
+        <source>Thank You for Registering!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/verify-email/verify-email.component.html</context>
+          <context context-type="linenumber">16,18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verify-email-sent" datatype="html">
+        <source>We have sent a confirmation email.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/verify-email/verify-email.component.html</context>
+          <context context-type="linenumber">18,20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verify-email-sent-to" datatype="html">
+        <source>To</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/verify-email/verify-email.component.html</context>
+          <context context-type="linenumber">21,22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verify-email-sent-date" datatype="html">
+        <source>At</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/verify-email/verify-email.component.html</context>
+          <context context-type="linenumber">26,27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verify-email-resend-info" datatype="html">
+        <source>Resend possible after an hour.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/verify-email/verify-email.component.html</context>
+          <context context-type="linenumber">28,31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verify-check-email" datatype="html">
+        <source>Please check your email and click on the link to verify your email address.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/verify-email/verify-email.component.html</context>
+          <context context-type="linenumber">31,34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="verify-button-resend" datatype="html">
+        <source>Re-send confirmation email</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/verify-email/verify-email.component.html</context>
+          <context context-type="linenumber">38,41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="login-action" datatype="html">
+        <source>Log in</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/verify-email/verify-email.component.html</context>
+          <context context-type="linenumber">41,42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="delete-dialog-title" datatype="html">
+        <source>Delete <x id="INTERPOLATION" equiv-text="{{ type }}"/>?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/confirm-delete-dialog/confirm-delete-dialog.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="delete-dialog-content" datatype="html">
+        <source>Delete <x id="INTERPOLATION" equiv-text="{{ type }}"/>: <x id="INTERPOLATION_1" equiv-text="{{ title }}"/>?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/confirm-delete-dialog/confirm-delete-dialog.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dialog-option-no" datatype="html">
+        <source>No</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/confirm-delete-dialog/confirm-delete-dialog.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dialog-option-yes" datatype="html">
+        <source>Yes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/confirm-delete-dialog/confirm-delete-dialog.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="title-dashboard" datatype="html">
+        <source>Dashboard</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/sidenav/sidenav.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">2,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="title-charts" datatype="html">
+        <source>Charts</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/sidenav/sidenav.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/charts.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="title-reports" datatype="html">
+        <source>Reports</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/sidenav/sidenav.component.html</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
+          <context context-type="linenumber">6,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="title-seizures" datatype="html">
+        <source>Seizures</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/sidenav/sidenav.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-summary/chart-summary.component.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="title-medicaments" datatype="html">
+        <source>Medicaments</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/sidenav/sidenav.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="title-events" datatype="html">
+        <source>Events</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/sidenav/sidenav.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-summary/chart-summary.component.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/events/events.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="title-logout" datatype="html">
+        <source>Log out</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/sidenav/sidenav.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="table-column-occurred" datatype="html">
+        <source>Occurred</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="table-column-name" datatype="html">
+        <source>Name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="table-column-type" datatype="html">
+        <source>Type</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="table-column-trigger" datatype="html">
+        <source>Trigger</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="table-column-duration" datatype="html">
+        <source>Duration</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="table-column-dose" datatype="html">
+        <source>Dose</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="table-column-start-date" datatype="html">
+        <source>Start date</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="table-column-medicament-active" datatype="html">
+        <source>Active</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="table-tooltip-move-to-active" datatype="html">
+        <source>Switch medicament to currenlty taken</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="table-tooltip-move-to-archive" datatype="html">
+        <source>Move to archive</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
+          <context context-type="linenumber">76</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="table-column-actions" datatype="html">
+        <source>Actions</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
+          <context context-type="linenumber">84</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="loading" datatype="html">
+        <source>Loading</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
+          <context context-type="linenumber">100</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="no-data" datatype="html">
+        <source>No data</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
+          <context context-type="linenumber">101</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">81,82</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
+          <context context-type="linenumber">47,48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="action-load-more" datatype="html">
+        <source>Load more</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
+          <context context-type="linenumber">111</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="action-refresh" datatype="html">
+        <source>Refresh data</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
+          <context context-type="linenumber">115</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tab-last-year" datatype="html">
+        <source>Last year</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/yearsnav/yearsnav.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chart-summary-med-per-day" datatype="html">
+        <source><x id="PH" equiv-text="medicamentData.name"/> (per day)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-summary/chart-summary.component.ts</context>
+          <context context-type="linenumber">83</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chart-summary-title" datatype="html">
+        <source>Seizures, medicaments &amp; events</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-summary/chart-summary.component.ts</context>
+          <context context-type="linenumber">138,137</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dashboard-action-add-seizure" datatype="html">
+        <source>Attack!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">9,10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dashboard-action-add-medicament" datatype="html">
+        <source>Medicament</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">10,11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dashboard-action-add-event" datatype="html">
+        <source>Event</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">11,13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dashboard-title-last-seizure" datatype="html">
+        <source>Last seizure</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">28,29</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">45,46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dashboard-time-since-last-seizure" datatype="html">
+        <source>Time since last seizure:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">34,35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dashboard-time-since-last-seizure-unknown" datatype="html">
+        <source>unknown</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">35,36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dashboard-title-current-medicaments" datatype="html">
+        <source>Current medicaments</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">53,55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="title-update-event" datatype="html">
+        <source>Update Event</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="title-add-event" datatype="html">
+        <source>Add Event</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-with-message" datatype="html">
+        <source>Error: <x id="INTERPOLATION" equiv-text="{{ error }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
+          <context context-type="linenumber">17,18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="label-event-name" datatype="html">
+        <source>Event name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="placeholder-event-name" datatype="html">
+        <source>Important event name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-event-name-required" datatype="html">
+        <source>Event name is required</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-event-name-invalid" datatype="html">
+        <source>Event name is invalid</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="label-event-occurred" datatype="html">
+        <source>Event occurred</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-event-occurred-required" datatype="html">
+        <source>Event occurred is required</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-event-occurred-invalid" datatype="html">
+        <source>Event occurred is invalid</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-event-occurred-in-future" datatype="html">
+        <source>Event occurred cannot be in the future</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="action-update" datatype="html">
+        <source>Update</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">133</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
+          <context context-type="linenumber">78,79</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="action-add-event" datatype="html">
+        <source>Add event</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/events/events.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="action-cancel" datatype="html">
+        <source>Cancel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
+          <context context-type="linenumber">63</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">139</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
+          <context context-type="linenumber">84,88</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="title-update-medicament" datatype="html">
+        <source>Update Medicament</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="title-add-medicament" datatype="html">
+        <source>Add Medicament</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="label-medicament-name" datatype="html">
+        <source>Medicament name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-medicament-name-required" datatype="html">
+        <source>Medicament name is required</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-medicament-name-invalid" datatype="html">
+        <source>Medicament name is invalid</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="label-medicament-morning-dose" datatype="html">
+        <source>Morning dose</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-morning-dose-required" datatype="html">
+        <source>Morning dose is required</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-morning-dose-invalid" datatype="html">
+        <source>Morning dose is invalid</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="label-medicament-noon-dose" datatype="html">
+        <source>Noon dose</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-noon-dose-required" datatype="html">
+        <source>Noon dose is required</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-noon-dose-invalid" datatype="html">
+        <source>Noon dose is invalid</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="label-medicament-evening-dose" datatype="html">
+        <source>Evening dose</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-evening-dose-required" datatype="html">
+        <source>Evening dose is required</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">63</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-evening-dose-invalid" datatype="html">
+        <source>Evening dose is invalid</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">66</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="label-medicament-start-date" datatype="html">
+        <source>Start date</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">71</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-start-date-required" datatype="html">
+        <source>Start date is required</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">82</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-start-date-invalid" datatype="html">
+        <source>Start date is invalid</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">85</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-start-date-in-future" datatype="html">
+        <source>Start date cannot be in the future</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">88</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-start-date-after-end-date" datatype="html">
+        <source>Start date cannot be after end date</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">93</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="label-medicament-archived" datatype="html">
+        <source>Archived</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">98</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="label-medicament-end-date" datatype="html">
+        <source>End date</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">102</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-end-date-required" datatype="html">
+        <source>End date is required</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">114</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-end-date-invalid" datatype="html">
+        <source>End date is invalid</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">117</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-end-date-in-future" datatype="html">
+        <source>End date cannot be in the future</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">122</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-end-date-before-start-date" datatype="html">
+        <source>End date cannot be before start date</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">127</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="action-add-medicament" datatype="html">
+        <source>Add medicament</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments-form/medicaments-form.component.html</context>
+          <context context-type="linenumber">136</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/medicaments/medicaments.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="title-reports-until-from" datatype="html">
+        <source>until <x id="INTERPOLATION" equiv-text="{{ report.dateTo | moment: &quot;L&quot; }}"/> (from <x id="INTERPOLATION_1" equiv-text="{{ report.dateFrom | moment: &quot;L&quot; }}"/>)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
+          <context context-type="linenumber">7,9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports-no-data" datatype="html">
+        <source>No reports found!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
+          <context context-type="linenumber">12,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports-seizure-name" datatype="html">
+        <source>Seizure: <x id="INTERPOLATION" equiv-text="{{ case.seizure.occurred | moment: &quot;LLL&quot; }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
+          <context context-type="linenumber">29,30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports-seizure-type" datatype="html">
+        <source>Type: <x id="INTERPOLATION" equiv-text="{{ case.seizure.type }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
+          <context context-type="linenumber">31,32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports-seizure-trigger" datatype="html">
+        <source>| Trigger: <x id="INTERPOLATION" equiv-text="{{ case.seizure.trigger }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
+          <context context-type="linenumber">32,33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports-seizure-duration" datatype="html">
+        <source>Duration: <x id="INTERPOLATION" equiv-text="{{ case.seizure.duration | humanize }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
+          <context context-type="linenumber">34,36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="title-update-seizure" datatype="html">
+        <source>Update Seizure</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="title-add-seizure" datatype="html">
+        <source>Add Seizure</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
+          <context context-type="linenumber">3,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="label-occurred" datatype="html">
+        <source>Occurred</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
+          <context context-type="linenumber">21,22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-occurred-required" datatype="html">
+        <source>Occurred field is required</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
+          <context context-type="linenumber">24,26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-occurred-invalid" datatype="html">
+        <source>Occurred field is invalid</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
+          <context context-type="linenumber">27,29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-occurred-in-future" datatype="html">
+        <source>Occurred cannot be in the future</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
+          <context context-type="linenumber">30,32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="label-duration" datatype="html">
+        <source>Duration (min)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
+          <context context-type="linenumber">35,36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-seizure-duration-required" datatype="html">
+        <source>Seizure duration is required</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
+          <context context-type="linenumber">38,40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-seizure-duration-invalid" datatype="html">
+        <source>Seizure duration is invalid</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
+          <context context-type="linenumber">41,45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="label-seizure-type" datatype="html">
+        <source>Type</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
+          <context context-type="linenumber">46,47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-seizure-type-required" datatype="html">
+        <source>Seizure type is required</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
+          <context context-type="linenumber">53,55</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-seizure-type-invalid" datatype="html">
+        <source>Seizure type is invalid</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
+          <context context-type="linenumber">56,58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="label-seizure-trigger" datatype="html">
+        <source>Trigger</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
+          <context context-type="linenumber">61,62</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-seizure-trigger-required" datatype="html">
+        <source>Seizure trigger is required</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
+          <context context-type="linenumber">69,71</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-seizure-trigger-invalid" datatype="html">
+        <source>Seizure trigger is invalid</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
+          <context context-type="linenumber">72,76</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="action-add-seizure" datatype="html">
+        <source>Add seizure</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
+          <context context-type="linenumber">81,84</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error404-title" datatype="html">
+        <source>Error 404</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/page-not-found/page-not-found.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error404-description" datatype="html">
+        <source>Page you are looking for has not been found!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/page-not-found/page-not-found.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error404-link-back-to-dashboard" datatype="html">
+        <source>Open Lime Tracker dashboard</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/page-not-found/page-not-found.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-modal-title" datatype="html">
+        <source>Something went wrong!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/error-modal/error-modal.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-modal-info" datatype="html">
+        <source>Please try again, and if the problem persists, contact the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a href=&quot;https://www.webperfekt.pl/&quot;&gt;"/>administrator<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/error-modal/error-modal.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="action-close" datatype="html">
+        <source>Close</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/error-modal/error-modal.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

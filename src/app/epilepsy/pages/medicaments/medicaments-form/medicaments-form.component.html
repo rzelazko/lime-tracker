@@ -1,5 +1,6 @@
 <mat-toolbar class="page-header" role="heading">
-  <h1>{{ id ? "Update Medicament" : "Add Medicament" }}</h1>
+  <h1 *ngIf="id" i18n="@@title-update-medicament">Update Medicament</h1>
+  <h1 *ngIf="!id" i18n="@@title-add-medicament">Add Medicament</h1>
 </mat-toolbar>
 
 <main>
@@ -12,39 +13,62 @@
     fxLayoutGap="1em"
   >
     <mat-error *ngIf="error">
-      <span>Error: {{ error }}</span>
+      <span i18n="@@error-with-message">Error: {{ error }}</span>
     </mat-error>
 
     <mat-form-field appearance="fill">
-      <mat-label>Medicament name</mat-label>
-      <input type="text" formControlName="name" id="name" placeholder="Medicamentum" matInput />
-      <mat-error *ngIf="hasError('name', 'required')">Medicament name is required</mat-error>
-      <mat-error *ngIf="hasError('name', '!required')">Medicament name is invalid</mat-error>
+      <mat-label i18n="@@label-medicament-name">Medicament name</mat-label>
+      <input
+        type="text"
+        formControlName="name"
+        id="name"
+        i18n="@@placeholder-medicament-name"
+        placeholder="Medicamentum"
+        matInput
+      />
+      <mat-error *ngIf="hasError('name', 'required')" i18n="@@error-medicament-name-required"
+        >Medicament name is required</mat-error
+      >
+      <mat-error *ngIf="hasError('name', '!required')" i18n="@@error-medicament-name-invalid"
+        >Medicament name is invalid</mat-error
+      >
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Morning dose</mat-label>
+      <mat-label i18n="@@label-medicament-morning-dose">Morning dose</mat-label>
       <input type="number" formControlName="doseMorning" placeholder="100" min="0" matInput />
-      <mat-error *ngIf="hasError('doseMorning', 'required')">Morning dose is required</mat-error>
-      <mat-error *ngIf="hasError('doseMorning', '!required')">Morning dose is invalid</mat-error>
+      <mat-error *ngIf="hasError('doseMorning', 'required')" i18n="@@error-morning-dose-required"
+        >Morning dose is required</mat-error
+      >
+      <mat-error *ngIf="hasError('doseMorning', '!required')" i18n="@@error-morning-dose-invalid"
+        >Morning dose is invalid</mat-error
+      >
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Noon dose</mat-label>
+      <mat-label i18n="@@label-medicament-noon-dose">Noon dose</mat-label>
       <input type="number" formControlName="doseNoon" placeholder="0" min="0" matInput />
-      <mat-error *ngIf="hasError('doseNoon', 'required')">Noon dose is required</mat-error>
-      <mat-error *ngIf="hasError('doseNoon', '!required')">Noon dose is invalid</mat-error>
+      <mat-error *ngIf="hasError('doseNoon', 'required')" i18n="@@error-noon-dose-required"
+        >Noon dose is required</mat-error
+      >
+      <mat-error *ngIf="hasError('doseNoon', '!required')" i18n="@@error-noon-dose-invalid"
+        >Noon dose is invalid</mat-error
+      >
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Evening dose</mat-label>
+      <mat-label i18n="@@label-medicament-evening-dose">Evening dose</mat-label>
       <input type="number" formControlName="doseEvening" placeholder="200" min="0" matInput />
-      <mat-error *ngIf="hasError('doseEvening', 'required')">Evening dose is required</mat-error>
-      <mat-error *ngIf="hasError('doseEvening', '!required')">Evening dose is invalid</mat-error>
+      <mat-error *ngIf="hasError('doseEvening', 'required')" i18n="@@error-evening-dose-required"
+        >Evening dose is required</mat-error
+      >
+      <mat-error *ngIf="hasError('doseEvening', '!required')" i18n="@@error-evening-dose-invalid"
+        >Evening dose is invalid</mat-error
+      >
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Start date</mat-label>
+      <mat-label i18n="@@label-medicament-start-date">Start date</mat-label>
       <input
         formControlName="startDate"
         [matDatepicker]="picker"
@@ -54,20 +78,28 @@
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
 
-      <mat-error *ngIf="hasError('startDate', 'required')">Start date is required</mat-error>
-      <mat-error *ngIf="hasError('startDate', 'invalid')">Start date is invalid</mat-error>
-      <mat-error *ngIf="hasError('startDate', 'future')">
-        Start date cannot be in the future
-      </mat-error>
-      <mat-error *ngIf="!hasError('startDate', 'future') && hasError('startDate', 'matDatepickerMax')">
-        Start date cannot be after end date
-      </mat-error>
+      <mat-error *ngIf="hasError('startDate', 'required')" i18n="@@error-start-date-required"
+        >Start date is required</mat-error
+      >
+      <mat-error *ngIf="hasError('startDate', 'invalid')" i18n="@@error-start-date-invalid"
+        >Start date is invalid</mat-error
+      >
+      <mat-error *ngIf="hasError('startDate', 'future')" i18n="@@error-start-date-in-future"
+        >Start date cannot be in the future</mat-error
+      >
+      <mat-error
+        *ngIf="!hasError('startDate', 'future') && hasError('startDate', 'matDatepickerMax')"
+        i18n="@@error-start-date-after-end-date"
+        >Start date cannot be after end date</mat-error
+      >
     </mat-form-field>
 
-    <mat-checkbox formControlName="archived" matInput>Archived</mat-checkbox>
+    <mat-checkbox formControlName="archived" matInput i18n="@@label-medicament-archived"
+      >Archived</mat-checkbox
+    >
 
     <mat-form-field appearance="fill" *ngIf="form.get('archived')?.value">
-      <mat-label>End date</mat-label>
+      <mat-label i18n="@@label-medicament-end-date">End date</mat-label>
       <input
         formControlName="endDate"
         [matDatepicker]="picker"
@@ -78,22 +110,33 @@
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
 
-      <mat-error *ngIf="hasError('endDate', 'required')">End date is required</mat-error>
-      <mat-error *ngIf="hasError('endDate', 'invalid')">End date is invalid</mat-error>
-      <mat-error *ngIf="hasError('endDate', 'future') || hasError('endDate', 'matDatepickerMax')">
-        End date cannot be in the future
-      </mat-error>
-      <mat-error *ngIf="hasError('endDate', 'isBefore') || hasError('endDate', 'matDatepickerMin')">
-        End date cannot be before start date
-      </mat-error>
+      <mat-error *ngIf="hasError('endDate', 'required')" i18n="@@error-end-date-required"
+        >End date is required</mat-error
+      >
+      <mat-error *ngIf="hasError('endDate', 'invalid')" i18n="@@error-end-date-invalid"
+        >End date is invalid</mat-error
+      >
+      <mat-error
+        *ngIf="hasError('endDate', 'future') || hasError('endDate', 'matDatepickerMax')"
+        i18n="@@error-end-date-in-future"
+        >End date cannot be in the future</mat-error
+      >
+      <mat-error
+        *ngIf="hasError('endDate', 'isBefore') || hasError('endDate', 'matDatepickerMin')"
+        i18n="@@error-end-date-before-start-date"
+        >End date cannot be before start date</mat-error
+      >
     </mat-form-field>
 
     <div>
-      <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid">
-        {{ id ? "Update" : "Add medicament" }}
+      <button *ngIf="id" type="submit" mat-raised-button color="primary" [disabled]="!form.valid">
+        <ng-container i18n="@@action-update">Update</ng-container>
+      </button>
+      <button *ngIf="!id" type="submit" mat-raised-button color="primary" [disabled]="!form.valid">
+        <ng-container i18n="@@action-add-medicament">Add medicament</ng-container>
       </button>
 
-      <a mat-raised-button routerLink="/epilepsy/medicaments">Cancel</a>
+      <a mat-raised-button routerLink="/epilepsy/medicaments" i18n="@@action-cancel">Cancel</a>
     </div>
   </form>
 

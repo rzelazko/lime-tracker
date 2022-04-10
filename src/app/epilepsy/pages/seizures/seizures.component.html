@@ -1,5 +1,5 @@
 <mat-toolbar class="page-header" role="heading">
-  <h1>Seizures</h1>
+  <h1 i18n="@@title-seizures">Seizures</h1>
 </mat-toolbar>
 
 <main>
@@ -8,6 +8,7 @@
     [displayedColumns]="columns"
     addBtnLink="/epilepsy/seizures/add"
     addBtnText="Add seizure"
+    i18n-addBtnText="@@action-add-seizure"
     updateLinkPrefix="/epilepsy/seizures/update"
     [loading]="loading"
     [hasMore]="hasMore"

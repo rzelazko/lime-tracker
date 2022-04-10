@@ -7,6 +7,7 @@
         routerLinkActive
         #routeLogin="routerLinkActive"
         [active]="routeLogin.isActive"
+        i18n="@@action-login"
         >Log in</a
       >
       <a
@@ -15,7 +16,8 @@
         routerLinkActive
         #routeRegister="routerLinkActive"
         [active]="routeRegister.isActive"
-        >New User</a
+        i18n="@@action-register"
+        >Register</a
       >
     </nav>
     <mat-tab-nav-panel #tabPanel>

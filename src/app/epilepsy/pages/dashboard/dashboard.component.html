@@ -1,14 +1,14 @@
 <mat-toolbar class="page-header" role="heading">
-  <h1>Dashboard</h1>
+  <h1 i18n="@@title-dashboard">Dashboard</h1>
 </mat-toolbar>
 
 <main>
   <section class="actions" fxLayout="column" fxLayoutAlign="center stretch">
     <mat-card>
       <mat-card-content fxLayout="row wrap" fxLayoutAlign="space-around center">
-        <a mat-raised-button color="warn" routerLink="/epilepsy/seizures/add"> Attack! </a>
-        <a mat-raised-button color="primary" routerLink="/epilepsy/medicaments/add"> Medicament </a>
-        <a mat-raised-button color="basic" routerLink="/epilepsy/events/add"> Event </a>
+        <a mat-raised-button color="warn" routerLink="/epilepsy/seizures/add" i18n="@@dashboard-action-add-seizure">Attack!</a>
+        <a mat-raised-button color="primary" routerLink="/epilepsy/medicaments/add" i18n="@@dashboard-action-add-medicament">Medicament</a>
+        <a mat-raised-button color="basic" routerLink="/epilepsy/events/add" i18n="@@dashboard-action-add-event">Event</a>
       </mat-card-content>
     </mat-card>
   </section>
@@ -25,14 +25,14 @@
       *ngIf="lastSeizures$ | async as lastSeizures; else loadingSeizures"
     >
       <mat-card-title-group>
-        <mat-card-title>Last seizure</mat-card-title>
+        <mat-card-title i18n="@@dashboard-title-last-seizure">Last seizure</mat-card-title>
         <mat-card-subtitle *ngIf="lastSeizures.length === 1">{{
           lastSeizures[0].occurred | moment: "LL"
         }}</mat-card-subtitle>
       </mat-card-title-group>
       <mat-card-content>
-        <h3>Time since last seizure:</h3>
-        <p class="mat-display-3" *ngIf="lastSeizures.length !== 1">unknown</p>
+        <h3 i18n="@@dashboard-time-since-last-seizure">Time since last seizure:</h3>
+        <p class="mat-display-3" *ngIf="lastSeizures.length !== 1" i18n="@@dashboard-time-since-last-seizure-unknown">unknown</p>
         <p class="mat-display-3" *ngIf="lastSeizures.length === 1">
           {{ lastSeizures[0].occurred | timeSince | humanize }}
         </p>
@@ -42,7 +42,7 @@
     <ng-template #loadingSeizures>
       <mat-card class="last-seizure">
         <mat-card-title-group>
-          <mat-card-title>Last seizure</mat-card-title>
+          <mat-card-title i18n="@@dashboard-title-last-seizure">Last seizure</mat-card-title>
         </mat-card-title-group>
         <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
       </mat-card>
@@ -50,7 +50,7 @@
 
     <mat-card class="medicaments">
       <mat-card-title-group>
-        <mat-card-title>Current medicaments</mat-card-title>
+        <mat-card-title i18n="@@dashboard-title-current-medicaments">Current medicaments</mat-card-title>
       </mat-card-title-group>
       <mat-card-content>
         <mat-list
@@ -78,7 +78,7 @@
 
           <mat-list-item *ngIf="!medicaments.length">
             <mat-icon mat-list-icon>info_outline</mat-icon>
-            <div mat-line>No data</div>
+            <div mat-line i18n="@@no-data">No data</div>
           </mat-list-item>
         </mat-list>
 
