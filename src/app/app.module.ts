@@ -7,7 +7,7 @@ import {
   connectFirestoreEmulator,
   enableMultiTabIndexedDbPersistence,
   getFirestore,
-  provideFirestore
+  provideFirestore,
 } from '@angular/fire/firestore';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -55,7 +55,7 @@ import { ReportsComponent } from './epilepsy/pages/reports/reports.component';
 import { SeizuresFormComponent } from './epilepsy/pages/seizures/seizures-form/seizures-form.component';
 import { SeizuresComponent } from './epilepsy/pages/seizures/seizures.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ErrorModalComponent } from './shared/error-modal/error-modal.component';
+import { ErrorModalComponent } from './shared/components/error-modal/error-modal.component';
 import { EndOfPipe } from './shared/pipes/end-of.pipe';
 import { HumanizePipe } from './shared/pipes/humanize.pipe';
 import { MomentPipe } from './shared/pipes/moment.pipe';
@@ -63,6 +63,7 @@ import { StartOfPipe } from './shared/pipes/start-of.pipe';
 import { TimeSincePipe } from './shared/pipes/time-since.pipe';
 import { YearsnavComponent } from './epilepsy/components/yearsnav/yearsnav.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { UpdateDialogComponent } from './shared/components/update-dialog/update-dialog.component';
 
 let resolvePersistenceEnabled: (enabled: boolean) => void;
 
@@ -102,6 +103,7 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     SeizuresFormComponent,
     TableComponent,
     TimeSincePipe,
+    UpdateDialogComponent,
     VerifyEmailComponent,
     YearsnavComponent,
   ],
@@ -166,12 +168,12 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
+      registrationStrategy: 'registerWhenStable:30000',
     }),
   ],
   exports: [],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ConfirmDeleteDialogComponent, ErrorModalComponent],
+  entryComponents: [ConfirmDeleteDialogComponent, ErrorModalComponent, UpdateDialogComponent],
 })
 export class AppModule {}

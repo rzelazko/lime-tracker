@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { ErrorModalComponent } from '../../../shared/error-modal/error-modal.component';
+import { ErrorModalComponent } from '../../../shared/components/error-modal/error-modal.component';
 import { AuthService } from '../../../shared/services/auth.service';
 import { EventsService } from '../../../shared/services/events.service';
 import { MedicamentsService } from '../../../shared/services/medicaments.service';
