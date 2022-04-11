@@ -69,7 +69,6 @@ Perform full deplyment (hosting, security rules, etc.) with `firebase deploy` or
 - I18n: set default language from browser instead of rewrite in [firebase.json](./firebase.json)
 - I18n: use `pl-PL` in Angular configuration & `pl` in [firebase.json](./firebase.json)
 - I18n: M triggers & types as defaults
-- I18n: moment
 - Seizures - multiple triggers
 - Open prod, clean page data, login, go to charts (missing some months seizures data), then seizures, then charts again (chart fixed)
 - Git hook on merge
