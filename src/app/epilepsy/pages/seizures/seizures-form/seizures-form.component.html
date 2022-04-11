@@ -49,10 +49,10 @@
           {{ type }}
         </mat-option>
       </mat-select>
-      <mat-error *ngIf="hasError('type', 'required')" i18n="@@error-seizure-type-required"
+      <mat-error *ngIf="hasError('seizureType', 'required')" i18n="@@error-seizure-type-required"
         >Seizure type is required</mat-error
       >
-      <mat-error *ngIf="hasError('type', '!required')" i18n="@@error-seizure-type-invalid"
+      <mat-error *ngIf="hasError('seizureType', '!required')" i18n="@@error-seizure-type-invalid"
         >Seizure type is invalid</mat-error
       >
     </mat-form-field>

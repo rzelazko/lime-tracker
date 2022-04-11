@@ -57,7 +57,6 @@ Perform full deplyment (hosting, security rules, etc.) with `firebase deploy` or
 - Add schema validation to [firestore.rules](firestore.rules)
 - Add some Rodo, privacy policy, etc. on login & dashboard (add footer?)
 - Add user profile management
-- Add [GitHub integration](https://firebase.google.com/docs/hosting/github-integration?authuser=0)
 - Reports pagination in URL, ex: `/epilepsy/reports/2021` - router link instead of tab `(click)`
 - Replace `throw`s with error handling (ex. reports page). Add error handling to Seizures, etc.
 - Add reset passoword
@@ -69,5 +68,4 @@ Perform full deplyment (hosting, security rules, etc.) with `firebase deploy` or
 - I18n: M triggers & types as defaults
 - Seizures - multiple triggers
 - Open prod, clean page data, login, go to charts (missing some months seizures data), then seizures, then charts again (chart fixed)
-- Git hook on merge
-- Seizure type is required - missing in PL version
+- Git hook on merge - add [GitHub integration](https://firebase.google.com/docs/hosting/github-integration?authuser=0)
