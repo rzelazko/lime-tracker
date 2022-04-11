@@ -6,23 +6,9 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "rewrites": [
-      {
-        "source": "/en/**",
-        "destination": "/en/index.html"
-      },
-      {
-        "source": "/pl/**",
-        "destination": "/pl/index.html"
-      }
-    ],
-    "redirects": [
-      {
-        "source" : "/",
-        "destination" : "/pl",
-        "type" : 301
-      }
-    ]
+    "i18n": {
+      "root": "/"
+    }
   },
   "firestore": {
     "rules": "firestore.rules",

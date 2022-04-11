@@ -66,7 +66,6 @@ Perform full deplyment (hosting, security rules, etc.) with `firebase deploy` or
 - Add screenshots to README
 - Add possibility to view older data than 2 years
 - I18n: add language switcher
-- I18n: set default language from browser instead of rewrite in [firebase.json](./firebase.json)
 - I18n: M triggers & types as defaults
 - Seizures - multiple triggers
 - Open prod, clean page data, login, go to charts (missing some months seizures data), then seizures, then charts again (chart fixed)
