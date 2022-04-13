@@ -68,4 +68,3 @@ Perform full deplyment (hosting, security rules, etc.) with `firebase deploy` or
 - I18n: M triggers & types as defaults
 - Seizures - multiple triggers
 - Open prod, clean page data, login, go to charts (missing some months seizures data), then seizures, then charts again (chart fixed)
-- Git hook on merge - add [GitHub integration](https://firebase.google.com/docs/hosting/github-integration?authuser=0)
