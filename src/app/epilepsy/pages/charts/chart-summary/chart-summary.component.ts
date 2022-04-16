@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { ApexAxisChartSeries, ApexYAxis } from 'ng-apexcharts';
-import { concat, map, merge, Subscription } from 'rxjs';
+import { map, merge, Subscription } from 'rxjs';
 import { ChartData } from '../../../../shared/models/chart-data.model';
 import { ChartOptions } from '../../../../shared/models/chart-options.model';
 import { ChartSummaryService } from '../../../../shared/services/chart-summary.service';
@@ -37,8 +37,10 @@ export class ChartSummaryComponent implements OnInit, OnDestroy, OnChanges {
         map((data) => ({ name: $localize`:@@title-seizures:Seizures`, ...data })),
         map((data) => (this.seizuresData = data))
       )
-    ).subscribe(() => {
-      this.updateChart();
+    )
+    .subscribe({
+      next: () => this.updateChart(),
+      error: (error) => (this.error = error.message)
     });
   }
 
