@@ -1,6 +1,6 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { ApexAxisChartSeries, ApexYAxis } from 'ng-apexcharts';
-import { firstValueFrom, map } from 'rxjs';
+import { map, merge, Subscription } from 'rxjs';
 import { ChartData } from '../../../../shared/models/chart-data.model';
 import { ChartOptions } from '../../../../shared/models/chart-options.model';
 import { ChartSummaryService } from '../../../../shared/services/chart-summary.service';
@@ -10,50 +10,47 @@ import { ChartSummaryService } from '../../../../shared/services/chart-summary.s
   templateUrl: './chart-summary.component.html',
   styleUrls: ['./chart-summary.component.scss'],
 })
-export class ChartSummaryComponent implements OnInit, OnChanges {
+export class ChartSummaryComponent implements OnInit, OnDestroy, OnChanges {
   @Input() selectedYear?: number;
   error?: string;
   summaryChart?: ChartOptions;
+  subsription?: Subscription;
+  medicamentsData?: ChartData[];
+  eventsData?: ChartData;
+  seizuresData?: ChartData;
 
-  constructor(private chartSummaryService: ChartSummaryService) {
-    this.chartSummaryService.setYear(this.selectedYear);
-  }
+  constructor(private chartService: ChartSummaryService) {}
 
-  async ngOnChanges(_changes: SimpleChanges): Promise<void> {
+  ngOnChanges(_changes: SimpleChanges): void {
     this.summaryChart = undefined;
-    this.chartSummaryService.setYear(this.selectedYear);
-    try {
-      const medicamentsData = await firstValueFrom(this.chartSummaryService.medicamentSeries());
-      const eventsData = await firstValueFrom(
-        this.chartSummaryService
-          .eventsSerie()
-          .pipe(map((data) => ({ name: $localize`:@@title-events:Events`, ...data })))
-      );
-      const seizuresData = await firstValueFrom(
-        this.chartSummaryService
-          .seizureSerie()
-          .pipe(map((data) => ({ name: $localize`:@@title-seizures:Seizures`, ...data })))
-      );
+    this.chartService.setYear(this.selectedYear);
 
-      this.initSummaryChart(
-        this.chartSummaryService.subtitle(),
-        medicamentsData,
-        eventsData,
-        seizuresData
-      );
-    } catch (error) {
-      this.error = error instanceof Error ? error.message : 'Unknown error';
-    }
+    this.subsription = merge(
+      this.chartService.medicamentSeries().pipe(
+        map((data) => (this.medicamentsData = data))
+      ),
+      this.chartService.eventsSerie().pipe(
+        map((data) => ({ name: $localize`:@@title-events:Events`, ...data })),
+        map((data) => (this.eventsData = data))
+      ),
+      this.chartService.seizureSerie().pipe(
+        map((data) => ({ name: $localize`:@@title-seizures:Seizures`, ...data })),
+        map((data) => (this.seizuresData = data))
+      )
+    )
+    .subscribe({
+      next: () => this.updateChart(),
+      error: (error) => (this.error = error.message)
+    });
   }
 
   ngOnInit(): void {}
 
-  private initSummaryChart(
-    subtitle: string,
-    medicamentsData: ChartData[],
-    eventsData: ChartData,
-    seizuresData: ChartData
-  ) {
+  ngOnDestroy(): void {
+    this.subsription?.unsubscribe();
+  }
+
+  private updateChart() {
     const labelFormatter = (value: number, opts: { dataPointIndex: number }, labels?: string[]) => {
       if (labels && labels[opts?.dataPointIndex]) {
         return labels[opts.dataPointIndex];
@@ -62,25 +59,26 @@ export class ChartSummaryComponent implements OnInit, OnChanges {
     };
 
     const yaxis: ApexYAxis[] = [];
-    if (seizuresData.data.length > 0) {
+    if (this.seizuresData && this.seizuresData.data.length > 0) {
       yaxis.push({
         opposite: false,
         axisTicks: { show: true },
         axisBorder: { show: true },
-        seriesName: seizuresData.name,
+        seriesName: this.seizuresData.name,
         title: {
-          text: seizuresData.name,
+          text: this.seizuresData.name,
         },
       });
     }
-    medicamentsData.forEach((medicamentData) => {
+    this.medicamentsData?.forEach((medicamentData, i) => {
       yaxis.push({
+        show: i < 1,
         opposite: true,
         axisTicks: { show: true },
         axisBorder: { show: true },
-        seriesName: medicamentData.name,
+        seriesName: this.medicamentsData ? this.medicamentsData[0].name : medicamentData.name,
         title: {
-          text: $localize`:@@chart-summary-med-per-day:${medicamentData.name} (per day)`,
+          text: $localize`:@@chart-summary-med-per-day:Medicament (per day)`,
         },
         labels: {
           formatter: (value: number, opts: { dataPointIndex: number }) =>
@@ -88,33 +86,33 @@ export class ChartSummaryComponent implements OnInit, OnChanges {
         },
       });
     });
-    if (eventsData.data.length > 0) {
+    if (this.eventsData && this.eventsData.data.length > 0) {
       yaxis.push({
         show: false,
         axisTicks: { show: false },
         axisBorder: { show: false },
-        seriesName: eventsData.name,
+        seriesName: this.eventsData.name,
         title: {
-          text: eventsData.name,
+          text: this.eventsData.name,
         },
         min: 0,
         tickAmount: 2,
         labels: {
           formatter: (value: number, opts: { dataPointIndex: number }) =>
-            labelFormatter(value, opts, eventsData.labels),
+            labelFormatter(value, opts, this.eventsData?.labels),
         },
       });
     }
 
     const series: ApexAxisChartSeries = [];
-    if (seizuresData.data.length > 0) {
+    if (this.seizuresData && this.seizuresData.data.length > 0) {
       series.push({
-        name: seizuresData.name,
+        name: this.seizuresData.name,
         type: 'column',
-        data: seizuresData.data,
+        data: this.seizuresData.data,
       });
     }
-    medicamentsData.forEach((medicamentData) => {
+    this.medicamentsData?.forEach((medicamentData) => {
       series.push({
         name: medicamentData.name,
         type: 'line',
@@ -122,11 +120,11 @@ export class ChartSummaryComponent implements OnInit, OnChanges {
       });
     });
 
-    if (eventsData.data.length > 0) {
+    if (this.eventsData && this.eventsData.data.length > 0) {
       series.push({
-        name: eventsData.name,
+        name: this.eventsData.name,
         type: 'scatter',
-        data: eventsData.data,
+        data: this.eventsData.data,
       });
     }
 
@@ -140,7 +138,7 @@ export class ChartSummaryComponent implements OnInit, OnChanges {
         offsetX: 110,
       },
       subtitle: {
-        text: subtitle,
+        text: this.chartService.subtitle(),
         align: 'left',
         offsetX: 110,
       },
