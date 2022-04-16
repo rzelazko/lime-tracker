@@ -1,6 +1,6 @@
-import { Component, Input, OnDestroy, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { ApexAxisChartSeries, ApexYAxis } from 'ng-apexcharts';
-import { map, mergeMap, Subscription, tap } from 'rxjs';
+import { concat, map, merge, Subscription } from 'rxjs';
 import { ChartData } from '../../../../shared/models/chart-data.model';
 import { ChartOptions } from '../../../../shared/models/chart-options.model';
 import { ChartSummaryService } from '../../../../shared/services/chart-summary.service';
@@ -15,35 +15,31 @@ export class ChartSummaryComponent implements OnInit, OnDestroy, OnChanges {
   error?: string;
   summaryChart?: ChartOptions;
   subsription?: Subscription;
+  medicamentsData?: ChartData[];
+  eventsData?: ChartData;
+  seizuresData?: ChartData;
 
   constructor(private chartService: ChartSummaryService) {}
 
   ngOnChanges(_changes: SimpleChanges): void {
     this.summaryChart = undefined;
     this.chartService.setYear(this.selectedYear);
-    this.subsription = this.chartService
-      .medicamentSeries()
-      .pipe(
-        mergeMap((medicamentsData) =>
-          this.chartService.eventsSerie().pipe(
-            map((data) => ({ name: $localize`:@@title-events:Events`, ...data })),
-            mergeMap((eventsData) =>
-              this.chartService.seizureSerie().pipe(
-                map((data) => ({ name: $localize`:@@title-seizures:Seizures`, ...data })),
-                tap((seizuresData) => {
-                  this.updateChart(
-                    this.chartService.subtitle(),
-                    medicamentsData,
-                    eventsData,
-                    seizuresData
-                  );
-                })
-              )
-            )
-          )
-        )
+
+    this.subsription = merge(
+      this.chartService.medicamentSeries().pipe(
+        map((data) => (this.medicamentsData = data))
+      ),
+      this.chartService.eventsSerie().pipe(
+        map((data) => ({ name: $localize`:@@title-events:Events`, ...data })),
+        map((data) => (this.eventsData = data))
+      ),
+      this.chartService.seizureSerie().pipe(
+        map((data) => ({ name: $localize`:@@title-seizures:Seizures`, ...data })),
+        map((data) => (this.seizuresData = data))
       )
-      .subscribe();
+    ).subscribe(() => {
+      this.updateChart();
+    });
   }
 
   ngOnInit(): void {}
@@ -52,12 +48,7 @@ export class ChartSummaryComponent implements OnInit, OnDestroy, OnChanges {
     this.subsription?.unsubscribe();
   }
 
-  private updateChart(
-    subtitle: string,
-    medicamentsData: ChartData[],
-    eventsData: ChartData,
-    seizuresData: ChartData
-  ) {
+  private updateChart() {
     const labelFormatter = (value: number, opts: { dataPointIndex: number }, labels?: string[]) => {
       if (labels && labels[opts?.dataPointIndex]) {
         return labels[opts.dataPointIndex];
@@ -66,25 +57,26 @@ export class ChartSummaryComponent implements OnInit, OnDestroy, OnChanges {
     };
 
     const yaxis: ApexYAxis[] = [];
-    if (seizuresData.data.length > 0) {
+    if (this.seizuresData && this.seizuresData.data.length > 0) {
       yaxis.push({
         opposite: false,
         axisTicks: { show: true },
         axisBorder: { show: true },
-        seriesName: seizuresData.name,
+        seriesName: this.seizuresData.name,
         title: {
-          text: seizuresData.name,
+          text: this.seizuresData.name,
         },
       });
     }
-    medicamentsData.forEach((medicamentData) => {
+    this.medicamentsData?.forEach((medicamentData, i) => {
       yaxis.push({
+        show: i < 1,
         opposite: true,
         axisTicks: { show: true },
         axisBorder: { show: true },
-        seriesName: medicamentData.name,
+        seriesName: this.medicamentsData ? this.medicamentsData[0].name : medicamentData.name,
         title: {
-          text: $localize`:@@chart-summary-med-per-day:${medicamentData.name} (per day)`,
+          text: $localize`:@@chart-summary-med-per-day:Medicament (per day)`,
         },
         labels: {
           formatter: (value: number, opts: { dataPointIndex: number }) =>
@@ -92,33 +84,33 @@ export class ChartSummaryComponent implements OnInit, OnDestroy, OnChanges {
         },
       });
     });
-    if (eventsData.data.length > 0) {
+    if (this.eventsData && this.eventsData.data.length > 0) {
       yaxis.push({
         show: false,
         axisTicks: { show: false },
         axisBorder: { show: false },
-        seriesName: eventsData.name,
+        seriesName: this.eventsData.name,
         title: {
-          text: eventsData.name,
+          text: this.eventsData.name,
         },
         min: 0,
         tickAmount: 2,
         labels: {
           formatter: (value: number, opts: { dataPointIndex: number }) =>
-            labelFormatter(value, opts, eventsData.labels),
+            labelFormatter(value, opts, this.eventsData?.labels),
         },
       });
     }
 
     const series: ApexAxisChartSeries = [];
-    if (seizuresData.data.length > 0) {
+    if (this.seizuresData && this.seizuresData.data.length > 0) {
       series.push({
-        name: seizuresData.name,
+        name: this.seizuresData.name,
         type: 'column',
-        data: seizuresData.data,
+        data: this.seizuresData.data,
       });
     }
-    medicamentsData.forEach((medicamentData) => {
+    this.medicamentsData?.forEach((medicamentData) => {
       series.push({
         name: medicamentData.name,
         type: 'line',
@@ -126,11 +118,11 @@ export class ChartSummaryComponent implements OnInit, OnDestroy, OnChanges {
       });
     });
 
-    if (eventsData.data.length > 0) {
+    if (this.eventsData && this.eventsData.data.length > 0) {
       series.push({
-        name: eventsData.name,
+        name: this.eventsData.name,
         type: 'scatter',
-        data: eventsData.data,
+        data: this.eventsData.data,
       });
     }
 
@@ -144,7 +136,7 @@ export class ChartSummaryComponent implements OnInit, OnDestroy, OnChanges {
         offsetX: 110,
       },
       subtitle: {
-        text: subtitle,
+        text: this.chartService.subtitle(),
         align: 'left',
         offsetX: 110,
       },
