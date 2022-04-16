@@ -1,6 +1,6 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ApexAxisChartSeries, ApexYAxis } from 'ng-apexcharts';
-import { firstValueFrom, map } from 'rxjs';
+import { map, mergeMap, Subscription, tap } from 'rxjs';
 import { ChartData } from '../../../../shared/models/chart-data.model';
 import { ChartOptions } from '../../../../shared/models/chart-options.model';
 import { ChartSummaryService } from '../../../../shared/services/chart-summary.service';
@@ -10,45 +10,49 @@ import { ChartSummaryService } from '../../../../shared/services/chart-summary.s
   templateUrl: './chart-summary.component.html',
   styleUrls: ['./chart-summary.component.scss'],
 })
-export class ChartSummaryComponent implements OnInit, OnChanges {
+export class ChartSummaryComponent implements OnInit, OnDestroy, OnChanges {
   @Input() selectedYear?: number;
   error?: string;
   summaryChart?: ChartOptions;
+  subsription?: Subscription;
 
-  constructor(private chartSummaryService: ChartSummaryService) {
-    this.chartSummaryService.setYear(this.selectedYear);
-  }
+  constructor(private chartService: ChartSummaryService) {}
 
-  async ngOnChanges(_changes: SimpleChanges): Promise<void> {
+  ngOnChanges(_changes: SimpleChanges): void {
     this.summaryChart = undefined;
-    this.chartSummaryService.setYear(this.selectedYear);
-    try {
-      const medicamentsData = await firstValueFrom(this.chartSummaryService.medicamentSeries());
-      const eventsData = await firstValueFrom(
-        this.chartSummaryService
-          .eventsSerie()
-          .pipe(map((data) => ({ name: $localize`:@@title-events:Events`, ...data })))
-      );
-      const seizuresData = await firstValueFrom(
-        this.chartSummaryService
-          .seizureSerie()
-          .pipe(map((data) => ({ name: $localize`:@@title-seizures:Seizures`, ...data })))
-      );
-
-      this.initSummaryChart(
-        this.chartSummaryService.subtitle(),
-        medicamentsData,
-        eventsData,
-        seizuresData
-      );
-    } catch (error) {
-      this.error = error instanceof Error ? error.message : 'Unknown error';
-    }
+    this.chartService.setYear(this.selectedYear);
+    this.subsription = this.chartService
+      .medicamentSeries()
+      .pipe(
+        mergeMap((medicamentsData) =>
+          this.chartService.eventsSerie().pipe(
+            map((data) => ({ name: $localize`:@@title-events:Events`, ...data })),
+            mergeMap((eventsData) =>
+              this.chartService.seizureSerie().pipe(
+                map((data) => ({ name: $localize`:@@title-seizures:Seizures`, ...data })),
+                tap((seizuresData) => {
+                  this.updateChart(
+                    this.chartService.subtitle(),
+                    medicamentsData,
+                    eventsData,
+                    seizuresData
+                  );
+                })
+              )
+            )
+          )
+        )
+      )
+      .subscribe();
   }
 
   ngOnInit(): void {}
 
-  private initSummaryChart(
+  ngOnDestroy(): void {
+    this.subsription?.unsubscribe();
+  }
+
+  private updateChart(
     subtitle: string,
     medicamentsData: ChartData[],
     eventsData: ChartData,

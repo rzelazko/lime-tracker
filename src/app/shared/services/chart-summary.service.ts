@@ -91,7 +91,6 @@ export class ChartSummaryService {
       )
       .pipe(
         map((medicaments) => this.agregateMedicamentsData(medicaments)),
-        take(1)
       );
   }
 
@@ -104,8 +103,7 @@ export class ChartSummaryService {
       ])
       .pipe(
         map((seizures) => this.seizuresService.convertDurations(seizures)),
-        map((seizures) => this.agregateSeizuresData(seizures)),
-        take(1)
+        map((seizures) => this.agregateSeizuresData(seizures))
       );
   }
 
@@ -118,7 +116,6 @@ export class ChartSummaryService {
       ])
       .pipe(
         map((events) => this.agregateEventsData(events)),
-        take(1)
       );
   }
 
