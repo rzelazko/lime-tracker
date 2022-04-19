@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
-import { Observable, Subscription, take } from 'rxjs';
+import { finalize, Observable, Subscription, take } from 'rxjs';
 import { Event } from '../../../../shared/models/event.model';
 import { AuthService } from '../../../../shared/services/auth.service';
 import { EventsService } from '../../../../shared/services/events.service';
@@ -15,6 +15,7 @@ import { DatesValidator } from '../../../../shared/validators/dates-validator';
   styleUrls: ['./events-form.component.scss'],
 })
 export class EventsFormComponent implements OnInit {
+  submitting = false;
   today = moment();
   error?: string;
   form: FormGroup;
@@ -54,6 +55,7 @@ export class EventsFormComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.submitting = true;
     const formData: Partial<Event> = {
       name: this.form.value.name,
       occurred: moment(this.form.value.occurred),
@@ -66,8 +68,10 @@ export class EventsFormComponent implements OnInit {
       submitObservable$ = this.eventsService.create(formData);
     }
 
-    this.submitSubscription = submitObservable$.subscribe({
-      next: () => this.router.navigate(['/epilepsy/events']),
+    this.submitSubscription = submitObservable$
+    .pipe(finalize(() => this.submitting = false))
+    .subscribe({
+      next: () => this.router.navigate([$localize`:@@routerLink-epilepsy-events:/epilepsy/events`]),
       error: (error) => (this.error = error.message),
     });
   }

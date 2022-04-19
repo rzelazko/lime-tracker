@@ -1,17 +1,10 @@
-import { LogoutComponent } from './auth/pages/logout/logout.component';
 import { NgModule } from '@angular/core';
-import {
-  AuthGuard,
-  AuthPipe,
-  AuthPipeGenerator,
-  emailVerified,
-  loggedIn,
-  redirectLoggedInTo,
-} from '@angular/fire/auth-guard';
+import { AuthGuard, AuthPipeGenerator, redirectLoggedInTo } from '@angular/fire/auth-guard';
 import { RouterModule, Routes } from '@angular/router';
-import { forkJoin, map, mergeMap, of, pipe } from 'rxjs';
+import { map } from 'rxjs';
 import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/pages/login/login.component';
+import { LogoutComponent } from './auth/pages/logout/logout.component';
 import { RegisterComponent } from './auth/pages/register/register.component';
 import { VerifyEmailComponent } from './auth/pages/verify-email/verify-email.component';
 import { EpilepsyComponent } from './epilepsy/epilepsy.component';
@@ -19,53 +12,56 @@ import { ChartsComponent } from './epilepsy/pages/charts/charts.component';
 import { DashboardComponent } from './epilepsy/pages/dashboard/dashboard.component';
 import { EventsFormComponent } from './epilepsy/pages/events/events-form/events-form.component';
 import { EventsComponent } from './epilepsy/pages/events/events.component';
-import { MedicamentsFormComponent } from './epilepsy/pages/medicaments/medicaments-form/medicaments-form.component';
-import { MedicamentsComponent } from './epilepsy/pages/medicaments/medicaments.component';
+import { MedicationsFormComponent } from './epilepsy/pages/medications/medications-form/medications-form.component';
+import { MedicationsComponent } from './epilepsy/pages/medications/medications.component';
 import { ReportsComponent } from './epilepsy/pages/reports/reports.component';
 import { SeizuresFormComponent } from './epilepsy/pages/seizures/seizures-form/seizures-form.component';
 import { SeizuresComponent } from './epilepsy/pages/seizures/seizures.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-const redirectLoggedInToDashboard = () => redirectLoggedInTo(['epilepsy']);
+const redirectLoggedInToDashboard = () => redirectLoggedInTo([$localize`:@@routing-epilepsy:epilepsy`]);
 const redirectUnauthorizedOrUnverifiedUser: AuthPipeGenerator = () =>
   map((user) => {
     if (user) {
       if (user.emailVerified) {
         return true;
       }
-      return ['register', 'confirm'];
+      return [$localize`:@@routing-register-confirm:register/confirm`];
     }
-    return ['login'];
+    return [$localize`:@@routing-login:login`];
   });
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'login' },
+  { path: '', pathMatch: 'full', redirectTo: $localize`:@@routing-login:login` },
   {
     path: '',
     component: AuthComponent,
     children: [
-      { path: '', pathMatch: 'full', redirectTo: 'login' },
+      { path: '', pathMatch: 'full', redirectTo: $localize`:@@routing-login:login` },
       {
-        path: 'login',
+        path: $localize`:@@routing-login:login`,
         component: LoginComponent,
         canActivate: [AuthGuard],
         data: { authGuardPipe: redirectLoggedInToDashboard },
       },
       {
-        path: 'logout',
+        path: $localize`:@@routing-logout:logout`,
         component: LogoutComponent,
       },
       {
-        path: 'register',
+        path: $localize`:@@routing-register:register`,
         component: RegisterComponent,
         canActivate: [AuthGuard],
         data: { authGuardPipe: redirectLoggedInToDashboard },
       },
-      { path: 'register/confirm', component: VerifyEmailComponent },
+      {
+        path: $localize`:@@routing-register-confirm:register/confirm`,
+        component: VerifyEmailComponent,
+      },
     ],
   },
   {
-    path: 'epilepsy',
+    path: $localize`:@@routing-epilepsy:epilepsy`,
     component: EpilepsyComponent,
     children: [
       {
@@ -75,67 +71,67 @@ const routes: Routes = [
         data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
       },
       {
-        path: 'charts',
+        path: $localize`:@@routing-charts:charts`,
         component: ChartsComponent,
         canActivate: [AuthGuard],
         data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
       },
       {
-        path: 'reports',
+        path: $localize`:@@routing-reports:reports`,
         component: ReportsComponent,
         canActivate: [AuthGuard],
         data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
       },
       {
-        path: 'seizures',
+        path: $localize`:@@routing-seizures:seizures`,
         component: SeizuresComponent,
         canActivate: [AuthGuard],
         data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
       },
       {
-        path: 'seizures/add',
+        path: $localize`:@@routing-seizures-add:seizures/add`,
         component: SeizuresFormComponent,
         canActivate: [AuthGuard],
         data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
       },
       {
-        path: 'seizures/update/:id',
+        path: $localize`:@@routing-seizures-update:seizures/update/:id`,
         component: SeizuresFormComponent,
         canActivate: [AuthGuard],
         data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
       },
       {
-        path: 'medicaments',
-        component: MedicamentsComponent,
+        path: $localize`:@@routing-medications:medications`,
+        component: MedicationsComponent,
         canActivate: [AuthGuard],
         data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
       },
       {
-        path: 'medicaments/add',
-        component: MedicamentsFormComponent,
+        path: $localize`:@@routing-medications-add:medications/add`,
+        component: MedicationsFormComponent,
         canActivate: [AuthGuard],
         data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
       },
       {
-        path: 'medicaments/update/:id',
-        component: MedicamentsFormComponent,
+        path: $localize`:@@routing-medications-update:medications/update/:id`,
+        component: MedicationsFormComponent,
         canActivate: [AuthGuard],
         data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
       },
       {
-        path: 'events',
+        path: $localize`:@@routing-events:events`,
         component: EventsComponent,
         canActivate: [AuthGuard],
         data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
       },
       {
-        path: 'events/add',
+        path: $localize`:@@routing-events-add:events/add`,
         component: EventsFormComponent,
         canActivate: [AuthGuard],
         data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
       },
       {
-        path: 'events/update/:id',
+        path: $localize`:@@routing-evetns-update:events/update/:id`,
         component: EventsFormComponent,
         canActivate: [AuthGuard],
         data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },

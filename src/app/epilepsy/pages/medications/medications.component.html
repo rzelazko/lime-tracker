@@ -1,15 +1,17 @@
 <mat-toolbar class="page-header" role="heading">
-  <h1 i18n="@@title-medicaments">Medicaments</h1>
+  <h1 i18n="@@title-medications">Medications</h1>
 </mat-toolbar>
 
 <main>
   <app-table
     [dataSource]="dataSource"
     [displayedColumns]="columns"
-    addBtnLink="/epilepsy/medicaments/add"
-    addBtnText="Add medicament"
-    i18n-addBtnText="@@action-add-medicament"
-    updateLinkPrefix="/epilepsy/medicaments/update"
+    addBtnLink="/epilepsy/medications/add"
+    i18n-addBtnLink="@@routerLink-epilepsy-medications-add"
+    addBtnText="Add medication"
+    i18n-addBtnText="@@action-add-medication"
+    updateLinkPrefix="/epilepsy/medications/update"
+    i18n-updateLinkPrefix="@@routerLink-epilepsy-medications-update"
     [loading]="loading"
     [hasMore]="hasMore"
     (onDelete)="onDelete($event)"

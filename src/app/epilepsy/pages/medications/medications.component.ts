@@ -3,18 +3,18 @@ import { MatTableDataSource } from '@angular/material/table';
 import * as moment from 'moment';
 import { Subscription } from 'rxjs';
 import { Event } from '../../../shared/models/event.model';
-import { Medicament } from '../../../shared/models/medicament.model';
+import { Medication } from '../../../shared/models/medication.model';
 import { Seizure } from '../../../shared/models/seizure.model';
-import { MedicamentsService } from '../../../shared/services/medicaments.service';
+import { MedicationsService } from '../../../shared/services/medications.service';
 import { TableComponent } from '../../components/table/table.component';
 
 @Component({
-  selector: 'app-medicaments',
-  templateUrl: './medicaments.component.html',
-  styleUrls: ['./medicaments.component.scss'],
+  selector: 'app-medications',
+  templateUrl: './medications.component.html',
+  styleUrls: ['./medications.component.scss'],
 })
-export class MedicamentsComponent implements OnInit, OnDestroy {
-  dataSource = new MatTableDataSource<Event | Medicament | Seizure>();
+export class MedicationsComponent implements OnInit, OnDestroy {
+  dataSource = new MatTableDataSource<Event | Medication | Seizure>();
   loading = false;
   hasMore = false;
   public columns = ['name', 'dose', 'startDate', 'archived', 'actions'];
@@ -22,7 +22,7 @@ export class MedicamentsComponent implements OnInit, OnDestroy {
   private deleteSubscription?: Subscription;
   private archiveSubscription?: Subscription;
 
-  constructor(private medicamentsService: MedicamentsService) {}
+  constructor(private medicationsService: MedicationsService) {}
 
   ngOnInit(): void {
     this.onLoadMore();
@@ -30,42 +30,42 @@ export class MedicamentsComponent implements OnInit, OnDestroy {
 
   onLoadMore(): void {
     this.loading = true;
-    this.dataSubscription = this.medicamentsService
+    this.dataSubscription = this.medicationsService
       .listConcatenated(TableComponent.PAGE_SIZE)
-      .subscribe((medicamentsPage) => {
-        this.dataSource.data = medicamentsPage.data;
+      .subscribe((medicationsPage) => {
+        this.dataSource.data = medicationsPage.data;
         this.loading = false;
-        this.hasMore = medicamentsPage.hasMore;
+        this.hasMore = medicationsPage.hasMore;
       });
   }
 
   onRefresh(): void {
-    this.medicamentsService.resetConcatenated();
+    this.medicationsService.resetConcatenated();
     this.onLoadMore();
   }
 
   ngOnDestroy(): void {
-    this.medicamentsService.resetConcatenated();
+    this.medicationsService.resetConcatenated();
     this.deleteSubscription?.unsubscribe();
     this.dataSubscription?.unsubscribe();
     this.archiveSubscription?.unsubscribe();
   }
 
-  onDelete(object: Event | Medicament | Seizure) {
+  onDelete(object: Event | Medication | Seizure) {
     this.loading = true;
-    this.deleteSubscription = this.medicamentsService
+    this.deleteSubscription = this.medicationsService
       .delete(object.id)
       .subscribe(() => this.onRefresh());
   }
 
-  onArchive(medicament: Medicament) {
+  onArchive(medication: Medication) {
     this.loading = true;
-    const newArchived = !medicament.archived;
+    const newArchived = !medication.archived;
     const newEndDate = newArchived ? moment() : undefined;
-    const updated: Partial<Medicament> = {archived: newArchived, endDate: newEndDate};
+    const updated: Partial<Medication> = {archived: newArchived, endDate: newEndDate};
 
-    this.archiveSubscription = this.medicamentsService
-      .update(medicament.id, updated)
+    this.archiveSubscription = this.medicationsService
+      .update(medication.id, updated)
       .subscribe(() => this.onRefresh());
   }
 }

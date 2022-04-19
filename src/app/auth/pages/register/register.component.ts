@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
     this.isLoading = true;
     this.auth
       .register(this.registerForm.value)
-      .then(() => this.router.navigate(['register', 'confirm']))
+      .then(() => this.router.navigate([$localize`:@@routerLink-register-confirm:/register/confirm`]))
       .catch((error) => this.handleError(error))
       .finally(() => (this.isLoading = false));
   }

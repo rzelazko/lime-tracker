@@ -5,10 +5,10 @@ import { DateRange, extendMoment } from 'moment-range';
 import { map, mergeMap, Observable, take } from 'rxjs';
 import { ChartData } from '../models/chart-data.model';
 import { Event } from '../models/event.model';
-import { Medicament } from '../models/medicament.model';
+import { Medication } from '../models/medication.model';
 import { Seizure } from '../models/seizure.model';
 import { EventsService } from './events.service';
-import { MedicamentsService } from './medicaments.service';
+import { MedicationsService } from './medications.service';
 import { SeizuresService } from './seizures.service';
 
 const moment = extendMoment(Moment);
@@ -18,7 +18,7 @@ interface ChartRanage<T> {
 }
 interface ChartDataRange extends ChartRanage<number> {}
 interface ChartLabelsRange extends ChartRanage<string[]> {}
-interface MedicamentRange
+interface MedicationRange
   extends ChartRanage<{
     dataRange: ChartDataRange;
     labelsRange: ChartLabelsRange;
@@ -33,7 +33,7 @@ export class ChartSummaryService {
   private dateFrom: moment.Moment;
 
   constructor(
-    private medicamentsService: MedicamentsService,
+    private medicationsService: MedicationsService,
     private eventsService: EventsService,
     private seizuresService: SeizuresService
   ) {
@@ -69,28 +69,28 @@ export class ChartSummaryService {
     return subtitle;
   }
 
-  medicamentSeries(): Observable<ChartData[]> {
-    return this.medicamentsService
+  medicationsSeries(): Observable<ChartData[]> {
+    return this.medicationsService
       .listCollection([
         orderBy('startDate', 'desc'),
         where('startDate', '<=', this.dateFrom.toDate()),
       ])
       .pipe(
-        mergeMap((medicamentFromPreviousRange: Medicament[]) =>
-          this.medicamentsService
+        mergeMap((medicationFromPreviousRange: Medication[]) =>
+          this.medicationsService
             .listCollection([
               orderBy('startDate', 'desc'),
               where('startDate', '>=', this.dateFrom.toDate()),
               where('startDate', '<=', this.dateTo.toDate()),
             ])
             .pipe(
-              map((medicaments) => medicaments.concat(...medicamentFromPreviousRange)
+              map((medications) => medications.concat(...medicationFromPreviousRange)
               )
             )
         )
       )
       .pipe(
-        map((medicaments) => this.agregateMedicamentsData(medicaments)),
+        map((medications) => this.agregateMedicationsData(medications)),
       );
   }
 
@@ -123,21 +123,21 @@ export class ChartSummaryService {
     return moment(date).endOf('month').subtract(1, 'year').add(1, 'day').startOf('month');
   }
 
-  private agregateMedicamentsData(medicaments: Medicament[]): ChartData[] {
-    const medicamentsRange: MedicamentRange = {};
+  private agregateMedicationsData(medications: Medication[]): ChartData[] {
+    const medicationsRange: MedicationRange = {};
 
-    for (const medicament of medicaments) {
-      this.initRangeForMedicament(medicamentsRange, medicament);
-      this.computeRangeForMedicament(medicamentsRange, medicament);
+    for (const medication of medications) {
+      this.initRangeForMedication(medicationsRange, medication);
+      this.computeRangeForMedication(medicationsRange, medication);
     }
 
     const result: ChartData[] = [];
-    for (const medicamentName in medicamentsRange) {
+    for (const medicationName in medicationsRange) {
       result.push({
-        name: medicamentName,
+        name: medicationName,
         ...this.convertToChartData(
-          medicamentsRange[medicamentName].dataRange,
-          medicamentsRange[medicamentName].labelsRange,
+          medicationsRange[medicationName].dataRange,
+          medicationsRange[medicationName].labelsRange,
           ' - '
         ),
       });
@@ -146,55 +146,55 @@ export class ChartSummaryService {
     return result;
   }
 
-  private initRangeForMedicament(medicamentsRange: MedicamentRange, medicament: Medicament) {
+  private initRangeForMedication(medicationsRange: MedicationRange, medication: Medication) {
     let dataRange: ChartDataRange;
     let labelsRange: ChartLabelsRange;
-    if (medicamentsRange[medicament.name]) {
-      dataRange = medicamentsRange[medicament.name].dataRange;
-      labelsRange = medicamentsRange[medicament.name].labelsRange;
+    if (medicationsRange[medication.name]) {
+      dataRange = medicationsRange[medication.name].dataRange;
+      labelsRange = medicationsRange[medication.name].labelsRange;
     } else {
       dataRange = this.initializeAgregatedData();
       labelsRange = this.initializeAgregatedLabels();
-      medicamentsRange[medicament.name] = { dataRange, labelsRange };
+      medicationsRange[medication.name] = { dataRange, labelsRange };
     }
   }
 
-  private getMedicamentRangeStart(medicament: Medicament, chartRange: DateRange) {
-    let medicamentRangeStart = medicament.startDate;
-    if (!medicamentRangeStart.within(chartRange)) {
-      medicamentRangeStart = this.dateFrom;
+  private getMedicationRangeStart(medication: Medication, chartRange: DateRange) {
+    let rangeStart = medication.startDate;
+    if (!rangeStart.within(chartRange)) {
+      rangeStart = this.dateFrom;
     }
-    return medicamentRangeStart;
+    return rangeStart;
   }
 
-  private getMedicamentRangeEnd(medicament: Medicament, chartRange: DateRange) {
-    let medicamentRangeEnd = medicament.endDate || this.dateTo;
-    if (medicamentRangeEnd.isAfter(this.dateTo)) {
-      medicamentRangeEnd = this.dateTo;
+  private getMedicationRangeEnd(medication: Medication, chartRange: DateRange) {
+    let rangeEnd = medication.endDate || this.dateTo;
+    if (rangeEnd.isAfter(this.dateTo)) {
+      rangeEnd = this.dateTo;
     }
-    return medicamentRangeEnd;
+    return rangeEnd;
   }
 
-  private computeRangeForMedicament(medicamentsRange: MedicamentRange, medicament: Medicament) {
+  private computeRangeForMedication(medicationsRange: MedicationRange, medication: Medication) {
     const chartRange = moment.range(this.dateFrom, this.dateTo);
-    const medicamentRangeStart = this.getMedicamentRangeStart(medicament, chartRange);
-    const medicamentRangeEnd = this.getMedicamentRangeEnd(medicament, chartRange);
-    if (medicamentRangeEnd.isAfter(this.dateFrom)) {
-      const dataRange = medicamentsRange[medicament.name].dataRange;
-      const labelsRange = medicamentsRange[medicament.name].labelsRange;
-      const medicamentRange = moment
-        .range(medicamentRangeStart, medicamentRangeEnd)
+    const medicationRangeStart = this.getMedicationRangeStart(medication, chartRange);
+    const medicationRangeEnd = this.getMedicationRangeEnd(medication, chartRange);
+    if (medicationRangeEnd.isAfter(this.dateFrom)) {
+      const dataRange = medicationsRange[medication.name].dataRange;
+      const labelsRange = medicationsRange[medication.name].labelsRange;
+      const medicationRange = moment
+        .range(medicationRangeStart, medicationRangeEnd)
         .snapTo('month');
-      for (const month of medicamentRange.by('month')) {
+      for (const month of medicationRange.by('month')) {
         const monthName = month.format(this.rangeFormat);
         if (dataRange[monthName] === 0) {
           dataRange[monthName] =
-            medicament.doses.morning + medicament.doses.noon + medicament.doses.evening;
+            medication.doses.morning + medication.doses.noon + medication.doses.evening;
 
           labelsRange[monthName] = [
-            medicament.doses.morning.toString(),
-            medicament.doses.noon.toString(),
-            medicament.doses.evening.toString(),
+            medication.doses.morning.toString(),
+            medication.doses.noon.toString(),
+            medication.doses.evening.toString(),
           ];
         }
       }

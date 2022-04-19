@@ -4,7 +4,7 @@
   <mat-toolbar class="page-header" role="heading">
     <h1>
       <ng-container i18n="@@title-reports">Reports</ng-container>
-      <span *ngIf="report"> </span>
+      <span *ngIf="report">&nbsp;</span>
       <span *ngIf="report" i18n="@@title-reports-until-from">until {{ report.dateTo | moment: "L" }} (from {{ report.dateFrom | moment: "L" }})</span>
     </h1>
   </mat-toolbar>
@@ -34,13 +34,13 @@
           </div>
           <div *ngIf="case.seizure" mat-line class="mat-line-secondary" i18n="@@reports-seizure-duration">Duration: {{ case.seizure.duration | humanize }}</div>
 
-          <mat-icon *ngIf="case.medicament" mat-list-icon>medication</mat-icon>
-          <div *ngIf="case.medicament" mat-line>
-            {{ case.medicament.name }}: {{ case.medicament.doses.morning }} -
-            {{ case.medicament.doses.noon }} - {{ case.medicament.doses.evening }}
+          <mat-icon *ngIf="case.medication" mat-list-icon>medication</mat-icon>
+          <div *ngIf="case.medication" mat-line>
+            {{ case.medication.name }}: {{ case.medication.doses.morning }} -
+            {{ case.medication.doses.noon }} - {{ case.medication.doses.evening }}
           </div>
-          <div *ngIf="case.medicament" mat-line class="mat-line-secondary">
-            {{ case.medicament.startDate | moment: "LL" }}
+          <div *ngIf="case.medication" mat-line class="mat-line-secondary">
+            {{ case.medication.startDate | moment: "LL" }}
           </div>
         </mat-list-item>
         <mat-list-item *ngIf="!monthData.data.length">

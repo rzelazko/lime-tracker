@@ -15,7 +15,7 @@ export class ChartSummaryComponent implements OnInit, OnDestroy, OnChanges {
   error?: string;
   summaryChart?: ChartOptions;
   subsription?: Subscription;
-  medicamentsData?: ChartData[];
+  medicationsData?: ChartData[];
   eventsData?: ChartData;
   seizuresData?: ChartData;
 
@@ -26,8 +26,8 @@ export class ChartSummaryComponent implements OnInit, OnDestroy, OnChanges {
     this.chartService.setYear(this.selectedYear);
 
     this.subsription = merge(
-      this.chartService.medicamentSeries().pipe(
-        map((data) => (this.medicamentsData = data))
+      this.chartService.medicationsSeries().pipe(
+        map((data) => (this.medicationsData = data))
       ),
       this.chartService.eventsSerie().pipe(
         map((data) => ({ name: $localize`:@@title-events:Events`, ...data })),
@@ -70,19 +70,19 @@ export class ChartSummaryComponent implements OnInit, OnDestroy, OnChanges {
         },
       });
     }
-    this.medicamentsData?.forEach((medicamentData, i) => {
+    this.medicationsData?.forEach((medicationData, i) => {
       yaxis.push({
         show: i < 1,
         opposite: true,
         axisTicks: { show: true },
         axisBorder: { show: true },
-        seriesName: this.medicamentsData ? this.medicamentsData[0].name : medicamentData.name,
+        seriesName: this.medicationsData ? this.medicationsData[0].name : medicationData.name,
         title: {
-          text: $localize`:@@chart-summary-med-per-day:Medicament (per day)`,
+          text: $localize`:@@chart-summary-med-per-day:Medication (per day)`,
         },
         labels: {
           formatter: (value: number, opts: { dataPointIndex: number }) =>
-            labelFormatter(value, opts, medicamentData.labels),
+            labelFormatter(value, opts, medicationData.labels),
         },
       });
     });
@@ -112,11 +112,11 @@ export class ChartSummaryComponent implements OnInit, OnDestroy, OnChanges {
         data: this.seizuresData.data,
       });
     }
-    this.medicamentsData?.forEach((medicamentData) => {
+    this.medicationsData?.forEach((medicationData) => {
       series.push({
-        name: medicamentData.name,
+        name: medicationData.name,
         type: 'line',
-        data: medicamentData.data,
+        data: medicationData.data,
       });
     });
 
@@ -133,7 +133,7 @@ export class ChartSummaryComponent implements OnInit, OnDestroy, OnChanges {
       dataLabels: { enabled: false },
       stroke: { width: [1, 1, 4] },
       title: {
-        text: $localize`:@@chart-summary-title:Seizures, medicaments & events`,
+        text: $localize`:@@chart-summary-title:Seizures, medications & events`,
         align: 'left',
         offsetX: 110,
       },
