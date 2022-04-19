@@ -67,5 +67,3 @@ Perform full deplyment (hosting, security rules, etc.) with `firebase deploy` or
 - I18n: add language switcher
 - I18n: M triggers & types as defaults
 - Seizures - multiple triggers
-- Forms - there should be loading indicator after click on submit (visible when network slow)
-

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
-import { Observable, Subscription, take } from 'rxjs';
+import { finalize, Observable, Subscription, take } from 'rxjs';
 import { Medicament } from '../../../../shared/models/medicament.model';
 import { AuthService } from '../../../../shared/services/auth.service';
 import { formFieldHasError } from '../../../../shared/services/form-field-has-error';
@@ -16,6 +16,7 @@ import { DatesValidator } from '../../../../shared/validators/dates-validator';
   styleUrls: ['./medicaments-form.component.scss'],
 })
 export class MedicamentsFormComponent implements OnInit {
+  submitting = false;
   today = moment();
   error?: string;
   form: FormGroup;
@@ -30,18 +31,20 @@ export class MedicamentsFormComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {
-    this.form = this.fb.group({
-      name: ['', [Validators.required]],
-      doseMorning: ['', [Validators.required, Validators.min(0)]],
-      doseNoon: ['', [Validators.required, Validators.min(0)]],
-      doseEvening: ['', [Validators.required, Validators.min(0)]],
-      startDate: ['', [Validators.required, DatesValidator.inThePast()]],
-      archived: [false, []],
-      endDate: ['', []],
-    },
-    {
-      validator: DatesValidator.startAndEnd('startDate', 'endDate'),
-    });
+    this.form = this.fb.group(
+      {
+        name: ['', [Validators.required]],
+        doseMorning: ['', [Validators.required, Validators.min(0)]],
+        doseNoon: ['', [Validators.required, Validators.min(0)]],
+        doseEvening: ['', [Validators.required, Validators.min(0)]],
+        startDate: ['', [Validators.required, DatesValidator.inThePast()]],
+        archived: [false, []],
+        endDate: ['', []],
+      },
+      {
+        validator: DatesValidator.startAndEnd('startDate', 'endDate'),
+      }
+    );
   }
 
   ngOnInit(): void {
@@ -69,7 +72,7 @@ export class MedicamentsFormComponent implements OnInit {
             doseEvening: result.doses.evening,
             startDate: result.startDate.toDate(),
             archived: result.archived,
-            endDate: result.endDate?.toDate() || null
+            endDate: result.endDate?.toDate() || null,
           });
         });
     }
@@ -81,6 +84,7 @@ export class MedicamentsFormComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.submitting = true;
     const formData: Partial<Medicament> = {
       name: this.form.value.name,
       doses: {
@@ -90,7 +94,7 @@ export class MedicamentsFormComponent implements OnInit {
       },
       startDate: moment(this.form.value.startDate),
       archived: this.form.value.archived && this.form.value.endDate,
-      endDate: this.form.value.archived ? this.form.value.endDate : null
+      endDate: this.form.value.archived ? this.form.value.endDate : null,
     };
 
     let submitObservable$: Observable<any>;
@@ -100,10 +104,12 @@ export class MedicamentsFormComponent implements OnInit {
       submitObservable$ = this.medicamentsService.create(formData);
     }
 
-    this.submitSubscription = submitObservable$.subscribe({
-      next: () => this.router.navigate(['/epilepsy/medicaments']),
-      error: (error) => (this.error = error.message),
-    });
+    this.submitSubscription = submitObservable$
+      .pipe(finalize(() => (this.submitting = false)))
+      .subscribe({
+        next: () => this.router.navigate(['/epilepsy/medicaments']),
+        error: (error) => (this.error = error.message),
+      });
   }
 
   onArchivedChange(ob: MatCheckboxChange) {}

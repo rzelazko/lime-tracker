@@ -53,10 +53,10 @@
     </mat-form-field>
 
     <div>
-      <button *ngIf="id" type="submit" mat-raised-button color="primary" [disabled]="!form.valid">
+      <button *ngIf="id" type="submit" mat-raised-button color="primary" [disabled]="!form.valid || submitting" [class.spinner]="submitting">
         <ng-container i18n="@@action-update">Update</ng-container>
       </button>
-      <button *ngIf="!id" type="submit" mat-raised-button color="primary" [disabled]="!form.valid">
+      <button *ngIf="!id" type="submit" mat-raised-button color="primary" [disabled]="!form.valid || submitting" [class.spinner]="submitting">
         <ng-container i18n="@@action-add-event">Add event</ng-container>
       </button>
 

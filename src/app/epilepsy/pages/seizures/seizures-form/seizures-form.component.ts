@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
-import { Observable, Subscription, take } from 'rxjs';
+import { finalize, Observable, Subscription, take } from 'rxjs';
 import { Seizure } from '../../../../shared/models/seizure.model';
 import { AuthService } from '../../../../shared/services/auth.service';
 import { formFieldHasError } from '../../../../shared/services/form-field-has-error';
@@ -16,6 +16,7 @@ import { DatesValidator } from '../../../../shared/validators/dates-validator';
 })
 export class SeizuresFormComponent implements OnInit, OnDestroy {
   static readonly DATE_TIME_FORMAT = 'YYYY-MM-DDTHH:mm';
+  submitting = false;
   today = moment().format(SeizuresFormComponent.DATE_TIME_FORMAT);
   error?: string;
   form: FormGroup;
@@ -59,6 +60,7 @@ export class SeizuresFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
+    this.submitting = true;
     const formData: Partial<Seizure> = {
       occurred: moment(this.form.value.occurred),
       duration: this.form.value.duration,
@@ -73,10 +75,12 @@ export class SeizuresFormComponent implements OnInit, OnDestroy {
       submitObservable$ = this.seizuresService.create(formData);
     }
 
-    this.submitSubscription = submitObservable$.subscribe({
-      next: () => this.router.navigate(['/epilepsy/seizures']),
-      error: (error) => (this.error = error.message),
-    });
+    this.submitSubscription = submitObservable$
+      .pipe(finalize(() => (this.submitting = false)))
+      .subscribe({
+        next: () => this.router.navigate(['/epilepsy/seizures']),
+        error: (error) => (this.error = error.message),
+      });
   }
 
   hasError(path: string, errorCode: string) {

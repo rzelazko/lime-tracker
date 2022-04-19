@@ -1,0 +1,26 @@
+@use '@angular/material' as mat;
+@import "src/app/app-theme-variables";
+
+:host ::ng-deep {
+  @keyframes spinner {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .spinner:before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    margin-left: -10px;
+    border-radius: 50%;
+    border: 2px solid mat.get-color-from-palette($app-background, 'background');
+    border-top-color: mat.get-color-from-palette($app-primary, 'darker');
+    animation: spinner 0.8s linear infinite;
+  }
+}
