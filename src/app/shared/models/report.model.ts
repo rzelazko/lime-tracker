@@ -1,6 +1,6 @@
 import { Moment } from 'moment';
 import { Event } from '../../shared/models/event.model';
-import { Medicament } from '../../shared/models/medicament.model';
+import { Medication } from './medication.model';
 import { Seizure } from '../../shared/models/seizure.model';
 
 export interface Report {
@@ -16,7 +16,7 @@ export interface MonthsData {
 
 export interface ReportCase {
   event?: Event;
-  medicament?: Medicament;
+  medication?: Medication;
   seizure?: Seizure;
 }
 
@@ -24,8 +24,8 @@ export function reportCaseDate(reportCase: ReportCase): Moment {
   let result;
   if (reportCase.event) {
     result = reportCase.event.occurred;
-  } else if (reportCase.medicament) {
-    result = reportCase.medicament.startDate;
+  } else if (reportCase.medication) {
+    result = reportCase.medication.startDate;
   } else if (reportCase.seizure) {
     result = reportCase.seizure.occurred;
   } else {

@@ -4,7 +4,7 @@ import * as moment from 'moment';
 import { map, merge, Observable } from 'rxjs';
 import { Report, ReportCase, reportCaseDate } from '../models/report.model';
 import { EventsService } from './events.service';
-import { MedicamentsService } from './medicaments.service';
+import { MedicationsService } from './medications.service';
 import { SeizuresService } from './seizures.service';
 
 @Injectable({
@@ -12,7 +12,7 @@ import { SeizuresService } from './seizures.service';
 })
 export class ReportsService {
   constructor(
-    private medicamentsService: MedicamentsService,
+    private medicationsService: MedicationsService,
     private eventsService: EventsService,
     private seizuresService: SeizuresService
   ) {}
@@ -35,12 +35,12 @@ export class ReportsService {
      * `monthIndex` = `2` <- current month - 2
      * etc
      *
-     * It is used to add Seizure, Medicament & Event to valid montly report without iterating through array to find a place.
+     * It is used to add Seizure, Medication & Event to valid montly report without iterating through array to find a place.
      *
      * Instead we can compute place in the montly array by:
      *
      * ```
-     * (dateTo.month + 12 - seizure/event/medicament.month) % 12
+     * (dateTo.month + 12 - seizure/event/medication.month) % 12
      * ```
      *
      */
@@ -58,15 +58,15 @@ export class ReportsService {
     }
 
     return merge(
-      this.medicamentsService
+      this.medicationsService
         .listCollection([
           orderBy('startDate', 'desc'),
           where('startDate', '>=', report.dateFrom.toDate()),
           where('startDate', '<=', report.dateTo.toDate()),
         ])
         .pipe(
-          map((medicaments): ReportCase[] =>
-            medicaments.map((medicament): ReportCase => ({ medicament }))
+          map((medications): ReportCase[] =>
+            medications.map((medication): ReportCase => ({ medication: medication }))
           )
         ),
 
@@ -123,7 +123,7 @@ export class ReportsService {
   private elementInReport(report: Report, month: number, element: ReportCase) {
     return report.monthsData[month].data.some(
       (data) =>
-        (data.medicament && element.medicament && data.medicament.id === element.medicament.id) ||
+        (data.medication && element.medication && data.medication.id === element.medication.id) ||
         (data.event && element.event && data.event.id === element.event.id) ||
         (data.seizure && element.seizure && data.seizure.id === element.seizure.id)
     );

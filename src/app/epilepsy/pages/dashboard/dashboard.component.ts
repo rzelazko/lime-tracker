@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Duration } from 'moment';
 import { Observable } from 'rxjs';
-import { Medicament } from '../../../shared/models/medicament.model';
+import { Medication } from '../../../shared/models/medication.model';
 import { Seizure } from '../../../shared/models/seizure.model';
 import { DashboardService } from '../../../shared/services/dashboard.service';
 
@@ -11,12 +11,12 @@ import { DashboardService } from '../../../shared/services/dashboard.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  medicaments$: Observable<Medicament[]>;
+  medications$: Observable<Medication[]>;
   lastSeizures$: Observable<Seizure[]>;
   timeSinceLastSeizure?: Duration;
 
   constructor(dashboardService: DashboardService) {
-    this.medicaments$ = dashboardService.currentMedicaments();
+    this.medications$ = dashboardService.currentMedications();
     this.lastSeizures$ = dashboardService.lastSeizures();
   }
 

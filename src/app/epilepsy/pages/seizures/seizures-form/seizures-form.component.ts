@@ -78,7 +78,7 @@ export class SeizuresFormComponent implements OnInit, OnDestroy {
     this.submitSubscription = submitObservable$
       .pipe(finalize(() => (this.submitting = false)))
       .subscribe({
-        next: () => this.router.navigate(['/epilepsy/seizures']),
+        next: () => this.router.navigate([$localize`:@@routerLink-epilepsy-seizures:/epilepsy/seizures`]),
         error: (error) => (this.error = error.message),
       });
   }

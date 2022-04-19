@@ -4,7 +4,7 @@ import * as moment from 'moment';
 import {
   mergeMap, take, tap
 } from 'rxjs';
-import { Medicament } from '../../shared/models/medicament.model';
+import { Medication } from '../models/medication.model';
 import { AuthService } from './auth.service';
 import { CrudService } from './crud.service';
 import { FirestoreService } from './firestore.service';
@@ -12,28 +12,28 @@ import { FirestoreService } from './firestore.service';
 @Injectable({
   providedIn: 'root',
 })
-export class MedicamentsService extends CrudService<Medicament> {
+export class MedicationsService extends CrudService<Medication> {
   constructor(authService: AuthService, firestoreService: FirestoreService) {
-    super('medicaments', 'startDate', authService, firestoreService);
+    super('medications', 'startDate', authService, firestoreService);
   }
 
-  override create(medicament: Partial<Medicament>) {
+  override create(medication: Partial<Medication>) {
     return this.listCollection([
       orderBy('startDate', 'desc'),
-      where('startDate', '<', medicament.startDate?.toDate()),
-      where('name', '==', medicament.name),
+      where('startDate', '<', medication.startDate?.toDate()),
+      where('name', '==', medication.name),
       where('archived', '==', false),
     ]).pipe(
       take(1),
-      mergeMap((medicamentsToUpdate: Medicament[]) => {
+      mergeMap((medicationsToUpdate: Medication[]) => {
         this.firestoreService.startTransaction();
-        for (const medicamentToUpdate of medicamentsToUpdate) {
+        for (const medicationToUpdate of medicationsToUpdate) {
           this.firestoreService.appendUpdateToTransaction(
-            `${this.collectionPath()}/${medicamentToUpdate.id}`,
-            { archived: true, endDate: moment(medicament.startDate).subtract(1, 'day') }
+            `${this.collectionPath()}/${medicationToUpdate.id}`,
+            { archived: true, endDate: moment(medication.startDate).subtract(1, 'day') }
           );
         }
-        this.firestoreService.appendAddToTransaction(this.collectionPath(), medicament);
+        this.firestoreService.appendAddToTransaction(this.collectionPath(), medication);
         return this.firestoreService.commitTransaction();
       }),
       tap(() => this.resetConcatenated())
@@ -44,8 +44,8 @@ export class MedicamentsService extends CrudService<Medicament> {
     return super.read(id);
   }
 
-  override update(id: string, medicament: Partial<Medicament>) {
-    return super.update(id, medicament);
+  override update(id: string, medication: Partial<Medication>) {
+    return super.update(id, medication);
   }
 
   override delete(id: string) {

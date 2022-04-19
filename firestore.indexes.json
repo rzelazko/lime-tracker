@@ -1,7 +1,7 @@
 {
   "indexes": [
     {
-      "collectionGroup": "medicaments",
+      "collectionGroup": "medications",
       "queryScope": "COLLECTION",
       "fields": [
         {
@@ -15,7 +15,7 @@
       ]
     },
     {
-      "collectionGroup": "medicaments",
+      "collectionGroup": "medications",
       "queryScope": "COLLECTION",
       "fields": [
         {

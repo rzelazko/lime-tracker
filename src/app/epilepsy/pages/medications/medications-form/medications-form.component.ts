@@ -4,18 +4,18 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { finalize, Observable, Subscription, take } from 'rxjs';
-import { Medicament } from '../../../../shared/models/medicament.model';
+import { Medication } from '../../../../shared/models/medication.model';
 import { AuthService } from '../../../../shared/services/auth.service';
 import { formFieldHasError } from '../../../../shared/services/form-field-has-error';
-import { MedicamentsService } from '../../../../shared/services/medicaments.service';
+import { MedicationsService } from '../../../../shared/services/medications.service';
 import { DatesValidator } from '../../../../shared/validators/dates-validator';
 
 @Component({
-  selector: 'app-medicaments-form',
-  templateUrl: './medicaments-form.component.html',
-  styleUrls: ['./medicaments-form.component.scss'],
+  selector: 'app-medications-form',
+  templateUrl: './medications-form.component.html',
+  styleUrls: ['./medications-form.component.scss'],
 })
-export class MedicamentsFormComponent implements OnInit {
+export class MedicationsFormComponent implements OnInit {
   submitting = false;
   today = moment();
   error?: string;
@@ -26,7 +26,7 @@ export class MedicamentsFormComponent implements OnInit {
 
   constructor(
     public auth: AuthService,
-    private medicamentsService: MedicamentsService,
+    private medicationsService: MedicationsService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder
@@ -61,7 +61,7 @@ export class MedicamentsFormComponent implements OnInit {
 
     this.id = this.activatedRoute.snapshot.params['id'];
     if (this.id) {
-      this.medicamentsService
+      this.medicationsService
         .read(this.id)
         .pipe(take(1))
         .subscribe((result) => {
@@ -85,7 +85,7 @@ export class MedicamentsFormComponent implements OnInit {
 
   onSubmit(): void {
     this.submitting = true;
-    const formData: Partial<Medicament> = {
+    const formData: Partial<Medication> = {
       name: this.form.value.name,
       doses: {
         morning: +this.form.value.doseMorning,
@@ -99,15 +99,15 @@ export class MedicamentsFormComponent implements OnInit {
 
     let submitObservable$: Observable<any>;
     if (this.id) {
-      submitObservable$ = this.medicamentsService.update(this.id, formData);
+      submitObservable$ = this.medicationsService.update(this.id, formData);
     } else {
-      submitObservable$ = this.medicamentsService.create(formData);
+      submitObservable$ = this.medicationsService.create(formData);
     }
 
     this.submitSubscription = submitObservable$
       .pipe(finalize(() => (this.submitting = false)))
       .subscribe({
-        next: () => this.router.navigate(['/epilepsy/medicaments']),
+        next: () => this.router.navigate([$localize`:@@routerLink-epilepsy-medications:/epilepsy/medications`]),
         error: (error) => (this.error = error.message),
       });
   }

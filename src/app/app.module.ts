@@ -49,8 +49,8 @@ import { ChartsComponent } from './epilepsy/pages/charts/charts.component';
 import { DashboardComponent } from './epilepsy/pages/dashboard/dashboard.component';
 import { EventsFormComponent } from './epilepsy/pages/events/events-form/events-form.component';
 import { EventsComponent } from './epilepsy/pages/events/events.component';
-import { MedicamentsFormComponent } from './epilepsy/pages/medicaments/medicaments-form/medicaments-form.component';
-import { MedicamentsComponent } from './epilepsy/pages/medicaments/medicaments.component';
+import { MedicationsFormComponent } from './epilepsy/pages/medications/medications-form/medications-form.component';
+import { MedicationsComponent } from './epilepsy/pages/medications/medications.component';
 import { ReportsComponent } from './epilepsy/pages/reports/reports.component';
 import { SeizuresFormComponent } from './epilepsy/pages/seizures/seizures-form/seizures-form.component';
 import { SeizuresComponent } from './epilepsy/pages/seizures/seizures.component';
@@ -93,8 +93,8 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     HeaderComponent,
     LoginComponent,
     LogoutComponent,
-    MedicamentsComponent,
-    MedicamentsFormComponent,
+    MedicationsComponent,
+    MedicationsFormComponent,
     PageNotFoundComponent,
     RegisterComponent,
     ReportsComponent,

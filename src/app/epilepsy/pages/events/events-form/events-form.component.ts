@@ -71,7 +71,7 @@ export class EventsFormComponent implements OnInit {
     this.submitSubscription = submitObservable$
     .pipe(finalize(() => this.submitting = false))
     .subscribe({
-      next: () => this.router.navigate(['/epilepsy/events']),
+      next: () => this.router.navigate([$localize`:@@routerLink-epilepsy-events:/epilepsy/events`]),
       error: (error) => (this.error = error.message),
     });
   }

@@ -6,9 +6,9 @@
   <section class="actions" fxLayout="column" fxLayoutAlign="center stretch">
     <mat-card>
       <mat-card-content fxLayout="row wrap" fxLayoutAlign="space-around center">
-        <a mat-raised-button color="warn" routerLink="/epilepsy/seizures/add" i18n="@@dashboard-action-add-seizure">Attack!</a>
-        <a mat-raised-button color="primary" routerLink="/epilepsy/medicaments/add" i18n="@@dashboard-action-add-medicament">Medicament</a>
-        <a mat-raised-button color="basic" routerLink="/epilepsy/events/add" i18n="@@dashboard-action-add-event">Event</a>
+        <a mat-raised-button color="warn" routerLink="/epilepsy/seizures/add" i18n-routerLink="@@routerLink-epilepsy-seizures-add" i18n="@@dashboard-action-add-seizure">Attack!</a>
+        <a mat-raised-button color="primary" routerLink="/epilepsy/medications/add" i18n-routerLink="@@routerLink-epilepsy-medications-add" i18n="@@dashboard-action-add-medication">Medication</a>
+        <a mat-raised-button color="basic" routerLink="/epilepsy/events/add" i18n-routerLink="@@routerLink-epilepsy-events-add" i18n="@@dashboard-action-add-event">Event</a>
       </mat-card-content>
     </mat-card>
   </section>
@@ -48,41 +48,41 @@
       </mat-card>
     </ng-template>
 
-    <mat-card class="medicaments">
+    <mat-card class="medications">
       <mat-card-title-group>
-        <mat-card-title i18n="@@dashboard-title-current-medicaments">Current medicaments</mat-card-title>
+        <mat-card-title i18n="@@dashboard-title-current-medications">Current medications</mat-card-title>
       </mat-card-title-group>
       <mat-card-content>
         <mat-list
           fxLayout="row wrap"
-          *ngIf="medicaments$ | async as medicaments; else loadingMedicament"
+          *ngIf="medications$ | async as medications; else loadingMedication"
         >
-          <mat-list-item *ngFor="let medicament of medicaments">
+          <mat-list-item *ngFor="let medication of medications">
             <mat-icon mat-list-icon>medication</mat-icon>
-            <div mat-line>{{ medicament.name }}</div>
+            <div mat-line>{{ medication.name }}</div>
             <div
               mat-line
               class="dose"
               [matTooltip]="
-                medicament.doses.morning +
+                medication.doses.morning +
                 ' - ' +
-                medicament.doses.noon +
+                medication.doses.noon +
                 ' - ' +
-                medicament.doses.evening
+                medication.doses.evening
               "
             >
-              {{ medicament.doses.morning }} - {{ medicament.doses.noon }} -
-              {{ medicament.doses.evening }}
+              {{ medication.doses.morning }} - {{ medication.doses.noon }} -
+              {{ medication.doses.evening }}
             </div>
           </mat-list-item>
 
-          <mat-list-item *ngIf="!medicaments.length">
+          <mat-list-item *ngIf="!medications.length">
             <mat-icon mat-list-icon>info_outline</mat-icon>
             <div mat-line i18n="@@no-data">No data</div>
           </mat-list-item>
         </mat-list>
 
-        <ng-template #loadingMedicament>
+        <ng-template #loadingMedication>
           <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
         </ng-template>
       </mat-card-content>
