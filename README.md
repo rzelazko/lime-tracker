@@ -14,6 +14,11 @@ Firebase SDK: 9.x
 ### Development server
 
 Run Firebase Emulator: `npm run firebase-emulator`. View Emulator UI at `http://localhost:4000`. In order to persists emulator data run in separate console: `firebase emulators:export test-data`.
+User accounts available in emulator (password is `123qwe`):
+
+- `jan.kowalski@webperfekt.pl` - user with some data
+- `not.verified@webperfekt.pl` - email has not been verified
+- `empty@webperfekt.pl` - no data
 
 Run in separte console `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
