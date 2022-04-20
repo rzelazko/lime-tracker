@@ -5,7 +5,7 @@ export interface Seizure extends Identifiable {
   occurred: Moment;
   duration: Duration;
   type: string;
-  trigger?: string;
+  triggers?: string[];
 }
 
 export const isSeizure = (variable: any): variable is Seizure =>

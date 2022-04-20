@@ -58,18 +58,17 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label i18n="@@label-seizure-trigger">Trigger</mat-label>
-      <mat-select formControlName="seizureTrigger">
-        <mat-option></mat-option>
-        <mat-option *ngFor="let trigger of userData.seizureTriggers" [value]="trigger">
-          {{ trigger }}
+      <mat-label i18n="@@label-seizure-triggers">Triggers</mat-label>
+      <mat-select formControlName="seizureTriggers" multiple>
+        <mat-option *ngFor="let triggers of userData.seizureTriggers" [value]="triggers">
+          {{ triggers }}
         </mat-option>
       </mat-select>
-      <mat-error *ngIf="hasError('trigger', 'required')" i18n="@@error-seizure-trigger-required"
-        >Seizure trigger is required</mat-error
+      <mat-error *ngIf="hasError('triggers', 'required')" i18n="@@error-seizure-triggers-required"
+        >Seizure triggers is required</mat-error
       >
-      <mat-error *ngIf="hasError('trigger', '!required')" i18n="@@error-seizure-trigger-invalid"
-        >Seizure trigger is invalid</mat-error
+      <mat-error *ngIf="hasError('triggers', '!required')" i18n="@@error-seizure-triggers-invalid"
+        >Seizure triggers is invalid</mat-error
       >
     </mat-form-field>
 

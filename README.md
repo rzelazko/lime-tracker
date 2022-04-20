@@ -58,17 +58,16 @@ Perform full deplyment (hosting, security rules, etc.) with `firebase deploy` or
 
 :warning: Most important on the bottom
 
-- Add authentication persistance (via Firebase browser persistance)
 - Add schema validation to [firestore.rules](firestore.rules)
 - Add some Rodo, privacy policy, etc. on login & dashboard (add footer?)
 - Add user profile management
 - Reports pagination in URL, ex: `/epilepsy/reports/2021` - router link instead of tab `(click)`
 - Replace `throw`s with error handling (ex. reports page). Add error handling to Seizures, etc.
 - Add reset passoword
-- Move URLs to single place
 - Cancel button on form go back to either dashboard or table (not always table)
 - Add screenshots to README
 - Add possibility to view older data than 2 years
+- Bug: charts on first loading reaload few times
+- Bug: medications on homepage doesn't load for the first time (on clear window)
 - I18n: add language switcher
-- I18n: M triggers & types as defaults
-- Seizures - multiple triggers
+- Add `endDate` to medications table

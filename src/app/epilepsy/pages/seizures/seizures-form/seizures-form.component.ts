@@ -34,7 +34,7 @@ export class SeizuresFormComponent implements OnInit, OnDestroy {
       occurred: ['', [Validators.required, DatesValidator.inThePast()]],
       duration: ['', [Validators.required, Validators.min(1)]],
       seizureType: ['', [Validators.required]],
-      seizureTrigger: [''],
+      seizureTriggers: [[]],
     });
   }
 
@@ -49,7 +49,7 @@ export class SeizuresFormComponent implements OnInit, OnDestroy {
             occurred: result.occurred.format(SeizuresFormComponent.DATE_TIME_FORMAT),
             duration: result.duration.minutes(),
             seizureType: result.type,
-            seizureTrigger: result.trigger,
+            seizureTriggers: result.triggers || [],
           });
         });
     }
@@ -65,7 +65,7 @@ export class SeizuresFormComponent implements OnInit, OnDestroy {
       occurred: moment(this.form.value.occurred),
       duration: this.form.value.duration,
       type: this.form.value.seizureType,
-      trigger: this.form.value.seizureTrigger || undefined,
+      triggers: this.form.value.seizureTriggers || undefined,
     };
 
     let submitObservable$: Observable<any>;
