@@ -7,7 +7,7 @@ import {
   connectFirestoreEmulator,
   enableMultiTabIndexedDbPersistence,
   getFirestore,
-  provideFirestore,
+  provideFirestore
 } from '@angular/fire/firestore';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -30,6 +30,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -43,6 +44,7 @@ import { ConfirmDeleteDialogComponent } from './epilepsy/components/confirm-dele
 import { HeaderComponent } from './epilepsy/components/header/header.component';
 import { SidenavComponent } from './epilepsy/components/sidenav/sidenav.component';
 import { TableComponent } from './epilepsy/components/table/table.component';
+import { YearsnavComponent } from './epilepsy/components/yearsnav/yearsnav.component';
 import { EpilepsyComponent } from './epilepsy/epilepsy.component';
 import { ChartSummaryComponent } from './epilepsy/pages/charts/chart-summary/chart-summary.component';
 import { ChartsComponent } from './epilepsy/pages/charts/charts.component';
@@ -56,14 +58,13 @@ import { SeizuresFormComponent } from './epilepsy/pages/seizures/seizures-form/s
 import { SeizuresComponent } from './epilepsy/pages/seizures/seizures.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ErrorModalComponent } from './shared/components/error-modal/error-modal.component';
+import { UpdateDialogComponent } from './shared/components/update-dialog/update-dialog.component';
 import { EndOfPipe } from './shared/pipes/end-of.pipe';
 import { HumanizePipe } from './shared/pipes/humanize.pipe';
+import { JoinPipe } from './shared/pipes/join.pipe';
 import { MomentPipe } from './shared/pipes/moment.pipe';
 import { StartOfPipe } from './shared/pipes/start-of.pipe';
 import { TimeSincePipe } from './shared/pipes/time-since.pipe';
-import { YearsnavComponent } from './epilepsy/components/yearsnav/yearsnav.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { UpdateDialogComponent } from './shared/components/update-dialog/update-dialog.component';
 
 let resolvePersistenceEnabled: (enabled: boolean) => void;
 
@@ -76,6 +77,7 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     // Pipes
     EndOfPipe,
     HumanizePipe,
+    JoinPipe,
     MomentPipe,
     StartOfPipe,
 

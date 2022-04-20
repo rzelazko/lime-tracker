@@ -622,7 +622,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
-          <context context-type="linenumber">84</context>
+          <context context-type="linenumber">83</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.ts</context>
@@ -735,8 +735,8 @@
           <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="table-column-trigger" datatype="html">
-        <source>Trigger</source>
+      <trans-unit id="table-column-triggers" datatype="html">
+        <source>Triggers</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
           <context context-type="linenumber">28</context>
@@ -1031,7 +1031,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
-          <context context-type="linenumber">78,79</context>
+          <context context-type="linenumber">77,78</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action-add-event" datatype="html">
@@ -1057,7 +1057,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
-          <context context-type="linenumber">84,88</context>
+          <context context-type="linenumber">83,87</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routerLink-epilepsy-events-update" datatype="html">
@@ -1288,8 +1288,8 @@
           <context context-type="linenumber">32,33</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="reports-seizure-trigger" datatype="html">
-        <source>| Trigger: <x id="INTERPOLATION" equiv-text="{{ case.seizure.trigger }}"/></source>
+      <trans-unit id="reports-seizure-triggers" datatype="html">
+        <source>| Triggers: <x id="INTERPOLATION" equiv-text="{{ case.seizure.triggers | join }}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
           <context context-type="linenumber">33,34</context>
@@ -1386,32 +1386,32 @@
           <context context-type="linenumber">56,58</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="label-seizure-trigger" datatype="html">
-        <source>Trigger</source>
+      <trans-unit id="label-seizure-triggers" datatype="html">
+        <source>Triggers</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
           <context context-type="linenumber">61,62</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="error-seizure-trigger-required" datatype="html">
-        <source>Seizure trigger is required</source>
+      <trans-unit id="error-seizure-triggers-required" datatype="html">
+        <source>Seizure triggers is required</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
-          <context context-type="linenumber">69,71</context>
+          <context context-type="linenumber">68,70</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="error-seizure-trigger-invalid" datatype="html">
-        <source>Seizure trigger is invalid</source>
+      <trans-unit id="error-seizure-triggers-invalid" datatype="html">
+        <source>Seizure triggers is invalid</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
-          <context context-type="linenumber">72,76</context>
+          <context context-type="linenumber">71,75</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action-add-seizure" datatype="html">
         <source>Add seizure</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
-          <context context-type="linenumber">81,84</context>
+          <context context-type="linenumber">80,83</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures.component.html</context>
