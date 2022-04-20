@@ -846,9 +846,9 @@
           <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="table-column-start-date" datatype="html">
-        <source>Start date</source>
-        <target>Data rozpoczęcia</target>
+      <trans-unit id="table-column-start-end-date" datatype="html">
+        <source>Period of use</source>
+        <target>Okres zażywania</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
           <context context-type="linenumber">49</context>
@@ -859,7 +859,7 @@
         <target>Aktualny</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
-          <context context-type="linenumber">60</context>
+          <context context-type="linenumber">61</context>
         </context-group>
       </trans-unit>
       <trans-unit id="table-tooltip-move-to-active" datatype="html">
@@ -867,7 +867,7 @@
         <target>Zmień na aktualnie zażywany</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
-          <context context-type="linenumber">67</context>
+          <context context-type="linenumber">68</context>
         </context-group>
       </trans-unit>
       <trans-unit id="table-tooltip-move-to-archive" datatype="html">
@@ -875,7 +875,7 @@
         <target>Zmień na archiwalny</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
-          <context context-type="linenumber">76</context>
+          <context context-type="linenumber">77</context>
         </context-group>
       </trans-unit>
       <trans-unit id="table-column-actions" datatype="html">
@@ -883,7 +883,7 @@
         <target>Akcje</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
-          <context context-type="linenumber">84</context>
+          <context context-type="linenumber">85</context>
         </context-group>
       </trans-unit>
       <trans-unit id="loading" datatype="html">
@@ -891,7 +891,7 @@
         <target>Wczytywanie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
-          <context context-type="linenumber">100</context>
+          <context context-type="linenumber">101</context>
         </context-group>
       </trans-unit>
       <trans-unit id="no-data" datatype="html">
@@ -899,7 +899,7 @@
         <target>Brak danych</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
-          <context context-type="linenumber">101</context>
+          <context context-type="linenumber">102</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
@@ -907,7 +907,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
-          <context context-type="linenumber">48,49</context>
+          <context context-type="linenumber">49,50</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action-load-more" datatype="html">
@@ -915,7 +915,7 @@
         <target>Wczytaj więcej</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
-          <context context-type="linenumber">111</context>
+          <context context-type="linenumber">112</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action-refresh" datatype="html">
@@ -923,7 +923,7 @@
         <target>Odśwież dane</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
-          <context context-type="linenumber">115</context>
+          <context context-type="linenumber">116</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tab-last-year" datatype="html">

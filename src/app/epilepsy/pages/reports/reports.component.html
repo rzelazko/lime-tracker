@@ -41,6 +41,7 @@
           </div>
           <div *ngIf="case.medication" mat-line class="mat-line-secondary">
             {{ case.medication.startDate | moment: "LL" }}
+            <span *ngIf="case.medication.endDate"> - {{case.medication.endDate | moment: "LL"}}</span>
           </div>
         </mat-list-item>
         <mat-list-item *ngIf="!monthData.data.length">
