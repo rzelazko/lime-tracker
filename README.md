@@ -70,4 +70,3 @@ Perform full deplyment (hosting, security rules, etc.) with `firebase deploy` or
 - Bug: charts on first loading reaload few times
 - Bug: medications on homepage doesn't load for the first time (on clear window)
 - I18n: add language switcher
-- Add `endDate` to medications table

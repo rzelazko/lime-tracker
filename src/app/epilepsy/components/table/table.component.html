@@ -45,14 +45,15 @@
     </td>
   </ng-container>
 
-  <ng-container matColumnDef="startDate">
-    <th mat-header-cell *matHeaderCellDef i18n="@@table-column-start-date">Start date</th>
+  <ng-container matColumnDef="startEndDate">
+    <th mat-header-cell *matHeaderCellDef i18n="@@table-column-start-end-date">Period of use</th>
     <td
       mat-cell
       *matCellDef="let element"
       [ngClass]="{ disabled: element.archived, lineThrough: element.archived }"
     >
-      {{ element.startDate | moment: "LL" }}
+      {{ element.startDate | moment: "L" }}
+      <span *ngIf="element.endDate"> - {{element.endDate | moment: "L"}}</span>
     </td>
   </ng-container>
 
