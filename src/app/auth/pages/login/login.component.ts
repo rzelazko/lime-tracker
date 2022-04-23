@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
     this.auth
       .login(this.loginForm.value)
-      .then(() => this.router.navigate([$localize`:@@routing-epilepsy:epilepsy`]))
+      .then(() => this.router.navigate([$localize`:@@routerLink-epilepsy:/epilepsy`]))
       .catch((error) => this.handleError(error))
       .finally(() => (this.isLoading = false));
   }

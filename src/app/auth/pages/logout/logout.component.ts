@@ -33,7 +33,7 @@ export class LogoutComponent implements OnInit {
         this.seizuresService.resetConcatenated();
         this.medicationsService.resetConcatenated();
         this.eventsService.resetConcatenated();
-        return this.router.navigate([$localize`:@@routing-login:login`]);
+        return this.router.navigate([$localize`:@@routerLink-login:/login`]);
       })
       .catch((error) => this.dialog.open(ErrorModalComponent, { data: error.message }));
   }
