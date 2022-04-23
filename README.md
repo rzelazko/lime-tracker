@@ -67,6 +67,4 @@ Perform full deplyment (hosting, security rules, etc.) with `firebase deploy` or
 - Cancel button on form go back to either dashboard or table (not always table)
 - Add screenshots to README
 - Add possibility to view older data than 2 years
-- Bug: charts on first loading reaload few times
-- Bug: medications on homepage doesn't load for the first time (on clear window)
 - I18n: add language switcher

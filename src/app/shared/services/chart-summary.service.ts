@@ -37,7 +37,7 @@ export class ChartSummaryService {
     private eventsService: EventsService,
     private seizuresService: SeizuresService
   ) {
-    this.dateTo = moment().hours(0).minutes(0).seconds(0).milliseconds(0);
+    this.dateTo = moment().endOf('day');
     this.dateFrom = this.oneYearBefore(this.dateTo);
   }
 
@@ -54,7 +54,7 @@ export class ChartSummaryService {
     if (year) {
       momentTo.year(year).endOf('year');
     }
-    this.dateTo = momentTo.hours(0).minutes(0).seconds(0).milliseconds(0);
+    this.dateTo = momentTo.endOf('day');
     this.dateFrom = this.oneYearBefore(this.dateTo);
   }
 

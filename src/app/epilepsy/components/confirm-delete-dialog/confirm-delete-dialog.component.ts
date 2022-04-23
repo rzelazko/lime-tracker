@@ -15,18 +15,18 @@ export class ConfirmDeleteDialogComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) private data: Event | Medication | Seizure) {
     if (isEvent(data)) {
-      this.type = 'event';
+      this.type = $localize`:@confirm-delete-type-event:event`;
       this.title = (data as Event).name;
     } else if (isMedication(data)) {
-      this.type = 'medication';
+      this.type = $localize`:@confirm-delete-type-medication:medication`;
       const medication: Medication = data as Medication;
       this.title = `${data.name} ${data.doses.morning} - ${data.doses.noon} - ${data.doses.evening}`;
     } else if (isSeizure(data)) {
-      this.type = 'seizure';
+      this.type = $localize`:@confirm-delete-type-seizure:seizure`;
       this.title = (data as Seizure).occurred.format('LLL');
     } else {
-      this.type = 'Unknown';
-      this.title = 'unknown';
+      this.type = $localize`:@confirm-delete-type-unknown:unknown`;
+      this.title = $localize`:@confirm-delete-type-unknown:unknown`;
     }
   }
 

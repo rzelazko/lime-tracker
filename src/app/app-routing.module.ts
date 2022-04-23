@@ -19,25 +19,25 @@ import { SeizuresFormComponent } from './epilepsy/pages/seizures/seizures-form/s
 import { SeizuresComponent } from './epilepsy/pages/seizures/seizures.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-const redirectLoggedInToDashboard = () => redirectLoggedInTo([$localize`:@@routing-epilepsy:epilepsy`]);
+const redirectLoggedInToDashboard = () => redirectLoggedInTo([$localize`:@@routerLink-epilepsy:/epilepsy`]);
 const redirectUnauthorizedOrUnverifiedUser: AuthPipeGenerator = () =>
   map((user) => {
     if (user) {
       if (user.emailVerified) {
         return true;
       }
-      return [$localize`:@@routing-register-confirm:register/confirm`];
+      return [$localize`:@@routerLink-register-confirm:/register/confirm`];
     }
-    return [$localize`:@@routing-login:login`];
+    return [$localize`:@@routerLink-login:/login`];
   });
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: $localize`:@@routing-login:login` },
+  { path: '', pathMatch: 'full', redirectTo: $localize`:@@routerLink-login:/login` },
   {
     path: '',
     component: AuthComponent,
     children: [
-      { path: '', pathMatch: 'full', redirectTo: $localize`:@@routing-login:login` },
+      { path: '', pathMatch: 'full', redirectTo: $localize`:@@routerLink-login:/login` },
       {
         path: $localize`:@@routing-login:login`,
         component: LoginComponent,
