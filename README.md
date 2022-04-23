@@ -70,3 +70,4 @@ Perform full deplyment (hosting, security rules, etc.) with `firebase deploy` or
 - Bug: charts on first loading reaload few times
 - Bug: medications on homepage doesn't load for the first time (on clear window)
 - I18n: add language switcher
+- Bugfix: reports page does not show seizure from last day (charts also do not count them)
