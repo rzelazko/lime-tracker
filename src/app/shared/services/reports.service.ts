@@ -19,7 +19,7 @@ export class ReportsService {
 
   getReports(year?: number): Observable<Report> {
     const lastReportDay = year ? moment().year(year).endOf('year') : moment();
-    lastReportDay.hours(0).minutes(0).seconds(0).milliseconds(0);
+    lastReportDay.endOf('day');
     const report: Report = {
       dateTo: moment(lastReportDay),
       dateFrom: moment(lastReportDay).endOf('month').subtract(1, 'year').add(1, 'day').startOf('month'),
