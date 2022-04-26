@@ -18,6 +18,15 @@
   <a mat-list-item routerLink="/epilepsy/events" i18n-routerLink="@@routerLink-epilepsy-events" routerLinkActive="active" (click)="onClose()">
     <mat-icon>event</mat-icon> <span i18n="@@title-events">Events</span>
   </a>
+
+  <mat-divider></mat-divider>
+  <a mat-list-item href="/en" *ngIf="locale === 'pl'">
+    <mat-icon>language</mat-icon> <span i18n="@@title-language">English</span>
+  </a>
+  <a mat-list-item href="/en" *ngIf="locale !== 'pl'">
+    <mat-icon>language</mat-icon> <span i18n="@@title-language">Polski</span>
+  </a>
+
   <mat-divider></mat-divider>
   <a mat-list-item routerLink="/logout" i18n-routerLink="@@routerLink-epilepsy-logout" routerLinkActive="active" (click)="onClose()">
     <mat-icon>logout</mat-icon> <span i18n="@@title-logout">Log out</span>
