@@ -3,7 +3,7 @@
 Lime Tracker empowers people with epilepsy for better understanding of sickness development.
 Application is an extensive seizure tracker, helping to understand epilepsy changes through data visualization.
 
-## Technologies Used
+## Technologies used
 
 Angular version: 13.x
 NodeJS version: 16.x
@@ -67,4 +67,4 @@ Perform full deplyment (hosting, security rules, etc.) with `firebase deploy` or
 - Cancel button on form go back to either dashboard or table (not always table)
 - Add screenshots to README
 - Add possibility to view older data than 2 years
-- I18n: add language switcher
+- Charts: [combineLatest](https://www.learnrxjs.io/learn-rxjs/operators/combination/combinelatest) to avoid blinking on PWA?

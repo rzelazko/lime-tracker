@@ -11,6 +11,7 @@
         i18n-routerLink="@@routerLink-login"
         >Log in</a
       >
+
       <a
         mat-tab-link
         routerLink="/register"
@@ -21,6 +22,24 @@
         i18n-routerLink="@@routerLink-register"
         >Register</a
       >
+
+      <button
+        mat-button
+        mat-tab-link
+        routerLink="/register"
+        routerLinkActive
+        #routeRegister="routerLinkActive"
+        [active]="routeRegister.isActive"
+        i18n-routerLink="@@routerLink-register"
+        [matMenuTriggerFor]="languagesMenu"
+      >
+        <mat-icon>language</mat-icon>
+      </button>
+      <mat-menu #languagesMenu="matMenu">
+        <a href="/pl" mat-menu-item>Polski</a>
+        <a href="/en" mat-menu-item>English</a>
+      </mat-menu>
+
     </nav>
     <mat-tab-nav-panel #tabPanel>
       <router-outlet></router-outlet>

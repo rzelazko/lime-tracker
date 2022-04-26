@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, LOCALE_ID, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-sidenav',
@@ -8,9 +8,11 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class SidenavComponent implements OnInit {
   @Output() sidenavClose = new EventEmitter<void>();
 
-  constructor() {}
+  constructor(@Inject(LOCALE_ID) public locale?: string) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.locale);
+  }
 
   onClose() {
     this.sidenavClose.emit();
