@@ -207,7 +207,11 @@
         <target>/rejestracja</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/auth.component.html</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/auth.component.html</context>
+          <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action-register" datatype="html">
@@ -215,7 +219,7 @@
         <target>Utwórz konto</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/auth.component.html</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">23</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
@@ -755,7 +759,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-summary/chart-summary.component.ts</context>
-          <context context-type="linenumber">37</context>
+          <context context-type="linenumber">35</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures.component.html</context>
@@ -815,7 +819,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-summary/chart-summary.component.ts</context>
-          <context context-type="linenumber">33</context>
+          <context context-type="linenumber">31</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/events/events.component.html</context>
@@ -827,7 +831,7 @@
         <target>/wyloguj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/sidenav/sidenav.component.html</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-logout" datatype="html">
@@ -835,7 +839,7 @@
         <target>Wyloguj się</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/sidenav/sidenav.component.html</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
       <trans-unit id="table-column-occurred" datatype="html">
@@ -979,7 +983,7 @@
         <target>Dawka leku (na dobę)</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-summary/chart-summary.component.ts</context>
-          <context context-type="linenumber">81</context>
+          <context context-type="linenumber">78</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chart-summary-title" datatype="html">
@@ -987,7 +991,7 @@
         <target>Napady, leki i wydarzenia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-summary/chart-summary.component.ts</context>
-          <context context-type="linenumber">136</context>
+          <context context-type="linenumber">133</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routerLink-epilepsy-seizures-add" datatype="html">

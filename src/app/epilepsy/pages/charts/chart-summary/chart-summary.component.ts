@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { ApexAxisChartSeries, ApexYAxis } from 'ng-apexcharts';
-import { map, merge, Subscription } from 'rxjs';
+import { combineLatest, map, Subscription } from 'rxjs';
 import { ChartData } from '../../../../shared/models/chart-data.model';
 import { ChartOptions } from '../../../../shared/models/chart-options.model';
 import { ChartSummaryService } from '../../../../shared/services/chart-summary.service';
@@ -25,10 +25,8 @@ export class ChartSummaryComponent implements OnInit, OnDestroy, OnChanges {
     this.summaryChart = undefined;
     this.chartService.setYear(this.selectedYear);
 
-    this.subsription = merge(
-      this.chartService.medicationsSeries().pipe(
-        map((data) => (this.medicationsData = data))
-      ),
+    this.subsription = combineLatest([
+      this.chartService.medicationsSeries().pipe(map((data) => (this.medicationsData = data))),
       this.chartService.eventsSerie().pipe(
         map((data) => ({ name: $localize`:@@title-events:Events`, ...data })),
         map((data) => (this.eventsData = data))
@@ -36,11 +34,10 @@ export class ChartSummaryComponent implements OnInit, OnDestroy, OnChanges {
       this.chartService.seizureSerie().pipe(
         map((data) => ({ name: $localize`:@@title-seizures:Seizures`, ...data })),
         map((data) => (this.seizuresData = data))
-      )
-    )
-    .subscribe({
+      ),
+    ]).subscribe({
       next: () => this.updateChart(),
-      error: (error) => (this.error = error.message)
+      error: (error) => (this.error = error.message),
     });
   }
 

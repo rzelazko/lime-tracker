@@ -3,6 +3,19 @@
 Lime Tracker empowers people with epilepsy for better understanding of sickness development.
 Application is an extensive seizure tracker, helping to understand epilepsy changes through data visualization.
 
+Sample data:
+
+- Dashboard:<br>
+  <img src="/docs/app-dashboard.png" width="350">
+- Application menu:<br>
+  <img src="/docs/app-menu.png" width="350">
+- Add seizure form:<br>
+  <img src="/docs/app-seizure-form.png" width="350">
+- Charts:<br>
+  <img src="/docs/app-charts.png" width="350">
+- Reports:<br>
+  <img src="/docs/app-reports.png" width="350">
+
 ## Technologies used
 
 Angular version: 13.x
@@ -56,15 +69,11 @@ Perform full deplyment (hosting, security rules, etc.) with `firebase deploy` or
 
 ## TODO 
 
-:warning: Most important on the bottom
-
-- Add schema validation to [firestore.rules](firestore.rules)
-- Add some Rodo, privacy policy, etc. on login & dashboard (add footer?)
-- Add user profile management
-- Reports pagination in URL, ex: `/epilepsy/reports/2021` - router link instead of tab `(click)`
+- Reports / Charts: add possibility to view older data than 2 years
+- Reports / Charts: pagination in URL, ex: `/epilepsy/reports/2021` - router link instead of tab `(click)`
 - Replace `throw`s with error handling (ex. reports page). Add error handling to Seizures, etc.
 - Add reset passoword
+- Add user profile management
 - Cancel button on form go back to either dashboard or table (not always table)
-- Add screenshots to README
-- Add possibility to view older data than 2 years
-- Charts: [combineLatest](https://www.learnrxjs.io/learn-rxjs/operators/combination/combinelatest) to avoid blinking on PWA?
+- Add some Rodo, privacy policy, etc. on login & dashboard (add footer?)
+- Add schema validation to [firestore.rules](firestore.rules)
