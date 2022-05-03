@@ -1,7 +1,9 @@
 # Lime Tracker
 
 Lime Tracker empowers people with epilepsy for better understanding of sickness development.
-Application is an extensive seizure tracker, helping to understand epilepsy changes through data visualization.
+It is available as [Progressive Web App](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Installing) on **[lime-tracker.com](https://lime-tracker.com/)**.
+
+[Lime Tracker](https://lime-tracker.com/) is an extensive seizure tracker, helping to understand epilepsy changes through data visualization.
 
 Sample data:
 
