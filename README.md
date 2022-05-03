@@ -3,6 +3,14 @@
 Lime Tracker empowers people with epilepsy for better understanding of sickness development.
 Application is an extensive seizure tracker, helping to understand epilepsy changes through data visualization.
 
+Sample data:
+
+![Dashboard](/docs/app-dashboard.png)
+![Application menu](/docs/app-menu.png)
+![Add seizure form](/docs/app-seizure-form.png)
+![Charts](/docs/app-charts.png)
+![Reports](/docs/app-reports.png)
+
 ## Technologies used
 
 Angular version: 13.x
@@ -56,11 +64,9 @@ Perform full deplyment (hosting, security rules, etc.) with `firebase deploy` or
 
 ## TODO 
 
-- Charts: [combineLatest](https://www.learnrxjs.io/learn-rxjs/operators/combination/combinelatest) to avoid blinking on PWA?
 - Reports / Charts: add possibility to view older data than 2 years
 - Reports / Charts: pagination in URL, ex: `/epilepsy/reports/2021` - router link instead of tab `(click)`
 - Replace `throw`s with error handling (ex. reports page). Add error handling to Seizures, etc.
-- Add screenshots to README
 - Add reset passoword
 - Add user profile management
 - Cancel button on form go back to either dashboard or table (not always table)
