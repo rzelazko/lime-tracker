@@ -5,7 +5,11 @@ Application is an extensive seizure tracker, helping to understand epilepsy chan
 
 Sample data:
 
-<img src="/docs/app-dashboard.png" width="300"> <img src="/docs/app-menu.png" width="300"> <img src="/docs/app-seizure-form.png" width="300"> <img src="/docs/app-charts.png" width="300"> <img src="/docs/app-reports.png" width="300">
+<kbd><img src="/docs/app-dashboard.png" width="350"></kbd>
+<kbd><img src="/docs/app-menu.png" width="350"></kbd>
+<kbd><img src="/docs/app-seizure-form.png" width="350"></kbd>
+<kbd><img src="/docs/app-charts.png" width="350"></kbd>
+<kbd><img src="/docs/app-reports.png" width="350"></kbd>
 
 ## Technologies used
 
