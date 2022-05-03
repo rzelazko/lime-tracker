@@ -5,16 +5,16 @@ Application is an extensive seizure tracker, helping to understand epilepsy chan
 
 Sample data:
 
-- Dashboard:<br>
-  <kbd><img src="/docs/app-dashboard.png" width="350"></kbd>
-- Application menu:<br>
-  <kbd><img src="/docs/app-menu.png" width="350"></kbd>
-- Add seizure form:<br>
-  <kbd><img src="/docs/app-seizure-form.png" width="350"></kbd>
-- Charts:<br>
-  <kbd><img src="/docs/app-charts.png" width="350"></kbd>
-- Reports:<br>
-  <kbd><img src="/docs/app-reports.png" width="350"></kbd>
+- Dashboard:  
+  ![Dashboard](/docs/app-dashboard.png)
+- Application menu:  
+  ![Application menu](/docs/app-menu.png)
+- Add seizure form:  
+  ![Add seizure form](/docs/app-seizure-form.png)
+- Charts:  
+  ![Charts](/docs/app-charts.png)
+- Reports:  
+  ![Reports](/docs/app-reports.png)
 
 ## Technologies used
 
