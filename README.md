@@ -56,15 +56,13 @@ Perform full deplyment (hosting, security rules, etc.) with `firebase deploy` or
 
 ## TODO 
 
-:warning: Most important on the bottom
-
-- Add schema validation to [firestore.rules](firestore.rules)
-- Add some Rodo, privacy policy, etc. on login & dashboard (add footer?)
-- Add user profile management
-- Reports pagination in URL, ex: `/epilepsy/reports/2021` - router link instead of tab `(click)`
-- Replace `throw`s with error handling (ex. reports page). Add error handling to Seizures, etc.
-- Add reset passoword
-- Cancel button on form go back to either dashboard or table (not always table)
-- Add screenshots to README
-- Add possibility to view older data than 2 years
 - Charts: [combineLatest](https://www.learnrxjs.io/learn-rxjs/operators/combination/combinelatest) to avoid blinking on PWA?
+- Reports / Charts: add possibility to view older data than 2 years
+- Reports / Charts: pagination in URL, ex: `/epilepsy/reports/2021` - router link instead of tab `(click)`
+- Replace `throw`s with error handling (ex. reports page). Add error handling to Seizures, etc.
+- Add screenshots to README
+- Add reset passoword
+- Add user profile management
+- Cancel button on form go back to either dashboard or table (not always table)
+- Add some Rodo, privacy policy, etc. on login & dashboard (add footer?)
+- Add schema validation to [firestore.rules](firestore.rules)
