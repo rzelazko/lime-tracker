@@ -71,8 +71,6 @@ Perform full deplyment (hosting, security rules, etc.) with `firebase deploy` or
 
 ## TODO 
 
-- Reports / Charts: add possibility to view older data than 2 years
-- Reports / Charts: pagination in URL, ex: `/epilepsy/reports/2021` - router link instead of tab `(click)`
 - Replace `throw`s with error handling (ex. reports page). Add error handling to Seizures, etc.
 - Add some unit tests
 - Add reset passoword

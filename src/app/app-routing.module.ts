@@ -18,8 +18,10 @@ import { ReportsComponent } from './epilepsy/pages/reports/reports.component';
 import { SeizuresFormComponent } from './epilepsy/pages/seizures/seizures-form/seizures-form.component';
 import { SeizuresComponent } from './epilepsy/pages/seizures/seizures.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { YearInRangeGuard } from './shared/guards/year-in-range.guard';
 
-const redirectLoggedInToDashboard = () => redirectLoggedInTo([$localize`:@@routerLink-epilepsy:/epilepsy`]);
+const redirectLoggedInToDashboard = () =>
+  redirectLoggedInTo([$localize`:@@routerLink-epilepsy:/epilepsy`]);
 const redirectUnauthorizedOrUnverifiedUser: AuthPipeGenerator = () =>
   map((user) => {
     if (user) {
@@ -77,9 +79,21 @@ const routes: Routes = [
         data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
       },
       {
+        path: $localize`:@@routing-charts-year:charts/:year`,
+        component: ChartsComponent,
+        canActivate: [AuthGuard, YearInRangeGuard],
+        data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
+      },
+      {
         path: $localize`:@@routing-reports:reports`,
         component: ReportsComponent,
         canActivate: [AuthGuard],
+        data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
+      },
+      {
+        path: $localize`:@@routing-reports-year:reports/:year`,
+        component: ReportsComponent,
+        canActivate: [AuthGuard, YearInRangeGuard],
         data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
       },
       {
@@ -138,6 +152,7 @@ const routes: Routes = [
       },
     ],
   },
+  { path: '404', component: PageNotFoundComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 

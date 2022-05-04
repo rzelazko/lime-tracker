@@ -1,4 +1,4 @@
-<app-yearsnav (onYearSelect)="onYearSelect($event)"></app-yearsnav>
+<app-yearsnav linkPrefix="/epilepsy/reports" i18n-linkPrefix="@@routerLink-epilepsy-reports"></app-yearsnav>
 
 <ng-container *ngIf="report$ | async as report; else loading">
   <mat-toolbar class="page-header" role="heading">

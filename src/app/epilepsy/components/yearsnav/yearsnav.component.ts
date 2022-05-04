@@ -1,23 +1,17 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import * as moment from 'moment';
 
 @Component({
   selector: 'app-yearsnav',
   templateUrl: './yearsnav.component.html',
-  styleUrls: ['./yearsnav.component.scss']
+  styleUrls: ['./yearsnav.component.scss'],
 })
 export class YearsnavComponent implements OnInit {
-  @Output('onYearSelect') yearSelectEvent = new EventEmitter<number>();
-  selectedYear?: number;
+  @Input() public linkPrefix?: string;
   currentYear = moment().year();
+  availableYears = Array.from({ length: 10 }, (_v, k) => this.currentYear - k);
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
-  onYearSelect(year?: number) {
-    this.selectedYear = year;
-    this.yearSelectEvent.emit(year);
-  }
+  ngOnInit(): void {}
 }

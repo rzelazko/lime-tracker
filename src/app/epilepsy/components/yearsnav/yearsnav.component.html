@@ -1,19 +1,36 @@
 <nav mat-tab-nav-bar>
-  <a mat-tab-link (click)="onYearSelect()" [active]="!selectedYear" i18n="@@tab-last-year"
+  <a
+    mat-tab-link
+    i18n="@@tab-last-year"
+    [routerLink]="linkPrefix"
+    routerLinkActive
+    [routerLinkActiveOptions]="{ exact: true }"
+    #routeLastYear="routerLinkActive"
+    [active]="routeLastYear.isActive"
     >Last year</a
   >
+
   <a
+    *ngFor="let year of availableYears | slice: 1:3"
     mat-tab-link
-    (click)="onYearSelect(currentYear - 1)"
-    [active]="selectedYear === currentYear - 1"
+    [routerLink]="linkPrefix + '/' + year"
+    routerLinkActive
+    [routerLinkActiveOptions]="{ exact: true }"
+    #routeYearLoop="routerLinkActive"
+    [active]="routeYearLoop.isActive"
   >
-    {{ currentYear - 1 }}
+    {{ year }}
   </a>
-  <a
-    mat-tab-link
-    (click)="onYearSelect(currentYear - 2)"
-    [active]="selectedYear === currentYear - 2"
-  >
-    {{ currentYear - 2 }}
-  </a>
+
+  <button mat-button mat-tab-link [matMenuTriggerFor]="yearsMenu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #yearsMenu="matMenu">
+    <a
+      *ngFor="let year of availableYears | slice: 3"
+      mat-menu-item
+      [routerLink]="linkPrefix + '/' + year"
+      >{{ year }}</a
+    >
+  </mat-menu>
 </nav>
