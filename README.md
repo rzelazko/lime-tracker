@@ -74,8 +74,10 @@ Perform full deplyment (hosting, security rules, etc.) with `firebase deploy` or
 - Reports / Charts: add possibility to view older data than 2 years
 - Reports / Charts: pagination in URL, ex: `/epilepsy/reports/2021` - router link instead of tab `(click)`
 - Replace `throw`s with error handling (ex. reports page). Add error handling to Seizures, etc.
+- Add some unit tests
 - Add reset passoword
 - Add user profile management
+- Add more charts
 - Cancel button on form go back to either dashboard or table (not always table)
-- Add some Rodo, privacy policy, etc. on login & dashboard (add footer?)
+- Add some Rodo, privacy policy, etc. on login & dashboard (add footer or landing page?)
 - Add schema validation to [firestore.rules](firestore.rules)
