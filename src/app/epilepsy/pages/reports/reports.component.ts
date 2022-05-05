@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
 import { Report } from '../../../shared/models/report.model';
 import { ReportsService } from '../../../shared/services/reports.service';
 
@@ -11,17 +12,21 @@ import { ReportsService } from '../../../shared/services/reports.service';
 export class ReportsComponent implements OnInit, OnDestroy {
   selectedYear?: number;
   report$: Observable<Report>;
+  routeSubscription: Subscription;
 
-  constructor(private reportsService: ReportsService) {
+  constructor(private reportsService: ReportsService, private activatedRoute: ActivatedRoute) {
     this.report$ = this.reportsService.getReports();
+    this.routeSubscription = this.activatedRoute.params.subscribe((routeParams) => {
+      this.selectedYear = routeParams['year'];
+      this.report$ = this.reportsService.getReports(this.selectedYear);
+    });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.selectedYear = this.activatedRoute.snapshot.params['year'];
+  }
 
-  ngOnDestroy(): void {}
-
-  onYearSelect(year?: number) {
-    this.selectedYear = year;
-    this.report$ = this.reportsService.getReports(year);
+  ngOnDestroy(): void {
+    this.routeSubscription.unsubscribe();
   }
 }
