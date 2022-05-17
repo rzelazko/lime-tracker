@@ -30,7 +30,7 @@ export function reportCaseDate(reportCase: ReportCase): Moment {
     result = reportCase.seizure.occurred;
   } else {
     // should be impossible - we have only 3 types of cases
-    throw `Object type unsupported: ${JSON.stringify(reportCase)}`;
+    throw new Error(`Object type unsupported: ${JSON.stringify(reportCase)}`);
   }
 
   return result;

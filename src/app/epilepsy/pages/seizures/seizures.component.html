@@ -3,7 +3,10 @@
 </mat-toolbar>
 
 <main>
+  <app-error-card [error]="error" *ngIf="error" [full-size]="false"></app-error-card>
+
   <app-table
+    *ngIf="!error"
     [dataSource]="dataSource"
     [displayedColumns]="columns"
     addBtnLink="/epilepsy/seizures/add"

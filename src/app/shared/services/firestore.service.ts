@@ -91,7 +91,7 @@ export class FirestoreService {
       if (this.batch) {
         return this.batch.commit();
       }
-      throw `Transaction has not been started - cannot commit!`;
+      throw new Error(`Transaction has not been started - cannot commit!`);
     });
   }
 

@@ -100,7 +100,7 @@ export class ReportsService {
             }
           } else {
             // should be impossible: backed with firebase where condition
-            throw `Report case ${caseDate.format()} not in range ${report.dateFrom.format()} - ${report.dateTo.format()}`;
+            throw new Error(`Report case ${caseDate.format()} not in range ${report.dateFrom.format()} - ${report.dateTo.format()}`);
           }
         }
 

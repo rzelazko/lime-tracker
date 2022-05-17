@@ -864,7 +864,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">81,82</context>
+          <context context-type="linenumber">86,87</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
@@ -914,7 +914,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures.component.html</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dashboard-action-add-seizure" datatype="html">
@@ -932,7 +932,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications.component.html</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dashboard-action-add-medication" datatype="html">
@@ -950,7 +950,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/events/events.component.html</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dashboard-action-add-event" datatype="html">
@@ -968,7 +968,11 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">45,46</context>
+          <context context-type="linenumber">47,48</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">97,98</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dashboard-time-since-last-seizure" datatype="html">
@@ -989,7 +993,7 @@
         <source>Current medications</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">53,55</context>
+          <context context-type="linenumber">59,61</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-update-event" datatype="html">
@@ -1100,7 +1104,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/events/events.component.html</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action-cancel" datatype="html">
@@ -1122,7 +1126,7 @@
         <source>/epilepsy/events/update</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/events/events.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-update-medication" datatype="html">
@@ -1308,14 +1312,14 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications.component.html</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routerLink-epilepsy-medications-update" datatype="html">
         <source>/epilepsy/medications/update</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-reports-until-from" datatype="html">
@@ -1473,14 +1477,14 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures.component.html</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routerLink-epilepsy-seizures-update" datatype="html">
         <source>/epilepsy/seizures/update</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">16</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error404-title" datatype="html">
@@ -1504,18 +1508,26 @@
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="error-modal-title" datatype="html">
+      <trans-unit id="error-title" datatype="html">
         <source>Something went wrong!</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/error-modal/error-modal.component.html</context>
           <context context-type="linenumber">1</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/error-card/error-card.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
       </trans-unit>
-      <trans-unit id="error-modal-info" datatype="html">
+      <trans-unit id="error-info" datatype="html">
         <source>Please try again, and if the problem persists, contact the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a href=&quot;https://www.webperfekt.pl/&quot;&gt;"/>administrator<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/error-modal/error-modal.component.html</context>
           <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/error-card/error-card.component.html</context>
+          <context context-type="linenumber">6,7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action-close" datatype="html">

@@ -60,6 +60,7 @@ import { SeizuresComponent } from './epilepsy/pages/seizures/seizures.component'
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ErrorModalComponent } from './shared/components/error-modal/error-modal.component';
 import { UpdateDialogComponent } from './shared/components/update-dialog/update-dialog.component';
+import { ErrorCardComponent } from './shared/error-card/error-card.component';
 import { EndOfPipe } from './shared/pipes/end-of.pipe';
 import { HumanizePipe } from './shared/pipes/humanize.pipe';
 import { JoinPipe } from './shared/pipes/join.pipe';
@@ -92,6 +93,7 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     EpilepsyComponent,
     EventsFormComponent,
     EventsComponent,
+    ErrorCardComponent,
     ErrorModalComponent,
     HeaderComponent,
     LoginComponent,

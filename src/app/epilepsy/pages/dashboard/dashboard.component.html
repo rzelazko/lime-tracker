@@ -22,7 +22,7 @@
   >
     <mat-card
       class="last-seizure"
-      *ngIf="lastSeizures$ | async as lastSeizures; else loadingSeizures"
+      *ngIf="lastSeizures$ | async as lastSeizures; else loadingOrErrorSeizures"
     >
       <mat-card-title-group>
         <mat-card-title i18n="@@dashboard-title-last-seizure">Last seizure</mat-card-title>
@@ -39,23 +39,28 @@
       </mat-card-content>
     </mat-card>
 
-    <ng-template #loadingSeizures>
-      <mat-card class="last-seizure">
-        <mat-card-title-group>
-          <mat-card-title i18n="@@dashboard-title-last-seizure">Last seizure</mat-card-title>
-        </mat-card-title-group>
-        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
-      </mat-card>
+    <ng-template #loadingOrErrorSeizures>
+      <app-error-card [error]="seizureError" *ngIf="seizureError; else loadingSeizures"></app-error-card>
+      <ng-template #loadingSeizures>
+        <mat-card class="last-seizure">
+          <mat-card-title-group>
+            <mat-card-title i18n="@@dashboard-title-last-seizure">Last seizure</mat-card-title>
+          </mat-card-title-group>
+          <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+        </mat-card>
+      </ng-template>
     </ng-template>
 
-    <mat-card class="medications">
+    <mat-card
+      class="medications"
+      *ngIf="medications$ | async as medications; else loadingOrErrorMedications"
+    >
       <mat-card-title-group>
         <mat-card-title i18n="@@dashboard-title-current-medications">Current medications</mat-card-title>
       </mat-card-title-group>
       <mat-card-content>
         <mat-list
           fxLayout="row wrap"
-          *ngIf="medications$ | async as medications; else loadingMedication"
         >
           <mat-list-item *ngFor="let medication of medications">
             <mat-icon mat-list-icon>medication</mat-icon>
@@ -81,11 +86,19 @@
             <div mat-line i18n="@@no-data">No data</div>
           </mat-list-item>
         </mat-list>
-
-        <ng-template #loadingMedication>
-          <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
-        </ng-template>
       </mat-card-content>
     </mat-card>
-  </section>
+
+    <ng-template #loadingOrErrorMedications>
+      <app-error-card [error]="medicationsError" *ngIf="medicationsError; else loadingMedications"></app-error-card>
+      <ng-template #loadingMedications>
+        <mat-card class="last-seizure">
+          <mat-card-title-group>
+            <mat-card-title i18n="@@dashboard-title-last-seizure">Last seizure</mat-card-title>
+          </mat-card-title-group>
+          <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+        </mat-card>
+      </ng-template>
+    </ng-template>
+    </section>
 </main>
