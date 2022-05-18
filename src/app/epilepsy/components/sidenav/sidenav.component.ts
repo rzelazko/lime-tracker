@@ -11,7 +11,6 @@ export class SidenavComponent implements OnInit {
   constructor(@Inject(LOCALE_ID) public locale?: string) {}
 
   ngOnInit() {
-    console.log(this.locale);
   }
 
   onClose() {
