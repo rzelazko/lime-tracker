@@ -93,7 +93,7 @@ export class MedicationsFormComponent implements OnInit {
         evening: +this.form.value.doseEvening,
       },
       startDate: moment(this.form.value.startDate),
-      archived: this.form.value.archived && this.form.value.endDate,
+      archived: this.form.value.archived && !!this.form.value.endDate,
       endDate: this.form.value.archived ? this.form.value.endDate : null,
     };
 
