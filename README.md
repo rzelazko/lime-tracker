@@ -71,7 +71,6 @@ Perform full deplyment (hosting, security rules, etc.) with `firebase deploy` or
 
 ## TODO 
 
-- Add some unit tests for each serie in charts
 - Add test to medicaments form (or other)
 - Add some unit tests for dashboard (maybe with errors and loading tests?)
 - Add period tracking
