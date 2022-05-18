@@ -15,14 +15,17 @@ const moment = extendMoment(Moment);
 describe('ChartSummaryService', () => {
   let chartSummaryService: ChartSummaryService;
 
-  let medicationsServiceSpy: jasmine.SpyObj<MedicationsService>;
+  let medsServiceSpy: jasmine.SpyObj<MedicationsService>;
   let eventsServiceSpy: jasmine.SpyObj<EventsService>;
   let seizuresServiceSpy: jasmine.SpyObj<SeizuresService>;
 
   beforeEach(() => {
     const medicationsServiceSpyObj = jasmine.createSpyObj('MedicationsService', ['listCollection']);
     const eventsServiceSpyObj = jasmine.createSpyObj('EventsService', ['listCollection']);
-    const seizuresServiceSpyObj = jasmine.createSpyObj('SeizuresService', ['listCollection', 'convertDurations']);
+    const seizuresServiceSpyObj = jasmine.createSpyObj('SeizuresService', [
+      'listCollection',
+      'convertDurations',
+    ]);
 
     TestBed.configureTestingModule({
       providers: [
@@ -33,9 +36,7 @@ describe('ChartSummaryService', () => {
       ],
     });
     chartSummaryService = TestBed.inject(ChartSummaryService);
-    medicationsServiceSpy = TestBed.inject(
-      MedicationsService
-    ) as jasmine.SpyObj<MedicationsService>;
+    medsServiceSpy = TestBed.inject(MedicationsService) as jasmine.SpyObj<MedicationsService>;
     eventsServiceSpy = TestBed.inject(EventsService) as jasmine.SpyObj<EventsService>;
     seizuresServiceSpy = TestBed.inject(SeizuresService) as jasmine.SpyObj<SeizuresService>;
   });
@@ -57,7 +58,7 @@ describe('ChartSummaryService', () => {
     ];
 
     chartSummaryService.setYear(2021);
-    medicationsServiceSpy.listCollection.and.returnValue(of(medicationList));
+    medsServiceSpy.listCollection.and.returnValue(of(medicationList));
 
     // when
     const meds$ = chartSummaryService.medicationsSeries();
@@ -86,7 +87,7 @@ describe('ChartSummaryService', () => {
     ];
 
     chartSummaryService.setYear(2021);
-    medicationsServiceSpy.listCollection.and.returnValue(of(medicationList));
+    medsServiceSpy.listCollection.and.returnValue(of(medicationList));
 
     // when
     const meds$ = chartSummaryService.medicationsSeries();
@@ -146,7 +147,7 @@ describe('ChartSummaryService', () => {
     ];
 
     chartSummaryService.setYear(2021);
-    medicationsServiceSpy.listCollection.and.returnValue(of(medicationList));
+    medsServiceSpy.listCollection.and.returnValue(of(medicationList));
 
     // when
     const meds$ = chartSummaryService.medicationsSeries();
@@ -164,7 +165,7 @@ describe('ChartSummaryService', () => {
     const medicationList: Medication[] = [];
 
     chartSummaryService.setYear(2021);
-    medicationsServiceSpy.listCollection.and.returnValue(of(medicationList));
+    medsServiceSpy.listCollection.and.returnValue(of(medicationList));
 
     // when
     const meds$ = chartSummaryService.medicationsSeries();
@@ -225,43 +226,37 @@ describe('ChartSummaryService', () => {
     const seizuresList: Seizure[] = [
       {
         id: 's1',
-        occurred: moment('2020-12-31 23:59:59'),
-        duration: moment.duration(5, 'minutes'),
-        type: 'some type',
-      },
-      {
-        id: 's1',
         occurred: moment('2021-01-01 00:00:00'),
         duration: moment.duration(5, 'minutes'),
         type: 'some type',
       },
       {
-        id: 's1',
+        id: 's2',
         occurred: moment('2021-01-01 00:00:01'),
         duration: moment.duration(5, 'minutes'),
         type: 'some type',
       },
       {
-        id: 's1',
+        id: 's3',
+        occurred: moment('2021-01-01 23:59:59'),
+        duration: moment.duration(5, 'minutes'),
+        type: 'some type',
+      },
+      {
+        id: 's4',
         occurred: moment('2021-07-12 12:00:00'),
         duration: moment.duration(5, 'minutes'),
         type: 'some type',
       },
       {
-        id: 's1',
+        id: 's5',
         occurred: moment('2021-12-31 01:00:00'),
         duration: moment.duration(5, 'minutes'),
         type: 'some type',
       },
       {
-        id: 's1',
+        id: 's6',
         occurred: moment('2021-12-31 10:00:00'),
-        duration: moment.duration(5, 'minutes'),
-        type: 'some type',
-      },
-      {
-        id: 's1',
-        occurred: moment('2021-12-31 12:00:00'),
         duration: moment.duration(5, 'minutes'),
         type: 'some type',
       },
@@ -269,6 +264,7 @@ describe('ChartSummaryService', () => {
 
     chartSummaryService.setYear(2021);
     seizuresServiceSpy.listCollection.and.returnValue(of(seizuresList));
+    seizuresServiceSpy.convertDurations.and.callFake(data => data);
 
     // when
     const seizures$ = chartSummaryService.seizureSerie();
@@ -278,11 +274,11 @@ describe('ChartSummaryService', () => {
       expect(seizuresSerie.data?.length).toBe(12);
       for (let i = 0; i < 12; i++) {
         if (i == 0) {
-          expect(seizuresSerie.data[i].y).toBe(2);
+          expect(seizuresSerie.data[i].y).toBe(3);
         } else if (i == 6) {
           expect(seizuresSerie.data[i].y).toBe(1);
-        } else if (i == 12) {
-          expect(seizuresSerie.data[i].y).toBe(3);
+        } else if (i == 11) {
+          expect(seizuresSerie.data[i].y).toBe(2);
         } else {
           expect(seizuresSerie.data[i].y).toBe(0);
         }
