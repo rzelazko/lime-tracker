@@ -17,7 +17,8 @@ export class MedicationsComponent implements OnInit, OnDestroy {
   dataSource = new MatTableDataSource<Event | Medication | Seizure>();
   loading = false;
   hasMore = false;
-  public columns = ['name', 'dose', 'startEndDate', 'archived', 'actions'];
+  columns = ['name', 'dose', 'startEndDate', 'archived', 'actions'];
+  error?: string;
   private dataSubscription?: Subscription;
   private deleteSubscription?: Subscription;
   private archiveSubscription?: Subscription;
@@ -32,11 +33,13 @@ export class MedicationsComponent implements OnInit, OnDestroy {
     this.loading = true;
     this.dataSubscription = this.medicationsService
       .listConcatenated(TableComponent.PAGE_SIZE)
-      .subscribe((medicationsPage) => {
+      .subscribe({
+        next: (medicationsPage) => {
         this.dataSource.data = medicationsPage.data;
         this.loading = false;
         this.hasMore = medicationsPage.hasMore;
-      });
+      },
+      error: (error) => (this.error = error)});
   }
 
   onRefresh(): void {

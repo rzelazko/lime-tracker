@@ -16,7 +16,8 @@ export class EventsComponent implements OnInit, OnDestroy {
   dataSource = new MatTableDataSource<Event | Medication | Seizure>();
   loading = false;
   hasMore = false;
-  public columns = ['name', 'occurred', 'actions'];
+  columns = ['name', 'occurred', 'actions'];
+  error?: string;
   private dataSubscription?: Subscription;
   private deleteSubscription?: Subscription;
 
@@ -30,11 +31,13 @@ export class EventsComponent implements OnInit, OnDestroy {
     this.loading = true;
     this.dataSubscription = this.eventsService
       .listConcatenated(TableComponent.PAGE_SIZE)
-      .subscribe((evnentsPage) => {
+      .subscribe({
+        next: (evnentsPage) => {
         this.dataSource.data = evnentsPage.data;
         this.loading = false;
         this.hasMore = evnentsPage.hasMore;
-      });
+      },
+      error: (error) => (this.error = error)});
   }
 
   onRefresh(): void {

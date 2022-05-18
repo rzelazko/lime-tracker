@@ -17,6 +17,7 @@ export class SeizuresComponent implements OnInit, OnDestroy {
   loading = false;
   hasMore = false;
   columns = ['occurred', 'type', 'triggers', 'duration', 'actions'];
+  error?: string;
   private dataSubscription?: Subscription;
   private deleteSubscription?: Subscription;
 
@@ -30,10 +31,13 @@ export class SeizuresComponent implements OnInit, OnDestroy {
     this.loading = true;
     this.dataSubscription = this.seizuresService
       .listConcatenated(TableComponent.PAGE_SIZE)
-      .subscribe((seizuresPage) => {
-        this.dataSource.data = seizuresPage.data;
-        this.loading = false;
-        this.hasMore = seizuresPage.hasMore;
+      .subscribe({
+        next: (seizuresPage) => {
+          this.dataSource.data = seizuresPage.data;
+          this.loading = false;
+          this.hasMore = seizuresPage.hasMore;
+        },
+        error: (error) => (this.error = error),
       });
   }
 

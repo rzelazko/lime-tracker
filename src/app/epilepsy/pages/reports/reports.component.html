@@ -1,6 +1,6 @@
 <app-yearsnav linkPrefix="/epilepsy/reports" i18n-linkPrefix="@@routerLink-epilepsy-reports"></app-yearsnav>
 
-<ng-container *ngIf="report$ | async as report; else loading">
+<ng-container *ngIf="report$ | async as report; else loadingOrError">
   <mat-toolbar class="page-header" role="heading">
     <h1>
       <ng-container i18n="@@title-reports">Reports</ng-container>
@@ -55,6 +55,9 @@
   </main>
 </ng-container>
 
-<ng-template #loading>
-  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+<ng-template #loadingOrError>
+  <app-error-card [error]="error" *ngIf="error; else loading" [full-size]="false"></app-error-card>
+  <ng-template #loading>
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </ng-template>
 </ng-template>

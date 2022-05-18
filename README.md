@@ -71,8 +71,9 @@ Perform full deplyment (hosting, security rules, etc.) with `firebase deploy` or
 
 ## TODO 
 
-- Replace `throw`s with error handling (ex. reports page). Add error handling to Seizures, etc.
 - Add some unit tests
+- Add period tracking
+- Add gender information - and show / hide period tracking option
 - Add reset passoword
 - Add user profile management
 - Add more charts
