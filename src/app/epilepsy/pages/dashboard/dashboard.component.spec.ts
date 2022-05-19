@@ -172,7 +172,6 @@ describe('DashboardComponent', () => {
     fixture.detectChanges();
 
     // then
-    console.log(new Date())
     const lastSeizureElement = fixture.debugElement.query(By.css('.last-seizure mat-card-content p'));
     expect(lastSeizureElement).toBeTruthy();
     expect(lastSeizureElement.nativeElement.textContent).toContain('5 minutes'); // system time is set in beforeEach
