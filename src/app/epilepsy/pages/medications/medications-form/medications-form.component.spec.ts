@@ -6,6 +6,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,7 +27,7 @@ describe('MedicationsFormComponent', () => {
   let fixture: ComponentFixture<MedicationsFormComponent>;
 
   beforeEach(async () => {
-    const medicationsServiceSpyObj = jasmine.createSpyObj('MedicationsService', ['create', 'update']);
+    const medicationsServiceSpyObj = jasmine.createSpyObj('MedicationsService', ['create', 'read', 'update']);
     const routerSpyObj = jasmine.createSpyObj('Router', ['navigate']);
     const activatedRouteMockObj = { snapshot: { params: {} } };
 
@@ -48,13 +49,14 @@ describe('MedicationsFormComponent', () => {
         MatFormFieldModule,
         MatInputModule,
         MatMomentDateModule,
+        MatProgressSpinnerModule,
         MatSelectModule,
         MatToolbarModule,
       ],
     }).compileComponents();
     medsServiceSpy = TestBed.inject(MedicationsService) as jasmine.SpyObj<MedicationsService>;
     routerSpy = TestBed.inject(Router) as jasmine.SpyObj<Router>;
-    activatedRoute = TestBed.inject(ActivatedRoute); // TODO set param in test: activatedRoute.snapshot.params.id = '2';
+    activatedRoute = TestBed.inject(ActivatedRoute);
   });
 
   beforeEach(() => {
@@ -175,6 +177,39 @@ describe('MedicationsFormComponent', () => {
 
     // then
     expect(medsServiceSpy.create).toHaveBeenCalledWith(medication);
+    expect(medsServiceSpy.update).not.toHaveBeenCalled();
+    expect(routerSpy.navigate).toHaveBeenCalled();
+  });
+
+  it('should call update if router param defined', async () => {
+    // given
+    const medId = 'm1';
+    const medicationPartial = {
+      name: 'Test Medication',
+      doses: {
+        morning: 125,
+        noon: 0,
+        evening: 125
+      },
+      startDate: moment(moment('2021-05-15').toDate()), // hack to make moment equal moment in toHaveBeenCalledWith
+      archived: true,
+      endDate: moment(moment('2021-05-16').toDate()), // hack to make moment equal moment in toHaveBeenCalledWith
+    };
+    const medication: Medication = {
+      ...medicationPartial,
+      id: medId
+    };
+    medsServiceSpy.read.and.returnValue(of(medication));
+    medsServiceSpy.update.and.returnValue(of(void 0));
+
+    // when
+    activatedRoute.snapshot.params['id'] = medId;
+    formComponent.ngOnInit();
+    formComponent.onSubmit();
+
+    // then
+    expect(medsServiceSpy.create).not.toHaveBeenCalled();
+    expect(medsServiceSpy.update).toHaveBeenCalledWith(medId, medicationPartial);
     expect(routerSpy.navigate).toHaveBeenCalled();
   });
 });
