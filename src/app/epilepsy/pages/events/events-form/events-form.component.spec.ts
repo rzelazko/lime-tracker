@@ -14,9 +14,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { of, throwError } from 'rxjs';
-import { UsersService } from 'src/app/shared/services/users.service';
 import { Event } from '../../../../shared/models/event.model';
 import { EventsService } from '../../../../shared/services/events.service';
+import { UsersService } from '../../../../shared/services/users.service';
 import { EventsFormComponent } from './events-form.component';
 
 describe('EventsFormComponent', () => {
@@ -96,7 +96,8 @@ describe('EventsFormComponent', () => {
   });
 
   it('should display error if create fails', () => {
-    eventsServiceSpy.create.and.returnValue(throwError(() => new Error('Some error!')));
+    const errorMsg = 'Some error!';
+    eventsServiceSpy.create.and.returnValue(throwError(() => new Error(errorMsg)));
 
     // when
     formComponent.onSubmit();
@@ -105,6 +106,7 @@ describe('EventsFormComponent', () => {
     // then
     const matError = fixture.debugElement.query(By.directive(MatError));
     expect(matError).toBeTruthy();
+    expect(matError.nativeElement.textContent).toContain(errorMsg);
     expect(routerSpy.navigate).not.toHaveBeenCalled();
   });
 });

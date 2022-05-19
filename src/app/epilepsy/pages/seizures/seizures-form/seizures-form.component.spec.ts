@@ -13,10 +13,10 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { of } from 'rxjs';
-import { AuthService } from 'src/app/shared/services/auth.service';
-import { UsersService } from 'src/app/shared/services/users.service';
 import { Seizure } from '../../../../shared/models/seizure.model';
+import { AuthService } from '../../../../shared/services/auth.service';
 import { SeizuresService } from '../../../../shared/services/seizures.service';
+import { UsersService } from '../../../../shared/services/users.service';
 import { SeizuresFormComponent } from './seizures-form.component';
 
 describe('SeizuresFormComponent', () => {

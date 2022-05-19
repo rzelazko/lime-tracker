@@ -13,9 +13,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { of } from 'rxjs';
-import { MedicationsService } from 'src/app/shared/services/medications.service';
-import { UsersService } from 'src/app/shared/services/users.service';
 import { Medication } from '../../../../shared/models/medication.model';
+import { MedicationsService } from '../../../../shared/services/medications.service';
+import { UsersService } from '../../../../shared/services/users.service';
 import { MedicationsFormComponent } from './medications-form.component';
 
 describe('MedicationsFormComponent', () => {
