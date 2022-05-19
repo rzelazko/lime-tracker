@@ -40,7 +40,7 @@
     },
     {
       "type": "npm",
-      "script": "test",
+      "script": "test-chrome",
       "isBackground": true,
       "problemMatcher": {
         "owner": "typescript",
