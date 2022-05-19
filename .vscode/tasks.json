@@ -40,7 +40,7 @@
     },
     {
       "type": "npm",
-      "script": "test-headless",
+      "script": "test-debug",
       "isBackground": true,
       "problemMatcher": {
         "owner": "typescript",
