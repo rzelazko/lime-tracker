@@ -72,6 +72,7 @@ Perform full deplyment (hosting, security rules, etc.) with `firebase deploy` or
 ## TODO 
 
 - Add some tests for reports service
+- Add install PWA menu item
 - Add period tracking
 - Add gender information - and show / hide period tracking option
 - Add reset passoword
