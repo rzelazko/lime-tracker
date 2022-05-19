@@ -1,9 +1,9 @@
-import { FormControl, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { AbstractControl, FormGroup, ValidationErrors } from '@angular/forms';
 import * as moment from 'moment';
 
 export class DatesValidator {
   static inThePast = () => {
-    return (control: FormControl): ValidationErrors | null => {
+    return (control: AbstractControl): ValidationErrors | null => {
       if (control.value) {
         const controlValue = moment(control.value);
 
@@ -37,7 +37,7 @@ export class DatesValidator {
         }
       }
 
-      return null; // TODO endDate should be after startDate, deprecated fb.build (in register.component & medic-form), medi.tpl to update with err
+      return null;
     };
   }
 }
