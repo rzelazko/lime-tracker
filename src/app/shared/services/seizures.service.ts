@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
+import { QueryConstraint } from 'firebase/firestore';
 import * as moment from 'moment';
 import { map } from 'rxjs';
 import { PageData } from '../models/page-data.model';
-import { Seizure } from '../models/seizure.model';
+import { Seizure, SeizureInternal } from '../models/seizure.model';
 import { AuthService } from './auth.service';
 import { CrudService } from './crud.service';
 import { FirestoreService } from './firestore.service';
@@ -10,46 +11,62 @@ import { FirestoreService } from './firestore.service';
 @Injectable({
   providedIn: 'root',
 })
-export class SeizuresService extends CrudService<Seizure> {
+export class SeizuresService {
+  private crudService: CrudService<SeizureInternal>;
   constructor(authService: AuthService, firestoreService: FirestoreService) {
-    super('seizures', 'occurred', authService, firestoreService);
+    this.crudService = new CrudService('seizures', 'occurred', authService, firestoreService);
   }
 
-  override create(seizure: Partial<Seizure>) {
-    return super.create(seizure);
+  create(seizure: Partial<Seizure>) {
+    return this.crudService.create(this.convertToInternal(seizure));
   }
 
-  override read(id: string) {
-    return super.read(id).pipe(map((data) => this.convertDuration(data)));
+  read(id: string) {
+    return this.crudService.read(id).pipe(map((data) => this.convertFromInternal(data)));
   }
 
-  override update(id: string, seizure: Partial<Seizure>) {
-    return super.update(id, seizure);
+  update(id: string, seizure: Partial<Seizure>) {
+    return this.crudService.update(id, this.convertToInternal(seizure));
   }
 
-  override delete(id: string) {
-    return super.delete(id);
+  delete(id: string) {
+    return this.crudService.delete(id);
   }
 
-  override listConcatenated(pageSize: number) {
-    return super.listConcatenated(pageSize).pipe(
+  listCollection(queryConstraint: QueryConstraint[]) {
+    return this.crudService.listCollection(queryConstraint).pipe(map((data) => this.convertAllFromInternal(data)));
+  }
+
+  listConcatenated(pageSize: number) {
+    return this.crudService.listConcatenated(pageSize).pipe(
       map(
         (pageData): PageData<Seizure> => ({
           hasMore: pageData.hasMore,
-          data: this.convertDurations(pageData.data),
+          data: this.convertAllFromInternal(pageData.data),
         })
       )
     );
   }
 
-  convertDurations(data: Seizure[]): Seizure[] {
-    return data.map((seizure) => this.convertDuration(seizure));
+  resetConcatenated() {
+    this.crudService.resetConcatenated();
   }
 
-  private convertDuration(data: Seizure): Seizure {
+  private convertAllFromInternal(data: SeizureInternal[]): Seizure[] {
+    return data.map((seizure) => this.convertFromInternal(seizure));
+  }
+
+  private convertFromInternal(data: SeizureInternal): Seizure {
     return {
       ...data,
       duration: moment.duration(data.duration, 'minutes'),
+    };
+  }
+
+  private convertToInternal(data: Partial<Seizure>): Partial<SeizureInternal> {
+    return {
+      ...data,
+      duration: data.duration?.minutes(),
     };
   }
 }

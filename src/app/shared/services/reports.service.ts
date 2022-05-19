@@ -85,7 +85,6 @@ export class ReportsService {
           where('occurred', '<=', report.dateTo.toDate()),
         ])
         .pipe(
-          map((seizures) => this.seizuresService.convertDurations(seizures)),
           map((seizures): ReportCase[] => seizures.map((seizure): ReportCase => ({ seizure })))
         )
     ).pipe(

@@ -22,10 +22,7 @@ describe('ChartSummaryService', () => {
   beforeEach(() => {
     const medicationsServiceSpyObj = jasmine.createSpyObj('MedicationsService', ['listCollection']);
     const eventsServiceSpyObj = jasmine.createSpyObj('EventsService', ['listCollection']);
-    const seizuresServiceSpyObj = jasmine.createSpyObj('SeizuresService', [
-      'listCollection',
-      'convertDurations',
-    ]);
+    const seizuresServiceSpyObj = jasmine.createSpyObj('SeizuresService', ['listCollection']);
 
     TestBed.configureTestingModule({
       providers: [
@@ -264,7 +261,6 @@ describe('ChartSummaryService', () => {
 
     chartSummaryService.setYear(2021);
     seizuresServiceSpy.listCollection.and.returnValue(of(seizuresList));
-    seizuresServiceSpy.convertDurations.and.callFake(data => data);
 
     // when
     const seizures$ = chartSummaryService.seizureSerie();

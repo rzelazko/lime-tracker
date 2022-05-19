@@ -63,7 +63,7 @@ export class SeizuresFormComponent implements OnInit, OnDestroy {
     this.submitting = true;
     const formData: Partial<Seizure> = {
       occurred: moment(this.form.value.occurred),
-      duration: this.form.value.duration,
+      duration: moment.duration(this.form.value.duration, 'minutes'),
       type: this.form.value.seizureType,
       triggers: this.form.value.seizureTriggers || undefined,
     };

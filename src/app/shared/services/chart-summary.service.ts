@@ -103,7 +103,6 @@ export class ChartSummaryService {
         where('occurred', '<=', this.dateTo.toDate()),
       ])
       .pipe(
-        map((seizures) => this.seizuresService.convertDurations(seizures)),
         map((seizures) => this.agregateSeizuresData(seizures))
       );
   }
