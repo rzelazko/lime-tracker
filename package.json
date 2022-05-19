@@ -8,7 +8,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test-chrome": "ng test --browsers=Chrome",
+    "test-headless": "ng test --browsers=ChromeHeadless",
     "firebase-emulator": "firebase emulators:start --only firestore,auth --import test-data",
     "i18n-extract": "ng extract-i18n --output-path src/locale"
   },
