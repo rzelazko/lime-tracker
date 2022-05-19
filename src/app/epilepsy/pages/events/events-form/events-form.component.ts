@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { finalize, Observable, Subscription, take } from 'rxjs';
 import { Event } from '../../../../shared/models/event.model';
-import { AuthService } from '../../../../shared/services/auth.service';
 import { EventsService } from '../../../../shared/services/events.service';
 import { formFieldHasError } from '../../../../shared/services/form-field-has-error';
 import { DatesValidator } from '../../../../shared/validators/dates-validator';
@@ -23,7 +22,6 @@ export class EventsFormComponent implements OnInit {
   private submitSubscription?: Subscription;
 
   constructor(
-    public auth: AuthService,
     private eventsService: EventsService,
     private router: Router,
     private activatedRoute: ActivatedRoute,

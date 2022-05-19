@@ -71,8 +71,8 @@ Perform full deplyment (hosting, security rules, etc.) with `firebase deploy` or
 
 ## TODO 
 
-- Add test to medicaments form (or other)
 - Add some unit tests for dashboard (maybe with errors and loading tests?)
+- Add some tests for reports service
 - Add period tracking
 - Add gender information - and show / hide period tracking option
 - Add reset passoword
