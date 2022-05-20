@@ -14,7 +14,7 @@
 
     <mat-list *ngIf="report">
       <ng-container *ngFor="let monthData of report.monthsData; index as monthIndex">
-        <div mat-subheader>
+        <div mat-subheader class="report-month">
           {{ monthData.month | startOf | moment: "LL" }} -
           {{ monthData.month | endOf | moment: "LL" }}
         </div>

@@ -11,11 +11,14 @@ import { ReportsService } from '../../../shared/services/reports.service';
 })
 export class ReportsComponent implements OnInit, OnDestroy {
   selectedYear?: number;
-  report$: Observable<Report>;
-  routeSubscription: Subscription;
+  report$?: Observable<Report>;
+  routeSubscription?: Subscription;
   error?: string;
 
   constructor(private reportsService: ReportsService, private activatedRoute: ActivatedRoute) {
+  }
+
+  ngOnInit(): void {
     this.report$ = this.reportsService.getReports();
     this.routeSubscription = this.activatedRoute.params.subscribe((routeParams) => {
       this.selectedYear = routeParams['year'];
@@ -29,11 +32,7 @@ export class ReportsComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnInit(): void {
-    this.selectedYear = this.activatedRoute.snapshot.params['year'];
-  }
-
   ngOnDestroy(): void {
-    this.routeSubscription.unsubscribe();
+    this.routeSubscription?.unsubscribe();
   }
 }
