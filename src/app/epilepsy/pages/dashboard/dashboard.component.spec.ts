@@ -12,11 +12,11 @@ import { delay, of, throwError } from 'rxjs';
 import { ErrorCardComponent } from '../../../shared/error-card/error-card.component';
 import { Medication } from '../../../shared/models/medication.model';
 import { Seizure } from '../../../shared/models/seizure.model';
-import { MomentPipe } from '../../../shared/pipes/moment.pipe';
-import { DashboardService } from '../../../shared/services/dashboard.service';
 import { HumanizePipe } from '../../../shared/pipes/humanize.pipe';
-import { DashboardComponent } from './dashboard.component';
+import { MomentPipe } from '../../../shared/pipes/moment.pipe';
 import { TimeSincePipe } from '../../../shared/pipes/time-since.pipe';
+import { DashboardService } from '../../../shared/services/dashboard.service';
+import { DashboardComponent } from './dashboard.component';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -31,7 +31,14 @@ describe('DashboardComponent', () => {
     ]);
 
     await TestBed.configureTestingModule({
-      declarations: [DashboardComponent, ErrorCardComponent, HumanizePipe, MomentPipe, TimeSincePipe],
+      declarations: [
+        DashboardComponent,
+        ErrorCardComponent,
+
+        HumanizePipe,
+        MomentPipe,
+        TimeSincePipe,
+      ],
       providers: [{ provide: DashboardService, useValue: dashboardServiceSpyObj }],
       imports: [
         NoopAnimationsModule,
@@ -161,7 +168,7 @@ describe('DashboardComponent', () => {
         duration: moment.duration(5, 'minutes'),
         type: 'some seizure type',
         triggers: [],
-      }
+      },
     ];
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(of(seizures));
@@ -172,7 +179,9 @@ describe('DashboardComponent', () => {
     fixture.detectChanges();
 
     // then
-    const lastSeizureElement = fixture.debugElement.query(By.css('.last-seizure mat-card-content p'));
+    const lastSeizureElement = fixture.debugElement.query(
+      By.css('.last-seizure mat-card-content p')
+    );
     expect(lastSeizureElement).toBeTruthy();
     expect(lastSeizureElement.nativeElement.textContent).toContain('5 minutes'); // system time is set in beforeEach
   });
@@ -189,7 +198,9 @@ describe('DashboardComponent', () => {
     fixture.detectChanges();
 
     // then
-    const lastSeizureElement = fixture.debugElement.query(By.css('.last-seizure mat-card-content p'));
+    const lastSeizureElement = fixture.debugElement.query(
+      By.css('.last-seizure mat-card-content p')
+    );
     expect(lastSeizureElement.nativeElement.textContent).toContain('unknown');
   });
 
