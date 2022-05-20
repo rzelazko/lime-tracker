@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
+import { SwUpdate, VersionEvent, VersionReadyEvent } from '@angular/service-worker';
 import { filter } from 'rxjs';
 import { UpdateDialogComponent } from '../components/update-dialog/update-dialog.component';
 @Injectable({
@@ -9,7 +9,7 @@ import { UpdateDialogComponent } from '../components/update-dialog/update-dialog
 export class AppUpdateService {
   constructor(private readonly updates: SwUpdate, private dialog: MatDialog) {
     this.updates.versionUpdates
-      .pipe(filter((evt): evt is VersionReadyEvent => evt.type === 'VERSION_READY'))
+      .pipe(filter((evt: VersionEvent) => evt.type === 'VERSION_READY'))
       .subscribe(() => {
         this.showAppUpdateAlert();
       });
