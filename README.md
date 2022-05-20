@@ -71,12 +71,14 @@ Perform full deplyment (hosting, security rules, etc.) with `firebase deploy` or
 
 ## TODO 
 
-- Add some unit tests
+- Add install PWA menu item
 - Add period tracking
 - Add gender information - and show / hide period tracking option
 - Add reset passoword
 - Add user profile management
 - Add more charts
+- Dashboard in case of no medicaments place link or button to add some
+- Dashboard in case of no seizures place link or button to add some
 - Cancel button on form go back to either dashboard or table (not always table)
 - Add some Rodo, privacy policy, etc. on login & dashboard (add footer or landing page?)
 - Add schema validation to [firestore.rules](firestore.rules)

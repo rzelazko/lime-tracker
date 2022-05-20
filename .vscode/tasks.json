@@ -4,6 +4,24 @@
   "tasks": [
     {
       "type": "npm",
+      "script": "firebase-emulator",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "typescript",
+        "pattern": "$tsc",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": {
+            "regexp": "Starting emulators"
+          },
+          "endsPattern": {
+            "regexp": "Emulator Hub running"
+          }
+        }
+      }
+    },
+    {
+      "type": "npm",
       "script": "start",
       "isBackground": true,
       "problemMatcher": {
@@ -39,8 +57,16 @@
       }
     },
     {
+      "label": "start-pl-with-emulator",
+      "dependsOn": ["npm: firebase-emulator", "npm: start-pl", ]
+    },
+    {
+      "label": "start-en-with-emulator",
+      "dependsOn": ["npm: firebase-emulator", "npm: start", ]
+    },
+    {
       "type": "npm",
-      "script": "test",
+      "script": "test-debug",
       "isBackground": true,
       "problemMatcher": {
         "owner": "typescript",

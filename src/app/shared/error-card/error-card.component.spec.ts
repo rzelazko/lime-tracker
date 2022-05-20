@@ -1,8 +1,6 @@
-import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { ErrorCardComponent } from './error-card.component';
 import { MatCardModule } from '@angular/material/card';
+import { ErrorCardComponent } from './error-card.component';
 
 describe('ErrorCardComponent', () => {
   let component: ErrorCardComponent;
@@ -11,7 +9,7 @@ describe('ErrorCardComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ErrorCardComponent],
-      imports: [MatCardModule]
+      imports: [MatCardModule],
     }).compileComponents();
   });
 

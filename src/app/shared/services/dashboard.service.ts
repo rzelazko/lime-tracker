@@ -22,7 +22,6 @@ export class DashboardService {
 
   lastSeizures() {
     return this.seizuresService
-      .listCollection([orderBy('occurred', 'desc'), limit(1)])
-      .pipe(map((seizures) => this.seizuresService.convertDurations(seizures)));
+      .listCollection([orderBy('occurred', 'desc'), limit(1)]);
   }
 }

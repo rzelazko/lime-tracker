@@ -5,7 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { finalize, Observable, Subscription, take } from 'rxjs';
 import { Medication } from '../../../../shared/models/medication.model';
-import { AuthService } from '../../../../shared/services/auth.service';
 import { formFieldHasError } from '../../../../shared/services/form-field-has-error';
 import { MedicationsService } from '../../../../shared/services/medications.service';
 import { DatesValidator } from '../../../../shared/validators/dates-validator';
@@ -25,7 +24,6 @@ export class MedicationsFormComponent implements OnInit {
   private archivedSubscription?: Subscription;
 
   constructor(
-    public auth: AuthService,
     private medicationsService: MedicationsService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -93,8 +91,8 @@ export class MedicationsFormComponent implements OnInit {
         evening: +this.form.value.doseEvening,
       },
       startDate: moment(this.form.value.startDate),
-      archived: this.form.value.archived && this.form.value.endDate,
-      endDate: this.form.value.archived ? this.form.value.endDate : null,
+      archived: this.form.value.archived && !!this.form.value.endDate,
+      endDate: this.form.value.archived ? moment(this.form.value.endDate) : undefined,
     };
 
     let submitObservable$: Observable<any>;

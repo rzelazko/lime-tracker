@@ -47,25 +47,6 @@ export class CrudService<T extends Identifiable> {
     return this.firestoreService.list<T>(`${this.collectionPath()}`, ...queryConstraint);
   }
 
-  listSinglePage(pageSize: number, startAfterId: string) {
-    let queryConstraint: QueryConstraint[] = [orderBy(this.orderByField, 'desc'), limit(pageSize)];
-
-    let listCollection$: Observable<T[]>;
-    if (startAfterId) {
-      listCollection$ = this.firestoreService
-        .getRaw(`${this.collectionPath()}/${startAfterId}`)
-        .pipe(
-          switchMap((startAfterDoc) =>
-            this.listCollection([...queryConstraint, startAfter(startAfterDoc)])
-          )
-        );
-    } else {
-      listCollection$ = this.listCollection(queryConstraint);
-    }
-
-    return listCollection$;
-  }
-
   listConcatenated(pageSize: number) {
     return this.listSinglePage(pageSize, this.concatPagelastId).pipe(
       map((newDatas): PageData<T> => {
@@ -98,5 +79,24 @@ export class CrudService<T extends Identifiable> {
 
   private elementInArray(element: Identifiable) {
     return this.concatPageData.data.some((data) => data.id === element.id);
+  }
+
+  private listSinglePage(pageSize: number, startAfterId: string) {
+    let queryConstraint: QueryConstraint[] = [orderBy(this.orderByField, 'desc'), limit(pageSize)];
+
+    let listCollection$: Observable<T[]>;
+    if (startAfterId) {
+      listCollection$ = this.firestoreService
+        .getRaw(`${this.collectionPath()}/${startAfterId}`)
+        .pipe(
+          switchMap((startAfterDoc) =>
+            this.listCollection([...queryConstraint, startAfter(startAfterDoc)])
+          )
+        );
+    } else {
+      listCollection$ = this.listCollection(queryConstraint);
+    }
+
+    return listCollection$;
   }
 }

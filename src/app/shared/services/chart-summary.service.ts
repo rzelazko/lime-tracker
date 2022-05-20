@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { limit, orderBy, where } from 'firebase/firestore';
+import { orderBy, where } from 'firebase/firestore';
 import * as Moment from 'moment';
 import { DateRange, extendMoment } from 'moment-range';
-import { map, mergeMap, Observable, take } from 'rxjs';
+import { map, mergeMap, Observable } from 'rxjs';
 import { ChartData } from '../models/chart-data.model';
 import { Event } from '../models/event.model';
 import { Medication } from '../models/medication.model';
@@ -83,15 +83,16 @@ export class ChartSummaryService {
               where('startDate', '>=', this.dateFrom.toDate()),
               where('startDate', '<=', this.dateTo.toDate()),
             ])
-            .pipe(
-              map((medications) => medications.concat(...medicationFromPreviousRange)
-              )
-            )
+            .pipe(map((medications) => medications.concat(...medicationFromPreviousRange)))
+        ),
+        map((medications) =>
+          medications.filter(
+            (medication) =>
+              !medication.endDate || medication.endDate.isSameOrAfter(this.dateFrom.toDate())
+          )
         )
       )
-      .pipe(
-        map((medications) => this.agregateMedicationsData(medications)),
-      );
+      .pipe(map((medications) => this.agregateMedicationsData(medications)));
   }
 
   seizureSerie(): Observable<ChartData> {
@@ -102,7 +103,6 @@ export class ChartSummaryService {
         where('occurred', '<=', this.dateTo.toDate()),
       ])
       .pipe(
-        map((seizures) => this.seizuresService.convertDurations(seizures)),
         map((seizures) => this.agregateSeizuresData(seizures))
       );
   }
@@ -114,13 +114,11 @@ export class ChartSummaryService {
         where('occurred', '>=', this.dateFrom.toDate()),
         where('occurred', '<=', this.dateTo.toDate()),
       ])
-      .pipe(
-        map((events) => this.agregateEventsData(events)),
-      );
+      .pipe(map((events) => this.agregateEventsData(events)));
   }
 
   private oneYearBefore(date: moment.Moment) {
-    return moment(date).endOf('month').subtract(1, 'year').add(1, 'day').startOf('month');
+    return moment(date).add(1, 'months').subtract(1, 'year').startOf('month');
   }
 
   private agregateMedicationsData(medications: Medication[]): ChartData[] {

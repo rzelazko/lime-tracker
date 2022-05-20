@@ -64,7 +64,7 @@
         >
           <mat-list-item *ngFor="let medication of medications">
             <mat-icon mat-list-icon>medication</mat-icon>
-            <div mat-line>{{ medication.name }}</div>
+            <div mat-line class="medication-name">{{ medication.name }}</div>
             <div
               mat-line
               class="dose"
@@ -92,9 +92,9 @@
     <ng-template #loadingOrErrorMedications>
       <app-error-card [error]="medicationsError" *ngIf="medicationsError; else loadingMedications"></app-error-card>
       <ng-template #loadingMedications>
-        <mat-card class="last-seizure">
+        <mat-card class="medications">
           <mat-card-title-group>
-            <mat-card-title i18n="@@dashboard-title-last-seizure">Last seizure</mat-card-title>
+            <mat-card-title i18n="@@dashboard-title-current-medications">Current medications</mat-card-title>
           </mat-card-title-group>
           <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
         </mat-card>

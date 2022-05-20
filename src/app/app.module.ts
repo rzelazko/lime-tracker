@@ -33,7 +33,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { environment } from 'src/environments/environment';
+import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
@@ -82,6 +82,7 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     JoinPipe,
     MomentPipe,
     StartOfPipe,
+    TimeSincePipe,
 
     // Components
     AppComponent,
@@ -107,7 +108,6 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     SeizuresComponent,
     SeizuresFormComponent,
     TableComponent,
-    TimeSincePipe,
     UpdateDialogComponent,
     VerifyEmailComponent,
     YearsnavComponent,
