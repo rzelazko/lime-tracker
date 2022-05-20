@@ -59,6 +59,14 @@ Run `firebase hosting:channel:deploy beta` to create and deploy to a preview cha
 
 Perform full deplyment (hosting, security rules, etc.) with `firebase deploy` or `firebase deploy --only hosting` to have only frontend deployed.
 
+## Progressive Web Application
+
+[Lime Tracker](https://lime-tracker.com/) is a [Progressive Web Application](https://angular.io/guide/service-worker-devops). It can be installed on customer device.
+Debugging information about NGSW can be found under URLs:
+
+- [https://lime-tracker.com/pl/ngsw/state](https://lime-tracker.com/pl/ngsw/state)
+- [https://lime-tracker.com/en/ngsw/state](https://lime-tracker.com/en/ngsw/state)
+
 ## Links to used project and libraries
 
 - [Angular CLI Overview and Command Reference](https://angular.io/cli)
