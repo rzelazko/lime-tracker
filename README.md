@@ -79,14 +79,26 @@ Debugging information about NGSW can be found under URLs:
 
 ## TODO 
 
-- Add install PWA menu item
 - Add period tracking
+  - Change all model isXXX methods into type guards: add common interface like `VersionEvent` used in `AppUpdateService`, then make sure `type` field doesn't go to db
+  - Add list & form pages
+  - Make medicaments visible in the report for both `startDate` and `endDate`
+  - Add period to the report
 - Add gender information - and show / hide period tracking option
 - Add reset passoword
 - Add user profile management
-- Add more charts
+- Add chart to show seizures by hour
+- Add chart to compare seizures in the same month for previous year (only if the are enough data)
 - Dashboard in case of no medicaments place link or button to add some
 - Dashboard in case of no seizures place link or button to add some
 - Cancel button on form go back to either dashboard or table (not always table)
-- Add some Rodo, privacy policy, etc. on login & dashboard (add footer or landing page?)
+- Add install PWA menu item:
+  Detect we are not in standalone mode. If it is a case then:
+  - On iOS - put custom message to install manually from Safari
+    ([sample1](https://dockyard.com/blog/2017/09/27/encouraging-pwa-installation-on-ios),
+     [sample2](https://javascript.plainenglish.io/creating-a-browser-agnostic-pwa-install-button-41039f312fbe))
+  - On non-iOS Chrome use [beforeinstallprompt](https://medium.com/poka-techblog/turn-your-angular-app-into-a-pwa-in-4-easy-steps-543510a9b626) trick
+  - On other put info about supported browsers
+- Add landing page with install PWA button
+- Add some Rodo, privacy policy, etc. on login & dashboard (add footer?)
 - Add schema validation to [firestore.rules](firestore.rules)
