@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { orderBy, where } from 'firebase/firestore';
 import * as moment from 'moment';
 import { map, merge, Observable } from 'rxjs';
-import { Report, ReportCase, reportCaseDate } from '../models/report.model';
+import { Report, reportCaseDate } from '../models/report.model';
+import { TrackingCore } from '../models/tracking-core.model';
 import { EventsService } from './events.service';
 import { MedicationsService } from './medications.service';
 import { SeizuresService } from './seizures.service';
@@ -63,20 +64,14 @@ export class ReportsService {
           orderBy('startDate', 'desc'),
           where('startDate', '>=', report.dateFrom.toDate()),
           where('startDate', '<=', report.dateTo.toDate()),
-        ])
-        .pipe(
-          map((medications): ReportCase[] =>
-            medications.map((medication): ReportCase => ({ medication: medication }))
-          )
-        ),
+        ]),
 
       this.eventsService
         .listCollection([
           orderBy('occurred', 'desc'),
           where('occurred', '>=', report.dateFrom.toDate()),
           where('occurred', '<=', report.dateTo.toDate()),
-        ])
-        .pipe(map((events): ReportCase[] => events.map((event): ReportCase => ({ event })))),
+        ]),
 
       this.seizuresService
         .listCollection([
@@ -84,9 +79,6 @@ export class ReportsService {
           where('occurred', '>=', report.dateFrom.toDate()),
           where('occurred', '<=', report.dateTo.toDate()),
         ])
-        .pipe(
-          map((seizures): ReportCase[] => seizures.map((seizure): ReportCase => ({ seizure })))
-        )
     ).pipe(
       map((reportCases) => {
         for (const reportCase of reportCases) {
@@ -111,7 +103,7 @@ export class ReportsService {
         monthsData: report.monthsData.map((monthData) => ({
           month: monthData.month,
           data: monthData.data.sort(
-            (a: ReportCase, b: ReportCase) =>
+            (a: TrackingCore, b: TrackingCore) =>
               reportCaseDate(b).valueOf() - reportCaseDate(a).valueOf()
           ),
         })),
@@ -119,12 +111,12 @@ export class ReportsService {
     );
   }
 
-  private elementInReport(report: Report, month: number, element: ReportCase) {
+  private elementInReport(report: Report, month: number, element: TrackingCore) {
     return report.monthsData[month].data.some(
       (data) =>
-        (data.medication && element.medication && data.medication.id === element.medication.id) ||
-        (data.event && element.event && data.event.id === element.event.id) ||
-        (data.seizure && element.seizure && data.seizure.id === element.seizure.id)
+        (data.objectType === 'MEDICATION' && element.objectType === 'MEDICATION' && data.id === element.id) ||
+        (data.objectType === 'EVENT' && element.objectType === 'EVENT' && data.id === element.id) ||
+        (data.objectType === 'SEIZURE' && element.objectType === 'SEIZURE' && data.id === element.id)
     );
   }
 }

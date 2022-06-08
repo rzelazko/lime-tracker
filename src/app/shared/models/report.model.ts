@@ -2,6 +2,7 @@ import { Moment } from 'moment';
 import { Event } from '../../shared/models/event.model';
 import { Medication } from './medication.model';
 import { Seizure } from '../../shared/models/seizure.model';
+import { TrackingCore } from './tracking-core.model';
 
 export interface Report {
   dateFrom: Moment;
@@ -11,23 +12,17 @@ export interface Report {
 
 export interface MonthsData {
   month: Moment;
-  data: ReportCase[];
+  data: TrackingCore[];
 }
 
-export interface ReportCase {
-  event?: Event;
-  medication?: Medication;
-  seizure?: Seizure;
-}
-
-export function reportCaseDate(reportCase: ReportCase): Moment {
+export function reportCaseDate(reportCase: TrackingCore): Moment {
   let result;
-  if (reportCase.event) {
-    result = reportCase.event.occurred;
-  } else if (reportCase.medication) {
-    result = reportCase.medication.startDate;
-  } else if (reportCase.seizure) {
-    result = reportCase.seizure.occurred;
+  if (reportCase.objectType === 'EVENT') {
+    result = reportCase.occurred;
+  } else if (reportCase.objectType === 'MEDICATION') {
+    result = reportCase.startDate;
+  } else if (reportCase.objectType === 'SEIZURE') {
+    result = reportCase.occurred;
   } else {
     // should be impossible - we have only 3 types of cases
     throw new Error(`Object type unsupported: ${JSON.stringify(reportCase)}`);

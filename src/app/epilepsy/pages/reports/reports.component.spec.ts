@@ -123,11 +123,10 @@ describe('ReportsComponent', () => {
           month: moment('2020-01-01'),
           data: [
             {
-              event: {
-                id: 'e1',
-                name: 'Test Event',
-                occurred: moment('2021-05-15'),
-              },
+              objectType: 'EVENT',
+              id: 'e1',
+              name: 'Test Event',
+              occurred: moment('2021-05-15'),
             },
           ],
         },
@@ -135,26 +134,24 @@ describe('ReportsComponent', () => {
           month: moment('2020-02-01'),
           data: [
             {
-              medication: {
-                id: 'm1',
-                name: 'Lorem ipsum',
-                doses: {
-                  morning: 125,
-                  noon: 0,
-                  evening: 125,
-                },
-                startDate: moment('2021-05-15'),
-                archived: false,
+              objectType: 'MEDICATION',
+              id: 'm1',
+              name: 'Lorem ipsum',
+              doses: {
+                morning: 125,
+                noon: 0,
+                evening: 125,
               },
+              startDate: moment('2021-05-15'),
+              archived: false,
             },
             {
-              seizure: {
-                id: 's1',
-                occurred: moment('2021-05-15T12:05:00'),
-                duration: moment.duration(5, 'minutes'),
-                type: 'some seizure type',
-                triggers: ['trigger 1', 'trigger 2'],
-              },
+              objectType: 'SEIZURE',
+              id: 's1',
+              occurred: moment('2021-05-15T12:05:00'),
+              duration: moment.duration(5, 'minutes'),
+              type: 'some seizure type',
+              triggers: ['trigger 1', 'trigger 2'],
             },
           ],
         },

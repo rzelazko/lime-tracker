@@ -80,7 +80,6 @@ Debugging information about NGSW can be found under URLs:
 ## TODO 
 
 - Add period tracking
-  - Change all model isXXX methods into type guards: add common interface like `VersionEvent` used in `AppUpdateService`, then make sure `type` field doesn't go to db
   - Add list & form pages
   - Make medicaments visible in the report for both `startDate` and `endDate`
   - Add period to the report

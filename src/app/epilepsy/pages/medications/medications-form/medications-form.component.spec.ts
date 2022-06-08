@@ -196,6 +196,7 @@ describe('MedicationsFormComponent', () => {
       endDate: moment(moment('2021-05-16').toDate()), // hack to make moment equal moment in toHaveBeenCalledWith
     };
     const medication: Medication = {
+      objectType: 'MEDICATION',
       ...medicationPartial,
       id: medId
     };

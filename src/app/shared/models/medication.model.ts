@@ -1,7 +1,7 @@
 import { Moment } from "moment";
 import { Identifiable } from "./identifiable.model";
 
-export interface Medication extends Identifiable {
+export interface MedicationInternal extends Identifiable { // used to repersent medication in DB (only)
   name: string;
   doses: {
     morning: number;
@@ -13,5 +13,7 @@ export interface Medication extends Identifiable {
   endDate?: Moment
 }
 
-export const isMedication = (variable: any): variable is Medication =>
-  (variable as Medication).doses !== undefined;
+export interface Medication extends MedicationInternal {
+  readonly objectType: 'MEDICATION';
+}
+
