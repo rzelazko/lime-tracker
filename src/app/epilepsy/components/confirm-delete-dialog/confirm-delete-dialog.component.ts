@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Event } from '../../../shared/models/event.model';
 import { Medication } from '../../../shared/models/medication.model';
+import { Period } from '../../../shared/models/period.model';
 import { Seizure } from '../../../shared/models/seizure.model';
 import { TrackingCore } from '../../../shared/models/tracking-core.model';
 
@@ -25,6 +26,9 @@ export class ConfirmDeleteDialogComponent implements OnInit {
     } else if (data.objectType === 'SEIZURE') {
       this.type = $localize`:@confirm-delete-type-seizure:seizure`;
       this.title = (data as Seizure).occurred.format('LLL');
+    } else if (data.objectType === 'PERIOD') {
+      this.type = $localize`:@confirm-delete-type-period:period`;
+      this.title = (data as Period).startDate.format('LLL');
     } else {
       this.type = $localize`:@confirm-delete-type-unknown:unknown`;
       this.title = $localize`:@confirm-delete-type-unknown:unknown`;

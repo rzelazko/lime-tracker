@@ -23,8 +23,10 @@ export function reportCaseDate(reportCase: TrackingCore): Moment {
     result = reportCase.startDate;
   } else if (reportCase.objectType === 'SEIZURE') {
     result = reportCase.occurred;
+  } else if (reportCase.objectType === 'PERIOD') {
+    result = reportCase.startDate;
   } else {
-    // should be impossible - we have only 3 types of cases
+    // should be impossible - we should have all cases above
     throw new Error(`Object type unsupported: ${JSON.stringify(reportCase)}`);
   }
 

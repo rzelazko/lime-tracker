@@ -585,7 +585,7 @@
         <source>event</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/confirm-delete-dialog/confirm-delete-dialog.component.ts</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="linenumber">20</context>
         </context-group>
         <note priority="1" from="description">@confirm-delete-type-event</note>
       </trans-unit>
@@ -593,7 +593,7 @@
         <source>medication</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/confirm-delete-dialog/confirm-delete-dialog.component.ts</context>
-          <context context-type="linenumber">21</context>
+          <context context-type="linenumber">23</context>
         </context-group>
         <note priority="1" from="description">@confirm-delete-type-medication</note>
       </trans-unit>
@@ -601,19 +601,27 @@
         <source>seizure</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/confirm-delete-dialog/confirm-delete-dialog.component.ts</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">27</context>
         </context-group>
         <note priority="1" from="description">@confirm-delete-type-seizure</note>
+      </trans-unit>
+      <trans-unit id="3600537834538449035" datatype="html">
+        <source>period</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/confirm-delete-dialog/confirm-delete-dialog.component.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+        <note priority="1" from="description">@confirm-delete-type-period</note>
       </trans-unit>
       <trans-unit id="4097761430561209267" datatype="html">
         <source>unknown</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/confirm-delete-dialog/confirm-delete-dialog.component.ts</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">33</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/confirm-delete-dialog/confirm-delete-dialog.component.ts</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="linenumber">34</context>
         </context-group>
         <note priority="1" from="description">@confirm-delete-type-unknown</note>
       </trans-unit>
@@ -714,7 +722,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.ts</context>
-          <context context-type="linenumber">110</context>
+          <context context-type="linenumber">108</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-medications" datatype="html">
@@ -740,7 +748,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.ts</context>
-          <context context-type="linenumber">74</context>
+          <context context-type="linenumber">72</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-events" datatype="html">
@@ -970,10 +978,6 @@
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
           <context context-type="linenumber">47,48</context>
         </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">97,98</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="dashboard-time-since-last-seizure" datatype="html">
         <source>Time since last seizure:</source>
@@ -994,6 +998,10 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
           <context context-type="linenumber">59,61</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">97,98</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-update-event" datatype="html">
@@ -1337,28 +1345,28 @@
         </context-group>
       </trans-unit>
       <trans-unit id="reports-seizure-name" datatype="html">
-        <source>Seizure: <x id="INTERPOLATION" equiv-text="{{ case.seizure.occurred | moment: &quot;LLL&quot; }}"/></source>
+        <source>Seizure: <x id="INTERPOLATION" equiv-text="{{ case.occurred | moment: &quot;LLL&quot; }}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
           <context context-type="linenumber">30,31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports-seizure-type" datatype="html">
-        <source>Type: <x id="INTERPOLATION" equiv-text="{{ case.seizure.type }}"/></source>
+        <source>Type: <x id="INTERPOLATION" equiv-text="{{ case.type }}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
           <context context-type="linenumber">32,33</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports-seizure-triggers" datatype="html">
-        <source>| Triggers: <x id="INTERPOLATION" equiv-text="{{ case.seizure.triggers | join }}"/></source>
+        <source>| Triggers: <x id="INTERPOLATION" equiv-text="{{ case.triggers | join }}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
           <context context-type="linenumber">33,34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports-seizure-duration" datatype="html">
-        <source>Duration: <x id="INTERPOLATION" equiv-text="{{ case.seizure.duration | humanize }}"/></source>
+        <source>Duration: <x id="INTERPOLATION" equiv-text="{{ case.duration | humanize }}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
           <context context-type="linenumber">35,37</context>
