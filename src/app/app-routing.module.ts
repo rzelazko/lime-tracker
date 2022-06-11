@@ -14,6 +14,8 @@ import { EventsFormComponent } from './epilepsy/pages/events/events-form/events-
 import { EventsComponent } from './epilepsy/pages/events/events.component';
 import { MedicationsFormComponent } from './epilepsy/pages/medications/medications-form/medications-form.component';
 import { MedicationsComponent } from './epilepsy/pages/medications/medications.component';
+import { PeriodsFormComponent } from './epilepsy/pages/periods/periods-form/periods-form.component';
+import { PeriodsComponent } from './epilepsy/pages/periods/periods.component';
 import { ReportsComponent } from './epilepsy/pages/reports/reports.component';
 import { SeizuresFormComponent } from './epilepsy/pages/seizures/seizures-form/seizures-form.component';
 import { SeizuresComponent } from './epilepsy/pages/seizures/seizures.component';
@@ -82,6 +84,18 @@ const routes: Routes = [
         path: $localize`:@@routing-charts-year:charts/:year`,
         component: ChartsComponent,
         canActivate: [AuthGuard, YearInRangeGuard],
+        data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
+      },
+      {
+        path: $localize`:@@routing-periods:periods`,
+        component: PeriodsComponent,
+        canActivate: [AuthGuard],
+        data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
+      },
+      {
+        path: $localize`:@@routing-periods-add:periods/add`,
+        component: PeriodsFormComponent,
+        canActivate: [AuthGuard],
         data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
       },
       {

@@ -7,7 +7,7 @@ import {
   connectFirestoreEmulator,
   enableMultiTabIndexedDbPersistence,
   getFirestore,
-  provideFirestore
+  provideFirestore,
 } from '@angular/fire/firestore';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -54,6 +54,8 @@ import { EventsFormComponent } from './epilepsy/pages/events/events-form/events-
 import { EventsComponent } from './epilepsy/pages/events/events.component';
 import { MedicationsFormComponent } from './epilepsy/pages/medications/medications-form/medications-form.component';
 import { MedicationsComponent } from './epilepsy/pages/medications/medications.component';
+import { PeriodsFormComponent } from './epilepsy/pages/periods/periods-form/periods-form.component';
+import { PeriodsComponent } from './epilepsy/pages/periods/periods.component';
 import { ReportsComponent } from './epilepsy/pages/reports/reports.component';
 import { SeizuresFormComponent } from './epilepsy/pages/seizures/seizures-form/seizures-form.component';
 import { SeizuresComponent } from './epilepsy/pages/seizures/seizures.component';
@@ -102,6 +104,8 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     MedicationsComponent,
     MedicationsFormComponent,
     PageNotFoundComponent,
+    PeriodsComponent,
+    PeriodsFormComponent,
     RegisterComponent,
     ReportsComponent,
     SidenavComponent,
