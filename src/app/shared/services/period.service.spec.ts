@@ -40,9 +40,9 @@ describe('PeriodService', () => {
       startDate: moment('2021-05-15'),
     };
     const periodIntrnal: Partial<PeriodInternal> = {
-      startDate: moment('2021-05-15'),
+      startDate: period.startDate
     };
-    const mockUser: User = new MockFirebaseUser('John Smith', 'user@webperfekt.pl', 'john.smith');
+    const mockUser: User = new MockFirebaseUser('Joanna Smith', 'joanna.smith@webperfekt.pl', 'joanna.smith');
     authServiceSpy.user.and.returnValue(mockUser);
     firestoreServiceSpy.add.and.returnValue(of());
 
@@ -50,6 +50,6 @@ describe('PeriodService', () => {
     service.create(period);
 
     // then
-    expect(firestoreServiceSpy.add).toHaveBeenCalledWith('users/john.smith/periods', periodIntrnal);
+    expect(firestoreServiceSpy.add).toHaveBeenCalledWith('users/joanna.smith/periods', periodIntrnal);
   });
 });
