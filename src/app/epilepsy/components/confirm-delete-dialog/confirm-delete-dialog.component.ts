@@ -17,21 +17,21 @@ export class ConfirmDeleteDialogComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) private data: TrackingCore) {
     if (data.objectType === 'EVENT') {
-      this.type = $localize`:@confirm-delete-type-event:event`;
+      this.type = $localize`:@@confirm-delete-type-event:event`;
       this.title = (data as Event).name;
     } else if (data.objectType === 'MEDICATION') {
-      this.type = $localize`:@confirm-delete-type-medication:medication`;
+      this.type = $localize`:@@confirm-delete-type-medication:medication`;
       const medication: Medication = data as Medication;
       this.title = `${data.name} ${data.doses.morning} - ${data.doses.noon} - ${data.doses.evening}`;
     } else if (data.objectType === 'SEIZURE') {
-      this.type = $localize`:@confirm-delete-type-seizure:seizure`;
+      this.type = $localize`:@@confirm-delete-type-seizure:seizure`;
       this.title = (data as Seizure).occurred.format('LLL');
     } else if (data.objectType === 'PERIOD') {
-      this.type = $localize`:@confirm-delete-type-period:period`;
+      this.type = $localize`:@@confirm-delete-type-period:period`;
       this.title = (data as Period).startDate.format('LLL');
     } else {
-      this.type = $localize`:@confirm-delete-type-unknown:unknown`;
-      this.title = $localize`:@confirm-delete-type-unknown:unknown`;
+      this.type = $localize`:@@confirm-delete-type-unknown:unknown`;
+      this.title = $localize`:@@confirm-delete-type-unknown:unknown`;
     }
   }
 

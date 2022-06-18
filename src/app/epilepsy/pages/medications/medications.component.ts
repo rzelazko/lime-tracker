@@ -2,9 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import * as moment from 'moment';
 import { Subscription } from 'rxjs';
-import { Event } from '../../../shared/models/event.model';
 import { Medication } from '../../../shared/models/medication.model';
-import { Seizure } from '../../../shared/models/seizure.model';
+import { TrackingCore } from '../../../shared/models/tracking-core.model';
 import { MedicationsService } from '../../../shared/services/medications.service';
 import { TableComponent } from '../../components/table/table.component';
 
@@ -14,7 +13,7 @@ import { TableComponent } from '../../components/table/table.component';
   styleUrls: ['./medications.component.scss'],
 })
 export class MedicationsComponent implements OnInit, OnDestroy {
-  dataSource = new MatTableDataSource<Event | Medication | Seizure>();
+  dataSource = new MatTableDataSource<TrackingCore>();
   loading = false;
   hasMore = false;
   columns = ['name', 'dose', 'startEndDate', 'archived', 'actions'];
@@ -35,11 +34,12 @@ export class MedicationsComponent implements OnInit, OnDestroy {
       .listConcatenated(TableComponent.PAGE_SIZE)
       .subscribe({
         next: (medicationsPage) => {
-        this.dataSource.data = medicationsPage.data;
-        this.loading = false;
-        this.hasMore = medicationsPage.hasMore;
-      },
-      error: (error) => (this.error = error)});
+          this.dataSource.data = medicationsPage.data;
+          this.loading = false;
+          this.hasMore = medicationsPage.hasMore;
+        },
+        error: (error) => (this.error = error),
+      });
   }
 
   onRefresh(): void {
@@ -54,7 +54,7 @@ export class MedicationsComponent implements OnInit, OnDestroy {
     this.archiveSubscription?.unsubscribe();
   }
 
-  onDelete(object: Event | Medication | Seizure) {
+  onDelete(object: TrackingCore) {
     this.loading = true;
     this.deleteSubscription = this.medicationsService
       .delete(object.id)
@@ -65,7 +65,7 @@ export class MedicationsComponent implements OnInit, OnDestroy {
     this.loading = true;
     const newArchived = !medication.archived;
     const newEndDate = newArchived ? moment() : undefined;
-    const updated: Partial<Medication> = {archived: newArchived, endDate: newEndDate};
+    const updated: Partial<Medication> = { archived: newArchived, endDate: newEndDate };
 
     this.archiveSubscription = this.medicationsService
       .update(medication.id, updated)

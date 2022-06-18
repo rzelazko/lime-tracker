@@ -1,9 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
-import { Event } from '../../../shared/models/event.model';
-import { Medication } from '../../../shared/models/medication.model';
-import { Seizure } from '../../../shared/models/seizure.model';
+import { TrackingCore } from '../../../shared/models/tracking-core.model';
 import { EventsService } from '../../../shared/services/events.service';
 import { TableComponent } from '../../components/table/table.component';
 
@@ -13,7 +11,7 @@ import { TableComponent } from '../../components/table/table.component';
   styleUrls: ['./events.component.scss'],
 })
 export class EventsComponent implements OnInit, OnDestroy {
-  dataSource = new MatTableDataSource<Event | Medication | Seizure>();
+  dataSource = new MatTableDataSource<TrackingCore>();
   loading = false;
   hasMore = false;
   columns = ['name', 'occurred', 'actions'];
@@ -33,11 +31,12 @@ export class EventsComponent implements OnInit, OnDestroy {
       .listConcatenated(TableComponent.PAGE_SIZE)
       .subscribe({
         next: (evnentsPage) => {
-        this.dataSource.data = evnentsPage.data;
-        this.loading = false;
-        this.hasMore = evnentsPage.hasMore;
-      },
-      error: (error) => (this.error = error)});
+          this.dataSource.data = evnentsPage.data;
+          this.loading = false;
+          this.hasMore = evnentsPage.hasMore;
+        },
+        error: (error) => (this.error = error),
+      });
   }
 
   onRefresh(): void {
@@ -51,7 +50,7 @@ export class EventsComponent implements OnInit, OnDestroy {
     this.dataSubscription?.unsubscribe();
   }
 
-  onDelete(object: Event | Medication | Seizure) {
+  onDelete(object: TrackingCore) {
     this.loading = true;
     this.deleteSubscription = this.eventsService
       .delete(object.id)

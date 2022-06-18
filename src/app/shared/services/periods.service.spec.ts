@@ -4,13 +4,13 @@ import * as moment from 'moment';
 import { of } from 'rxjs';
 import { MockFirebaseUser } from '../models/mock-firebase-user.model';
 import { Period } from '../models/period.model';
-import { PeriodInternal } from './../models/period.model';
+import { PeriodInternal } from '../models/period.model';
 import { AuthService } from './auth.service';
 import { FirestoreService } from './firestore.service';
-import { PeriodService } from './period.service';
+import { PeriodsService } from './periods.service';
 
-describe('PeriodService', () => {
-  let service: PeriodService;
+describe('PeriodsService', () => {
+  let service: PeriodsService;
   let authServiceSpy: jasmine.SpyObj<AuthService>;
   let firestoreServiceSpy: jasmine.SpyObj<FirestoreService>;
 
@@ -24,7 +24,7 @@ describe('PeriodService', () => {
         { provide: FirestoreService, useValue: firestoreServiceSpyObj },
       ],
     });
-    service = TestBed.inject(PeriodService);
+    service = TestBed.inject(PeriodsService);
     authServiceSpy = TestBed.inject(AuthService) as jasmine.SpyObj<AuthService>;
     firestoreServiceSpy = TestBed.inject(FirestoreService) as jasmine.SpyObj<FirestoreService>;
   });

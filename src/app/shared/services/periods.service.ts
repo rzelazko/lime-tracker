@@ -7,7 +7,7 @@ import { FirestoreService } from './firestore.service';
 @Injectable({
   providedIn: 'root',
 })
-export class PeriodService extends CrudService<PeriodInternal, Period> {
+export class PeriodsService extends CrudService<PeriodInternal, Period> {
   constructor(authService: AuthService, firestoreService: FirestoreService) {
     super('periods', 'startDate', authService, firestoreService);
   }
