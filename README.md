@@ -80,7 +80,6 @@ Debugging information about NGSW can be found under URLs:
 ## TODO 
 
 - Add period tracking
-  - Add list & form pages
   - Make medicaments visible in the report for both `startDate` and `endDate`
   - Add period to the report
 - Add gender information - and show / hide period tracking option
