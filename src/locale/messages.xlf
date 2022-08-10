@@ -775,18 +775,44 @@
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="routerLink-epilepsy-periods" datatype="html">
+        <source>/epilepsy/periods</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/sidenav/sidenav.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods-form/periods-form.component.html</context>
+          <context context-type="linenumber">85</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods-form/periods-form.component.ts</context>
+          <context context-type="linenumber">78</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="title-periods" datatype="html">
+        <source>Periods</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/components/sidenav/sidenav.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="routerLink-epilepsy-logout" datatype="html">
         <source>/logout</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/sidenav/sidenav.component.html</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-logout" datatype="html">
         <source>Log out</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/sidenav/sidenav.component.html</context>
-          <context context-type="linenumber">32</context>
+          <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="table-column-occurred" datatype="html">
@@ -1434,24 +1460,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods.component.html</context>
           <context context-type="linenumber">14</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="routerLink-epilepsy-periods" datatype="html">
-        <source>/epilepsy/periods</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods-form/periods-form.component.html</context>
-          <context context-type="linenumber">85</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods-form/periods-form.component.ts</context>
-          <context context-type="linenumber">78</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="title-periods" datatype="html">
-        <source>Periods</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods.component.html</context>
-          <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routerLink-epilepsy-periods-add" datatype="html">
