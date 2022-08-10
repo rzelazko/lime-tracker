@@ -84,9 +84,42 @@ describe('PeriodsFormComponent', () => {
     formComponent.form.setValue(formValues);
 
     // then
+    expect(formComponent.form?.valid).toBeFalsy();
     expect(formComponent.form.get('endDate')?.errors).not.toBeNull();
     expect(
       (formComponent.form.get('endDate')?.errors as ValidationErrors)['isBefore']
+    ).toBeTruthy();
+  });
+
+  it('should pass if endDate is missing', () => {
+    // given
+    const formValues = {
+      startDate: moment('2021-05-15').toDate(),
+      endDate: '',
+    };
+
+    // when
+    formComponent.form.setValue(formValues);
+
+    // then
+    expect(formComponent.form?.valid).toBeTruthy();
+  });
+
+  it('should fail if endDate is invalid', () => {
+    // given
+    const formValues = {
+      startDate: moment('2021-05-15').toDate(),
+      endDate: 'not a valid date',
+    };
+
+    // when
+    formComponent.form.setValue(formValues);
+
+    // then
+    expect(formComponent.form?.valid).toBeFalsy();
+    expect(formComponent.form.get('endDate')?.errors).not.toBeNull();
+    expect(
+      (formComponent.form.get('endDate')?.errors as ValidationErrors)['invalid']
     ).toBeTruthy();
   });
 

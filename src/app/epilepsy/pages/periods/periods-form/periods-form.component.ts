@@ -31,7 +31,7 @@ export class PeriodsFormComponent implements OnInit {
     this.form = this.fb.group(
       {
         startDate: ['', [Validators.required, DatesValidator.inThePast()]],
-        endDate: ['', []],
+        endDate: ['', [DatesValidator.isDate()]],
       },
       {
         validator: DatesValidator.startAndEnd('startDate', 'endDate'),
@@ -62,7 +62,7 @@ export class PeriodsFormComponent implements OnInit {
     this.submitting = true;
     const formData: Partial<Period> = {
       startDate: moment(this.form.value.startDate),
-      endDate: moment(this.form.value.endDate),
+      endDate: this.form.value.endDate ? moment(this.form.value.endDate) : undefined,
     };
 
     let submitObservable$: Observable<any>;
