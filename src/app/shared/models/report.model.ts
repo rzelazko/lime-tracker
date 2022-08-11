@@ -4,7 +4,6 @@ import { Event } from './event.model';
 import { Medication } from './medication.model';
 import { Period } from './period.model';
 import { Seizure } from './seizure.model';
-import { TrackingCore } from './tracking-core.model';
 
 export interface Report {
   dateFrom: Moment;
@@ -18,10 +17,14 @@ export interface MonthsData {
 }
 
 export interface MedicationReport extends Medication {
-  useStartDate: boolean
+  useStartDate: boolean;
 }
 
-export declare type ReportRecord = MedicationReport | Seizure | Event | Period;
+export interface PeriodReport extends Period {
+  useStartDate: boolean;
+}
+
+export declare type ReportRecord = MedicationReport | Seizure | Event | PeriodReport;
 
 export function reportCaseDate(reportCase: ReportRecord): Moment {
   const DATE_MAX_VALUE = moment(8640000000000000);
@@ -37,7 +40,11 @@ export function reportCaseDate(reportCase: ReportRecord): Moment {
   } else if (reportCase.objectType === 'SEIZURE') {
     result = reportCase.occurred;
   } else if (reportCase.objectType === 'PERIOD') {
-    result = reportCase.startDate;
+    if (reportCase.useStartDate) {
+      result = reportCase.startDate;
+    } else {
+      result = reportCase.endDate || DATE_MAX_VALUE;
+    }
   } else {
     // should be impossible - we should have all cases above
     throw new Error(`Object type unsupported: ${JSON.stringify(reportCase)}`);

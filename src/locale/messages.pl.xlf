@@ -1035,7 +1035,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
-          <context context-type="linenumber">49,50</context>
+          <context context-type="linenumber">57,58</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action-load-more" datatype="html">
@@ -1711,7 +1711,31 @@
         <target>Data zakończenia: <x id="INTERPOLATION" equiv-text="{{ case.endDate | moment: &quot;LL&quot; }}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
-          <context context-type="linenumber">45,46</context>
+          <context context-type="linenumber">45,47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports-period-title" datatype="html">
+        <source>Period</source>
+        <target>Okres</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
+          <context context-type="linenumber">48,49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports-period-startDate" datatype="html">
+        <source>Start date: <x id="INTERPOLATION" equiv-text="{{ case.startDate | moment: &quot;LL&quot; }}"/></source>
+        <target>Początek: <x id="INTERPOLATION" equiv-text="{{ case.startDate | moment: &quot;LL&quot; }}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
+          <context context-type="linenumber">50,51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports-period-endDate" datatype="html">
+        <source>End date: <x id="INTERPOLATION" equiv-text="{{ case.endDate | moment: &quot;LL&quot; }}"/></source>
+        <target>Koniec: <x id="INTERPOLATION" equiv-text="{{ case.endDate | moment: &quot;LL&quot; }}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
+          <context context-type="linenumber">52,53</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-update-seizure" datatype="html">

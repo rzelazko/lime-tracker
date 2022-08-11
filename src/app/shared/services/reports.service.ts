@@ -2,10 +2,16 @@ import { Injectable } from '@angular/core';
 import { orderBy, where } from 'firebase/firestore';
 import * as moment from 'moment';
 import { map, merge, Observable } from 'rxjs';
-import { MedicationReport, Report, reportCaseDate, ReportRecord } from '../models/report.model';
-import { TrackingCore } from '../models/tracking-core.model';
+import {
+  MedicationReport,
+  PeriodReport,
+  Report,
+  reportCaseDate,
+  ReportRecord,
+} from '../models/report.model';
 import { EventsService } from './events.service';
 import { MedicationsService } from './medications.service';
+import { PeriodsService } from './periods.service';
 import { SeizuresService } from './seizures.service';
 
 @Injectable({
@@ -15,7 +21,8 @@ export class ReportsService {
   constructor(
     private medicationsService: MedicationsService,
     private eventsService: EventsService,
-    private seizuresService: SeizuresService
+    private seizuresService: SeizuresService,
+    private periodsServicie: PeriodsService
   ) {}
 
   getReports(year?: number): Observable<Report> {
@@ -23,7 +30,11 @@ export class ReportsService {
     lastReportDay.endOf('day');
     const report: Report = {
       dateTo: moment(lastReportDay),
-      dateFrom: moment(lastReportDay).endOf('month').subtract(1, 'year').add(1, 'day').startOf('month'),
+      dateFrom: moment(lastReportDay)
+        .endOf('month')
+        .subtract(1, 'year')
+        .add(1, 'day')
+        .startOf('month'),
       monthsData: [
         { month: moment(lastReportDay).startOf('month'), data: [] }, // `monthIndex` = `0` <- current month
       ],
@@ -46,9 +57,7 @@ export class ReportsService {
      *
      */
     let monthIndex = 1;
-    while (
-      report.monthsData[report.monthsData.length - 1].month.isAfter(report.dateFrom)
-    ) {
+    while (report.monthsData[report.monthsData.length - 1].month.isAfter(report.dateFrom)) {
       // Fill `report.monthData` with placeholders,
       // until whole range of dates from `report.dateFrom` has been covered
       report.monthsData.push({
@@ -61,39 +70,70 @@ export class ReportsService {
     return merge(
       this.medicationsService
         .listCollection([
+          orderBy('endDate', 'desc'),
+          where('endDate', '!=', null),
+          where('endDate', '>=', report.dateFrom.toDate()),
+          where('endDate', '<=', report.dateTo.toDate()),
+        ])
+        .pipe(
+          map((medications): MedicationReport[] =>
+            medications.map((medication) => ({ ...medication, useStartDate: false }))
+          )
+        ),
+
+      this.medicationsService
+        .listCollection([
           orderBy('startDate', 'desc'),
           where('startDate', '>=', report.dateFrom.toDate()),
           where('startDate', '<=', report.dateTo.toDate()),
         ])
-        .pipe(map((medications): MedicationReport[] => medications.map(medication => ({...medication, useStartDate: true})))),
+        .pipe(
+          map((medications): MedicationReport[] =>
+            medications.map((medication) => ({ ...medication, useStartDate: true }))
+          )
+        ),
 
-      this.medicationsService
+      this.eventsService.listCollection([
+        orderBy('occurred', 'desc'),
+        where('occurred', '>=', report.dateFrom.toDate()),
+        where('occurred', '<=', report.dateTo.toDate()),
+      ]),
+
+      this.seizuresService.listCollection([
+        orderBy('occurred', 'desc'),
+        where('occurred', '>=', report.dateFrom.toDate()),
+        where('occurred', '<=', report.dateTo.toDate()),
+      ]),
+
+      this.periodsServicie
         .listCollection([
           orderBy('endDate', 'desc'),
           where('endDate', '!=', null),
           where('endDate', '>=', report.dateFrom.toDate()),
           where('endDate', '<=', report.dateTo.toDate()),
         ])
-        .pipe(map((medications): MedicationReport[] => medications.map(medication => ({...medication, useStartDate: false})))),
+        .pipe(
+          map((periods): PeriodReport[] =>
+            periods.map((period) => ({ ...period, useStartDate: false }))
+          )
+        ),
 
-      this.eventsService
+      this.periodsServicie
         .listCollection([
-          orderBy('occurred', 'desc'),
-          where('occurred', '>=', report.dateFrom.toDate()),
-          where('occurred', '<=', report.dateTo.toDate()),
-        ]),
-
-      this.seizuresService
-        .listCollection([
-          orderBy('occurred', 'desc'),
-          where('occurred', '>=', report.dateFrom.toDate()),
-          where('occurred', '<=', report.dateTo.toDate()),
+          orderBy('startDate', 'desc'),
+          where('startDate', '>=', report.dateFrom.toDate()),
+          where('startDate', '<=', report.dateTo.toDate()),
         ])
+        .pipe(
+          map((periods): PeriodReport[] =>
+            periods.map((period) => ({ ...period, useStartDate: true }))
+          )
+        )
     ).pipe(
       map((reportCases) => {
         for (const reportCase of reportCases) {
           const caseDate = reportCaseDate(reportCase);
-          if (caseDate.isBetween(report.dateFrom, report.dateTo, undefined, "[]")) {
+          if (caseDate.isBetween(report.dateFrom, report.dateTo, undefined, '[]')) {
             const monthIndex = (report.dateTo.month() + 12 - caseDate.month()) % 12;
 
             if (!this.elementInReport(report, monthIndex, reportCase)) {
@@ -101,7 +141,9 @@ export class ReportsService {
             }
           } else {
             // should be impossible: backed with firebase where condition
-            throw new Error(`Report case ${caseDate.format()} not in range ${report.dateFrom.format()} - ${report.dateTo.format()}`);
+            throw new Error(
+              `Report case ${caseDate.format()} not in range ${report.dateFrom.format()} - ${report.dateTo.format()}`
+            );
           }
         }
 
@@ -124,9 +166,18 @@ export class ReportsService {
   private elementInReport(report: Report, month: number, element: ReportRecord) {
     return report.monthsData[month].data.some(
       (data) =>
-        (data.objectType === 'MEDICATION' && element.objectType === 'MEDICATION' && data.id === element.id && data.useStartDate === element.useStartDate) ||
+        (data.objectType === 'MEDICATION' &&
+          element.objectType === 'MEDICATION' &&
+          data.id === element.id &&
+          data.useStartDate === element.useStartDate) ||
         (data.objectType === 'EVENT' && element.objectType === 'EVENT' && data.id === element.id) ||
-        (data.objectType === 'SEIZURE' && element.objectType === 'SEIZURE' && data.id === element.id)
+        (data.objectType === 'SEIZURE' &&
+          element.objectType === 'SEIZURE' &&
+          data.id === element.id) ||
+        (data.objectType === 'PERIOD' &&
+          element.objectType === 'PERIOD' &&
+          data.id === element.id &&
+          data.useStartDate === element.useStartDate)
     );
   }
 }
