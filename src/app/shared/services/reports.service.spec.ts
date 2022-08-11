@@ -203,7 +203,7 @@ describe('ReportsService', () => {
     const eventsList: Event[] = [];
     const seizuresList: Seizure[] = [];
 
-    medsServiceSpy.listCollection.and.returnValue(of(medicationList));
+    medsServiceSpy.listCollection.and.returnValues(of(medicationList), of(medicationList.filter(medication => medication.archived)));
     eventsServiceSpy.listCollection.and.returnValue(of(eventsList));
     seizuresServiceSpy.listCollection.and.returnValue(of(seizuresList));
 
@@ -211,15 +211,17 @@ describe('ReportsService', () => {
     const report$ = reportsService.getReports(2021).pipe(takeLast(1));
 
     // then
-    report$.subscribe((report) => {
+    report$.subscribe({next: (report) => {
       expect(report.monthsData[11].month.format('MMM')).toEqual('Jan');
-      expect(report.monthsData[11].data.filter((e) => e.objectType === 'MEDICATION').length).toBe(1);
+      expect(report.monthsData[11].data.filter((e) => e.objectType === 'MEDICATION').length).toBe(2);
 
       expect(report.monthsData[2].month.format('MMM')).toEqual('Oct');
       expect(report.monthsData[2].data.filter((e) => e.objectType === 'MEDICATION').length).toBe(1);
 
       expect(report.monthsData[0].month.format('MMM')).toEqual('Dec');
-      expect(report.monthsData[0].data.filter((e) => e.objectType === 'MEDICATION').length).toBe(1);
-    });
+      expect(report.monthsData[0].data.filter((e) => e.objectType === 'MEDICATION').length).toBe(2);
+    }, error: (message) => {
+      fail(`Subscription error: ${message}`)
+    }});
   });
 });

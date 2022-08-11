@@ -1,7 +1,9 @@
+import * as moment from 'moment';
 import { Moment } from 'moment';
-import { Event } from '../../shared/models/event.model';
+import { Event } from './event.model';
 import { Medication } from './medication.model';
-import { Seizure } from '../../shared/models/seizure.model';
+import { Period } from './period.model';
+import { Seizure } from './seizure.model';
 import { TrackingCore } from './tracking-core.model';
 
 export interface Report {
@@ -12,15 +14,26 @@ export interface Report {
 
 export interface MonthsData {
   month: Moment;
-  data: TrackingCore[];
+  data: ReportRecord[];
 }
 
-export function reportCaseDate(reportCase: TrackingCore): Moment {
+export interface MedicationReport extends Medication {
+  useStartDate: boolean
+}
+
+export declare type ReportRecord = MedicationReport | Seizure | Event | Period;
+
+export function reportCaseDate(reportCase: ReportRecord): Moment {
+  const DATE_MAX_VALUE = moment(8640000000000000);
   let result;
   if (reportCase.objectType === 'EVENT') {
     result = reportCase.occurred;
   } else if (reportCase.objectType === 'MEDICATION') {
-    result = reportCase.startDate;
+    if (reportCase.useStartDate) {
+      result = reportCase.startDate;
+    } else {
+      result = reportCase.endDate || DATE_MAX_VALUE;
+    }
   } else if (reportCase.objectType === 'SEIZURE') {
     result = reportCase.occurred;
   } else if (reportCase.objectType === 'PERIOD') {

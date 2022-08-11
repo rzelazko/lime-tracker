@@ -39,10 +39,10 @@
             {{ case.name }}: {{ case.doses.morning }} -
             {{ case.doses.noon }} - {{ case.doses.evening }}
           </div>
-          <div *ngIf="case.objectType === 'MEDICATION'" mat-line class="mat-line-secondary">
-            {{ case.startDate | moment: "LL" }}
-            <span *ngIf="case.objectType === 'MEDICATION' && case.endDate"> - {{case.endDate | moment: "LL"}}</span>
-          </div>
+          <div *ngIf="case.objectType === 'MEDICATION' && case.useStartDate" mat-line class="mat-line-secondary" i18n="@@reports-medication-startDate"
+            >Start date: {{ case.startDate | moment: "LL" }}</div>
+          <div *ngIf="case.objectType === 'MEDICATION' && !case.useStartDate && case.endDate" mat-line class="mat-line-secondary" i18n="@@reports-medication-endDate"
+            >End date: {{ case.endDate | moment: "LL" }}</div>
         </mat-list-item>
         <mat-list-item *ngIf="!monthData.data.length">
           <mat-icon mat-list-icon>info_outline</mat-icon>

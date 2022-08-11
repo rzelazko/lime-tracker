@@ -1518,6 +1518,20 @@
           <context context-type="linenumber">35,37</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="reports-medication-startDate" datatype="html">
+        <source>Start date: <x id="INTERPOLATION" equiv-text="{{ case.startDate | moment: &quot;LL&quot; }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
+          <context context-type="linenumber">43,44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="reports-medication-endDate" datatype="html">
+        <source>End date: <x id="INTERPOLATION" equiv-text="{{ case.endDate | moment: &quot;LL&quot; }}"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
+          <context context-type="linenumber">45,46</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="title-update-seizure" datatype="html">
         <source>Update Seizure</source>
         <context-group purpose="location">

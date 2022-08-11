@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { orderBy, where } from 'firebase/firestore';
 import * as moment from 'moment';
 import { map, merge, Observable } from 'rxjs';
-import { Report, reportCaseDate } from '../models/report.model';
+import { MedicationReport, Report, reportCaseDate, ReportRecord } from '../models/report.model';
 import { TrackingCore } from '../models/tracking-core.model';
 import { EventsService } from './events.service';
 import { MedicationsService } from './medications.service';
@@ -64,7 +64,17 @@ export class ReportsService {
           orderBy('startDate', 'desc'),
           where('startDate', '>=', report.dateFrom.toDate()),
           where('startDate', '<=', report.dateTo.toDate()),
-        ]),
+        ])
+        .pipe(map((medications): MedicationReport[] => medications.map(medication => ({...medication, useStartDate: true})))),
+
+      this.medicationsService
+        .listCollection([
+          orderBy('endDate', 'desc'),
+          where('endDate', '!=', null),
+          where('endDate', '>=', report.dateFrom.toDate()),
+          where('endDate', '<=', report.dateTo.toDate()),
+        ])
+        .pipe(map((medications): MedicationReport[] => medications.map(medication => ({...medication, useStartDate: false})))),
 
       this.eventsService
         .listCollection([
@@ -103,7 +113,7 @@ export class ReportsService {
         monthsData: report.monthsData.map((monthData) => ({
           month: monthData.month,
           data: monthData.data.sort(
-            (a: TrackingCore, b: TrackingCore) =>
+            (a: ReportRecord, b: ReportRecord) =>
               reportCaseDate(b).valueOf() - reportCaseDate(a).valueOf()
           ),
         })),
@@ -111,10 +121,10 @@ export class ReportsService {
     );
   }
 
-  private elementInReport(report: Report, month: number, element: TrackingCore) {
+  private elementInReport(report: Report, month: number, element: ReportRecord) {
     return report.monthsData[month].data.some(
       (data) =>
-        (data.objectType === 'MEDICATION' && element.objectType === 'MEDICATION' && data.id === element.id) ||
+        (data.objectType === 'MEDICATION' && element.objectType === 'MEDICATION' && data.id === element.id && data.useStartDate === element.useStartDate) ||
         (data.objectType === 'EVENT' && element.objectType === 'EVENT' && data.id === element.id) ||
         (data.objectType === 'SEIZURE' && element.objectType === 'SEIZURE' && data.id === element.id)
     );

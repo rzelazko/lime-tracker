@@ -144,6 +144,7 @@ describe('ReportsComponent', () => {
               },
               startDate: moment('2021-05-15'),
               archived: false,
+              useStartDate: true
             },
             {
               objectType: 'SEIZURE',
