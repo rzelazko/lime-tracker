@@ -218,7 +218,7 @@ describe('ReportsService', () => {
     const seizuresList: Seizure[] = [];
     const periodsList: Period[] = [];
 
-    medsServiceSpy.listCollection.and.returnValues(of(medicationList), of(medicationList.filter(medication => medication.archived)));
+    medsServiceSpy.listCollection.and.returnValues(of(medicationList.filter(medication => medication.archived)), of(medicationList));
     eventsServiceSpy.listCollection.and.returnValue(of(eventsList));
     seizuresServiceSpy.listCollection.and.returnValue(of(seizuresList));
     periodsServiceSpy.listCollection.and.returnValue(of(periodsList));
@@ -268,7 +268,7 @@ describe('ReportsService', () => {
     medsServiceSpy.listCollection.and.returnValue(of(medicationList));
     eventsServiceSpy.listCollection.and.returnValue(of(eventsList));
     seizuresServiceSpy.listCollection.and.returnValue(of(seizuresList));
-    periodsServiceSpy.listCollection.and.returnValues(of(periodsList), of(periodsList.filter(period => period.endDate)));
+    periodsServiceSpy.listCollection.and.returnValues(of(periodsList.filter(period => period.endDate)), of(periodsList));
 
     // when
     const report$ = reportsService.getReports(2021).pipe(takeLast(1));
