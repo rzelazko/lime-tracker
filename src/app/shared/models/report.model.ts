@@ -1,7 +1,9 @@
+import * as moment from 'moment';
 import { Moment } from 'moment';
-import { Event } from '../../shared/models/event.model';
+import { Event } from './event.model';
 import { Medication } from './medication.model';
-import { Seizure } from '../../shared/models/seizure.model';
+import { Period } from './period.model';
+import { Seizure } from './seizure.model';
 
 export interface Report {
   dateFrom: Moment;
@@ -11,25 +13,40 @@ export interface Report {
 
 export interface MonthsData {
   month: Moment;
-  data: ReportCase[];
+  data: ReportRecord[];
 }
 
-export interface ReportCase {
-  event?: Event;
-  medication?: Medication;
-  seizure?: Seizure;
+export interface MedicationReport extends Medication {
+  useStartDate: boolean;
 }
 
-export function reportCaseDate(reportCase: ReportCase): Moment {
+export interface PeriodReport extends Period {
+  useStartDate: boolean;
+}
+
+export declare type ReportRecord = MedicationReport | Seizure | Event | PeriodReport;
+
+export function reportCaseDate(reportCase: ReportRecord): Moment {
+  const DATE_MAX_VALUE = moment(8640000000000000);
   let result;
-  if (reportCase.event) {
-    result = reportCase.event.occurred;
-  } else if (reportCase.medication) {
-    result = reportCase.medication.startDate;
-  } else if (reportCase.seizure) {
-    result = reportCase.seizure.occurred;
+  if (reportCase.objectType === 'EVENT') {
+    result = reportCase.occurred;
+  } else if (reportCase.objectType === 'MEDICATION') {
+    if (reportCase.useStartDate) {
+      result = reportCase.startDate;
+    } else {
+      result = reportCase.endDate || DATE_MAX_VALUE;
+    }
+  } else if (reportCase.objectType === 'SEIZURE') {
+    result = reportCase.occurred;
+  } else if (reportCase.objectType === 'PERIOD') {
+    if (reportCase.useStartDate) {
+      result = reportCase.startDate;
+    } else {
+      result = reportCase.endDate || DATE_MAX_VALUE;
+    }
   } else {
-    // should be impossible - we have only 3 types of cases
+    // should be impossible - we should have all cases above
     throw new Error(`Object type unsupported: ${JSON.stringify(reportCase)}`);
   }
 

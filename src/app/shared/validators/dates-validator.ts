@@ -40,4 +40,17 @@ export class DatesValidator {
       return null;
     };
   }
+
+  static isDate = () => {
+    return (control: AbstractControl): ValidationErrors | null => {
+      if (control.value) {
+        const controlValue = moment(control.value, true);
+
+        if (!controlValue.isValid()) {
+          return { invalid: true };
+        }
+      }
+      return null;
+    };
+  };
 }

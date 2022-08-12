@@ -1,0 +1,24 @@
+<mat-toolbar class="page-header" role="heading">
+  <h1 i18n="@@title-periods">Periods</h1>
+</mat-toolbar>
+
+<main>
+  <app-error-card [error]="error" *ngIf="error" [full-size]="false"></app-error-card>
+
+  <app-table
+    *ngIf="!error"
+    [dataSource]="dataSource"
+    [displayedColumns]="columns"
+    addBtnLink="/epilepsy/periods/add"
+    i18n-addBtnLink="@@routerLink-epilepsy-periods-add"
+    addBtnText="Add period"
+    i18n-addBtnText="@@action-add-period"
+    updateLinkPrefix="/epilepsy/periods/update"
+    i18n-updateLinkPrefix="@@routerLink-epilepsy-periods-update"
+    [loading]="loading"
+    [hasMore]="hasMore"
+    (onDelete)="onDelete($event)"
+    (onLoadMore)="onLoadMore()"
+    (onRefresh)="onRefresh()"
+  ></app-table>
+</main>

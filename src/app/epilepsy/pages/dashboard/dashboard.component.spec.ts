@@ -66,6 +66,7 @@ describe('DashboardComponent', () => {
     // given
     const medications: Medication[] = [
       {
+        objectType: 'MEDICATION',
         id: 'm1',
         name: 'Lorem ipsum',
         doses: {
@@ -77,6 +78,7 @@ describe('DashboardComponent', () => {
         archived: false,
       },
       {
+        objectType: 'MEDICATION',
         id: 'm2',
         name: 'Neque porro',
         doses: {
@@ -163,6 +165,7 @@ describe('DashboardComponent', () => {
     // given
     const seizures: Seizure[] = [
       {
+        objectType: 'SEIZURE',
         id: 's1',
         occurred: moment('2021-05-15T12:05:00'),
         duration: moment.duration(5, 'minutes'),

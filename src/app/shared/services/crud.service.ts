@@ -7,9 +7,9 @@ import { Identifiable } from '../models/identifiable.model';
 import { PageData } from '../models/page-data.model';
 import { FirestoreService } from './firestore.service';
 
-export class CrudService<T extends Identifiable> {
+export abstract class CrudService<I extends Identifiable, E extends Identifiable> {
   private concatPagelastId: string;
-  private concatPageData: PageData<T>;
+  private concatPageData: PageData<E>;
 
   constructor(
     private collectionPathPostfix: string,
@@ -21,35 +21,35 @@ export class CrudService<T extends Identifiable> {
     this.concatPageData = { hasMore: false, data: [] };
   }
 
-  create(data: Partial<T>): Observable<DocumentReference<any> | void> {
+  create(data: Partial<E>): Observable<DocumentReference<any> | void> {
     return this.firestoreService
-      .add(this.collectionPath(), data)
+      .add(this.collectionPath(), this.convertToInternal(data))
       .pipe(tap(() => this.resetConcatenated()));
   }
 
-  read(id: string) {
-    return this.firestoreService.get<T>(`${this.collectionPath()}/${id}`);
+  read(id: string): Observable<E> {
+    return this.firestoreService.get<I>(`${this.collectionPath()}/${id}`).pipe(map((data) => this.convertFromInternal(data)));
   }
 
-  update(id: string, data: Partial<T>) {
+  update(id: string, data: Partial<E>) {
     return this.firestoreService
-      .update(`${this.collectionPath()}/${id}`, data)
+      .update(`${this.collectionPath()}/${id}`, this.convertToInternal(data))
       .pipe(tap(() => this.resetConcatenated()));
   }
 
-  delete(id: string) {
+  delete(id: string): Observable<void> {
     return this.firestoreService
       .delete(`${this.collectionPath()}/${id}`)
       .pipe(tap(() => this.resetConcatenated()));
   }
 
-  listCollection(queryConstraint: QueryConstraint[]) {
-    return this.firestoreService.list<T>(`${this.collectionPath()}`, ...queryConstraint);
+  listCollection(queryConstraint: QueryConstraint[]): Observable<E[]> {
+    return this.firestoreService.list<I>(`${this.collectionPath()}`, ...queryConstraint).pipe(map((data) => this.convertAllFromInternal(data)));
   }
 
-  listConcatenated(pageSize: number) {
+  listConcatenated(pageSize: number): Observable<PageData<E>> {
     return this.listSinglePage(pageSize, this.concatPagelastId).pipe(
-      map((newDatas): PageData<T> => {
+      map((newDatas): PageData<E> => {
         this.concatPageData.data = this.concatPageData.data.concat(
           newDatas.filter(
             (
@@ -68,23 +68,31 @@ export class CrudService<T extends Identifiable> {
     );
   }
 
-  resetConcatenated() {
+  resetConcatenated(): void {
     this.concatPagelastId = '';
     this.concatPageData = { hasMore: false, data: [] };
   }
 
-  protected collectionPath() {
+  protected abstract convertToInternal(data: Partial<E>): Partial<I>;
+
+  protected abstract convertFromInternal(data: I): E;
+
+  protected convertAllFromInternal(data: I[]): E[] {
+    return data.map((seizure) => this.convertFromInternal(seizure));
+  }
+
+  protected collectionPath(): string {
     return `users/${this.authService.user().uid}/${this.collectionPathPostfix}`;
   }
 
-  private elementInArray(element: Identifiable) {
+  private elementInArray(element: Identifiable): boolean {
     return this.concatPageData.data.some((data) => data.id === element.id);
   }
 
-  private listSinglePage(pageSize: number, startAfterId: string) {
+  private listSinglePage(pageSize: number, startAfterId: string): Observable<E[]> {
     let queryConstraint: QueryConstraint[] = [orderBy(this.orderByField, 'desc'), limit(pageSize)];
 
-    let listCollection$: Observable<T[]>;
+    let listCollection$: Observable<E[]>;
     if (startAfterId) {
       listCollection$ = this.firestoreService
         .getRaw(`${this.collectionPath()}/${startAfterId}`)

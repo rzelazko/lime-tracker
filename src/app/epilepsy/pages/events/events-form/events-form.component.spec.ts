@@ -78,6 +78,7 @@ describe('EventsFormComponent', () => {
       occurred: moment(moment('2021-05-15').toDate()), // hack to make moment equal moment in toHaveBeenCalledWith
     };
     const event: Event = {
+      objectType: 'EVENT',
       ...eventPartial,
       id: eventId,
     };

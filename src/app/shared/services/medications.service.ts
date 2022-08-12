@@ -4,7 +4,7 @@ import * as moment from 'moment';
 import {
   mergeMap, take, tap
 } from 'rxjs';
-import { Medication } from '../models/medication.model';
+import { Medication, MedicationInternal } from '../models/medication.model';
 import { AuthService } from './auth.service';
 import { CrudService } from './crud.service';
 import { FirestoreService } from './firestore.service';
@@ -12,7 +12,7 @@ import { FirestoreService } from './firestore.service';
 @Injectable({
   providedIn: 'root',
 })
-export class MedicationsService extends CrudService<Medication> {
+export class MedicationsService extends CrudService<MedicationInternal, Medication> {
   constructor(authService: AuthService, firestoreService: FirestoreService) {
     super('medications', 'startDate', authService, firestoreService);
   }
@@ -30,29 +30,27 @@ export class MedicationsService extends CrudService<Medication> {
         for (const medicationToUpdate of medicationsToUpdate) {
           this.firestoreService.appendUpdateToTransaction(
             `${this.collectionPath()}/${medicationToUpdate.id}`,
-            { archived: true, endDate: moment(medication.startDate).subtract(1, 'day') }
+            this.convertToInternal({ archived: true, endDate: moment(medication.startDate).subtract(1, 'day') })
           );
         }
-        this.firestoreService.appendAddToTransaction(this.collectionPath(), medication);
+        this.firestoreService.appendAddToTransaction(this.collectionPath(), this.convertToInternal(medication));
         return this.firestoreService.commitTransaction();
       }),
       tap(() => this.resetConcatenated())
     );
   }
 
-  override read(id: string) {
-    return super.read(id);
+  override convertFromInternal(data: MedicationInternal): Medication {
+    return {
+      objectType: 'MEDICATION',
+      ...data
+    };
   }
 
-  override update(id: string, medication: Partial<Medication>) {
-    return super.update(id, medication);
-  }
-
-  override delete(id: string) {
-    return super.delete(id);
-  }
-
-  override listConcatenated(pageSize: number) {
-    return super.listConcatenated(pageSize);
+  override convertToInternal(data: Partial<Medication>): Partial<MedicationInternal> {
+    const {objectType, ...internalMedication} = data;
+    return {
+      ...internalMedication
+    };
   }
 }

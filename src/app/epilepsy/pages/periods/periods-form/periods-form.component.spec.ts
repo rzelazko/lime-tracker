@@ -13,28 +13,32 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { of } from 'rxjs';
-import { Medication } from '../../../../shared/models/medication.model';
-import { MedicationsService } from '../../../../shared/services/medications.service';
+import { Period } from '../../../../shared/models/period.model';
+import { PeriodsService } from '../../../../shared/services/periods.service';
 import { UsersService } from '../../../../shared/services/users.service';
-import { MedicationsFormComponent } from './medications-form.component';
+import { PeriodsFormComponent } from './periods-form.component';
 
-describe('MedicationsFormComponent', () => {
-  let formComponent: MedicationsFormComponent;
-  let medsServiceSpy: jasmine.SpyObj<MedicationsService>;
+describe('PeriodsFormComponent', () => {
+  let formComponent: PeriodsFormComponent;
+  let periodsServiceSpy: jasmine.SpyObj<PeriodsService>;
   let routerSpy: jasmine.SpyObj<Router>;
   let activatedRoute: ActivatedRoute;
 
-  let fixture: ComponentFixture<MedicationsFormComponent>;
+  let fixture: ComponentFixture<PeriodsFormComponent>;
 
   beforeEach(async () => {
-    const medicationsServiceSpyObj = jasmine.createSpyObj('MedicationsService', ['create', 'read', 'update']);
+    const periodsServiceSpyObj = jasmine.createSpyObj('PeriodsService', [
+      'create',
+      'read',
+      'update',
+    ]);
     const routerSpyObj = jasmine.createSpyObj('Router', ['navigate']);
     const activatedRouteMockObj = { snapshot: { params: {} } };
 
     await TestBed.configureTestingModule({
-      declarations: [MedicationsFormComponent],
+      declarations: [PeriodsFormComponent],
       providers: [
-        { provide: MedicationsService, useValue: medicationsServiceSpyObj },
+        { provide: PeriodsService, useValue: periodsServiceSpyObj },
         { provide: Router, useValue: routerSpyObj },
         { provide: ActivatedRoute, useValue: activatedRouteMockObj },
         UsersService,
@@ -54,13 +58,13 @@ describe('MedicationsFormComponent', () => {
         MatToolbarModule,
       ],
     }).compileComponents();
-    medsServiceSpy = TestBed.inject(MedicationsService) as jasmine.SpyObj<MedicationsService>;
+    periodsServiceSpy = TestBed.inject(PeriodsService) as jasmine.SpyObj<PeriodsService>;
     routerSpy = TestBed.inject(Router) as jasmine.SpyObj<Router>;
     activatedRoute = TestBed.inject(ActivatedRoute);
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MedicationsFormComponent);
+    fixture = TestBed.createComponent(PeriodsFormComponent);
     formComponent = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -69,73 +73,10 @@ describe('MedicationsFormComponent', () => {
     expect(formComponent).toBeTruthy();
   });
 
-  it('should have valid initial values', () => {
-    // given
-    const formValues = {
-        name: '',
-        doseMorning: '',
-        doseNoon: '',
-        doseEvening: '',
-        startDate: '',
-        archived: false,
-        endDate: '',
-      };
-
-    // when
-    const form = formComponent.form;
-
-    // then
-    expect(form.value).toEqual(formValues);
-  });
-
-  it('should not have required endDate if not archived', () => {
-    // given
-    const formValues = {
-      name: '',
-      doseMorning: '',
-      doseNoon: '',
-      doseEvening: '',
-      startDate: '',
-      archived: false,
-      endDate: '',
-    };
-
-    // when
-    formComponent.form.setValue(formValues);
-
-    // then
-    expect(formComponent.form.get('endDate')?.errors).toBeNull();
-  });
-
-  it('should have required endDate if archived', () => {
-    // given
-    const formValues = {
-      name: '',
-      doseMorning: '',
-      doseNoon: '',
-      doseEvening: '',
-      startDate: '',
-      archived: true,
-      endDate: '',
-    };
-
-    // when
-    formComponent.form.setValue(formValues);
-
-    // then
-    expect(formComponent.form.get('endDate')?.errors).not.toBeNull();
-    expect((formComponent.form.get('endDate')?.errors as ValidationErrors)['required']).toBeTruthy();
-  });
-
   it('should fail if endDate is before startDate', () => {
     // given
     const formValues = {
-      name: '',
-      doseMorning: '',
-      doseNoon: '',
-      doseEvening: '',
       startDate: moment('2021-05-15').toDate(),
-      archived: true,
       endDate: moment('2021-05-14').toDate(),
     };
 
@@ -143,74 +84,90 @@ describe('MedicationsFormComponent', () => {
     formComponent.form.setValue(formValues);
 
     // then
+    expect(formComponent.form?.valid).toBeFalsy();
     expect(formComponent.form.get('endDate')?.errors).not.toBeNull();
-    expect((formComponent.form.get('endDate')?.errors as ValidationErrors)['isBefore']).toBeTruthy();
+    expect(
+      (formComponent.form.get('endDate')?.errors as ValidationErrors)['isBefore']
+    ).toBeTruthy();
   });
 
-  it('should convert form data into Medication object on submit', async () => {
+  it('should pass if endDate is missing', () => {
     // given
     const formValues = {
-      name: 'Test Medication',
-      doseMorning: '125',
-      doseNoon: '75',
-      doseEvening: '250',
       startDate: moment('2021-05-15').toDate(),
-      archived: true,
+      endDate: '',
+    };
+
+    // when
+    formComponent.form.setValue(formValues);
+
+    // then
+    expect(formComponent.form?.valid).toBeTruthy();
+  });
+
+  it('should fail if endDate is invalid', () => {
+    // given
+    const formValues = {
+      startDate: moment('2021-05-15').toDate(),
+      endDate: 'not a valid date',
+    };
+
+    // when
+    formComponent.form.setValue(formValues);
+
+    // then
+    expect(formComponent.form?.valid).toBeFalsy();
+    expect(formComponent.form.get('endDate')?.errors).not.toBeNull();
+    expect(
+      (formComponent.form.get('endDate')?.errors as ValidationErrors)['invalid']
+    ).toBeTruthy();
+  });
+
+  it('should convert form data into Period object on submit', async () => {
+    // given
+    const formValues = {
+      startDate: moment('2021-05-15').toDate(),
       endDate: moment('2021-05-16').toDate(),
     };
-    const medication: Partial<Medication> = {
-      name: formValues.name,
-      doses: {
-        morning: +formValues.doseMorning,
-        noon: +formValues.doseNoon,
-        evening: +formValues.doseEvening,
-      },
+    const period: Partial<Period> = {
       startDate: moment(formValues.startDate),
-      archived: formValues.archived,
       endDate: moment(formValues.endDate),
     };
-    medsServiceSpy.create.and.returnValue(of(void 0));
+    periodsServiceSpy.create.and.returnValue(of(void 0));
 
     // when
     formComponent.form.setValue(formValues);
     formComponent.onSubmit();
 
     // then
-    expect(medsServiceSpy.create).toHaveBeenCalledWith(medication);
-    expect(medsServiceSpy.update).not.toHaveBeenCalled();
+    expect(periodsServiceSpy.create).toHaveBeenCalledWith(period);
+    expect(periodsServiceSpy.update).not.toHaveBeenCalled();
     expect(routerSpy.navigate).toHaveBeenCalled();
   });
 
   it('should call update if router param defined', async () => {
     // given
-    const medId = 'm1';
-    const medicationPartial = {
-      name: 'Test Medication',
-      doses: {
-        morning: 125,
-        noon: 0,
-        evening: 125
-      },
+    const periodId = 'p1';
+    const periodPartial = {
       startDate: moment(moment('2021-05-15').toDate()), // hack to make moment equal moment in toHaveBeenCalledWith
-      archived: true,
       endDate: moment(moment('2021-05-16').toDate()), // hack to make moment equal moment in toHaveBeenCalledWith
     };
-    const medication: Medication = {
-      objectType: 'MEDICATION',
-      ...medicationPartial,
-      id: medId
+    const period: Period = {
+      objectType: 'PERIOD',
+      ...periodPartial,
+      id: periodId,
     };
-    medsServiceSpy.read.and.returnValue(of(medication));
-    medsServiceSpy.update.and.returnValue(of(void 0));
+    periodsServiceSpy.read.and.returnValue(of(period));
+    periodsServiceSpy.update.and.returnValue(of(void 0));
 
     // when
-    activatedRoute.snapshot.params['id'] = medId;
+    activatedRoute.snapshot.params['id'] = periodId;
     formComponent.ngOnInit();
     formComponent.onSubmit();
 
     // then
-    expect(medsServiceSpy.create).not.toHaveBeenCalled();
-    expect(medsServiceSpy.update).toHaveBeenCalledWith(medId, medicationPartial);
+    expect(periodsServiceSpy.create).not.toHaveBeenCalled();
+    expect(periodsServiceSpy.update).toHaveBeenCalledWith(periodId, periodPartial);
     expect(routerSpy.navigate).toHaveBeenCalled();
   });
 });

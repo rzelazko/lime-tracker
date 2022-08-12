@@ -1,9 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { Event } from '../../../shared/models/event.model';
 import { Medication } from '../../../shared/models/medication.model';
-import { Seizure } from '../../../shared/models/seizure.model';
+import { TrackingCore } from '../../../shared/models/tracking-core.model';
 import { ConfirmDeleteDialogComponent } from '../confirm-delete-dialog/confirm-delete-dialog.component';
 
 @Component({
@@ -13,11 +12,11 @@ import { ConfirmDeleteDialogComponent } from '../confirm-delete-dialog/confirm-d
 })
 export class TableComponent implements OnInit {
   static readonly PAGE_SIZE = 100;
-  @Output('onDelete') deleteEvent = new EventEmitter<Event | Medication | Seizure>();
+  @Output('onDelete') deleteEvent = new EventEmitter<TrackingCore>();
   @Output('onLoadMore') loadMoreEvent = new EventEmitter<void>();
   @Output('onRefresh') refreshEvent = new EventEmitter<void>();
   @Output('onArchive') archiveEvent = new EventEmitter<Medication>();
-  @Input() dataSource?: MatTableDataSource<Event | Medication | Seizure>;
+  @Input() dataSource?: MatTableDataSource<TrackingCore>;
   @Input() displayedColumns: String[] = [];
   @Input() addBtnLink = '';
   @Input() addBtnText = '';
@@ -30,7 +29,7 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onDelete(element: Event | Medication | Seizure): void {
+  onDelete(element: TrackingCore): void {
     const dialogRef = this.dialog.open(ConfirmDeleteDialogComponent, { data: { ...element } });
 
     dialogRef.afterClosed().subscribe((confirmed) => {
@@ -39,7 +38,6 @@ export class TableComponent implements OnInit {
       }
     });
   }
-
 
   onArchive(element: Medication): void {
     this.archiveEvent.emit(element);

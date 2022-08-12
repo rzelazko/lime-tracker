@@ -11,61 +11,23 @@ import { FirestoreService } from './firestore.service';
 @Injectable({
   providedIn: 'root',
 })
-export class SeizuresService {
-  private crudService: CrudService<SeizureInternal>;
+export class SeizuresService extends CrudService<SeizureInternal, Seizure> {
   constructor(authService: AuthService, firestoreService: FirestoreService) {
-    this.crudService = new CrudService('seizures', 'occurred', authService, firestoreService);
+    super('seizures', 'occurred', authService, firestoreService);
   }
 
-  create(seizure: Partial<Seizure>) {
-    return this.crudService.create(this.convertToInternal(seizure));
-  }
-
-  read(id: string) {
-    return this.crudService.read(id).pipe(map((data) => this.convertFromInternal(data)));
-  }
-
-  update(id: string, seizure: Partial<Seizure>) {
-    return this.crudService.update(id, this.convertToInternal(seizure));
-  }
-
-  delete(id: string) {
-    return this.crudService.delete(id);
-  }
-
-  listCollection(queryConstraint: QueryConstraint[]) {
-    return this.crudService.listCollection(queryConstraint).pipe(map((data) => this.convertAllFromInternal(data)));
-  }
-
-  listConcatenated(pageSize: number) {
-    return this.crudService.listConcatenated(pageSize).pipe(
-      map(
-        (pageData): PageData<Seizure> => ({
-          hasMore: pageData.hasMore,
-          data: this.convertAllFromInternal(pageData.data),
-        })
-      )
-    );
-  }
-
-  resetConcatenated() {
-    this.crudService.resetConcatenated();
-  }
-
-  private convertAllFromInternal(data: SeizureInternal[]): Seizure[] {
-    return data.map((seizure) => this.convertFromInternal(seizure));
-  }
-
-  private convertFromInternal(data: SeizureInternal): Seizure {
+  override convertFromInternal(data: SeizureInternal): Seizure {
     return {
+      objectType: 'SEIZURE',
       ...data,
       duration: moment.duration(data.duration, 'minutes'),
     };
   }
 
-  private convertToInternal(data: Partial<Seizure>): Partial<SeizureInternal> {
+  override convertToInternal(data: Partial<Seizure>): Partial<SeizureInternal> {
+    const {objectType, duration, ...internalSeizure} = data;
     return {
-      ...data,
+      ...internalSeizure,
       duration: data.duration?.minutes(),
     };
   }

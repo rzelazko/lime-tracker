@@ -1,10 +1,11 @@
 import { Moment } from 'moment';
 import { Identifiable } from './identifiable.model';
 
-export interface Event extends Identifiable {
+export interface EventInternal extends Identifiable { // used to repersent events in DB (only)
   name: string;
   occurred: Moment;
 }
 
-export const isEvent = (variable: any): variable is Event =>
-  (variable as Event).name !== undefined && (variable as Event).occurred !== undefined;
+export interface Event extends EventInternal {
+  readonly objectType: 'EVENT';
+}

@@ -79,15 +79,11 @@ Debugging information about NGSW can be found under URLs:
 
 ## TODO 
 
-- Add period tracking
-  - Change all model isXXX methods into type guards: add common interface like `VersionEvent` used in `AppUpdateService`, then make sure `type` field doesn't go to db
-  - Add list & form pages
-  - Make medicaments visible in the report for both `startDate` and `endDate`
-  - Add period to the report
+- Add user profile management
 - Add gender information - and show / hide period tracking option
 - Add reset passoword
-- Add user profile management
 - Add chart to show seizures by hour
+- Add chart to show seizures during period
 - Add chart to compare seizures in the same month for previous year (only if the are enough data)
 - Dashboard in case of no medicaments place link or button to add some
 - Dashboard in case of no seizures place link or button to add some

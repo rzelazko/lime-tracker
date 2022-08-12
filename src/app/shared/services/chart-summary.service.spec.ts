@@ -46,6 +46,7 @@ describe('ChartSummaryService', () => {
     // given
     const medicationList: Medication[] = [
       {
+        objectType: 'MEDICATION',
         id: 'm1',
         name: 'med1',
         doses: { morning: 100, noon: 200, evening: 300 },
@@ -74,6 +75,7 @@ describe('ChartSummaryService', () => {
     // given
     const medicationList: Medication[] = [
       {
+        objectType: 'MEDICATION',
         id: 'm1',
         name: 'med1',
         doses: { morning: 0, noon: 5, evening: 0 },
@@ -111,6 +113,7 @@ describe('ChartSummaryService', () => {
     // given
     const medicationList: Medication[] = [
       {
+        objectType: 'MEDICATION',
         id: 'm1',
         name: 'med1',
         doses: { morning: 0, noon: 1, evening: 0 },
@@ -119,6 +122,7 @@ describe('ChartSummaryService', () => {
         endDate: moment('2021-01-01'),
       },
       {
+        objectType: 'MEDICATION',
         id: 'm2',
         name: 'med2',
         doses: { morning: 0, noon: 0, evening: 2 },
@@ -127,6 +131,7 @@ describe('ChartSummaryService', () => {
         endDate: moment('2021-12-30'),
       },
       {
+        objectType: 'MEDICATION',
         id: 'm3',
         name: 'med2',
         doses: { morning: 0, noon: 0, evening: 1 },
@@ -134,6 +139,7 @@ describe('ChartSummaryService', () => {
         archived: false,
       },
       {
+        objectType: 'MEDICATION',
         id: 'm4',
         name: 'med3',
         doses: { morning: 5, noon: 0, evening: 5 },
@@ -176,8 +182,8 @@ describe('ChartSummaryService', () => {
   it('should group events for month', async () => {
     // given
     const eventsList: Event[] = [
-      { id: 'e1', name: 'Event 1', occurred: moment('2021-03-01') },
-      { id: 'e2', name: 'Event 2', occurred: moment('2021-03-31') },
+      { objectType: 'EVENT', id: 'e1', name: 'Event 1', occurred: moment('2021-03-01') },
+      { objectType: 'EVENT', id: 'e2', name: 'Event 2', occurred: moment('2021-03-31') },
     ];
 
     chartSummaryService.setYear(2021);
@@ -222,36 +228,42 @@ describe('ChartSummaryService', () => {
     // given
     const seizuresList: Seizure[] = [
       {
+        objectType: 'SEIZURE',
         id: 's1',
         occurred: moment('2021-01-01 00:00:00'),
         duration: moment.duration(5, 'minutes'),
         type: 'some type',
       },
       {
+        objectType: 'SEIZURE',
         id: 's2',
         occurred: moment('2021-01-01 00:00:01'),
         duration: moment.duration(5, 'minutes'),
         type: 'some type',
       },
       {
+        objectType: 'SEIZURE',
         id: 's3',
         occurred: moment('2021-01-01 23:59:59'),
         duration: moment.duration(5, 'minutes'),
         type: 'some type',
       },
       {
+        objectType: 'SEIZURE',
         id: 's4',
         occurred: moment('2021-07-12 12:00:00'),
         duration: moment.duration(5, 'minutes'),
         type: 'some type',
       },
       {
+        objectType: 'SEIZURE',
         id: 's5',
         occurred: moment('2021-12-31 01:00:00'),
         duration: moment.duration(5, 'minutes'),
         type: 'some type',
       },
       {
+        objectType: 'SEIZURE',
         id: 's6',
         occurred: moment('2021-12-31 10:00:00'),
         duration: moment.duration(5, 'minutes'),
