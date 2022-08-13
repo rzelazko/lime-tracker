@@ -93,6 +93,7 @@ Debugging information about NGSW can be found under URLs:
   - Other improvements:
     - Dashboard in case of no medicaments place link or button to add some
     - Dashboard in case of no seizures place link or button to add some
+- Update app screenshots
 - Cancel button on form go back to either dashboard or table (not always table)
 - Add install PWA menu item:
   Detect we are not in standalone mode. If it is a case then:
