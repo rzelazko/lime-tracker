@@ -85,8 +85,14 @@ Debugging information about NGSW can be found under URLs:
 - Add chart to show seizures by hour
 - Add chart to show seizures during period
 - Add chart to compare seizures in the same month for previous year (only if the are enough data)
-- Dashboard in case of no medicaments place link or button to add some
-- Dashboard in case of no seizures place link or button to add some
+- Dashboard redesign - 4 cards with action buttons below instead on top:
+  - Seizures - nothing change
+  - Medicaments - compacted list (one line name & doses)
+  - Events - list of last events
+  - Period - time from last period, or how long current one is
+  - Other improvements:
+    - Dashboard in case of no medicaments place link or button to add some
+    - Dashboard in case of no seizures place link or button to add some
 - Cancel button on form go back to either dashboard or table (not always table)
 - Add install PWA menu item:
   Detect we are not in standalone mode. If it is a case then:
