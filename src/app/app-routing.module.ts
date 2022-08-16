@@ -1,13 +1,12 @@
+import { ManageProfileComponent } from './profile/pages/manage-profile/manage-profile.component';
 import { NgModule } from '@angular/core';
 import { AuthGuard, AuthPipeGenerator, redirectLoggedInTo } from '@angular/fire/auth-guard';
 import { RouterModule, Routes } from '@angular/router';
 import { map } from 'rxjs';
-import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/pages/login/login.component';
 import { LogoutComponent } from './auth/pages/logout/logout.component';
 import { RegisterComponent } from './auth/pages/register/register.component';
 import { VerifyEmailComponent } from './auth/pages/verify-email/verify-email.component';
-import { EpilepsyComponent } from './epilepsy/epilepsy.component';
 import { ChartsComponent } from './epilepsy/pages/charts/charts.component';
 import { DashboardComponent } from './epilepsy/pages/dashboard/dashboard.component';
 import { EventsFormComponent } from './epilepsy/pages/events/events-form/events-form.component';
@@ -21,6 +20,8 @@ import { SeizuresFormComponent } from './epilepsy/pages/seizures/seizures-form/s
 import { SeizuresComponent } from './epilepsy/pages/seizures/seizures.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { YearInRangeGuard } from './shared/guards/year-in-range.guard';
+import { LayoutAnonymousComponent } from './shared/layout/anonymous/anonymous.component';
+import { LayoutAuthenticatedComponent } from './shared/layout/authenticated/authenticated.component';
 
 const redirectLoggedInToDashboard = () =>
   redirectLoggedInTo([$localize`:@@routerLink-epilepsy:/epilepsy`]);
@@ -39,7 +40,7 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: $localize`:@@routerLink-login:/login` },
   {
     path: '',
-    component: AuthComponent,
+    component: LayoutAnonymousComponent,
     children: [
       { path: '', pathMatch: 'full', redirectTo: $localize`:@@routerLink-login:/login` },
       {
@@ -66,7 +67,7 @@ const routes: Routes = [
   },
   {
     path: $localize`:@@routing-epilepsy:epilepsy`,
-    component: EpilepsyComponent,
+    component: LayoutAuthenticatedComponent,
     children: [
       {
         path: '',
@@ -161,6 +162,18 @@ const routes: Routes = [
       {
         path: $localize`:@@routing-evetns-update:events/update/:id`,
         component: EventsFormComponent,
+        canActivate: [AuthGuard],
+        data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
+      },
+    ],
+  },
+  {
+    path: $localize`:@@routing-profile:profile`,
+    component: LayoutAuthenticatedComponent,
+    children: [
+      {
+        path: '',
+        component: ManageProfileComponent,
         canActivate: [AuthGuard],
         data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
       },

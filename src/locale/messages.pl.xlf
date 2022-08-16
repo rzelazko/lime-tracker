@@ -7,7 +7,7 @@
         <target>/epilepsja</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">27</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/login/login.component.ts</context>
@@ -31,7 +31,7 @@
         <target>/rejestracja/potwierdz</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">33</context>
+          <context context-type="linenumber">34</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/register/register.component.ts</context>
@@ -43,23 +43,23 @@
         <target>/logowanie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">35</context>
+          <context context-type="linenumber">36</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">39</context>
+          <context context-type="linenumber">40</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">44</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/auth/auth.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">45</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/logout/logout.component.ts</context>
           <context context-type="linenumber">36</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/layout/anonymous/anonymous.component.html</context>
+          <context context-type="linenumber">6</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-login" datatype="html">
@@ -67,7 +67,7 @@
         <target>logowanie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">46</context>
+          <context context-type="linenumber">47</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-logout" datatype="html">
@@ -75,7 +75,7 @@
         <target>wyloguj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">52</context>
+          <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-register" datatype="html">
@@ -83,7 +83,7 @@
         <target>rejestracja</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">56</context>
+          <context context-type="linenumber">57</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-register-confirm" datatype="html">
@@ -91,7 +91,7 @@
         <target>rejestracja/potwierdz</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">62</context>
+          <context context-type="linenumber">63</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-epilepsy" datatype="html">
@@ -99,7 +99,7 @@
         <target>epilepsja</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">68</context>
+          <context context-type="linenumber">69</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-charts" datatype="html">
@@ -107,7 +107,7 @@
         <target>wykresy</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">78</context>
+          <context context-type="linenumber">79</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-charts-year" datatype="html">
@@ -115,7 +115,7 @@
         <target>wykresy/:year</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">84</context>
+          <context context-type="linenumber">85</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-periods" datatype="html">
@@ -123,7 +123,7 @@
         <target>okresy</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">90</context>
+          <context context-type="linenumber">91</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-periods-add" datatype="html">
@@ -131,7 +131,7 @@
         <target>okresy/dodaj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">96</context>
+          <context context-type="linenumber">97</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-reports" datatype="html">
@@ -139,7 +139,7 @@
         <target>raporty</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">102</context>
+          <context context-type="linenumber">103</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-reports-year" datatype="html">
@@ -147,7 +147,7 @@
         <target>raporty/:year</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">108</context>
+          <context context-type="linenumber">109</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-seizures" datatype="html">
@@ -155,7 +155,7 @@
         <target>napady</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">114</context>
+          <context context-type="linenumber">115</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-seizures-add" datatype="html">
@@ -163,7 +163,7 @@
         <target>napady/dodaj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">120</context>
+          <context context-type="linenumber">121</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-seizures-update" datatype="html">
@@ -171,7 +171,7 @@
         <target>napady/aktualizuj/:id</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">126</context>
+          <context context-type="linenumber">127</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-medications" datatype="html">
@@ -179,7 +179,7 @@
         <target>leki</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">132</context>
+          <context context-type="linenumber">133</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-medications-add" datatype="html">
@@ -187,7 +187,7 @@
         <target>leki/dodaj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">138</context>
+          <context context-type="linenumber">139</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-medications-update" datatype="html">
@@ -195,7 +195,7 @@
         <target>leki/aktualizuj/:id</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">144</context>
+          <context context-type="linenumber">145</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-events" datatype="html">
@@ -203,7 +203,7 @@
         <target>wydarzenia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">150</context>
+          <context context-type="linenumber">151</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-events-add" datatype="html">
@@ -211,7 +211,7 @@
         <target>wydarzenia/dodaj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">156</context>
+          <context context-type="linenumber">157</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-evetns-update" datatype="html">
@@ -219,39 +219,15 @@
         <target>wydarzenia/aktualizuj/:id</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">162</context>
+          <context context-type="linenumber">163</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="action-login" datatype="html">
-        <source>Log in</source>
-        <target>Zaloguj się</target>
+      <trans-unit id="routing-profile" datatype="html">
+        <source>profile</source>
+        <target>profil</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/auth/auth.component.html</context>
-          <context context-type="linenumber">12</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/auth/pages/login/login.component.html</context>
-          <context context-type="linenumber">72</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="routerLink-register" datatype="html">
-        <source>/register</source>
-        <target>/rejestracja</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/auth/auth.component.html</context>
-          <context context-type="linenumber">17</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="action-register" datatype="html">
-        <source>Register</source>
-        <target>Utwórz konto</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/auth/auth.component.html</context>
-          <context context-type="linenumber">23</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
-          <context context-type="linenumber">117</context>
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">171</context>
         </context-group>
       </trans-unit>
       <trans-unit id="seizure-trigger-lights" datatype="html">
@@ -466,6 +442,18 @@
           <context context-type="linenumber">67</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="action-login" datatype="html">
+        <source>Log in</source>
+        <target>Zaloguj się</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/login/login.component.html</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/layout/anonymous/anonymous.component.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="register-welcome" datatype="html">
         <source>Register to the best epilepsy journal!</source>
         <target>Utwórz konto w najlepszej aplikacji monitorującej epilepsję!</target>
@@ -552,6 +540,18 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
           <context context-type="linenumber">111</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="action-register" datatype="html">
+        <source>Register</source>
+        <target>Utwórz konto</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
+          <context context-type="linenumber">117</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/layout/anonymous/anonymous.component.html</context>
+          <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verify-welcome" datatype="html">
@@ -1956,6 +1956,14 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/update-dialog/update-dialog.component.html</context>
           <context context-type="linenumber">8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="routerLink-register" datatype="html">
+        <source>/register</source>
+        <target>/rejestracja</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/layout/anonymous/anonymous.component.html</context>
+          <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
     </body>

@@ -7,7 +7,7 @@ import {
   connectFirestoreEmulator,
   enableMultiTabIndexedDbPersistence,
   getFirestore,
-  provideFirestore,
+  provideFirestore
 } from '@angular/fire/firestore';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -36,7 +36,6 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/pages/login/login.component';
 import { LogoutComponent } from './auth/pages/logout/logout.component';
 import { RegisterComponent } from './auth/pages/register/register.component';
@@ -46,7 +45,6 @@ import { HeaderComponent } from './epilepsy/components/header/header.component';
 import { SidenavComponent } from './epilepsy/components/sidenav/sidenav.component';
 import { TableComponent } from './epilepsy/components/table/table.component';
 import { YearsnavComponent } from './epilepsy/components/yearsnav/yearsnav.component';
-import { EpilepsyComponent } from './epilepsy/epilepsy.component';
 import { ChartSummaryComponent } from './epilepsy/pages/charts/chart-summary/chart-summary.component';
 import { ChartsComponent } from './epilepsy/pages/charts/charts.component';
 import { DashboardComponent } from './epilepsy/pages/dashboard/dashboard.component';
@@ -60,9 +58,12 @@ import { ReportsComponent } from './epilepsy/pages/reports/reports.component';
 import { SeizuresFormComponent } from './epilepsy/pages/seizures/seizures-form/seizures-form.component';
 import { SeizuresComponent } from './epilepsy/pages/seizures/seizures.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ManageProfileComponent } from './profile/pages/manage-profile/manage-profile.component';
 import { ErrorModalComponent } from './shared/components/error-modal/error-modal.component';
 import { UpdateDialogComponent } from './shared/components/update-dialog/update-dialog.component';
 import { ErrorCardComponent } from './shared/error-card/error-card.component';
+import { LayoutAnonymousComponent } from './shared/layout/anonymous/anonymous.component';
+import { LayoutAuthenticatedComponent } from './shared/layout/authenticated/authenticated.component';
 import { EndOfPipe } from './shared/pipes/end-of.pipe';
 import { HumanizePipe } from './shared/pipes/humanize.pipe';
 import { JoinPipe } from './shared/pipes/join.pipe';
@@ -88,19 +89,20 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
 
     // Components
     AppComponent,
-    AuthComponent,
     ChartsComponent,
     ChartSummaryComponent,
     ConfirmDeleteDialogComponent,
     DashboardComponent,
-    EpilepsyComponent,
     EventsFormComponent,
     EventsComponent,
     ErrorCardComponent,
     ErrorModalComponent,
     HeaderComponent,
+    LayoutAnonymousComponent,
+    LayoutAuthenticatedComponent,
     LoginComponent,
     LogoutComponent,
+    ManageProfileComponent,
     MedicationsComponent,
     MedicationsFormComponent,
     PageNotFoundComponent,

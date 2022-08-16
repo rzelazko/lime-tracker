@@ -3,10 +3,10 @@ import { MediaObserver } from '@angular/flex-layout';
 
 @Component({
   selector: 'app-epilepsy',
-  templateUrl: './epilepsy.component.html',
-  styleUrls: ['./epilepsy.component.scss'],
+  templateUrl: './authenticated.component.html',
+  styleUrls: ['./authenticated.component.scss'],
 })
-export class EpilepsyComponent implements OnInit {
+export class LayoutAuthenticatedComponent implements OnInit {
   constructor(public media: MediaObserver) {}
 
   ngOnInit(): void {}
