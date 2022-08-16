@@ -4,14 +4,14 @@
   "configurations": [
     {
       "name": "npm start en",
-      "type": "pwa-chrome",
+      "type": "chrome",
       "request": "launch",
       "preLaunchTask": "start-en-with-emulator",
       "url": "http://localhost:4200/"
     },
     {
       "name": "npm start pl",
-      "type": "pwa-chrome",
+      "type": "chrome",
       "request": "launch",
       "preLaunchTask": "start-pl-with-emulator",
       "url": "http://localhost:4200/"
