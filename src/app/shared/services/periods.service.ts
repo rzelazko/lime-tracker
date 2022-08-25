@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Period, PeriodInternal } from '../models/period.model';
+import { Period, PeriodInternal } from './../models/period.model';
 import { AuthService } from './auth.service';
 import { CrudService } from './crud.service';
 import { FirestoreService } from './firestore.service';

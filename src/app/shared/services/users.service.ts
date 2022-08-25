@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { User } from 'firebase/auth';
 import * as moment from 'moment';
 import { map } from 'rxjs';
-import { DEFAULT_SEIZURE_TRIGGERS } from '../../auth/models/default-seizure-triggers.model';
-import { DEFAULT_SEIZURE_TYPES } from '../../auth/models/default-seizure-types.model';
+import { DEFAULT_SEIZURE_TRIGGERS } from './../../auth/models/default-seizure-triggers.model';
+import { DEFAULT_SEIZURE_TYPES } from './../../auth/models/default-seizure-types.model';
 import {
   UserData,
   UserDetails,
   UserDetailsEmailVerification
-} from '../../auth/models/user-details.model';
+} from './../../auth/models/user-details.model';
 import { FirestoreService } from './firestore.service';
 
 @Injectable({

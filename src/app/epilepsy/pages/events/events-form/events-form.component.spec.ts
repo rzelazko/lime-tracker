@@ -14,9 +14,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { of, throwError } from 'rxjs';
-import { Event } from '../../../../shared/models/event.model';
-import { EventsService } from '../../../../shared/services/events.service';
-import { UsersService } from '../../../../shared/services/users.service';
+import { Event } from './../../../../shared/models/event.model';
+import { EventsService } from './../../../../shared/services/events.service';
+import { UsersService } from './../../../../shared/services/users.service';
 import { EventsFormComponent } from './events-form.component';
 
 describe('EventsFormComponent', () => {

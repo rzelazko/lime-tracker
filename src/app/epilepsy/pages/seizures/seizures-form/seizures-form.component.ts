@@ -3,11 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { finalize, Observable, Subscription, take } from 'rxjs';
-import { Seizure } from '../../../../shared/models/seizure.model';
-import { AuthService } from '../../../../shared/services/auth.service';
-import { formFieldHasError } from '../../../../shared/services/form-field-has-error';
-import { SeizuresService } from '../../../../shared/services/seizures.service';
-import { DatesValidator } from '../../../../shared/validators/dates-validator';
+import { Seizure } from './../../../../shared/models/seizure.model';
+import { AuthService } from './../../../../shared/services/auth.service';
+import { formFieldHasError } from './../../../../shared/services/form-field-has-error';
+import { SeizuresService } from './../../../../shared/services/seizures.service';
+import { DatesValidator } from './../../../../shared/validators/dates-validator';
 
 @Component({
   selector: 'app-seizures-form',

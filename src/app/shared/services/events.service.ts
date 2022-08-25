@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Event, EventInternal } from '../../shared/models/event.model';
+import { Event, EventInternal } from './../../shared/models/event.model';
 import { AuthService } from './auth.service';
 import { CrudService } from './crud.service';
 import { FirestoreService } from './firestore.service';

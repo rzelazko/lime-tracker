@@ -2,9 +2,9 @@ import { startAfter } from '@angular/fire/firestore';
 import { DocumentReference, limit, orderBy, QueryConstraint } from 'firebase/firestore';
 import { map, Observable } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
-import { AuthService } from '../../shared/services/auth.service';
-import { Identifiable } from '../models/identifiable.model';
-import { PageData } from '../models/page-data.model';
+import { AuthService } from './../../shared/services/auth.service';
+import { Identifiable } from './../models/identifiable.model';
+import { PageData } from './../models/page-data.model';
 import { FirestoreService } from './firestore.service';
 
 export abstract class CrudService<I extends Identifiable, E extends Identifiable> {

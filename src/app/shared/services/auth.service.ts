@@ -13,8 +13,8 @@ import { FirebaseError } from 'firebase/app';
 import { BehaviorSubject, firstValueFrom } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { take } from 'rxjs/operators';
-import { AuthData } from '../../auth/models/auth-data.model';
-import { UserData } from '../../auth/models/user-details.model';
+import { AuthData } from './../../auth/models/auth-data.model';
+import { UserData } from './../../auth/models/user-details.model';
 import { UsersService } from './users.service';
 
 @Injectable({

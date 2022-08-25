@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import { Moment } from 'moment';
 import { interval, map, Observable } from 'rxjs';
-import { AuthService } from '../../../shared/services/auth.service';
+import { AuthService } from './../../../shared/services/auth.service';
 
 @Component({
   selector: 'app-verify-email',

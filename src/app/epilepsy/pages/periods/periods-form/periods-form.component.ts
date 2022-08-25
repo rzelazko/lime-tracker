@@ -4,10 +4,10 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { finalize, Observable, Subscription, take } from 'rxjs';
-import { Period } from '../../../../shared/models/period.model';
-import { formFieldHasError } from '../../../../shared/services/form-field-has-error';
-import { PeriodsService } from '../../../../shared/services/periods.service';
-import { DatesValidator } from '../../../../shared/validators/dates-validator';
+import { Period } from './../../../../shared/models/period.model';
+import { formFieldHasError } from './../../../../shared/services/form-field-has-error';
+import { PeriodsService } from './../../../../shared/services/periods.service';
+import { DatesValidator } from './../../../../shared/validators/dates-validator';
 
 @Component({
   selector: 'app-periods-form',

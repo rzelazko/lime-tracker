@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Duration } from 'moment';
 import { catchError, Observable, throwError } from 'rxjs';
-import { Medication } from '../../../shared/models/medication.model';
-import { Seizure } from '../../../shared/models/seizure.model';
-import { DashboardService } from '../../../shared/services/dashboard.service';
+import { Medication } from './../../../shared/models/medication.model';
+import { Seizure } from './../../../shared/models/seizure.model';
+import { DashboardService } from './../../../shared/services/dashboard.service';
 
 @Component({
   selector: 'app-dashboard',

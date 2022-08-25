@@ -4,7 +4,7 @@ import * as moment from 'moment';
 import {
   mergeMap, take, tap
 } from 'rxjs';
-import { Medication, MedicationInternal } from '../models/medication.model';
+import { Medication, MedicationInternal } from './../models/medication.model';
 import { AuthService } from './auth.service';
 import { CrudService } from './crud.service';
 import { FirestoreService } from './firestore.service';

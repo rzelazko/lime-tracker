@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { Medication } from '../../../shared/models/medication.model';
-import { TrackingCore } from '../../../shared/models/tracking-core.model';
-import { ConfirmDeleteDialogComponent } from '../confirm-delete-dialog/confirm-delete-dialog.component';
+import { Medication } from './../../../shared/models/medication.model';
+import { TrackingCore } from './../../../shared/models/tracking-core.model';
+import { ConfirmDeleteDialogComponent } from './../confirm-delete-dialog/confirm-delete-dialog.component';
 
 @Component({
   selector: 'app-table',

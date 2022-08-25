@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SwUpdate, VersionEvent, VersionReadyEvent } from '@angular/service-worker';
 import { filter } from 'rxjs';
-import { UpdateDialogComponent } from '../components/update-dialog/update-dialog.component';
+import { UpdateDialogComponent } from './../components/update-dialog/update-dialog.component';
 @Injectable({
   providedIn: 'root',
 })

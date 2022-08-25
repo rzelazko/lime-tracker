@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { limit, orderBy, where } from 'firebase/firestore';
 import { map } from 'rxjs';
-import { SeizuresService } from '../../shared/services/seizures.service';
+import { SeizuresService } from './../../shared/services/seizures.service';
 import { MedicationsService } from './medications.service';
 
 @Injectable({

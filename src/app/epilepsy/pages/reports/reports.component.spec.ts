@@ -12,16 +12,16 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 import { of, throwError } from 'rxjs';
-import { AppRoutingModule } from '../../../app-routing.module';
-import { ErrorCardComponent } from '../../../shared/error-card/error-card.component';
-import { Report } from '../../../shared/models/report.model';
-import { EndOfPipe } from '../../../shared/pipes/end-of.pipe';
-import { HumanizePipe } from '../../../shared/pipes/humanize.pipe';
-import { JoinPipe } from '../../../shared/pipes/join.pipe';
-import { MomentPipe } from '../../../shared/pipes/moment.pipe';
-import { StartOfPipe } from '../../../shared/pipes/start-of.pipe';
-import { ReportsService } from '../../../shared/services/reports.service';
-import { YearsnavComponent } from '../../components/yearsnav/yearsnav.component';
+import { AppRoutingModule } from './../../../app-routing.module';
+import { ErrorCardComponent } from './../../../shared/error-card/error-card.component';
+import { Report } from './../../../shared/models/report.model';
+import { EndOfPipe } from './../../../shared/pipes/end-of.pipe';
+import { HumanizePipe } from './../../../shared/pipes/humanize.pipe';
+import { JoinPipe } from './../../../shared/pipes/join.pipe';
+import { MomentPipe } from './../../../shared/pipes/moment.pipe';
+import { StartOfPipe } from './../../../shared/pipes/start-of.pipe';
+import { ReportsService } from './../../../shared/services/reports.service';
+import { YearsnavComponent } from './../../components/yearsnav/yearsnav.component';
 import { ReportsComponent } from './reports.component';
 
 describe('ReportsComponent', () => {

@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
-import { TrackingCore } from '../../../shared/models/tracking-core.model';
-import { SeizuresService } from '../../../shared/services/seizures.service';
-import { TableComponent } from '../../components/table/table.component';
+import { TrackingCore } from './../../../shared/models/tracking-core.model';
+import { SeizuresService } from './../../../shared/services/seizures.service';
+import { TableComponent } from './../../components/table/table.component';
 
 @Component({
   selector: 'app-seizures',

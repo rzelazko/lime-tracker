@@ -3,10 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { finalize, Observable, Subscription, take } from 'rxjs';
-import { Event } from '../../../../shared/models/event.model';
-import { EventsService } from '../../../../shared/services/events.service';
-import { formFieldHasError } from '../../../../shared/services/form-field-has-error';
-import { DatesValidator } from '../../../../shared/validators/dates-validator';
+import { Event } from './../../../../shared/models/event.model';
+import { EventsService } from './../../../../shared/services/events.service';
+import { formFieldHasError } from './../../../../shared/services/form-field-has-error';
+import { DatesValidator } from './../../../../shared/validators/dates-validator';
 
 @Component({
   selector: 'app-events-form',

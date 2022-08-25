@@ -9,13 +9,13 @@ import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import * as moment from 'moment';
 import { delay, of, throwError } from 'rxjs';
-import { ErrorCardComponent } from '../../../shared/error-card/error-card.component';
-import { Medication } from '../../../shared/models/medication.model';
-import { Seizure } from '../../../shared/models/seizure.model';
-import { HumanizePipe } from '../../../shared/pipes/humanize.pipe';
-import { MomentPipe } from '../../../shared/pipes/moment.pipe';
-import { TimeSincePipe } from '../../../shared/pipes/time-since.pipe';
-import { DashboardService } from '../../../shared/services/dashboard.service';
+import { ErrorCardComponent } from './../../../shared/error-card/error-card.component';
+import { Medication } from './../../../shared/models/medication.model';
+import { Seizure } from './../../../shared/models/seizure.model';
+import { HumanizePipe } from './../../../shared/pipes/humanize.pipe';
+import { MomentPipe } from './../../../shared/pipes/moment.pipe';
+import { TimeSincePipe } from './../../../shared/pipes/time-since.pipe';
+import { DashboardService } from './../../../shared/services/dashboard.service';
 import { DashboardComponent } from './dashboard.component';
 
 describe('DashboardComponent', () => {

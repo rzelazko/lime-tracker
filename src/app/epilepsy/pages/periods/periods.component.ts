@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
-import { TrackingCore } from '../../../shared/models/tracking-core.model';
-import { PeriodsService } from '../../../shared/services/periods.service';
-import { TableComponent } from '../../components/table/table.component';
+import { TrackingCore } from './../../../shared/models/tracking-core.model';
+import { PeriodsService } from './../../../shared/services/periods.service';
+import { TableComponent } from './../../components/table/table.component';
 
 @Component({
   selector: 'app-periods',
