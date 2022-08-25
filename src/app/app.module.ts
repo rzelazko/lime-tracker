@@ -41,8 +41,6 @@ import { LogoutComponent } from './auth/pages/logout/logout.component';
 import { RegisterComponent } from './auth/pages/register/register.component';
 import { VerifyEmailComponent } from './auth/pages/verify-email/verify-email.component';
 import { ConfirmDeleteDialogComponent } from './epilepsy/components/confirm-delete-dialog/confirm-delete-dialog.component';
-import { HeaderComponent } from './shared/components/header/header.component';
-import { SidenavComponent } from './shared/components/sidenav/sidenav.component';
 import { TableComponent } from './epilepsy/components/table/table.component';
 import { YearsnavComponent } from './epilepsy/components/yearsnav/yearsnav.component';
 import { ChartSummaryComponent } from './epilepsy/pages/charts/chart-summary/chart-summary.component';
@@ -60,6 +58,8 @@ import { SeizuresComponent } from './epilepsy/pages/seizures/seizures.component'
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ManageProfileComponent } from './profile/pages/manage-profile/manage-profile.component';
 import { ErrorModalComponent } from './shared/components/error-modal/error-modal.component';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { SidenavComponent } from './shared/components/sidenav/sidenav.component';
 import { UpdateDialogComponent } from './shared/components/update-dialog/update-dialog.component';
 import { ErrorCardComponent } from './shared/error-card/error-card.component';
 import { LayoutAnonymousComponent } from './shared/layout/anonymous/anonymous.component';

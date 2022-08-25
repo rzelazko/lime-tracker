@@ -1,4 +1,3 @@
-import { ManageProfileComponent } from './profile/pages/manage-profile/manage-profile.component';
 import { NgModule } from '@angular/core';
 import { AuthGuard, AuthPipeGenerator, redirectLoggedInTo } from '@angular/fire/auth-guard';
 import { RouterModule, Routes } from '@angular/router';
@@ -19,6 +18,7 @@ import { ReportsComponent } from './epilepsy/pages/reports/reports.component';
 import { SeizuresFormComponent } from './epilepsy/pages/seizures/seizures-form/seizures-form.component';
 import { SeizuresComponent } from './epilepsy/pages/seizures/seizures.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ManageProfileComponent } from './profile/pages/manage-profile/manage-profile.component';
 import { YearInRangeGuard } from './shared/guards/year-in-range.guard';
 import { LayoutAnonymousComponent } from './shared/layout/anonymous/anonymous.component';
 import { LayoutAuthenticatedComponent } from './shared/layout/authenticated/authenticated.component';
@@ -168,7 +168,7 @@ const routes: Routes = [
     ],
   },
   {
-    path: $localize`:@@routing-profile:profile`,
+    path: $localize`:@@routing-profile:account`,
     component: LayoutAuthenticatedComponent,
     children: [
       {
