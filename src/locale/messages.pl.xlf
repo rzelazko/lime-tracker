@@ -134,12 +134,20 @@
           <context context-type="linenumber">97</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="routing-periods-update" datatype="html">
+        <source>periods/update/:id</source>
+        <target>okresy/aktualizuj/:id</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app-routing.module.ts</context>
+          <context context-type="linenumber">103</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="routing-reports" datatype="html">
         <source>reports</source>
         <target>raporty</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">103</context>
+          <context context-type="linenumber">109</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-reports-year" datatype="html">
@@ -147,7 +155,7 @@
         <target>raporty/:year</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">109</context>
+          <context context-type="linenumber">115</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-seizures" datatype="html">
@@ -155,7 +163,7 @@
         <target>napady</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">115</context>
+          <context context-type="linenumber">121</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-seizures-add" datatype="html">
@@ -163,7 +171,7 @@
         <target>napady/dodaj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">121</context>
+          <context context-type="linenumber">127</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-seizures-update" datatype="html">
@@ -171,7 +179,7 @@
         <target>napady/aktualizuj/:id</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">127</context>
+          <context context-type="linenumber">133</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-medications" datatype="html">
@@ -179,7 +187,7 @@
         <target>leki</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">133</context>
+          <context context-type="linenumber">139</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-medications-add" datatype="html">
@@ -187,7 +195,7 @@
         <target>leki/dodaj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">139</context>
+          <context context-type="linenumber">145</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-medications-update" datatype="html">
@@ -195,7 +203,7 @@
         <target>leki/aktualizuj/:id</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">145</context>
+          <context context-type="linenumber">151</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-events" datatype="html">
@@ -203,7 +211,7 @@
         <target>wydarzenia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">151</context>
+          <context context-type="linenumber">157</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-events-add" datatype="html">
@@ -211,7 +219,7 @@
         <target>wydarzenia/dodaj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">157</context>
+          <context context-type="linenumber">163</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-evetns-update" datatype="html">
@@ -219,15 +227,15 @@
         <target>wydarzenia/aktualizuj/:id</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">163</context>
+          <context context-type="linenumber">169</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-profile" datatype="html">
-        <source>profile</source>
+        <source>account</source>
         <target>profil</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">171</context>
+          <context context-type="linenumber">177</context>
         </context-group>
       </trans-unit>
       <trans-unit id="seizure-trigger-lights" datatype="html">
@@ -1890,6 +1898,14 @@
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="title-profile-name" datatype="html">
+        <source>Hi, <x id="INTERPOLATION" equiv-text="{{auth.user().displayName}}"/></source>
+        <target>Cześć, <x id="INTERPOLATION" equiv-text="{{auth.user().displayName}}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/profile/pages/manage-profile/manage-profile.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="error-title" datatype="html">
         <source>Something went wrong!</source>
         <target>Coś poszło nie tak!</target>
@@ -1922,9 +1938,9 @@
           <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="routerLink-profile" datatype="html">
-        <source>/profile</source>
-        <target>/profil</target>
+      <trans-unit id="routerLink-account" datatype="html">
+        <source>/account</source>
+        <target>/konto</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/header/header.component.html</context>
           <context context-type="linenumber">14</context>
@@ -1935,7 +1951,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="title-profile" datatype="html">
-        <source>Your profile</source>
+        <source>Manage account</source>
         <target>Twój profil</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
