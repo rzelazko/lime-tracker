@@ -16,12 +16,13 @@ import { of } from 'rxjs';
 import { Seizure } from './../../../../shared/models/seizure.model';
 import { AuthService } from './../../../../shared/services/auth.service';
 import { SeizuresService } from './../../../../shared/services/seizures.service';
-import { UsersService } from './../../../../shared/services/users.service';
+import { UserDetailsService } from '../../../../shared/services/user-details.service';
 import { SeizuresFormComponent } from './seizures-form.component';
 
 describe('SeizuresFormComponent', () => {
   let formComponent: SeizuresFormComponent;
   let authServiceSpy: jasmine.SpyObj<AuthService>;
+  let userDetailsServiceObj: jasmine.SpyObj<UserDetailsService>;
   let seizuresServiceSpy: jasmine.SpyObj<SeizuresService>;
   let routerSpy: jasmine.SpyObj<Router>;
   let activatedRoute: ActivatedRoute;
@@ -29,7 +30,8 @@ describe('SeizuresFormComponent', () => {
   let fixture: ComponentFixture<SeizuresFormComponent>;
 
   beforeEach(async () => {
-    const authServiceSpyObj = jasmine.createSpyObj('AuthService', ['userData']);
+    const authServiceSpyObj = jasmine.createSpyObj('AuthService', ['user']);
+    const userDetailsServiceSpyObj = jasmine.createSpyObj('UserDetailsService', ['get']);
     const seizuresServiceSpyObj = jasmine.createSpyObj('SeizuresService', ['create', 'update']);
     const routerSpyObj = jasmine.createSpyObj('Router', ['navigate']);
     const activatedRouteMockObj = { snapshot: { params: {} } };
@@ -38,10 +40,10 @@ describe('SeizuresFormComponent', () => {
       declarations: [SeizuresFormComponent],
       providers: [
         { provide: AuthService, useValue: authServiceSpyObj },
+        { provide: UserDetailsService, useValue: userDetailsServiceSpyObj },
         { provide: SeizuresService, useValue: seizuresServiceSpyObj },
         { provide: Router, useValue: routerSpyObj },
         { provide: ActivatedRoute, useValue: activatedRouteMockObj },
-        UsersService,
       ],
       imports: [
         FormsModule,
@@ -59,6 +61,7 @@ describe('SeizuresFormComponent', () => {
       ],
     }).compileComponents();
     authServiceSpy = TestBed.inject(AuthService) as jasmine.SpyObj<AuthService>;
+    userDetailsServiceObj = TestBed.inject(UserDetailsService) as jasmine.SpyObj<UserDetailsService>;
     seizuresServiceSpy = TestBed.inject(SeizuresService) as jasmine.SpyObj<SeizuresService>;
     routerSpy = TestBed.inject(Router) as jasmine.SpyObj<Router>;
     activatedRoute = TestBed.inject(ActivatedRoute);

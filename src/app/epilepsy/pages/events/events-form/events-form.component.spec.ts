@@ -16,7 +16,7 @@ import * as moment from 'moment';
 import { of, throwError } from 'rxjs';
 import { Event } from './../../../../shared/models/event.model';
 import { EventsService } from './../../../../shared/services/events.service';
-import { UsersService } from './../../../../shared/services/users.service';
+import { UserDetailsService } from '../../../../shared/services/user-details.service';
 import { EventsFormComponent } from './events-form.component';
 
 describe('EventsFormComponent', () => {
@@ -38,7 +38,7 @@ describe('EventsFormComponent', () => {
         { provide: EventsService, useValue: eventsServiceSpyObj },
         { provide: Router, useValue: routerSpyObj },
         { provide: ActivatedRoute, useValue: activatedRouteMockObj },
-        UsersService,
+        UserDetailsService,
       ],
       imports: [
         FormsModule,

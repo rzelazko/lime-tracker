@@ -11,7 +11,7 @@
     fxLayout="column"
     fxLayoutAlign="start start"
     fxLayoutGap="1em"
-    *ngIf="auth.userData$ | async as userData; else loading"
+    *ngIf="userDetails$ | async as userData; else loading"
   >
     <mat-error *ngIf="error">
       <span i18n="@@error-with-message">Error: {{ error }}</span>

@@ -1,7 +1,9 @@
 <mat-toolbar class="page-header" role="heading">
-  <h1 i18n="@@title-profile-name">Hi, {{auth.user().displayName}}</h1>
+  <h1 i18n="@@title-profile-name">Hi, {{user.displayName}}</h1>
 </mat-toolbar>
 
 <main>
-  <p>manage-profile works!</p>
+  <mat-slide-toggle class="example-margin" [checked]="true">
+    I am woman
+  </mat-slide-toggle>
 </main>

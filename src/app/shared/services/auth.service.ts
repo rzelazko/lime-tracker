@@ -7,25 +7,22 @@ import {
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
-  User
+  User,
 } from '@angular/fire/auth';
 import { FirebaseError } from 'firebase/app';
 import { BehaviorSubject, firstValueFrom } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
-import { take } from 'rxjs/operators';
 import { AuthData } from './../../auth/models/auth-data.model';
-import { UserData } from './../../auth/models/user-details.model';
-import { UsersService } from './users.service';
+import { UserDetailsService } from './user-details.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  userData$: BehaviorSubject<UserData | null> = new BehaviorSubject<UserData | null>(null);
   private userSubject$: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
   private authState$: Observable<User | null>;
 
-  constructor(private auth: Auth, private userService: UsersService) {
+  constructor(private auth: Auth, private userDetailsService: UserDetailsService) {
     this.authState$ = authState(auth);
   }
 
@@ -41,7 +38,6 @@ export class AuthService {
     this.authState$.subscribe((user) => {
       if (user) {
         this.userSubject$.next(user);
-        this.updateUserData(user);
       } else {
         this.userSubject$.next(null);
       }
@@ -64,7 +60,7 @@ export class AuthService {
     try {
       const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
       await updateProfile(userCredential.user, { displayName: name });
-      await firstValueFrom(this.userService.initUserDetails(userCredential.user.uid));
+      await firstValueFrom(this.userDetailsService.init(userCredential.user.uid));
       await this.sendVerificationEmail();
     } catch (error) {
       this.rethrowUnwrappedFirebaseError(error);
@@ -73,15 +69,7 @@ export class AuthService {
 
   async sendVerificationEmail() {
     await sendEmailVerification(this.user());
-    await firstValueFrom(this.userService.verificationEmailSent(this.user().uid));
-    this.updateUserData(this.user());
-  }
-
-  private updateUserData(user: User) {
-    this.userService
-      .getUserDetails(user)
-      .pipe(take(1))
-      .subscribe((userData) => this.userData$.next(userData));
+    await firstValueFrom(this.userDetailsService.updateVerificationEmailSent(this.user().uid));
   }
 
   private rethrowUnwrappedFirebaseError(error: any) {

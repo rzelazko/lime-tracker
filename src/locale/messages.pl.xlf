@@ -1859,7 +1859,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.ts</context>
-          <context context-type="linenumber">81</context>
+          <context context-type="linenumber">87</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
@@ -1899,7 +1899,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="title-profile-name" datatype="html">
-        <source>Hi, <x id="INTERPOLATION" equiv-text="{{auth.user().displayName}}"/></source>
+        <source>Hi, <x id="INTERPOLATION" equiv-text="{{user.displayName}}"/></source>
         <target>Cześć, <x id="INTERPOLATION" equiv-text="{{auth.user().displayName}}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/profile/pages/manage-profile/manage-profile.component.html</context>

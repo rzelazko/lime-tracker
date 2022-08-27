@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { User } from 'firebase/auth';
 import { MockFirebaseUser } from './../../../shared/models/mock-firebase-user.model';
@@ -16,7 +17,7 @@ describe('ManageProfileComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ManageProfileComponent],
       providers: [{ provide: AuthService, useValue: authServiceSpyObj }],
-      imports: [MatToolbarModule],
+      imports: [MatToolbarModule, MatSlideToggleModule],
     }).compileComponents();
 
     authServiceSpy = TestBed.inject(AuthService) as jasmine.SpyObj<AuthService>;

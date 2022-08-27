@@ -15,7 +15,7 @@ import * as moment from 'moment';
 import { of } from 'rxjs';
 import { Medication } from './../../../../shared/models/medication.model';
 import { MedicationsService } from './../../../../shared/services/medications.service';
-import { UsersService } from './../../../../shared/services/users.service';
+import { UserDetailsService } from '../../../../shared/services/user-details.service';
 import { MedicationsFormComponent } from './medications-form.component';
 
 describe('MedicationsFormComponent', () => {
@@ -37,7 +37,7 @@ describe('MedicationsFormComponent', () => {
         { provide: MedicationsService, useValue: medicationsServiceSpyObj },
         { provide: Router, useValue: routerSpyObj },
         { provide: ActivatedRoute, useValue: activatedRouteMockObj },
-        UsersService,
+        UserDetailsService,
       ],
       imports: [
         FormsModule,

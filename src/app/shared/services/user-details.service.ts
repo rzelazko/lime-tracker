@@ -1,23 +1,23 @@
 import { Injectable } from '@angular/core';
 import { User } from 'firebase/auth';
 import * as moment from 'moment';
-import { map } from 'rxjs';
-import { DEFAULT_SEIZURE_TRIGGERS } from './../../auth/models/default-seizure-triggers.model';
-import { DEFAULT_SEIZURE_TYPES } from './../../auth/models/default-seizure-types.model';
+import { map, BehaviorSubject } from 'rxjs';
+import { DEFAULT_SEIZURE_TRIGGERS } from '../../auth/models/default-seizure-triggers.model';
+import { DEFAULT_SEIZURE_TYPES } from '../../auth/models/default-seizure-types.model';
 import {
   UserData,
   UserDetails,
   UserDetailsEmailVerification
-} from './../../auth/models/user-details.model';
+} from '../../auth/models/user-details.model';
 import { FirestoreService } from './firestore.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UsersService {
+export class UserDetailsService {
   constructor(private firestoreService: FirestoreService) {}
 
-  initUserDetails(userId: string) {
+  init(userId: string) {
     const userDetails: UserDetails = {
       seizureTypes: DEFAULT_SEIZURE_TYPES,
       seizureTriggers: DEFAULT_SEIZURE_TRIGGERS,
@@ -25,13 +25,13 @@ export class UsersService {
     return this.firestoreService.set(`users/${userId}`, userDetails);
   }
 
-  getUserDetails(user: User) {
+  get(user: User) {
     return this.firestoreService
       .get<UserData>(`users/${user.uid}`)
       .pipe(map((result) => ({ ...result, email: user.email } as UserData)));
   }
 
-  verificationEmailSent(userId: string) {
+  updateVerificationEmailSent(userId: string) {
     const userDetails: UserDetailsEmailVerification = {
       emailVerificationSent: moment(),
     };
