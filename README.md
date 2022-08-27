@@ -81,6 +81,7 @@ Debugging information about NGSW can be found under URLs:
 
 - Add user profile management
   - Add gender to user profile and update from manage profile page
+  - Add gener info to registration page
   - Show / hide period tracking depending on gender
   - Add seizure types management
   - Add seizure triggers management
