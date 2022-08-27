@@ -101,7 +101,7 @@ const routes: Routes = [
       },
       {
         path: $localize`:@@routing-periods-update:periods/update/:id`,
-        component: SeizuresFormComponent,
+        component: PeriodsFormComponent,
         canActivate: [AuthGuard],
         data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
       },
