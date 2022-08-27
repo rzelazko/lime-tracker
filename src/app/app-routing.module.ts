@@ -100,6 +100,12 @@ const routes: Routes = [
         data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
       },
       {
+        path: $localize`:@@routing-periods-update:periods/update/:id`,
+        component: SeizuresFormComponent,
+        canActivate: [AuthGuard],
+        data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
+      },
+      {
         path: $localize`:@@routing-reports:reports`,
         component: ReportsComponent,
         canActivate: [AuthGuard],
