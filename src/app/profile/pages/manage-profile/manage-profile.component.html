@@ -1,9 +1,29 @@
-<mat-toolbar class="page-header" role="heading">
-  <h1 i18n="@@title-profile-name">Hi, {{user.displayName}}</h1>
-</mat-toolbar>
+<ng-container *ngIf="userDetails$ | async as userData; else pageLoading">
+  <mat-toolbar class="page-header" role="heading">
+    <h1 i18n="@@title-profile-name">Hi, {{userData.name}}</h1>
+  </mat-toolbar>
 
-<main>
-  <mat-slide-toggle class="example-margin" [checked]="true">
-    I am woman
-  </mat-slide-toggle>
-</main>
+  <main>
+    <div class="row">
+      <mat-slide-toggle [checked]="true" i18n="@@label-i-am-female">I am female</mat-slide-toggle>
+    </div>
+
+    <mat-divider class="row"></mat-divider>
+
+    <div class="row">
+      <a mat-raised-button routerLink="/epilepsy/seizures" i18n-routerLink="@@routerLink-epilepsy-seizures"
+        i18n="@@action-edit-seizure-types">Seizure types</a>
+    </div>
+
+    <div class="row">
+      <a mat-raised-button routerLink="/epilepsy/seizures" i18n-routerLink="@@routerLink-epilepsy-seizures"
+        i18n="@@action-edit-seizure-triggers">Seizure triggers</a>
+    </div>
+  </main>
+</ng-container>
+
+<ng-template #pageLoading>
+  <main>
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </main>
+</ng-template>

@@ -28,7 +28,7 @@ export class UserDetailsService {
   get(user: User) {
     return this.firestoreService
       .get<UserData>(`users/${user.uid}`)
-      .pipe(map((result) => ({ ...result, email: user.email } as UserData)));
+      .pipe(map((result) => ({ ...result, email: user.email, name: user.displayName } as UserData)));
   }
 
   updateVerificationEmailSent(userId: string) {
