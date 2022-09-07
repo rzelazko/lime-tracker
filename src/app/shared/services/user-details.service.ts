@@ -7,7 +7,8 @@ import { DEFAULT_SEIZURE_TYPES } from '../../auth/models/default-seizure-types.m
 import {
   UserData,
   UserDetails,
-  UserDetailsEmailVerification
+  UserDetailsEmailVerification,
+  UserDetailsIsFemale
 } from '../../auth/models/user-details.model';
 import { FirestoreService } from './firestore.service';
 
@@ -29,6 +30,13 @@ export class UserDetailsService {
     return this.firestoreService
       .get<UserData>(`users/${user.uid}`)
       .pipe(map((result) => ({ ...result, email: user.email, name: user.displayName } as UserData)));
+  }
+
+  setIsFemale(userId: string, isFemale: boolean) {
+    const userDetails: UserDetailsIsFemale = {
+      isFemale
+    };
+    return this.firestoreService.update(`users/${userId}`, userDetails);
   }
 
   updateVerificationEmailSent(userId: string) {

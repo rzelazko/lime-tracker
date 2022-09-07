@@ -4,8 +4,16 @@
   </mat-toolbar>
 
   <main>
+    <div class="row" *ngIf="error && !submitting">
+      <mat-error>
+        <span i18n="@@error-update-profile-failed">Update profile failed: {{ error }}</span>
+      </mat-error>
+    </div>
+
     <div class="row">
-      <mat-slide-toggle [checked]="true" i18n="@@label-i-am-female">I am female</mat-slide-toggle>
+      <mat-progress-spinner mode="indeterminate" *ngIf="!error && submitting" [diameter]="20"></mat-progress-spinner>
+
+      <mat-slide-toggle *ngIf="!submitting" i18n="@@label-i-am-female" [(ngModel)]="userData.isFemale" (change)="onChange($event)">I am female</mat-slide-toggle>
     </div>
 
     <mat-divider class="row"></mat-divider>
