@@ -19,9 +19,10 @@
     {
       "name": "ng test",
       "type": "chrome",
-      "request": "launch",
+      "request": "attach",
       "preLaunchTask": "npm: test-debug",
-      "url": "http://localhost:9876/debug.html",
+      "port": 9222,
+      "timeout": 600000,
       "sourceMaps": true
     }
   ]
