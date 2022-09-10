@@ -15,4 +15,4 @@ jobs:
 
       - name: Test
         run: |
-          npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+          npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI --code-coverage
