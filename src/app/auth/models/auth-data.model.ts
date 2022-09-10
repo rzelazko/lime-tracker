@@ -3,4 +3,5 @@ export interface AuthData {
   password: string;
   confirmPassword: string;
   name: string;
+  isFemale: boolean;
 }

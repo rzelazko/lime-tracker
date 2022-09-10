@@ -56,11 +56,11 @@ export class AuthService {
     return signOut(this.auth);
   }
 
-  async register({ name, email, password }: AuthData) {
+  async register({ name, email, password, isFemale }: AuthData) {
     try {
       const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
       await updateProfile(userCredential.user, { displayName: name });
-      await firstValueFrom(this.userDetailsService.init(userCredential.user.uid));
+      await firstValueFrom(this.userDetailsService.init(userCredential.user.uid, isFemale));
       await this.sendVerificationEmail();
     } catch (error) {
       this.rethrowUnwrappedFirebaseError(error);

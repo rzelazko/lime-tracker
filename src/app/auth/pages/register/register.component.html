@@ -111,6 +111,8 @@
               >Password and confirm password must be the same</mat-error
             >
           </mat-form-field>
+
+          <mat-checkbox formControlName="isFemale" matInput i18n="@@label-i-am-female">I am female</mat-checkbox>
         </mat-card-content>
         <mat-card-actions>
           <button type="submit" mat-raised-button color="primary" [disabled]="!registerForm.valid">

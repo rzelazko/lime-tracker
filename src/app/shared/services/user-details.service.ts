@@ -18,10 +18,11 @@ import { FirestoreService } from './firestore.service';
 export class UserDetailsService {
   constructor(private firestoreService: FirestoreService) {}
 
-  init(userId: string) {
+  init(userId: string, isFemale: boolean) {
     const userDetails: UserDetails = {
       seizureTypes: DEFAULT_SEIZURE_TYPES,
       seizureTriggers: DEFAULT_SEIZURE_TRIGGERS,
+      isFemale
     };
     return this.firestoreService.set(`users/${userId}`, userDetails);
   }
