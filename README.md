@@ -80,6 +80,7 @@ Debugging information about NGSW can be found under URLs:
 ## TODO 
 
 - Update user profile management
+  - Change `jan.kowalski` account to female one
   - Add seizure types management
   - Add seizure triggers management
 - Add reset passoword
