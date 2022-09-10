@@ -61,7 +61,7 @@ Perform full deplyment (hosting, security rules, etc.) with `firebase deploy` or
 
 ## Progressive Web Application
 
-[Lime Tracker](https://lime-tracker.com/) is a [Progressive Web Application](https://angular.io/guide/service-worker-devops). It can be installed on customer device.
+[Lime Tracker](https://lime-tracker.com/) is a [Progressive Web Application](https://angular.io/guide/service-worker-devops). It can be installed on the end user device.
 Debugging information about NGSW can be found under URLs:
 
 - [https://lime-tracker.com/pl/ngsw/state](https://lime-tracker.com/pl/ngsw/state)
