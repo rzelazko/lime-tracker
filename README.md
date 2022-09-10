@@ -80,7 +80,6 @@ Debugging information about NGSW can be found under URLs:
 ## TODO 
 
 - Update user profile management
-  - Show / hide period tracking depending on gender
   - Add seizure types management
   - Add seizure triggers management
 - Add reset passoword
