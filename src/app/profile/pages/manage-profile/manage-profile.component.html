@@ -13,7 +13,7 @@
     <div class="row">
       <mat-progress-spinner mode="indeterminate" *ngIf="!error && submitting" [diameter]="20"></mat-progress-spinner>
 
-      <mat-slide-toggle *ngIf="!submitting" i18n="@@label-i-am-female" [(ngModel)]="userData.isFemale" (change)="onChange($event)">I am female</mat-slide-toggle>
+      <mat-slide-toggle *ngIf="!submitting" i18n="@@label-i-am-female" [checked]="userData.isFemale" (change)="onChange($event)">I am female</mat-slide-toggle>
     </div>
 
     <mat-divider class="row"></mat-divider>
