@@ -8,7 +8,7 @@ import {
   Report,
   reportCaseDate,
   ReportRecord,
-} from '../models/report.model';
+} from './../models/report.model';
 import { EventsService } from './events.service';
 import { MedicationsService } from './medications.service';
 import { PeriodsService } from './periods.service';

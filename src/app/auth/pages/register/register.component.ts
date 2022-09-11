@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../shared/services/auth.service';
-import { formFieldHasError } from '../../../shared/services/form-field-has-error';
-import { CompareValidator } from '../../../shared/validators/compare-validator';
+import { AuthService } from './../../../shared/services/auth.service';
+import { formFieldHasError } from './../../../shared/services/form-field-has-error';
+import { CompareValidator } from './../../../shared/validators/compare-validator';
 
 @Component({
   selector: 'app-register',
@@ -19,6 +19,7 @@ export class RegisterComponent implements OnInit {
       email: ['', [Validators.required, Validators.email, Validators.maxLength(255)]],
       password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(100)]],
       confirmPassword: ['', [Validators.required]],
+      isFemale: [false, []],
     },
     {
       validator: CompareValidator.mustMatch('password', 'confirmPassword'),

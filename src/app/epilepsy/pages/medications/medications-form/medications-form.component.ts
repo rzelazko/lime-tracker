@@ -4,10 +4,10 @@ import { MatCheckboxChange } from '@angular/material/checkbox';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { finalize, Observable, Subscription, take } from 'rxjs';
-import { Medication } from '../../../../shared/models/medication.model';
-import { formFieldHasError } from '../../../../shared/services/form-field-has-error';
-import { MedicationsService } from '../../../../shared/services/medications.service';
-import { DatesValidator } from '../../../../shared/validators/dates-validator';
+import { Medication } from './../../../../shared/models/medication.model';
+import { formFieldHasError } from './../../../../shared/services/form-field-has-error';
+import { MedicationsService } from './../../../../shared/services/medications.service';
+import { DatesValidator } from './../../../../shared/validators/dates-validator';
 
 @Component({
   selector: 'app-medications-form',

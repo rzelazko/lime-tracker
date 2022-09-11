@@ -10,15 +10,15 @@ import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import * as moment from 'moment';
 import { of } from 'rxjs';
-import { AppRoutingModule } from '../../../app-routing.module';
-import { ErrorCardComponent } from '../../../shared/error-card/error-card.component';
-import { PageData } from '../../../shared/models/page-data.model';
-import { Period } from '../../../shared/models/period.model';
-import { HumanizePipe } from '../../../shared/pipes/humanize.pipe';
-import { MomentPipe } from '../../../shared/pipes/moment.pipe';
-import { TimeSincePipe } from '../../../shared/pipes/time-since.pipe';
-import { PeriodsService } from '../../../shared/services/periods.service';
-import { TableComponent } from '../../components/table/table.component';
+import { AppRoutingModule } from './../../../app-routing.module';
+import { ErrorCardComponent } from './../../../shared/error-card/error-card.component';
+import { PageData } from './../../../shared/models/page-data.model';
+import { Period } from './../../../shared/models/period.model';
+import { HumanizePipe } from './../../../shared/pipes/humanize.pipe';
+import { MomentPipe } from './../../../shared/pipes/moment.pipe';
+import { TimeSincePipe } from './../../../shared/pipes/time-since.pipe';
+import { PeriodsService } from './../../../shared/services/periods.service';
+import { TableComponent } from './../../components/table/table.component';
 
 import { PeriodsComponent } from './periods.component';
 

@@ -61,7 +61,7 @@ Perform full deplyment (hosting, security rules, etc.) with `firebase deploy` or
 
 ## Progressive Web Application
 
-[Lime Tracker](https://lime-tracker.com/) is a [Progressive Web Application](https://angular.io/guide/service-worker-devops). It can be installed on customer device.
+[Lime Tracker](https://lime-tracker.com/) is a [Progressive Web Application](https://angular.io/guide/service-worker-devops). It can be installed on the end user device.
 Debugging information about NGSW can be found under URLs:
 
 - [https://lime-tracker.com/pl/ngsw/state](https://lime-tracker.com/pl/ngsw/state)
@@ -79,8 +79,10 @@ Debugging information about NGSW can be found under URLs:
 
 ## TODO 
 
-- Add user profile management
-- Add gender information - and show / hide period tracking option
+- Update user profile management
+  - Change `jan.kowalski` account to female one
+  - Add seizure types management
+  - Add seizure triggers management
 - Add reset passoword
 - Add chart to show seizures by hour
 - Add chart to show seizures during period

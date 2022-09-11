@@ -7,7 +7,7 @@ import {
   connectFirestoreEmulator,
   enableMultiTabIndexedDbPersistence,
   getFirestore,
-  provideFirestore,
+  provideFirestore
 } from '@angular/fire/firestore';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -25,6 +25,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -33,20 +34,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { environment } from '../environments/environment';
+import { environment } from './../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/pages/login/login.component';
 import { LogoutComponent } from './auth/pages/logout/logout.component';
 import { RegisterComponent } from './auth/pages/register/register.component';
 import { VerifyEmailComponent } from './auth/pages/verify-email/verify-email.component';
 import { ConfirmDeleteDialogComponent } from './epilepsy/components/confirm-delete-dialog/confirm-delete-dialog.component';
-import { HeaderComponent } from './epilepsy/components/header/header.component';
-import { SidenavComponent } from './epilepsy/components/sidenav/sidenav.component';
 import { TableComponent } from './epilepsy/components/table/table.component';
 import { YearsnavComponent } from './epilepsy/components/yearsnav/yearsnav.component';
-import { EpilepsyComponent } from './epilepsy/epilepsy.component';
 import { ChartSummaryComponent } from './epilepsy/pages/charts/chart-summary/chart-summary.component';
 import { ChartsComponent } from './epilepsy/pages/charts/charts.component';
 import { DashboardComponent } from './epilepsy/pages/dashboard/dashboard.component';
@@ -60,9 +57,14 @@ import { ReportsComponent } from './epilepsy/pages/reports/reports.component';
 import { SeizuresFormComponent } from './epilepsy/pages/seizures/seizures-form/seizures-form.component';
 import { SeizuresComponent } from './epilepsy/pages/seizures/seizures.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ManageProfileComponent } from './profile/pages/manage-profile/manage-profile.component';
 import { ErrorModalComponent } from './shared/components/error-modal/error-modal.component';
+import { HeaderComponent } from './shared/components/header/header.component';
+import { SidenavComponent } from './shared/components/sidenav/sidenav.component';
 import { UpdateDialogComponent } from './shared/components/update-dialog/update-dialog.component';
 import { ErrorCardComponent } from './shared/error-card/error-card.component';
+import { LayoutAnonymousComponent } from './shared/layout/anonymous/anonymous.component';
+import { LayoutAuthenticatedComponent } from './shared/layout/authenticated/authenticated.component';
 import { EndOfPipe } from './shared/pipes/end-of.pipe';
 import { HumanizePipe } from './shared/pipes/humanize.pipe';
 import { JoinPipe } from './shared/pipes/join.pipe';
@@ -88,19 +90,20 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
 
     // Components
     AppComponent,
-    AuthComponent,
     ChartsComponent,
     ChartSummaryComponent,
     ConfirmDeleteDialogComponent,
     DashboardComponent,
-    EpilepsyComponent,
     EventsFormComponent,
     EventsComponent,
     ErrorCardComponent,
     ErrorModalComponent,
     HeaderComponent,
+    LayoutAnonymousComponent,
+    LayoutAuthenticatedComponent,
     LoginComponent,
     LogoutComponent,
+    ManageProfileComponent,
     MedicationsComponent,
     MedicationsFormComponent,
     PageNotFoundComponent,
@@ -168,6 +171,7 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     MatProgressSpinnerModule,
     MatSelectModule,
     MatSidenavModule,
+    MatSlideToggleModule,
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,

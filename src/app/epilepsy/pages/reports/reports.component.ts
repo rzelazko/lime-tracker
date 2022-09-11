@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { catchError, Observable, Subscription, throwError } from 'rxjs';
-import { Report } from '../../../shared/models/report.model';
-import { ReportsService } from '../../../shared/services/reports.service';
+import { Report } from './../../../shared/models/report.model';
+import { ReportsService } from './../../../shared/services/reports.service';
 
 @Component({
   selector: 'app-reports',

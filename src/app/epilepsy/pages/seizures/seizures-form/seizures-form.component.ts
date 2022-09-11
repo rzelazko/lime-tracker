@@ -3,11 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { finalize, Observable, Subscription, take } from 'rxjs';
-import { Seizure } from '../../../../shared/models/seizure.model';
-import { AuthService } from '../../../../shared/services/auth.service';
-import { formFieldHasError } from '../../../../shared/services/form-field-has-error';
-import { SeizuresService } from '../../../../shared/services/seizures.service';
-import { DatesValidator } from '../../../../shared/validators/dates-validator';
+import { UserData } from './../../../../auth/models/user-details.model';
+import { Seizure } from './../../../../shared/models/seizure.model';
+import { AuthService } from './../../../../shared/services/auth.service';
+import { formFieldHasError } from './../../../../shared/services/form-field-has-error';
+import { SeizuresService } from './../../../../shared/services/seizures.service';
+import { UserDetailsService } from './../../../../shared/services/user-details.service';
+import { DatesValidator } from './../../../../shared/validators/dates-validator';
 
 @Component({
   selector: 'app-seizures-form',
@@ -21,10 +23,12 @@ export class SeizuresFormComponent implements OnInit, OnDestroy {
   error?: string;
   form: FormGroup;
   id?: string;
+  userDetails$: Observable<UserData>;
   private submitSubscription?: Subscription;
 
   constructor(
-    public auth: AuthService,
+    private auth: AuthService,
+    private userDetails: UserDetailsService,
     private seizuresService: SeizuresService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -36,6 +40,7 @@ export class SeizuresFormComponent implements OnInit, OnDestroy {
       seizureType: ['', [Validators.required]],
       seizureTriggers: [[]],
     });
+    this.userDetails$ = userDetails.get(auth.user());
   }
 
   ngOnInit(): void {
@@ -78,7 +83,8 @@ export class SeizuresFormComponent implements OnInit, OnDestroy {
     this.submitSubscription = submitObservable$
       .pipe(finalize(() => (this.submitting = false)))
       .subscribe({
-        next: () => this.router.navigate([$localize`:@@routerLink-epilepsy-seizures:/epilepsy/seizures`]),
+        next: () =>
+          this.router.navigate([$localize`:@@routerLink-epilepsy-seizures:/epilepsy/seizures`]),
         error: (error) => (this.error = error.message),
       });
   }

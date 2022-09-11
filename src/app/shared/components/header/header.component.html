@@ -11,6 +11,15 @@
     </a>
   </div>
   <div fxFlex fxLayout fxLayoutAlign="flex-end" fxLayoutGap=".5em" fxHide fxShow.gt-sm>
+    <a mat-icon-button routerLink="/account" i18n-routerLink="@@routerLink-account">
+      <ng-container *ngIf="userDetails$ | async as userData; else userDetailsLoading">
+          <mat-icon *ngIf="userData.isFemale">person_2</mat-icon>
+          <mat-icon *ngIf="!userData.isFemale">person</mat-icon>
+      </ng-container>
+      <ng-template #userDetailsLoading>
+        <mat-icon>person</mat-icon>
+      </ng-template>
+    </a>
     <a mat-icon-button routerLink="/logout" i18n-routerLink="@@routerLink-logout">
       <mat-icon>logout</mat-icon>
     </a>

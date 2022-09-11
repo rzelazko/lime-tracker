@@ -13,9 +13,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { of } from 'rxjs';
-import { Period } from '../../../../shared/models/period.model';
-import { PeriodsService } from '../../../../shared/services/periods.service';
-import { UsersService } from '../../../../shared/services/users.service';
+import { Period } from './../../../../shared/models/period.model';
+import { PeriodsService } from './../../../../shared/services/periods.service';
+import { UserDetailsService } from '../../../../shared/services/user-details.service';
 import { PeriodsFormComponent } from './periods-form.component';
 
 describe('PeriodsFormComponent', () => {
@@ -41,7 +41,7 @@ describe('PeriodsFormComponent', () => {
         { provide: PeriodsService, useValue: periodsServiceSpyObj },
         { provide: Router, useValue: routerSpyObj },
         { provide: ActivatedRoute, useValue: activatedRouteMockObj },
-        UsersService,
+        UserDetailsService,
       ],
       imports: [
         FormsModule,

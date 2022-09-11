@@ -1,0 +1,37 @@
+<ng-container *ngIf="userDetails$ | async as userData; else pageLoading">
+  <mat-toolbar class="page-header" role="heading">
+    <h1 i18n="@@title-profile-name">Hi, {{userData.name}}</h1>
+  </mat-toolbar>
+
+  <main>
+    <div class="row" *ngIf="error && !submitting">
+      <mat-error>
+        <span i18n="@@error-update-profile-failed">Update profile failed: {{ error }}</span>
+      </mat-error>
+    </div>
+
+    <div class="row">
+      <mat-progress-spinner mode="indeterminate" *ngIf="!error && submitting" [diameter]="20"></mat-progress-spinner>
+
+      <mat-slide-toggle *ngIf="!submitting" i18n="@@label-i-am-female" [checked]="userData.isFemale" (change)="onChange($event)">I am female</mat-slide-toggle>
+    </div>
+
+    <mat-divider class="row"></mat-divider>
+
+    <div class="row">
+      <a mat-raised-button routerLink="/epilepsy/seizures" i18n-routerLink="@@routerLink-epilepsy-seizures"
+        i18n="@@action-edit-seizure-types" disabled>Edit seizure types</a>
+    </div>
+
+    <div class="row">
+      <a mat-raised-button routerLink="/epilepsy/seizures" i18n-routerLink="@@routerLink-epilepsy-seizures"
+        i18n="@@action-edit-seizure-triggers" disabled>Edit seizure triggers</a>
+    </div>
+  </main>
+</ng-container>
+
+<ng-template #pageLoading>
+  <main>
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </main>
+</ng-template>

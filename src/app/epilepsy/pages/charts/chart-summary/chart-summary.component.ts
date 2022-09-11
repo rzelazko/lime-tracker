@@ -1,9 +1,9 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { ApexAxisChartSeries, ApexYAxis } from 'ng-apexcharts';
 import { combineLatest, map, Subscription } from 'rxjs';
-import { ChartData } from '../../../../shared/models/chart-data.model';
-import { ChartOptions } from '../../../../shared/models/chart-options.model';
-import { ChartSummaryService } from '../../../../shared/services/chart-summary.service';
+import { ChartData } from './../../../../shared/models/chart-data.model';
+import { ChartOptions } from './../../../../shared/models/chart-options.model';
+import { ChartSummaryService } from './../../../../shared/services/chart-summary.service';
 
 @Component({
   selector: 'app-chart-summary',

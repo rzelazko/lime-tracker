@@ -1,37 +1,46 @@
 import { Injectable } from '@angular/core';
 import { User } from 'firebase/auth';
 import * as moment from 'moment';
-import { map } from 'rxjs';
+import { map, BehaviorSubject } from 'rxjs';
 import { DEFAULT_SEIZURE_TRIGGERS } from '../../auth/models/default-seizure-triggers.model';
 import { DEFAULT_SEIZURE_TYPES } from '../../auth/models/default-seizure-types.model';
 import {
   UserData,
   UserDetails,
-  UserDetailsEmailVerification
+  UserDetailsEmailVerification,
+  UserDetailsIsFemale
 } from '../../auth/models/user-details.model';
 import { FirestoreService } from './firestore.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UsersService {
+export class UserDetailsService {
   constructor(private firestoreService: FirestoreService) {}
 
-  initUserDetails(userId: string) {
+  init(userId: string, isFemale: boolean) {
     const userDetails: UserDetails = {
       seizureTypes: DEFAULT_SEIZURE_TYPES,
       seizureTriggers: DEFAULT_SEIZURE_TRIGGERS,
+      isFemale
     };
     return this.firestoreService.set(`users/${userId}`, userDetails);
   }
 
-  getUserDetails(user: User) {
+  get(user: User) {
     return this.firestoreService
       .get<UserData>(`users/${user.uid}`)
-      .pipe(map((result) => ({ ...result, email: user.email } as UserData)));
+      .pipe(map((result) => ({ ...result, email: user.email, name: user.displayName } as UserData)));
   }
 
-  verificationEmailSent(userId: string) {
+  setIsFemale(userId: string, isFemale: boolean) {
+    const userDetails: UserDetailsIsFemale = {
+      isFemale
+    };
+    return this.firestoreService.update(`users/${userId}`, userDetails);
+  }
+
+  updateVerificationEmailSent(userId: string) {
     const userDetails: UserDetailsEmailVerification = {
       emailVerificationSent: moment(),
     };

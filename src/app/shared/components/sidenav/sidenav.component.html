@@ -18,9 +18,16 @@
   <a mat-list-item routerLink="/epilepsy/events" i18n-routerLink="@@routerLink-epilepsy-events" routerLinkActive="active" (click)="onClose()">
     <mat-icon>event</mat-icon> <span i18n="@@title-events">Events</span>
   </a>
-  <a mat-list-item routerLink="/epilepsy/periods" i18n-routerLink="@@routerLink-epilepsy-periods" routerLinkActive="active" (click)="onClose()">
-    <mat-icon>bloodtype</mat-icon> <span i18n="@@title-periods">Periods</span>
-  </a>
+  <ng-container *ngIf="userDetails$ | async as userData; else userDetailsLoading">
+    <a *ngIf="userData.isFemale" mat-list-item routerLink="/epilepsy/periods" i18n-routerLink="@@routerLink-epilepsy-periods" routerLinkActive="active" (click)="onClose()">
+      <mat-icon>bloodtype</mat-icon> <span i18n="@@title-periods">Periods</span>
+    </a>
+  </ng-container>
+  <ng-template #userDetailsLoading>
+    <mat-list-item>
+      <mat-progress-spinner mode="indeterminate" [diameter]="20"></mat-progress-spinner>
+    </mat-list-item>
+  </ng-template>
 
   <mat-divider></mat-divider>
   <a mat-list-item href="/en" *ngIf="locale === 'pl'">
@@ -30,8 +37,11 @@
     <mat-icon>language</mat-icon> <span>Polski</span>
   </a>
 
-  <mat-divider></mat-divider>
-  <a mat-list-item routerLink="/logout" i18n-routerLink="@@routerLink-epilepsy-logout" routerLinkActive="active" (click)="onClose()">
+  <mat-divider fxShow fxHide.gt-sm></mat-divider>
+  <a mat-list-item routerLink="/account" i18n-routerLink="@@routerLink-account" routerLinkActive="active" (click)="onClose()" fxShow fxHide.gt-sm>
+    <mat-icon>person</mat-icon> <span i18n="@@title-profile">Manage account</span>
+  </a>
+  <a mat-list-item routerLink="/logout" i18n-routerLink="@@routerLink-logout" routerLinkActive="active" (click)="onClose()" fxShow fxHide.gt-sm>
     <mat-icon>logout</mat-icon> <span i18n="@@title-logout">Log out</span>
   </a>
 </mat-nav-list>

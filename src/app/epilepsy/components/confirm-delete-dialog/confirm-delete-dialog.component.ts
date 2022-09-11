@@ -1,10 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Event } from '../../../shared/models/event.model';
-import { Medication } from '../../../shared/models/medication.model';
-import { Period } from '../../../shared/models/period.model';
-import { Seizure } from '../../../shared/models/seizure.model';
-import { TrackingCore } from '../../../shared/models/tracking-core.model';
+import { Event } from './../../../shared/models/event.model';
+import { Medication } from './../../../shared/models/medication.model';
+import { Period } from './../../../shared/models/period.model';
+import { Seizure } from './../../../shared/models/seizure.model';
+import { TrackingCore } from './../../../shared/models/tracking-core.model';
 
 @Component({
   selector: 'app-confirm-delete-dialog',
