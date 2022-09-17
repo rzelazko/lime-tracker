@@ -84,6 +84,43 @@
       </ng-template>
     </ng-template>
 
+    <mat-card class="last-period" *ngIf="lastPeriods$ | async as lastPeriods; else loadingOrErrorPeriods">
+      <mat-card-title-group>
+        <mat-card-title i18n="@@dashboard-title-last-period">Last period</mat-card-title>
+        <mat-card-subtitle *ngIf="lastPeriods.length === 1">
+          {{ lastPeriods[0].startDate | moment: "LL" }}
+          <span *ngIf="lastPeriods[0].endDate"> - {{ lastPeriods[0].endDate | moment: "LL" }}</span>
+        </mat-card-subtitle>
+      </mat-card-title-group>
+      <mat-card-content *ngIf="lastPeriods.length !== 1">
+        <h3 i18n="@@no-data">No data</h3>
+      </mat-card-content>
+      <mat-card-content *ngIf="lastPeriods.length === 1 && !lastPeriods[0].endDate">
+        <h3 i18n="@@dashboard-current-period-lasts">Current period lasts:</h3>
+        <p class="mat-display-3">
+          {{ lastPeriods[0].startDate | timeSince: 'InDays' | humanize }}
+        </p>
+      </mat-card-content>
+      <mat-card-content *ngIf="lastPeriods.length === 1 && lastPeriods[0].endDate">
+        <h3 i18n="@@dashboard-time-since-last-period">Time since last period:</h3>
+        <p class="mat-display-3">
+          {{ lastPeriods[0].endDate | timeSince: 'InDays' | humanize }}
+        </p>
+      </mat-card-content>
+    </mat-card>
+
+    <ng-template #loadingOrErrorPeriods>
+      <app-error-card [error]="periodsError" *ngIf="periodsError; else loadingPeriods"></app-error-card>
+      <ng-template #loadingPeriods>
+        <mat-card class="last-period">
+          <mat-card-title-group>
+            <mat-card-title i18n="@@dashboard-title-last-period">Last period</mat-card-title>
+          </mat-card-title-group>
+          <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+        </mat-card>
+      </ng-template>
+    </ng-template>
+
     <mat-card class="events app-list-card" *ngIf="lastEvents$ | async as events; else loadingOrErrorEvents">
       <mat-card-title-group>
         <mat-card-title i18n="@@dashboard-title-last-events">Last events</mat-card-title>
