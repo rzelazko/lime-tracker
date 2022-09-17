@@ -31,6 +31,7 @@ Firebase SDK: 9.x
 Run Firebase Emulator: `npm run firebase-emulator`. View Emulator UI at `http://localhost:4000`. In order to persists emulator data run in separate console: `firebase emulators:export test-data`.
 User accounts available in emulator (password is `123qwe`):
 
+- `janka@webperfekt.pl` - female user with some data
 - `jan.kowalski@webperfekt.pl` - user with some data
 - `not.verified@webperfekt.pl` - email has not been verified
 - `empty@webperfekt.pl` - no data
@@ -79,14 +80,6 @@ Debugging information about NGSW can be found under URLs:
 
 ## TODO 
 
-- Update user profile management
-  - Change `jan.kowalski` account to female one
-  - Add seizure types management
-  - Add seizure triggers management
-- Add reset passoword
-- Add chart to show seizures by hour
-- Add chart to show seizures during period
-- Add chart to compare seizures in the same month for previous year (only if the are enough data)
 - Dashboard redesign - 4 cards with action buttons below instead on top:
   - Seizures - nothing change
   - Medicaments - compacted list (one line name & doses)
@@ -95,6 +88,13 @@ Debugging information about NGSW can be found under URLs:
   - Other improvements:
     - Dashboard in case of no medicaments place link or button to add some
     - Dashboard in case of no seizures place link or button to add some
+- Update user profile management
+  - Add seizure types management
+  - Add seizure triggers management
+- Add reset passoword
+- Add chart to show seizures by hour
+- Add chart to show seizures during period
+- Add chart to compare seizures in the same month for previous year (only if the are enough data)
 - Update app screenshots
 - Cancel button on form go back to either dashboard or table (not always table)
 - Add install PWA menu item:
