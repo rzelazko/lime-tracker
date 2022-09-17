@@ -13,7 +13,7 @@
     </mat-card>
   </section>
 
-  <section class="info" fxLayout="column" fxLayout.gt-xs="row" fxLayoutGap="1em" fxLayoutAlign="center stretch">
+  <section class="info" fxLayout="column" fxLayout.gt-xs="row wrap" fxLayoutAlign="start stretch">
     <mat-card class="last-seizure" *ngIf="lastSeizures$ | async as lastSeizures; else loadingOrErrorSeizures">
       <mat-card-title-group>
         <mat-card-title i18n="@@dashboard-title-last-seizure">Last seizure</mat-card-title>
@@ -47,7 +47,7 @@
         <mat-card-title i18n="@@dashboard-title-current-medications">Current medications</mat-card-title>
       </mat-card-title-group>
       <mat-card-content>
-        <mat-list fxLayout="row wrap">
+        <mat-list>
           <mat-list-item *ngFor="let medication of medications">
             <mat-icon mat-list-icon>medication</mat-icon>
             <div mat-line class="medication-name">{{ medication.name }}</div>
@@ -85,28 +85,42 @@
     </ng-template>
 
     <mat-card class="last-period" *ngIf="lastPeriods$ | async as lastPeriods; else loadingOrErrorPeriods">
-      <mat-card-title-group>
-        <mat-card-title i18n="@@dashboard-title-last-period">Last period</mat-card-title>
-        <mat-card-subtitle *ngIf="lastPeriods.length === 1">
-          {{ lastPeriods[0].startDate | moment: "LL" }}
-          <span *ngIf="lastPeriods[0].endDate"> - {{ lastPeriods[0].endDate | moment: "LL" }}</span>
-        </mat-card-subtitle>
-      </mat-card-title-group>
-      <mat-card-content *ngIf="lastPeriods.length !== 1">
-        <h3 i18n="@@no-data">No data</h3>
-      </mat-card-content>
-      <mat-card-content *ngIf="lastPeriods.length === 1 && !lastPeriods[0].endDate">
-        <h3 i18n="@@dashboard-current-period-lasts">Current period lasts:</h3>
-        <p class="mat-display-3">
-          {{ lastPeriods[0].startDate | timeSince: 'InDays' | humanize }}
-        </p>
-      </mat-card-content>
-      <mat-card-content *ngIf="lastPeriods.length === 1 && lastPeriods[0].endDate">
-        <h3 i18n="@@dashboard-time-since-last-period">Time since last period:</h3>
-        <p class="mat-display-3">
-          {{ lastPeriods[0].endDate | timeSince: 'InDays' | humanize }}
-        </p>
-      </mat-card-content>
+      <ng-container *ngIf="lastPeriods.length !== 1">
+        <mat-card-title-group>
+          <mat-card-title i18n="@@dashboard-title-last-period">Last period</mat-card-title>
+          <mat-card-content>
+            <h3 i18n="@@no-data">No data</h3>
+          </mat-card-content>
+        </mat-card-title-group>
+      </ng-container>
+
+      <ng-container *ngIf="lastPeriods.length === 1 && !lastPeriods[0].endDate">
+        <mat-card-title-group>
+          <mat-card-title i18n="@@dashboard-title-current-period">Current period</mat-card-title>
+          <mat-card-subtitle *ngIf="lastPeriods.length === 1" i18n="@@dashboard-subtitle-current-period">Since: {{ lastPeriods[0].startDate | moment: "LL" }}</mat-card-subtitle>
+        </mat-card-title-group>
+        <mat-card-content>
+          <h3 i18n="@@dashboard-current-period-content-lasts">Lasts:</h3>
+          <p class="mat-display-3">
+            {{ lastPeriods[0].startDate | timeSince: 'InDays' | humanize }}
+          </p>
+        </mat-card-content>
+      </ng-container>
+
+      <ng-container *ngIf="lastPeriods.length === 1 && lastPeriods[0].endDate">
+        <mat-card-title-group>
+          <mat-card-title i18n="@@dashboard-title-last-period">Last period</mat-card-title>
+          <mat-card-subtitle *ngIf="lastPeriods.length === 1">
+            {{ lastPeriods[0].startDate | moment: "LL" }} - {{ lastPeriods[0].endDate | moment: "LL" }}
+          </mat-card-subtitle>
+        </mat-card-title-group>
+        <mat-card-content>
+          <h3 i18n="@@dashboard-last-period-content-time-since">Time since:</h3>
+          <p class="mat-display-3">
+            {{ lastPeriods[0].endDate | timeSince: 'InDays' | humanize }}
+          </p>
+        </mat-card-content>
+      </ng-container>
     </mat-card>
 
     <ng-template #loadingOrErrorPeriods>
@@ -126,12 +140,12 @@
         <mat-card-title i18n="@@dashboard-title-last-events">Last events</mat-card-title>
       </mat-card-title-group>
       <mat-card-content>
-        <mat-list fxLayout="row wrap">
+        <mat-list>
           <mat-list-item *ngFor="let event of events">
             <mat-icon mat-list-icon>event</mat-icon>
             <div mat-line>
-              <span class="event-name">{{ event.name }}</span> <span class="event-occurred app-text-muted">{{
-                event.occurred | moment: "LL" }}</span>
+              <span class="event-name">{{ event.name }}</span>
+              <span class="event-occurred app-text-muted"> - {{ event.occurred | moment: "LL" }}</span>
             </div>
           </mat-list-item>
 

@@ -863,11 +863,11 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">96,97</context>
+          <context context-type="linenumber">92,93</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">140,141</context>
+          <context context-type="linenumber">154,155</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
@@ -1087,27 +1087,47 @@
         <target>Ostatni okres</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">89,90</context>
+          <context context-type="linenumber">90,91</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">117,118</context>
+          <context context-type="linenumber">112,113</context>
         </context-group>
-      </trans-unit>
-      <trans-unit id="dashboard-current-period-lasts" datatype="html">
-        <source>Current period lasts:</source>
-        <target>Aktualny okres trwa:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">99,101</context>
+          <context context-type="linenumber">131,132</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="dashboard-time-since-last-period" datatype="html">
-        <source>Time since last period:</source>
-        <target>Czas od ostatniego okresu:</target>
+      <trans-unit id="dashboard-title-current-period" datatype="html">
+        <source>Current period</source>
+        <target>Aktualny okres</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">105,107</context>
+          <context context-type="linenumber">99,100</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dashboard-subtitle-current-period" datatype="html">
+        <source>Since: <x id="INTERPOLATION" equiv-text="{{ lastPeriods[0].startDate | moment: &quot;LL&quot; }}"/></source>
+        <target>Od: <x id="INTERPOLATION" equiv-text="{{ lastPeriods[0].startDate | moment: &quot;LL&quot; }}"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">100</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dashboard-current-period-content-lasts" datatype="html">
+        <source>Lasts:</source>
+        <target>Trwa:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">103,105</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dashboard-last-period-content-time-since" datatype="html">
+        <source>Time since:</source>
+        <target>Czas od:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
+          <context context-type="linenumber">118,120</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dashboard-title-last-events" datatype="html">
@@ -1115,11 +1135,11 @@
         <target>Ostatnie zdarzenia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">126,127</context>
+          <context context-type="linenumber">140,141</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">151,152</context>
+          <context context-type="linenumber">165,166</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-update-event" datatype="html">

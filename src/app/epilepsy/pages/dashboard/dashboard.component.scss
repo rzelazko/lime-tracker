@@ -17,13 +17,7 @@ section.actions {
 
 section.info {
   mat-card {
-    width: auto;
-  }
-
-  mat-card.medications {
-    mat-list-item {
-      width: 10em;
-    }
+    margin: 0 0 1em 0;
   }
 
   mat-card.app-list-card {
@@ -40,7 +34,8 @@ section.info {
 @include layout-bp(gt-xs) {
   section.info {
     mat-card {
-      width: 100%;
+      min-width: 15em;
+      margin: 0 1em 1em 0;
     }
   }
 }
