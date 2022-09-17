@@ -28,6 +28,8 @@ describe('DashboardComponent', () => {
     const dashboardServiceSpyObj = jasmine.createSpyObj('DashboardService', [
       'currentMedications',
       'lastSeizures',
+      'lastEvents',
+      'lastPeriods'
     ]);
 
     await TestBed.configureTestingModule({
@@ -92,6 +94,8 @@ describe('DashboardComponent', () => {
     ];
     dashboardServiceSpy.currentMedications.and.returnValue(of(medications));
     dashboardServiceSpy.lastSeizures.and.returnValue(of());
+    dashboardServiceSpy.lastEvents.and.returnValue(of());
+    dashboardServiceSpy.lastPeriods.and.returnValue(of());
 
     // when
     fixture = TestBed.createComponent(DashboardComponent);
@@ -115,6 +119,8 @@ describe('DashboardComponent', () => {
     const medications: Medication[] = [];
     dashboardServiceSpy.currentMedications.and.returnValue(of(medications));
     dashboardServiceSpy.lastSeizures.and.returnValue(of());
+    dashboardServiceSpy.lastEvents.and.returnValue(of());
+    dashboardServiceSpy.lastPeriods.and.returnValue(of());
 
     // when
     fixture = TestBed.createComponent(DashboardComponent);
@@ -131,6 +137,8 @@ describe('DashboardComponent', () => {
     const errorMsg = 'Some medicaments error!';
     dashboardServiceSpy.currentMedications.and.returnValue(throwError(() => new Error(errorMsg)));
     dashboardServiceSpy.lastSeizures.and.returnValue(of());
+    dashboardServiceSpy.lastEvents.and.returnValue(of());
+    dashboardServiceSpy.lastPeriods.and.returnValue(of());
 
     // when
     fixture = TestBed.createComponent(DashboardComponent);
@@ -148,6 +156,8 @@ describe('DashboardComponent', () => {
     const medications: Medication[] = [];
     dashboardServiceSpy.currentMedications.and.returnValue(of(medications).pipe(delay(100)));
     dashboardServiceSpy.lastSeizures.and.returnValue(of());
+    dashboardServiceSpy.lastEvents.and.returnValue(of());
+    dashboardServiceSpy.lastPeriods.and.returnValue(of());
 
     // when
     fixture = TestBed.createComponent(DashboardComponent);
@@ -175,6 +185,8 @@ describe('DashboardComponent', () => {
     ];
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(of(seizures));
+    dashboardServiceSpy.lastEvents.and.returnValue(of());
+    dashboardServiceSpy.lastPeriods.and.returnValue(of());
 
     // when
     fixture = TestBed.createComponent(DashboardComponent);
@@ -194,6 +206,8 @@ describe('DashboardComponent', () => {
     const seizures: Seizure[] = [];
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(of(seizures));
+    dashboardServiceSpy.lastEvents.and.returnValue(of());
+    dashboardServiceSpy.lastPeriods.and.returnValue(of());
 
     // when
     fixture = TestBed.createComponent(DashboardComponent);
@@ -212,6 +226,8 @@ describe('DashboardComponent', () => {
     const errorMsg = 'Some last seizure error!';
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(throwError(() => new Error(errorMsg)));
+    dashboardServiceSpy.lastEvents.and.returnValue(of());
+    dashboardServiceSpy.lastPeriods.and.returnValue(of());
 
     // when
     fixture = TestBed.createComponent(DashboardComponent);
@@ -229,6 +245,8 @@ describe('DashboardComponent', () => {
     const seizures: Seizure[] = [];
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(of(seizures).pipe(delay(100)));
+    dashboardServiceSpy.lastEvents.and.returnValue(of());
+    dashboardServiceSpy.lastPeriods.and.returnValue(of());
 
     // when
     fixture = TestBed.createComponent(DashboardComponent);

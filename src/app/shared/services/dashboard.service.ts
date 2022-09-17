@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { limit, orderBy, where } from 'firebase/firestore';
-import { map } from 'rxjs';
-import { SeizuresService } from './../../shared/services/seizures.service';
+import { EventsService } from './events.service';
 import { MedicationsService } from './medications.service';
+import { PeriodsService } from './periods.service';
+import { SeizuresService } from './seizures.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,9 @@ import { MedicationsService } from './medications.service';
 export class DashboardService {
   constructor(
     private medicationsService: MedicationsService,
-    private seizuresService: SeizuresService
+    private seizuresService: SeizuresService,
+    private eventsService: EventsService,
+    private periodsService: PeriodsService
   ) {}
 
   currentMedications() {
@@ -21,7 +24,14 @@ export class DashboardService {
   }
 
   lastSeizures() {
-    return this.seizuresService
-      .listCollection([orderBy('occurred', 'desc'), limit(1)]);
+    return this.seizuresService.listCollection([orderBy('occurred', 'desc'), limit(1)]);
+  }
+
+  lastEvents() {
+    return this.eventsService.listCollection([orderBy('occurred', 'desc'), limit(3)]);
+  }
+
+  lastPeriods() {
+    return this.periodsService.listCollection([orderBy('startDate', 'desc'), limit(1)]);
   }
 }
