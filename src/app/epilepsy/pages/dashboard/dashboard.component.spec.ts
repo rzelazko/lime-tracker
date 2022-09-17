@@ -10,7 +10,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import * as moment from 'moment';
 import { delay, of, throwError } from 'rxjs';
 import { ErrorCardComponent } from './../../../shared/error-card/error-card.component';
+import { Event } from './../../../shared/models/event.model';
 import { Medication } from './../../../shared/models/medication.model';
+import { Period } from './../../../shared/models/period.model';
 import { Seizure } from './../../../shared/models/seizure.model';
 import { HumanizePipe } from './../../../shared/pipes/humanize.pipe';
 import { MomentPipe } from './../../../shared/pipes/moment.pipe';
@@ -28,6 +30,8 @@ describe('DashboardComponent', () => {
     const dashboardServiceSpyObj = jasmine.createSpyObj('DashboardService', [
       'currentMedications',
       'lastSeizures',
+      'lastEvents',
+      'lastPeriods'
     ]);
 
     await TestBed.configureTestingModule({
@@ -62,6 +66,10 @@ describe('DashboardComponent', () => {
     jasmine.clock().uninstall();
   });
 
+  // ------------------------------------------------------------------------------
+  // Medicaments section
+  // ------------------------------------------------------------------------------
+
   it('should show medicaments data', async () => {
     // given
     const medications: Medication[] = [
@@ -92,6 +100,8 @@ describe('DashboardComponent', () => {
     ];
     dashboardServiceSpy.currentMedications.and.returnValue(of(medications));
     dashboardServiceSpy.lastSeizures.and.returnValue(of());
+    dashboardServiceSpy.lastEvents.and.returnValue(of());
+    dashboardServiceSpy.lastPeriods.and.returnValue(of());
 
     // when
     fixture = TestBed.createComponent(DashboardComponent);
@@ -100,7 +110,7 @@ describe('DashboardComponent', () => {
 
     // then
     const medNameElements = fixture.debugElement.queryAll(By.css('.medication-name'));
-    const medDoseElements = fixture.debugElement.queryAll(By.css('.dose'));
+    const medDoseElements = fixture.debugElement.queryAll(By.css('.medication-dose'));
     expect(medNameElements.length).toBe(medications.length);
     for (let i = 0; i < medications.length; i++) {
       expect(medNameElements[i].nativeElement.textContent).toContain(medications[i].name);
@@ -115,6 +125,8 @@ describe('DashboardComponent', () => {
     const medications: Medication[] = [];
     dashboardServiceSpy.currentMedications.and.returnValue(of(medications));
     dashboardServiceSpy.lastSeizures.and.returnValue(of());
+    dashboardServiceSpy.lastEvents.and.returnValue(of());
+    dashboardServiceSpy.lastPeriods.and.returnValue(of());
 
     // when
     fixture = TestBed.createComponent(DashboardComponent);
@@ -131,6 +143,8 @@ describe('DashboardComponent', () => {
     const errorMsg = 'Some medicaments error!';
     dashboardServiceSpy.currentMedications.and.returnValue(throwError(() => new Error(errorMsg)));
     dashboardServiceSpy.lastSeizures.and.returnValue(of());
+    dashboardServiceSpy.lastEvents.and.returnValue(of());
+    dashboardServiceSpy.lastPeriods.and.returnValue(of());
 
     // when
     fixture = TestBed.createComponent(DashboardComponent);
@@ -148,6 +162,8 @@ describe('DashboardComponent', () => {
     const medications: Medication[] = [];
     dashboardServiceSpy.currentMedications.and.returnValue(of(medications).pipe(delay(100)));
     dashboardServiceSpy.lastSeizures.and.returnValue(of());
+    dashboardServiceSpy.lastEvents.and.returnValue(of());
+    dashboardServiceSpy.lastPeriods.and.returnValue(of());
 
     // when
     fixture = TestBed.createComponent(DashboardComponent);
@@ -160,6 +176,10 @@ describe('DashboardComponent', () => {
     fixture.detectChanges();
     expect(fixture.debugElement.queryAll(spinnerElementQuery).length).toBe(0);
   }));
+
+  // ------------------------------------------------------------------------------
+  // Seizures section
+  // ------------------------------------------------------------------------------
 
   it('should show last seizure data', async () => {
     // given
@@ -175,6 +195,8 @@ describe('DashboardComponent', () => {
     ];
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(of(seizures));
+    dashboardServiceSpy.lastEvents.and.returnValue(of());
+    dashboardServiceSpy.lastPeriods.and.returnValue(of());
 
     // when
     fixture = TestBed.createComponent(DashboardComponent);
@@ -183,7 +205,7 @@ describe('DashboardComponent', () => {
 
     // then
     const lastSeizureElement = fixture.debugElement.query(
-      By.css('.last-seizure mat-card-content p')
+      By.css('.last-seizure mat-card-content')
     );
     expect(lastSeizureElement).toBeTruthy();
     expect(lastSeizureElement.nativeElement.textContent).toContain('5 minutes'); // system time is set in beforeEach
@@ -194,6 +216,8 @@ describe('DashboardComponent', () => {
     const seizures: Seizure[] = [];
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(of(seizures));
+    dashboardServiceSpy.lastEvents.and.returnValue(of());
+    dashboardServiceSpy.lastPeriods.and.returnValue(of());
 
     // when
     fixture = TestBed.createComponent(DashboardComponent);
@@ -202,9 +226,9 @@ describe('DashboardComponent', () => {
 
     // then
     const lastSeizureElement = fixture.debugElement.query(
-      By.css('.last-seizure mat-card-content p')
+      By.css('.last-seizure mat-card-content')
     );
-    expect(lastSeizureElement.nativeElement.textContent).toContain('unknown');
+    expect(lastSeizureElement.nativeElement.textContent.toLowerCase()).toContain('unknown');
   });
 
   it('should show error if last seizure data throw error', async () => {
@@ -212,6 +236,8 @@ describe('DashboardComponent', () => {
     const errorMsg = 'Some last seizure error!';
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(throwError(() => new Error(errorMsg)));
+    dashboardServiceSpy.lastEvents.and.returnValue(of());
+    dashboardServiceSpy.lastPeriods.and.returnValue(of());
 
     // when
     fixture = TestBed.createComponent(DashboardComponent);
@@ -229,6 +255,8 @@ describe('DashboardComponent', () => {
     const seizures: Seizure[] = [];
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(of(seizures).pipe(delay(100)));
+    dashboardServiceSpy.lastEvents.and.returnValue(of());
+    dashboardServiceSpy.lastPeriods.and.returnValue(of());
 
     // when
     fixture = TestBed.createComponent(DashboardComponent);
@@ -241,4 +269,230 @@ describe('DashboardComponent', () => {
     fixture.detectChanges();
     expect(fixture.debugElement.queryAll(spinnerElementQuery).length).toBe(0);
   }));
+
+  // ------------------------------------------------------------------------------
+  // Events section
+  // ------------------------------------------------------------------------------
+
+  it('should show events data', async () => {
+    // given
+    const events: Event[] = [
+      {
+        objectType: 'EVENT',
+        id: 'e1',
+        name: 'Lorem ipsum 1',
+        occurred: moment('2021-02-15'),
+      },
+      {
+        objectType: 'EVENT',
+        id: 'e2',
+        name: 'Lorem ipsum 2',
+        occurred: moment('2021-01-12'),
+      }
+    ];
+    dashboardServiceSpy.currentMedications.and.returnValue(of());
+    dashboardServiceSpy.lastSeizures.and.returnValue(of());
+    dashboardServiceSpy.lastEvents.and.returnValue(of(events));
+    dashboardServiceSpy.lastPeriods.and.returnValue(of());
+
+    // when
+    fixture = TestBed.createComponent(DashboardComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+    // then
+    const evNameElements = fixture.debugElement.queryAll(By.css('.event-name'));
+    const evOccurredElements = fixture.debugElement.queryAll(By.css('.event-occurred'));
+    expect(evNameElements.length).toBe(events.length);
+    for (let i = 0; i < events.length; i++) {
+      expect(evNameElements[i].nativeElement.textContent).toContain(events[i].name);
+      expect(evOccurredElements[i].nativeElement.textContent).toContain(events[i].occurred.format('LL'));
+    }
+  });
+
+  it('should show no data if events list is empty', async () => {
+    // given
+    const events: Event[] = [];
+    dashboardServiceSpy.currentMedications.and.returnValue(of());
+    dashboardServiceSpy.lastSeizures.and.returnValue(of());
+    dashboardServiceSpy.lastEvents.and.returnValue(of(events));
+    dashboardServiceSpy.lastPeriods.and.returnValue(of());
+
+    // when
+    fixture = TestBed.createComponent(DashboardComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+    // then
+    const evCardElement = fixture.debugElement.query(By.css('.events'));
+    expect(evCardElement.nativeElement.textContent).toContain('No data');
+  });
+
+  it('should show error if events data throw error', async () => {
+    // given
+    const errorMsg = 'Some events error!';
+    dashboardServiceSpy.currentMedications.and.returnValue(of());
+    dashboardServiceSpy.lastSeizures.and.returnValue(of());
+    dashboardServiceSpy.lastEvents.and.returnValue(throwError(() => new Error(errorMsg)));
+    dashboardServiceSpy.lastPeriods.and.returnValue(of());
+
+    // when
+    fixture = TestBed.createComponent(DashboardComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+    // then
+    const errorCardElement = fixture.debugElement.query(By.directive(ErrorCardComponent));
+    expect(errorCardElement.nativeElement.textContent).toContain(errorMsg);
+  });
+
+  it('should show loading indicator on events data load', fakeAsync(() => {
+    // given
+    const spinnerElementQuery = By.css('.events mat-progress-spinner');
+    const events: Event[] = [];
+    dashboardServiceSpy.currentMedications.and.returnValue(of());
+    dashboardServiceSpy.lastSeizures.and.returnValue(of());
+    dashboardServiceSpy.lastEvents.and.returnValue(of(events).pipe(delay(100)));
+    dashboardServiceSpy.lastPeriods.and.returnValue(of());
+
+    // when
+    fixture = TestBed.createComponent(DashboardComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+    // then
+    expect(fixture.debugElement.queryAll(spinnerElementQuery).length).toBe(1);
+    tick(100);
+    fixture.detectChanges();
+    expect(fixture.debugElement.queryAll(spinnerElementQuery).length).toBe(0);
+  }));
+
+  // ------------------------------------------------------------------------------
+  // Periods section
+  // ------------------------------------------------------------------------------
+
+  it('should show current period data', async () => {
+    // given
+    const periods: Period[] = [
+      {
+        objectType: 'PERIOD',
+        id: 'p1',
+        startDate: moment('2021-05-11T00:00:00')
+      },
+    ];
+    dashboardServiceSpy.currentMedications.and.returnValue(of());
+    dashboardServiceSpy.lastSeizures.and.returnValue(of());
+    dashboardServiceSpy.lastEvents.and.returnValue(of());
+    dashboardServiceSpy.lastPeriods.and.returnValue(of(periods));
+
+    // when
+    fixture = TestBed.createComponent(DashboardComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+    // then
+    const lastPeriodTitle = fixture.debugElement.query(By.css('.last-period mat-card-subtitle'));
+    expect(lastPeriodTitle).toBeTruthy();
+    expect(lastPeriodTitle.nativeElement.textContent).toContain(periods[0].startDate.format('LL'));
+
+    const lastPeriodElement = fixture.debugElement.query(
+      By.css('.last-period mat-card-content')
+    );
+    expect(lastPeriodElement).toBeTruthy();
+    expect(lastPeriodElement.nativeElement.textContent).toContain('4 days'); // system time is set in beforeEach
+  });
+
+  it('should show last period data', async () => {
+    // given
+    const periods: Period[] = [
+      {
+        objectType: 'PERIOD',
+        id: 'p1',
+        startDate: moment('2021-05-08T12:05:00'),
+        endDate: moment('2021-05-15T12:05:00')
+      },
+    ];
+    dashboardServiceSpy.currentMedications.and.returnValue(of());
+    dashboardServiceSpy.lastSeizures.and.returnValue(of());
+    dashboardServiceSpy.lastEvents.and.returnValue(of());
+    dashboardServiceSpy.lastPeriods.and.returnValue(of(periods));
+
+    // when
+    fixture = TestBed.createComponent(DashboardComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+    // then
+    const lastPeriodTitle = fixture.debugElement.query(By.css('.last-period mat-card-subtitle'));
+    expect(lastPeriodTitle).toBeTruthy();
+    expect(lastPeriodTitle.nativeElement.textContent).toContain(periods[0].startDate.format('LL'));
+    expect(lastPeriodTitle.nativeElement.textContent).toContain(periods[0].endDate?.format('LL'));
+
+    const lastPeriodElement = fixture.debugElement.query(
+      By.css('.last-period mat-card-content')
+    );
+    expect(lastPeriodElement).toBeTruthy();
+    expect(lastPeriodElement.nativeElement.textContent).toContain('a few seconds'); // system time is set in beforeEach
+  });
+
+  it('should show no data if last period is empty', async () => {
+    // given
+    const periods: Period[] = [];
+    dashboardServiceSpy.currentMedications.and.returnValue(of());
+    dashboardServiceSpy.lastSeizures.and.returnValue(of());
+    dashboardServiceSpy.lastEvents.and.returnValue(of());
+    dashboardServiceSpy.lastPeriods.and.returnValue(of(periods));
+
+    // when
+    fixture = TestBed.createComponent(DashboardComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+    // then
+    const lastPeriodElement = fixture.debugElement.query(
+      By.css('.last-period mat-card-content')
+    );
+    expect(lastPeriodElement).toBeTruthy();
+    expect(lastPeriodElement.nativeElement.textContent.toLowerCase()).toContain('no data');
+  });
+
+  it('should show error if last period data throw error', async () => {
+    // given
+    const errorMsg = 'Some last period error!';
+    dashboardServiceSpy.currentMedications.and.returnValue(of());
+    dashboardServiceSpy.lastSeizures.and.returnValue(of());
+    dashboardServiceSpy.lastEvents.and.returnValue(of());
+    dashboardServiceSpy.lastPeriods.and.returnValue(throwError(() => new Error(errorMsg)));
+
+    // when
+    fixture = TestBed.createComponent(DashboardComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+    // then
+    const errorCardElement = fixture.debugElement.query(By.directive(ErrorCardComponent));
+    expect(errorCardElement.nativeElement.textContent).toContain(errorMsg);
+  });
+
+  it('should show loading indicator on last period data load', fakeAsync(() => {
+    // given
+    const spinnerElementQuery = By.css('.last-period mat-progress-spinner');
+    const periods: Period[] = [];
+    dashboardServiceSpy.currentMedications.and.returnValue(of());
+    dashboardServiceSpy.lastSeizures.and.returnValue(of());
+    dashboardServiceSpy.lastEvents.and.returnValue(of());
+    dashboardServiceSpy.lastPeriods.and.returnValue(of(periods).pipe(delay(100)));
+
+    // when
+    fixture = TestBed.createComponent(DashboardComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+    // then
+    expect(fixture.debugElement.queryAll(spinnerElementQuery).length).toBe(1);
+    tick(100);
+    fixture.detectChanges();
+    expect(fixture.debugElement.queryAll(spinnerElementQuery).length).toBe(0);
+  }));
+
 });

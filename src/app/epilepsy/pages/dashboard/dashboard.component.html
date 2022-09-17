@@ -3,27 +3,8 @@
 </mat-toolbar>
 
 <main>
-  <section class="actions" fxLayout="column" fxLayoutAlign="center stretch">
-    <mat-card>
-      <mat-card-content fxLayout="row wrap" fxLayoutAlign="space-around center">
-        <a mat-raised-button color="warn" routerLink="/epilepsy/seizures/add" i18n-routerLink="@@routerLink-epilepsy-seizures-add" i18n="@@dashboard-action-add-seizure">Attack!</a>
-        <a mat-raised-button color="primary" routerLink="/epilepsy/medications/add" i18n-routerLink="@@routerLink-epilepsy-medications-add" i18n="@@dashboard-action-add-medication">Medication</a>
-        <a mat-raised-button color="basic" routerLink="/epilepsy/events/add" i18n-routerLink="@@routerLink-epilepsy-events-add" i18n="@@dashboard-action-add-event">Event</a>
-      </mat-card-content>
-    </mat-card>
-  </section>
-
-  <section
-    class="info"
-    fxLayout="column"
-    fxLayout.gt-xs="row"
-    fxLayoutGap="1em"
-    fxLayoutAlign="center stretch"
-  >
-    <mat-card
-      class="last-seizure"
-      *ngIf="lastSeizures$ | async as lastSeizures; else loadingOrErrorSeizures"
-    >
+  <section class="info" fxLayout="column" fxLayout.gt-xs="row wrap" fxLayoutAlign="start stretch">
+    <mat-card class="last-seizure" *ngIf="lastSeizures$ | async as lastSeizures; else loadingOrErrorSeizures">
       <mat-card-title-group>
         <mat-card-title i18n="@@dashboard-title-last-seizure">Last seizure</mat-card-title>
         <mat-card-subtitle *ngIf="lastSeizures.length === 1">{{
@@ -37,6 +18,9 @@
           {{ lastSeizures[0].occurred | timeSince | humanize }}
         </p>
       </mat-card-content>
+      <mat-card-actions>
+        <a mat-raised-button color="warn" routerLink="/epilepsy/seizures/add" i18n-routerLink="@@routerLink-epilepsy-seizures-add" i18n="@@dashboard-action-add-seizure">Attack!</a>
+      </mat-card-actions>
     </mat-card>
 
     <ng-template #loadingOrErrorSeizures>
@@ -51,24 +35,16 @@
       </ng-template>
     </ng-template>
 
-    <mat-card
-      class="medications"
-      *ngIf="medications$ | async as medications; else loadingOrErrorMedications"
-    >
+    <mat-card class="medications app-list-card" *ngIf="medications$ | async as medications; else loadingOrErrorMedications">
       <mat-card-title-group>
         <mat-card-title i18n="@@dashboard-title-current-medications">Current medications</mat-card-title>
       </mat-card-title-group>
       <mat-card-content>
-        <mat-list
-          fxLayout="row wrap"
-        >
+        <mat-list>
           <mat-list-item *ngFor="let medication of medications">
             <mat-icon mat-list-icon>medication</mat-icon>
             <div mat-line class="medication-name">{{ medication.name }}</div>
-            <div
-              mat-line
-              class="dose"
-              [matTooltip]="
+            <div mat-line class="medication-dose app-text-muted" [matTooltip]="
                 medication.doses.morning +
                 ' - ' +
                 medication.doses.noon +
@@ -87,6 +63,9 @@
           </mat-list-item>
         </mat-list>
       </mat-card-content>
+      <mat-card-actions>
+        <a mat-raised-button color="primary" routerLink="/epilepsy/medications" i18n-routerLink="@@routerLink-epilepsy-medications" i18n="@@title-medications">Medications</a>
+      </mat-card-actions>
     </mat-card>
 
     <ng-template #loadingOrErrorMedications>
@@ -100,5 +79,102 @@
         </mat-card>
       </ng-template>
     </ng-template>
-    </section>
+
+    <mat-card class="last-period" *ngIf="lastPeriods$ | async as lastPeriods; else loadingOrErrorPeriods">
+      <ng-container *ngIf="lastPeriods.length !== 1">
+        <mat-card-title-group>
+          <mat-card-title i18n="@@dashboard-title-last-period">Last period</mat-card-title>
+          <mat-card-content>
+            <h3 i18n="@@no-data">No data</h3>
+          </mat-card-content>
+        </mat-card-title-group>
+        <mat-card-actions>
+          <a mat-raised-button color="basic" routerLink="/epilepsy/periods" i18n-routerLink="@@routerLink-epilepsy-periods" i18n="@@title-periods">Periods</a>
+        </mat-card-actions>
+      </ng-container>
+
+      <ng-container *ngIf="lastPeriods.length === 1 && !lastPeriods[0].endDate">
+        <mat-card-title-group>
+          <mat-card-title i18n="@@dashboard-title-current-period">Current period</mat-card-title>
+          <mat-card-subtitle *ngIf="lastPeriods.length === 1" i18n="@@dashboard-subtitle-current-period">Since: {{ lastPeriods[0].startDate | moment: "LL" }}</mat-card-subtitle>
+        </mat-card-title-group>
+        <mat-card-content>
+          <h3 i18n="@@dashboard-current-period-content-lasts">Lasts:</h3>
+          <p class="mat-display-3">
+            {{ lastPeriods[0].startDate | timeSince: 'InDays' | humanize }}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <a mat-raised-button color="basic" routerLink="/epilepsy/periods" i18n-routerLink="@@routerLink-epilepsy-periods" i18n="@@title-periods">Periods</a>
+        </mat-card-actions>
+      </ng-container>
+
+      <ng-container *ngIf="lastPeriods.length === 1 && lastPeriods[0].endDate">
+        <mat-card-title-group>
+          <mat-card-title i18n="@@dashboard-title-last-period">Last period</mat-card-title>
+          <mat-card-subtitle *ngIf="lastPeriods.length === 1">
+            {{ lastPeriods[0].startDate | moment: "LL" }} - {{ lastPeriods[0].endDate | moment: "LL" }}
+          </mat-card-subtitle>
+        </mat-card-title-group>
+        <mat-card-content>
+          <h3 i18n="@@dashboard-last-period-content-time-since">Time since:</h3>
+          <p class="mat-display-3">
+            {{ lastPeriods[0].endDate | timeSince: 'InDays' | humanize }}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <a mat-raised-button color="basic" routerLink="/epilepsy/periods" i18n-routerLink="@@routerLink-epilepsy-periods" i18n="@@title-periods">Periods</a>
+        </mat-card-actions>
+      </ng-container>
+    </mat-card>
+
+    <ng-template #loadingOrErrorPeriods>
+      <app-error-card [error]="periodsError" *ngIf="periodsError; else loadingPeriods"></app-error-card>
+      <ng-template #loadingPeriods>
+        <mat-card class="last-period">
+          <mat-card-title-group>
+            <mat-card-title i18n="@@dashboard-title-last-period">Last period</mat-card-title>
+          </mat-card-title-group>
+          <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+        </mat-card>
+      </ng-template>
+    </ng-template>
+
+    <mat-card class="events app-list-card" *ngIf="lastEvents$ | async as events; else loadingOrErrorEvents">
+      <mat-card-title-group>
+        <mat-card-title i18n="@@dashboard-title-last-events">Last events</mat-card-title>
+      </mat-card-title-group>
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item *ngFor="let event of events">
+            <mat-icon mat-list-icon>event</mat-icon>
+            <div mat-line>
+              <span class="event-name">{{ event.name }}</span>
+              <span class="event-occurred app-text-muted"> - {{ event.occurred | moment: "LL" }}</span>
+            </div>
+          </mat-list-item>
+
+          <mat-list-item *ngIf="!events.length">
+            <mat-icon mat-list-icon>info_outline</mat-icon>
+            <div mat-line i18n="@@no-data">No data</div>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+      <mat-card-actions>
+        <a mat-raised-button color="basic" routerLink="/epilepsy/events" i18n-routerLink="@@routerLink-epilepsy-events" i18n="@@title-events">Events</a>
+      </mat-card-actions>
+    </mat-card>
+
+    <ng-template #loadingOrErrorEvents>
+      <app-error-card [error]="eventsError" *ngIf="eventsError; else loadingEvents"></app-error-card>
+      <ng-template #loadingEvents>
+        <mat-card class="events">
+          <mat-card-title-group>
+            <mat-card-title i18n="@@dashboard-title-last-events">Last events</mat-card-title>
+          </mat-card-title-group>
+          <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+        </mat-card>
+      </ng-template>
+    </ng-template>
+  </section>
 </main>

@@ -78,16 +78,16 @@ Debugging information about NGSW can be found under URLs:
 - [Firebase API - Reference](https://firebase.google.com/docs/reference/js)
 - [ApexCharts - Examples](https://apexcharts.com/angular-chart-demos/)
 
-## TODO 
+## TODO
 
 - Dashboard redesign - 4 cards with action buttons below instead on top:
-  - Seizures - nothing change
+  - Periods - show only if female
+  - Move periods after seizures, before medicaments
   - Medicaments - compacted list (one line name & doses)
-  - Events - list of last events
-  - Period - time from last period, or how long current one is
   - Other improvements:
     - Dashboard in case of no medicaments place link or button to add some
     - Dashboard in case of no seizures place link or button to add some
+  - Update screens on doc
 - Update user profile management
   - Add seizure types management
   - Add seizure triggers management
