@@ -3,16 +3,6 @@
 </mat-toolbar>
 
 <main>
-  <section class="actions" fxLayout="column" fxLayoutAlign="center stretch">
-    <mat-card>
-      <mat-card-content fxLayout="row wrap" fxLayoutAlign="space-around center">
-        <a mat-raised-button color="warn" routerLink="/epilepsy/seizures/add" i18n-routerLink="@@routerLink-epilepsy-seizures-add" i18n="@@dashboard-action-add-seizure">Attack!</a>
-        <a mat-raised-button color="primary" routerLink="/epilepsy/medications/add" i18n-routerLink="@@routerLink-epilepsy-medications-add" i18n="@@dashboard-action-add-medication">Medication</a>
-        <a mat-raised-button color="basic" routerLink="/epilepsy/events/add" i18n-routerLink="@@routerLink-epilepsy-events-add" i18n="@@dashboard-action-add-event">Event</a>
-      </mat-card-content>
-    </mat-card>
-  </section>
-
   <section class="info" fxLayout="column" fxLayout.gt-xs="row wrap" fxLayoutAlign="start stretch">
     <mat-card class="last-seizure" *ngIf="lastSeizures$ | async as lastSeizures; else loadingOrErrorSeizures">
       <mat-card-title-group>
@@ -28,6 +18,9 @@
           {{ lastSeizures[0].occurred | timeSince | humanize }}
         </p>
       </mat-card-content>
+      <mat-card-actions>
+        <a mat-raised-button color="warn" routerLink="/epilepsy/seizures/add" i18n-routerLink="@@routerLink-epilepsy-seizures-add" i18n="@@dashboard-action-add-seizure">Attack!</a>
+      </mat-card-actions>
     </mat-card>
 
     <ng-template #loadingOrErrorSeizures>
@@ -70,6 +63,9 @@
           </mat-list-item>
         </mat-list>
       </mat-card-content>
+      <mat-card-actions>
+        <a mat-raised-button color="primary" routerLink="/epilepsy/medications" i18n-routerLink="@@routerLink-epilepsy-medications" i18n="@@title-medications">Medications</a>
+      </mat-card-actions>
     </mat-card>
 
     <ng-template #loadingOrErrorMedications>
@@ -92,6 +88,9 @@
             <h3 i18n="@@no-data">No data</h3>
           </mat-card-content>
         </mat-card-title-group>
+        <mat-card-actions>
+          <a mat-raised-button color="basic" routerLink="/epilepsy/periods" i18n-routerLink="@@routerLink-epilepsy-periods" i18n="@@title-periods">Periods</a>
+        </mat-card-actions>
       </ng-container>
 
       <ng-container *ngIf="lastPeriods.length === 1 && !lastPeriods[0].endDate">
@@ -105,6 +104,9 @@
             {{ lastPeriods[0].startDate | timeSince: 'InDays' | humanize }}
           </p>
         </mat-card-content>
+        <mat-card-actions>
+          <a mat-raised-button color="basic" routerLink="/epilepsy/periods" i18n-routerLink="@@routerLink-epilepsy-periods" i18n="@@title-periods">Periods</a>
+        </mat-card-actions>
       </ng-container>
 
       <ng-container *ngIf="lastPeriods.length === 1 && lastPeriods[0].endDate">
@@ -120,6 +122,9 @@
             {{ lastPeriods[0].endDate | timeSince: 'InDays' | humanize }}
           </p>
         </mat-card-content>
+        <mat-card-actions>
+          <a mat-raised-button color="basic" routerLink="/epilepsy/periods" i18n-routerLink="@@routerLink-epilepsy-periods" i18n="@@title-periods">Periods</a>
+        </mat-card-actions>
       </ng-container>
     </mat-card>
 
@@ -155,6 +160,9 @@
           </mat-list-item>
         </mat-list>
       </mat-card-content>
+      <mat-card-actions>
+        <a mat-raised-button color="basic" routerLink="/epilepsy/events" i18n-routerLink="@@routerLink-epilepsy-events" i18n="@@title-events">Events</a>
+      </mat-card-actions>
     </mat-card>
 
     <ng-template #loadingOrErrorEvents>

@@ -81,10 +81,8 @@ Debugging information about NGSW can be found under URLs:
 ## TODO
 
 - Dashboard redesign - 4 cards with action buttons below instead on top:
-  - Seizures - nothing change
+  - Periods - show only if female
   - Medicaments - compacted list (one line name & doses)
-  - Events - list of last events
-  - Period - time from last period, or how long current one is
   - Other improvements:
     - Dashboard in case of no medicaments place link or button to add some
     - Dashboard in case of no seizures place link or button to add some
