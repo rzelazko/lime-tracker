@@ -13,17 +13,8 @@
     </mat-card>
   </section>
 
-  <section
-    class="info"
-    fxLayout="column"
-    fxLayout.gt-xs="row"
-    fxLayoutGap="1em"
-    fxLayoutAlign="center stretch"
-  >
-    <mat-card
-      class="last-seizure"
-      *ngIf="lastSeizures$ | async as lastSeizures; else loadingOrErrorSeizures"
-    >
+  <section class="info" fxLayout="column" fxLayout.gt-xs="row" fxLayoutGap="1em" fxLayoutAlign="center stretch">
+    <mat-card class="last-seizure" *ngIf="lastSeizures$ | async as lastSeizures; else loadingOrErrorSeizures">
       <mat-card-title-group>
         <mat-card-title i18n="@@dashboard-title-last-seizure">Last seizure</mat-card-title>
         <mat-card-subtitle *ngIf="lastSeizures.length === 1">{{
@@ -51,24 +42,16 @@
       </ng-template>
     </ng-template>
 
-    <mat-card
-      class="medications"
-      *ngIf="medications$ | async as medications; else loadingOrErrorMedications"
-    >
+    <mat-card class="medications app-list-card" *ngIf="medications$ | async as medications; else loadingOrErrorMedications">
       <mat-card-title-group>
         <mat-card-title i18n="@@dashboard-title-current-medications">Current medications</mat-card-title>
       </mat-card-title-group>
       <mat-card-content>
-        <mat-list
-          fxLayout="row wrap"
-        >
+        <mat-list fxLayout="row wrap">
           <mat-list-item *ngFor="let medication of medications">
             <mat-icon mat-list-icon>medication</mat-icon>
             <div mat-line class="medication-name">{{ medication.name }}</div>
-            <div
-              mat-line
-              class="dose"
-              [matTooltip]="
+            <div mat-line class="medication-dose app-text-muted" [matTooltip]="
                 medication.doses.morning +
                 ' - ' +
                 medication.doses.noon +
@@ -100,5 +83,39 @@
         </mat-card>
       </ng-template>
     </ng-template>
-    </section>
+
+    <mat-card class="events app-list-card" *ngIf="lastEvents$ | async as events; else loadingOrErrorEvents">
+      <mat-card-title-group>
+        <mat-card-title i18n="@@dashboard-title-last-events">Last events</mat-card-title>
+      </mat-card-title-group>
+      <mat-card-content>
+        <mat-list fxLayout="row wrap">
+          <mat-list-item *ngFor="let event of events">
+            <mat-icon mat-list-icon>event</mat-icon>
+            <div mat-line>
+              <span class="event-name">{{ event.name }}</span> <span class="event-occurred app-text-muted">{{
+                event.occurred | moment: "LL" }}</span>
+            </div>
+          </mat-list-item>
+
+          <mat-list-item *ngIf="!events.length">
+            <mat-icon mat-list-icon>info_outline</mat-icon>
+            <div mat-line i18n="@@no-data">No data</div>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+
+    <ng-template #loadingOrErrorEvents>
+      <app-error-card [error]="eventsError" *ngIf="eventsError; else loadingEvents"></app-error-card>
+      <ng-template #loadingEvents>
+        <mat-card class="events">
+          <mat-card-title-group>
+            <mat-card-title i18n="@@dashboard-title-last-events">Last events</mat-card-title>
+          </mat-card-title-group>
+          <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+        </mat-card>
+      </ng-template>
+    </ng-template>
+  </section>
 </main>

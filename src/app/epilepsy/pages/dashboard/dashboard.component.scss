@@ -24,14 +24,16 @@ section.info {
     mat-list-item {
       width: 10em;
     }
+  }
 
-    .dose {
-      color: mat.get-color-from-palette($app-foreground, "secondary-text");
-    }
-
+  mat-card.app-list-card {
     .mat-list-icon {
       opacity: $app-icon-opacity;
     }
+  }
+
+  .app-text-muted {
+    color: mat.get-color-from-palette($app-foreground, "secondary-text");
   }
 }
 

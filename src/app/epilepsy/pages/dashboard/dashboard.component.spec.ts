@@ -10,6 +10,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import * as moment from 'moment';
 import { delay, of, throwError } from 'rxjs';
 import { ErrorCardComponent } from './../../../shared/error-card/error-card.component';
+import { Event } from './../../../shared/models/event.model';
 import { Medication } from './../../../shared/models/medication.model';
 import { Seizure } from './../../../shared/models/seizure.model';
 import { HumanizePipe } from './../../../shared/pipes/humanize.pipe';
@@ -64,6 +65,8 @@ describe('DashboardComponent', () => {
     jasmine.clock().uninstall();
   });
 
+  // Medicaments section
+
   it('should show medicaments data', async () => {
     // given
     const medications: Medication[] = [
@@ -104,7 +107,7 @@ describe('DashboardComponent', () => {
 
     // then
     const medNameElements = fixture.debugElement.queryAll(By.css('.medication-name'));
-    const medDoseElements = fixture.debugElement.queryAll(By.css('.dose'));
+    const medDoseElements = fixture.debugElement.queryAll(By.css('.medication-dose'));
     expect(medNameElements.length).toBe(medications.length);
     for (let i = 0; i < medications.length; i++) {
       expect(medNameElements[i].nativeElement.textContent).toContain(medications[i].name);
@@ -170,6 +173,8 @@ describe('DashboardComponent', () => {
     fixture.detectChanges();
     expect(fixture.debugElement.queryAll(spinnerElementQuery).length).toBe(0);
   }));
+
+  // Seizures section
 
   it('should show last seizure data', async () => {
     // given
@@ -246,6 +251,101 @@ describe('DashboardComponent', () => {
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(of(seizures).pipe(delay(100)));
     dashboardServiceSpy.lastEvents.and.returnValue(of());
+    dashboardServiceSpy.lastPeriods.and.returnValue(of());
+
+    // when
+    fixture = TestBed.createComponent(DashboardComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+    // then
+    expect(fixture.debugElement.queryAll(spinnerElementQuery).length).toBe(1);
+    tick(100);
+    fixture.detectChanges();
+    expect(fixture.debugElement.queryAll(spinnerElementQuery).length).toBe(0);
+  }));
+
+  // Events section
+
+  it('should show events data', async () => {
+    // given
+    const events: Event[] = [
+      {
+        objectType: 'EVENT',
+        id: 'e1',
+        name: 'Lorem ipsum 1',
+        occurred: moment('2021-02-15'),
+      },
+      {
+        objectType: 'EVENT',
+        id: 'e2',
+        name: 'Lorem ipsum 2',
+        occurred: moment('2021-01-12'),
+      }
+    ];
+    dashboardServiceSpy.currentMedications.and.returnValue(of());
+    dashboardServiceSpy.lastSeizures.and.returnValue(of());
+    dashboardServiceSpy.lastEvents.and.returnValue(of(events));
+    dashboardServiceSpy.lastPeriods.and.returnValue(of());
+
+    // when
+    fixture = TestBed.createComponent(DashboardComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+    // then
+    const evNameElements = fixture.debugElement.queryAll(By.css('.event-name'));
+    const evOccurredElements = fixture.debugElement.queryAll(By.css('.event-occurred'));
+    expect(evNameElements.length).toBe(events.length);
+    for (let i = 0; i < events.length; i++) {
+      expect(evNameElements[i].nativeElement.textContent).toContain(events[i].name);
+      expect(evOccurredElements[i].nativeElement.textContent).toContain(events[i].occurred.format('LL'));
+    }
+  });
+
+  it('should show no data if events list is empty', async () => {
+    // given
+    const events: Event[] = [];
+    dashboardServiceSpy.currentMedications.and.returnValue(of());
+    dashboardServiceSpy.lastSeizures.and.returnValue(of());
+    dashboardServiceSpy.lastEvents.and.returnValue(of(events));
+    dashboardServiceSpy.lastPeriods.and.returnValue(of());
+
+    // when
+    fixture = TestBed.createComponent(DashboardComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+    // then
+    const evCardElement = fixture.debugElement.query(By.css('.events'));
+    expect(evCardElement.nativeElement.textContent).toContain('No data');
+  });
+
+  it('should show error if events data throw error', async () => {
+    // given
+    const errorMsg = 'Some events error!';
+    dashboardServiceSpy.currentMedications.and.returnValue(of());
+    dashboardServiceSpy.lastSeizures.and.returnValue(of());
+    dashboardServiceSpy.lastEvents.and.returnValue(throwError(() => new Error(errorMsg)));
+    dashboardServiceSpy.lastPeriods.and.returnValue(of());
+
+    // when
+    fixture = TestBed.createComponent(DashboardComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+    // then
+    const errorCardElement = fixture.debugElement.query(By.directive(ErrorCardComponent));
+    expect(errorCardElement.nativeElement.textContent).toContain(errorMsg);
+  });
+
+  it('should show loading indicator on events data load', fakeAsync(() => {
+    // given
+    const spinnerElementQuery = By.css('.events mat-progress-spinner');
+    const events: Event[] = [];
+    dashboardServiceSpy.currentMedications.and.returnValue(of());
+    dashboardServiceSpy.lastSeizures.and.returnValue(of());
+    dashboardServiceSpy.lastEvents.and.returnValue(of(events).pipe(delay(100)));
     dashboardServiceSpy.lastPeriods.and.returnValue(of());
 
     // when
