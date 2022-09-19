@@ -7,31 +7,55 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { User } from 'firebase/auth';
 import * as moment from 'moment';
 import { delay, of, throwError } from 'rxjs';
+import { UserData } from './../../../auth/models/user-details.model';
 import { ErrorCardComponent } from './../../../shared/error-card/error-card.component';
 import { Event } from './../../../shared/models/event.model';
 import { Medication } from './../../../shared/models/medication.model';
+import { MockFirebaseUser } from './../../../shared/models/mock-firebase-user.model';
 import { Period } from './../../../shared/models/period.model';
 import { Seizure } from './../../../shared/models/seizure.model';
 import { HumanizePipe } from './../../../shared/pipes/humanize.pipe';
 import { MomentPipe } from './../../../shared/pipes/moment.pipe';
 import { TimeSincePipe } from './../../../shared/pipes/time-since.pipe';
+import { AuthService } from './../../../shared/services/auth.service';
 import { DashboardService } from './../../../shared/services/dashboard.service';
+import { UserDetailsService } from './../../../shared/services/user-details.service';
 import { DashboardComponent } from './dashboard.component';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let dashboardServiceSpy: jasmine.SpyObj<DashboardService>;
+  let authServiceSpy: jasmine.SpyObj<AuthService>;
+  let userDetailsServiceSpy: jasmine.SpyObj<UserDetailsService>;
 
   let fixture: ComponentFixture<DashboardComponent>;
 
+  const mockUserData: UserData = {
+    id: 'joanna.smith',
+    email: 'Joanna Smith',
+    name: 'joanna.smith@webperfekt.pl',
+    seizureTriggers: [],
+    seizureTypes: [],
+    isFemale: true,
+  };
+
+  const mockUser: User = new MockFirebaseUser(
+    mockUserData.name,
+    mockUserData.email,
+    mockUserData.id
+  );
+
   beforeEach(async () => {
+    const authServiceSpyObj = jasmine.createSpyObj('AuthService', ['user']);
+    const userDetailsServiceSpyObj = jasmine.createSpyObj('UserDetailsService', ['get']);
     const dashboardServiceSpyObj = jasmine.createSpyObj('DashboardService', [
       'currentMedications',
       'lastSeizures',
       'lastEvents',
-      'lastPeriods'
+      'lastPeriods',
     ]);
 
     await TestBed.configureTestingModule({
@@ -43,7 +67,11 @@ describe('DashboardComponent', () => {
         MomentPipe,
         TimeSincePipe,
       ],
-      providers: [{ provide: DashboardService, useValue: dashboardServiceSpyObj }],
+      providers: [
+        { provide: AuthService, useValue: authServiceSpyObj },
+        { provide: UserDetailsService, useValue: userDetailsServiceSpyObj },
+        { provide: DashboardService, useValue: dashboardServiceSpyObj },
+      ],
       imports: [
         NoopAnimationsModule,
         MatCardModule,
@@ -54,6 +82,10 @@ describe('DashboardComponent', () => {
         MatTooltipModule,
       ],
     }).compileComponents();
+    authServiceSpy = TestBed.inject(AuthService) as jasmine.SpyObj<AuthService>;
+    userDetailsServiceSpy = TestBed.inject(
+      UserDetailsService
+    ) as jasmine.SpyObj<UserDetailsService>;
     dashboardServiceSpy = TestBed.inject(DashboardService) as jasmine.SpyObj<DashboardService>;
   });
 
@@ -204,9 +236,7 @@ describe('DashboardComponent', () => {
     fixture.detectChanges();
 
     // then
-    const lastSeizureElement = fixture.debugElement.query(
-      By.css('.last-seizure mat-card-content')
-    );
+    const lastSeizureElement = fixture.debugElement.query(By.css('.last-seizure mat-card-content'));
     expect(lastSeizureElement).toBeTruthy();
     expect(lastSeizureElement.nativeElement.textContent).toContain('5 minutes'); // system time is set in beforeEach
   });
@@ -225,9 +255,7 @@ describe('DashboardComponent', () => {
     fixture.detectChanges();
 
     // then
-    const lastSeizureElement = fixture.debugElement.query(
-      By.css('.last-seizure mat-card-content')
-    );
+    const lastSeizureElement = fixture.debugElement.query(By.css('.last-seizure mat-card-content'));
     expect(lastSeizureElement.nativeElement.textContent.toLowerCase()).toContain('unknown');
   });
 
@@ -288,7 +316,7 @@ describe('DashboardComponent', () => {
         id: 'e2',
         name: 'Lorem ipsum 2',
         occurred: moment('2021-01-12'),
-      }
+      },
     ];
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(of());
@@ -306,7 +334,9 @@ describe('DashboardComponent', () => {
     expect(evNameElements.length).toBe(events.length);
     for (let i = 0; i < events.length; i++) {
       expect(evNameElements[i].nativeElement.textContent).toContain(events[i].name);
-      expect(evOccurredElements[i].nativeElement.textContent).toContain(events[i].occurred.format('LL'));
+      expect(evOccurredElements[i].nativeElement.textContent).toContain(
+        events[i].occurred.format('LL')
+      );
     }
   });
 
@@ -373,11 +403,13 @@ describe('DashboardComponent', () => {
 
   it('should show current period data', async () => {
     // given
+    authServiceSpy.user.and.returnValue(mockUser);
+    userDetailsServiceSpy.get.and.returnValue(of(mockUserData));
     const periods: Period[] = [
       {
         objectType: 'PERIOD',
         id: 'p1',
-        startDate: moment('2021-05-11T00:00:00')
+        startDate: moment('2021-05-11T00:00:00'),
       },
     ];
     dashboardServiceSpy.currentMedications.and.returnValue(of());
@@ -395,21 +427,21 @@ describe('DashboardComponent', () => {
     expect(lastPeriodTitle).toBeTruthy();
     expect(lastPeriodTitle.nativeElement.textContent).toContain(periods[0].startDate.format('LL'));
 
-    const lastPeriodElement = fixture.debugElement.query(
-      By.css('.last-period mat-card-content')
-    );
+    const lastPeriodElement = fixture.debugElement.query(By.css('.last-period mat-card-content'));
     expect(lastPeriodElement).toBeTruthy();
     expect(lastPeriodElement.nativeElement.textContent).toContain('4 days'); // system time is set in beforeEach
   });
 
   it('should show last period data', async () => {
     // given
+    authServiceSpy.user.and.returnValue(mockUser);
+    userDetailsServiceSpy.get.and.returnValue(of(mockUserData));
     const periods: Period[] = [
       {
         objectType: 'PERIOD',
         id: 'p1',
         startDate: moment('2021-05-08T12:05:00'),
-        endDate: moment('2021-05-15T12:05:00')
+        endDate: moment('2021-05-15T12:05:00'),
       },
     ];
     dashboardServiceSpy.currentMedications.and.returnValue(of());
@@ -428,15 +460,15 @@ describe('DashboardComponent', () => {
     expect(lastPeriodTitle.nativeElement.textContent).toContain(periods[0].startDate.format('LL'));
     expect(lastPeriodTitle.nativeElement.textContent).toContain(periods[0].endDate?.format('LL'));
 
-    const lastPeriodElement = fixture.debugElement.query(
-      By.css('.last-period mat-card-content')
-    );
+    const lastPeriodElement = fixture.debugElement.query(By.css('.last-period mat-card-content'));
     expect(lastPeriodElement).toBeTruthy();
     expect(lastPeriodElement.nativeElement.textContent).toContain('a few seconds'); // system time is set in beforeEach
   });
 
   it('should show no data if last period is empty', async () => {
     // given
+    authServiceSpy.user.and.returnValue(mockUser);
+    userDetailsServiceSpy.get.and.returnValue(of(mockUserData));
     const periods: Period[] = [];
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(of());
@@ -449,15 +481,15 @@ describe('DashboardComponent', () => {
     fixture.detectChanges();
 
     // then
-    const lastPeriodElement = fixture.debugElement.query(
-      By.css('.last-period mat-card-content')
-    );
+    const lastPeriodElement = fixture.debugElement.query(By.css('.last-period mat-card-content'));
     expect(lastPeriodElement).toBeTruthy();
     expect(lastPeriodElement.nativeElement.textContent.toLowerCase()).toContain('no data');
   });
 
   it('should show error if last period data throw error', async () => {
     // given
+    authServiceSpy.user.and.returnValue(mockUser);
+    userDetailsServiceSpy.get.and.returnValue(of(mockUserData));
     const errorMsg = 'Some last period error!';
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(of());
@@ -476,6 +508,8 @@ describe('DashboardComponent', () => {
 
   it('should show loading indicator on last period data load', fakeAsync(() => {
     // given
+    authServiceSpy.user.and.returnValue(mockUser);
+    userDetailsServiceSpy.get.and.returnValue(of(mockUserData));
     const spinnerElementQuery = By.css('.last-period mat-progress-spinner');
     const periods: Period[] = [];
     dashboardServiceSpy.currentMedications.and.returnValue(of());
@@ -495,4 +529,45 @@ describe('DashboardComponent', () => {
     expect(fixture.debugElement.queryAll(spinnerElementQuery).length).toBe(0);
   }));
 
+  it('should show loading indicator on user details data load', fakeAsync(() => {
+    // given
+    authServiceSpy.user.and.returnValue(mockUser);
+    userDetailsServiceSpy.get.and.returnValue(of(mockUserData).pipe(delay(100)));
+    const spinnerElementQuery = By.css('.last-period mat-progress-spinner');
+    dashboardServiceSpy.currentMedications.and.returnValue(of());
+    dashboardServiceSpy.lastSeizures.and.returnValue(of());
+    dashboardServiceSpy.lastEvents.and.returnValue(of());
+    dashboardServiceSpy.lastPeriods.and.returnValue(of([]).pipe(delay(100)));
+
+    // when
+    fixture = TestBed.createComponent(DashboardComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+    // then
+    expect(fixture.debugElement.queryAll(spinnerElementQuery).length).toBe(1);
+    tick(100);
+    fixture.detectChanges(); // tick - load user data
+    tick(100);
+    fixture.detectChanges(); // tick - load periods
+    expect(fixture.debugElement.queryAll(spinnerElementQuery).length).toBe(0);
+  }));
+
+  it('should not display last period if not a female', fakeAsync(() => {
+    // given
+    authServiceSpy.user.and.returnValue(mockUser);
+    userDetailsServiceSpy.get.and.returnValue(of({ ...mockUserData, isFemale: false }));
+    dashboardServiceSpy.currentMedications.and.returnValue(of());
+    dashboardServiceSpy.lastSeizures.and.returnValue(of());
+    dashboardServiceSpy.lastEvents.and.returnValue(of());
+    dashboardServiceSpy.lastPeriods.and.returnValue(of());
+
+    // when
+    fixture = TestBed.createComponent(DashboardComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+    // then
+    expect(fixture.debugElement.query(By.css('.last-period'))).toBeFalsy();
+  }));
 });

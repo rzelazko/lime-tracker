@@ -80,53 +80,57 @@
       </ng-template>
     </ng-template>
 
-    <mat-card class="last-period" *ngIf="lastPeriods$ | async as lastPeriods; else loadingOrErrorPeriods">
-      <ng-container *ngIf="lastPeriods.length !== 1">
-        <mat-card-title-group>
-          <mat-card-title i18n="@@dashboard-title-last-period">Last period</mat-card-title>
-          <mat-card-content>
-            <h3 i18n="@@no-data">No data</h3>
-          </mat-card-content>
-        </mat-card-title-group>
-        <mat-card-actions>
-          <a mat-raised-button color="basic" routerLink="/epilepsy/periods" i18n-routerLink="@@routerLink-epilepsy-periods" i18n="@@title-periods">Periods</a>
-        </mat-card-actions>
-      </ng-container>
+    <ng-container *ngIf="userDetails$ | async as userData; else loadingOrErrorPeriods">
+      <ng-container *ngIf="userData.isFemale">
+        <mat-card class="last-period" *ngIf="lastPeriods$ | async as lastPeriods; else loadingOrErrorPeriods">
+          <ng-container *ngIf="lastPeriods.length !== 1">
+            <mat-card-title-group>
+              <mat-card-title i18n="@@dashboard-title-last-period">Last period</mat-card-title>
+              <mat-card-content>
+                <h3 i18n="@@no-data">No data</h3>
+              </mat-card-content>
+            </mat-card-title-group>
+            <mat-card-actions>
+              <a mat-raised-button color="basic" routerLink="/epilepsy/periods" i18n-routerLink="@@routerLink-epilepsy-periods" i18n="@@title-periods">Periods</a>
+            </mat-card-actions>
+          </ng-container>
 
-      <ng-container *ngIf="lastPeriods.length === 1 && !lastPeriods[0].endDate">
-        <mat-card-title-group>
-          <mat-card-title i18n="@@dashboard-title-current-period">Current period</mat-card-title>
-          <mat-card-subtitle *ngIf="lastPeriods.length === 1" i18n="@@dashboard-subtitle-current-period">Since: {{ lastPeriods[0].startDate | moment: "LL" }}</mat-card-subtitle>
-        </mat-card-title-group>
-        <mat-card-content>
-          <h3 i18n="@@dashboard-current-period-content-lasts">Lasts:</h3>
-          <p class="mat-display-3">
-            {{ lastPeriods[0].startDate | timeSince: 'InDays' | humanize }}
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <a mat-raised-button color="basic" routerLink="/epilepsy/periods" i18n-routerLink="@@routerLink-epilepsy-periods" i18n="@@title-periods">Periods</a>
-        </mat-card-actions>
-      </ng-container>
+          <ng-container *ngIf="lastPeriods.length === 1 && !lastPeriods[0].endDate">
+            <mat-card-title-group>
+              <mat-card-title i18n="@@dashboard-title-current-period">Current period</mat-card-title>
+              <mat-card-subtitle *ngIf="lastPeriods.length === 1" i18n="@@dashboard-subtitle-current-period">Since: {{ lastPeriods[0].startDate | moment: "LL" }}</mat-card-subtitle>
+            </mat-card-title-group>
+            <mat-card-content>
+              <h3 i18n="@@dashboard-current-period-content-lasts">Lasts:</h3>
+              <p class="mat-display-3">
+                {{ lastPeriods[0].startDate | timeSince: 'InDays' | humanize }}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <a mat-raised-button color="basic" routerLink="/epilepsy/periods" i18n-routerLink="@@routerLink-epilepsy-periods" i18n="@@title-periods">Periods</a>
+            </mat-card-actions>
+          </ng-container>
 
-      <ng-container *ngIf="lastPeriods.length === 1 && lastPeriods[0].endDate">
-        <mat-card-title-group>
-          <mat-card-title i18n="@@dashboard-title-last-period">Last period</mat-card-title>
-          <mat-card-subtitle *ngIf="lastPeriods.length === 1">
-            {{ lastPeriods[0].startDate | moment: "LL" }} - {{ lastPeriods[0].endDate | moment: "LL" }}
-          </mat-card-subtitle>
-        </mat-card-title-group>
-        <mat-card-content>
-          <h3 i18n="@@dashboard-last-period-content-time-since">Time since:</h3>
-          <p class="mat-display-3">
-            {{ lastPeriods[0].endDate | timeSince: 'InDays' | humanize }}
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <a mat-raised-button color="basic" routerLink="/epilepsy/periods" i18n-routerLink="@@routerLink-epilepsy-periods" i18n="@@title-periods">Periods</a>
-        </mat-card-actions>
+          <ng-container *ngIf="lastPeriods.length === 1 && lastPeriods[0].endDate">
+            <mat-card-title-group>
+              <mat-card-title i18n="@@dashboard-title-last-period">Last period</mat-card-title>
+              <mat-card-subtitle *ngIf="lastPeriods.length === 1">
+                {{ lastPeriods[0].startDate | moment: "LL" }} - {{ lastPeriods[0].endDate | moment: "LL" }}
+              </mat-card-subtitle>
+            </mat-card-title-group>
+            <mat-card-content>
+              <h3 i18n="@@dashboard-last-period-content-time-since">Time since:</h3>
+              <p class="mat-display-3">
+                {{ lastPeriods[0].endDate | timeSince: 'InDays' | humanize }}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <a mat-raised-button color="basic" routerLink="/epilepsy/periods" i18n-routerLink="@@routerLink-epilepsy-periods" i18n="@@title-periods">Periods</a>
+            </mat-card-actions>
+          </ng-container>
+        </mat-card>
       </ng-container>
-    </mat-card>
+    </ng-container>
 
     <ng-template #loadingOrErrorPeriods>
       <app-error-card [error]="periodsError" *ngIf="periodsError; else loadingPeriods"></app-error-card>
