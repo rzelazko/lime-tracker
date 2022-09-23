@@ -1,9 +1,19 @@
+<p>{{error}}</p>
 
 <apx-chart
+*ngIf="chartOptions"
 [series]="chartOptions.series"
 [chart]="chartOptions.chart"
+[xaxis]="chartOptions.xaxis"
+[markers]="chartOptions.markers"
+[stroke]="chartOptions.stroke"
+[yaxis]="chartOptions.yaxis"
 [dataLabels]="chartOptions.dataLabels"
 [title]="chartOptions.title"
-[colors]="chartOptions.colors"
+[subtitle]="chartOptions.subtitle"
+[fill]="chartOptions.fill"
+[tooltip]="chartOptions.tooltip"
+[legend]="chartOptions.legend"
+[colors]="['#008FFB']"
 ></apx-chart>
 
