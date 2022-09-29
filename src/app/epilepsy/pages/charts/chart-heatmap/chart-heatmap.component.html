@@ -1,19 +1,9 @@
-<p>{{error}}</p>
+<app-error-card [error]="error" *ngIf="error"></app-error-card>
 
-<apx-chart
-*ngIf="chartOptions"
-[series]="chartOptions.series"
-[chart]="chartOptions.chart"
-[xaxis]="chartOptions.xaxis"
-[markers]="chartOptions.markers"
-[stroke]="chartOptions.stroke"
-[yaxis]="chartOptions.yaxis"
-[dataLabels]="chartOptions.dataLabels"
-[title]="chartOptions.title"
-[subtitle]="chartOptions.subtitle"
-[fill]="chartOptions.fill"
-[tooltip]="chartOptions.tooltip"
-[legend]="chartOptions.legend"
-[colors]="['#008FFB']"
-></apx-chart>
-
+<ng-container *ngIf="!error">
+  <apx-chart *ngIf="chartOptions" [series]="chartOptions.series" [chart]="chartOptions.chart"
+    [xaxis]="chartOptions.xaxis" [markers]="chartOptions.markers" [stroke]="chartOptions.stroke"
+    [yaxis]="chartOptions.yaxis" [dataLabels]="chartOptions.dataLabels" [title]="chartOptions.title"
+    [subtitle]="chartOptions.subtitle" [fill]="chartOptions.fill" [tooltip]="chartOptions.tooltip"
+    [legend]="chartOptions.legend" [colors]="['#008FFB']"></apx-chart>
+</ng-container>

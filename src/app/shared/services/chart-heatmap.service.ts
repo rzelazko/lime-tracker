@@ -21,6 +21,15 @@ export class ChartHeatmapService {
     this.dateFrom = this.oneYearBefore(this.dateTo);
   }
 
+  setYear(year?: number) {
+    const momentTo = moment();
+    if (year) {
+      momentTo.year(year).endOf('year');
+    }
+    this.dateTo = momentTo.endOf('day');
+    this.dateFrom = this.oneYearBefore(this.dateTo);
+  }
+
   subtitle(): string {
     let subtitle = $localize`:@@chart-heatmap-subtitle-prefix:Rectangle = day, `;
     if (this.dateFrom.year() === this.dateTo.year()) {
@@ -42,13 +51,13 @@ export class ChartHeatmapService {
   }
 
   private oneYearBefore(date: moment.Moment) {
-    return moment(date).subtract(1, 'year');
+    return moment(date).add('1', 'day').subtract(1, 'year');
   }
 
   private agregateSeizuresData(seizures: Seizure[]): ChartData[] {
     const chartData: ChartData[] = [];
     const firstDayOfYearInRange = +moment(this.dateFrom).format('DDD');
-    const totalDaysInRange = this.dateTo.diff(this.dateFrom, 'days');
+    const totalDaysInRange = this.dateTo.diff(this.dateFrom, 'days') + 1;
     let amountOfSeries;
     if (totalDaysInRange % 5 === 0) {
       amountOfSeries = 5;
@@ -59,7 +68,7 @@ export class ChartHeatmapService {
     }
     const daysPerSerie = Math.floor(totalDaysInRange / amountOfSeries);
 
-    for (var m = moment(this.dateFrom); m.isBefore(this.dateTo); m.add(1, 'day')) {
+    for (var m = moment(this.dateFrom); m.isSameOrBefore(this.dateTo); m.add(1, 'day')) {
       const reindexedDayOfYear = this.getRemappedDayOfYear(
         m,
         firstDayOfYearInRange,

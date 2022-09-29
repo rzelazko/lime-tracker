@@ -36,6 +36,12 @@ export class ChartHeatmapComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(_changes: SimpleChanges): void {
+    this.chartService.setYear(this.selectedYear);
+
+    this.subsription?.unsubscribe();
     this.subsription = this.chartService.seizureSerie().subscribe({
       next: (data: ChartData[]) => {
         this.chartOptions = {
@@ -94,9 +100,6 @@ export class ChartHeatmapComponent implements OnInit, OnDestroy, OnChanges {
       },
       error: (error) => (this.error = error.message),
     });
-  }
-
-  ngOnChanges(_changes: SimpleChanges): void {
   }
 
   ngOnDestroy(): void {
