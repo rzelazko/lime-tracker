@@ -1,26 +1,8 @@
-import { ChartOptions } from './../../../../shared/models/chart-options.model';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ChartData } from './../../../../shared/models/chart-data.model';
+import { ChartOptions } from './../../../../shared/models/chart-options.model';
 import { ChartHeatmapService } from './../../../../shared/services/chart-heatmap.service';
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-  ViewChild,
-  OnDestroy,
-  NgZone,
-} from '@angular/core';
-import {
-  ApexAxisChartSeries,
-  ApexTitleSubtitle,
-  ApexDataLabels,
-  ApexChart,
-  ChartComponent,
-  ApexTooltip,
-  ApexPlotOptions,
-} from 'ng-apexcharts';
-import { map, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-chart-heatmap',

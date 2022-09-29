@@ -107,7 +107,7 @@ export class ChartHeatmapService {
         const currentData = chartData[serieIndex].data[currentDataIndex];
         chartData[serieIndex].data[currentDataIndex] = { ...currentData, y: currentData.y + 1 };
       } else {
-        throw 'Error: data should have been initialized at this point'; // TODO this error occures
+        throw 'Error: data should have been initialized at this point';
       }
     }
 
