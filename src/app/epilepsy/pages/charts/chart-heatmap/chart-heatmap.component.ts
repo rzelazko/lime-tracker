@@ -9,6 +9,7 @@ import {
   SimpleChanges,
   ViewChild,
   OnDestroy,
+  NgZone,
 } from '@angular/core';
 import {
   ApexAxisChartSeries,
@@ -32,11 +33,9 @@ export class ChartHeatmapComponent implements OnInit, OnDestroy, OnChanges {
   subsription?: Subscription;
   chartOptions?: ChartOptions;
 
-  constructor(private chartService: ChartHeatmapService) {
-  }
+  constructor(private chartService: ChartHeatmapService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   ngOnChanges(_changes: SimpleChanges): void {
     this.chartService.setYear(this.selectedYear);
@@ -47,10 +46,10 @@ export class ChartHeatmapComponent implements OnInit, OnDestroy, OnChanges {
         this.chartOptions = {
           xaxis: {
             axisTicks: {
-              show: false
+              show: false,
             },
             labels: {
-              show: false
+              show: false,
             },
             tooltip: {
               enabled: false,
@@ -60,18 +59,31 @@ export class ChartHeatmapComponent implements OnInit, OnDestroy, OnChanges {
             show: false,
             seriesName: 'zz',
             labels: {
-              formatter: (value: number, opts: { dataPointIndex: number, seriesIndex: number, w: any }, labels?: string[]) => {
+              formatter: (
+                value: number,
+                opts: { dataPointIndex: number; seriesIndex: number; w: any },
+                labels?: string[]
+              ) => {
                 const realValue = value;
-                if (opts && opts.w && opts.w.config && opts.w.config.series && opts.w.config.series[opts.seriesIndex]
-                  && opts.w.config.series[opts.seriesIndex].data && opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex]
-                  && opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex].label) {
-                  return `${opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex].label}: ${realValue}`;
+                if (
+                  opts &&
+                  opts.w &&
+                  opts.w.config &&
+                  opts.w.config.series &&
+                  opts.w.config.series[opts.seriesIndex] &&
+                  opts.w.config.series[opts.seriesIndex].data &&
+                  opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex] &&
+                  opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex].label
+                ) {
+                  return `${
+                    opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex].label
+                  }: ${realValue}`;
                 }
                 return realValue.toFixed(0);
-              }
+              },
             },
           },
-          markers: { },
+          markers: {},
           stroke: {},
           legend: {},
           fill: {},
@@ -93,8 +105,7 @@ export class ChartHeatmapComponent implements OnInit, OnDestroy, OnChanges {
             align: 'left',
             offsetX: 110,
           },
-          tooltip: {
-          },
+          tooltip: {},
           plotOptions: {
             heatmap: {
               colorScale: {
@@ -102,34 +113,34 @@ export class ChartHeatmapComponent implements OnInit, OnDestroy, OnChanges {
                   {
                     from: -1,
                     to: 0,
-                    color: "#d3d6d9",
-                    name: $localize`:@@chart-heatmap-legend-day-no-seizures:No seizures`
+                    color: '#d3d6d9',
+                    name: $localize`:@@chart-heatmap-legend-day-no-seizures:No seizures`,
                   },
                   {
                     from: 1,
                     to: 1,
-                    color: "#008ffb",
-                    name: $localize`:@@chart-heatmap-legend-day-with-1-seizure:Day with one seizure`
+                    color: '#008ffb',
+                    name: $localize`:@@chart-heatmap-legend-day-with-1-seizure:Day with one seizure`,
                   },
                   {
                     from: 2,
                     to: 2,
-                    color: "#0062ad",
-                    name: $localize`:@@chart-heatmap-legend-day-with-2-seizures:Day with two seizures`
+                    color: '#0062ad',
+                    name: $localize`:@@chart-heatmap-legend-day-with-2-seizures:Day with two seizures`,
                   },
                   {
                     from: 3,
                     to: 1000,
-                    color: "#00365e",
-                    name: $localize`:@@chart-heatmap-legend-day-with-more-seizures:Day with more seizures`
+                    color: '#00365e',
+                    name: $localize`:@@chart-heatmap-legend-day-with-more-seizures:Day with more seizures`,
                   },
-                ]
-              }
-            }
-          }
-        }
+                ],
+              },
+            },
+          },
+        };
       },
-      error: (error) => (this.error = error.message),
+      error: (error) => (this.error = $localize`:@@error-message:Error: ${error.message || error}`),
     });
   }
 
