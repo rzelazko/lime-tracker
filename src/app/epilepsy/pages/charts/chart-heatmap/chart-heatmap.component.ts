@@ -61,7 +61,7 @@ export class ChartHeatmapComponent implements OnInit, OnDestroy, OnChanges {
             seriesName: 'zz',
             labels: {
               formatter: (value: number, opts: { dataPointIndex: number, seriesIndex: number, w: any }, labels?: string[]) => {
-                const realValue = value - 1;
+                const realValue = value;
                 if (opts && opts.w && opts.w.config && opts.w.config.series && opts.w.config.series[opts.seriesIndex]
                   && opts.w.config.series[opts.seriesIndex].data && opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex]
                   && opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex].label) {
@@ -94,9 +94,40 @@ export class ChartHeatmapComponent implements OnInit, OnDestroy, OnChanges {
             offsetX: 110,
           },
           tooltip: {
-
           },
-        };
+          plotOptions: {
+            heatmap: {
+              colorScale: {
+                ranges: [
+                  {
+                    from: -1,
+                    to: 0,
+                    color: "#d3d6d9",
+                    name: $localize`:@@chart-heatmap-legend-day-no-seizures:No seizures`
+                  },
+                  {
+                    from: 1,
+                    to: 1,
+                    color: "#008ffb",
+                    name: $localize`:@@chart-heatmap-legend-day-with-1-seizure:Day with one seizure`
+                  },
+                  {
+                    from: 2,
+                    to: 2,
+                    color: "#0062ad",
+                    name: $localize`:@@chart-heatmap-legend-day-with-2-seizures:Day with two seizures`
+                  },
+                  {
+                    from: 3,
+                    to: 1000,
+                    color: "#00365e",
+                    name: $localize`:@@chart-heatmap-legend-day-with-more-seizures:Day with more seizures`
+                  },
+                ]
+              }
+            }
+          }
+        }
       },
       error: (error) => (this.error = error.message),
     });

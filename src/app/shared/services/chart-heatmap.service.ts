@@ -31,11 +31,11 @@ export class ChartHeatmapService {
   }
 
   subtitle(): string {
-    let subtitle = $localize`:@@chart-heatmap-subtitle-prefix:Rectangle = day, `;
+    let subtitle;
     if (this.dateFrom.year() === this.dateTo.year()) {
-      subtitle += $localize`:@@chart-heatmap-subtitle-postfix-year:range: year ${this.dateTo.year()}`;
+      subtitle = $localize`:@@chart-heatmap-subtitle-year:Range: year ${this.dateTo.year()}`;
     } else {
-      subtitle += $localize`:@@chart-heatmap-subtitle-postfix-day:range: a year from ${this.dateTo.format('LL')}`;
+      subtitle = $localize`:@@chart-heatmap-subtitle-day:Range: ${this.dateFrom.format('LL')} - ${this.dateTo.format('LL')}`;
     }
     return subtitle;
   }
@@ -86,7 +86,7 @@ export class ChartHeatmapService {
       }
 
       const formattedDate = m.format('LL');
-      chartData[serieIndex].data.push({ x: rowIndex.toString(), y: 1, label: formattedDate});
+      chartData[serieIndex].data.push({ x: rowIndex.toString(), y: 0, label: formattedDate});
     }
 
     for (const seizure of seizures) {
