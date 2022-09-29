@@ -84,6 +84,7 @@ Debugging information about NGSW can be found under URLs:
   - Error handling in template
   - Error thrown form service seems to not be displayed on UI
   - Tests
+  - Scrollbars issue on Charts page in Chrome on Mac
 - Dashboard redesign - 4 cards with action buttons below instead on top:
   - Move periods after seizures, before medicaments
   - Medicaments - compacted list (one line name & doses)
