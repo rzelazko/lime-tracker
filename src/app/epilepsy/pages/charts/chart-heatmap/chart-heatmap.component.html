@@ -1,7 +1,10 @@
 <app-error-card [error]="error" *ngIf="error"></app-error-card>
 
 <ng-container *ngIf="!error">
-  <apx-chart *ngIf="chartOptions && chartOptions.plotOptions"
+  <mat-progress-spinner mode="indeterminate" *ngIf="!chartOptions"></mat-progress-spinner>
+
+  <apx-chart
+    *ngIf="chartOptions && chartOptions.plotOptions"
     [series]="chartOptions.series"
     [chart]="chartOptions.chart"
     [xaxis]="chartOptions.xaxis"
