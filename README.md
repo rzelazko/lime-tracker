@@ -82,7 +82,8 @@ Debugging information about NGSW can be found under URLs:
 
 - Heatmap chart
   - Tests
-  - Scrollbars issue on Charts page in Chrome on Mac
+  - Fix: scrollbars issue on Charts page in Chrome on Mac
+  - Fix: charts shouldn't need to use ngOnChanges, instead some observer when routing year change
 - Dashboard redesign - 4 cards with action buttons below instead on top:
   - Move periods after seizures, before medicaments
   - Medicaments - compacted list (one line name & doses)
