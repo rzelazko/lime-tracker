@@ -81,7 +81,6 @@ Debugging information about NGSW can be found under URLs:
 ## TODO
 
 - Heatmap chart
-  - Tests
   - Fix: scrollbars issue on Charts page in Chrome on Mac
   - Fix: charts shouldn't need to use ngOnChanges, instead some observer when routing year change
 - Dashboard redesign - 4 cards with action buttons below instead on top:
