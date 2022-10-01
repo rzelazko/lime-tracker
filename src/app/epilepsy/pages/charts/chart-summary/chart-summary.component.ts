@@ -25,6 +25,7 @@ export class ChartSummaryComponent implements OnInit, OnDestroy, OnChanges {
     this.summaryChart = undefined;
     this.chartService.setYear(this.selectedYear);
 
+    this.subsription?.unsubscribe();
     this.subsription = combineLatest([
       this.chartService.medicationsSeries().pipe(map((data) => (this.medicationsData = data))),
       this.chartService.eventsSerie().pipe(
@@ -37,7 +38,7 @@ export class ChartSummaryComponent implements OnInit, OnDestroy, OnChanges {
       ),
     ]).subscribe({
       next: () => this.updateChart(),
-      error: (error) => (this.error = error.message),
+      error: (error) => (this.error = $localize`:@@error-message:Error: ${error.message || error}`),
     });
   }
 

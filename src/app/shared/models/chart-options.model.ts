@@ -5,6 +5,7 @@ import {
   ApexFill,
   ApexLegend,
   ApexMarkers,
+  ApexPlotOptions,
   ApexStroke,
   ApexTitleSubtitle,
   ApexTooltip,
@@ -25,4 +26,5 @@ export type ChartOptions = {
   legend: ApexLegend;
   fill: ApexFill;
   tooltip: ApexTooltip;
+  plotOptions?: ApexPlotOptions;
 };

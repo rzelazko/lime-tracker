@@ -44,6 +44,7 @@ import { VerifyEmailComponent } from './auth/pages/verify-email/verify-email.com
 import { ConfirmDeleteDialogComponent } from './epilepsy/components/confirm-delete-dialog/confirm-delete-dialog.component';
 import { TableComponent } from './epilepsy/components/table/table.component';
 import { YearsnavComponent } from './epilepsy/components/yearsnav/yearsnav.component';
+import { ChartHeatmapComponent } from './epilepsy/pages/charts/chart-heatmap/chart-heatmap.component';
 import { ChartSummaryComponent } from './epilepsy/pages/charts/chart-summary/chart-summary.component';
 import { ChartsComponent } from './epilepsy/pages/charts/charts.component';
 import { DashboardComponent } from './epilepsy/pages/dashboard/dashboard.component';
@@ -91,6 +92,7 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     // Components
     AppComponent,
     ChartsComponent,
+    ChartHeatmapComponent,
     ChartSummaryComponent,
     ConfirmDeleteDialogComponent,
     DashboardComponent,

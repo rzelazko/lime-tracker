@@ -898,12 +898,64 @@
           <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="chart-heatmap-title" datatype="html">
+        <source>Seizures during a year</source>
+        <target>Napady w trakcie roku</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-heatmap/chart-heatmap.component.ts</context>
+          <context context-type="linenumber">81</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chart-heatmap-legend-day-no-seizures" datatype="html">
+        <source>No seizures</source>
+        <target>Brak napadów</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-heatmap/chart-heatmap.component.ts</context>
+          <context context-type="linenumber">99</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chart-heatmap-legend-day-with-1-seizure" datatype="html">
+        <source>Day with one seizure</source>
+        <target>Dzień z jednym napadem</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-heatmap/chart-heatmap.component.ts</context>
+          <context context-type="linenumber">105</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chart-heatmap-legend-day-with-2-seizures" datatype="html">
+        <source>Day with two seizures</source>
+        <target>Dzień z dwoma napadmi</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-heatmap/chart-heatmap.component.ts</context>
+          <context context-type="linenumber">111</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chart-heatmap-legend-day-with-more-seizures" datatype="html">
+        <source>Day with more seizures</source>
+        <target>Dzień z większą ilością napadów</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-heatmap/chart-heatmap.component.ts</context>
+          <context context-type="linenumber">117</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-message" datatype="html">
+        <source>Error: <x id="PH" equiv-text="error.message || error"/></source>
+        <target>Błąd: <x id="PH" equiv-text="error.message || error"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-heatmap/chart-heatmap.component.ts</context>
+          <context context-type="linenumber">125</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-summary/chart-summary.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="title-events" datatype="html">
         <source>Events</source>
         <target>Wydarzenia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-summary/chart-summary.component.ts</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">32</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
@@ -923,7 +975,7 @@
         <target>Napady</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-summary/chart-summary.component.ts</context>
-          <context context-type="linenumber">35</context>
+          <context context-type="linenumber">36</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures.component.html</context>
@@ -939,7 +991,7 @@
         <target>Dawka leku (na dobę)</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-summary/chart-summary.component.ts</context>
-          <context context-type="linenumber">78</context>
+          <context context-type="linenumber">79</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chart-summary-title" datatype="html">
@@ -947,7 +999,7 @@
         <target>Napady, leki i wydarzenia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-summary/chart-summary.component.ts</context>
-          <context context-type="linenumber">133</context>
+          <context context-type="linenumber">134</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routerLink-epilepsy-charts" datatype="html">
@@ -2124,6 +2176,22 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/layout/anonymous/anonymous.component.html</context>
           <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chart-heatmap-subtitle-year" datatype="html">
+        <source>Range: year <x id="PH" equiv-text="this.dateTo.year()"/></source>
+        <target>Zakres: rok <x id="PH" equiv-text="this.dateTo.year()"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/services/chart-heatmap.service.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chart-heatmap-subtitle-day" datatype="html">
+        <source>Range: <x id="PH" equiv-text="this.dateFrom.format('LL')"/> - <x id="PH_1" equiv-text="this.dateTo.format('LL')"/></source>
+        <target>Zakres: <x id="PH" equiv-text="this.dateFrom.format('LL')"/> - <x id="PH_1" equiv-text="this.dateTo.format('LL')"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/services/chart-heatmap.service.ts</context>
+          <context context-type="linenumber">38</context>
         </context-group>
       </trans-unit>
     </body>
