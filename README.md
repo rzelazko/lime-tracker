@@ -95,7 +95,7 @@ Debugging information about NGSW can be found under URLs:
   - Add seizure triggers management
 - Add reset passoword
 - Add chart to show seizures by hour
-- Add chart to show seizures during period
+- Add chart to show amount of seizures per month (pie chart, 12 pieces)
 - Add chart to compare seizures in the same month for previous year (only if the are enough data)
 - Update app screenshots
 - Cancel button on form go back to either dashboard or table (not always table)
