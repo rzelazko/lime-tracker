@@ -8,6 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ActivatedRoute } from '@angular/router';
 import { ChartComponent, NgApexchartsModule } from 'ng-apexcharts';
 import { delay, of, throwError } from 'rxjs';
 import { ErrorCardComponent } from './../../../../shared/error-card/error-card.component';
@@ -19,6 +20,7 @@ describe('ChartHeatmapComponent', () => {
   let component: ChartHeatmapComponent;
   let fixture: ComponentFixture<ChartHeatmapComponent>;
   let chartServiceSpy: jasmine.SpyObj<ChartHeatmapService>;
+  let activatedRoute: ActivatedRoute;
 
   beforeEach(async () => {
     const chartServiceSpyObj = jasmine.createSpyObj('ChartHeatmapService', [
@@ -26,10 +28,12 @@ describe('ChartHeatmapComponent', () => {
       'subtitle',
       'seizureSerie',
     ]);
+    const activatedRouteMockObj = { params: of({year: '2021'}) };
 
     await TestBed.configureTestingModule({
       declarations: [ChartHeatmapComponent, ErrorCardComponent],
-      providers: [{ provide: ChartHeatmapService, useValue: chartServiceSpyObj }],
+      providers: [{ provide: ChartHeatmapService, useValue: chartServiceSpyObj },
+        { provide: ActivatedRoute, useValue: activatedRouteMockObj }],
       imports: [
         NgApexchartsModule,
         NoopAnimationsModule,
@@ -43,12 +47,12 @@ describe('ChartHeatmapComponent', () => {
       ],
     }).compileComponents();
     chartServiceSpy = TestBed.inject(ChartHeatmapService) as jasmine.SpyObj<ChartHeatmapService>;
+    activatedRoute = TestBed.inject(ActivatedRoute);
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ChartHeatmapComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
@@ -61,12 +65,11 @@ describe('ChartHeatmapComponent', () => {
     chartServiceSpy.seizureSerie.and.returnValue(of(chartData).pipe(delay(100)));
 
     // when
-    component.ngOnChanges({});
     fixture.detectChanges();
 
     // then
     expect(fixture.debugElement.queryAll(By.directive(MatProgressSpinner)).length).toBe(1);
-    component.ngOnChanges({});
+    fixture.detectChanges();
     tick(100);
     fixture.detectChanges();
     expect(fixture.debugElement.queryAll(By.directive(MatProgressSpinner)).length).toBe(0);
@@ -78,7 +81,6 @@ describe('ChartHeatmapComponent', () => {
     chartServiceSpy.seizureSerie.and.returnValue(of(chartData));
 
     // when
-    component.ngOnChanges({});
     fixture.detectChanges();
 
     // then
@@ -91,7 +93,6 @@ describe('ChartHeatmapComponent', () => {
     chartServiceSpy.seizureSerie.and.returnValue(throwError(() => new Error('test message')));
 
     // when
-    component.ngOnChanges({});
     fixture.detectChanges();
 
     // then
@@ -107,7 +108,6 @@ describe('ChartHeatmapComponent', () => {
     chartServiceSpy.seizureSerie.and.returnValue(throwError(() => `test message`));
 
     // when
-    component.ngOnChanges({});
     fixture.detectChanges();
 
     // then

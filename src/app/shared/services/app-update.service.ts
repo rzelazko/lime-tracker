@@ -1,4 +1,4 @@
-import { ApplicationRef, Injectable } from '@angular/core';
+import { ApplicationRef, Injectable, isDevMode } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SwUpdate } from '@angular/service-worker';
 import { concat, first, interval } from 'rxjs';
@@ -30,7 +30,11 @@ export class AppUpdateService {
           console.log('Already on the latest version');
         }
       } catch (err) {
-        console.error('Failed to check for updates:', err);
+        if (isDevMode()) {
+          console.info('Service workers for PWA disabled');
+        } else {
+          console.error('Failed to check for updates:', err);
+        }
       }
     });
   }

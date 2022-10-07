@@ -1,5 +1,7 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ApexPlotOptions } from 'ng-apexcharts';
+import { catchError, ignoreElements, map, Observable, of, switchMap } from 'rxjs';
 import { ChartData } from './../../../../shared/models/chart-data.model';
 import { ChartOptions } from './../../../../shared/models/chart-options.model';
 import { ChartHeatmapService } from './../../../../shared/services/chart-heatmap.service';
@@ -9,140 +11,111 @@ import { ChartHeatmapService } from './../../../../shared/services/chart-heatmap
   templateUrl: './chart-heatmap.component.html',
   styleUrls: ['./chart-heatmap.component.scss'],
 })
-export class ChartHeatmapComponent implements OnInit, OnDestroy, OnChanges {
-  @Input() selectedYear?: number;
-  error?: string;
-  subsription?: Subscription;
-  chartOptions?: ChartOptions;
+export class ChartHeatmapComponent implements OnInit {
+  @Input() titleOffset: number = 0;
+  plotOptions: ApexPlotOptions;
+  chartOptions$?: Observable<ChartOptions>;
+  chartError$?: Observable<string>;
 
-  constructor(private chartService: ChartHeatmapService) {}
-
-  ngOnInit(): void {}
-
-  ngOnChanges(_changes: SimpleChanges): void {
-    this.chartService.setYear(this.selectedYear);
-
-    this.subsription?.unsubscribe();
-    this.subsription = this.chartService.seizureSerie().subscribe({
-      next: (data: ChartData[]) => {
-        this.chartOptions = {
-          xaxis: {
-            axisTicks: {
-              show: false,
+  constructor(private chartService: ChartHeatmapService, private activatedRoute: ActivatedRoute) {
+    this.plotOptions = {
+      heatmap: {
+        colorScale: {
+          ranges: [
+            {
+              from: -1,
+              to: 0,
+              color: '#d3d6d9',
+              name: $localize`:@@chart-heatmap-legend-day-no-seizures:No seizures`,
             },
-            labels: {
-              show: false,
+            {
+              from: 1,
+              to: 1,
+              color: '#008ffb',
+              name: $localize`:@@chart-heatmap-legend-day-with-1-seizure:Day with one seizure`,
             },
-            tooltip: {
-              enabled: false,
+            {
+              from: 2,
+              to: 2,
+              color: '#0062ad',
+              name: $localize`:@@chart-heatmap-legend-day-with-2-seizures:Day with two seizures`,
             },
-          },
-          yaxis: {
+            {
+              from: 3,
+              to: 1000,
+              color: '#00365e',
+              name: $localize`:@@chart-heatmap-legend-day-with-more-seizures:Day with more seizures`,
+            },
+          ],
+        },
+      },
+    };
+  }
+
+  ngOnInit(): void {
+    this.chartOptions$ = this.activatedRoute.params.pipe(
+      map((routeParams): number | undefined => routeParams['year']),
+      switchMap((selectedYear) => {
+        this.chartService.setYear(selectedYear);
+        return this.chartService.seizureSerie();
+      }),
+      map((data: ChartData[]) => ({
+        xaxis: {
+          axisTicks: {
             show: false,
-            seriesName: 'zz',
-            labels: {
-              formatter: (
-                value: number,
-                opts: { dataPointIndex: number; seriesIndex: number; w: any },
-                labels?: string[]
-              ) => {
-                const realValue = value;
-                if (
-                  opts &&
-                  opts.w &&
-                  opts.w.config &&
-                  opts.w.config.series &&
-                  opts.w.config.series[opts.seriesIndex] &&
-                  opts.w.config.series[opts.seriesIndex].data &&
-                  opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex] &&
-                  opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex].label
-                ) {
-                  return `${
-                    opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex].label
-                  }: ${realValue}`;
-                }
-                return realValue.toFixed(0);
-              },
-            },
           },
-          markers: {},
-          stroke: {},
-          legend: {},
-          fill: {},
-          series: data,
-          chart: {
-            height: 250,
-            type: 'heatmap',
+          labels: {
+            show: false,
           },
-          dataLabels: {
+          tooltip: {
             enabled: false,
           },
-          title: {
-            text: $localize`:@@chart-heatmap-title:Seizures during a year`,
-            align: 'left',
-            offsetX: 110,
-          },
-          subtitle: {
-            text: this.chartService.subtitle(),
-            align: 'left',
-            offsetX: 110,
-          },
-          tooltip: {},
-          plotOptions: {
-            heatmap: {
-              colorScale: {
-                ranges: [
-                  {
-                    from: -1,
-                    to: 0,
-                    color: '#d3d6d9',
-                    name: $localize`:@@chart-heatmap-legend-day-no-seizures:No seizures`,
-                  },
-                  {
-                    from: 1,
-                    to: 1,
-                    color: '#008ffb',
-                    name: $localize`:@@chart-heatmap-legend-day-with-1-seizure:Day with one seizure`,
-                  },
-                  {
-                    from: 2,
-                    to: 2,
-                    color: '#0062ad',
-                    name: $localize`:@@chart-heatmap-legend-day-with-2-seizures:Day with two seizures`,
-                  },
-                  {
-                    from: 3,
-                    to: 1000,
-                    color: '#00365e',
-                    name: $localize`:@@chart-heatmap-legend-day-with-more-seizures:Day with more seizures`,
-                  },
-                ],
-              },
+        },
+        yaxis: {
+          show: false,
+          seriesName: 'zz',
+          labels: {
+            formatter: (
+              value: number,
+              opts: { dataPointIndex: number; seriesIndex: number; w: any },
+              labels?: string[]
+            ) => {
+              const realValue = value;
+              if (
+                opts &&
+                opts.w &&
+                opts.w.config &&
+                opts.w.config.series &&
+                opts.w.config.series[opts.seriesIndex] &&
+                opts.w.config.series[opts.seriesIndex].data &&
+                opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex] &&
+                opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex].label
+              ) {
+                return `${
+                  opts.w.config.series[opts.seriesIndex].data[opts.dataPointIndex].label
+                }: ${realValue}`;
+              }
+              return realValue.toFixed(0);
             },
           },
-        };
-      },
-      error: (error) => (this.error = $localize`:@@error-message:Error: ${error.message || error}`),
-    });
-  }
+        },
+        series: data,
+        title: {
+          text: $localize`:@@chart-heatmap-title:Seizures during a year`,
+          align: 'left',
+          offsetX: this.titleOffset,
+        },
+        subtitle: {
+          text: this.chartService.subtitle(),
+          align: 'left',
+          offsetX: this.titleOffset,
+        },
+      }))
+    );
 
-  ngOnDestroy(): void {
-    this.subsription?.unsubscribe();
-  }
-
-  public generateData(count: number, yrange: { min: number; max: number }) {
-    var i = 0;
-    var series = [];
-    while (i < count) {
-      var x = 'w' + (i + 1).toString();
-      var y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
-
-      series.push({
-        x: x,
-        y: y,
-      });
-      i++;
-    }
-    return series;
+    this.chartError$ = this.chartOptions$.pipe(
+      ignoreElements(),
+      catchError((error) => of($localize`:@@error-message:Error: ${error.message || error}`))
+    );
   }
 }
