@@ -1,16 +1,18 @@
-<app-error-card [error]="error" *ngIf="error"></app-error-card>
-
-<ng-container *ngIf="!error">
-  <mat-progress-spinner mode="indeterminate" *ngIf="!chartOptions"></mat-progress-spinner>
-
+<ng-container *ngIf="{options: chartOptions$ | async, error: chartError$ | async} as chart">
   <apx-chart
-    *ngIf="chartOptions"
-    [series]="chartOptions.series"
-    [xaxis]="chartOptions.xaxis"
-    [yaxis]="chartOptions.yaxis"
-    [title]="chartOptions.title"
-    [subtitle]="chartOptions.subtitle"
+    *ngIf="!chart.error && chart.options; else loading"
+    [series]="chart.options.series"
+    [xaxis]="chart.options.xaxis"
+    [yaxis]="chart.options.yaxis"
+    [title]="chart.options.title"
+    [subtitle]="chart.options.subtitle"
     [chart]="{height: 250, type: 'heatmap'}"
     [dataLabels]="{enabled: false}"
-    [plotOptions]="plotOptions"></apx-chart>
+    [plotOptions]="plotOptions"
+  ></apx-chart>
+  <app-error-card [error]="chart.error" *ngIf="chart.error"></app-error-card>
+
+  <ng-template #loading>
+    <mat-progress-spinner *ngIf="!chart.error" mode="indeterminate"></mat-progress-spinner>
+  </ng-template>
 </ng-container>
