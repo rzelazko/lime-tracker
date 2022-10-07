@@ -4,18 +4,13 @@
   <mat-progress-spinner mode="indeterminate" *ngIf="!chartOptions"></mat-progress-spinner>
 
   <apx-chart
-    *ngIf="chartOptions && chartOptions.plotOptions"
+    *ngIf="chartOptions"
     [series]="chartOptions.series"
-    [chart]="chartOptions.component"
     [xaxis]="chartOptions.xaxis"
-    [markers]="chartOptions.markers"
-    [stroke]="chartOptions.stroke"
     [yaxis]="chartOptions.yaxis"
-    [dataLabels]="chartOptions.dataLabels"
     [title]="chartOptions.title"
     [subtitle]="chartOptions.subtitle"
-    [fill]="chartOptions.fill"
-    [tooltip]="chartOptions.tooltip"
-    [legend]="chartOptions.legend"
-    [plotOptions]="chartOptions.plotOptions"></apx-chart>
+    [chart]="{height: 250, type: 'heatmap'}"
+    [dataLabels]="{enabled: false}"
+    [plotOptions]="plotOptions"></apx-chart>
 </ng-container>

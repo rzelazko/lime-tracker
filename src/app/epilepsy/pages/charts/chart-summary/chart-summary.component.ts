@@ -14,7 +14,6 @@ import { ChartSummaryService } from './../../../../shared/services/chart-summary
 })
 export class ChartSummaryComponent implements OnInit {
   @Input() titleOffset: number = 0;
-  @Input() height: number = 100;
   chartOptions$?: Observable<ChartOptions>;
   chartError$?: Observable<String>;
 
@@ -118,9 +117,6 @@ export class ChartSummaryComponent implements OnInit {
     });
 
     return {
-      component: { height: this.height, type: 'line' },
-      dataLabels: { enabled: false },
-      stroke: { width: [1, 1, 4] },
       title: {
         text: $localize`:@@chart-summary-title:Seizures, medications & events`,
         align: 'left',
@@ -131,10 +127,6 @@ export class ChartSummaryComponent implements OnInit {
         align: 'left',
         offsetX: this.titleOffset,
       },
-      fill: { type: 'solid' },
-      markers: { size: [6, 6] },
-      tooltip: { shared: false, intersect: true },
-      legend: { show: true },
       xaxis: { type: 'category' },
       yaxis,
       series,

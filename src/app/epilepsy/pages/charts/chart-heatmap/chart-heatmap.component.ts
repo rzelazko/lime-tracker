@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { ApexPlotOptions } from 'ng-apexcharts';
 import { Subscription } from 'rxjs';
 import { ChartData } from './../../../../shared/models/chart-data.model';
 import { ChartOptions } from './../../../../shared/models/chart-options.model';
@@ -16,8 +17,42 @@ export class ChartHeatmapComponent implements OnInit, OnDestroy, OnChanges {
   error?: string;
   subsription?: Subscription;
   chartOptions?: ChartOptions;
+  plotOptions: ApexPlotOptions;
 
-  constructor(private chartService: ChartHeatmapService) {}
+  constructor(private chartService: ChartHeatmapService) {
+    this.plotOptions = {
+      heatmap: {
+        colorScale: {
+          ranges: [
+            {
+              from: -1,
+              to: 0,
+              color: '#d3d6d9',
+              name: $localize`:@@chart-heatmap-legend-day-no-seizures:No seizures`,
+            },
+            {
+              from: 1,
+              to: 1,
+              color: '#008ffb',
+              name: $localize`:@@chart-heatmap-legend-day-with-1-seizure:Day with one seizure`,
+            },
+            {
+              from: 2,
+              to: 2,
+              color: '#0062ad',
+              name: $localize`:@@chart-heatmap-legend-day-with-2-seizures:Day with two seizures`,
+            },
+            {
+              from: 3,
+              to: 1000,
+              color: '#00365e',
+              name: $localize`:@@chart-heatmap-legend-day-with-more-seizures:Day with more seizures`,
+            },
+          ],
+        },
+      },
+    };
+  }
 
   ngOnInit(): void {}
 
@@ -67,18 +102,7 @@ export class ChartHeatmapComponent implements OnInit, OnDestroy, OnChanges {
               },
             },
           },
-          markers: {},
-          stroke: {},
-          legend: {},
-          fill: {},
           series: data,
-          component: {
-            height: this.height,
-            type: 'heatmap',
-          },
-          dataLabels: {
-            enabled: false,
-          },
           title: {
             text: $localize`:@@chart-heatmap-title:Seizures during a year`,
             align: 'left',
@@ -88,39 +112,6 @@ export class ChartHeatmapComponent implements OnInit, OnDestroy, OnChanges {
             text: this.chartService.subtitle(),
             align: 'left',
             offsetX: this.titleOffset,
-          },
-          tooltip: {},
-          plotOptions: {
-            heatmap: {
-              colorScale: {
-                ranges: [
-                  {
-                    from: -1,
-                    to: 0,
-                    color: '#d3d6d9',
-                    name: $localize`:@@chart-heatmap-legend-day-no-seizures:No seizures`,
-                  },
-                  {
-                    from: 1,
-                    to: 1,
-                    color: '#008ffb',
-                    name: $localize`:@@chart-heatmap-legend-day-with-1-seizure:Day with one seizure`,
-                  },
-                  {
-                    from: 2,
-                    to: 2,
-                    color: '#0062ad',
-                    name: $localize`:@@chart-heatmap-legend-day-with-2-seizures:Day with two seizures`,
-                  },
-                  {
-                    from: 3,
-                    to: 1000,
-                    color: '#00365e',
-                    name: $localize`:@@chart-heatmap-legend-day-with-more-seizures:Day with more seizures`,
-                  },
-                ],
-              },
-            },
           },
         };
       },

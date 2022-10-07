@@ -2,17 +2,17 @@
   <apx-chart
     *ngIf="!chart.error && chart.options; else loading"
     [series]="chart.options.series"
-    [chart]="chart.options.component"
     [xaxis]="chart.options.xaxis"
-    [markers]="chart.options.markers"
-    [stroke]="chart.options.stroke"
     [yaxis]="chart.options.yaxis"
-    [dataLabels]="chart.options.dataLabels"
     [title]="chart.options.title"
     [subtitle]="chart.options.subtitle"
-    [fill]="chart.options.fill"
-    [tooltip]="chart.options.tooltip"
-    [legend]="chart.options.legend"
+    [chart]="{height: '350', type: 'line'}"
+    [markers]="{size: [6, 6]}"
+    [stroke]="{width: [1, 1, 4]}"
+    [dataLabels]="{enabled: false}"
+    [fill]="{type: 'solid'}"
+    [tooltip]="{shared: false, intersect: true}"
+    [legend]="{show: true}"
   ></apx-chart>
 
   <ng-template #loading>
