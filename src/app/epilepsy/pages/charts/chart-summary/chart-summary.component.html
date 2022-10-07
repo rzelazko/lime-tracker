@@ -14,6 +14,7 @@
     [tooltip]="{shared: false, intersect: true}"
     [legend]="{show: true}"
   ></apx-chart>
+  <app-error-card [error]="chart.error" *ngIf="chart.error"></app-error-card>
 
   <ng-template #loading>
     <mat-progress-spinner *ngIf="!chart.error" mode="indeterminate"></mat-progress-spinner>

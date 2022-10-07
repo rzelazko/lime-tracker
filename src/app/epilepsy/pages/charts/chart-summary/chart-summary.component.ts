@@ -15,7 +15,7 @@ import { ChartSummaryService } from './../../../../shared/services/chart-summary
 export class ChartSummaryComponent implements OnInit {
   @Input() titleOffset: number = 0;
   chartOptions$?: Observable<ChartOptions>;
-  chartError$?: Observable<String>;
+  chartError$?: Observable<string>;
 
   constructor(private chartService: ChartSummaryService, private activatedRoute: ActivatedRoute) {}
 
