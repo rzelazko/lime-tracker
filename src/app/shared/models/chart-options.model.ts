@@ -15,7 +15,7 @@ import {
 
 export type ChartOptions = {
   series: ApexAxisChartSeries;
-  chart: ApexChart;
+  component: ApexChart;
   xaxis: ApexXAxis;
   markers: ApexMarkers;
   stroke: ApexStroke;

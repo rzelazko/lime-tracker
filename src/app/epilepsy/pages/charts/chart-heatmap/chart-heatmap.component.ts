@@ -72,7 +72,7 @@ export class ChartHeatmapComponent implements OnInit, OnDestroy, OnChanges {
           legend: {},
           fill: {},
           series: data,
-          chart: {
+          component: {
             height: this.height,
             type: 'heatmap',
           },
