@@ -5,9 +5,9 @@
 </mat-toolbar>
 
 <main id="chart">
-  <app-chart-summary [selectedYear]="selectedYear"></app-chart-summary>
+  <app-chart-summary [selectedYear]="selectedYear" [titleOffset]="10" [height]="350"></app-chart-summary>
 
   <hr/>
 
-  <app-chart-heatmap [selectedYear]="selectedYear"></app-chart-heatmap>
+  <app-chart-heatmap [selectedYear]="selectedYear" [titleOffset]="10" [height]="250"></app-chart-heatmap>
 </main>

@@ -11,6 +11,8 @@ import { ChartHeatmapService } from './../../../../shared/services/chart-heatmap
 })
 export class ChartHeatmapComponent implements OnInit, OnDestroy, OnChanges {
   @Input() selectedYear?: number;
+  @Input() titleOffset: number = 0;
+  @Input() height: number = 100;
   error?: string;
   subsription?: Subscription;
   chartOptions?: ChartOptions;
@@ -71,7 +73,7 @@ export class ChartHeatmapComponent implements OnInit, OnDestroy, OnChanges {
           fill: {},
           series: data,
           chart: {
-            height: 250,
+            height: this.height,
             type: 'heatmap',
           },
           dataLabels: {
@@ -80,12 +82,12 @@ export class ChartHeatmapComponent implements OnInit, OnDestroy, OnChanges {
           title: {
             text: $localize`:@@chart-heatmap-title:Seizures during a year`,
             align: 'left',
-            offsetX: 110,
+            offsetX: this.titleOffset,
           },
           subtitle: {
             text: this.chartService.subtitle(),
             align: 'left',
-            offsetX: 110,
+            offsetX: this.titleOffset,
           },
           tooltip: {},
           plotOptions: {

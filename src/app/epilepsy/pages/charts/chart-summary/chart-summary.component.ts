@@ -12,6 +12,8 @@ import { ChartSummaryService } from './../../../../shared/services/chart-summary
 })
 export class ChartSummaryComponent implements OnInit, OnDestroy, OnChanges {
   @Input() selectedYear?: number;
+  @Input() titleOffset: number = 0;
+  @Input() height: number = 100;
   error?: string;
   summaryChart?: ChartOptions;
   subsription?: Subscription;
@@ -127,18 +129,18 @@ export class ChartSummaryComponent implements OnInit, OnDestroy, OnChanges {
     }
 
     this.summaryChart = {
-      chart: { height: 350, type: 'line' },
+      chart: { height: this.height, type: 'line' },
       dataLabels: { enabled: false },
       stroke: { width: [1, 1, 4] },
       title: {
         text: $localize`:@@chart-summary-title:Seizures, medications & events`,
         align: 'left',
-        offsetX: 110,
+        offsetX: this.titleOffset,
       },
       subtitle: {
         text: this.chartService.subtitle(),
         align: 'left',
-        offsetX: 110,
+        offsetX: this.titleOffset,
       },
       fill: { type: 'solid' },
       markers: { size: [6, 6] },
