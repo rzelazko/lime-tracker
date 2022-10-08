@@ -7,7 +7,7 @@ import {
   connectFirestoreEmulator,
   enableMultiTabIndexedDbPersistence,
   getFirestore,
-  provideFirestore
+  provideFirestore,
 } from '@angular/fire/firestore';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -45,6 +45,7 @@ import { ConfirmDeleteDialogComponent } from './epilepsy/components/confirm-dele
 import { TableComponent } from './epilepsy/components/table/table.component';
 import { YearsnavComponent } from './epilepsy/components/yearsnav/yearsnav.component';
 import { ChartHeatmapComponent } from './epilepsy/pages/charts/chart-heatmap/chart-heatmap.component';
+import { ChartSeizuresByHoursComponent } from './epilepsy/pages/charts/chart-seizures-by-hours/chart-seizures-by-hours.component';
 import { ChartSummaryComponent } from './epilepsy/pages/charts/chart-summary/chart-summary.component';
 import { ChartsComponent } from './epilepsy/pages/charts/charts.component';
 import { DashboardComponent } from './epilepsy/pages/dashboard/dashboard.component';
@@ -93,6 +94,7 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     AppComponent,
     ChartsComponent,
     ChartHeatmapComponent,
+    ChartSeizuresByHoursComponent,
     ChartSummaryComponent,
     ConfirmDeleteDialogComponent,
     DashboardComponent,
