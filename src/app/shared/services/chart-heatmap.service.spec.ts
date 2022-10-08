@@ -11,7 +11,6 @@ const moment = extendMoment(Moment);
 
 describe('ChartHeatmapService', () => {
   let service: ChartHeatmapService;
-
   let seizuresServiceSpy: jasmine.SpyObj<SeizuresService>;
 
   beforeEach(() => {
@@ -23,6 +22,7 @@ describe('ChartHeatmapService', () => {
         { provide: SeizuresService, useValue: seizuresServiceSpyObj },
       ],
     });
+
     service = TestBed.inject(ChartHeatmapService);
     seizuresServiceSpy = TestBed.inject(SeizuresService) as jasmine.SpyObj<SeizuresService>;
   });

@@ -7,6 +7,7 @@ import { ChartData } from './../models/chart-data.model';
 import { Event } from './../models/event.model';
 import { Medication } from './../models/medication.model';
 import { Seizure } from './../models/seizure.model';
+import { ChartService } from './chart.service';
 import { EventsService } from './events.service';
 import { MedicationsService } from './medications.service';
 import { SeizuresService } from './seizures.service';
@@ -27,18 +28,15 @@ interface MedicationRange
 @Injectable({
   providedIn: 'root',
 })
-export class ChartSummaryService {
+export class ChartSummaryService extends ChartService {
   private static readonly DEFAULT_RANGE_FORMAT = 'MM/YY';
-  private dateTo: moment.Moment;
-  private dateFrom: moment.Moment;
 
   constructor(
     private medicationsService: MedicationsService,
     private eventsService: EventsService,
     private seizuresService: SeizuresService
   ) {
-    this.dateTo = moment().endOf('day');
-    this.dateFrom = this.oneYearBefore(this.dateTo);
+    super();
   }
 
   get rangeFormat() {
@@ -47,26 +45,6 @@ export class ChartSummaryService {
     } else {
       return ChartSummaryService.DEFAULT_RANGE_FORMAT;
     }
-  }
-
-  setYear(year?: number) {
-    const momentTo = moment();
-    if (year) {
-      momentTo.year(year).endOf('year');
-    }
-    this.dateTo = momentTo.endOf('day');
-    this.dateFrom = this.oneYearBefore(this.dateTo);
-  }
-
-  subtitle(): string {
-    let subtitle;
-    if (this.dateFrom.year() === this.dateTo.year()) {
-      subtitle = `${this.dateFrom.format('MMM')} - ${this.dateTo.format('MMM')}`;
-      subtitle += ` ${this.dateTo.year()}`;
-    } else {
-      subtitle = `${this.dateFrom.format('MMM YYYY')} - ${this.dateTo.format('MMM YYYY')}`;
-    }
-    return subtitle;
   }
 
   medicationsSeries(): Observable<ChartData[]> {
@@ -102,9 +80,7 @@ export class ChartSummaryService {
         where('occurred', '>=', this.dateFrom.toDate()),
         where('occurred', '<=', this.dateTo.toDate()),
       ])
-      .pipe(
-        map((seizures) => this.agregateSeizuresData(seizures))
-      );
+      .pipe(map((seizures) => this.agregateSeizuresData(seizures)));
   }
 
   eventsSerie(): Observable<ChartData> {
@@ -117,7 +93,7 @@ export class ChartSummaryService {
       .pipe(map((events) => this.agregateEventsData(events)));
   }
 
-  private oneYearBefore(date: moment.Moment) {
+  override oneYearBefore(date: moment.Moment) {
     return moment(date).add(1, 'months').subtract(1, 'year').startOf('month');
   }
 
