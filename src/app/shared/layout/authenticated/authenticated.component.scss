@@ -5,3 +5,7 @@ main {
 mat-sidenav-container, mat-sidenav-content, mat-sidenav {
   min-height: 90vh;
 }
+
+mat-sidenav-container .mat-drawer-content {
+  overflow: unset;
+}
