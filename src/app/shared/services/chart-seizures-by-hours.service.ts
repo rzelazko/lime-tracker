@@ -37,20 +37,25 @@ export class ChartSeizuresByHoursService extends ChartService {
       const m = moment(seizure.occurred);
       const hour = +m.format('H');
       let bucket;
+      let x;
       if (hour >= 0 && hour < 6) {
         bucket = 0;
+        x = $localize`:@@chart-seizures-by-hours-x-0-6:0 - 6 AM`;
       } else if (hour >= 6 && hour < 12) {
         bucket = 1;
+        x = $localize`:@@chart-seizures-by-hours-x-0-6:6 - 12 AM`;
       } else if (hour >= 12 && hour < 18) {
         bucket = 2;
+        x = $localize`:@@chart-seizures-by-hours-x-0-6:12 - 6 PM`;
       } else if (hour >= 18 && hour < 24) {
         bucket = 3;
+        x = $localize`:@@chart-seizures-by-hours-x-0-6:6 - 12 PM`;
       } else {
         throw `Error: hour should be in range 0 - 23, instead it is: ${hour}`;
       }
 
       if (!chartData.data[bucket]) {
-        chartData.data[bucket] = {x: bucket.toString(), y: 0}; // TODO x should show range like 0-6am, etc
+        chartData.data[bucket] = {x, y: 0};
       }
 
       const currentData = chartData.data[bucket];
