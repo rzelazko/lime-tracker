@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { orderBy, where } from 'firebase/firestore';
 import * as Moment from 'moment';
-import { DateRange, extendMoment } from 'moment-range';
+import { extendMoment } from 'moment-range';
 import { map, Observable } from 'rxjs';
 import { ChartData } from '../models/chart-data.model';
 import { Seizure } from '../models/seizure.model';
+import { ChartService } from './chart.service';
 import { SeizuresService } from './seizures.service';
 
 const moment = extendMoment(Moment);
@@ -12,32 +13,9 @@ const moment = extendMoment(Moment);
 @Injectable({
   providedIn: 'root',
 })
-export class ChartHeatmapService {
-  private dateTo: moment.Moment;
-  private dateFrom: moment.Moment;
-
+export class ChartHeatmapService extends ChartService {
   constructor(private seizuresService: SeizuresService) {
-    this.dateTo = moment().endOf('day');
-    this.dateFrom = this.oneYearBefore(this.dateTo);
-  }
-
-  setYear(year?: number) {
-    const momentTo = moment();
-    if (year) {
-      momentTo.year(year).endOf('year');
-    }
-    this.dateTo = momentTo.endOf('day');
-    this.dateFrom = this.oneYearBefore(this.dateTo);
-  }
-
-  subtitle(): string {
-    let subtitle;
-    if (this.dateFrom.year() === this.dateTo.year()) {
-      subtitle = $localize`:@@chart-heatmap-subtitle-year:Range: year ${this.dateTo.year()}`;
-    } else {
-      subtitle = $localize`:@@chart-heatmap-subtitle-day:Range: ${this.dateFrom.format('LL')} - ${this.dateTo.format('LL')}`;
-    }
-    return subtitle;
+    super();
   }
 
   seizureSerie(): Observable<ChartData[]> {
@@ -48,10 +26,6 @@ export class ChartHeatmapService {
         where('occurred', '<=', this.dateTo.toDate()),
       ])
       .pipe(map((seizures) => this.agregateSeizuresData(seizures)));
-  }
-
-  private oneYearBefore(date: moment.Moment) {
-    return moment(date).add('1', 'day').subtract(1, 'year');
   }
 
   private agregateSeizuresData(seizures: Seizure[]): ChartData[] {
@@ -81,12 +55,12 @@ export class ChartHeatmapService {
       if (!chartData[serieIndex]) {
         chartData[serieIndex] = {
           data: [],
-          name: ''
+          name: '',
         };
       }
 
       const formattedDate = m.format('LL');
-      chartData[serieIndex].data.push({ x: rowIndex.toString(), y: 0, label: formattedDate});
+      chartData[serieIndex].data.push({ x: rowIndex.toString(), y: 0, label: formattedDate });
     }
 
     for (const seizure of seizures) {

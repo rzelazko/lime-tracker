@@ -1,0 +1,17 @@
+<ng-container *ngIf="{options: chartOptions$ | async, error: chartError$ | async} as chart">
+  <apx-chart
+    *ngIf="!chart.error && chart.options; else loading"
+    [series]="chart.options.series"
+    [xaxis]="chart.options.xaxis"
+    [yaxis]="chart.options.yaxis"
+    [title]="chart.options.title"
+    [subtitle]="chart.options.subtitle"
+    [chart]="{height: 250, type: 'bar'}"
+    [dataLabels]="{enabled: false}"
+  ></apx-chart>
+  <app-error-card [error]="chart.error" *ngIf="chart.error"></app-error-card>
+
+  <ng-template #loading>
+    <mat-progress-spinner *ngIf="!chart.error" mode="indeterminate"></mat-progress-spinner>
+  </ng-template>
+</ng-container>

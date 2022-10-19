@@ -80,7 +80,6 @@ Debugging information about NGSW can be found under URLs:
 
 ## TODO
 
-- Add chart to show seizures by hour
 - Dashboard redesign - 4 cards with action buttons below instead on top:
   - Move periods after seizures, before medicaments
   - Medicaments - compacted list (one line name & doses)

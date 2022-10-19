@@ -73,7 +73,7 @@ export class ChartHeatmapComponent implements OnInit {
         },
         yaxis: {
           show: false,
-          seriesName: 'zz',
+          seriesName: '',
           labels: {
             formatter: (
               value: number,
