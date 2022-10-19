@@ -840,8 +840,53 @@
           <context context-type="linenumber">118</context>
         </context-group>
         <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-hours/chart-seizures-by-hours.component.ts</context>
+          <context context-type="linenumber">70</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-summary/chart-summary.component.ts</context>
           <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chart-seizures-by-hour-axis-x" datatype="html">
+        <source>Time of day</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-hours/chart-seizures-by-hours.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="title-seizures" datatype="html">
+        <source>Seizures</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-hours/chart-seizures-by-hours.component.ts</context>
+          <context context-type="linenumber">49,45</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-hours/chart-seizures-by-hours.component.ts</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-hours/chart-seizures-by-hours.component.ts</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-summary/chart-summary.component.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
+          <context context-type="linenumber">13,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chart-seizures-by-hour-title" datatype="html">
+        <source>Amount of seizures per time of day</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-hours/chart-seizures-by-hours.component.ts</context>
+          <context context-type="linenumber">56,55</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-events" datatype="html">
@@ -861,21 +906,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
           <context context-type="linenumber">19,21</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="title-seizures" datatype="html">
-        <source>Seizures</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-summary/chart-summary.component.ts</context>
-          <context context-type="linenumber">34</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures.component.html</context>
-          <context context-type="linenumber">2</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
-          <context context-type="linenumber">13,15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chart-summary-med-per-day" datatype="html">
@@ -1949,18 +1979,39 @@
           <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="chart-heatmap-subtitle-year" datatype="html">
-        <source>Range: year <x id="PH" equiv-text="this.dateTo.year()"/></source>
+      <trans-unit id="chart-seizures-by-hours-x-0-6" datatype="html">
+        <source>0 - 6 AM</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/shared/services/chart-heatmap.service.ts</context>
+          <context context-type="sourcefile">src/app/shared/services/chart-seizures-by-hours.service.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chart-seizures-by-hours-x-6-12" datatype="html">
+        <source>6 - 12 AM</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/services/chart-seizures-by-hours.service.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chart-seizures-by-hours-x-12-18" datatype="html">
+        <source>12 - 6 PM</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/services/chart-seizures-by-hours.service.ts</context>
           <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="chart-heatmap-subtitle-day" datatype="html">
-        <source>Range: <x id="PH" equiv-text="this.dateFrom.format(&apos;LL&apos;)"/> - <x id="PH_1" equiv-text="this.dateTo.format(&apos;LL&apos;)"/></source>
+      <trans-unit id="chart-seizures-by-hours-x-18-0" datatype="html">
+        <source>6 - 12 PM</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/shared/services/chart-heatmap.service.ts</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="sourcefile">src/app/shared/services/chart-seizures-by-hours.service.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chart-subtitle-year" datatype="html">
+        <source>Year <x id="PH" equiv-text="this.dateTo.year()"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/services/chart.service.ts</context>
+          <context context-type="linenumber">27</context>
         </context-group>
       </trans-unit>
     </body>

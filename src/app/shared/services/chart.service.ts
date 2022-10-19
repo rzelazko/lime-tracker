@@ -26,9 +26,7 @@ export abstract class ChartService {
     if (this.dateFrom.year() === this.dateTo.year()) {
       subtitle = $localize`:@@chart-subtitle-year:Year ${this.dateTo.year()}`;
     } else {
-      subtitle = $localize`:@@chart-subtitle-day:${this.dateFrom.format(
-        'LL'
-      )} - ${this.dateTo.format('LL')}`;
+      subtitle = `${this.dateFrom.format('LL')} - ${this.dateTo.format('LL')}`;
     }
     return subtitle;
   }

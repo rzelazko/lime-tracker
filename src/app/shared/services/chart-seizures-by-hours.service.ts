@@ -32,9 +32,9 @@ export class ChartSeizuresByHoursService extends ChartService {
     const chartData: ChartData = {
       data: [
         {x: $localize`:@@chart-seizures-by-hours-x-0-6:0 - 6 AM`, y: 0},
-        {x: $localize`:@@chart-seizures-by-hours-x-0-6:6 - 12 AM`, y: 0},
-        {x: $localize`:@@chart-seizures-by-hours-x-0-6:12 - 6 PM`, y: 0},
-        {x: $localize`:@@chart-seizures-by-hours-x-0-6:6 - 12 PM`, y: 0}
+        {x: $localize`:@@chart-seizures-by-hours-x-6-12:6 - 12 AM`, y: 0},
+        {x: $localize`:@@chart-seizures-by-hours-x-12-18:12 - 6 PM`, y: 0},
+        {x: $localize`:@@chart-seizures-by-hours-x-18-0:6 - 12 PM`, y: 0}
       ]
     }
 
