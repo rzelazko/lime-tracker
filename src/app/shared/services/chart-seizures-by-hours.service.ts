@@ -29,22 +29,18 @@ export class ChartSeizuresByHoursService extends ChartService {
   }
 
   private agregateSeizuresData(seizures: Seizure[]): ChartData {
-    const chartData: ChartData = {
-      data: [
-        {x: $localize`:@@chart-seizures-by-hours-x-0-6:0 - 6 AM`, y: 0},
-        {x: $localize`:@@chart-seizures-by-hours-x-6-12:6 - 12 AM`, y: 0},
-        {x: $localize`:@@chart-seizures-by-hours-x-12-18:12 - 6 PM`, y: 0},
-        {x: $localize`:@@chart-seizures-by-hours-x-18-0:6 - 12 PM`, y: 0}
-      ]
+    const chartData: ChartData = { data: [] };
+
+    for (let hour = 0; hour < 24; hour++) {
+      chartData.data[hour] = { x: String(hour), y: 0 };
     }
 
     for (const seizure of seizures) {
       const m = moment(seizure.occurred);
       const hour = +m.format('H');
-      const bucket = Math.floor(hour / 6);
 
-      const currentData = chartData.data[bucket];
-      chartData.data[bucket] = {...currentData, y: currentData.y + 1};
+      const currentData = chartData.data[hour];
+      chartData.data[hour] = { ...currentData, y: currentData.y + 1 };
     }
 
     return chartData;

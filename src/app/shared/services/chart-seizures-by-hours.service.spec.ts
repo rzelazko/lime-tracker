@@ -40,8 +40,8 @@ describe('ChartSeizuresByHoursService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should handle conrers of ranges', async () => {
-    const seizuresList: Seizure[] = seizureListForHours([0, 6, 12, 18]);
+  it('should cover all hours', async () => {
+    const seizuresList: Seizure[] = seizureListForHours([...Array(24).keys()]);
     seizuresServiceSpy.listCollection.and.returnValue(of(seizuresList));
 
     // when
@@ -49,7 +49,7 @@ describe('ChartSeizuresByHoursService', () => {
 
     // then
     seizuresSerie$.subscribe((seizuresSerie: ChartData) => {
-      expect(seizuresSerie.data.length).toBe(4);
+      expect(seizuresSerie.data.length).toBe(24);
       for (let i = 0; i < seizuresSerie.data.length; i++) {
         expect(seizuresSerie.data[i].y).toBe(1);
       }
@@ -57,7 +57,7 @@ describe('ChartSeizuresByHoursService', () => {
   });
 
   it('should not be distracted by gaps', async () => {
-    const seizuresList: Seizure[] = seizureListForHours([7, 20, 21]);
+    const seizuresList: Seizure[] = seizureListForHours([7, 20, 20]);
     seizuresServiceSpy.listCollection.and.returnValue(of(seizuresList));
 
     // when
@@ -65,11 +65,16 @@ describe('ChartSeizuresByHoursService', () => {
 
     // then
     seizuresSerie$.subscribe((seizuresSerie: ChartData) => {
-      expect(seizuresSerie.data.length).toBe(4);
-      expect(seizuresSerie.data[0].y).toBe(0);
-      expect(seizuresSerie.data[1].y).toBe(1);
-      expect(seizuresSerie.data[2].y).toBe(0);
-      expect(seizuresSerie.data[3].y).toBe(2);
+      expect(seizuresSerie.data.length).toBe(24);
+      for (let i = 0; i < seizuresSerie.data.length; i++) {
+        if (i === 7) {
+          expect(seizuresSerie.data[i].y).toBe(1);
+        } else if (i === 20) {
+          expect(seizuresSerie.data[i].y).toBe(2);
+        } else {
+          expect(seizuresSerie.data[i].y).toBe(0);
+        }
+      }
     });
   });
 
@@ -82,11 +87,10 @@ describe('ChartSeizuresByHoursService', () => {
 
     // then
     seizuresSerie$.subscribe((seizuresSerie: ChartData) => {
-      expect(seizuresSerie.data.length).toBe(4);
-      expect(seizuresSerie.data[0].x).toContain('0 - 6 AM');
-      expect(seizuresSerie.data[1].x).toContain('6 - 12 AM');
-      expect(seizuresSerie.data[2].x).toContain('12 - 6 PM');
-      expect(seizuresSerie.data[3].x).toContain('6 - 12 PM');
+      expect(seizuresSerie.data.length).toBe(24);
+      for (let i = 0; i < seizuresSerie.data.length; i++) {
+        expect(seizuresSerie.data[i].x).toContain(String(i));
+      }
     });
   });
 
