@@ -80,6 +80,10 @@ Debugging information about NGSW can be found under URLs:
 
 ## TODO
 
+- Add chart - seizure type (pie)
+- Add chart - seizure trigger (pie)
+- Add chart - seizure length (pie)
+- Fix chart redraw several times on page load
 - Dashboard redesign - 4 cards with action buttons below instead on top:
   - Move periods after seizures, before medicaments
   - Medicaments - compacted list (one line name & doses)
@@ -91,8 +95,6 @@ Debugging information about NGSW can be found under URLs:
   - Add seizure types management
   - Add seizure triggers management
 - Add reset passoword
-- Add chart to show amount of seizures per month (pie chart, 12 pieces)
-- Add chart to compare seizures in the same month for previous year (only if the are enough data)
 - Update app screenshots
 - Cancel button on form go back to either dashboard or table (not always table)
 - Add install PWA menu item:
