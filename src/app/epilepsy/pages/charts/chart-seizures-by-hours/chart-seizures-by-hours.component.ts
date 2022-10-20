@@ -39,7 +39,7 @@ export class ChartSeizuresByHoursComponent implements OnInit {
             enabled: false,
           },
           title: {
-            text: $localize`:@@chart-seizures-by-hour-axis-x:Time of day`,
+            text: $localize`:@@chart-seizures-by-hour-axis-x:Hour`,
           },
         },
         yaxis: {
@@ -50,8 +50,11 @@ export class ChartSeizuresByHoursComponent implements OnInit {
           title: {
             text: $localize`:@@title-seizures:Seizures`,
           },
+          labels: {
+            formatter: (value: number, opts: { dataPointIndex: number }) => value.toFixed(0),
+          },
         },
-        series: [{...data, name: $localize`:@@title-seizures:Seizures`}],
+        series: [{ ...data, name: $localize`:@@title-seizures:Seizures` }],
         title: {
           text: $localize`:@@chart-seizures-by-hour-title:Amount of seizures per time of day`,
           align: 'left',

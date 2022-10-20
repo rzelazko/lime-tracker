@@ -841,7 +841,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-hours/chart-seizures-by-hours.component.ts</context>
-          <context context-type="linenumber">70</context>
+          <context context-type="linenumber">73</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-summary/chart-summary.component.ts</context>
@@ -849,7 +849,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="chart-seizures-by-hour-axis-x" datatype="html">
-        <source>Time of day</source>
+        <source>Hour</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-hours/chart-seizures-by-hours.component.ts</context>
           <context context-type="linenumber">42</context>
@@ -867,7 +867,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-hours/chart-seizures-by-hours.component.ts</context>
-          <context context-type="linenumber">54</context>
+          <context context-type="linenumber">57</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-summary/chart-summary.component.ts</context>
@@ -886,7 +886,7 @@
         <source>Amount of seizures per time of day</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-hours/chart-seizures-by-hours.component.ts</context>
-          <context context-type="linenumber">56,55</context>
+          <context context-type="linenumber">59,58</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-events" datatype="html">
@@ -1977,34 +1977,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/layout/anonymous/anonymous.component.html</context>
           <context context-type="linenumber">17</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="chart-seizures-by-hours-x-0-6" datatype="html">
-        <source>0 - 6 AM</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/shared/services/chart-seizures-by-hours.service.ts</context>
-          <context context-type="linenumber">34</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="chart-seizures-by-hours-x-6-12" datatype="html">
-        <source>6 - 12 AM</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/shared/services/chart-seizures-by-hours.service.ts</context>
-          <context context-type="linenumber">35</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="chart-seizures-by-hours-x-12-18" datatype="html">
-        <source>12 - 6 PM</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/shared/services/chart-seizures-by-hours.service.ts</context>
-          <context context-type="linenumber">36</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="chart-seizures-by-hours-x-18-0" datatype="html">
-        <source>6 - 12 PM</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/shared/services/chart-seizures-by-hours.service.ts</context>
-          <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chart-subtitle-year" datatype="html">
