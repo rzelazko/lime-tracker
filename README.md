@@ -80,6 +80,7 @@ Debugging information about NGSW can be found under URLs:
 
 ## TODO
 
+- Add share reports option (ex. send link to doctor)
 - Add chart - seizure type (pie)
 - Add chart - seizure trigger (pie)
 - Add chart - seizure length (pie)
