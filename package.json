@@ -30,7 +30,7 @@
     "@angular/service-worker": "~13.3.2",
     "apexcharts": "^3.33.1",
     "firebase": "^9.4.0",
-    "firebase-admin": "^10.0.2",
+    "firebase-admin": "^11.4.1",
     "moment": "^2.29.4",
     "moment-range": "^4.0.2",
     "ng-apexcharts": "^1.7.0",
