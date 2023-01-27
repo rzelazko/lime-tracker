@@ -5,18 +5,13 @@ It is available as [Progressive Web App](https://developer.mozilla.org/en-US/doc
 
 [Lime Tracker](https://lime-tracker.com/) is an extensive seizure tracker, helping to understand epilepsy changes through data visualization.
 
-Sample data:
+Sample screenshots:
 
-- Dashboard:<br>
-  <img src="/docs/app-dashboard.png" width="350">
-- Application menu:<br>
-  <img src="/docs/app-menu.png" width="350">
-- Add seizure form:<br>
-  <img src="/docs/app-seizure-form.png" width="350">
-- Charts:<br>
-  <img src="/docs/app-charts.png" width="350">
-- Reports:<br>
-  <img src="/docs/app-reports.png" width="350">
+<img src="/docs/01-register.png" width="360"> 
+<img src="/docs/02-dashboard.png" width="360"> 
+<img src="/docs/03-menu.png" width="360"> 
+<img src="/docs/04-charts.gif" width="360"> 
+<img src="/docs/05-reports.png" width="360"> 
 
 ## Technologies used
 
@@ -96,7 +91,6 @@ Debugging information about NGSW can be found under URLs:
   - Add seizure types management
   - Add seizure triggers management
 - Add reset passoword
-- Update app screenshots
 - Cancel button on form go back to either dashboard or table (not always table)
 - Add install PWA menu item:
   Detect we are not in standalone mode. If it is a case then:
