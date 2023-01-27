@@ -7,10 +7,11 @@ It is available as [Progressive Web App](https://developer.mozilla.org/en-US/doc
 
 Sample screenshots:
 
-- Registration screen:<br>
-  <img src="/docs/screen-register.png" width="360"> 
-- Application presentation:<br>
-  <img src="/docs/screen-presentation.gif" width="260">
+<img src="/docs/01-register.png" width="360"> 
+<img src="/docs/02-dashboard.png" width="360"> 
+<img src="/docs/03-menu.png" width="360"> 
+<img src="/docs/04-charts.gif" width="360"> 
+<img src="/docs/05-reports.png" width="360"> 
 
 ## Technologies used
 
