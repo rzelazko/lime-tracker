@@ -10,8 +10,9 @@ Sample screenshots:
 <img src="/docs/01-register.png" width="360"> 
 <img src="/docs/02-dashboard.png" width="360"> 
 <img src="/docs/03-menu.png" width="360"> 
-<img src="/docs/04-charts.gif" width="360"> 
-<img src="/docs/05-reports.png" width="360"> 
+<img src="/docs/04-charts.png" width="360"> 
+<img src="/docs/05-add-seizures.png" width="360"> 
+<img src="/docs/06-reports.png" width="360"> 
 
 ## Technologies used
 
