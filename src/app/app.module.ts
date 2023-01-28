@@ -138,14 +138,14 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     provideAuth(() => {
       const auth = getAuth();
       if (environment.useEmulators) {
-        connectAuthEmulator(auth, 'http://localhost:9099', { disableWarnings: true });
+        connectAuthEmulator(auth, `http://${environment.emulatorHost}:9099`, { disableWarnings: true });
       }
       return auth;
     }),
     provideFirestore(() => {
       const firestore = getFirestore();
       if (environment.useEmulators) {
-        connectFirestoreEmulator(firestore, 'localhost', 8080);
+        connectFirestoreEmulator(firestore, environment.emulatorHost, 8080);
       }
       enableMultiTabIndexedDbPersistence(firestore).then(
         () => resolvePersistenceEnabled(true),

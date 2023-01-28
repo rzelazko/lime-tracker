@@ -11,5 +11,6 @@ export const environment = {
     measurementId: 'G-ZEDQ00W5ZT',
   },
   useEmulators: false,
+  emulatorHost: "",
   production: true
 };
