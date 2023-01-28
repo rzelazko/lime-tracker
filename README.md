@@ -7,12 +7,8 @@ It is available as [Progressive Web App](https://developer.mozilla.org/en-US/doc
 
 Sample screenshots:
 
-<img src="/screens/01-register.png" width="360"> 
-<img src="/screens/02-dashboard.png" width="360"> 
-<img src="/screens/03-menu.png" width="360"> 
-<img src="/screens/04-charts.png" width="360"> 
-<img src="/screens/05-add-seizures.png" width="360"> 
-<img src="/screens/06-reports.png" width="360"> 
+<img src="/screens/01-register.png" width="180"> <img src="/screens/02-dashboard.png" width="180"> <img src="/screens/03-menu.png" width="180"> 
+<img src="/screens/04-charts.png" width="180"> <img src="/screens/05-add-seizures.png" width="180"> <img src="/screens/06-reports.png" width="180"> 
 
 ## Technologies used
 
