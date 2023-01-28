@@ -74,6 +74,7 @@ Debugging information about NGSW can be found under URLs:
 
 ## TODO
 
+- Do not show triggers if empty on the Report page
 - Add share reports option (ex. send link to doctor)
 - Add chart - seizure type (pie)
 - Add chart - seizure trigger (pie)
