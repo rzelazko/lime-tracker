@@ -774,7 +774,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
-          <context context-type="linenumber">57,58</context>
+          <context context-type="linenumber">60,61</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action-load-more" datatype="html">
@@ -1654,52 +1654,52 @@
         </context-group>
       </trans-unit>
       <trans-unit id="reports-seizure-triggers" datatype="html">
-        <source>| Triggers: <x id="INTERPOLATION" equiv-text="{{ case.triggers | join }}"/></source>
+        <source>Triggers: <x id="INTERPOLATION" equiv-text="{{ case.triggers | join }}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
-          <context context-type="linenumber">33,34</context>
+          <context context-type="linenumber">35,36</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports-seizure-duration" datatype="html">
         <source>Duration: <x id="INTERPOLATION" equiv-text="{{ case.duration | humanize }}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
-          <context context-type="linenumber">35,37</context>
+          <context context-type="linenumber">38,40</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports-medication-startDate" datatype="html">
         <source>Start date: <x id="INTERPOLATION" equiv-text="{{ case.startDate | moment: &quot;LL&quot; }}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
-          <context context-type="linenumber">43,44</context>
+          <context context-type="linenumber">46,47</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports-medication-endDate" datatype="html">
         <source>End date: <x id="INTERPOLATION" equiv-text="{{ case.endDate | moment: &quot;LL&quot; }}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
-          <context context-type="linenumber">45,47</context>
+          <context context-type="linenumber">48,50</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports-period-title" datatype="html">
         <source>Period</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
-          <context context-type="linenumber">48,49</context>
+          <context context-type="linenumber">51,52</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports-period-startDate" datatype="html">
         <source>Start date: <x id="INTERPOLATION" equiv-text="{{ case.startDate | moment: &quot;LL&quot; }}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
-          <context context-type="linenumber">50,51</context>
+          <context context-type="linenumber">53,54</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports-period-endDate" datatype="html">
         <source>End date: <x id="INTERPOLATION" equiv-text="{{ case.endDate | moment: &quot;LL&quot; }}"/></source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
-          <context context-type="linenumber">52,53</context>
+          <context context-type="linenumber">55,56</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-update-seizure" datatype="html">

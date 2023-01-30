@@ -871,7 +871,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
-          <context context-type="linenumber">57,58</context>
+          <context context-type="linenumber">60,61</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action-load-more" datatype="html">
@@ -1828,7 +1828,7 @@
       </trans-unit>
       <trans-unit id="reports-seizure-name" datatype="html">
         <source>Seizure: <x id="INTERPOLATION" equiv-text="{{ case.occurred | moment: &quot;LLL&quot; }}"/></source>
-        <target>Napad: <x id="INTERPOLATION" equiv-text="{{ case.seizure.occurred | moment: &quot;LLL&quot; }}"/></target>
+        <target>Napad: <x id="INTERPOLATION" equiv-text="{{ case.occurred | moment: &quot;LLL&quot; }}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
           <context context-type="linenumber">30,31</context>
@@ -1836,26 +1836,26 @@
       </trans-unit>
       <trans-unit id="reports-seizure-type" datatype="html">
         <source>Type: <x id="INTERPOLATION" equiv-text="{{ case.type }}"/></source>
-        <target>Rodzaj: <x id="INTERPOLATION" equiv-text="{{ case.seizure.type }}"/></target>
+        <target>Rodzaj: <x id="INTERPOLATION" equiv-text="{{ case.type }}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
           <context context-type="linenumber">32,33</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports-seizure-triggers" datatype="html">
-        <source>| Triggers: <x id="INTERPOLATION" equiv-text="{{ case.triggers | join }}"/></source>
-        <target>| Powody: <x id="INTERPOLATION" equiv-text="{{ case.seizure.triggers | join }}"/></target>
+        <source>Triggers: <x id="INTERPOLATION" equiv-text="{{ case.triggers | join }}"/></source>
+        <target>Powody: <x id="INTERPOLATION" equiv-text="{{ case.triggers | join }}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
-          <context context-type="linenumber">33,34</context>
+          <context context-type="linenumber">35,36</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports-seizure-duration" datatype="html">
         <source>Duration: <x id="INTERPOLATION" equiv-text="{{ case.duration | humanize }}"/></source>
-        <target>Długość: <x id="INTERPOLATION" equiv-text="{{ case.seizure.duration | humanize }}"/></target>
+        <target>Długość: <x id="INTERPOLATION" equiv-text="{{ case.duration | humanize }}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
-          <context context-type="linenumber">35,37</context>
+          <context context-type="linenumber">38,40</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports-medication-startDate" datatype="html">
@@ -1863,7 +1863,7 @@
         <target>Data rozpoczęcia: <x id="INTERPOLATION" equiv-text="{{ case.startDate | moment: &quot;LL&quot; }}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
-          <context context-type="linenumber">43,44</context>
+          <context context-type="linenumber">46,47</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports-medication-endDate" datatype="html">
@@ -1871,7 +1871,7 @@
         <target>Data zakończenia: <x id="INTERPOLATION" equiv-text="{{ case.endDate | moment: &quot;LL&quot; }}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
-          <context context-type="linenumber">45,47</context>
+          <context context-type="linenumber">48,50</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports-period-title" datatype="html">
@@ -1879,7 +1879,7 @@
         <target>Okres</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
-          <context context-type="linenumber">48,49</context>
+          <context context-type="linenumber">51,52</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports-period-startDate" datatype="html">
@@ -1887,7 +1887,7 @@
         <target>Początek: <x id="INTERPOLATION" equiv-text="{{ case.startDate | moment: &quot;LL&quot; }}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
-          <context context-type="linenumber">50,51</context>
+          <context context-type="linenumber">53,54</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports-period-endDate" datatype="html">
@@ -1895,7 +1895,7 @@
         <target>Koniec: <x id="INTERPOLATION" equiv-text="{{ case.endDate | moment: &quot;LL&quot; }}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
-          <context context-type="linenumber">52,53</context>
+          <context context-type="linenumber">55,56</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-update-seizure" datatype="html">

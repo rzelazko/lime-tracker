@@ -30,7 +30,10 @@
           <div *ngIf="case.objectType === 'SEIZURE'" mat-line i18n="@@reports-seizure-name">Seizure: {{ case.occurred | moment: "LLL" }}</div>
           <div *ngIf="case.objectType === 'SEIZURE'" mat-line class="mat-line-secondary">
             <span i18n="@@reports-seizure-type">Type: {{ case.type }}</span>
-            <span *ngIf="case.objectType === 'SEIZURE' && case.triggers" i18n="@@reports-seizure-triggers">| Triggers: {{ case.triggers | join }}</span>
+            <ng-container *ngIf="case.objectType === 'SEIZURE' && case.triggers && case.triggers.length > 0">
+              <span> | </span>
+              <span i18n="@@reports-seizure-triggers">Triggers: {{ case.triggers | join }}</span>
+            </ng-container>
           </div>
           <div *ngIf="case.objectType === 'SEIZURE'" mat-line class="mat-line-secondary" i18n="@@reports-seizure-duration">Duration: {{ case.duration | humanize }}</div>
 
