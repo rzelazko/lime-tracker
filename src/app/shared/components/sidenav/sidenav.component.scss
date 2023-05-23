@@ -20,3 +20,9 @@ mat-icon {
     background: mat.get-color-from-palette($app-primary, 'lighter', .3);
   }
 }
+
+@media print {
+  :host {
+    display: none;
+  }
+}
