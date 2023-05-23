@@ -9,3 +9,9 @@
 .mat-line-secondary {
   color: mat.get-color-from-palette($app-foreground, "secondary-text");
 }
+
+@media print {
+  mat-toolbar {
+    margin: 0 0 1em 0;
+  }
+}
