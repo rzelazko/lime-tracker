@@ -26,3 +26,9 @@ section.add {
 section.load {
   margin: 0 1em 2em;
 }
+
+@media print {
+  .mat-raised-button {
+    display: none;
+  }
+}
