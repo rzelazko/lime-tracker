@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <div fxHide.gt-sm>
+  <div class="hide-gt-sm">
     <button mat-icon-button (click)="onToggleSidenav()">
       <mat-icon>menu</mat-icon>
     </button>
@@ -10,7 +10,7 @@
       <span class="mat-title">Lime Tracker</span>
     </a>
   </div>
-  <div fxFlex fxLayout fxLayoutAlign="flex-end" fxLayoutGap=".5em" fxHide fxShow.gt-sm>
+  <div fxFlex fxLayout fxLayoutAlign="flex-end" fxLayoutGap=".5em" show-gt-sm>
     <a mat-icon-button routerLink="/account" i18n-routerLink="@@routerLink-account">
       <ng-container *ngIf="userDetails$ | async as userData; else userDetailsLoading">
           <mat-icon *ngIf="userData.isFemale">person_2</mat-icon>
