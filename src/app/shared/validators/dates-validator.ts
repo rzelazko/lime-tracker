@@ -1,4 +1,4 @@
-import { AbstractControl, FormGroup, ValidationErrors } from '@angular/forms';
+import { AbstractControl, UntypedFormGroup, ValidationErrors } from '@angular/forms';
 import * as moment from 'moment';
 
 export class DatesValidator {
@@ -20,7 +20,7 @@ export class DatesValidator {
   };
 
   static startAndEnd(startControlName: string, endControlName: string) {
-    return (formGroup: FormGroup): ValidationErrors | null => {
+    return (formGroup: UntypedFormGroup): ValidationErrors | null => {
       const startDateField = formGroup.controls[startControlName];
       const endDateField = formGroup.controls[endControlName];
 

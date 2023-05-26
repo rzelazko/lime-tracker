@@ -3,7 +3,7 @@
 </mat-toolbar>
 
 <main>
-  <section class="info" fxLayout="column" fxLayout.gt-xs="row wrap" fxLayoutAlign="start stretch">
+  <section class="info flex-col flex-row-wrap-gt-xs justify-start items-stretch-col">
     <mat-card class="last-seizure" *ngIf="lastSeizures$ | async as lastSeizures; else loadingOrErrorSeizures">
       <mat-card-title-group>
         <mat-card-title i18n="@@dashboard-title-last-seizure">Last seizure</mat-card-title>

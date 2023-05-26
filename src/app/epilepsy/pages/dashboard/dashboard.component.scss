@@ -1,5 +1,5 @@
 @use "@angular/material" as mat;
-@import "~@angular/flex-layout/mq";
+@import "src/app/app-layout";
 @import "src/app/app-theme-variables";
 
 section {
@@ -28,6 +28,13 @@ section.info {
 
   .app-text-muted {
     color: mat.get-color-from-palette($app-foreground, "secondary-text");
+  }
+}
+
+.flex-row-wrap-gt-xs {
+  @include layout-bp(gt-xs) {
+    display: flex; flex-direction: row;
+    flex-wrap: wrap;
   }
 }
 

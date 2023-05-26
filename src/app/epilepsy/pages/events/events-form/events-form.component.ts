@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { finalize, Observable, Subscription, take } from 'rxjs';
@@ -17,7 +17,7 @@ export class EventsFormComponent implements OnInit {
   submitting = false;
   today = moment();
   error?: string;
-  form: FormGroup;
+  form: UntypedFormGroup;
   id?: string;
   private submitSubscription?: Subscription;
 
@@ -25,7 +25,7 @@ export class EventsFormComponent implements OnInit {
     private eventsService: EventsService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) {
     this.form = this.fb.group({
       name: ['', [Validators.required]],

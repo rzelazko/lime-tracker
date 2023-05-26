@@ -37,11 +37,11 @@
     <mat-icon>language</mat-icon> <span>Polski</span>
   </a>
 
-  <mat-divider fxShow fxHide.gt-sm></mat-divider>
-  <a mat-list-item routerLink="/account" i18n-routerLink="@@routerLink-account" routerLinkActive="active" (click)="onClose()" fxShow fxHide.gt-sm>
+  <mat-divider class="hide-gt-sm"></mat-divider>
+  <a mat-list-item routerLink="/account" i18n-routerLink="@@routerLink-account" routerLinkActive="active" (click)="onClose()" class="hide-gt-sm">
     <mat-icon>person</mat-icon> <span i18n="@@title-profile">Manage account</span>
   </a>
-  <a mat-list-item routerLink="/logout" i18n-routerLink="@@routerLink-logout" routerLinkActive="active" (click)="onClose()" fxShow fxHide.gt-sm>
+  <a mat-list-item routerLink="/logout" i18n-routerLink="@@routerLink-logout" routerLinkActive="active" (click)="onClose()" class="hide-gt-sm">
     <mat-icon>logout</mat-icon> <span i18n="@@title-logout">Log out</span>
   </a>
 </mat-nav-list>

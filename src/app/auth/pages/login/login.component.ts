@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, NgForm, Validators } from '@angular/forms';
+import { UntypedFormBuilder, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from './../../../shared/services/auth.service';
 import { formFieldHasError } from './../../../shared/services/form-field-has-error';
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   @ViewChild('formDirective') private formDirective?: NgForm;
 
-  constructor(private fb: FormBuilder, private router: Router, private auth: AuthService) {}
+  constructor(private fb: UntypedFormBuilder, private router: Router, private auth: AuthService) {}
 
   ngOnInit(): void {}
 

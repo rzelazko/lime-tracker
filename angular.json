@@ -149,5 +149,7 @@
       }
     }
   },
-  "defaultProject": "lime-tracker"
+  "cli": {
+    "analytics": false
+  }
 }
