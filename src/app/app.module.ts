@@ -1,3 +1,4 @@
+import { LayoutModule } from '@angular/cdk/layout';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
@@ -149,6 +150,8 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
         }),
         // Apex charts
         NgApexchartsModule,
+        // Material CDK
+        LayoutModule,
         // Material
         MatButtonModule,
         MatCardModule,
