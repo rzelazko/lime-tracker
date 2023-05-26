@@ -1,9 +1,9 @@
-<section fxLayoutAlign="center center">
+<section class="justify-center items-center">
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" #formDirective="ngForm">
     <mat-card>
       <mat-card-header>
         <mat-card-title>
-          <div fxFlex fxLayoutAlign="start center">
+          <div class="flex-1 justify-start items-center">
             <mat-icon svgIcon="logo" class="logo"></mat-icon>
             <span>Lime Tracker</span>
           </div>
@@ -21,7 +21,7 @@
       />
 
       <ng-container *ngIf="isLoading">
-        <mat-card-content fxLayout="column" fxLayoutGap="1rem" fxLayoutAlign="center center">
+        <mat-card-content class="flex-col gap-normal justify-center items-center">
           <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
         </mat-card-content>
       </ng-container>
@@ -29,7 +29,7 @@
       <ng-container *ngIf="!isLoading">
         <!-- form body -->
 
-        <mat-card-content fxLayout="column" fxLayoutGap="1rem">
+        <mat-card-content class="flex-col gap-normal">
           <mat-error *ngIf="error">
             <ng-container [ngSwitch]="error">
               <span *ngSwitchCase="'auth/email-already-in-use'" i18n="@@error-email-taken"

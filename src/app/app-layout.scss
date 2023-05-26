@@ -80,6 +80,95 @@ $overlapping-lt: (
 
 // Helper classes
 ::ng-deep {
+  .flex-1,
+  .flex-grow,
+  .flex-row,
+  .flex-col,
+  mat-card-content.flex-row,
+  mat-card-content.flex-col {
+    display: flex;
+  }
+
+  .flex-1 {
+    // Same as flex: 1 1 0 (grow, shrink, basis 0). Has similar effect to width: 100%;
+    flex: 1;
+  }
+
+  .flex-grow {
+    // Same as flex: 1 1 auto (grow, shrink, basis auto). For spacer, etc.
+    flex-grow: 1;
+  }
+
+  .flex-row {
+    flex-direction: row;
+  }
+
+  .flex-col {
+    flex-direction: column;
+  }
+
+  .flex-fill {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+
+  // Justify content.
+  .space-between {
+    justify-content: space-between;
+  }
+
+  .justify-start {
+    justify-content: flex-start;
+  }
+
+  .justify-center {
+    justify-content: center;
+  }
+
+  .justify-end {
+    justify-content: flex-end;
+  }
+
+  // Align items
+  .items-start {
+    align-items: flex-start;
+    align-content: flex-start;
+  }
+
+  .items-center {
+    align-items: center;
+    align-content: center;
+  }
+
+  .items-stretch-col {
+    max-width: 100%;
+  }
+
+  .items-stretch-row {
+    max-height: 100%;
+  }
+
+  .items-end {
+    align-items: flex-end;
+    align-content: flex-end;
+  }
+
+  // Gaps
+  .gap-small {
+    gap: 0.5em;
+  }
+  .gap-normal {
+    gap: 1em;
+  }
+
+  // Conditional
   .hide-gt-sm {
     @include layout-bp(gt-sm) {
       display: none;

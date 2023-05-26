@@ -1,5 +1,5 @@
 <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
-<mat-sidenav-container fxLayout="column">
+<mat-sidenav-container  class="flex-col">
   <mat-sidenav #sidenav role="navigation" [mode]="!hideSideMenu ? 'side' : 'over'" [opened]="!hideSideMenu">
     <app-sidenav *ngIf="!hideSideMenu"></app-sidenav>
     <app-sidenav *ngIf="hideSideMenu" (sidenavClose)="sidenav.close()"></app-sidenav>

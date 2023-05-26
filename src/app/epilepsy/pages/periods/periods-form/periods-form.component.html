@@ -7,10 +7,7 @@
   <form
     [formGroup]="form"
     (ngSubmit)="onSubmit()"
-    fxFlex
-    fxLayout="column"
-    fxLayoutAlign="start start"
-    fxLayoutGap="1em"
+    class="flex-grow flex-col gap-normal justify-start items-start"
   >
     <mat-error *ngIf="error">
       <span i18n="@@error-with-message">Error: {{ error }}</span>

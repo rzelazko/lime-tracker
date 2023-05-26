@@ -31,6 +31,13 @@ section.info {
   }
 }
 
+.flex-row-wrap-gt-xs {
+  @include layout-bp(gt-xs) {
+    display: flex; flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
 @include layout-bp(gt-xs) {
   section.info {
     mat-card {
