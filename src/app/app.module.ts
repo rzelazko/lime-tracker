@@ -9,7 +9,6 @@ import {
   getFirestore,
   provideFirestore,
 } from '@angular/fire/firestore';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatButtonModule } from '@angular/material/button';
@@ -148,8 +147,6 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
             enableMultiTabIndexedDbPersistence(firestore).then(() => resolvePersistenceEnabled(true), () => resolvePersistenceEnabled(false));
             return firestore;
         }),
-        // Flex
-        FlexLayoutModule,
         // Apex charts
         NgApexchartsModule,
         // Material
