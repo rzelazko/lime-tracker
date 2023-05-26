@@ -81,117 +81,107 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
 });
 
 @NgModule({
-  declarations: [
-    // Pipes
-    EndOfPipe,
-    HumanizePipe,
-    JoinPipe,
-    MomentPipe,
-    StartOfPipe,
-    TimeSincePipe,
-
-    // Components
-    AppComponent,
-    ChartsComponent,
-    ChartHeatmapComponent,
-    ChartSeizuresByHoursComponent,
-    ChartSummaryComponent,
-    ConfirmDeleteDialogComponent,
-    DashboardComponent,
-    EventsFormComponent,
-    EventsComponent,
-    ErrorCardComponent,
-    ErrorModalComponent,
-    HeaderComponent,
-    LayoutAnonymousComponent,
-    LayoutAuthenticatedComponent,
-    LoginComponent,
-    LogoutComponent,
-    ManageProfileComponent,
-    MedicationsComponent,
-    MedicationsFormComponent,
-    PageNotFoundComponent,
-    PeriodsComponent,
-    PeriodsFormComponent,
-    RegisterComponent,
-    ReportsComponent,
-    SidenavComponent,
-    SeizuresComponent,
-    SeizuresFormComponent,
-    TableComponent,
-    UpdateDialogComponent,
-    VerifyEmailComponent,
-    YearsnavComponent,
-  ],
-  imports: [
-    // Angular
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-
-    // Firebase
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAnalytics(() => getAnalytics()),
-    provideAuth(() => {
-      const auth = getAuth();
-      if (environment.useEmulators) {
-        connectAuthEmulator(auth, `http://${environment.emulatorHost}:9099`, { disableWarnings: true });
-      }
-      return auth;
-    }),
-    provideFirestore(() => {
-      const firestore = getFirestore();
-      if (environment.useEmulators) {
-        connectFirestoreEmulator(firestore, environment.emulatorHost, 8080);
-      }
-      enableMultiTabIndexedDbPersistence(firestore).then(
-        () => resolvePersistenceEnabled(true),
-        () => resolvePersistenceEnabled(false)
-      );
-      return firestore;
-    }),
-
-    // Flex
-    FlexLayoutModule,
-
-    // Apex charts
-    NgApexchartsModule,
-
-    // Material
-    MatButtonModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
-    MatListModule,
-    MatMenuModule,
-    MatMomentDateModule,
-    MatProgressSpinnerModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatSlideToggleModule,
-    MatTableModule,
-    MatTabsModule,
-    MatToolbarModule,
-    MatTooltipModule,
-
-    // Progressive Web App
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production,
-      // Register the ServiceWorker as soon as the application is stable
-      // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000',
-    }),
-  ],
-  exports: [],
-  providers: [],
-  bootstrap: [AppComponent],
-  entryComponents: [ConfirmDeleteDialogComponent, ErrorModalComponent, UpdateDialogComponent],
+    declarations: [
+        // Pipes
+        EndOfPipe,
+        HumanizePipe,
+        JoinPipe,
+        MomentPipe,
+        StartOfPipe,
+        TimeSincePipe,
+        // Components
+        AppComponent,
+        ChartsComponent,
+        ChartHeatmapComponent,
+        ChartSeizuresByHoursComponent,
+        ChartSummaryComponent,
+        ConfirmDeleteDialogComponent,
+        DashboardComponent,
+        EventsFormComponent,
+        EventsComponent,
+        ErrorCardComponent,
+        ErrorModalComponent,
+        HeaderComponent,
+        LayoutAnonymousComponent,
+        LayoutAuthenticatedComponent,
+        LoginComponent,
+        LogoutComponent,
+        ManageProfileComponent,
+        MedicationsComponent,
+        MedicationsFormComponent,
+        PageNotFoundComponent,
+        PeriodsComponent,
+        PeriodsFormComponent,
+        RegisterComponent,
+        ReportsComponent,
+        SidenavComponent,
+        SeizuresComponent,
+        SeizuresFormComponent,
+        TableComponent,
+        UpdateDialogComponent,
+        VerifyEmailComponent,
+        YearsnavComponent,
+    ],
+    imports: [
+        // Angular
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        // Firebase
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideAnalytics(() => getAnalytics()),
+        provideAuth(() => {
+            const auth = getAuth();
+            if (environment.useEmulators) {
+                connectAuthEmulator(auth, `http://${environment.emulatorHost}:9099`, { disableWarnings: true });
+            }
+            return auth;
+        }),
+        provideFirestore(() => {
+            const firestore = getFirestore();
+            if (environment.useEmulators) {
+                connectFirestoreEmulator(firestore, environment.emulatorHost, 8080);
+            }
+            enableMultiTabIndexedDbPersistence(firestore).then(() => resolvePersistenceEnabled(true), () => resolvePersistenceEnabled(false));
+            return firestore;
+        }),
+        // Flex
+        FlexLayoutModule,
+        // Apex charts
+        NgApexchartsModule,
+        // Material
+        MatButtonModule,
+        MatCardModule,
+        MatCheckboxModule,
+        MatDatepickerModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatInputModule,
+        MatListModule,
+        MatMenuModule,
+        MatMomentDateModule,
+        MatProgressSpinnerModule,
+        MatSelectModule,
+        MatSidenavModule,
+        MatSlideToggleModule,
+        MatTableModule,
+        MatTabsModule,
+        MatToolbarModule,
+        MatTooltipModule,
+        // Progressive Web App
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: environment.production,
+            // Register the ServiceWorker as soon as the application is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000',
+        }),
+    ],
+    exports: [],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}

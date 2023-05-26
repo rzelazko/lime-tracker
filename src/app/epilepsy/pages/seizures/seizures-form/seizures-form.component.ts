@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { finalize, Observable, Subscription, take } from 'rxjs';
@@ -21,7 +21,7 @@ export class SeizuresFormComponent implements OnInit, OnDestroy {
   submitting = false;
   today = moment().format(SeizuresFormComponent.DATE_TIME_FORMAT);
   error?: string;
-  form: FormGroup;
+  form: UntypedFormGroup;
   id?: string;
   userDetails$: Observable<UserData>;
   private submitSubscription?: Subscription;
@@ -32,7 +32,7 @@ export class SeizuresFormComponent implements OnInit, OnDestroy {
     private seizuresService: SeizuresService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) {
     this.form = this.fb.group({
       occurred: ['', [Validators.required, DatesValidator.inThePast()]],

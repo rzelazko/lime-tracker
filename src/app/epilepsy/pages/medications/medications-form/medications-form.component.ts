@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
@@ -18,7 +18,7 @@ export class MedicationsFormComponent implements OnInit {
   submitting = false;
   today = moment();
   error?: string;
-  form: FormGroup;
+  form: UntypedFormGroup;
   id?: string;
   private submitSubscription?: Subscription;
   private archivedSubscription?: Subscription;
@@ -27,7 +27,7 @@ export class MedicationsFormComponent implements OnInit {
     private medicationsService: MedicationsService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) {
     this.form = this.fb.group(
       {
