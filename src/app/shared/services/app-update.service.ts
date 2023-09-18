@@ -1,5 +1,5 @@
 import { ApplicationRef, Injectable, isDevMode } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { SwUpdate } from '@angular/service-worker';
 import { concat, first, interval } from 'rxjs';
 import { UpdateDialogComponent } from './../components/update-dialog/update-dialog.component';

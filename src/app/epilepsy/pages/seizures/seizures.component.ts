@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatLegacyTableDataSource as MatTableDataSource } from '@angular/material/legacy-table';
 import { Subscription } from 'rxjs';
 import { TrackingCore } from './../../../shared/models/tracking-core.model';
 import { SeizuresService } from './../../../shared/services/seizures.service';
