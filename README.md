@@ -14,7 +14,7 @@ Sample screenshots:
 
 ## Technologies used
 
-Angular version: 14.x
+Angular version: 16.x
 NodeJS version: 16.x
 NPM version: 8.x
 Angular Fire: 7.x
