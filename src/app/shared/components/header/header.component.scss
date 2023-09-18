@@ -1,3 +1,9 @@
 .logo {
   padding-right: .5rem;
 }
+
+@media print {
+  .hamburger-menu {
+    display: none;
+  }
+}

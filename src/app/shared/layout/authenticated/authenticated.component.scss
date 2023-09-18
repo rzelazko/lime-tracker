@@ -9,3 +9,17 @@ mat-sidenav-container, mat-sidenav-content, mat-sidenav {
 mat-sidenav-container .mat-drawer-content {
   overflow: unset;
 }
+
+@media print {
+  mat-sidenav {
+    display: none;
+  }
+
+  mat-sidenav-content {
+    margin: 0 !important;
+  }
+
+  main {
+    max-width: 100%;
+  }
+}

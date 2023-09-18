@@ -14,11 +14,11 @@ Sample screenshots:
 
 ## Technologies used
 
-Angular version: 16.x
-NodeJS version: 16.x
-NPM version: 8.x
-Angular Fire: 7.x
-Firebase SDK: 9.x
+- Angular version: 16.x
+- NodeJS version: 16.x
+- NPM version: 8.x
+- Angular Fire: 7.x
+- Firebase SDK: 9.x
 
 ### Development server
 
@@ -66,7 +66,7 @@ Debugging information about NGSW can be found under URLs:
 
 - [Angular CLI Overview and Command Reference](https://angular.io/cli)
 - [Angular Material Components](https://material.angular.io/components/categories)
-- [Angular Flex Layout](https://github.com/angular/flex-layout)
+- ~[Angular Flex Layout](https://github.com/angular/flex-layout)~ - project is dead, required features integrated into Lime Tracker
 - [Moment.js](https://momentjs.com/)
 - [Angular Fire](https://github.com/angular/angularfire)
 - [Firebase API - Reference](https://firebase.google.com/docs/reference/js)
