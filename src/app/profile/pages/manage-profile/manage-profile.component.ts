@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { MatLegacySlideToggleChange as MatSlideToggleChange } from '@angular/material/legacy-slide-toggle';
 import { finalize, Observable, Subscription } from 'rxjs';
 import { UserData } from 'src/app/auth/models/user-details.model';
 import { AuthService } from './../../../shared/services/auth.service';
