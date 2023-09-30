@@ -15,8 +15,7 @@ Sample screenshots:
 ## Technologies used
 
 - Angular version: 16.x
-- NodeJS version: 16.x
-- NPM version: 8.x
+- NodeJS version: 18.x
 - Angular Fire: 7.x
 - Firebase SDK: 9.x
 
