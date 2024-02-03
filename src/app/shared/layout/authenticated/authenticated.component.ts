@@ -13,7 +13,7 @@ export class LayoutAuthenticatedComponent implements OnInit, OnDestroy {
   constructor(breakpointObserver: BreakpointObserver) {
     this.breakpointChangeSubscription = breakpointObserver
       .observe([Breakpoints.XSmall, Breakpoints.Small])
-      .subscribe(state => {this.hideSideMenu = state.matches; console.log(`Hide side menu: ${this.hideSideMenu}`)});
+      .subscribe(state => this.hideSideMenu = state.matches);
   }
 
   ngOnInit(): void {
