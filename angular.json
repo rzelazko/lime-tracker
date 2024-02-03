@@ -11,19 +11,19 @@
         },
         "@schematics/angular:application": {
           "strict": true
-        },
-        "i18n": {
-          "sourceLocale": "en",
-          "locales": {
-            "pl": {
-              "translation": "src/locale/messages.pl.xlf"
-            }
-          }
         }
       },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": "en",
+        "locales": {
+          "pl": {
+            "translation": "src/locale/messages.pl.xlf"
+          }
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
