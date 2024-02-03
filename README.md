@@ -14,10 +14,10 @@ Sample screenshots:
 
 ## Technologies used
 
-- Angular version: 16.x
+- Angular version: 17.x
+- Angular Fire: 17.x
+- Firebase SDK: 10.x
 - NodeJS version: [.nvmrc](.nvmrc), [Firebase Merge flow](.github/workflows/firebase-hosting-merge.yml), [Firebase Pull Request flow](.github/workflows/firebase-hosting-pull-request.yml)
-- Angular Fire: 7.x
-- Firebase SDK: 9.x
 
 ### Development server
 
