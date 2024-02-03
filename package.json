@@ -19,7 +19,7 @@
     "@angular/common": "^17.1.2",
     "@angular/compiler": "^17.1.2",
     "@angular/core": "^17.1.2",
-    "@angular/fire": "^7.6.1",
+    "@angular/fire": "^17.0.1",
     "@angular/forms": "^17.1.2",
     "@angular/material": "^16.2.0",
     "@angular/material-moment-adapter": "^17.1.2",
@@ -34,7 +34,7 @@
     "moment-range": "^4.0.2",
     "ng-apexcharts": "^1.8.0",
     "rxfire": "^6.0.5",
-    "rxjs": "~7.5.0",
+    "rxjs": "^7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "^0.14.3"
   },
