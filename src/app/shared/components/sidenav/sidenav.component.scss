@@ -1,22 +1,19 @@
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 @import "src/app/app-theme-variables";
 
 mat-nav-list {
   width: 250px;
+
   mat-icon {
-    padding-right: .5rem;
+    margin: 0 0.5em 0 0;
   }
 }
 
-mat-icon {
-  opacity: $app-icon-opacity;
-}
-
 .active {
-  color: mat.get-color-from-palette($app-primary, 'darker');
-  background: mat.get-color-from-palette($app-primary, 'lighter', .15);
+  color: mat.get-color-from-palette($app-primary, "darker");
+  background: mat.get-color-from-palette($app-primary, "lighter", 0.15);
 
-  &:hover{
-    background: mat.get-color-from-palette($app-primary, 'lighter', .3);
+  &:hover {
+    background: mat.get-color-from-palette($app-primary, "lighter", 0.3);
   }
 }

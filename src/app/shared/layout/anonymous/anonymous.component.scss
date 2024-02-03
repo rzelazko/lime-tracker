@@ -8,7 +8,7 @@
     max-width: 400px;
     .app-card-title {
       color: mat.get-color-from-palette($app-primary, 'text');
-      /* font-size: mat.font-size($app-typography, 'headline'); */
+      font-size: mat.font-size($app-typography, 'headline-6');
       padding: .5em 0;
 
       .logo {
