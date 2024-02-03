@@ -4,24 +4,26 @@
 
 section {
   padding: 1rem 1rem 0;
-
+  /* TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
   mat-card {
     display: flex;
     flex-direction: column;
   }
-
+  /* TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
   mat-card-content {
     flex-grow: 1;
   }
 }
 
 section.info {
+  /* TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
   mat-card {
     margin: 0 0 1em 0;
   }
-
+  /* TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
+  /* TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
   mat-card.app-list-card {
-    .mat-list-icon {
+    .mat-mdc-list-item-icon {
       opacity: $app-icon-opacity;
     }
   }
@@ -40,6 +42,7 @@ section.info {
 
 @include layout-bp(gt-xs) {
   section.info {
+    /* TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
     mat-card {
       min-width: 15em;
       margin: 0 1em 1em 0;
@@ -48,7 +51,7 @@ section.info {
 }
 
 @media print {
-  .mat-raised-button {
+  .mat-mdc-raised-button {
     display: none;
   }
 }

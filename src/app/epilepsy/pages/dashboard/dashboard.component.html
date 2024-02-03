@@ -4,7 +4,7 @@
 
 <main>
   <section class="info flex-col flex-row-wrap-gt-xs justify-start items-stretch-col">
-    <mat-card class="last-seizure" *ngIf="lastSeizures$ | async as lastSeizures; else loadingOrErrorSeizures">
+    <mat-card appearance="outlined" class="last-seizure" *ngIf="lastSeizures$ | async as lastSeizures; else loadingOrErrorSeizures">
       <mat-card-title-group>
         <mat-card-title i18n="@@dashboard-title-last-seizure">Last seizure</mat-card-title>
         <mat-card-subtitle *ngIf="lastSeizures.length === 1">{{
@@ -13,8 +13,8 @@
       </mat-card-title-group>
       <mat-card-content>
         <h3 i18n="@@dashboard-time-since-last-seizure">Time since last seizure:</h3>
-        <p class="mat-display-3" *ngIf="lastSeizures.length !== 1" i18n="@@dashboard-time-since-last-seizure-unknown">unknown</p>
-        <p class="mat-display-3" *ngIf="lastSeizures.length === 1">
+        <p class="mat-headline-2" *ngIf="lastSeizures.length !== 1" i18n="@@dashboard-time-since-last-seizure-unknown">unknown</p>
+        <p class="mat-headline-2" *ngIf="lastSeizures.length === 1">
           {{ lastSeizures[0].occurred | timeSince | humanize }}
         </p>
       </mat-card-content>
@@ -26,7 +26,7 @@
     <ng-template #loadingOrErrorSeizures>
       <app-error-card [error]="seizureError" *ngIf="seizureError; else loadingSeizures"></app-error-card>
       <ng-template #loadingSeizures>
-        <mat-card class="last-seizure">
+        <mat-card appearance="outlined" class="last-seizure">
           <mat-card-title-group>
             <mat-card-title i18n="@@dashboard-title-last-seizure">Last seizure</mat-card-title>
           </mat-card-title-group>
@@ -35,7 +35,7 @@
       </ng-template>
     </ng-template>
 
-    <mat-card class="medications app-list-card" *ngIf="medications$ | async as medications; else loadingOrErrorMedications">
+    <mat-card appearance="outlined" class="medications app-list-card" *ngIf="medications$ | async as medications; else loadingOrErrorMedications">
       <mat-card-title-group>
         <mat-card-title i18n="@@dashboard-title-current-medications">Current medications</mat-card-title>
       </mat-card-title-group>
@@ -71,7 +71,7 @@
     <ng-template #loadingOrErrorMedications>
       <app-error-card [error]="medicationsError" *ngIf="medicationsError; else loadingMedications"></app-error-card>
       <ng-template #loadingMedications>
-        <mat-card class="medications">
+        <mat-card appearance="outlined" class="medications">
           <mat-card-title-group>
             <mat-card-title i18n="@@dashboard-title-current-medications">Current medications</mat-card-title>
           </mat-card-title-group>
@@ -82,7 +82,7 @@
 
     <ng-container *ngIf="userDetails$ | async as userData; else loadingOrErrorPeriods">
       <ng-container *ngIf="userData.isFemale">
-        <mat-card class="last-period" *ngIf="lastPeriods$ | async as lastPeriods; else loadingOrErrorPeriods">
+        <mat-card appearance="outlined" class="last-period" *ngIf="lastPeriods$ | async as lastPeriods; else loadingOrErrorPeriods">
           <ng-container *ngIf="lastPeriods.length !== 1">
             <mat-card-title-group>
               <mat-card-title i18n="@@dashboard-title-last-period">Last period</mat-card-title>
@@ -102,7 +102,7 @@
             </mat-card-title-group>
             <mat-card-content>
               <h3 i18n="@@dashboard-current-period-content-lasts">Lasts:</h3>
-              <p class="mat-display-3">
+              <p class="mat-headline-2">
                 {{ lastPeriods[0].startDate | timeSince: 'InDays' | humanize }}
               </p>
             </mat-card-content>
@@ -120,7 +120,7 @@
             </mat-card-title-group>
             <mat-card-content>
               <h3 i18n="@@dashboard-last-period-content-time-since">Time since:</h3>
-              <p class="mat-display-3">
+              <p class="mat-headline-2">
                 {{ lastPeriods[0].endDate | timeSince: 'InDays' | humanize }}
               </p>
             </mat-card-content>
@@ -135,7 +135,7 @@
     <ng-template #loadingOrErrorPeriods>
       <app-error-card [error]="periodsError" *ngIf="periodsError; else loadingPeriods"></app-error-card>
       <ng-template #loadingPeriods>
-        <mat-card class="last-period">
+        <mat-card appearance="outlined" class="last-period">
           <mat-card-title-group>
             <mat-card-title i18n="@@dashboard-title-last-period">Last period</mat-card-title>
           </mat-card-title-group>
@@ -144,7 +144,7 @@
       </ng-template>
     </ng-template>
 
-    <mat-card class="events app-list-card" *ngIf="lastEvents$ | async as events; else loadingOrErrorEvents">
+    <mat-card appearance="outlined" class="events app-list-card" *ngIf="lastEvents$ | async as events; else loadingOrErrorEvents">
       <mat-card-title-group>
         <mat-card-title i18n="@@dashboard-title-last-events">Last events</mat-card-title>
       </mat-card-title-group>
@@ -172,7 +172,7 @@
     <ng-template #loadingOrErrorEvents>
       <app-error-card [error]="eventsError" *ngIf="eventsError; else loadingEvents"></app-error-card>
       <ng-template #loadingEvents>
-        <mat-card class="events">
+        <mat-card appearance="outlined" class="events">
           <mat-card-title-group>
             <mat-card-title i18n="@@dashboard-title-last-events">Last events</mat-card-title>
           </mat-card-title-group>
