@@ -2,7 +2,7 @@
 @import "src/app/app-theme-variables";
 
 .mat-mdc-list-item-icon {
-  opacity: $app-icon-opacity;
+  color: $app-icon-color;
 }
 
 .mat-line-secondary {
