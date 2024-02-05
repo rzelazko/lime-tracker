@@ -16,4 +16,4 @@ jobs:
       - run: git config --global user.name 'Lime Tracker GitHub'
       - run: git config --global user.email 'noreplay@lime-tracker.com'
       - run: npm version patch -m "[RELEASE] %s"
-      - run: git push
+      - run: git push --tags
