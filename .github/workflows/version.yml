@@ -1,5 +1,3 @@
-# Increment version in package.json and create tag
-
 name: Version Increment
 
 on:
