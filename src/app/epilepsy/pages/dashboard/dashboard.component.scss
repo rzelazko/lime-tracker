@@ -4,26 +4,19 @@
 
 section {
   padding: 1rem 1rem 0;
-
-  mat-card {
+  .app-card {
     display: flex;
     flex-direction: column;
   }
-
-  mat-card-content {
+  .app-card-content {
     flex-grow: 1;
+    margin-top: 1em;
   }
 }
 
 section.info {
-  mat-card {
+  .app-card {
     margin: 0 0 1em 0;
-  }
-
-  mat-card.app-list-card {
-    .mat-list-icon {
-      opacity: $app-icon-opacity;
-    }
   }
 
   .app-text-muted {
@@ -40,7 +33,7 @@ section.info {
 
 @include layout-bp(gt-xs) {
   section.info {
-    mat-card {
+    .app-card {
       min-width: 15em;
       margin: 0 1em 1em 0;
     }
@@ -48,7 +41,7 @@ section.info {
 }
 
 @media print {
-  .mat-raised-button {
+  .mat-mdc-raised-button {
     display: none;
   }
 }

@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_LEGACY_DIALOG_DATA as MAT_DIALOG_DATA } from '@angular/material/legacy-dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Event } from './../../../shared/models/event.model';
 import { Medication } from './../../../shared/models/medication.model';
 import { Period } from './../../../shared/models/period.model';

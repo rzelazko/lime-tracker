@@ -3,6 +3,7 @@ import {
   collection,
   collectionSnapshots,
   docSnapshots,
+  DocumentData,
   Firestore,
   QueryConstraint,
   writeBatch
@@ -32,7 +33,7 @@ export class FirestoreService {
 
   list<T>(path: string, ...q: QueryConstraint[]) {
     const ref = collection(this.firestore, path) as CollectionReference<Partial<T>>;
-    return collectionSnapshots<Partial<T>>(query<Partial<T>>(ref, ...q)).pipe(
+    return collectionSnapshots<Partial<T>>(query<Partial<T>, DocumentData>(ref, ...q)).pipe(
       map((data) => this.convertSnapshots<T>(data))
     );
   }

@@ -1,5 +1,14 @@
-.logo {
-  padding-right: .5rem;
+@use "@angular/material" as mat;
+@import "src/app/app-theme-variables";
+
+.app-logo-button {
+  font-size: mat.font-size($app-typography, "headline-6");
+
+  .logo-icon {
+    padding-right: 0.5rem;
+    display: flex;
+    align-self: center;
+  }
 }
 
 @media print {

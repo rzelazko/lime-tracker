@@ -20,44 +20,44 @@
         </div>
 
         <mat-list-item *ngFor="let case of monthData.data">
-          <mat-icon *ngIf="case.objectType === 'EVENT'" mat-list-icon>event</mat-icon>
-          <div *ngIf="case.objectType === 'EVENT'" mat-line>{{ case.name }}</div>
-          <div *ngIf="case.objectType === 'EVENT'" mat-line class="mat-line-secondary">
+          <mat-icon matListItemIcon *ngIf="case.objectType === 'EVENT'" mat-list-icon>event</mat-icon>
+          <div *ngIf="case.objectType === 'EVENT'" matListItemTitle>{{ case.name }}</div>
+          <div *ngIf="case.objectType === 'EVENT'" matListItemLine class="mat-line-secondary">
             {{ case.occurred | moment: "LL" }}
           </div>
 
-          <mat-icon *ngIf="case.objectType === 'SEIZURE'" mat-list-icon>warning</mat-icon>
-          <div *ngIf="case.objectType === 'SEIZURE'" mat-line i18n="@@reports-seizure-name">Seizure: {{ case.occurred | moment: "LLL" }}</div>
-          <div *ngIf="case.objectType === 'SEIZURE'" mat-line class="mat-line-secondary">
+          <mat-icon matListItemIcon *ngIf="case.objectType === 'SEIZURE'" mat-list-icon>warning</mat-icon>
+          <div *ngIf="case.objectType === 'SEIZURE'" matListItemTitle i18n="@@reports-seizure-name">Seizure: {{ case.occurred | moment: "LLL" }}</div>
+          <div *ngIf="case.objectType === 'SEIZURE'" matListItemLine class="mat-line-secondary">
             <span i18n="@@reports-seizure-type">Type: {{ case.type }}</span>
             <ng-container *ngIf="case.objectType === 'SEIZURE' && case.triggers && case.triggers.length > 0">
               <span> | </span>
               <span i18n="@@reports-seizure-triggers">Triggers: {{ case.triggers | join }}</span>
             </ng-container>
           </div>
-          <div *ngIf="case.objectType === 'SEIZURE'" mat-line class="mat-line-secondary" i18n="@@reports-seizure-duration">Duration: {{ case.duration | humanize }}</div>
+          <div *ngIf="case.objectType === 'SEIZURE'" matListItemLine class="mat-line-secondary" i18n="@@reports-seizure-duration">Duration: {{ case.duration | humanize }}</div>
 
-          <mat-icon *ngIf="case.objectType === 'MEDICATION'" mat-list-icon>medication</mat-icon>
+          <mat-icon matListItemIcon *ngIf="case.objectType === 'MEDICATION'" mat-list-icon>medication</mat-icon>
           <div *ngIf="case.objectType === 'MEDICATION'" mat-line>
             {{ case.name }}: {{ case.doses.morning }} -
             {{ case.doses.noon }} - {{ case.doses.evening }}
           </div>
-          <div *ngIf="case.objectType === 'MEDICATION' && case.useStartDate" mat-line class="mat-line-secondary" i18n="@@reports-medication-startDate"
+          <div *ngIf="case.objectType === 'MEDICATION' && case.useStartDate" matListItemLine class="mat-line-secondary" i18n="@@reports-medication-startDate"
             >Start date: {{ case.startDate | moment: "LL" }}</div>
-          <div *ngIf="case.objectType === 'MEDICATION' && !case.useStartDate && case.endDate" mat-line class="mat-line-secondary" i18n="@@reports-medication-endDate"
+          <div *ngIf="case.objectType === 'MEDICATION' && !case.useStartDate && case.endDate" matListItemLine class="mat-line-secondary" i18n="@@reports-medication-endDate"
             >End date: {{ case.endDate | moment: "LL" }}</div>
 
-          <mat-icon *ngIf="case.objectType === 'PERIOD'" mat-list-icon>bloodtype</mat-icon>
-          <div *ngIf="case.objectType === 'PERIOD'" mat-line i18n="@@reports-period-title">Period</div>
-          <div *ngIf="case.objectType === 'PERIOD' && case.useStartDate" mat-line class="mat-line-secondary" i18n="@@reports-period-startDate"
+          <mat-icon matListItemIcon *ngIf="case.objectType === 'PERIOD'" mat-list-icon>bloodtype</mat-icon>
+          <div *ngIf="case.objectType === 'PERIOD'" matListItemTitle i18n="@@reports-period-title">Period</div>
+          <div *ngIf="case.objectType === 'PERIOD' && case.useStartDate" matListItemLine class="mat-line-secondary" i18n="@@reports-period-startDate"
             >Start date: {{ case.startDate | moment: "LL" }}</div>
-          <div *ngIf="case.objectType === 'PERIOD' && !case.useStartDate && case.endDate" mat-line class="mat-line-secondary" i18n="@@reports-period-endDate"
+          <div *ngIf="case.objectType === 'PERIOD' && !case.useStartDate && case.endDate" matListItemLine class="mat-line-secondary" i18n="@@reports-period-endDate"
             >End date: {{ case.endDate | moment: "LL" }}</div>
         </mat-list-item>
 
         <mat-list-item *ngIf="!monthData.data.length">
-          <mat-icon mat-list-icon>info_outline</mat-icon>
-          <div mat-line class="mat-line-secondary" i18n="@@no-data">No data</div>
+          <mat-icon matListItemIcon mat-list-icon>info_outline</mat-icon>
+          <div matListItemLine class="mat-line-secondary" i18n="@@no-data">No data</div>
         </mat-list-item>
 
         <mat-divider></mat-divider>

@@ -1,8 +1,8 @@
 @use "@angular/material" as mat;
 @import "src/app/app-theme-variables";
 
-.mat-list-icon {
-  opacity: $app-icon-opacity;
+.mat-mdc-list-item-icon {
+  color: $app-icon-color;
 }
 
 .mat-line-secondary {

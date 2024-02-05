@@ -96,16 +96,16 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "lime-tracker:build:production"
+              "buildTarget": "lime-tracker:build:production"
             },
             "development": {
-              "browserTarget": "lime-tracker:build:development"
+              "buildTarget": "lime-tracker:build:development"
             },
             "en": {
-              "browserTarget": "lime-tracker:build:development,en"
+              "buildTarget": "lime-tracker:build:development,en"
             },
             "pl": {
-              "browserTarget": "lime-tracker:build:development,pl"
+              "buildTarget": "lime-tracker:build:development,pl"
             }
           },
           "defaultConfiguration": "development"
@@ -113,7 +113,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "lime-tracker:build"
+            "buildTarget": "lime-tracker:build"
           }
         },
         "test": {

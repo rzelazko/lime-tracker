@@ -1,4 +1,4 @@
-<nav mat-tab-nav-bar>
+<nav mat-tab-nav-bar [tabPanel]="tabPanel">
   <a
     mat-tab-link
     i18n="@@tab-last-year"
@@ -22,7 +22,7 @@
     {{ year }}
   </a>
 
-  <button mat-button mat-tab-link [matMenuTriggerFor]="yearsMenu">
+  <button mat-tab-link [matMenuTriggerFor]="yearsMenu">
     <mat-icon>more_vert</mat-icon>
   </button>
   <mat-menu #yearsMenu="matMenu">
@@ -34,3 +34,4 @@
     >
   </mat-menu>
 </nav>
+<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>

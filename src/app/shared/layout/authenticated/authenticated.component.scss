@@ -10,6 +10,13 @@ mat-sidenav-container .mat-drawer-content {
   overflow: unset;
 }
 
+::ng-deep {
+  // hack - bring back Date Time picker icon: https://stackoverflow.com/a/75298005
+  .mdc-text-field__input::-webkit-calendar-picker-indicator {
+    display: block !important;
+  }
+}
+
 @media print {
   mat-sidenav {
     display: none;
