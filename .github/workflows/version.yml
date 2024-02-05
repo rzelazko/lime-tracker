@@ -15,5 +15,6 @@ jobs:
           token: '${{ secrets.GITHUB_TOKEN }}'
       - run: git config --global user.name 'Lime Tracker GitHub'
       - run: git config --global user.email 'noreplay@lime-tracker.com'
+      - run: git config --global push.followTags true
       - run: npm version patch -m "[RELEASE] %s"
-      - run: git push --tags
+      - run: git push
