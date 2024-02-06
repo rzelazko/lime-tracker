@@ -17,7 +17,7 @@ Sample screenshots:
 - Angular version: 17.x
 - Angular Fire: 17.x
 - Firebase SDK: 10.x
-- NodeJS version: [.nvmrc](.nvmrc), [Firebase Merge flow](.github/workflows/firebase-hosting-merge.yml), [Firebase Pull Request flow](.github/workflows/firebase-hosting-pull-request.yml)
+- NodeJS version: [.nvmrc](.nvmrc), [Firebase Merge flow](.github/workflows/firebase-hosting-merge.yml), [Firebase Pull Request flow](.github/workflows/firebase-hosting-pull-request.yml), [Firebase Version Increment flow](.github/workflows/version.yml)
 
 ### Development server
 
