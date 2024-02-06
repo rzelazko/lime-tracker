@@ -10,8 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ !startsWith(github.event.head_commit.message, '[RELEASE]') }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
+          node-version-file: '.nvmrc'
           token: '${{ secrets.GITHUB_TOKEN }}'
       - run: git config --global user.name 'Lime Tracker GitHub'
       - run: git config --global user.email 'noreplay@lime-tracker.com'
