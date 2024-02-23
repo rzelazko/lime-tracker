@@ -6,6 +6,7 @@
     "start": "ng serve --configuration=en --host 0.0.0.0 --disable-host-check",
     "start-pl": "ng serve --configuration=pl --host 0.0.0.0 --disable-host-check",
     "build": "ng build --delete-output-path",
+    "postbuild": "node scripts/postbuild.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test-debug": "ng test --browsers=ChromeDebug",
@@ -51,6 +52,7 @@
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
-    "typescript": "~5.3.3"
+    "typescript": "~5.3.3",
+    "xml2js": "^0.6.2"
   }
 }
