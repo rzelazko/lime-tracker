@@ -600,7 +600,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/services/template-page-title.strategy.ts</context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login-welcome" datatype="html">
@@ -2088,14 +2088,14 @@
         <source>Lime Tracker - Epilepsy Journal</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/services/template-page-title.strategy.ts</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="app-description" datatype="html">
         <source>Track seizure events, medications, and identify triggers. This app helps people with epilepsy log and analyze seizures, medication, and potential triggers. The goal is to uncover patterns and insights to improve quality of life.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/services/template-page-title.strategy.ts</context>
-          <context context-type="linenumber">27</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
     </body>

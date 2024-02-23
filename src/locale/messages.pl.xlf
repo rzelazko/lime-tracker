@@ -659,7 +659,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/services/template-page-title.strategy.ts</context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login-welcome" datatype="html">
@@ -2323,7 +2323,7 @@
         <target>Lime Tracker - Dziennik Epileptyka</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/services/template-page-title.strategy.ts</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="app-description" datatype="html">
@@ -2331,7 +2331,7 @@
         <target>Śledź leki i napady, identyfikuj czynniki, które je spowodowały. Ta aplikacja pomaga osobom chorym na epilepsję rejestrować i analizować napady, leki i potencjalne czynniki wyzwalające. Celem jest odkrycie wzorców i spostrzeżeń pozwalających poprawić jakość życia.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/services/template-page-title.strategy.ts</context>
-          <context context-type="linenumber">27</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
     </body>

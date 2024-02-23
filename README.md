@@ -37,6 +37,10 @@ Extract translation: `ng extract-i18n --output-path src/locale`.
 
 Install Visual Studio Code extension: [Angular Localization Helper](https://marketplace.visualstudio.com/items?itemName=manux54.angular-localization-helper). Use command pallete run `Angular i18n: Sync`
 
+Current version of Angular i18n doesn't allow to translate PWA manifest files. As a workaround [manifest.webmanifest](./src/manifest.webmanifest) contains values with `@@` prefix.
+Those values are replaced by external `postbuild` script [postbuild.js](./scripts/postbuild.js) with keys from `src/locale/messages.XX.xlf`. \
+Translation units comes from [template-page-title.strategy.ts](./src/app/template-page-title.strategy.ts) file (as values in manifest are ignored by Angular i18n extraction task).
+
 ### Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
