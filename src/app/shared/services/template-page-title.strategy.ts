@@ -17,6 +17,7 @@ export class TemplatePageTitleStrategy extends TitleStrategy {
     const appTitle = $localize`:@@app-title:Lime Tracker - Epilepsy Journal`;
     const appShortTitle = $localize`:@@app-short-title:Lime Tracker`;
     const appDescription = $localize`:@@app-description:Track seizure events, medications, and identify triggers. This app helps people with epilepsy log and analyze seizures, medication, and potential triggers. The goal is to uncover patterns and insights to improve quality of life.`;
+    const appLang = $localize`:@@app-lang:en`;
 
     if (title) {
       this.title.setTitle(`${appShortTitle} | ${title}`);

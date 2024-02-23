@@ -1,5 +1,6 @@
 {
   "id": "pl.webperfekt.epilepsy-tracker",
+  "lang": "@@app-lang",
   "name": "@@app-title",
   "short_name": "@@app-short-title",
   "description": "@@app-description",
