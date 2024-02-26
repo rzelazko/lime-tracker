@@ -9,10 +9,24 @@
     "i18n": {
       "root": "/"
     },
-    "rewrites": [ {
-      "source": "**",
-      "destination": "/index.html"
-    } ]
+    "rewrites": [
+      {
+        "source": "/pl/**",
+        "destination": "/pl/index.html"
+      },
+      {
+        "source": "/en/**",
+        "destination": "/en/index.html"
+      },
+      {
+        "source": "manifest.webmanifest",
+        "destination": "/en/manifest.webmanifest"
+      },
+      {
+        "source": "**",
+        "destination": "/en/index.html"
+      }
+    ]
   },
   "firestore": {
     "rules": "firestore.rules",
