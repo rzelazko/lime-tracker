@@ -121,7 +121,7 @@ export class FirestoreService {
   }
 
   private convertFromTimestamps(data: any) {
-    Object.keys(data)
+    Object.keys(data || {})
       .filter((k) => data[k] instanceof Timestamp)
       .forEach((k) => (data[k] = moment((data[k] as Timestamp).toDate())));
     return data;
