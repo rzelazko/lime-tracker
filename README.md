@@ -49,7 +49,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Prerequisite for production deployment is to have Firebase CLI installed: `npm install -g firebase-tools`.
 
-Login to the CLI with `firebase login` then generate an access token for use in non-interactive environments with `firebase login:ci`.
+Login to the CLI with `firebase login`.
 
 Verify connection to the Firebase project with `firebase use`.
 
