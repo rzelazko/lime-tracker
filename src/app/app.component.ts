@@ -11,7 +11,6 @@ import { AuthService } from './shared/services/auth.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'lime-tracker';
   logoURL = 'assets/lime.svg';
 
   constructor(

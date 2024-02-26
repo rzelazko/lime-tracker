@@ -1,8 +1,10 @@
 {
   "id": "pl.webperfekt.epilepsy-tracker",
-  "name": "Lime Tracker - Epilepsy Monitoring",
-  "short_name": "Lime Tracker",
-  "description": "Track seizure events, medications, and identify triggers. This app helps people with epilepsy log and analyze seizures, medication, and potential triggers. The goal is to uncover patterns and insights to improve quality of life.",
+  "lang": "@@app-lang",
+  "dir": "ltr",
+  "name": "@@app-title",
+  "short_name": "@@app-short-title",
+  "description": "@@app-description",
   "theme_color": "#8bc34a",
   "background_color": "#fafafa",
   "display": "standalone",
