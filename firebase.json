@@ -16,11 +16,7 @@
       },
       {
         "source": "/en/**",
-        "destination": "/en/index.html"
-      },
-      {
-        "source": "manifest.webmanifest",
-        "destination": "/en/manifest.webmanifest"
+        "destination": "/index.html"
       },
       {
         "source": "**",
