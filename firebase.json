@@ -8,7 +8,11 @@
     ],
     "i18n": {
       "root": "/"
-    }
+    },
+    "rewrites": [ {
+      "source": "**",
+      "destination": "/index.html"
+    } ]
   },
   "firestore": {
     "rules": "firestore.rules",
@@ -25,11 +29,7 @@
     },
     "hosting": {
       "host": "0.0.0.0",
-      "port": 5000,
-      "rewrites": [ {
-        "source": "**",
-        "destination": "/index.html"
-      } ]
+      "port": 5000
     },
     "ui": {
       "enabled": true,
