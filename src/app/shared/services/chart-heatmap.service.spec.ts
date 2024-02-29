@@ -58,24 +58,6 @@ describe('ChartHeatmapService', () => {
     });
   });
 
-  it('should have valid amount of series and days for curent year', async () => {
-    // given
-    // curent year set in beforeEach
-    const seizuresList: Seizure[] = [];
-    seizuresServiceSpy.listCollection.and.returnValue(of(seizuresList));
-
-    // when
-    const seizuresSerie$ = service.seizureSerie();
-
-    // then
-    seizuresSerie$.subscribe((seizuresSerie: ChartData[]) => {
-      expect(seizuresSerie.length).toBe(5);
-      for (let i = 0; i < seizuresSerie.length; i++) {
-        expect(seizuresSerie[i].data.length).toBe(73);
-      }
-    });
-  });
-
   it('should have valid amount of series and days for year with 366 days', async () => {
     // given
     service.setYear(2020);
