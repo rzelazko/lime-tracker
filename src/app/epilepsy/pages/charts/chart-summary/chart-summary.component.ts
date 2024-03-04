@@ -25,7 +25,6 @@ export class ChartSummaryComponent implements OnInit {
       switchMap((selectedYear) => {
         this.chartService.setYear(selectedYear);
         return combineLatest([
-          this.chartService.medicationsSeries(),
           this.chartService
             .eventsSerie()
             .pipe(map((data) => ({ name: $localize`:@@title-events:Events`, ...data }))),
@@ -34,8 +33,8 @@ export class ChartSummaryComponent implements OnInit {
             .pipe(map((data) => ({ name: $localize`:@@title-seizures:Seizures`, ...data }))),
         ]);
       }),
-      map(([medicationsData, eventsData, seizuresData]) =>
-        this.toChartOptions(medicationsData, eventsData, seizuresData)
+      map(([eventsData, seizuresData]) =>
+        this.toChartOptions(eventsData, seizuresData)
       )
     );
 
@@ -46,7 +45,6 @@ export class ChartSummaryComponent implements OnInit {
   }
 
   private toChartOptions = (
-    medicationsData: ChartData[],
     eventsData: ChartData,
     seizuresData: ChartData
   ): ChartOptions => {
@@ -92,29 +90,6 @@ export class ChartSummaryComponent implements OnInit {
         data: eventsData.data,
       });
     }
-
-    medicationsData.forEach((medicationData, i) => {
-      yaxis.push({
-        show: i < 1,
-        opposite: true,
-        axisTicks: { show: true },
-        axisBorder: { show: true },
-        seriesName: medicationsData ? medicationsData[0].name : medicationData.name,
-        title: {
-          text: $localize`:@@chart-summary-med-per-day:Medication (per day)`,
-        },
-        labels: {
-          formatter: (value: number, opts: { dataPointIndex: number }) =>
-            this.labelFormatter(value, opts, medicationData.labels),
-        },
-      });
-
-      series.push({
-        name: medicationData.name,
-        type: 'line',
-        data: medicationData.data,
-      });
-    });
 
     return {
       title: {

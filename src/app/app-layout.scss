@@ -179,4 +179,9 @@ $overlapping-lt: (
       display: none;
     }
   }
+  .show-gt-xs {
+    @include layout-bp(lt-sm) {
+      display: none;
+    }
+  }
 }
