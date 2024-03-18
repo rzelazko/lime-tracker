@@ -55,5 +55,25 @@
   ],
   "categories": [
     "health"
+  ],
+  "shortcuts": [
+    {
+      "name": "@@title-add-seizure",
+      "url": "@@routerLink-epilepsy-seizures-add"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "@@app-screenshot-wide",
+      "sizes": "1280x800",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "@@app-screenshot-narrow",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
   ]
 }
