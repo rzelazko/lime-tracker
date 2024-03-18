@@ -1,6 +1,6 @@
 {
   "name": "lime-tracker",
-  "version": "1.0.20",
+  "version": "1.0.21",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --configuration=en --host 0.0.0.0 --disable-host-check",
