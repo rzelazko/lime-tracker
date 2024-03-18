@@ -33,7 +33,7 @@ Run in separte console `ng serve` for a dev server. Navigate to `http://localhos
 
 #### I18N
 
-Extract translation: `ng extract-i18n --output-path src/locale`.
+Extract translation: `npm run i18n-extract`.
 
 Install Visual Studio Code extension: [Angular Localization Helper](https://marketplace.visualstudio.com/items?itemName=manux54.angular-localization-helper). Use command pallete run `Angular i18n: Sync`
 
