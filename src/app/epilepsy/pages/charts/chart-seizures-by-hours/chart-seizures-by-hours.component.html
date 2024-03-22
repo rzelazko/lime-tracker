@@ -6,7 +6,7 @@
     [yaxis]="chart.options.yaxis"
     [title]="chart.options.title"
     [subtitle]="chart.options.subtitle"
-    [chart]="{height: 250, type: 'bar'}"
+    [chart]="{height: 250, type: 'bar', toolbar: {show: false}, zoom: {enabled: false}}"
     [dataLabels]="{enabled: false}"
   ></apx-chart>
   <app-error-card [error]="chart.error" *ngIf="chart.error"></app-error-card>
