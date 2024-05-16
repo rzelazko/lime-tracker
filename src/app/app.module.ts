@@ -130,24 +130,6 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
         FormsModule,
         HttpClientModule,
         ReactiveFormsModule,
-        // Firebase
-        provideFirebaseApp(() => initializeApp(environment.firebase)),
-        provideAnalytics(() => getAnalytics()),
-        provideAuth(() => {
-            const auth = getAuth();
-            if (environment.useEmulators) {
-                connectAuthEmulator(auth, `http://${environment.emulatorHost}:9099`, { disableWarnings: true });
-            }
-            return auth;
-        }),
-        provideFirestore(() => {
-            const firestore = getFirestore();
-            if (environment.useEmulators) {
-                connectFirestoreEmulator(firestore, environment.emulatorHost, 8080);
-            }
-            enableMultiTabIndexedDbPersistence(firestore).then(() => resolvePersistenceEnabled(true), () => resolvePersistenceEnabled(false));
-            return firestore;
-        }),
         // Apex charts
         NgApexchartsModule,
         // Material CDK
@@ -181,7 +163,26 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
         }),
     ],
     exports: [],
-    providers: [],
+    providers: [
+        // Firebase
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideAnalytics(() => getAnalytics()),
+        provideAuth(() => {
+            const auth = getAuth();
+            if (environment.useEmulators) {
+                connectAuthEmulator(auth, `http://${environment.emulatorHost}:9099`, { disableWarnings: true });
+            }
+            return auth;
+        }),
+        provideFirestore(() => {
+            const firestore = getFirestore();
+            if (environment.useEmulators) {
+                connectFirestoreEmulator(firestore, environment.emulatorHost, 8080);
+            }
+            enableMultiTabIndexedDbPersistence(firestore).then(() => resolvePersistenceEnabled(true), () => resolvePersistenceEnabled(false));
+            return firestore;
+        })
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
