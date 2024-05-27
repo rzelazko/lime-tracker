@@ -6,5 +6,5 @@
 }
 
 .mat-line-secondary {
-  color: mat.get-color-from-palette($app-foreground, "secondary-text");
+  color: mat.m2-get-color-from-palette($app-foreground, "secondary-text");
 }

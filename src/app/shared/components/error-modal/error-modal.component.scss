@@ -2,5 +2,5 @@
 @import "src/app/app-theme-variables";
 
 h1 {
-  color: mat.get-color-from-palette($app-warn, 'text');
+  color: mat.m2-get-color-from-palette($app-warn, 'text');
 }

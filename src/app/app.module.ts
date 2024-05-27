@@ -1,5 +1,5 @@
 import { LayoutModule } from '@angular/cdk/layout';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -80,8 +80,7 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
   resolvePersistenceEnabled = resolve;
 });
 
-@NgModule({
-    declarations: [
+@NgModule({ declarations: [
         // Pipes
         EndOfPipe,
         HumanizePipe,
@@ -122,13 +121,13 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
         VerifyEmailComponent,
         YearsnavComponent,
     ],
-    imports: [
+    exports: [],
+    bootstrap: [AppComponent], imports: [
         // Angular
         AppRoutingModule,
         BrowserAnimationsModule,
         BrowserModule,
         FormsModule,
-        HttpClientModule,
         ReactiveFormsModule,
         // Apex charts
         NgApexchartsModule,
@@ -160,10 +159,7 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
             // Register the ServiceWorker as soon as the application is stable
             // or after 30 seconds (whichever comes first).
             registrationStrategy: 'registerWhenStable:30000',
-        }),
-    ],
-    exports: [],
-    providers: [
+        })], providers: [
         // Firebase
         provideFirebaseApp(() => initializeApp(environment.firebase)),
         provideAnalytics(() => getAnalytics()),
@@ -181,8 +177,7 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
             }
             enableMultiTabIndexedDbPersistence(firestore).then(() => resolvePersistenceEnabled(true), () => resolvePersistenceEnabled(false));
             return firestore;
-        })
-    ],
-    bootstrap: [AppComponent]
-})
+        }),
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class AppModule {}
