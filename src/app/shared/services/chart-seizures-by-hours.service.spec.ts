@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import * as Moment from 'moment';
+import moment from 'moment';
 import { extendMoment } from 'moment-range';
 import { of } from 'rxjs';
 import { ChartData } from '../models/chart-data.model';

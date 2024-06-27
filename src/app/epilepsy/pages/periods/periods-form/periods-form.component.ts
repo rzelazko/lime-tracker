@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { ActivatedRoute, Router } from '@angular/router';
-import * as moment from 'moment';
+import moment from 'moment';
 import { finalize, Observable, Subscription, take } from 'rxjs';
 import { Period } from './../../../../shared/models/period.model';
 import { formFieldHasError } from './../../../../shared/services/form-field-has-error';

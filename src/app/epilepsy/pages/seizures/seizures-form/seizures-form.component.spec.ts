@@ -11,7 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ActivatedRoute, Router } from '@angular/router';
-import * as moment from 'moment';
+import moment from 'moment';
 import { of } from 'rxjs';
 import { Seizure } from './../../../../shared/models/seizure.model';
 import { AuthService } from './../../../../shared/services/auth.service';

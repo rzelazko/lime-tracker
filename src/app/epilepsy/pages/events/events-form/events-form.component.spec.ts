@@ -12,7 +12,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ActivatedRoute, Router } from '@angular/router';
-import * as moment from 'moment';
+import moment from 'moment';
 import { of, throwError } from 'rxjs';
 import { Event } from './../../../../shared/models/event.model';
 import { EventsService } from './../../../../shared/services/events.service';

@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { User } from 'firebase/auth';
-import * as moment from 'moment';
+import moment from 'moment';
 import { of } from 'rxjs';
 import { MockFirebaseUser } from './../models/mock-firebase-user.model';
 import { Period } from './../models/period.model';

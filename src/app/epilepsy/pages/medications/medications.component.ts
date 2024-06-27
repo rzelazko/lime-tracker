@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import * as moment from 'moment';
+import moment from 'moment';
 import { Subscription } from 'rxjs';
 import { Medication } from './../../../shared/models/medication.model';
 import { TrackingCore } from './../../../shared/models/tracking-core.model';

@@ -8,7 +8,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import * as moment from 'moment';
+import moment from 'moment';
 import { of } from 'rxjs';
 import { AppRoutingModule } from './../../../app-routing.module';
 import { ErrorCardComponent } from './../../../shared/error-card/error-card.component';

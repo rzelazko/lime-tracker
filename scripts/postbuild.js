@@ -64,7 +64,7 @@ const main = async () => {
   const appName = packageJson.name;
 
   const sourceDirectory = path.join(__dirname, "..", "src");
-  const destinationDirectory = path.join(__dirname, "..", "dist", appName);
+  const destinationDirectory = path.join(__dirname, "..", "dist", appName, "browser");
 
   await translateManifests(sourceDirectory, destinationDirectory);
   copyDefaultLang(destinationDirectory);

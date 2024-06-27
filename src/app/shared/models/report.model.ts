@@ -1,4 +1,4 @@
-import * as moment from 'moment';
+import moment from 'moment';
 import { Moment } from 'moment';
 import { Event } from './event.model';
 import { Medication } from './medication.model';

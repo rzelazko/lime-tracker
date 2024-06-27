@@ -8,7 +8,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { User } from 'firebase/auth';
-import * as moment from 'moment';
+import moment from 'moment';
 import { delay, of, throwError } from 'rxjs';
 import { UserData } from './../../../auth/models/user-details.model';
 import { ErrorCardComponent } from './../../../shared/error-card/error-card.component';

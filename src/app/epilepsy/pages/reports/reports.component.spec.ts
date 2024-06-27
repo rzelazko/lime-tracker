@@ -10,7 +10,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ActivatedRoute } from '@angular/router';
-import * as moment from 'moment';
+import moment from 'moment';
 import { of, throwError } from 'rxjs';
 import { AppRoutingModule } from './../../../app-routing.module';
 import { ErrorCardComponent } from './../../../shared/error-card/error-card.component';

@@ -1,5 +1,5 @@
 import { TimeSincePipe } from './time-since.pipe';
-import * as moment from 'moment';
+import moment from 'moment';
 
 describe('TimeSincePipe', () => {
   beforeEach(() => {

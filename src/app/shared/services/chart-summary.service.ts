@@ -12,7 +12,7 @@ import { EventsService } from './events.service';
 import { MedicationsService } from './medications.service';
 import { SeizuresService } from './seizures.service';
 
-const moment = extendMoment(Moment);
+const { default: moment, range: momentRange } = extendMoment(Moment);
 
 interface ChartRanage<T> {
   [key: string]: T;
@@ -150,14 +150,13 @@ export class ChartSummaryService extends ChartService {
   }
 
   private computeRangeForMedication(medicationsRange: MedicationRange, medication: Medication) {
-    const chartRange = moment.range(this.dateFrom, this.dateTo);
+    const chartRange = momentRange(this.dateFrom, this.dateTo);
     const medicationRangeStart = this.getMedicationRangeStart(medication, chartRange);
     const medicationRangeEnd = this.getMedicationRangeEnd(medication, chartRange);
     if (medicationRangeEnd.isAfter(this.dateFrom)) {
       const dataRange = medicationsRange[medication.name].dataRange;
       const labelsRange = medicationsRange[medication.name].labelsRange;
-      const medicationRange = moment
-        .range(medicationRangeStart, medicationRangeEnd)
+      const medicationRange = momentRange(medicationRangeStart, medicationRangeEnd)
         .snapTo('month');
       for (const month of medicationRange.by('month')) {
         const monthName = month.format(this.rangeFormat);
@@ -199,7 +198,7 @@ export class ChartSummaryService extends ChartService {
 
   private initializeAgregatedData() {
     const dataRange: ChartRanage<number> = {};
-    const range = moment.range(this.dateFrom, this.dateTo).snapTo('month');
+    const range = momentRange(this.dateFrom, this.dateTo).snapTo('month');
     for (let month of range.by('month')) {
       dataRange[month.format(this.rangeFormat)] = 0;
     }
@@ -209,7 +208,7 @@ export class ChartSummaryService extends ChartService {
 
   private initializeAgregatedLabels() {
     const dataRange: ChartRanage<string[]> = {};
-    const range = moment.range(this.dateFrom, this.dateTo).snapTo('month');
+    const range = momentRange(this.dateFrom, this.dateTo).snapTo('month');
     for (let month of range.by('month')) {
       dataRange[month.format(this.rangeFormat)] = [];
     }

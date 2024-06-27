@@ -8,7 +8,7 @@ import { Seizure } from '../models/seizure.model';
 import { ChartService } from './chart.service';
 import { SeizuresService } from './seizures.service';
 
-const moment = extendMoment(Moment);
+const { default: moment } = extendMoment(Moment);
 
 @Injectable({
   providedIn: 'root',
