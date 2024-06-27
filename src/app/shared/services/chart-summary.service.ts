@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { orderBy, where } from 'firebase/firestore';
-import * as Moment from 'moment';
+import Moment from 'moment';
 import { DateRange, extendMoment } from 'moment-range';
 import { map, mergeMap, Observable } from 'rxjs';
 import { ChartData } from './../models/chart-data.model';
@@ -12,7 +12,7 @@ import { EventsService } from './events.service';
 import { MedicationsService } from './medications.service';
 import { SeizuresService } from './seizures.service';
 
-const { default: moment, range: momentRange } = extendMoment(Moment);
+const moment = extendMoment(Moment as any);
 
 interface ChartRanage<T> {
   [key: string]: T;
@@ -150,13 +150,14 @@ export class ChartSummaryService extends ChartService {
   }
 
   private computeRangeForMedication(medicationsRange: MedicationRange, medication: Medication) {
-    const chartRange = momentRange(this.dateFrom, this.dateTo);
+    const chartRange = moment.range(this.dateFrom, this.dateTo);
     const medicationRangeStart = this.getMedicationRangeStart(medication, chartRange);
     const medicationRangeEnd = this.getMedicationRangeEnd(medication, chartRange);
     if (medicationRangeEnd.isAfter(this.dateFrom)) {
       const dataRange = medicationsRange[medication.name].dataRange;
       const labelsRange = medicationsRange[medication.name].labelsRange;
-      const medicationRange = momentRange(medicationRangeStart, medicationRangeEnd)
+      const medicationRange = moment
+        .range(medicationRangeStart, medicationRangeEnd)
         .snapTo('month');
       for (const month of medicationRange.by('month')) {
         const monthName = month.format(this.rangeFormat);
@@ -198,7 +199,7 @@ export class ChartSummaryService extends ChartService {
 
   private initializeAgregatedData() {
     const dataRange: ChartRanage<number> = {};
-    const range = momentRange(this.dateFrom, this.dateTo).snapTo('month');
+    const range = moment.range(this.dateFrom, this.dateTo).snapTo('month');
     for (let month of range.by('month')) {
       dataRange[month.format(this.rangeFormat)] = 0;
     }
@@ -208,7 +209,7 @@ export class ChartSummaryService extends ChartService {
 
   private initializeAgregatedLabels() {
     const dataRange: ChartRanage<string[]> = {};
-    const range = momentRange(this.dateFrom, this.dateTo).snapTo('month');
+    const range = moment.range(this.dateFrom, this.dateTo).snapTo('month');
     for (let month of range.by('month')) {
       dataRange[month.format(this.rangeFormat)] = [];
     }

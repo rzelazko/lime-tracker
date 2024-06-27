@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import * as Moment from 'moment';
+import Moment from 'moment';
 import { extendMoment } from 'moment-range';
 import { of, takeLast } from 'rxjs';
 import { Event } from './../models/event.model';
@@ -12,7 +12,7 @@ import { PeriodsService } from './periods.service';
 import { ReportsService } from './reports.service';
 import { SeizuresService } from './seizures.service';
 
-const { default: moment } = extendMoment(Moment);
+const moment = extendMoment(Moment as any);
 
 describe('ReportsService', () => {
   const reportCurrntMonths = ['May', 'Apr', 'Mar', 'Feb', 'Jan', 'Dec', 'Nov', 'Oct', 'Sep', 'Aug', 'Jul', 'Jun'];

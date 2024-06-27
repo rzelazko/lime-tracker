@@ -1,7 +1,7 @@
-import * as Moment from 'moment';
+import Moment from 'moment';
 import { extendMoment } from 'moment-range';
 
-const { default: moment } = extendMoment(Moment);
+const moment = extendMoment(Moment as any);
 
 export abstract class ChartService {
   dateTo: moment.Moment;
