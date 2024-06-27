@@ -1,9 +1,10 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+// For format details, see https://aka.ms/devcontainer.json. 
+// For config options, see the README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node.
 {
   "name": "Node.js & TypeScript",
   "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
   "mounts": ["source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached"],
+  // Features to add to the dev container. More info: https://containers.dev/features.
   "features": {
     "ghcr.io/devcontainers/features/java:1": {
       "version": "latest",
@@ -29,16 +30,14 @@
         "manux54.angular-localization-helper",
         "dbaeumer.vscode-eslint",
         "VisualStudioExptTeam.vscodeintellicode",
-        "esbenp.prettier-vscode"
+        "esbenp.prettier-vscode",
+        "eamodio.gitlens"
       ]
     }
   },
   "remoteEnv": {
     "CHROME_BIN": "/usr/local/bin/chrome"
   }
-
-  // Features to add to the dev container. More info: https://containers.dev/features.
-  // "features": {},
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
