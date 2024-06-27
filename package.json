@@ -9,7 +9,6 @@
     "postbuild": "node scripts/postbuild.js",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test-debug": "ng test --browsers=ChromeDebug",
     "firebase-emulator": "firebase emulators:start --only firestore,auth --import test-data",
     "i18n-extract": "ng extract-i18n --output-path src/locale"
   },

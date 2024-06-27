@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import moment from 'moment';
+import * as Moment from 'moment';
 import { extendMoment } from 'moment-range';
 import { of } from 'rxjs';
 import { ChartData } from '../models/chart-data.model';
@@ -7,7 +7,7 @@ import { Seizure } from '../models/seizure.model';
 import { ChartHeatmapService } from './chart-heatmap.service';
 import { SeizuresService } from './seizures.service';
 
-const moment = extendMoment(Moment);
+const { default: moment } = extendMoment(Moment);
 
 describe('ChartHeatmapService', () => {
   let service: ChartHeatmapService;
