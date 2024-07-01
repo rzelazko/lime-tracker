@@ -2,7 +2,7 @@
 @import "src/app/app-theme-variables";
 
 .app-logo-button {
-  font-size: mat.font-size($app-typography, "headline-6");
+  font-size: mat.m2-font-size($app-typography, "headline-6");
 
   .logo-icon {
     padding-right: 0.5rem;

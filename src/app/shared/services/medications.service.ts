@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { orderBy, where } from 'firebase/firestore';
-import * as moment from 'moment';
+import moment from 'moment';
 import {
   mergeMap, take, tap
 } from 'rxjs';

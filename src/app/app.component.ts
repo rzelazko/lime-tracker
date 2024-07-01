@@ -1,7 +1,7 @@
 import { Component, Inject, LOCALE_ID, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import * as moment from 'moment';
+import moment from 'moment';
 import { AppUpdateService } from './shared/services/app-update.service';
 import { AuthService } from './shared/services/auth.service';
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import * as moment from 'moment';
+import moment from 'moment';
 import { Observable } from 'rxjs';
 
 @Injectable({

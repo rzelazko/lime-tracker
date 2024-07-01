@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { QueryConstraint } from 'firebase/firestore';
-import * as moment from 'moment';
+import moment from 'moment';
 import { map } from 'rxjs';
 import { PageData } from './../models/page-data.model';
 import { Seizure, SeizureInternal } from './../models/seizure.model';

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from 'firebase/auth';
-import * as moment from 'moment';
+import moment from 'moment';
 import { map, BehaviorSubject } from 'rxjs';
 import { DEFAULT_SEIZURE_TRIGGERS } from '../../auth/models/default-seizure-triggers.model';
 import { DEFAULT_SEIZURE_TYPES } from '../../auth/models/default-seizure-types.model';

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as moment from 'moment';
+import moment from 'moment';
 import { Moment } from 'moment';
 import { interval, map, Observable } from 'rxjs';
 import { UserData } from '../../models/user-details.model';

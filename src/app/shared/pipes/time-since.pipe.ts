@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import * as moment from 'moment';
+import moment from 'moment';
 import { Moment, Duration, unitOfTime } from 'moment';
 
 type DiffUnits = (

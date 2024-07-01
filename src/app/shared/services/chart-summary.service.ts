@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { orderBy, where } from 'firebase/firestore';
-import * as Moment from 'moment';
+import Moment from 'moment';
 import { DateRange, extendMoment } from 'moment-range';
 import { map, mergeMap, Observable } from 'rxjs';
 import { ChartData } from './../models/chart-data.model';
@@ -12,7 +12,7 @@ import { EventsService } from './events.service';
 import { MedicationsService } from './medications.service';
 import { SeizuresService } from './seizures.service';
 
-const moment = extendMoment(Moment);
+const moment = extendMoment(Moment as any);
 
 interface ChartRanage<T> {
   [key: string]: T;

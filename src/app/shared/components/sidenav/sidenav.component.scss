@@ -11,10 +11,10 @@ mat-nav-list {
 }
 
 .active {
-  color: mat.get-color-from-palette($app-primary, "darker");
-  background: mat.get-color-from-palette($app-primary, "lighter", 0.15);
+  color: mat.m2-get-color-from-palette($app-primary, "darker");
+  background: mat.m2-get-color-from-palette($app-primary, "lighter", 0.15);
 
   &:hover {
-    background: mat.get-color-from-palette($app-primary, "lighter", 0.3);
+    background: mat.m2-get-color-from-palette($app-primary, "lighter", 0.3);
   }
 }
