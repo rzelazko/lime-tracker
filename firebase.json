@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/lime-tracker",
+    "public": "dist/lime-tracker/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
