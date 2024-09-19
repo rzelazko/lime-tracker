@@ -73,6 +73,7 @@ describe('ChartHeatmapComponent', () => {
     tick(100);
     fixture.detectChanges();
     expect(fixture.debugElement.queryAll(By.directive(MatProgressSpinner)).length).toBe(0);
+    tick(100);
   }));
 
   it('should show chart when seizureSerie ready', async () => {
