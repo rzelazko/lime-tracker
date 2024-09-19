@@ -2,18 +2,13 @@
 # https://github.com/firebase/firebase-tools
 
 name: Build and deploy to Firebase Hosting on PR
+
 on:
-  workflow_run:
-    workflows: ["CI Tests"]
-    types:
-      - completed
+  pull_request:
 
 jobs:
   build_and_preview:
-    if: >
-      github.event.workflow_run.event == 'pull_request' &&
-      github.event.workflow_run.conclusion == 'success' &&
-      github.event.workflow_run.head_repository.full_name == github.repository
+    if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -24,10 +19,15 @@ jobs:
       - name: Setup
         run: npm ci
 
+      - name: Test
+        run: |
+          npm test -- --no-watch --no-progress --browsers=ChromeHeadlessCI --code-coverage
+
       - name: Build
         run: npm run build
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
+        if: ${{ github.actor != 'dependabot[bot]' }}
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_LIME_TRACKER_COM }}'
