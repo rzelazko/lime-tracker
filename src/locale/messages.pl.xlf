@@ -59,7 +59,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/layout/anonymous/anonymous.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">7,8</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-login" datatype="html">
@@ -119,11 +119,11 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">2,6</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="linenumber">4,5</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-charts" datatype="html">
@@ -147,11 +147,11 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/charts.component.html</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="linenumber">4,7</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">8,9</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-charts-year" datatype="html">
@@ -179,23 +179,23 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">94</context>
+          <context context-type="linenumber">94,95</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">110</context>
+          <context context-type="linenumber">110,111</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">128</context>
+          <context context-type="linenumber">128,129</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">2,5</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
-          <context context-type="linenumber">30</context>
+          <context context-type="linenumber">30,31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-periods-add" datatype="html">
@@ -215,7 +215,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods-form/periods-form.component.html</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="linenumber">3,7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-periods-update" datatype="html">
@@ -235,7 +235,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods-form/periods-form.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">2,3</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-reports" datatype="html">
@@ -259,11 +259,11 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">6,7</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
-          <context context-type="linenumber">12</context>
+          <context context-type="linenumber">12,13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-reports-year" datatype="html">
@@ -307,11 +307,11 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">2,6</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">17,18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-seizures-add" datatype="html">
@@ -331,7 +331,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="linenumber">3,7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-seizures-update" datatype="html">
@@ -351,7 +351,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">2,3</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-medications" datatype="html">
@@ -371,15 +371,15 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">67</context>
+          <context context-type="linenumber">67,69</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">2,6</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
-          <context context-type="linenumber">21</context>
+          <context context-type="linenumber">21,22</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-medications-add" datatype="html">
@@ -399,7 +399,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="linenumber">3,7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-medications-update" datatype="html">
@@ -419,7 +419,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">2,3</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-events" datatype="html">
@@ -443,15 +443,15 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">168</context>
+          <context context-type="linenumber">168,169</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/events/events.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">2,5</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">25,26</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-events-add" datatype="html">
@@ -471,7 +471,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="linenumber">3,7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-evetns-update" datatype="html">
@@ -491,7 +491,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">2,3</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-profile" datatype="html">
@@ -511,7 +511,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
-          <context context-type="linenumber">48</context>
+          <context context-type="linenumber">48,49</context>
         </context-group>
       </trans-unit>
       <trans-unit id="seizure-trigger-lights" datatype="html">
@@ -647,15 +647,15 @@
         <target>Lime Tracker</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/login/login.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">8,10</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">8,10</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/verify-email/verify-email.component.html</context>
-          <context context-type="linenumber">7</context>
+          <context context-type="linenumber">7,9</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/services/template-page-title.strategy.ts</context>
@@ -667,7 +667,7 @@
         <target>Witaj ponownie!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/login/login.component.html</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">11,12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-connection" datatype="html">
@@ -675,11 +675,11 @@
         <target>Połączenie z serwerem zostało przerwane. Prosimy spróbować ponownie później, jeśli problem się powtarza prosimy o kontakt z <x id="START_LINK" ctype="x-a" equiv-text="&lt;a href=&quot;https://www.webperfekt.pl/&quot;&gt;"/>administratorem<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/login/login.component.html</context>
-          <context context-type="linenumber">32,33</context>
+          <context context-type="linenumber">32,34</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
-          <context context-type="linenumber">40,41</context>
+          <context context-type="linenumber">40,42</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login-error-auth" datatype="html">
@@ -687,7 +687,7 @@
         <target>Uwierzytelnianie nie powiodło się - proszę podać prawidłowe dane</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/login/login.component.html</context>
-          <context context-type="linenumber">36</context>
+          <context context-type="linenumber">36,38</context>
         </context-group>
       </trans-unit>
       <trans-unit id="placeholder-email" datatype="html">
@@ -695,11 +695,11 @@
         <target>Twój email</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/login/login.component.html</context>
-          <context context-type="linenumber">45</context>
+          <context context-type="linenumber">45,46</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
-          <context context-type="linenumber">70</context>
+          <context context-type="linenumber">70,71</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-email-required" datatype="html">
@@ -707,11 +707,11 @@
         <target>Email jest wymagany</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/login/login.component.html</context>
-          <context context-type="linenumber">50</context>
+          <context context-type="linenumber">50,52</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
-          <context context-type="linenumber">75</context>
+          <context context-type="linenumber">75,77</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-email-invalid" datatype="html">
@@ -719,11 +719,11 @@
         <target>Email jest niepoprawny</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/login/login.component.html</context>
-          <context context-type="linenumber">53</context>
+          <context context-type="linenumber">53,55</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
-          <context context-type="linenumber">78</context>
+          <context context-type="linenumber">78,80</context>
         </context-group>
       </trans-unit>
       <trans-unit id="placeholder-password" datatype="html">
@@ -731,11 +731,11 @@
         <target>Twoje hasło</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/login/login.component.html</context>
-          <context context-type="linenumber">61</context>
+          <context context-type="linenumber">61,62</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
-          <context context-type="linenumber">86</context>
+          <context context-type="linenumber">86,87</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-provide-password" datatype="html">
@@ -743,7 +743,7 @@
         <target>Proszę podać poprawne hasło</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/login/login.component.html</context>
-          <context context-type="linenumber">65</context>
+          <context context-type="linenumber">65,66</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action-login" datatype="html">
@@ -751,11 +751,11 @@
         <target>Zaloguj się</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/login/login.component.html</context>
-          <context context-type="linenumber">70</context>
+          <context context-type="linenumber">70,71</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/layout/anonymous/anonymous.component.html</context>
-          <context context-type="linenumber">12</context>
+          <context context-type="linenumber">12,16</context>
         </context-group>
       </trans-unit>
       <trans-unit id="register-welcome" datatype="html">
@@ -763,7 +763,7 @@
         <target>Utwórz konto w najlepszej aplikacji monitorującej epilepsję!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
-          <context context-type="linenumber">12</context>
+          <context context-type="linenumber">12,14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-email-taken" datatype="html">
@@ -771,7 +771,7 @@
         <target>Podany email jest ju</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
-          <context context-type="linenumber">34</context>
+          <context context-type="linenumber">34,36</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-passwrod-weak" datatype="html">
@@ -779,7 +779,7 @@
         <target>Hasło jest zbyt proste</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
-          <context context-type="linenumber">37</context>
+          <context context-type="linenumber">37,39</context>
         </context-group>
       </trans-unit>
       <trans-unit id="register-error-default" datatype="html">
@@ -787,7 +787,7 @@
         <target>Rejestracja nie powiodła się - spróbuj podać inne dane. Jeśli problem się powtarza skontaktuj się z <x id="START_LINK" ctype="x-a" equiv-text="&lt;a href=&quot;https://www.webperfekt.pl/&quot;&gt;"/>administratorem<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
-          <context context-type="linenumber">44,45</context>
+          <context context-type="linenumber">44,46</context>
         </context-group>
       </trans-unit>
       <trans-unit id="placeholder-name" datatype="html">
@@ -795,7 +795,7 @@
         <target>Twoje imię i nazwisko</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
-          <context context-type="linenumber">54</context>
+          <context context-type="linenumber">54,55</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-name-required" datatype="html">
@@ -803,7 +803,7 @@
         <target>Twoje imię i nazwisko jest wymagane</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">59,61</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-name-invalid" datatype="html">
@@ -811,7 +811,7 @@
         <target>Twoje imię i nazwisko jest niepoprawne</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
-          <context context-type="linenumber">62</context>
+          <context context-type="linenumber">62,64</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-password-6-100" datatype="html">
@@ -819,7 +819,7 @@
         <target>Powinno składać się z 6 - 100 znaków</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
-          <context context-type="linenumber">90</context>
+          <context context-type="linenumber">90,91</context>
         </context-group>
       </trans-unit>
       <trans-unit id="placeholder-confirm-password" datatype="html">
@@ -827,7 +827,7 @@
         <target>Powtórz hasło</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
-          <context context-type="linenumber">97</context>
+          <context context-type="linenumber">97,98</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-confirm-password-required" datatype="html">
@@ -835,7 +835,7 @@
         <target>Pole powtórz hasło jest wymagane</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
-          <context context-type="linenumber">104</context>
+          <context context-type="linenumber">104,106</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-confirm-password-not-the-same" datatype="html">
@@ -843,7 +843,7 @@
         <target>Hasło i powtórz hasło muszą być takie same</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
-          <context context-type="linenumber">109</context>
+          <context context-type="linenumber">109,111</context>
         </context-group>
       </trans-unit>
       <trans-unit id="label-i-am-female" datatype="html">
@@ -851,11 +851,11 @@
         <target>Jestem kobietą</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
-          <context context-type="linenumber">113</context>
+          <context context-type="linenumber">113,114</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/profile/pages/manage-profile/manage-profile.component.html</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">16,19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action-register" datatype="html">
@@ -863,11 +863,11 @@
         <target>Utwórz konto</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/register/register.component.html</context>
-          <context context-type="linenumber">117</context>
+          <context context-type="linenumber">117,118</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/layout/anonymous/anonymous.component.html</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">23,27</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verify-welcome" datatype="html">
@@ -875,7 +875,7 @@
         <target>Już prawie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/verify-email/verify-email.component.html</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">10,11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verify-header" datatype="html">
@@ -883,7 +883,7 @@
         <target>Dziękujemy za rejestrację!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/verify-email/verify-email.component.html</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">16,18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verify-email-sent" datatype="html">
@@ -891,7 +891,7 @@
         <target>Wysłaliśmy email z linkiem weryfikacyjnym.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/verify-email/verify-email.component.html</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="linenumber">18,20</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verify-email-sent-to" datatype="html">
@@ -899,7 +899,7 @@
         <target>Do</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/verify-email/verify-email.component.html</context>
-          <context context-type="linenumber">21</context>
+          <context context-type="linenumber">21,22</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verify-email-sent-date" datatype="html">
@@ -907,7 +907,7 @@
         <target>Wysłano</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/verify-email/verify-email.component.html</context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">26,27</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verify-email-resend-info" datatype="html">
@@ -915,7 +915,7 @@
         <target>Ponowne wysłanie możliwe za godzinę.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/verify-email/verify-email.component.html</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">28,31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verify-check-email" datatype="html">
@@ -923,7 +923,7 @@
         <target>Proszę sprawdzić pocztę i kliknąć na link aby potwierdzić Twój adres email.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/verify-email/verify-email.component.html</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">31,34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="verify-button-resend" datatype="html">
@@ -931,7 +931,7 @@
         <target>Wyślij ponownie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/verify-email/verify-email.component.html</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">38,41</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routerLink-logout" datatype="html">
@@ -955,7 +955,7 @@
         <target>Zaloguj się</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/verify-email/verify-email.component.html</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">41,42</context>
         </context-group>
       </trans-unit>
       <trans-unit id="delete-dialog-title" datatype="html">
@@ -963,7 +963,7 @@
         <target>Usunąć <x id="INTERPOLATION" equiv-text="{{ type }}"/>?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/confirm-delete-dialog/confirm-delete-dialog.component.html</context>
-          <context context-type="linenumber">1</context>
+          <context context-type="linenumber">1,3</context>
         </context-group>
       </trans-unit>
       <trans-unit id="delete-dialog-content" datatype="html">
@@ -971,7 +971,7 @@
         <target>Usunąć <x id="INTERPOLATION" equiv-text="{{ type }}"/>: <x id="INTERPOLATION_1" equiv-text="{{ title }}"/>?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/confirm-delete-dialog/confirm-delete-dialog.component.html</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="linenumber">4,5</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dialog-option-no" datatype="html">
@@ -979,7 +979,7 @@
         <target>Nie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/confirm-delete-dialog/confirm-delete-dialog.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">8,9</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dialog-option-yes" datatype="html">
@@ -987,7 +987,7 @@
         <target>Tak</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/confirm-delete-dialog/confirm-delete-dialog.component.html</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">9,11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="confirm-delete-type-event" datatype="html">
@@ -1039,7 +1039,7 @@
         <target>Wystąpił</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
-          <context context-type="linenumber">7</context>
+          <context context-type="linenumber">7,8</context>
         </context-group>
       </trans-unit>
       <trans-unit id="table-column-name" datatype="html">
@@ -1047,7 +1047,7 @@
         <target>Nazwa</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
-          <context context-type="linenumber">12</context>
+          <context context-type="linenumber">12,15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="table-column-type" datatype="html">
@@ -1055,7 +1055,7 @@
         <target>Rodzaj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">23,24</context>
         </context-group>
       </trans-unit>
       <trans-unit id="table-column-triggers" datatype="html">
@@ -1063,7 +1063,7 @@
         <target>Powody</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">28,29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="table-column-duration" datatype="html">
@@ -1071,7 +1071,7 @@
         <target>Długość</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
-          <context context-type="linenumber">33</context>
+          <context context-type="linenumber">33,34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="table-column-dose" datatype="html">
@@ -1079,7 +1079,7 @@
         <target>Dawka</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">38,41</context>
         </context-group>
       </trans-unit>
       <trans-unit id="table-column-start-end-date" datatype="html">
@@ -1087,7 +1087,7 @@
         <target>Okres zażywania</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
-          <context context-type="linenumber">49</context>
+          <context context-type="linenumber">49,52</context>
         </context-group>
       </trans-unit>
       <trans-unit id="table-column-start-date" datatype="html">
@@ -1095,7 +1095,7 @@
         <target>Data rozpoczęcia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
-          <context context-type="linenumber">62</context>
+          <context context-type="linenumber">62,65</context>
         </context-group>
       </trans-unit>
       <trans-unit id="table-column-end-date" datatype="html">
@@ -1103,7 +1103,7 @@
         <target>Data zakończenia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
-          <context context-type="linenumber">73</context>
+          <context context-type="linenumber">73,76</context>
         </context-group>
       </trans-unit>
       <trans-unit id="table-column-medication-active" datatype="html">
@@ -1111,7 +1111,7 @@
         <target>Aktualny</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
-          <context context-type="linenumber">84</context>
+          <context context-type="linenumber">84,85</context>
         </context-group>
       </trans-unit>
       <trans-unit id="table-tooltip-move-to-active" datatype="html">
@@ -1119,7 +1119,7 @@
         <target>Zmień na aktualnie zażywany</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
-          <context context-type="linenumber">91</context>
+          <context context-type="linenumber">91,93</context>
         </context-group>
       </trans-unit>
       <trans-unit id="table-tooltip-move-to-archive" datatype="html">
@@ -1127,7 +1127,7 @@
         <target>Zmień na archiwalny</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
-          <context context-type="linenumber">100</context>
+          <context context-type="linenumber">100,102</context>
         </context-group>
       </trans-unit>
       <trans-unit id="table-column-actions" datatype="html">
@@ -1135,7 +1135,7 @@
         <target>Akcje</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
-          <context context-type="linenumber">108</context>
+          <context context-type="linenumber">108,109</context>
         </context-group>
       </trans-unit>
       <trans-unit id="loading" datatype="html">
@@ -1143,7 +1143,7 @@
         <target>Wczytywanie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
-          <context context-type="linenumber">124</context>
+          <context context-type="linenumber">124,125</context>
         </context-group>
       </trans-unit>
       <trans-unit id="no-data" datatype="html">
@@ -1151,23 +1151,23 @@
         <target>Brak danych</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
-          <context context-type="linenumber">125</context>
+          <context context-type="linenumber">125,127</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">62</context>
+          <context context-type="linenumber">62,63</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">90</context>
+          <context context-type="linenumber">90,91</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">163</context>
+          <context context-type="linenumber">163,164</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
-          <context context-type="linenumber">60</context>
+          <context context-type="linenumber">60,61</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action-load-more" datatype="html">
@@ -1175,7 +1175,7 @@
         <target>Wczytaj więcej</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
-          <context context-type="linenumber">135</context>
+          <context context-type="linenumber">135,138</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action-refresh" datatype="html">
@@ -1183,7 +1183,7 @@
         <target>Odśwież dane</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/table/table.component.html</context>
-          <context context-type="linenumber">139</context>
+          <context context-type="linenumber">139,141</context>
         </context-group>
       </trans-unit>
       <trans-unit id="tab-last-year" datatype="html">
@@ -1191,7 +1191,7 @@
         <target>Ostatni rok</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/components/yearsnav/yearsnav.component.html</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">10,14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chart-heatmap-legend-day-no-seizures" datatype="html">
@@ -1291,11 +1291,11 @@
         <target>Ostatni napad</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">9</context>
+          <context context-type="linenumber">9,10</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">31,32</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dashboard-time-since-last-seizure" datatype="html">
@@ -1303,7 +1303,7 @@
         <target>Czas od ostatniego napadu:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">15</context>
+          <context context-type="linenumber">15,16</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dashboard-time-since-last-seizure-unknown" datatype="html">
@@ -1311,7 +1311,7 @@
         <target>nieznany</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">16,17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routerLink-epilepsy-seizures-add" datatype="html">
@@ -1323,7 +1323,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures.component.html</context>
-          <context context-type="linenumber">12</context>
+          <context context-type="linenumber">12,13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dashboard-action-add-seizure" datatype="html">
@@ -1331,7 +1331,7 @@
         <target>Atakuję!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">22,24</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dashboard-title-current-medications" datatype="html">
@@ -1339,11 +1339,11 @@
         <target>Zażywane leki</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">40</context>
+          <context context-type="linenumber">40,42</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">76</context>
+          <context context-type="linenumber">76,78</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routerLink-epilepsy-medications" datatype="html">
@@ -1371,15 +1371,15 @@
         <target>Ostatni okres</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">88</context>
+          <context context-type="linenumber">88,89</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">116</context>
+          <context context-type="linenumber">116,117</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">140</context>
+          <context context-type="linenumber">140,141</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routerLink-epilepsy-periods" datatype="html">
@@ -1407,7 +1407,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">28,29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dashboard-title-current-period" datatype="html">
@@ -1415,7 +1415,7 @@
         <target>Aktualny okres</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">100</context>
+          <context context-type="linenumber">100,101</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dashboard-subtitle-current-period" datatype="html">
@@ -1431,7 +1431,7 @@
         <target>Trwa:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">104</context>
+          <context context-type="linenumber">104,106</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dashboard-last-period-content-time-since" datatype="html">
@@ -1439,7 +1439,7 @@
         <target>Czas od:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">122</context>
+          <context context-type="linenumber">122,124</context>
         </context-group>
       </trans-unit>
       <trans-unit id="dashboard-title-last-events" datatype="html">
@@ -1447,11 +1447,11 @@
         <target>Ostatnie zdarzenia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">149</context>
+          <context context-type="linenumber">149,150</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
-          <context context-type="linenumber">177</context>
+          <context context-type="linenumber">177,178</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routerLink-epilepsy-events" datatype="html">
@@ -1479,15 +1479,15 @@
         <target>Błąd:  <x id="INTERPOLATION" equiv-text="{{ error }}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">13,14</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">13,14</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods-form/periods-form.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">13,14</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
@@ -1499,7 +1499,7 @@
         <target>Nazwa zdarzenia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">17,19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="placeholder-event-name" datatype="html">
@@ -1507,7 +1507,7 @@
         <target>Ważne zdarzenie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
-          <context context-type="linenumber">22</context>
+          <context context-type="linenumber">22,25</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-event-name-required" datatype="html">
@@ -1515,7 +1515,7 @@
         <target>Nazwa zdzarzenia jest wymagana</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
-          <context context-type="linenumber">26</context>
+          <context context-type="linenumber">26,28</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-event-name-invalid" datatype="html">
@@ -1523,7 +1523,7 @@
         <target>Nazwa zdzarzenia jest niepoprawna</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="linenumber">29,31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="label-event-occurred" datatype="html">
@@ -1531,7 +1531,7 @@
         <target>Wydarzenie odbyło się</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
-          <context context-type="linenumber">34</context>
+          <context context-type="linenumber">34,35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-event-occurred-required" datatype="html">
@@ -1539,7 +1539,7 @@
         <target>Pole odbyło się jest wymagane</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
-          <context context-type="linenumber">40</context>
+          <context context-type="linenumber">40,42</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-event-occurred-invalid" datatype="html">
@@ -1547,7 +1547,7 @@
         <target>Pole odbyło się jest niepoprawne</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="linenumber">43,46</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-event-occurred-in-future" datatype="html">
@@ -1555,7 +1555,7 @@
         <target>Pole odbyło się nie może być w przyszłości</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
-          <context context-type="linenumber">48</context>
+          <context context-type="linenumber">48,52</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action-update" datatype="html">
@@ -1563,19 +1563,19 @@
         <target>Aktualizuj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
-          <context context-type="linenumber">54</context>
+          <context context-type="linenumber">54,55</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">130</context>
+          <context context-type="linenumber">130,131</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods-form/periods-form.component.html</context>
-          <context context-type="linenumber">76</context>
+          <context context-type="linenumber">76,77</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
-          <context context-type="linenumber">74</context>
+          <context context-type="linenumber">74,75</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action-add-event" datatype="html">
@@ -1583,11 +1583,11 @@
         <target>Dodaj zdarzenie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
-          <context context-type="linenumber">57</context>
+          <context context-type="linenumber">57,58</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/events/events.component.html</context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">14,15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action-cancel" datatype="html">
@@ -1595,19 +1595,19 @@
         <target>Anuluj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
-          <context context-type="linenumber">60</context>
+          <context context-type="linenumber">60,64</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">136</context>
+          <context context-type="linenumber">136,140</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods-form/periods-form.component.html</context>
-          <context context-type="linenumber">82</context>
+          <context context-type="linenumber">82,86</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
-          <context context-type="linenumber">80</context>
+          <context context-type="linenumber">80,84</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routerLink-epilepsy-events-add" datatype="html">
@@ -1615,7 +1615,7 @@
         <target>/epilepsja/wydarzenia/dodaj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/events/events.component.html</context>
-          <context context-type="linenumber">12</context>
+          <context context-type="linenumber">12,13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routerLink-epilepsy-events-update" datatype="html">
@@ -1623,7 +1623,7 @@
         <target>/epilepsja/wydarzenia/aktualizuj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/events/events.component.html</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">16,17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="label-medication-name" datatype="html">
@@ -1631,7 +1631,7 @@
         <target>Nazwa leku</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">17,19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-medication-name-required" datatype="html">
@@ -1639,7 +1639,7 @@
         <target>Nazwa leku jest wymagana</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">27</context>
+          <context context-type="linenumber">27,29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-medication-name-invalid" datatype="html">
@@ -1647,7 +1647,7 @@
         <target>Nazwa leku jest niepoprawna</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">30</context>
+          <context context-type="linenumber">30,34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="label-medication-morning-dose" datatype="html">
@@ -1655,7 +1655,7 @@
         <target>Poranna dawka</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">35</context>
+          <context context-type="linenumber">35,36</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-morning-dose-required" datatype="html">
@@ -1663,7 +1663,7 @@
         <target>Dawka poranna jest wymagana</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">38,40</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-morning-dose-invalid" datatype="html">
@@ -1671,7 +1671,7 @@
         <target>Dawka poranna jest niepoprawna</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">41,43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="label-medication-noon-dose" datatype="html">
@@ -1679,7 +1679,7 @@
         <target>Południowa dawka</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">46</context>
+          <context context-type="linenumber">46,47</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-noon-dose-required" datatype="html">
@@ -1687,7 +1687,7 @@
         <target>Dawka południowa jest wymagana</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">49</context>
+          <context context-type="linenumber">49,51</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-noon-dose-invalid" datatype="html">
@@ -1695,7 +1695,7 @@
         <target>Dawka południowa jest niepoprawna</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">52</context>
+          <context context-type="linenumber">52,54</context>
         </context-group>
       </trans-unit>
       <trans-unit id="label-medication-evening-dose" datatype="html">
@@ -1703,7 +1703,7 @@
         <target>Wieczorna dawka</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">57</context>
+          <context context-type="linenumber">57,58</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-evening-dose-required" datatype="html">
@@ -1711,7 +1711,7 @@
         <target>Dawka wieczorna jest wymagana</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">60</context>
+          <context context-type="linenumber">60,62</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-evening-dose-invalid" datatype="html">
@@ -1719,7 +1719,7 @@
         <target>Dawka wieczorna jest niepoprawna</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">63</context>
+          <context context-type="linenumber">63,65</context>
         </context-group>
       </trans-unit>
       <trans-unit id="label-medication-start-date" datatype="html">
@@ -1727,7 +1727,7 @@
         <target>Data rozpoczęcia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">68</context>
+          <context context-type="linenumber">68,70</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-start-date-required" datatype="html">
@@ -1735,11 +1735,11 @@
         <target>Data rozpoczęcia jest wymagana</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">79</context>
+          <context context-type="linenumber">79,81</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods-form/periods-form.component.html</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="linenumber">29,31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-start-date-invalid" datatype="html">
@@ -1747,11 +1747,11 @@
         <target>Data rozpoczęcia jest niepoprawna</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">82</context>
+          <context context-type="linenumber">82,84</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods-form/periods-form.component.html</context>
-          <context context-type="linenumber">32</context>
+          <context context-type="linenumber">32,34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-start-date-in-future" datatype="html">
@@ -1759,11 +1759,11 @@
         <target>Data rozpoczęcia nie może być w przyszłości</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">85</context>
+          <context context-type="linenumber">85,88</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods-form/periods-form.component.html</context>
-          <context context-type="linenumber">35</context>
+          <context context-type="linenumber">35,38</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-start-date-after-end-date" datatype="html">
@@ -1771,11 +1771,11 @@
         <target>Data rozpoczęcia nie może być po dacie zakończenia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">90</context>
+          <context context-type="linenumber">90,94</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods-form/periods-form.component.html</context>
-          <context context-type="linenumber">40</context>
+          <context context-type="linenumber">40,44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="label-medication-archived" datatype="html">
@@ -1783,7 +1783,7 @@
         <target>Archiwalny</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">95</context>
+          <context context-type="linenumber">95,98</context>
         </context-group>
       </trans-unit>
       <trans-unit id="label-medication-end-date" datatype="html">
@@ -1791,7 +1791,7 @@
         <target>Data zakończenia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">99</context>
+          <context context-type="linenumber">99,101</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-end-date-required" datatype="html">
@@ -1799,11 +1799,11 @@
         <target>Data zakończenia jest wymagana</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">111</context>
+          <context context-type="linenumber">111,113</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods-form/periods-form.component.html</context>
-          <context context-type="linenumber">57</context>
+          <context context-type="linenumber">57,59</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-end-date-invalid" datatype="html">
@@ -1811,11 +1811,11 @@
         <target>Data zakończenia jest niepoprawna</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">114</context>
+          <context context-type="linenumber">114,117</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods-form/periods-form.component.html</context>
-          <context context-type="linenumber">60</context>
+          <context context-type="linenumber">60,63</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-end-date-in-future" datatype="html">
@@ -1823,11 +1823,11 @@
         <target>Data zakończenia nie może być w przyszłości</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">119</context>
+          <context context-type="linenumber">119,122</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods-form/periods-form.component.html</context>
-          <context context-type="linenumber">65</context>
+          <context context-type="linenumber">65,68</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-end-date-before-start-date" datatype="html">
@@ -1835,11 +1835,11 @@
         <target>Data zakończenia nie może być przed datą rozpoczęcia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">124</context>
+          <context context-type="linenumber">124,128</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods-form/periods-form.component.html</context>
-          <context context-type="linenumber">70</context>
+          <context context-type="linenumber">70,74</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action-add-medication" datatype="html">
@@ -1847,11 +1847,11 @@
         <target>Dodaj lek</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
-          <context context-type="linenumber">133</context>
+          <context context-type="linenumber">133,136</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications.component.html</context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">14,15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routerLink-epilepsy-medications-add" datatype="html">
@@ -1859,7 +1859,7 @@
         <target>/epilepsja/leki/dodaj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications.component.html</context>
-          <context context-type="linenumber">12</context>
+          <context context-type="linenumber">12,13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routerLink-epilepsy-medications-update" datatype="html">
@@ -1867,7 +1867,7 @@
         <target>/epilepsja/leki/aktualizuj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications.component.html</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">16,17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="label-period-start-date" datatype="html">
@@ -1875,7 +1875,7 @@
         <target>Data rozpoczęcia okresu</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods-form/periods-form.component.html</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="linenumber">18,20</context>
         </context-group>
       </trans-unit>
       <trans-unit id="label-period-end-date" datatype="html">
@@ -1883,7 +1883,7 @@
         <target>Data zakończenia okresu</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods-form/periods-form.component.html</context>
-          <context context-type="linenumber">45</context>
+          <context context-type="linenumber">45,47</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action-add-period" datatype="html">
@@ -1891,11 +1891,11 @@
         <target>Dodaj okres</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods-form/periods-form.component.html</context>
-          <context context-type="linenumber">79</context>
+          <context context-type="linenumber">79,81</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods.component.html</context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">14,15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routerLink-epilepsy-periods-add" datatype="html">
@@ -1903,7 +1903,7 @@
         <target>/epilepsja/okresy/dodaj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods.component.html</context>
-          <context context-type="linenumber">12</context>
+          <context context-type="linenumber">12,13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routerLink-epilepsy-periods-update" datatype="html">
@@ -1911,7 +1911,7 @@
         <target>/epilepsja/okresy/aktualizuj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods.component.html</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">16,17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routerLink-epilepsy-reports" datatype="html">
@@ -1931,7 +1931,7 @@
         <target>do dnia <x id="INTERPOLATION" equiv-text="{{ report.dateTo | moment: &quot;L&quot; }}"/> (od <x id="INTERPOLATION_1" equiv-text="{{ report.dateFrom | moment: &quot;L&quot; }}"/>)</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">8,10</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports-no-data" datatype="html">
@@ -1939,7 +1939,7 @@
         <target>Brak raportów do wyświetlenia!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">13,15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports-seizure-name" datatype="html">
@@ -1995,7 +1995,7 @@
         <target>Okres</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
-          <context context-type="linenumber">51</context>
+          <context context-type="linenumber">51,52</context>
         </context-group>
       </trans-unit>
       <trans-unit id="reports-period-startDate" datatype="html">
@@ -2019,7 +2019,7 @@
         <target>Wystąpił</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
-          <context context-type="linenumber">18</context>
+          <context context-type="linenumber">18,19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-occurred-required" datatype="html">
@@ -2027,7 +2027,7 @@
         <target>Pole wystąpił jest wymagane</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
-          <context context-type="linenumber">21</context>
+          <context context-type="linenumber">21,23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-occurred-invalid" datatype="html">
@@ -2035,7 +2035,7 @@
         <target>Pole wystąpił jest niepoprawne</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
-          <context context-type="linenumber">24</context>
+          <context context-type="linenumber">24,26</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-occurred-in-future" datatype="html">
@@ -2043,7 +2043,7 @@
         <target>Wystąpił nie może być w przyszłości</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
-          <context context-type="linenumber">27</context>
+          <context context-type="linenumber">27,29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="label-duration" datatype="html">
@@ -2051,7 +2051,7 @@
         <target>Długość (min)</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
-          <context context-type="linenumber">32</context>
+          <context context-type="linenumber">32,33</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-seizure-duration-required" datatype="html">
@@ -2059,7 +2059,7 @@
         <target>Długość napadu jest wymagana</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
-          <context context-type="linenumber">35</context>
+          <context context-type="linenumber">35,37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-seizure-duration-invalid" datatype="html">
@@ -2067,7 +2067,7 @@
         <target>Długość napadu jest niepoprawna</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">38,42</context>
         </context-group>
       </trans-unit>
       <trans-unit id="label-seizure-type" datatype="html">
@@ -2075,7 +2075,7 @@
         <target>Rodzaj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="linenumber">43,44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-seizure-type-required" datatype="html">
@@ -2083,7 +2083,7 @@
         <target>Rodzaj jest wymagany</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
-          <context context-type="linenumber">50</context>
+          <context context-type="linenumber">50,52</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-seizure-type-invalid" datatype="html">
@@ -2091,7 +2091,7 @@
         <target>Rodzaj jest niepoprawny</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
-          <context context-type="linenumber">53</context>
+          <context context-type="linenumber">53,55</context>
         </context-group>
       </trans-unit>
       <trans-unit id="label-seizure-triggers" datatype="html">
@@ -2099,7 +2099,7 @@
         <target>Powody</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
-          <context context-type="linenumber">58</context>
+          <context context-type="linenumber">58,59</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-seizure-triggers-required" datatype="html">
@@ -2107,7 +2107,7 @@
         <target>Pole powody jest wymagane</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
-          <context context-type="linenumber">65</context>
+          <context context-type="linenumber">65,67</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-seizure-triggers-invalid" datatype="html">
@@ -2115,7 +2115,7 @@
         <target>Pole powody jest niepoprawne</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
-          <context context-type="linenumber">68</context>
+          <context context-type="linenumber">68,72</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action-add-seizure" datatype="html">
@@ -2123,11 +2123,11 @@
         <target>Dodaj napad</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
-          <context context-type="linenumber">77</context>
+          <context context-type="linenumber">77,80</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures.component.html</context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">14,15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routerLink-epilepsy-seizures" datatype="html">
@@ -2159,7 +2159,7 @@
         <target>/epilepsja/napady/aktualizuj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures.component.html</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">16,17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error404-title" datatype="html">
@@ -2167,7 +2167,7 @@
         <target>Błąd 404</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/page-not-found/page-not-found.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">2,3</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error404-description" datatype="html">
@@ -2175,7 +2175,7 @@
         <target>Strona, której szukasz nie została odnaleziona!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/page-not-found/page-not-found.component.html</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="linenumber">3,4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error404-link-back-to-dashboard" datatype="html">
@@ -2183,7 +2183,7 @@
         <target>Przejdź na pulpit Lime Trackera</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/page-not-found/page-not-found.component.html</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="linenumber">4,6</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-profile-name" datatype="html">
@@ -2207,7 +2207,7 @@
         <target>Edytuj rodzaje ataków</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/profile/pages/manage-profile/manage-profile.component.html</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">23,27</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action-edit-seizure-triggers" datatype="html">
@@ -2215,7 +2215,7 @@
         <target>Edytuj powody ataków</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/profile/pages/manage-profile/manage-profile.component.html</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">28,33</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-title" datatype="html">
@@ -2223,11 +2223,11 @@
         <target>Coś poszło nie tak!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/error-modal/error-modal.component.html</context>
-          <context context-type="linenumber">1</context>
+          <context context-type="linenumber">1,3</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/error-card/error-card.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">2,3</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-info" datatype="html">
@@ -2235,11 +2235,11 @@
         <target>Spróbuj jeszcze raz, jeśli problem się powtarza skontaktuj się z <x id="START_LINK" ctype="x-a" equiv-text="&lt;a href=&quot;https://www.webperfekt.pl/&quot;&gt;"/>administratorem<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/error-modal/error-modal.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">6,7</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/error-card/error-card.component.html</context>
-          <context context-type="linenumber">6,7</context>
+          <context context-type="linenumber">6,8</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action-close" datatype="html">
@@ -2247,7 +2247,7 @@
         <target>Zamknij</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/error-modal/error-modal.component.html</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">10,11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routerLink-account" datatype="html">
@@ -2267,7 +2267,7 @@
         <target>Wyloguj się</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
-          <context context-type="linenumber">52</context>
+          <context context-type="linenumber">52,53</context>
         </context-group>
       </trans-unit>
       <trans-unit id="update-dialog-title" datatype="html">
@@ -2275,7 +2275,7 @@
         <target>Aktualizacja aplikacji!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/update-dialog/update-dialog.component.html</context>
-          <context context-type="linenumber">1</context>
+          <context context-type="linenumber">1,4</context>
         </context-group>
       </trans-unit>
       <trans-unit id="update-dialog-info" datatype="html">
@@ -2283,7 +2283,7 @@
         <target>Aktualizacja aplikacji jest dostępna i zostanie zainstalowana.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/update-dialog/update-dialog.component.html</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="linenumber">4,7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="action-ok" datatype="html">
@@ -2291,7 +2291,7 @@
         <target>Ok</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/update-dialog/update-dialog.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">8,9</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routerLink-register" datatype="html">
@@ -2299,7 +2299,7 @@
         <target>/rejestracja</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/layout/anonymous/anonymous.component.html</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">17,19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chart-subtitle-year" datatype="html">
