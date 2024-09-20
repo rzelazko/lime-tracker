@@ -1,4 +1,4 @@
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -77,6 +77,7 @@ describe('ChartSeizuresByHoursComponent', () => {
     tick(100);
     fixture.detectChanges();
     expect(fixture.debugElement.queryAll(By.directive(MatProgressSpinner)).length).toBe(0);
+    flush();
   }));
 
   it('should show chart when seizureSerie ready', async () => {

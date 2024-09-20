@@ -35,7 +35,7 @@ Run in separte console `ng serve` for a dev server. Navigate to `http://localhos
 
 Extract translation: `npm run i18n-extract`.
 
-Install Visual Studio Code extension: [Angular Localization Helper](https://marketplace.visualstudio.com/items?itemName=manux54.angular-localization-helper). Use command pallete run `Angular i18n: Sync`
+Install Visual Studio Code extension: [Angular Localization Helper](https://marketplace.visualstudio.com/items?itemName=manux54.angular-localization-helper). Use command pallete run `Angular i18n: Merge`
 
 Current version of Angular i18n doesn't allow to translate PWA manifest files. As a workaround [manifest.webmanifest](./src/manifest.webmanifest) contains values with `@@` prefix.
 Those values are replaced by external `postbuild` script [postbuild.js](./scripts/postbuild.js) with keys from `src/locale/messages.XX.xlf`. \
