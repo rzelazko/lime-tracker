@@ -9,6 +9,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ActivatedRoute } from '@angular/router';
+import ApexCharts from 'apexcharts';
 import { ChartComponent, NgApexchartsModule } from 'ng-apexcharts';
 import { delay, of, throwError } from 'rxjs';
 import { ErrorCardComponent } from './../../../../shared/error-card/error-card.component';
@@ -28,12 +29,15 @@ describe('ChartHeatmapComponent', () => {
       'subtitle',
       'seizureSerie',
     ]);
-    const activatedRouteMockObj = { params: of({year: '2021'}) };
+    const activatedRouteMockObj = { params: of({ year: '2021' }) };
 
     await TestBed.configureTestingModule({
       declarations: [ChartHeatmapComponent, ErrorCardComponent],
-      providers: [{ provide: ChartHeatmapService, useValue: chartServiceSpyObj },
-        { provide: ActivatedRoute, useValue: activatedRouteMockObj }],
+      providers: [
+        { provide: ChartHeatmapService, useValue: chartServiceSpyObj },
+        { provide: ActivatedRoute, useValue: activatedRouteMockObj },
+        { provide: ApexCharts, useValue: ApexCharts },
+      ],
       imports: [
         NgApexchartsModule,
         NoopAnimationsModule,
