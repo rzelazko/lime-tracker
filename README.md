@@ -14,8 +14,7 @@ Sample screenshots:
 
 ## Technologies used
 
-- Angular version: 17.x
-- Angular Fire: 17.x
+- Angular version: 18.x
 - Firebase SDK: 10.x
 - NodeJS version: [.nvmrc](.nvmrc), [Firebase Merge flow](.github/workflows/firebase-hosting-merge.yml), [Firebase Pull Request flow](.github/workflows/firebase-hosting-pull-request.yml), [Firebase Version Increment flow](.github/workflows/version.yml)
 
