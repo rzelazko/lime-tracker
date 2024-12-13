@@ -7,9 +7,10 @@ import { Seizure } from './../../../shared/models/seizure.model';
 import { TrackingCore } from './../../../shared/models/tracking-core.model';
 
 @Component({
-  selector: 'app-confirm-delete-dialog',
-  templateUrl: './confirm-delete-dialog.component.html',
-  styleUrls: ['./confirm-delete-dialog.component.scss'],
+    selector: 'app-confirm-delete-dialog',
+    templateUrl: './confirm-delete-dialog.component.html',
+    styleUrls: ['./confirm-delete-dialog.component.scss'],
+    standalone: false
 })
 export class ConfirmDeleteDialogComponent implements OnInit {
   public type: string;

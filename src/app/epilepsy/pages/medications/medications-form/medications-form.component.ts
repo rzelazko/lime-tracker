@@ -10,9 +10,10 @@ import { MedicationsService } from './../../../../shared/services/medications.se
 import { DatesValidator } from './../../../../shared/validators/dates-validator';
 
 @Component({
-  selector: 'app-medications-form',
-  templateUrl: './medications-form.component.html',
-  styleUrls: ['./medications-form.component.scss'],
+    selector: 'app-medications-form',
+    templateUrl: './medications-form.component.html',
+    styleUrls: ['./medications-form.component.scss'],
+    standalone: false
 })
 export class MedicationsFormComponent implements OnInit {
   submitting = false;

@@ -3,9 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-charts',
-  templateUrl: './charts.component.html',
-  styleUrls: ['./charts.component.scss'],
+    selector: 'app-charts',
+    templateUrl: './charts.component.html',
+    styleUrls: ['./charts.component.scss'],
+    standalone: false
 })
 export class ChartsComponent implements OnInit, OnDestroy {
   selectedYear?: number;

@@ -7,7 +7,8 @@ type DiffUnits = (
 );
 
 @Pipe({
-  name: 'timeSince'
+    name: 'timeSince',
+    standalone: false
 })
 export class TimeSincePipe implements PipeTransform {
 

@@ -5,9 +5,10 @@ import { Report } from './../../../shared/models/report.model';
 import { ReportsService } from './../../../shared/services/reports.service';
 
 @Component({
-  selector: 'app-reports',
-  templateUrl: './reports.component.html',
-  styleUrls: ['./reports.component.scss'],
+    selector: 'app-reports',
+    templateUrl: './reports.component.html',
+    styleUrls: ['./reports.component.scss'],
+    standalone: false
 })
 export class ReportsComponent implements OnInit, OnDestroy {
   selectedYear?: number;

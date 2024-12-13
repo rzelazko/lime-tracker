@@ -9,9 +9,10 @@ import { formFieldHasError } from './../../../../shared/services/form-field-has-
 import { DatesValidator } from './../../../../shared/validators/dates-validator';
 
 @Component({
-  selector: 'app-events-form',
-  templateUrl: './events-form.component.html',
-  styleUrls: ['./events-form.component.scss'],
+    selector: 'app-events-form',
+    templateUrl: './events-form.component.html',
+    styleUrls: ['./events-form.component.scss'],
+    standalone: false
 })
 export class EventsFormComponent implements OnInit {
   submitting = false;

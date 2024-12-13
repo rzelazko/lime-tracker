@@ -7,9 +7,10 @@ import { AuthService } from './../../../shared/services/auth.service';
 import { UserDetailsService } from './../../../shared/services/user-details.service';
 
 @Component({
-  selector: 'app-verify-email',
-  templateUrl: './verify-email.component.html',
-  styleUrls: ['./verify-email.component.scss'],
+    selector: 'app-verify-email',
+    templateUrl: './verify-email.component.html',
+    styleUrls: ['./verify-email.component.scss'],
+    standalone: false
 })
 export class VerifyEmailComponent implements OnInit {
   oneHourAgo$: Observable<Moment>;

@@ -7,9 +7,10 @@ import { ChartOptions } from './../../../../shared/models/chart-options.model';
 import { ChartHeatmapService } from './../../../../shared/services/chart-heatmap.service';
 
 @Component({
-  selector: 'app-chart-heatmap',
-  templateUrl: './chart-heatmap.component.html',
-  styleUrls: ['./chart-heatmap.component.scss'],
+    selector: 'app-chart-heatmap',
+    templateUrl: './chart-heatmap.component.html',
+    styleUrls: ['./chart-heatmap.component.scss'],
+    standalone: false
 })
 export class ChartHeatmapComponent implements OnInit {
   @Input() titleOffset: number = 0;

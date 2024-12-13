@@ -6,9 +6,10 @@ import { formFieldHasError } from './../../../shared/services/form-field-has-err
 import { CompareValidator } from './../../../shared/validators/compare-validator';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss'],
+    selector: 'app-register',
+    templateUrl: './register.component.html',
+    styleUrls: ['./register.component.scss'],
+    standalone: false
 })
 export class RegisterComponent implements OnInit {
   isLoading = false;

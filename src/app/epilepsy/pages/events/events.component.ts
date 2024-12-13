@@ -6,9 +6,10 @@ import { EventsService } from './../../../shared/services/events.service';
 import { TableComponent } from './../../components/table/table.component';
 
 @Component({
-  selector: 'app-events',
-  templateUrl: './events.component.html',
-  styleUrls: ['./events.component.scss'],
+    selector: 'app-events',
+    templateUrl: './events.component.html',
+    styleUrls: ['./events.component.scss'],
+    standalone: false
 })
 export class EventsComponent implements OnInit, OnDestroy {
   dataSource = new MatTableDataSource<TrackingCore>();

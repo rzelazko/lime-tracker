@@ -8,9 +8,10 @@ import { MedicationsService } from './../../../shared/services/medications.servi
 import { TableComponent } from './../../components/table/table.component';
 
 @Component({
-  selector: 'app-medications',
-  templateUrl: './medications.component.html',
-  styleUrls: ['./medications.component.scss'],
+    selector: 'app-medications',
+    templateUrl: './medications.component.html',
+    styleUrls: ['./medications.component.scss'],
+    standalone: false
 })
 export class MedicationsComponent implements OnInit, OnDestroy {
   dataSource = new MatTableDataSource<TrackingCore>();

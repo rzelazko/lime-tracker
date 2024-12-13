@@ -2,9 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import moment from 'moment';
 
 @Component({
-  selector: 'app-yearsnav',
-  templateUrl: './yearsnav.component.html',
-  styleUrls: ['./yearsnav.component.scss'],
+    selector: 'app-yearsnav',
+    templateUrl: './yearsnav.component.html',
+    styleUrls: ['./yearsnav.component.scss'],
+    standalone: false
 })
 export class YearsnavComponent implements OnInit {
   @Input() public linkPrefix?: string;

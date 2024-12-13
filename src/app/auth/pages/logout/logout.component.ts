@@ -8,9 +8,10 @@ import { MedicationsService } from './../../../shared/services/medications.servi
 import { SeizuresService } from './../../../shared/services/seizures.service';
 
 @Component({
-  selector: 'app-logout',
-  templateUrl: './logout.component.html',
-  styleUrls: ['./logout.component.scss'],
+    selector: 'app-logout',
+    templateUrl: './logout.component.html',
+    styleUrls: ['./logout.component.scss'],
+    standalone: false
 })
 export class LogoutComponent implements OnInit {
   constructor(

@@ -6,9 +6,10 @@ import { ChartOptions } from './../../../../shared/models/chart-options.model';
 import { ChartSeizuresByHoursService } from './../../../../shared/services/chart-seizures-by-hours.service';
 
 @Component({
-  selector: 'app-chart-seizures-by-hours',
-  templateUrl: './chart-seizures-by-hours.component.html',
-  styleUrls: ['./chart-seizures-by-hours.component.scss'],
+    selector: 'app-chart-seizures-by-hours',
+    templateUrl: './chart-seizures-by-hours.component.html',
+    styleUrls: ['./chart-seizures-by-hours.component.scss'],
+    standalone: false
 })
 export class ChartSeizuresByHoursComponent implements OnInit {
   @Input() titleOffset: number = 0;

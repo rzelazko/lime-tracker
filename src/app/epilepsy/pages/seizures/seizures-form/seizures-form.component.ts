@@ -12,9 +12,10 @@ import { UserDetailsService } from './../../../../shared/services/user-details.s
 import { DatesValidator } from './../../../../shared/validators/dates-validator';
 
 @Component({
-  selector: 'app-seizures-form',
-  templateUrl: './seizures-form.component.html',
-  styleUrls: ['./seizures-form.component.scss'],
+    selector: 'app-seizures-form',
+    templateUrl: './seizures-form.component.html',
+    styleUrls: ['./seizures-form.component.scss'],
+    standalone: false
 })
 export class SeizuresFormComponent implements OnInit, OnDestroy {
   static readonly DATE_TIME_FORMAT = 'YYYY-MM-DDTHH:mm';

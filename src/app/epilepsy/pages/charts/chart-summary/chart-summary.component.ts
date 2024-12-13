@@ -8,9 +8,10 @@ import { ChartOptions } from './../../../../shared/models/chart-options.model';
 import { ChartSummaryService } from './../../../../shared/services/chart-summary.service';
 
 @Component({
-  selector: 'app-chart-summary',
-  templateUrl: './chart-summary.component.html',
-  styleUrls: ['./chart-summary.component.scss'],
+    selector: 'app-chart-summary',
+    templateUrl: './chart-summary.component.html',
+    styleUrls: ['./chart-summary.component.scss'],
+    standalone: false
 })
 export class ChartSummaryComponent implements OnInit {
   @Input() titleOffset: number = 0;

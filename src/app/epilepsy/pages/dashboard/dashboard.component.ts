@@ -11,9 +11,10 @@ import { DashboardService } from './../../../shared/services/dashboard.service';
 import { UserDetailsService } from './../../../shared/services/user-details.service';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
+    selector: 'app-dashboard',
+    templateUrl: './dashboard.component.html',
+    styleUrls: ['./dashboard.component.scss'],
+    standalone: false
 })
 export class DashboardComponent implements OnInit {
   userDetails$: Observable<UserData>;
