@@ -2,13 +2,14 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getApp, initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { connectAuthEmulator, getAuth, provideAuth } from '@angular/fire/auth';
 import {
   connectFirestoreEmulator,
-  enableMultiTabIndexedDbPersistence,
-  getFirestore,
-  provideFirestore,
+  initializeFirestore,
+  persistentLocalCache,
+  persistentMultipleTabManager,
+  provideFirestore
 } from '@angular/fire/firestore';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
@@ -120,7 +121,7 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     TableComponent,
     UpdateDialogComponent,
     VerifyEmailComponent,
-    YearsnavComponent,
+    YearsnavComponent
   ],
   exports: [],
   bootstrap: [AppComponent],
@@ -160,8 +161,8 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000',
-    }),
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [
     // Firebase
@@ -171,23 +172,23 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
       const auth = getAuth();
       if (environment.useEmulators) {
         connectAuthEmulator(auth, `http://${environment.emulatorHost}:9099`, {
-          disableWarnings: true,
+          disableWarnings: true
         });
       }
       return auth;
     }),
     provideFirestore(() => {
-      const firestore = getFirestore();
+      const firestore = initializeFirestore(getApp(), {
+        localCache: persistentLocalCache({
+          tabManager: persistentMultipleTabManager()
+        })
+      });
       if (environment.useEmulators) {
         connectFirestoreEmulator(firestore, environment.emulatorHost, 8080);
       }
-      enableMultiTabIndexedDbPersistence(firestore).then(
-        () => resolvePersistenceEnabled(true),
-        () => resolvePersistenceEnabled(false)
-      );
       return firestore;
     }),
-    provideHttpClient(withInterceptorsFromDi()),
-  ],
+    provideHttpClient(withInterceptorsFromDi())
+  ]
 })
 export class AppModule {}
