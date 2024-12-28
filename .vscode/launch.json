@@ -18,9 +18,10 @@
     },
     {
       "name": "ng test",
-      "type": "node",
+      "type": "chrome",
       "request": "attach",
       "preLaunchTask": "npm: test",
+      "port": 9222,
       "timeout": 600000,
       "sourceMaps": true
     }
