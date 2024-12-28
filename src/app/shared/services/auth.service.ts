@@ -31,14 +31,12 @@ export class AuthService implements OnDestroy {
 
   constructor() {
     this.authStateSubscription = this.authState$.subscribe((aUser: User | null) => {
-      console.log('Auth state changed: ', aUser);
       this.user = aUser;
       const uid = aUser?.uid || '';
       this.userIdSubject$.next(uid);
     });
     this.userData$ = this.authState$.pipe(
       switchMap((aUser) => {
-        console.log('Auth state changed: ', aUser);
         if (aUser) {
           return this.userDetailsService.get(aUser);
         }
@@ -56,7 +54,6 @@ export class AuthService implements OnDestroy {
   }
 
   userDetails$(): Observable<UserData> {
-    console.log('Request for userDetails');
     return this.userData$;
   }
 
