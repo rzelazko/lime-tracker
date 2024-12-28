@@ -1,8 +1,8 @@
 @use "@angular/material" as mat;
-@import "src/app/app-theme-variables";
+@use "src/app/app-theme-variables" as app;
 
 .app-logo-button {
-  font-size: mat.m2-font-size($app-typography, "headline-6");
+  font-size: mat.m2-font-size(app.$app-typography, "headline-6");
 
   .logo-icon {
     padding-right: 0.5rem;

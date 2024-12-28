@@ -1,6 +1,5 @@
 @use '@angular/material' as mat;
-@import "src/app/app-layout";
-@import "src/app/app-theme-variables";
+@use "src/app/app-theme-variables" as app;
 
 :host ::ng-deep {
   @keyframes spinner {
@@ -20,8 +19,8 @@
     margin-top: -10px;
     margin-left: -10px;
     border-radius: 50%;
-    border: 2px solid mat.m2-get-color-from-palette($app-background, 'background');
-    border-top-color: mat.m2-get-color-from-palette($app-primary, 'darker');
+    border: 2px solid mat.m2-get-color-from-palette(app.$app-background, 'background');
+    border-top-color: mat.m2-get-color-from-palette(app.$app-primary, 'darker');
     animation: spinner 0.8s linear infinite;
   }
 }

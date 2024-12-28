@@ -1,5 +1,5 @@
 @use '@angular/material' as mat;
-@import "src/app/app-theme-variables";
+@use "src/app/app-theme-variables" as app;
 
 :host ::ng-deep section {
   margin: 1em;
@@ -7,8 +7,8 @@
     width: 80vw;
     max-width: 400px;
     .app-card-title {
-      color: mat.m2-get-color-from-palette($app-primary, 'text');
-      font-size: mat.m2-font-size($app-typography, 'headline-6');
+      color: mat.m2-get-color-from-palette(app.$app-primary, 'text');
+      font-size: mat.m2-font-size(app.$app-typography, 'headline-6');
       padding: .5em 0;
 
       .logo {
@@ -17,7 +17,7 @@
     }
 
     img {
-      background-color: mat.m2-get-color-from-palette($app-primary, 50);
+      background-color: mat.m2-get-color-from-palette(app.$app-primary, 50);
       margin: 1em 0;
     }
   }

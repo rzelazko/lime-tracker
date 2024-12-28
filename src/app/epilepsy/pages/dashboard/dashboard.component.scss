@@ -1,6 +1,6 @@
 @use "@angular/material" as mat;
-@import "src/app/app-layout";
-@import "src/app/app-theme-variables";
+@use "src/app/app-layout" as *;
+@use "src/app/app-theme-variables" as app;
 
 section {
   padding: 1rem 1rem 0;
@@ -20,7 +20,7 @@ section.info {
   }
 
   .app-text-muted {
-    color: mat.m2-get-color-from-palette($app-foreground, "secondary-text");
+    color: mat.m2-get-color-from-palette(app.$app-foreground, "secondary-text");
   }
 }
 

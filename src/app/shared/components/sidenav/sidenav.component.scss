@@ -1,20 +1,20 @@
 @use "@angular/material" as mat;
-@import "src/app/app-theme-variables";
+@use "src/app/app-theme-variables" as app;
 
 mat-nav-list {
   width: 250px;
 
   mat-icon {
     margin: 0 0.5em 0 0;
-    color: $app-icon-color;
+    color: app.$app-icon-color;
   }
 }
 
 .active {
-  color: mat.m2-get-color-from-palette($app-primary, "darker");
-  background: mat.m2-get-color-from-palette($app-primary, "lighter", 0.15);
+  color: mat.m2-get-color-from-palette(app.$app-primary, "darker");
+  background: mat.m2-get-color-from-palette(app.$app-primary, "lighter", 0.15);
 
   &:hover {
-    background: mat.m2-get-color-from-palette($app-primary, "lighter", 0.3);
+    background: mat.m2-get-color-from-palette(app.$app-primary, "lighter", 0.3);
   }
 }

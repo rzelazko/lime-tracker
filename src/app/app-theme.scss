@@ -1,4 +1,5 @@
 @use "@angular/material" as mat;
+@use "src/app/app-theme-variables" as app;
 
 // TODO(v15): As of v15 mat.legacy-core no longer includes default typography styles.
 //  The following line adds:
@@ -12,6 +13,4 @@
 @include mat.elevation-classes();
 @include mat.app-background();
 
-@import "src/app/app-theme-variables";
-
-@include mat.all-component-themes($app-theme);
+@include mat.all-component-themes(app.$app-theme);
