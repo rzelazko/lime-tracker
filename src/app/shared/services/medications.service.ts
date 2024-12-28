@@ -1,20 +1,16 @@
 import { Injectable } from '@angular/core';
 import { orderBy, where } from 'firebase/firestore';
 import moment from 'moment';
-import {
-  mergeMap, take, tap
-} from 'rxjs';
+import { mergeMap, switchMap, take, tap } from 'rxjs';
 import { Medication, MedicationInternal } from './../models/medication.model';
-import { AuthService } from './auth.service';
 import { CrudService } from './crud.service';
-import { FirestoreService } from './firestore.service';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class MedicationsService extends CrudService<MedicationInternal, Medication> {
-  constructor(authService: AuthService, firestoreService: FirestoreService) {
-    super('medications', 'startDate', authService, firestoreService);
+  constructor() {
+    super('medications', 'startDate');
   }
 
   override create(medication: Partial<Medication>) {
@@ -22,19 +18,26 @@ export class MedicationsService extends CrudService<MedicationInternal, Medicati
       orderBy('startDate', 'desc'),
       where('startDate', '<', medication.startDate?.toDate()),
       where('name', '==', medication.name),
-      where('archived', '==', false),
+      where('archived', '==', false)
     ]).pipe(
       take(1),
       mergeMap((medicationsToUpdate: Medication[]) => {
-        this.firestoreService.startTransaction();
-        for (const medicationToUpdate of medicationsToUpdate) {
-          this.firestoreService.appendUpdateToTransaction(
-            `${this.collectionPath()}/${medicationToUpdate.id}`,
-            this.convertToInternal({ archived: true, endDate: moment(medication.startDate).subtract(1, 'day') })
-          );
-        }
-        this.firestoreService.appendAddToTransaction(this.collectionPath(), this.convertToInternal(medication));
-        return this.firestoreService.commitTransaction();
+        return this.collectionPath().pipe(
+          switchMap((path) => {
+            this.firestoreService.startTransaction();
+            for (const medicationToUpdate of medicationsToUpdate) {
+              this.firestoreService.appendUpdateToTransaction(
+                `${path}/${medicationToUpdate.id}`,
+                this.convertToInternal({
+                  archived: true,
+                  endDate: moment(medication.startDate).subtract(1, 'day')
+                })
+              );
+            }
+            this.firestoreService.appendAddToTransaction(path, this.convertToInternal(medication));
+            return this.firestoreService.commitTransaction();
+          })
+        );
       }),
       tap(() => this.resetConcatenated())
     );
@@ -48,7 +51,7 @@ export class MedicationsService extends CrudService<MedicationInternal, Medicati
   }
 
   override convertToInternal(data: Partial<Medication>): Partial<MedicationInternal> {
-    const {objectType, ...internalMedication} = data;
+    const { objectType, ...internalMedication } = data;
     return {
       ...internalMedication
     };

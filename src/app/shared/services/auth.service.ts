@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable, OnDestroy } from '@angular/core';
 import {
   Auth,
   authState,
@@ -7,41 +7,57 @@ import {
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
-  User,
+  User
 } from '@angular/fire/auth';
 import { FirebaseError } from 'firebase/app';
-import { BehaviorSubject, firstValueFrom } from 'rxjs';
+import { BehaviorSubject, EMPTY, filter, firstValueFrom, Subscription, switchMap } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { AuthData } from './../../auth/models/auth-data.model';
+import { UserData } from './../../auth/models/user-details.model';
 import { UserDetailsService } from './user-details.service';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class AuthService {
-  private userSubject$: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
-  private authState$: Observable<User | null>;
+export class AuthService implements OnDestroy {
+  private auth = inject(Auth);
+  private user: User | null = null;
+  private userData$: Observable<UserData>;
+  private userDetailsService = inject(UserDetailsService);
+  private authState$ = authState(this.auth);
+  private authStateSubscription: Subscription;
+  private userIdSubject$ = new BehaviorSubject<string>('');
+  private userId$ = this.userIdSubject$.asObservable();
 
-  constructor(private auth: Auth, private userDetailsService: UserDetailsService) {
-    this.authState$ = authState(auth);
-  }
-
-  user(): User {
-    if (this.userSubject$.value) {
-      return this.userSubject$.value;
-    } else {
-      throw 'Unauthenticated';
-    }
-  }
-
-  initAuthListener() {
-    this.authState$.subscribe((user) => {
-      if (user) {
-        this.userSubject$.next(user);
-      } else {
-        this.userSubject$.next(null);
-      }
+  constructor() {
+    this.authStateSubscription = this.authState$.subscribe((aUser: User | null) => {
+      console.log('Auth state changed: ', aUser);
+      this.user = aUser;
+      const uid = aUser?.uid || '';
+      this.userIdSubject$.next(uid);
     });
+    this.userData$ = this.authState$.pipe(
+      switchMap((aUser) => {
+        console.log('Auth state changed: ', aUser);
+        if (aUser) {
+          return this.userDetailsService.get(aUser);
+        }
+        return EMPTY;
+      })
+    );
+  }
+
+  ngOnDestroy() {
+    this.authStateSubscription.unsubscribe();
+  }
+
+  userIdProvider$(): Observable<string> {
+    return this.userId$;
+  }
+
+  userDetails$(): Observable<UserData> {
+    console.log('Request for userDetails');
+    return this.userData$;
   }
 
   async login({ email, password }: AuthData) {
@@ -68,8 +84,9 @@ export class AuthService {
   }
 
   async sendVerificationEmail() {
-    await sendEmailVerification(this.user());
-    await firstValueFrom(this.userDetailsService.updateVerificationEmailSent(this.user().uid));
+    const userId = await firstValueFrom(this.userId$.pipe(filter((id) => !!id)));
+    await sendEmailVerification(this.user!);
+    await firstValueFrom(this.userDetailsService.updateVerificationEmailSent(userId));
   }
 
   private rethrowUnwrappedFirebaseError(error: any) {

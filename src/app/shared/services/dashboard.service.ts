@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { limit, orderBy, where } from 'firebase/firestore';
 import { EventsService } from './events.service';
 import { MedicationsService } from './medications.service';
@@ -6,20 +6,20 @@ import { PeriodsService } from './periods.service';
 import { SeizuresService } from './seizures.service';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class DashboardService {
-  constructor(
-    private medicationsService: MedicationsService,
-    private seizuresService: SeizuresService,
-    private eventsService: EventsService,
-    private periodsService: PeriodsService
-  ) {}
+  private medicationsService: MedicationsService = inject(MedicationsService);
+  private seizuresService: SeizuresService = inject(SeizuresService);
+  private eventsService: EventsService = inject(EventsService);
+  private periodsService: PeriodsService = inject(PeriodsService);
+
+  constructor() {}
 
   currentMedications() {
     return this.medicationsService.listCollection([
       orderBy('startDate', 'desc'),
-      where('archived', '==', false),
+      where('archived', '==', false)
     ]);
   }
 

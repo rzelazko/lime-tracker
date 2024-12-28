@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Duration } from 'moment';
 import { catchError, Observable, throwError } from 'rxjs';
 import { UserData } from './../../../auth/models/user-details.model';
@@ -11,10 +11,10 @@ import { DashboardService } from './../../../shared/services/dashboard.service';
 import { UserDetailsService } from './../../../shared/services/user-details.service';
 
 @Component({
-    selector: 'app-dashboard',
-    templateUrl: './dashboard.component.html',
-    styleUrls: ['./dashboard.component.scss'],
-    standalone: false
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss'],
+  standalone: false
 })
 export class DashboardComponent implements OnInit {
   userDetails$: Observable<UserData>;
@@ -27,36 +27,34 @@ export class DashboardComponent implements OnInit {
   medicationsError?: string;
   eventsError?: string;
   periodsError?: string;
+  private auth: AuthService = inject(AuthService);
+  private dashboardService: DashboardService = inject(DashboardService);
 
-  constructor(
-    dashboardService: DashboardService,
-    private auth: AuthService,
-    private userDetails: UserDetailsService
-  ) {
-    this.userDetails$ = userDetails.get(auth.user());
+  constructor() {
+    this.userDetails$ = this.auth.userDetails$();
 
-    this.medications$ = dashboardService.currentMedications().pipe(
+    this.medications$ = this.dashboardService.currentMedications().pipe(
       catchError((error) => {
         this.seizureError = error;
         return throwError(() => error);
       })
     );
 
-    this.lastSeizures$ = dashboardService.lastSeizures().pipe(
+    this.lastSeizures$ = this.dashboardService.lastSeizures().pipe(
       catchError((error) => {
         this.medicationsError = error;
         return throwError(() => error);
       })
     );
 
-    this.lastEvents$ = dashboardService.lastEvents().pipe(
+    this.lastEvents$ = this.dashboardService.lastEvents().pipe(
       catchError((error) => {
         this.eventsError = error;
         return throwError(() => error);
       })
     );
 
-    this.lastPeriods$ = dashboardService.lastPeriods().pipe(
+    this.lastPeriods$ = this.dashboardService.lastPeriods().pipe(
       catchError((error) => {
         this.periodsError = error;
         return throwError(() => error);

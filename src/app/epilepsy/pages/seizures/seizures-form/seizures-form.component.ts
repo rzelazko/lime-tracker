@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import moment from 'moment';
@@ -8,14 +8,13 @@ import { Seizure } from './../../../../shared/models/seizure.model';
 import { AuthService } from './../../../../shared/services/auth.service';
 import { formFieldHasError } from './../../../../shared/services/form-field-has-error';
 import { SeizuresService } from './../../../../shared/services/seizures.service';
-import { UserDetailsService } from './../../../../shared/services/user-details.service';
 import { DatesValidator } from './../../../../shared/validators/dates-validator';
 
 @Component({
-    selector: 'app-seizures-form',
-    templateUrl: './seizures-form.component.html',
-    styleUrls: ['./seizures-form.component.scss'],
-    standalone: false
+  selector: 'app-seizures-form',
+  templateUrl: './seizures-form.component.html',
+  styleUrls: ['./seizures-form.component.scss'],
+  standalone: false
 })
 export class SeizuresFormComponent implements OnInit, OnDestroy {
   static readonly DATE_TIME_FORMAT = 'YYYY-MM-DDTHH:mm';
@@ -26,10 +25,9 @@ export class SeizuresFormComponent implements OnInit, OnDestroy {
   id?: string;
   userDetails$: Observable<UserData>;
   private submitSubscription?: Subscription;
+  private auth: AuthService = inject(AuthService);
 
   constructor(
-    private auth: AuthService,
-    private userDetails: UserDetailsService,
     private seizuresService: SeizuresService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -39,9 +37,9 @@ export class SeizuresFormComponent implements OnInit, OnDestroy {
       occurred: ['', [Validators.required, DatesValidator.inThePast()]],
       duration: ['', [Validators.required, Validators.min(1)]],
       seizureType: ['', [Validators.required]],
-      seizureTriggers: [[]],
+      seizureTriggers: [[]]
     });
-    this.userDetails$ = userDetails.get(auth.user());
+    this.userDetails$ = this.auth.userDetails$();
   }
 
   ngOnInit(): void {
@@ -55,7 +53,7 @@ export class SeizuresFormComponent implements OnInit, OnDestroy {
             occurred: result.occurred.format(SeizuresFormComponent.DATE_TIME_FORMAT),
             duration: result.duration.minutes(),
             seizureType: result.type,
-            seizureTriggers: result.triggers || [],
+            seizureTriggers: result.triggers || []
           });
         });
     }
@@ -71,7 +69,7 @@ export class SeizuresFormComponent implements OnInit, OnDestroy {
       occurred: moment(this.form.value.occurred),
       duration: moment.duration(this.form.value.duration, 'minutes'),
       type: this.form.value.seizureType,
-      triggers: this.form.value.seizureTriggers || undefined,
+      triggers: this.form.value.seizureTriggers || undefined
     };
 
     let submitObservable$: Observable<any>;
@@ -86,7 +84,7 @@ export class SeizuresFormComponent implements OnInit, OnDestroy {
       .subscribe({
         next: () =>
           this.router.navigate([$localize`:@@routerLink-epilepsy-seizures:/epilepsy/seizures`]),
-        error: (error) => (this.error = error.message),
+        error: (error) => (this.error = error.message)
       });
   }
 

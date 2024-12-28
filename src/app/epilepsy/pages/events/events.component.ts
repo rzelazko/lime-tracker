@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { TrackingCore } from './../../../shared/models/tracking-core.model';
@@ -6,10 +6,10 @@ import { EventsService } from './../../../shared/services/events.service';
 import { TableComponent } from './../../components/table/table.component';
 
 @Component({
-    selector: 'app-events',
-    templateUrl: './events.component.html',
-    styleUrls: ['./events.component.scss'],
-    standalone: false
+  selector: 'app-events',
+  templateUrl: './events.component.html',
+  styleUrls: ['./events.component.scss'],
+  standalone: false
 })
 export class EventsComponent implements OnInit, OnDestroy {
   dataSource = new MatTableDataSource<TrackingCore>();
@@ -19,8 +19,9 @@ export class EventsComponent implements OnInit, OnDestroy {
   error?: string;
   private dataSubscription?: Subscription;
   private deleteSubscription?: Subscription;
+  private eventsService: EventsService = inject(EventsService);
 
-  constructor(private eventsService: EventsService) {}
+  constructor() {}
 
   ngOnInit(): void {
     this.onLoadMore();
@@ -36,7 +37,7 @@ export class EventsComponent implements OnInit, OnDestroy {
           this.loading = false;
           this.hasMore = evnentsPage.hasMore;
         },
-        error: (error) => (this.error = error),
+        error: (error) => (this.error = error)
       });
   }
 
