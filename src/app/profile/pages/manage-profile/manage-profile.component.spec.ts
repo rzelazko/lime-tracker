@@ -26,7 +26,7 @@ describe('ManageProfileComponent', () => {
     name: 'joanna.smith@webperfekt.pl',
     seizureTriggers: [],
     seizureTypes: [],
-    isFemale: true,
+    isFemale: true
   };
 
   const mockUser: User = new MockFirebaseUser(
@@ -36,26 +36,19 @@ describe('ManageProfileComponent', () => {
   );
 
   beforeEach(async () => {
-    const authServiceSpyObj = jasmine.createSpyObj('AuthService', ['user']);
-    const userDetailsServiceSpyObj = jasmine.createSpyObj('UserDetailsService', [
-      'get',
-      'setIsFemale',
-    ]);
+    const authServiceSpyObj = jasmine.createSpyObj('AuthService', ['userDetails$']);
 
     await TestBed.configureTestingModule({
       declarations: [ManageProfileComponent],
-      providers: [
-        { provide: AuthService, useValue: authServiceSpyObj },
-        { provide: UserDetailsService, useValue: userDetailsServiceSpyObj },
-      ],
+      providers: [{ provide: AuthService, useValue: authServiceSpyObj }],
       imports: [
         MatToolbarModule,
         MatProgressSpinnerModule,
         NoopAnimationsModule,
         FormsModule,
         MatDividerModule,
-        MatSlideToggleModule,
-      ],
+        MatSlideToggleModule
+      ]
     }).compileComponents();
 
     authServiceSpy = TestBed.inject(AuthService) as jasmine.SpyObj<AuthService>;
@@ -66,7 +59,7 @@ describe('ManageProfileComponent', () => {
 
   it('should create', () => {
     // given
-    authServiceSpy.user.and.returnValue(mockUser);
+    authServiceSpy.userDetails$.and.returnValue(of(mockUserData));
 
     // when
     fixture = TestBed.createComponent(ManageProfileComponent);
@@ -79,7 +72,7 @@ describe('ManageProfileComponent', () => {
 
   it('should show loading spinner when user details not loaded', () => {
     // given
-    authServiceSpy.user.and.returnValue(mockUser);
+    authServiceSpy.userDetails$.and.returnValue(of(mockUserData));
 
     // when
     fixture = TestBed.createComponent(ManageProfileComponent);
@@ -93,7 +86,7 @@ describe('ManageProfileComponent', () => {
 
   it('should show selected name when user details loaded', () => {
     // given
-    authServiceSpy.user.and.returnValue(mockUser);
+    authServiceSpy.userDetails$.and.returnValue(of(mockUserData));
     userDetailsServiceSpy.get.and.returnValue(of(mockUserData));
 
     // when
@@ -109,7 +102,7 @@ describe('ManageProfileComponent', () => {
   it('should toggle isFemale be checked when user detail is female', () => {
     // given
     const femaleData = { ...mockUserData, isFemale: true };
-    authServiceSpy.user.and.returnValue(mockUser);
+    authServiceSpy.userDetails$.and.returnValue(of(mockUserData));
     userDetailsServiceSpy.get.and.returnValue(of(femaleData));
 
     // when
@@ -127,7 +120,7 @@ describe('ManageProfileComponent', () => {
   it('should toggle isFemale be unchecked when user detail is not female', () => {
     // given
     const maleData = { ...mockUserData, isFemale: false };
-    authServiceSpy.user.and.returnValue(mockUser);
+    authServiceSpy.userDetails$.and.returnValue(of(mockUserData));
     userDetailsServiceSpy.get.and.returnValue(of(maleData));
 
     // when
@@ -145,7 +138,7 @@ describe('ManageProfileComponent', () => {
   it('should trigger user details update on isFemale toggle change', () => {
     // given
     const isFemaleObservable$ = of(void 0);
-    authServiceSpy.user.and.returnValue(mockUser);
+    authServiceSpy.userDetails$.and.returnValue(of(mockUserData));
     userDetailsServiceSpy.get.and.returnValue(of(mockUserData));
     userDetailsServiceSpy.setIsFemale.and.returnValue(isFemaleObservable$);
 
@@ -156,7 +149,7 @@ describe('ManageProfileComponent', () => {
     const isFemaleToggle = fixture.debugElement.query(By.directive(MatSlideToggle));
 
     // when
-    isFemaleToggle.triggerEventHandler('change', {checked: true});
+    isFemaleToggle.triggerEventHandler('change', { checked: true });
 
     // then
     expect(userDetailsServiceSpy.setIsFemale).toHaveBeenCalled();

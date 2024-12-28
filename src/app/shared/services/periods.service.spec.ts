@@ -1,10 +1,8 @@
 import { TestBed } from '@angular/core/testing';
-import { User } from 'firebase/auth';
 import moment from 'moment';
 import { of } from 'rxjs';
-import { MockFirebaseUser } from './../models/mock-firebase-user.model';
-import { Period } from './../models/period.model';
-import { PeriodInternal } from './../models/period.model';
+import { UserData } from 'src/app/auth/models/user-details.model';
+import { Period, PeriodInternal } from './../models/period.model';
 import { AuthService } from './auth.service';
 import { FirestoreService } from './firestore.service';
 import { PeriodsService } from './periods.service';
@@ -15,14 +13,14 @@ describe('PeriodsService', () => {
   let firestoreServiceSpy: jasmine.SpyObj<FirestoreService>;
 
   beforeEach(() => {
-    const authServiceSpyObj = jasmine.createSpyObj('AuthService', ['user']);
+    const authServiceSpyObj = jasmine.createSpyObj('AuthService', ['userDetails$']);
     const firestoreServiceSpyObj = jasmine.createSpyObj('FirestoreService', ['add']);
 
     TestBed.configureTestingModule({
       providers: [
         { provide: AuthService, useValue: authServiceSpyObj },
-        { provide: FirestoreService, useValue: firestoreServiceSpyObj },
-      ],
+        { provide: FirestoreService, useValue: firestoreServiceSpyObj }
+      ]
     });
     service = TestBed.inject(PeriodsService);
     authServiceSpy = TestBed.inject(AuthService) as jasmine.SpyObj<AuthService>;
@@ -37,19 +35,29 @@ describe('PeriodsService', () => {
     // given
     const period: Partial<Period> = {
       objectType: 'PERIOD',
-      startDate: moment('2021-05-15'),
+      startDate: moment('2021-05-15')
     };
     const periodIntrnal: Partial<PeriodInternal> = {
       startDate: period.startDate
     };
-    const mockUser: User = new MockFirebaseUser('Joanna Smith', 'joanna.smith@webperfekt.pl', 'joanna.smith');
-    authServiceSpy.user.and.returnValue(mockUser);
+    const mockUserData: UserData = {
+      id: 'joanna.smith',
+      email: 'Joanna Smith',
+      name: 'joanna.smith@webperfekt.pl',
+      seizureTriggers: [],
+      seizureTypes: [],
+      isFemale: true
+    };
+    authServiceSpy.userDetails$.and.returnValue(of(mockUserData));
     firestoreServiceSpy.add.and.returnValue(of());
 
     // when
     service.create(period);
 
     // then
-    expect(firestoreServiceSpy.add).toHaveBeenCalledWith('users/joanna.smith/periods', periodIntrnal);
+    expect(firestoreServiceSpy.add).toHaveBeenCalledWith(
+      'users/joanna.smith/periods',
+      periodIntrnal
+    );
   });
 });

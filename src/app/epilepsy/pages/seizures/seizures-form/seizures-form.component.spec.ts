@@ -30,8 +30,6 @@ describe('SeizuresFormComponent', () => {
   let fixture: ComponentFixture<SeizuresFormComponent>;
 
   beforeEach(async () => {
-    const authServiceSpyObj = jasmine.createSpyObj('AuthService', ['user']);
-    const userDetailsServiceSpyObj = jasmine.createSpyObj('UserDetailsService', ['get']);
     const seizuresServiceSpyObj = jasmine.createSpyObj('SeizuresService', ['create', 'update']);
     const routerSpyObj = jasmine.createSpyObj('Router', ['navigate']);
     const activatedRouteMockObj = { snapshot: { params: {} } };
@@ -39,8 +37,6 @@ describe('SeizuresFormComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [SeizuresFormComponent],
       providers: [
-        { provide: AuthService, useValue: authServiceSpyObj },
-        { provide: UserDetailsService, useValue: userDetailsServiceSpyObj },
         { provide: SeizuresService, useValue: seizuresServiceSpyObj },
         { provide: Router, useValue: routerSpyObj },
         { provide: ActivatedRoute, useValue: activatedRouteMockObj },
