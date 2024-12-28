@@ -26,13 +26,12 @@ export class SeizuresFormComponent implements OnInit, OnDestroy {
   userDetails$: Observable<UserData>;
   private submitSubscription?: Subscription;
   private auth: AuthService = inject(AuthService);
+  private seizuresService: SeizuresService = inject(SeizuresService);
+  private router: Router = inject(Router);
+  private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
+  private fb: UntypedFormBuilder = inject(UntypedFormBuilder);
 
-  constructor(
-    private seizuresService: SeizuresService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private fb: UntypedFormBuilder
-  ) {
+  constructor() {
     this.form = this.fb.group({
       occurred: ['', [Validators.required, DatesValidator.inThePast()]],
       duration: ['', [Validators.required, Validators.min(1)]],

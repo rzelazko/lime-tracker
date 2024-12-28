@@ -36,11 +36,18 @@ describe('ManageProfileComponent', () => {
   );
 
   beforeEach(async () => {
-    const authServiceSpyObj = jasmine.createSpyObj('AuthService', ['userDetails$']);
+    const authServiceSpyObj = jasmine.createSpyObj('AuthService', [
+      'userDetails$',
+      'userIdProvider$'
+    ]);
+    const userDetailsServiceSpyObj = jasmine.createSpyObj('UserDetailsService', ['setIsFemale']);
 
     await TestBed.configureTestingModule({
       declarations: [ManageProfileComponent],
-      providers: [{ provide: AuthService, useValue: authServiceSpyObj }],
+      providers: [
+        { provide: AuthService, useValue: authServiceSpyObj },
+        { provide: UserDetailsService, useValue: userDetailsServiceSpyObj }
+      ],
       imports: [
         MatToolbarModule,
         MatProgressSpinnerModule,
@@ -60,6 +67,7 @@ describe('ManageProfileComponent', () => {
   it('should create', () => {
     // given
     authServiceSpy.userDetails$.and.returnValue(of(mockUserData));
+    authServiceSpy.userIdProvider$.and.returnValue(of(mockUserData.id));
 
     // when
     fixture = TestBed.createComponent(ManageProfileComponent);
@@ -72,7 +80,8 @@ describe('ManageProfileComponent', () => {
 
   it('should show loading spinner when user details not loaded', () => {
     // given
-    authServiceSpy.userDetails$.and.returnValue(of(mockUserData));
+    authServiceSpy.userDetails$.and.returnValue(of());
+    authServiceSpy.userIdProvider$.and.returnValue(of());
 
     // when
     fixture = TestBed.createComponent(ManageProfileComponent);
@@ -87,7 +96,7 @@ describe('ManageProfileComponent', () => {
   it('should show selected name when user details loaded', () => {
     // given
     authServiceSpy.userDetails$.and.returnValue(of(mockUserData));
-    userDetailsServiceSpy.get.and.returnValue(of(mockUserData));
+    authServiceSpy.userIdProvider$.and.returnValue(of(mockUserData.id));
 
     // when
     fixture = TestBed.createComponent(ManageProfileComponent);
@@ -102,8 +111,8 @@ describe('ManageProfileComponent', () => {
   it('should toggle isFemale be checked when user detail is female', () => {
     // given
     const femaleData = { ...mockUserData, isFemale: true };
-    authServiceSpy.userDetails$.and.returnValue(of(mockUserData));
-    userDetailsServiceSpy.get.and.returnValue(of(femaleData));
+    authServiceSpy.userDetails$.and.returnValue(of(femaleData));
+    authServiceSpy.userIdProvider$.and.returnValue(of(femaleData.id));
 
     // when
     fixture = TestBed.createComponent(ManageProfileComponent);
@@ -120,8 +129,8 @@ describe('ManageProfileComponent', () => {
   it('should toggle isFemale be unchecked when user detail is not female', () => {
     // given
     const maleData = { ...mockUserData, isFemale: false };
-    authServiceSpy.userDetails$.and.returnValue(of(mockUserData));
-    userDetailsServiceSpy.get.and.returnValue(of(maleData));
+    authServiceSpy.userDetails$.and.returnValue(of(maleData));
+    authServiceSpy.userIdProvider$.and.returnValue(of(maleData.id));
 
     // when
     fixture = TestBed.createComponent(ManageProfileComponent);
@@ -139,7 +148,7 @@ describe('ManageProfileComponent', () => {
     // given
     const isFemaleObservable$ = of(void 0);
     authServiceSpy.userDetails$.and.returnValue(of(mockUserData));
-    userDetailsServiceSpy.get.and.returnValue(of(mockUserData));
+    authServiceSpy.userIdProvider$.and.returnValue(of(mockUserData.id));
     userDetailsServiceSpy.setIsFemale.and.returnValue(isFemaleObservable$);
 
     fixture = TestBed.createComponent(ManageProfileComponent);
