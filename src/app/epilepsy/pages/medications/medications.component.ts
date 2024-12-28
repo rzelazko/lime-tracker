@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import moment from 'moment';
 import { Subscription } from 'rxjs';
@@ -23,7 +23,9 @@ export class MedicationsComponent implements OnInit, OnDestroy {
   private deleteSubscription?: Subscription;
   private archiveSubscription?: Subscription;
 
-  constructor(private medicationsService: MedicationsService) {}
+  private medicationsService: MedicationsService = inject(MedicationsService);
+
+  constructor() {}
 
   ngOnInit(): void {
     this.onLoadMore();

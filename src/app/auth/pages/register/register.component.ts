@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormBuilder, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from './../../../shared/services/auth.service';
@@ -12,6 +12,10 @@ import { CompareValidator } from './../../../shared/validators/compare-validator
     standalone: false
 })
 export class RegisterComponent implements OnInit {
+  private fb: UntypedFormBuilder = inject(UntypedFormBuilder);
+  private router: Router = inject(Router);
+  private auth: AuthService = inject(AuthService);
+  
   isLoading = false;
   error?: string;
   registerForm = this.fb.group(
@@ -29,7 +33,7 @@ export class RegisterComponent implements OnInit {
 
   @ViewChild('formDirective') private formDirective?: NgForm;
 
-  constructor(private fb: UntypedFormBuilder, private router: Router, private auth: AuthService) {}
+  constructor() {}
 
   ngOnInit(): void {}
 

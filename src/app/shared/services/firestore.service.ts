@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import {
   collection,
   collectionSnapshots,
@@ -29,7 +29,8 @@ import { defer, map } from 'rxjs';
 })
 export class FirestoreService {
   private batch?: WriteBatch;
-  constructor(private firestore: Firestore) {}
+  private firestore: Firestore = inject(Firestore);
+  constructor() {}
 
   list<T>(path: string, ...q: QueryConstraint[]) {
     const ref = collection(this.firestore, path) as CollectionReference<Partial<T>>;

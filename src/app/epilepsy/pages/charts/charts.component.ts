@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -12,7 +12,9 @@ export class ChartsComponent implements OnInit, OnDestroy {
   selectedYear?: number;
   routeSubscription: Subscription;
 
-  constructor(private activatedRoute: ActivatedRoute) {
+  private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
+
+  constructor() {
     this.routeSubscription = this.activatedRoute.params.subscribe((routeParams) => {
       this.selectedYear = routeParams['year'];
     });

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { User } from 'firebase/auth';
 import moment from 'moment';
 import { map, BehaviorSubject } from 'rxjs';
@@ -16,7 +16,8 @@ import { FirestoreService } from './firestore.service';
   providedIn: 'root',
 })
 export class UserDetailsService {
-  constructor(private firestoreService: FirestoreService) {}
+  private firestoreService: FirestoreService = inject(FirestoreService);
+  constructor() {}
 
   init(userId: string, isFemale: boolean) {
     const userDetails: UserDetails = {

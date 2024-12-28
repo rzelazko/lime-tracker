@@ -1,5 +1,5 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription, map } from 'rxjs';
 
 @Component({
@@ -11,8 +11,9 @@ import { Observable, Subscription, map } from 'rxjs';
 export class LayoutAuthenticatedComponent implements OnInit, OnDestroy {
   hideSideMenu: boolean = false;
   breakpointChangeSubscription: Subscription;
-  constructor(breakpointObserver: BreakpointObserver) {
-    this.breakpointChangeSubscription = breakpointObserver
+  breakpointObserver: BreakpointObserver = inject(BreakpointObserver);
+  constructor() {
+    this.breakpointChangeSubscription = this.breakpointObserver
       .observe([Breakpoints.XSmall, Breakpoints.Small])
       .subscribe(state => this.hideSideMenu = state.matches);
   }

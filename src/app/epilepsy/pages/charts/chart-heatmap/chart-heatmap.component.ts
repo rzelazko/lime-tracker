@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApexPlotOptions } from 'ng-apexcharts';
 import { catchError, ignoreElements, map, Observable, of, switchMap } from 'rxjs';
@@ -18,7 +18,10 @@ export class ChartHeatmapComponent implements OnInit {
   chartOptions$?: Observable<ChartOptions>;
   chartError$?: Observable<string>;
 
-  constructor(private chartService: ChartHeatmapService, private activatedRoute: ActivatedRoute) {
+  private chartService: ChartHeatmapService = inject(ChartHeatmapService);
+  private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
+
+  constructor() {
     this.plotOptions = {
       heatmap: {
         colorScale: {
