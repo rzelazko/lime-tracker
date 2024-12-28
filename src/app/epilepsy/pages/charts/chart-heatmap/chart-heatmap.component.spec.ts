@@ -9,12 +9,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ActivatedRoute } from '@angular/router';
-import ApexCharts from 'apexcharts';
-import { ChartComponent, NgApexchartsModule } from 'ng-apexcharts';
 import { delay, of, throwError } from 'rxjs';
 import { ErrorCardComponent } from './../../../../shared/error-card/error-card.component';
 import { ChartData } from './../../../../shared/models/chart-data.model';
 import { ChartHeatmapService } from './../../../../shared/services/chart-heatmap.service';
+import { MockApexChartsComponent } from './../../../../shared/testing/mock-apex-charts.component';
 import { ChartHeatmapComponent } from './chart-heatmap.component';
 
 describe('ChartHeatmapComponent', () => {
@@ -27,19 +26,13 @@ describe('ChartHeatmapComponent', () => {
     const chartServiceSpyObj = jasmine.createSpyObj('ChartHeatmapService', [
       'setYear',
       'subtitle',
-      'seizureSerie',
+      'seizureSerie'
     ]);
     const activatedRouteMockObj = { params: of({ year: '2021' }) };
 
     await TestBed.configureTestingModule({
       declarations: [ChartHeatmapComponent, ErrorCardComponent],
-      providers: [
-        { provide: ChartHeatmapService, useValue: chartServiceSpyObj },
-        { provide: ActivatedRoute, useValue: activatedRouteMockObj },
-        { provide: ApexCharts, useValue: ApexCharts },
-      ],
       imports: [
-        NgApexchartsModule,
         NoopAnimationsModule,
         MatCardModule,
         MatIconModule,
@@ -48,7 +41,12 @@ describe('ChartHeatmapComponent', () => {
         MatTabsModule,
         MatToolbarModule,
         MatTooltipModule,
+        MockApexChartsComponent
       ],
+      providers: [
+        { provide: ChartHeatmapService, useValue: chartServiceSpyObj },
+        { provide: ActivatedRoute, useValue: activatedRouteMockObj }
+      ]
     }).compileComponents();
     chartServiceSpy = TestBed.inject(ChartHeatmapService) as jasmine.SpyObj<ChartHeatmapService>;
     activatedRoute = TestBed.inject(ActivatedRoute);
@@ -90,7 +88,7 @@ describe('ChartHeatmapComponent', () => {
 
     // then
     expect(fixture.debugElement.queryAll(By.directive(MatProgressSpinner)).length).toBe(0);
-    expect(fixture.debugElement.queryAll(By.directive(ChartComponent)).length).toBe(1);
+    expect(fixture.debugElement.queryAll(By.directive(MockApexChartsComponent)).length).toBe(1);
   });
 
   it('should show error from Error object', () => {
