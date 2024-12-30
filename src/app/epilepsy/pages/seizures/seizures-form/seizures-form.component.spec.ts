@@ -32,8 +32,8 @@ describe('SeizuresFormComponent', () => {
 
   const mockUserData: UserData = {
     id: 'joanna.smith',
-    email: 'Joanna Smith',
-    name: 'joanna.smith@webperfekt.pl',
+    name: 'Joanna Smith',
+    email: 'joanna.smith@webperfekt.pl',
     seizureTriggers: [],
     seizureTypes: [],
     isFemale: true
