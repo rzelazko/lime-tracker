@@ -21,8 +21,6 @@ export class ChartSummaryComponent implements OnInit {
   private chartService: ChartSummaryService = inject(ChartSummaryService);
   private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
 
-  constructor() {}
-
   ngOnInit(): void {
     this.chartOptions$ = this.activatedRoute.params.pipe(
       map((routeParams): number | undefined => routeParams['year']),

@@ -33,8 +33,6 @@ export class RegisterComponent implements OnInit {
 
   @ViewChild('formDirective') private formDirective?: NgForm;
 
-  constructor() {}
-
   ngOnInit(): void {}
 
   onSubmit(): void {

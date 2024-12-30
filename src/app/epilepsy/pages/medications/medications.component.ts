@@ -25,8 +25,6 @@ export class MedicationsComponent implements OnInit, OnDestroy {
 
   private medicationsService: MedicationsService = inject(MedicationsService);
 
-  constructor() {}
-
   ngOnInit(): void {
     this.onLoadMore();
   }

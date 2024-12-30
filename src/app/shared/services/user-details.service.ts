@@ -17,7 +17,6 @@ import { FirestoreService } from './firestore.service';
 })
 export class UserDetailsService {
   private firestoreService: FirestoreService = inject(FirestoreService);
-  constructor() {}
 
   init(userId: string, isFemale: boolean) {
     const userDetails: UserDetails = {

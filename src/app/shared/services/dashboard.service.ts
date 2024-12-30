@@ -14,8 +14,6 @@ export class DashboardService {
   private eventsService: EventsService = inject(EventsService);
   private periodsService: PeriodsService = inject(PeriodsService);
 
-  constructor() {}
-
   currentMedications() {
     return this.medicationsService.listCollection([
       orderBy('startDate', 'desc'),

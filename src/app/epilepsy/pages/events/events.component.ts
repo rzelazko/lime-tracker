@@ -21,8 +21,6 @@ export class EventsComponent implements OnInit, OnDestroy {
   private deleteSubscription?: Subscription;
   private eventsService: EventsService = inject(EventsService);
 
-  constructor() {}
-
   ngOnInit(): void {
     this.onLoadMore();
   }

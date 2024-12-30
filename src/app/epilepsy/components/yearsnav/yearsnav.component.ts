@@ -12,7 +12,5 @@ export class YearsnavComponent implements OnInit {
   currentYear = moment().year();
   availableYears = Array.from({ length: 10 }, (_v, k) => this.currentYear - k);
 
-  constructor() {}
-
   ngOnInit(): void {}
 }
