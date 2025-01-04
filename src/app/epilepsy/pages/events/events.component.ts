@@ -35,7 +35,12 @@ export class EventsComponent implements OnInit, OnDestroy {
           this.loading = false;
           this.hasMore = evnentsPage.hasMore;
         },
-        error: (error) => (this.error = error)
+        error: (error) => {
+          this.loading = false;
+          this.error = error instanceof Error
+            ? error.message
+            : $localize`:@@unexpected-error-message:An unexpected error occurred`;
+        }
       });
   }
 
