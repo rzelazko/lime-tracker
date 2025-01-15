@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Moment } from 'moment';
 
 @Pipe({
-  name: 'endOf',
+    name: 'endOf',
+    standalone: false
 })
 export class EndOfPipe implements PipeTransform {
   transform(date: Moment): Moment {

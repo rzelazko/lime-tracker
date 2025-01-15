@@ -1,15 +1,20 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { UntypedFormBuilder, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from './../../../shared/services/auth.service';
 import { formFieldHasError } from './../../../shared/services/form-field-has-error';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
+    standalone: false
 })
 export class LoginComponent implements OnInit {
+  private fb: UntypedFormBuilder = inject(UntypedFormBuilder);
+  private router: Router = inject(Router);
+  private auth: AuthService = inject(AuthService);
+  
   isLoading = false;
   error?: string;
   loginForm = this.fb.group({
@@ -18,8 +23,6 @@ export class LoginComponent implements OnInit {
   });
 
   @ViewChild('formDirective') private formDirective?: NgForm;
-
-  constructor(private fb: UntypedFormBuilder, private router: Router, private auth: AuthService) {}
 
   ngOnInit(): void {}
 

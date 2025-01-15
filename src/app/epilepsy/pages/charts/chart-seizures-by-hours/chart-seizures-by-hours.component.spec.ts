@@ -9,12 +9,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ActivatedRoute } from '@angular/router';
-import ApexCharts from 'apexcharts';
-import { ChartComponent, NgApexchartsModule } from 'ng-apexcharts';
 import { delay, of, throwError } from 'rxjs';
 import { ErrorCardComponent } from './../../../../shared/error-card/error-card.component';
 import { ChartData } from './../../../../shared/models/chart-data.model';
 import { ChartSeizuresByHoursService } from './../../../../shared/services/chart-seizures-by-hours.service';
+import { MockApexChartsComponent } from './../../../../shared/testing/mock-apex-charts.component';
 import { ChartSeizuresByHoursComponent } from './chart-seizures-by-hours.component';
 
 describe('ChartSeizuresByHoursComponent', () => {
@@ -27,7 +26,7 @@ describe('ChartSeizuresByHoursComponent', () => {
     const chartServiceSpyObj = jasmine.createSpyObj('ChartSeizuresByHoursService', [
       'setYear',
       'subtitle',
-      'seizureSerie',
+      'seizureSerie'
     ]);
     const activatedRouteMockObj = { params: of({ year: '2021' }) };
 
@@ -35,11 +34,9 @@ describe('ChartSeizuresByHoursComponent', () => {
       declarations: [ChartSeizuresByHoursComponent, ErrorCardComponent],
       providers: [
         { provide: ChartSeizuresByHoursService, useValue: chartServiceSpyObj },
-        { provide: ActivatedRoute, useValue: activatedRouteMockObj },
-        { provide: ApexCharts, useValue: ApexCharts },
+        { provide: ActivatedRoute, useValue: activatedRouteMockObj }
       ],
       imports: [
-        NgApexchartsModule,
         NoopAnimationsModule,
         MatCardModule,
         MatIconModule,
@@ -48,7 +45,8 @@ describe('ChartSeizuresByHoursComponent', () => {
         MatTabsModule,
         MatToolbarModule,
         MatTooltipModule,
-      ],
+        MockApexChartsComponent
+      ]
     }).compileComponents();
     chartServiceSpy = TestBed.inject(
       ChartSeizuresByHoursService
@@ -92,7 +90,7 @@ describe('ChartSeizuresByHoursComponent', () => {
 
     // then
     expect(fixture.debugElement.queryAll(By.directive(MatProgressSpinner)).length).toBe(0);
-    expect(fixture.debugElement.queryAll(By.directive(ChartComponent)).length).toBe(1);
+    expect(fixture.debugElement.queryAll(By.directive(MockApexChartsComponent)).length).toBe(1);
   });
 
   it('should show error from Error object', () => {

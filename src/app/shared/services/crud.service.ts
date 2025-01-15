@@ -1,7 +1,8 @@
+import { inject } from '@angular/core';
 import { startAfter } from '@angular/fire/firestore';
 import { DocumentReference, limit, orderBy, QueryConstraint } from 'firebase/firestore';
 import { map, Observable } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
+import { filter, switchMap, tap } from 'rxjs/operators';
 import { AuthService } from './../../shared/services/auth.service';
 import { Identifiable } from './../models/identifiable.model';
 import { PageData } from './../models/page-data.model';
@@ -10,43 +11,50 @@ import { FirestoreService } from './firestore.service';
 export abstract class CrudService<I extends Identifiable, E extends Identifiable> {
   private concatPagelastId: string;
   private concatPageData: PageData<E>;
+  protected authService: AuthService = inject(AuthService);
+  protected firestoreService: FirestoreService = inject(FirestoreService);
 
-  constructor(
-    private collectionPathPostfix: string,
-    protected orderByField: string,
-    protected authService: AuthService,
-    protected firestoreService: FirestoreService
-  ) {
+  constructor(private collectionPathPostfix: string, protected orderByField: string) {
     this.concatPagelastId = '';
     this.concatPageData = { hasMore: false, data: [] };
   }
 
   create(data: Partial<E>): Observable<DocumentReference<any> | void> {
-    return this.firestoreService
-      .add(this.collectionPath(), this.convertToInternal(data))
-      .pipe(tap(() => this.resetConcatenated()));
+    return this.collectionPath().pipe(
+      switchMap((path) => this.firestoreService.add(path, this.convertToInternal(data))),
+      tap(() => this.resetConcatenated())
+    );
   }
 
   read(id: string): Observable<E> {
-    return this.firestoreService.get<I>(`${this.collectionPath()}/${id}`).pipe(map((data) => this.convertFromInternal(data)));
+    return this.collectionPath().pipe(
+      switchMap((path) => this.firestoreService.get<I>(`${path}/${id}`)),
+      map((data) => this.convertFromInternal(data))
+    );
   }
 
   update(id: string, data: Partial<E>) {
-    return this.firestoreService
-      .update(`${this.collectionPath()}/${id}`, this.convertToInternal(data))
-      .pipe(tap(() => this.resetConcatenated()));
+    return this.collectionPath().pipe(
+      switchMap((path) =>
+        this.firestoreService.update(`${path}/${id}`, this.convertToInternal(data))
+      ),
+      tap(() => this.resetConcatenated())
+    );
   }
 
   delete(id: string): Observable<void> {
-    return this.firestoreService
-      .delete(`${this.collectionPath()}/${id}`)
-      .pipe(tap(() => this.resetConcatenated()));
+    return this.collectionPath().pipe(
+      switchMap((path) => this.firestoreService.delete(`${path}/${id}`)),
+      tap(() => this.resetConcatenated())
+    );
   }
 
   listCollection(queryConstraint: QueryConstraint[]): Observable<E[]> {
-    return this.firestoreService.list<I>(`${this.collectionPath()}`, ...queryConstraint).pipe(map((data) => this.convertAllFromInternal(data)));
+    return this.collectionPath().pipe(
+      switchMap((path) => this.firestoreService.list<I>(path, ...queryConstraint)),
+      map((data) => this.convertAllFromInternal(data))
+    );
   }
-
   listConcatenated(pageSize: number): Observable<PageData<E>> {
     return this.listSinglePage(pageSize, this.concatPagelastId).pipe(
       map((newDatas): PageData<E> => {
@@ -81,8 +89,11 @@ export abstract class CrudService<I extends Identifiable, E extends Identifiable
     return data.map((seizure) => this.convertFromInternal(seizure));
   }
 
-  protected collectionPath(): string {
-    return `users/${this.authService.user().uid}/${this.collectionPathPostfix}`;
+  protected collectionPath(): Observable<string> {
+    return this.authService.userIdProvider$().pipe(
+      filter((id) => !!id),
+      map((userId) => `users/${userId}/${this.collectionPathPostfix}`)
+    );
   }
 
   private elementInArray(element: Identifiable): boolean {
@@ -92,19 +103,15 @@ export abstract class CrudService<I extends Identifiable, E extends Identifiable
   private listSinglePage(pageSize: number, startAfterId: string): Observable<E[]> {
     let queryConstraint: QueryConstraint[] = [orderBy(this.orderByField, 'desc'), limit(pageSize)];
 
-    let listCollection$: Observable<E[]>;
     if (startAfterId) {
-      listCollection$ = this.firestoreService
-        .getRaw(`${this.collectionPath()}/${startAfterId}`)
-        .pipe(
-          switchMap((startAfterDoc) =>
-            this.listCollection([...queryConstraint, startAfter(startAfterDoc)])
-          )
-        );
-    } else {
-      listCollection$ = this.listCollection(queryConstraint);
+      return this.collectionPath().pipe(
+        switchMap((path) => this.firestoreService.getRaw(`${path}/${startAfterId}`)),
+        switchMap((startAfterDoc) =>
+          this.listCollection([...queryConstraint, startAfter(startAfterDoc)])
+        )
+      );
     }
 
-    return listCollection$;
+    return this.listCollection(queryConstraint);
   }
 }

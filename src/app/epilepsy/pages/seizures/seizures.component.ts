@@ -6,9 +6,10 @@ import { SeizuresService } from './../../../shared/services/seizures.service';
 import { TableComponent } from './../../components/table/table.component';
 
 @Component({
-  selector: 'app-seizures',
-  templateUrl: './seizures.component.html',
-  styleUrls: ['./seizures.component.scss'],
+    selector: 'app-seizures',
+    templateUrl: './seizures.component.html',
+    styleUrls: ['./seizures.component.scss'],
+    standalone: false
 })
 export class SeizuresComponent implements OnInit, OnDestroy {
   dataSource = new MatTableDataSource<TrackingCore>();

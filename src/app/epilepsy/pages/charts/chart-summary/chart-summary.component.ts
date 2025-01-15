@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApexAxisChartSeries, ApexYAxis } from 'ng-apexcharts';
 import { combineLatest, map, Observable, of } from 'rxjs';
@@ -8,16 +8,18 @@ import { ChartOptions } from './../../../../shared/models/chart-options.model';
 import { ChartSummaryService } from './../../../../shared/services/chart-summary.service';
 
 @Component({
-  selector: 'app-chart-summary',
-  templateUrl: './chart-summary.component.html',
-  styleUrls: ['./chart-summary.component.scss'],
+    selector: 'app-chart-summary',
+    templateUrl: './chart-summary.component.html',
+    styleUrls: ['./chart-summary.component.scss'],
+    standalone: false
 })
 export class ChartSummaryComponent implements OnInit {
   @Input() titleOffset: number = 0;
   chartOptions$?: Observable<ChartOptions>;
   chartError$?: Observable<string>;
 
-  constructor(private chartService: ChartSummaryService, private activatedRoute: ActivatedRoute) {}
+  private chartService: ChartSummaryService = inject(ChartSummaryService);
+  private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
 
   ngOnInit(): void {
     this.chartOptions$ = this.activatedRoute.params.pipe(

@@ -6,9 +6,10 @@ import { PeriodsService } from './../../../shared/services/periods.service';
 import { TableComponent } from './../../components/table/table.component';
 
 @Component({
-  selector: 'app-periods',
-  templateUrl: './periods.component.html',
-  styleUrls: ['./periods.component.scss'],
+    selector: 'app-periods',
+    templateUrl: './periods.component.html',
+    styleUrls: ['./periods.component.scss'],
+    standalone: false
 })
 export class PeriodsComponent implements OnInit {
   dataSource = new MatTableDataSource<TrackingCore>();

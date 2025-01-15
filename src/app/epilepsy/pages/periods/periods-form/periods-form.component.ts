@@ -10,9 +10,10 @@ import { PeriodsService } from './../../../../shared/services/periods.service';
 import { DatesValidator } from './../../../../shared/validators/dates-validator';
 
 @Component({
-  selector: 'app-periods-form',
-  templateUrl: './periods-form.component.html',
-  styleUrls: ['./periods-form.component.scss']
+    selector: 'app-periods-form',
+    templateUrl: './periods-form.component.html',
+    styleUrls: ['./periods-form.component.scss'],
+    standalone: false
 })
 export class PeriodsFormComponent implements OnInit {
   submitting = false;

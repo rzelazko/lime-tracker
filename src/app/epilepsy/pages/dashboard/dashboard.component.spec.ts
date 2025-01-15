@@ -22,24 +22,22 @@ import { MomentPipe } from './../../../shared/pipes/moment.pipe';
 import { TimeSincePipe } from './../../../shared/pipes/time-since.pipe';
 import { AuthService } from './../../../shared/services/auth.service';
 import { DashboardService } from './../../../shared/services/dashboard.service';
-import { UserDetailsService } from './../../../shared/services/user-details.service';
 import { DashboardComponent } from './dashboard.component';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let dashboardServiceSpy: jasmine.SpyObj<DashboardService>;
   let authServiceSpy: jasmine.SpyObj<AuthService>;
-  let userDetailsServiceSpy: jasmine.SpyObj<UserDetailsService>;
-
+  
   let fixture: ComponentFixture<DashboardComponent>;
 
   const mockUserData: UserData = {
     id: 'joanna.smith',
-    email: 'Joanna Smith',
-    name: 'joanna.smith@webperfekt.pl',
+    name: 'Joanna Smith',
+    email: 'joanna.smith@webperfekt.pl',
     seizureTriggers: [],
     seizureTypes: [],
-    isFemale: true,
+    isFemale: true
   };
 
   const mockUser: User = new MockFirebaseUser(
@@ -49,13 +47,12 @@ describe('DashboardComponent', () => {
   );
 
   beforeEach(async () => {
-    const authServiceSpyObj = jasmine.createSpyObj('AuthService', ['user']);
-    const userDetailsServiceSpyObj = jasmine.createSpyObj('UserDetailsService', ['get']);
+    const authServiceSpyObj = jasmine.createSpyObj('AuthService', ['userDetails$']);
     const dashboardServiceSpyObj = jasmine.createSpyObj('DashboardService', [
       'currentMedications',
       'lastSeizures',
       'lastEvents',
-      'lastPeriods',
+      'lastPeriods'
     ]);
 
     await TestBed.configureTestingModule({
@@ -65,12 +62,11 @@ describe('DashboardComponent', () => {
 
         HumanizePipe,
         MomentPipe,
-        TimeSincePipe,
+        TimeSincePipe
       ],
       providers: [
         { provide: AuthService, useValue: authServiceSpyObj },
-        { provide: UserDetailsService, useValue: userDetailsServiceSpyObj },
-        { provide: DashboardService, useValue: dashboardServiceSpyObj },
+        { provide: DashboardService, useValue: dashboardServiceSpyObj }
       ],
       imports: [
         NoopAnimationsModule,
@@ -79,13 +75,10 @@ describe('DashboardComponent', () => {
         MatListModule,
         MatProgressSpinnerModule,
         MatToolbarModule,
-        MatTooltipModule,
-      ],
+        MatTooltipModule
+      ]
     }).compileComponents();
     authServiceSpy = TestBed.inject(AuthService) as jasmine.SpyObj<AuthService>;
-    userDetailsServiceSpy = TestBed.inject(
-      UserDetailsService
-    ) as jasmine.SpyObj<UserDetailsService>;
     dashboardServiceSpy = TestBed.inject(DashboardService) as jasmine.SpyObj<DashboardService>;
   });
 
@@ -112,10 +105,10 @@ describe('DashboardComponent', () => {
         doses: {
           morning: 125,
           noon: 0,
-          evening: 125,
+          evening: 125
         },
         startDate: moment('2021-05-15'),
-        archived: false,
+        archived: false
       },
       {
         objectType: 'MEDICATION',
@@ -124,11 +117,11 @@ describe('DashboardComponent', () => {
         doses: {
           morning: 1200,
           noon: 100,
-          evening: 800,
+          evening: 800
         },
         startDate: moment('2021-01-01'),
-        archived: false,
-      },
+        archived: false
+      }
     ];
     dashboardServiceSpy.currentMedications.and.returnValue(of(medications));
     dashboardServiceSpy.lastSeizures.and.returnValue(of());
@@ -222,8 +215,8 @@ describe('DashboardComponent', () => {
         occurred: moment('2021-05-15T12:05:00'),
         duration: moment.duration(5, 'minutes'),
         type: 'some seizure type',
-        triggers: [],
-      },
+        triggers: []
+      }
     ];
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(of(seizures));
@@ -309,14 +302,14 @@ describe('DashboardComponent', () => {
         objectType: 'EVENT',
         id: 'e1',
         name: 'Lorem ipsum 1',
-        occurred: moment('2021-02-15'),
+        occurred: moment('2021-02-15')
       },
       {
         objectType: 'EVENT',
         id: 'e2',
         name: 'Lorem ipsum 2',
-        occurred: moment('2021-01-12'),
-      },
+        occurred: moment('2021-01-12')
+      }
     ];
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(of());
@@ -403,14 +396,13 @@ describe('DashboardComponent', () => {
 
   it('should show current period data', async () => {
     // given
-    authServiceSpy.user.and.returnValue(mockUser);
-    userDetailsServiceSpy.get.and.returnValue(of(mockUserData));
+    authServiceSpy.userDetails$.and.returnValue(of(mockUserData));
     const periods: Period[] = [
       {
         objectType: 'PERIOD',
         id: 'p1',
-        startDate: moment('2021-05-11T00:00:00'),
-      },
+        startDate: moment('2021-05-11T00:00:00')
+      }
     ];
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(of());
@@ -434,15 +426,14 @@ describe('DashboardComponent', () => {
 
   it('should show last period data', async () => {
     // given
-    authServiceSpy.user.and.returnValue(mockUser);
-    userDetailsServiceSpy.get.and.returnValue(of(mockUserData));
+    authServiceSpy.userDetails$.and.returnValue(of(mockUserData));
     const periods: Period[] = [
       {
         objectType: 'PERIOD',
         id: 'p1',
         startDate: moment('2021-05-08T12:05:00'),
-        endDate: moment('2021-05-15T12:05:00'),
-      },
+        endDate: moment('2021-05-15T12:05:00')
+      }
     ];
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(of());
@@ -467,8 +458,7 @@ describe('DashboardComponent', () => {
 
   it('should show no data if last period is empty', async () => {
     // given
-    authServiceSpy.user.and.returnValue(mockUser);
-    userDetailsServiceSpy.get.and.returnValue(of(mockUserData));
+    authServiceSpy.userDetails$.and.returnValue(of(mockUserData));
     const periods: Period[] = [];
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(of());
@@ -488,8 +478,7 @@ describe('DashboardComponent', () => {
 
   it('should show error if last period data throw error', async () => {
     // given
-    authServiceSpy.user.and.returnValue(mockUser);
-    userDetailsServiceSpy.get.and.returnValue(of(mockUserData));
+    authServiceSpy.userDetails$.and.returnValue(of(mockUserData));
     const errorMsg = 'Some last period error!';
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(of());
@@ -508,8 +497,7 @@ describe('DashboardComponent', () => {
 
   it('should show loading indicator on last period data load', fakeAsync(() => {
     // given
-    authServiceSpy.user.and.returnValue(mockUser);
-    userDetailsServiceSpy.get.and.returnValue(of(mockUserData));
+    authServiceSpy.userDetails$.and.returnValue(of(mockUserData));
     const spinnerElementQuery = By.css('.last-period mat-progress-spinner');
     const periods: Period[] = [];
     dashboardServiceSpy.currentMedications.and.returnValue(of());
@@ -531,8 +519,7 @@ describe('DashboardComponent', () => {
 
   it('should show loading indicator on user details data load', fakeAsync(() => {
     // given
-    authServiceSpy.user.and.returnValue(mockUser);
-    userDetailsServiceSpy.get.and.returnValue(of(mockUserData).pipe(delay(100)));
+    authServiceSpy.userDetails$.and.returnValue(of(mockUserData).pipe(delay(100)));
     const spinnerElementQuery = By.css('.last-period mat-progress-spinner');
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(of());
@@ -555,8 +542,7 @@ describe('DashboardComponent', () => {
 
   it('should not display last period if not a female', fakeAsync(() => {
     // given
-    authServiceSpy.user.and.returnValue(mockUser);
-    userDetailsServiceSpy.get.and.returnValue(of({ ...mockUserData, isFemale: false }));
+    authServiceSpy.userDetails$.and.returnValue(of({ ...mockUserData, isFemale: false }));
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(of());
     dashboardServiceSpy.lastEvents.and.returnValue(of());

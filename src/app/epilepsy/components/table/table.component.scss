@@ -1,5 +1,5 @@
 @use "@angular/material" as mat;
-@import "src/app/app-theme-variables";
+@use "src/app/app-theme-variables" as app;
 
 table {
   width: 100%;
@@ -11,7 +11,7 @@ td.actions {
 }
 
 td.disabled {
-  color: mat.m2-get-color-from-palette($app-foreground, "secondary-text");
+  color: mat.m2-get-color-from-palette(app.$app-foreground, "secondary-text");
 }
 
 td.lineThrough {

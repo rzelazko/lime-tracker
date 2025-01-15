@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApexPlotOptions } from 'ng-apexcharts';
 import { catchError, ignoreElements, map, Observable, of, switchMap } from 'rxjs';
@@ -7,9 +7,10 @@ import { ChartOptions } from './../../../../shared/models/chart-options.model';
 import { ChartHeatmapService } from './../../../../shared/services/chart-heatmap.service';
 
 @Component({
-  selector: 'app-chart-heatmap',
-  templateUrl: './chart-heatmap.component.html',
-  styleUrls: ['./chart-heatmap.component.scss'],
+    selector: 'app-chart-heatmap',
+    templateUrl: './chart-heatmap.component.html',
+    styleUrls: ['./chart-heatmap.component.scss'],
+    standalone: false
 })
 export class ChartHeatmapComponent implements OnInit {
   @Input() titleOffset: number = 0;
@@ -17,7 +18,10 @@ export class ChartHeatmapComponent implements OnInit {
   chartOptions$?: Observable<ChartOptions>;
   chartError$?: Observable<string>;
 
-  constructor(private chartService: ChartHeatmapService, private activatedRoute: ActivatedRoute) {
+  private chartService: ChartHeatmapService = inject(ChartHeatmapService);
+  private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
+
+  constructor() {
     this.plotOptions = {
       heatmap: {
         colorScale: {
