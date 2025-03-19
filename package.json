@@ -3,8 +3,8 @@
   "version": "1.0.48",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --configuration=en --host 0.0.0.0 --disable-host-check",
-    "start-pl": "ng serve --configuration=pl --host 0.0.0.0 --disable-host-check",
+    "start": "ng serve --configuration=en",
+    "start-pl": "ng serve --configuration=pl",
     "build": "ng build --delete-output-path",
     "postbuild": "node scripts/postbuild.js",
     "watch": "ng build --watch --configuration development",
