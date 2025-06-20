@@ -1246,6 +1246,10 @@
           <context context-type="linenumber">74</context>
         </context-group>
         <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-type/chart-seizures-by-type.component.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-summary/chart-summary.component.ts</context>
           <context context-type="linenumber">45</context>
         </context-group>
@@ -1264,6 +1268,14 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-hours/chart-seizures-by-hours.component.ts</context>
           <context context-type="linenumber">60</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chart-seizures-by-type-title" datatype="html">
+        <source>Seizure types</source>
+        <target>Rodzaje napadów</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-type/chart-seizures-by-type.component.ts</context>
+          <context context-type="linenumber">55</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chart-summary-title" datatype="html">
