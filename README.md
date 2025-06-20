@@ -20,7 +20,7 @@ Sample screenshots:
 
 ### Development server
 
-Run Firebase Emulator: `npm run firebase-emulator`. View Emulator UI at `http://localhost:4000`. In order to persists emulator data run in separate console: `firebase emulators:export --only firestore,auth test-data`.
+Run Firebase Emulator: `npm run firebase-emulator`. View Emulator UI at `http://localhost:4000`. In order to persists emulator data run in separate console: `npx firebase emulators:export test-data`.
 User accounts available in emulator (password is `123qwe`):
 
 - `janka@webperfekt.pl` - female user with some data

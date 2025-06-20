@@ -11,29 +11,9 @@ const path = require('path');
  * node scripts/populate-seizures.js
  */
 
-if (!process.env.FIRESTORE_EMULATOR_HOST) {
-  console.error('ERROR: FIRESTORE_EMULATOR_HOST is not set! Refusing to run against production DB.');
-  process.exit(1);
-}
-
-// Set project ID from .firebaserc
-try {
-  const rcPath = path.join(__dirname, '..', '.firebaserc');
-  const rc = JSON.parse(fs.readFileSync(rcPath, 'utf8'));
-  const projectId = rc.projects && rc.projects.default;
-  if (projectId) {
-    process.env.GCLOUD_PROJECT = projectId;
-    console.log(`Set GCLOUD_PROJECT from .firebaserc: ${projectId}`);
-  } else {
-    throw new Error('No default project found in .firebaserc');
-  }
-} catch (e) {
-  console.error('ERROR: Could not determine project ID from .firebaserc!');
-  process.exit(1);
-}
-
 initializeApp({
   credential: applicationDefault(),
+  projectId: "lime-tracker-com"
 });
 
 const db = getFirestore();
@@ -74,8 +54,14 @@ function getRandomTriggers() {
 }
 
 function getRandomSeizure(date) {
+  // Assign a random hour, minute, and second to the date
+  const randomHour = getRandomInt(7, 22);
+  const randomMinute = getRandomInt(0, 59);
+  const randomSecond = getRandomInt(0, 59);
+  const seizureDate = new Date(date);
+  seizureDate.setHours(randomHour, randomMinute, randomSecond, 0);
   return {
-    occurred: Timestamp.fromDate(date),
+    occurred: Timestamp.fromDate(seizureDate),
     duration: getRandomInt(1, 15), // minutes
     type: SEIZURE_TYPES[getRandomInt(0, SEIZURE_TYPES.length - 1)],
     triggers: getRandomTriggers(),

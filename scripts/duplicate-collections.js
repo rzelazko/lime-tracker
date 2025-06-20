@@ -12,6 +12,7 @@ const { getFirestore, Timestamp, FieldValue } = require("firebase-admin/firestor
 
 initializeApp({
   credential: applicationDefault(),
+  projectId: "lime-tracker-com"
 });
 
 const main = async () => {
