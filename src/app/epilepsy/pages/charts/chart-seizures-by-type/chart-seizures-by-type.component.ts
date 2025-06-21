@@ -21,17 +21,27 @@ export class ChartSeizuresByTypeComponent implements OnInit {
   private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
 
   ngOnInit(): void {
-    this.chartOptions$ = this.activatedRoute.params.pipe(
+    const dataStream$ = this.activatedRoute.params.pipe(
       map((routeParams): number | undefined => routeParams['year']),
+      map((year) => {
+        // Validate year parameter
+        const parsedYear = year ? parseInt(year.toString(), 10) : undefined;
+        return parsedYear && parsedYear > 1900 && parsedYear <= new Date().getFullYear() + 10
+          ? parsedYear
+          : undefined;
+      }),
       switchMap((selectedYear) => {
         this.chartService.setYear(selectedYear);
         return this.chartService.seizureSerie();
       }),
-      map((data: ChartData) => this.toChartOptions(data))
+      catchError((error) => {
+        this.chartError$ = of($localize`:@@error-message:Error: ${error.message || error}`);
+        return of({ data: [] } as ChartData); // Return empty data on error
+      })
     );
 
-    this.chartError$ = this.chartOptions$.pipe(
-      catchError((error) => of($localize`:@@error-message:Error: ${error.message || error}`))
+    this.chartOptions$ = dataStream$.pipe(
+      map((data: ChartData) => this.toChartOptions(data))
     );
   }
 
