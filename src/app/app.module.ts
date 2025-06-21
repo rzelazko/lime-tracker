@@ -74,6 +74,7 @@ import { JoinPipe } from './shared/pipes/join.pipe';
 import { MomentPipe } from './shared/pipes/moment.pipe';
 import { StartOfPipe } from './shared/pipes/start-of.pipe';
 import { TimeSincePipe } from './shared/pipes/time-since.pipe';
+import { ChartSeizuresByTypeComponent } from './epilepsy/pages/charts/chart-seizures-by-type/chart-seizures-by-type.component';
 
 let resolvePersistenceEnabled: (enabled: boolean) => void;
 
@@ -95,6 +96,7 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     ChartsComponent,
     ChartHeatmapComponent,
     ChartSeizuresByHoursComponent,
+    ChartSeizuresByTypeComponent,
     ChartSummaryComponent,
     ConfirmDeleteDialogComponent,
     DashboardComponent,

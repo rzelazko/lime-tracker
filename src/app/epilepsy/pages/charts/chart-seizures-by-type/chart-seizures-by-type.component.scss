@@ -1,0 +1,30 @@
+:host {
+  display: block;
+  margin-bottom: 2rem;
+}
+
+:host ::ng-deep .apexcharts-canvas {
+  min-height: 150px;
+  width: 100% !important;
+  max-width: 100vw;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:host ::ng-deep .apexcharts-legend {
+  flex-wrap: wrap;
+  justify-content: center;
+  height: auto !important;
+}
+
+@media (max-width: 600px) {
+  :host ::ng-deep .apexcharts-canvas {
+    min-height: 200px;
+  }
+  :host ::ng-deep .apexcharts-legend {
+    max-width: 100vw;
+    height: auto !important;
+  }
+}
