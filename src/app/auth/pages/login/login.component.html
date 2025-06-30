@@ -14,65 +14,71 @@
       <img
         mat-card-image
         src="assets/hero/limetracker-1.jpg"
-      />
+        />
 
-      <ng-container *ngIf="isLoading">
+      @if (isLoading) {
         <mat-card-content class="flex-col gap-normal justify-center items-center">
           <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
         </mat-card-content>
-      </ng-container>
+      }
 
-      <ng-container *ngIf="!isLoading">
+      @if (!isLoading) {
         <!-- form body -->
-
         <mat-card-content class="flex-col gap-normal">
-          <mat-error *ngIf="error">
-            <ng-container [ngSwitch]="error">
-              <span *ngSwitchCase="'auth/network-request-failed'" i18n="@@error-connection"
-                >Connection to backend failed. Please try again, and if the problem persists,
+          @if (error) {
+            <mat-error>
+              @switch (error) {
+                @case ('auth/network-request-failed') {
+                  <span i18n="@@error-connection"
+                    >Connection to backend failed. Please try again, and if the problem persists,
                 contact the <a href="https://www.webperfekt.pl/">administrator</a>.</span
-              >
-              <span *ngSwitchDefault i18n="@@login-error-auth"
-                >Authentication failed - please provide valid credentials</span
-              >
-            </ng-container>
-          </mat-error>
-
-          <mat-form-field>
-            <input
-              type="email"
-              formControlName="email"
-              placeholder="Your email"
-              i18n-placeholder="@@placeholder-email"
-              matInput
-            />
-            <mat-error *ngIf="hasError('email', 'required')" i18n="@@error-email-required"
-              >Email is required</mat-error
-            >
-            <mat-error *ngIf="hasError('email', '!required')" i18n="@@error-email-invalid"
-              >Email is invalid</mat-error
-            >
-          </mat-form-field>
-
-          <mat-form-field>
-            <input
-              type="password"
-              formControlName="password"
-              placeholder="Your password"
-              i18n-placeholder="@@placeholder-password"
-              matInput
-            />
-            <mat-error i18n="@@error-provide-password">Please provide valid passowrd</mat-error>
-          </mat-form-field>
-        </mat-card-content>
-        <mat-card-actions>
-          <button type="submit" mat-raised-button color="primary" [disabled]="!loginForm.valid">
-            <ng-container i18n="@@action-login">Log in</ng-container>
-          </button>
-        </mat-card-actions>
-
-        <!-- /form body -->
-      </ng-container>
-    </mat-card>
-  </form>
-</section>
+                    >
+                  }
+                  @default {
+                    <span i18n="@@login-error-auth"
+                      >Authentication failed - please provide valid credentials</span
+                      >
+                    }
+                  }
+                </mat-error>
+              }
+              <mat-form-field>
+                <input
+                  type="email"
+                  formControlName="email"
+                  placeholder="Your email"
+                  i18n-placeholder="@@placeholder-email"
+                  matInput
+                  />
+                @if (hasError('email', 'required')) {
+                  <mat-error i18n="@@error-email-required"
+                    >Email is required</mat-error
+                    >
+                  }
+                  @if (hasError('email', '!required')) {
+                    <mat-error i18n="@@error-email-invalid"
+                      >Email is invalid</mat-error
+                      >
+                    }
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input
+                      type="password"
+                      formControlName="password"
+                      placeholder="Your password"
+                      i18n-placeholder="@@placeholder-password"
+                      matInput
+                      />
+                    <mat-error i18n="@@error-provide-password">Please provide valid passowrd</mat-error>
+                  </mat-form-field>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button type="submit" mat-raised-button color="primary" [disabled]="!loginForm.valid">
+                    <ng-container i18n="@@action-login">Log in</ng-container>
+                  </button>
+                </mat-card-actions>
+                <!-- /form body -->
+              }
+            </mat-card>
+          </form>
+        </section>

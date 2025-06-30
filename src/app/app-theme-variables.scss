@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "@angular/material" as mat;
 
 $app-primary: mat.m2-define-palette(mat.$m2-light-green-palette, 500);
@@ -16,7 +17,7 @@ $app-theme: mat.m2-define-light-theme(
   )
 );
 
-$app-foreground: map-get($app-theme, 'foreground');
-$app-background: map-get($app-theme, 'background');
+$app-foreground: map.get($app-theme, 'foreground');
+$app-background: map.get($app-theme, 'background');
 
 $app-icon-color: rgba(0, 0, 0, 0.54);

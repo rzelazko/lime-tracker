@@ -6,15 +6,13 @@
       "name": "npm start en",
       "type": "chrome",
       "request": "launch",
-      "preLaunchTask": "start-en-with-emulator",
-      "url": "http://localhost:4200/"
+      "preLaunchTask": "start-en-with-emulator"
     },
     {
       "name": "npm start pl",
       "type": "chrome",
       "request": "launch",
-      "preLaunchTask": "start-pl-with-emulator",
-      "url": "http://localhost:4200/"
+      "preLaunchTask": "start-pl-with-emulator"
     },
     {
       "name": "ng test",

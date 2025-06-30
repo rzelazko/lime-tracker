@@ -1,54 +1,59 @@
 <mat-nav-list>
   <mat-list-item><a mat-list-item routerLink="/epilepsy" i18n-routerLink="@@routerLink-epilepsy"
-      routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="onClose()">
-      <mat-icon matListItemIcon>dashboard</mat-icon> <span i18n="@@title-dashboard">Dashboard</span>
-    </a></mat-list-item>
+    routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="onClose()">
+    <mat-icon matListItemIcon>dashboard</mat-icon> <span i18n="@@title-dashboard">Dashboard</span>
+  </a></mat-list-item>
   <mat-list-item><a mat-list-item routerLink="/epilepsy/charts" i18n-routerLink="@@routerLink-epilepsy-charts"
-      routerLinkActive="active" (click)="onClose()">
-      <mat-icon matListItemIcon>auto_graph</mat-icon> <span i18n="@@title-charts">Charts</span>
-    </a></mat-list-item>
+    routerLinkActive="active" (click)="onClose()">
+    <mat-icon matListItemIcon>auto_graph</mat-icon> <span i18n="@@title-charts">Charts</span>
+  </a></mat-list-item>
   <mat-list-item><a mat-list-item routerLink="/epilepsy/reports" i18n-routerLink="@@routerLink-epilepsy-reports"
-      routerLinkActive="active" (click)="onClose()">
-      <mat-icon matListItemIcon>summarize</mat-icon> <span i18n="@@title-reports">Reports</span>
-    </a></mat-list-item>
+    routerLinkActive="active" (click)="onClose()">
+    <mat-icon matListItemIcon>summarize</mat-icon> <span i18n="@@title-reports">Reports</span>
+  </a></mat-list-item>
   <mat-divider></mat-divider>
   <mat-list-item><a mat-list-item routerLink="/epilepsy/seizures" i18n-routerLink="@@routerLink-epilepsy-seizures"
-      routerLinkActive="active" (click)="onClose()">
-      <mat-icon matListItemIcon>warning</mat-icon> <span i18n="@@title-seizures">Seizures</span>
-    </a></mat-list-item>
+    routerLinkActive="active" (click)="onClose()">
+    <mat-icon matListItemIcon>warning</mat-icon> <span i18n="@@title-seizures">Seizures</span>
+  </a></mat-list-item>
   <mat-list-item><a mat-list-item routerLink="/epilepsy/medications" i18n-routerLink="@@routerLink-epilepsy-medications"
-      routerLinkActive="active" (click)="onClose()">
-      <mat-icon matListItemIcon>medication</mat-icon> <span i18n="@@title-medications">Medications</span>
-    </a></mat-list-item>
+    routerLinkActive="active" (click)="onClose()">
+    <mat-icon matListItemIcon>medication</mat-icon> <span i18n="@@title-medications">Medications</span>
+  </a></mat-list-item>
   <mat-list-item><a mat-list-item routerLink="/epilepsy/events" i18n-routerLink="@@routerLink-epilepsy-events"
-      routerLinkActive="active" (click)="onClose()">
-      <mat-icon matListItemIcon>event</mat-icon> <span i18n="@@title-events">Events</span>
-    </a></mat-list-item>
-  <ng-container *ngIf="userDetails$ | async as userData; else userDetailsLoading">
-    <mat-list-item *ngIf="userData.isFemale"><a mat-list-item routerLink="/epilepsy/periods"
-      i18n-routerLink="@@routerLink-epilepsy-periods" routerLinkActive="active" (click)="onClose()">
-      <mat-icon matListItemIcon>bloodtype</mat-icon> <span i18n="@@title-periods">Periods</span>
-    </a></mat-list-item>
-  </ng-container>
-  <ng-template #userDetailsLoading>
-      <mat-progress-spinner mode="indeterminate" [diameter]="20"></mat-progress-spinner>
-  </ng-template>
+    routerLinkActive="active" (click)="onClose()">
+    <mat-icon matListItemIcon>event</mat-icon> <span i18n="@@title-events">Events</span>
+  </a></mat-list-item>
+  @if (userDetails$ | async; as userData) {
+    @if (userData.isFemale) {
+      <mat-list-item><a mat-list-item routerLink="/epilepsy/periods"
+        i18n-routerLink="@@routerLink-epilepsy-periods" routerLinkActive="active" (click)="onClose()">
+        <mat-icon matListItemIcon>bloodtype</mat-icon> <span i18n="@@title-periods">Periods</span>
+      </a></mat-list-item>
+    }
+  } @else {
+    <mat-progress-spinner mode="indeterminate" [diameter]="20"></mat-progress-spinner>
+  }
 
   <mat-divider></mat-divider>
-  <mat-list-item *ngIf="locale === 'pl'"><a mat-list-item href="/en">
+  @if (locale === 'pl') {
+    <mat-list-item><a mat-list-item href="/en">
       <mat-icon matListItemIcon>language</mat-icon> <span>English</span>
     </a></mat-list-item>
-  <mat-list-item *ngIf="locale !== 'pl'"><a mat-list-item href="/pl">
+  }
+  @if (locale !== 'pl') {
+    <mat-list-item><a mat-list-item href="/pl">
       <mat-icon matListItemIcon>language</mat-icon> <span>Polski</span>
     </a></mat-list-item>
+  }
 
   <mat-divider></mat-divider>
   <mat-list-item><a mat-list-item routerLink="/account" i18n-routerLink="@@routerLink-account" routerLinkActive="active"
-      (click)="onClose()">
-      <mat-icon matListItemIcon>person</mat-icon> <span i18n="@@title-profile">Manage account</span>
-    </a></mat-list-item>
+    (click)="onClose()">
+    <mat-icon matListItemIcon>person</mat-icon> <span i18n="@@title-profile">Manage account</span>
+  </a></mat-list-item>
   <mat-list-item><a mat-list-item routerLink="/logout" i18n-routerLink="@@routerLink-logout" routerLinkActive="active"
-      (click)="onClose()">
-      <mat-icon matListItemIcon>logout</mat-icon> <span i18n="@@title-logout">Log out</span>
-    </a></mat-list-item>
+    (click)="onClose()">
+    <mat-icon matListItemIcon>logout</mat-icon> <span i18n="@@title-logout">Log out</span>
+  </a></mat-list-item>
 </mat-nav-list>

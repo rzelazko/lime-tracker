@@ -11,41 +11,37 @@
     </mat-card-header>
     <img mat-card-image width="400" height="200" src="assets/hero/limetracker-3.jpg" />
 
-    <ng-container *ngIf="userDetails$ | async as userData; else loading">
+    @if (userDetails$ | async; as userData) {
       <mat-card-content class="app-card-content">
         <h1 i18n="@@verify-header">Thank You for Registering!</h1>
-
         <p i18n="@@verify-email-sent">We have sent a confirmation email.</p>
-
         <p class="userData">
           <ng-container i18n="@@verify-email-sent-to">To</ng-container>
           <span> {{ userData.email }}</span>.
         </p>
-
-        <p class="userData" *ngIf="userData.emailVerificationSent">
-          <ng-container i18n="@@verify-email-sent-date">At</ng-container>
-          <span> {{ userData.emailVerificationSent | moment: "LLL" }}</span>.
-          <small i18n="@@verify-email-resend-info">Resend possible after an hour.</small>
-        </p>
-
+        @if (userData.emailVerificationSent) {
+          <p class="userData">
+            <ng-container i18n="@@verify-email-sent-date">At</ng-container>
+            <span> {{ userData.emailVerificationSent | moment: "LLL" }}</span>.
+            <small i18n="@@verify-email-resend-info">Resend possible after an hour.</small>
+          </p>
+        }
         <p i18n="@@verify-check-email">Please check your email and click on the link to verify your email address.</p>
       </mat-card-content>
-
       <mat-card-actions>
-        <ng-container *ngIf="oneHourAgo$ | async as hourAgo">
-          <button mat-raised-button color="secondary" (click)="onEmailSend()"
-            *ngIf="userData.emailVerificationSent && userData.emailVerificationSent.isBefore(hourAgo)"
+        @if (oneHourAgo$ | async; as hourAgo) {
+          @if (userData.emailVerificationSent && userData.emailVerificationSent.isBefore(hourAgo)) {
+            <button mat-raised-button color="secondary" (click)="onEmailSend()"
             i18n="@@verify-button-resend">Re-send confirmation email</button>
-        </ng-container>
-
+          }
+        }
         <a mat-raised-button color="secondary" routerLink="/logout" i18n="@@login-action" i18n-routerLink="@@routerLink-logout">Log in</a>
       </mat-card-actions>
-    </ng-container>
-
-    <ng-template #loading>
+    } @else {
       <mat-card-content class="app-card-content">
         <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
       </mat-card-content>
-    </ng-template>
+    }
+
   </mat-card>
 </section>

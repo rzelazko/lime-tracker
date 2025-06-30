@@ -1,140 +1,145 @@
-<section *ngIf="addBtnLink" class="add">
-  <a mat-raised-button color="primary" routerLink="{{ addBtnLink }}"> {{ addBtnText }} </a>
-</section>
+@if (addBtnLink) {
+  <section class="add">
+    <a mat-raised-button color="primary" routerLink="{{ addBtnLink }}"> {{ addBtnText }} </a>
+  </section>
+}
 
-<table mat-table [dataSource]="dataSource" *ngIf="dataSource">
-  <ng-container matColumnDef="occurred">
-    <th mat-header-cell *matHeaderCellDef i18n="@@table-column-occurred">Occurred</th>
-    <td mat-cell *matCellDef="let element">{{ element.occurred | moment: occurredFormat }}</td>
-  </ng-container>
+@if (dataSource) {
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="occurred">
+      <th mat-header-cell *matHeaderCellDef i18n="@@table-column-occurred">Occurred</th>
+      <td mat-cell *matCellDef="let element">{{ element.occurred | moment: occurredFormat }}</td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef i18n="@@table-column-name">Name</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="{ disabled: element.archived, lineThrough: element.archived }"
+        >
+        {{ element.name }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef i18n="@@table-column-type">Type</th>
+      <td mat-cell *matCellDef="let element">{{ element.type }}</td>
+    </ng-container>
+    <ng-container matColumnDef="triggers">
+      <th mat-header-cell class="show-gt-xs" *matHeaderCellDef i18n="@@table-column-triggers">Triggers</th>
+      <td mat-cell class="show-gt-xs" *matCellDef="let element">{{ element.triggers | join }}</td>
+    </ng-container>
+    <ng-container matColumnDef="duration">
+      <th mat-header-cell class="show-gt-xs" *matHeaderCellDef i18n="@@table-column-duration">Duration</th>
+      <td mat-cell class="show-gt-xs" *matCellDef="let element">{{ element.duration | humanize }}</td>
+    </ng-container>
+    <ng-container matColumnDef="dose">
+      <th mat-header-cell *matHeaderCellDef i18n="@@table-column-dose">Dose</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="{ disabled: element.archived, lineThrough: element.archived }"
+        >
+        {{ element.doses.morning }} - {{ element.doses.noon }} - {{ element.doses.evening }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="startEndDate">
+      <th mat-header-cell *matHeaderCellDef i18n="@@table-column-start-end-date">Period of use</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="{ disabled: element.archived, lineThrough: element.archived }"
+        >
+        {{ element.startDate | moment: "L" }}
+        @if (element.endDate) {
+          <span> - {{element.endDate | moment: "L"}}</span>
+        }
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="startDate">
+      <th mat-header-cell *matHeaderCellDef i18n="@@table-column-start-date">Start date</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="{ disabled: element.archived, lineThrough: element.archived }"
+        >
+        {{ element.startDate | moment: "L" }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="endDate">
+      <th mat-header-cell *matHeaderCellDef i18n="@@table-column-end-date">End date</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        [ngClass]="{ disabled: element.archived, lineThrough: element.archived }"
+        >
+        @if (element.endDate) {
+          <span>{{element.endDate | moment: "L"}}</span>
+        }
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="archived">
+      <th mat-header-cell class="show-gt-xs" *matHeaderCellDef i18n="@@table-column-medication-active">Active</th>
+      <td mat-cell class="show-gt-xs" *matCellDef="let element" [ngClass]="{ disabled: element.archived }">
+        @if (element.archived) {
+          <button
+            mat-icon-button
+            (click)="onArchive(element)"
+            i18n-matTooltip="@@table-tooltip-move-to-active"
+            matTooltip="Switch medication to currenlty taken"
+            >
+            <mat-icon>archive</mat-icon>
+          </button>
+        }
+        @if (!element.archived) {
+          <button
+            mat-icon-button
+            (click)="onArchive(element)"
+            i18n-matTooltip="@@table-tooltip-move-to-archive"
+            matTooltip="Move to archive"
+            >
+            <mat-icon color="primary">medication</mat-icon>
+          </button>
+        }
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef i18n="@@table-column-actions">Actions</th>
+      <td mat-cell *matCellDef="let element" class="actions">
+        <a mat-icon-button color="primary" routerLink="{{ updateLinkPrefix }}/{{ element.id }}">
+          <mat-icon>edit</mat-icon>
+        </a>
+        <button mat-icon-button color="warn" (click)="onDelete(element)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="9999">
+        @if (loading) {
+          <span i18n="@@loading">Loading</span>
+        }
+        @if (!loading) {
+          <span i18n="@@no-data">No data</span>
+        }
+      </td>
+    </tr>
+  </table>
+}
 
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef i18n="@@table-column-name">Name</th>
-    <td
-      mat-cell
-      *matCellDef="let element"
-      [ngClass]="{ disabled: element.archived, lineThrough: element.archived }"
-    >
-      {{ element.name }}
-    </td>
-  </ng-container>
-
-  <ng-container matColumnDef="type">
-    <th mat-header-cell *matHeaderCellDef i18n="@@table-column-type">Type</th>
-    <td mat-cell *matCellDef="let element">{{ element.type }}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="triggers">
-    <th mat-header-cell class="show-gt-xs" *matHeaderCellDef i18n="@@table-column-triggers">Triggers</th>
-    <td mat-cell class="show-gt-xs" *matCellDef="let element">{{ element.triggers | join }}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="duration">
-    <th mat-header-cell class="show-gt-xs" *matHeaderCellDef i18n="@@table-column-duration">Duration</th>
-    <td mat-cell class="show-gt-xs" *matCellDef="let element">{{ element.duration | humanize }}</td>
-  </ng-container>
-
-  <ng-container matColumnDef="dose">
-    <th mat-header-cell *matHeaderCellDef i18n="@@table-column-dose">Dose</th>
-    <td
-      mat-cell
-      *matCellDef="let element"
-      [ngClass]="{ disabled: element.archived, lineThrough: element.archived }"
-    >
-      {{ element.doses.morning }} - {{ element.doses.noon }} - {{ element.doses.evening }}
-    </td>
-  </ng-container>
-
-  <ng-container matColumnDef="startEndDate">
-    <th mat-header-cell *matHeaderCellDef i18n="@@table-column-start-end-date">Period of use</th>
-    <td
-      mat-cell
-      *matCellDef="let element"
-      [ngClass]="{ disabled: element.archived, lineThrough: element.archived }"
-    >
-      {{ element.startDate | moment: "L" }}
-      <span *ngIf="element.endDate"> - {{element.endDate | moment: "L"}}</span>
-    </td>
-  </ng-container>
-
-
-  <ng-container matColumnDef="startDate">
-    <th mat-header-cell *matHeaderCellDef i18n="@@table-column-start-date">Start date</th>
-    <td
-      mat-cell
-      *matCellDef="let element"
-      [ngClass]="{ disabled: element.archived, lineThrough: element.archived }"
-    >
-      {{ element.startDate | moment: "L" }}
-    </td>
-  </ng-container>
-
-  <ng-container matColumnDef="endDate">
-    <th mat-header-cell *matHeaderCellDef i18n="@@table-column-end-date">End date</th>
-    <td
-      mat-cell
-      *matCellDef="let element"
-      [ngClass]="{ disabled: element.archived, lineThrough: element.archived }"
-    >
-      <span *ngIf="element.endDate">{{element.endDate | moment: "L"}}</span>
-    </td>
-  </ng-container>
-
-  <ng-container matColumnDef="archived">
-    <th mat-header-cell class="show-gt-xs" *matHeaderCellDef i18n="@@table-column-medication-active">Active</th>
-    <td mat-cell class="show-gt-xs" *matCellDef="let element" [ngClass]="{ disabled: element.archived }">
-      <button
-        *ngIf="element.archived"
-        mat-icon-button
-        (click)="onArchive(element)"
-        i18n-matTooltip="@@table-tooltip-move-to-active"
-        matTooltip="Switch medication to currenlty taken"
-      >
-        <mat-icon>archive</mat-icon>
-      </button>
-      <button
-        *ngIf="!element.archived"
-        mat-icon-button
-        (click)="onArchive(element)"
-        i18n-matTooltip="@@table-tooltip-move-to-archive"
-        matTooltip="Move to archive"
-      >
-        <mat-icon color="primary">medication</mat-icon>
-      </button>
-    </td>
-  </ng-container>
-
-  <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef i18n="@@table-column-actions">Actions</th>
-    <td mat-cell *matCellDef="let element" class="actions">
-      <a mat-icon-button color="primary" routerLink="{{ updateLinkPrefix }}/{{ element.id }}">
-        <mat-icon>edit</mat-icon>
-      </a>
-      <button mat-icon-button color="warn" (click)="onDelete(element)">
-        <mat-icon>delete</mat-icon>
-      </button>
-    </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-
-  <tr class="mat-row" *matNoDataRow>
-    <td class="mat-cell" colspan="9999">
-      <span *ngIf="loading" i18n="@@loading">Loading</span>
-      <span *ngIf="!loading" i18n="@@no-data">No data</span>
-    </td>
-  </tr>
-</table>
-
-<ng-container *ngIf="loading">
+@if (loading) {
   <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
-</ng-container>
+}
 
-<section *ngIf="!loading && hasMore" class="load">
-  <button mat-raised-button (click)="onLoadMore()" i18n="@@action-load-more">Load more</button>
-</section>
+@if (!loading && hasMore) {
+  <section class="load">
+    <button mat-raised-button (click)="onLoadMore()" i18n="@@action-load-more">Load more</button>
+  </section>
+}
 
-<section *ngIf="!loading && !hasMore" class="load">
-  <button mat-raised-button (click)="onRefresh()" i18n="@@action-refresh">Refresh data</button>
-</section>
+@if (!loading && !hasMore) {
+  <section class="load">
+    <button mat-raised-button (click)="onRefresh()" i18n="@@action-refresh">Refresh data</button>
+  </section>
+}
