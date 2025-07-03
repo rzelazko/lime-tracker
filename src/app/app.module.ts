@@ -47,6 +47,8 @@ import { TableComponent } from './epilepsy/components/table/table.component';
 import { YearsnavComponent } from './epilepsy/components/yearsnav/yearsnav.component';
 import { ChartHeatmapComponent } from './epilepsy/pages/charts/chart-heatmap/chart-heatmap.component';
 import { ChartSeizuresByHoursComponent } from './epilepsy/pages/charts/chart-seizures-by-hours/chart-seizures-by-hours.component';
+import { ChartSeizuresByTypeComponent } from './epilepsy/pages/charts/chart-seizures-by-type/chart-seizures-by-type.component';
+import { ChartSeizuresByReasonComponent } from './epilepsy/pages/charts/chart-seizures-by-reason/chart-seizures-by-reason.component';
 import { ChartSummaryComponent } from './epilepsy/pages/charts/chart-summary/chart-summary.component';
 import { ChartsComponent } from './epilepsy/pages/charts/charts.component';
 import { DashboardComponent } from './epilepsy/pages/dashboard/dashboard.component';
@@ -74,7 +76,6 @@ import { JoinPipe } from './shared/pipes/join.pipe';
 import { MomentPipe } from './shared/pipes/moment.pipe';
 import { StartOfPipe } from './shared/pipes/start-of.pipe';
 import { TimeSincePipe } from './shared/pipes/time-since.pipe';
-import { ChartSeizuresByTypeComponent } from './epilepsy/pages/charts/chart-seizures-by-type/chart-seizures-by-type.component';
 
 let resolvePersistenceEnabled: (enabled: boolean) => void;
 
@@ -124,6 +125,7 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     UpdateDialogComponent,
     VerifyEmailComponent,
     YearsnavComponent
+    ,ChartSeizuresByReasonComponent
   ],
   exports: [],
   bootstrap: [AppComponent],

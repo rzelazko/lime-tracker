@@ -1144,6 +1144,20 @@
           <context context-type="linenumber">60</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="chart-seizures-by-reason-error" datatype="html">
+        <source>Error: <x id="PH" equiv-text="error.message || error"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-reason/chart-seizures-by-reason.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="chart-seizures-by-reason-title" datatype="html">
+        <source>Seizure reasons</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-reason/chart-seizures-by-reason.component.ts</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="chart-seizures-by-type-title" datatype="html">
         <source>Seizure types</source>
         <context-group purpose="location">
