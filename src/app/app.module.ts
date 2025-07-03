@@ -49,6 +49,7 @@ import { ChartHeatmapComponent } from './epilepsy/pages/charts/chart-heatmap/cha
 import { ChartSeizuresByHoursComponent } from './epilepsy/pages/charts/chart-seizures-by-hours/chart-seizures-by-hours.component';
 import { ChartSeizuresByTypeComponent } from './epilepsy/pages/charts/chart-seizures-by-type/chart-seizures-by-type.component';
 import { ChartSeizuresByReasonComponent } from './epilepsy/pages/charts/chart-seizures-by-reason/chart-seizures-by-reason.component';
+import { ChartSeizuresByLengthComponent } from './epilepsy/pages/charts/chart-seizures-by-length/chart-seizures-by-length.component';
 import { ChartSummaryComponent } from './epilepsy/pages/charts/chart-summary/chart-summary.component';
 import { ChartsComponent } from './epilepsy/pages/charts/charts.component';
 import { DashboardComponent } from './epilepsy/pages/dashboard/dashboard.component';
@@ -126,6 +127,7 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     VerifyEmailComponent,
     YearsnavComponent
     ,ChartSeizuresByReasonComponent
+    ,ChartSeizuresByLengthComponent
   ],
   exports: [],
   bootstrap: [AppComponent],

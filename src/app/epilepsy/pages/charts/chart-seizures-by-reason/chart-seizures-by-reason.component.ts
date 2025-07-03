@@ -34,7 +34,7 @@ export class ChartSeizuresByReasonComponent implements OnInit {
         return this.chartService.seizureSerie();
       }),
       catchError((error) => {
-        this.chartError$ = of($localize`:@@chart-seizures-by-reason-error:Error: ${error.message || error}`);
+        this.chartError$ = of($localize`:@@chart-error:Error: ${error.message || error}`);
         return of({ data: [] } as ChartData);
       })
     );
