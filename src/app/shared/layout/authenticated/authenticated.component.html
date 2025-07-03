@@ -1,8 +1,12 @@
 <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
 <mat-sidenav-container autosize>
   <mat-sidenav #sidenav role="navigation" [mode]="!hideSideMenu ? 'side' : 'over'" [opened]="!hideSideMenu">
-    <app-sidenav *ngIf="!hideSideMenu"></app-sidenav>
-    <app-sidenav *ngIf="hideSideMenu" (sidenavClose)="sidenav.close()"></app-sidenav>
+    @if (!hideSideMenu) {
+      <app-sidenav></app-sidenav>
+    }
+    @if (hideSideMenu) {
+      <app-sidenav (sidenavClose)="sidenav.close()"></app-sidenav>
+    }
   </mat-sidenav>
   <mat-sidenav-content>
     <main>

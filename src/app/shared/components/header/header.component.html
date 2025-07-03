@@ -12,13 +12,16 @@
   </div>
   <div class="flex-1 flex-row show-gt-sm gap-small justify-end">
     <a mat-icon-button routerLink="/account" i18n-routerLink="@@routerLink-account">
-      <ng-container *ngIf="userDetails$ | async as userData; else userDetailsLoading">
-          <mat-icon *ngIf="userData.isFemale">person_2</mat-icon>
-          <mat-icon *ngIf="!userData.isFemale">person</mat-icon>
-      </ng-container>
-      <ng-template #userDetailsLoading>
+      @if (userDetails$ | async; as userData) {
+        @if (userData.isFemale) {
+          <mat-icon>person_2</mat-icon>
+        }
+        @if (!userData.isFemale) {
+          <mat-icon>person</mat-icon>
+        }
+      } @else {
         <mat-icon>person</mat-icon>
-      </ng-template>
+      }
     </a>
     <a mat-icon-button routerLink="/logout" i18n-routerLink="@@routerLink-logout">
       <mat-icon>logout</mat-icon>

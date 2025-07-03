@@ -1,6 +1,10 @@
 <mat-toolbar class="page-header" role="heading">
-  <h1 *ngIf="id" i18n="@@title-update-event">Update Event</h1>
-  <h1 *ngIf="!id" i18n="@@title-add-event">Add Event</h1>
+  @if (id) {
+    <h1 i18n="@@title-update-event">Update Event</h1>
+  }
+  @if (!id) {
+    <h1 i18n="@@title-add-event">Add Event</h1>
+  }
 </mat-toolbar>
 
 <main>
@@ -8,10 +12,12 @@
     [formGroup]="form"
     (ngSubmit)="onSubmit()"
     class="flex-grow flex-col gap-normal justify-start items-start"
-  >
-    <mat-error *ngIf="error">
-      <span i18n="@@error-with-message">Error: {{ error }}</span>
-    </mat-error>
+    >
+    @if (error) {
+      <mat-error>
+        <span i18n="@@error-with-message">Error: {{ error }}</span>
+      </mat-error>
+    }
 
     <mat-form-field appearance="fill">
       <mat-label i18n="@@label-event-name">Event name</mat-label>
@@ -21,47 +27,60 @@
         i18n-placeholder="@@placeholder-event-name"
         placeholder="Important event name"
         matInput
-      />
-      <mat-error *ngIf="hasError('name', 'required')" i18n="@@error-event-name-required"
-        >Event name is required</mat-error
-      >
-      <mat-error *ngIf="hasError('name', '!required')" i18n="@@error-event-name-invalid"
-        >Event name is invalid</mat-error
-      >
-    </mat-form-field>
+        />
+      @if (hasError('name', 'required')) {
+        <mat-error i18n="@@error-event-name-required"
+          >Event name is required</mat-error
+          >
+        }
+        @if (hasError('name', '!required')) {
+          <mat-error i18n="@@error-event-name-invalid"
+            >Event name is invalid</mat-error
+            >
+          }
+        </mat-form-field>
 
-    <mat-form-field appearance="fill">
-      <mat-label i18n="@@label-event-occurred">Event occurred</mat-label>
-      <input formControlName="occurred" [matDatepicker]="picker" [max]="today.toDate()" matInput />
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+        <mat-form-field appearance="fill">
+          <mat-label i18n="@@label-event-occurred">Event occurred</mat-label>
+          <input formControlName="occurred" [matDatepicker]="picker" [max]="today.toDate()" matInput />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
 
-      <mat-error *ngIf="hasError('occurred', 'required')" i18n="@@error-event-occurred-required"
-        >Event occurred is required</mat-error
-      >
-      <mat-error *ngIf="hasError('occurred', 'invalid')" i18n="@@error-event-occurred-invalid"
-        >Event occurred is invalid</mat-error
-      >
-      <mat-error
-        *ngIf="hasError('occurred', 'future') || hasError('occurred', 'matDatepickerMax')"
-        i18n="@@error-event-occurred-in-future"
-        >Event occurred cannot be in the future</mat-error
-      >
-    </mat-form-field>
+          @if (hasError('occurred', 'required')) {
+            <mat-error i18n="@@error-event-occurred-required"
+              >Event occurred is required</mat-error
+              >
+            }
+            @if (hasError('occurred', 'invalid')) {
+              <mat-error i18n="@@error-event-occurred-invalid"
+                >Event occurred is invalid</mat-error
+                >
+              }
+              @if (hasError('occurred', 'future') || hasError('occurred', 'matDatepickerMax')) {
+                <mat-error
+                  i18n="@@error-event-occurred-in-future"
+                  >Event occurred cannot be in the future</mat-error
+                  >
+                }
+              </mat-form-field>
 
-    <div>
-      <button *ngIf="id" type="submit" mat-raised-button color="primary" [disabled]="!form.valid || submitting" [class.spinner]="submitting">
-        <ng-container i18n="@@action-update">Update</ng-container>
-      </button>
-      <button *ngIf="!id" type="submit" mat-raised-button color="primary" [disabled]="!form.valid || submitting" [class.spinner]="submitting">
-        <ng-container i18n="@@action-add-event">Add event</ng-container>
-      </button>
+              <div>
+                @if (id) {
+                  <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid || submitting" [class.spinner]="submitting">
+                    <ng-container i18n="@@action-update">Update</ng-container>
+                  </button>
+                }
+                @if (!id) {
+                  <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid || submitting" [class.spinner]="submitting">
+                    <ng-container i18n="@@action-add-event">Add event</ng-container>
+                  </button>
+                }
 
-      <a mat-raised-button routerLink="/epilepsy/events" i18n-routerLink="@@routerLink-epilepsy-events" i18n="@@action-cancel">Cancel</a>
-    </div>
-  </form>
+                <a mat-raised-button routerLink="/epilepsy/events" i18n-routerLink="@@routerLink-epilepsy-events" i18n="@@action-cancel">Cancel</a>
+              </div>
+            </form>
 
-  <ng-template #loading>
-    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
-  </ng-template>
-</main>
+            <ng-template #loading>
+              <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+            </ng-template>
+          </main>

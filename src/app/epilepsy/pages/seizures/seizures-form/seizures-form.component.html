@@ -1,87 +1,95 @@
 <mat-toolbar class="page-header" role="heading">
-  <h1 *ngIf="id" i18n="@@title-update-seizure">Update Seizure</h1>
-  <h1 *ngIf="!id" i18n="@@title-add-seizure">Add Seizure</h1>
+  @if (id) {
+    <h1 i18n="@@title-update-seizure">Update Seizure</h1>
+  }
+  @if (!id) {
+    <h1 i18n="@@title-add-seizure">Add Seizure</h1>
+  }
 </mat-toolbar>
 
 <main>
-  <form
-    [formGroup]="form"
-    (ngSubmit)="onSubmit()"
-    class="flex-grow flex-col gap-normal justify-start items-start"
-    *ngIf="userDetails$ | async as userData; else loading"
-  >
-    <mat-error *ngIf="error">
-      <span i18n="@@error-with-message">Error: {{ error }}</span>
-    </mat-error>
+  @if (userDetails$ | async; as userData) {
+    <form
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+      class="flex-grow flex-col gap-normal justify-start items-start"
+      >
+      @if (error) {
+        <mat-error>
+          <span i18n="@@error-with-message">Error: {{ error }}</span>
+        </mat-error>
+      }
+      <mat-form-field appearance="fill">
+        <mat-label i18n="@@label-occurred">Occurred</mat-label>
+        <input type="datetime-local" formControlName="occurred" [max]="today" matInput />
+        @if (hasError('occurred', 'required')) {
+          <mat-error i18n="@@error-occurred-required"
+            >Occurred field is required</mat-error
+            >
+          }
+          @if (hasError('occurred', 'invalid')) {
+            <mat-error i18n="@@error-occurred-invalid"
+              >Occurred field is invalid</mat-error
+              >
+            }
+            @if (hasError('occurred', 'future')) {
+              <mat-error i18n="@@error-occurred-in-future"
+                >Occurred cannot be in the future</mat-error
+                >
+              }
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label i18n="@@label-duration">Duration (min)</mat-label>
+              <input type="number" formControlName="duration" placeholder="5" min="1" matInput />
+              @if (hasError('duration', 'required')) {
+                <mat-error i18n="@@error-seizure-duration-required"
+                  >Seizure duration is required</mat-error>
+              }
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                  <mat-label i18n="@@label-seizure-type">Type</mat-label>
+                  <mat-select formControlName="seizureType">
+                    @for (type of userData.seizureTypes; track type) {
+                      <mat-option [value]="type">
+                        {{ type }}
+                      </mat-option>
+                    }
+                  </mat-select>
+                  @if (hasError('seizureType', 'required')) {
+                    <mat-error i18n="@@error-seizure-type-required"
+                      >Seizure type is required</mat-error>
+                  }
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                      <mat-label i18n="@@label-seizure-triggers">Triggers</mat-label>
+                      <mat-select formControlName="seizureTriggers" multiple>
+                        @for (triggers of userData.seizureTriggers; track triggers) {
+                          <mat-option [value]="triggers">
+                            {{ triggers }}
+                          </mat-option>
+                        }
+                      </mat-select>
+                      @if (hasError('triggers', 'required')) {
+                        <mat-error i18n="@@error-seizure-triggers-required"
+                          >Seizure triggers is required</mat-error>
+                      }
+                        </mat-form-field>
+                        <div>
+                          @if (id) {
+                            <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid || submitting" [class.spinner]="submitting">
+                              <ng-container i18n="@@action-update">Update</ng-container>
+                            </button>
+                          }
+                          @if (!id) {
+                            <button type="submit" mat-raised-button color="primary" [disabled]="!form.valid || submitting" [class.spinner]="submitting">
+                              <ng-container i18n="@@action-add-seizure">Add seizure</ng-container>
+                            </button>
+                          }
+                          <a mat-raised-button routerLink="/epilepsy/seizures" i18n-routerLink="@@routerLink-epilepsy-seizures" i18n="@@action-cancel">Cancel</a>
+                        </div>
+                      </form>
+                    } @else {
+                      <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+                    }
 
-    <mat-form-field appearance="fill">
-      <mat-label i18n="@@label-occurred">Occurred</mat-label>
-      <input type="datetime-local" formControlName="occurred" [max]="today" matInput />
-      <mat-error *ngIf="hasError('occurred', 'required')" i18n="@@error-occurred-required"
-        >Occurred field is required</mat-error
-      >
-      <mat-error *ngIf="hasError('occurred', 'invalid')" i18n="@@error-occurred-invalid"
-        >Occurred field is invalid</mat-error
-      >
-      <mat-error *ngIf="hasError('occurred', 'future')" i18n="@@error-occurred-in-future"
-        >Occurred cannot be in the future</mat-error
-      >
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label i18n="@@label-duration">Duration (min)</mat-label>
-      <input type="number" formControlName="duration" placeholder="5" min="1" matInput />
-      <mat-error *ngIf="hasError('duration', 'required')" i18n="@@error-seizure-duration-required"
-        >Seizure duration is required</mat-error
-      >
-      <mat-error *ngIf="hasError('duration', '!required')" i18n="@@error-seizure-duration-invalid"
-        >Seizure duration is invalid</mat-error
-      >
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label i18n="@@label-seizure-type">Type</mat-label>
-      <mat-select formControlName="seizureType">
-        <mat-option *ngFor="let type of userData.seizureTypes" [value]="type">
-          {{ type }}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="hasError('seizureType', 'required')" i18n="@@error-seizure-type-required"
-        >Seizure type is required</mat-error
-      >
-      <mat-error *ngIf="hasError('seizureType', '!required')" i18n="@@error-seizure-type-invalid"
-        >Seizure type is invalid</mat-error
-      >
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label i18n="@@label-seizure-triggers">Triggers</mat-label>
-      <mat-select formControlName="seizureTriggers" multiple>
-        <mat-option *ngFor="let triggers of userData.seizureTriggers" [value]="triggers">
-          {{ triggers }}
-        </mat-option>
-      </mat-select>
-      <mat-error *ngIf="hasError('triggers', 'required')" i18n="@@error-seizure-triggers-required"
-        >Seizure triggers is required</mat-error
-      >
-      <mat-error *ngIf="hasError('triggers', '!required')" i18n="@@error-seizure-triggers-invalid"
-        >Seizure triggers is invalid</mat-error
-      >
-    </mat-form-field>
-
-    <div>
-      <button *ngIf="id" type="submit" mat-raised-button color="primary" [disabled]="!form.valid || submitting" [class.spinner]="submitting">
-        <ng-container i18n="@@action-update">Update</ng-container>
-      </button>
-      <button *ngIf="!id" type="submit" mat-raised-button color="primary" [disabled]="!form.valid || submitting" [class.spinner]="submitting">
-        <ng-container i18n="@@action-add-seizure">Add seizure</ng-container>
-      </button>
-
-      <a mat-raised-button routerLink="/epilepsy/seizures" i18n-routerLink="@@routerLink-epilepsy-seizures" i18n="@@action-cancel">Cancel</a>
-    </div>
-  </form>
-
-  <ng-template #loading>
-    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
-  </ng-template>
-</main>
+                  </main>

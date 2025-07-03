@@ -8,30 +8,32 @@
     #routeLastYear="routerLinkActive"
     [active]="routeLastYear.isActive"
     >Last year</a
-  >
-
-  <a
-    *ngFor="let year of availableYears | slice: 1:3"
-    mat-tab-link
-    [routerLink]="linkPrefix + '/' + year"
-    routerLinkActive
-    [routerLinkActiveOptions]="{ exact: true }"
-    #routeYearLoop="routerLinkActive"
-    [active]="routeYearLoop.isActive"
-  >
-    {{ year }}
-  </a>
-
-  <button mat-tab-link [matMenuTriggerFor]="yearsMenu">
-    <mat-icon>more_vert</mat-icon>
-  </button>
-  <mat-menu #yearsMenu="matMenu">
-    <a
-      *ngFor="let year of availableYears | slice: 3"
-      mat-menu-item
-      [routerLink]="linkPrefix + '/' + year"
-      >{{ year }}</a
     >
-  </mat-menu>
-</nav>
-<mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+
+    @for (year of availableYears | slice: 1:3; track year) {
+      <a
+        mat-tab-link
+        [routerLink]="linkPrefix + '/' + year"
+        routerLinkActive
+        [routerLinkActiveOptions]="{ exact: true }"
+        #routeYearLoop="routerLinkActive"
+        [active]="routeYearLoop.isActive"
+        >
+        {{ year }}
+      </a>
+    }
+
+    <button mat-tab-link [matMenuTriggerFor]="yearsMenu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #yearsMenu="matMenu">
+      @for (year of availableYears | slice: 3; track year) {
+        <a
+          mat-menu-item
+          [routerLink]="linkPrefix + '/' + year"
+          >{{ year }}</a
+          >
+        }
+      </mat-menu>
+    </nav>
+    <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>

@@ -3,23 +3,26 @@
 </mat-toolbar>
 
 <main>
-  <app-error-card [error]="error" *ngIf="error" [full-size]="false"></app-error-card>
+  @if (error) {
+    <app-error-card [error]="error" [full-size]="false"></app-error-card>
+  }
 
-  <app-table
-    *ngIf="!error"
-    [dataSource]="dataSource"
-    [displayedColumns]="columns"
-    addBtnLink="/epilepsy/medications/add"
-    i18n-addBtnLink="@@routerLink-epilepsy-medications-add"
-    addBtnText="Add medication"
-    i18n-addBtnText="@@action-add-medication"
-    updateLinkPrefix="/epilepsy/medications/update"
-    i18n-updateLinkPrefix="@@routerLink-epilepsy-medications-update"
-    [loading]="loading"
-    [hasMore]="hasMore"
-    (onDelete)="onDelete($event)"
-    (onLoadMore)="onLoadMore()"
-    (onRefresh)="onRefresh()"
-    (onArchive)="onArchive($event)"
-  ></app-table>
+  @if (!error) {
+    <app-table
+      [dataSource]="dataSource"
+      [displayedColumns]="columns"
+      addBtnLink="/epilepsy/medications/add"
+      i18n-addBtnLink="@@routerLink-epilepsy-medications-add"
+      addBtnText="Add medication"
+      i18n-addBtnText="@@action-add-medication"
+      updateLinkPrefix="/epilepsy/medications/update"
+      i18n-updateLinkPrefix="@@routerLink-epilepsy-medications-update"
+      [loading]="loading"
+      [hasMore]="hasMore"
+      (onDelete)="onDelete($event)"
+      (onLoadMore)="onLoadMore()"
+      (onRefresh)="onRefresh()"
+      (onArchive)="onArchive($event)"
+    ></app-table>
+  }
 </main>

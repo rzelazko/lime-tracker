@@ -1,10 +1,12 @@
 <mat-card appearance="outlined" class="app-card card-error" [ngClass]="{'with-margin': !fullSize}">
   <mat-card-title class="app-card-title" i18n="@@error-title">Something went wrong!</mat-card-title>
   <mat-card-content class="flex-col gap-normal">
-    <p *ngIf="error" class="error-message">{{ error }}</p>
+    @if (error) {
+      <p class="error-message">{{ error }}</p>
+    }
     <p>
       <small i18n="@@error-info">Please try again, and if the problem persists, contact the
         <a href="https://www.webperfekt.pl/">administrator</a>.</small>
-    </p>
-  </mat-card-content>
-</mat-card>
+      </p>
+    </mat-card-content>
+  </mat-card>

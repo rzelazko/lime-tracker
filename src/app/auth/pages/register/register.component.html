@@ -10,116 +10,129 @@
         </mat-card-title>
         <mat-card-subtitle i18n="@@register-welcome"
           >Register to the best epilepsy journal!</mat-card-subtitle
-        >
-      </mat-card-header>
+          >
+        </mat-card-header>
 
-      <img
-        mat-card-image
-        src="assets/hero/limetracker-2.jpg"
-      />
+        <img
+          mat-card-image
+          src="assets/hero/limetracker-2.jpg"
+          />
 
-      <ng-container *ngIf="isLoading">
-        <mat-card-content class="flex-col gap-normal justify-center items-center">
-          <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
-        </mat-card-content>
-      </ng-container>
+        @if (isLoading) {
+          <mat-card-content class="flex-col gap-normal justify-center items-center">
+            <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+          </mat-card-content>
+        }
 
-      <ng-container *ngIf="!isLoading">
-        <!-- form body -->
-
-        <mat-card-content class="flex-col gap-normal">
-          <mat-error *ngIf="error">
-            <ng-container [ngSwitch]="error">
-              <span *ngSwitchCase="'auth/email-already-in-use'" i18n="@@error-email-taken"
-                >Email already taken</span
-              >
-              <span *ngSwitchCase="'auth/weak-password'" i18n="@@error-passwrod-weak"
-                >Password is too weak</span
-              >
-              <span *ngSwitchCase="'auth/network-request-failed'" i18n="@@error-connection"
-                >Connection to backend failed. Please try again, and if the problem persists,
+        @if (!isLoading) {
+          <!-- form body -->
+          <mat-card-content class="flex-col gap-normal">
+            @if (error) {
+              <mat-error>
+                @switch (error) {
+                  @case ('auth/email-already-in-use') {
+                    <span i18n="@@error-email-taken"
+                      >Email already taken</span
+                      >
+                    }
+                    @case ('auth/weak-password') {
+                      <span i18n="@@error-passwrod-weak"
+                        >Password is too weak</span
+                        >
+                      }
+                      @case ('auth/network-request-failed') {
+                        <span i18n="@@error-connection"
+                          >Connection to backend failed. Please try again, and if the problem persists,
                 contact the <a href="https://www.webperfekt.pl/">administrator</a>.</span
-              >
-              <span *ngSwitchDefault i18n="@@register-error-default"
-                >Registration failed - try different data. If problem persists please contact the
+                          >
+                        }
+                        @default {
+                          <span i18n="@@register-error-default"
+                            >Registration failed - try different data. If problem persists please contact the
                 <a href="https://www.webperfekt.pl/">administrator</a>.</span
-              >
-            </ng-container>
-          </mat-error>
-
-          <mat-form-field>
-            <input
-              type="text"
-              formControlName="name"
-              placeholder="Your name"
-              i18n-placeholder="@@placeholder-name"
-              matInput
-            />
-            <mat-error *ngIf="hasError('name', 'required')" i18n="@@error-name-required"
-              >Your name is required</mat-error
-            >
-            <mat-error *ngIf="hasError('name', '!required')" i18n="@@error-name-invalid"
-              >Your name is invalid</mat-error
-            >
-          </mat-form-field>
-
-          <mat-form-field>
-            <input
-              type="email"
-              formControlName="email"
-              placeholder="Your email"
-              i18n-placeholder="@@placeholder-email"
-              matInput
-            />
-            <mat-error *ngIf="hasError('email', 'required')" i18n="@@error-email-required"
-              >Email is required</mat-error
-            >
-            <mat-error *ngIf="hasError('email', '!required')" i18n="@@error-email-invalid"
-              >Email is invalid</mat-error
-            >
-          </mat-form-field>
-
-          <mat-form-field>
-            <input
-              type="password"
-              formControlName="password"
-              placeholder="Your password"
-              i18n-placeholder="@@placeholder-password"
-              matInput
-            />
-            <mat-error i18n="@@error-password-6-100">Has to be 6 - 100 characters long</mat-error>
-          </mat-form-field>
-
-          <mat-form-field>
-            <input
-              type="password"
-              formControlName="confirmPassword"
-              placeholder="Confirm password"
-              i18n-placeholder="@@placeholder-confirm-password"
-              matInput
-            />
-            <mat-error
-              *ngIf="hasError('confirmPassword', 'required')"
-              i18n="@@error-confirm-password-required"
-              >Confirm password is required</mat-error
-            >
-            <mat-error
-              *ngIf="hasError('confirmPassword', '!required')"
-              i18n="@@error-confirm-password-not-the-same"
-              >Password and confirm password must be the same</mat-error
-            >
-          </mat-form-field>
-
-          <mat-checkbox formControlName="isFemale" matInput i18n="@@label-i-am-female">I am female</mat-checkbox>
-        </mat-card-content>
-        <mat-card-actions>
-          <button type="submit" mat-raised-button color="primary" [disabled]="!registerForm.valid">
-            <ng-container i18n="@@action-register">Register</ng-container>
-          </button>
-        </mat-card-actions>
-
-        <!-- /form body -->
-      </ng-container>
-    </mat-card>
-  </form>
-</section>
+                            >
+                          }
+                        }
+                      </mat-error>
+                    }
+                    <mat-form-field>
+                      <input
+                        type="text"
+                        formControlName="name"
+                        placeholder="Your name"
+                        i18n-placeholder="@@placeholder-name"
+                        matInput
+                        />
+                      @if (hasError('name', 'required')) {
+                        <mat-error i18n="@@error-name-required"
+                          >Your name is required</mat-error
+                          >
+                        }
+                        @if (hasError('name', '!required')) {
+                          <mat-error i18n="@@error-name-invalid"
+                            >Your name is invalid</mat-error
+                            >
+                          }
+                        </mat-form-field>
+                        <mat-form-field>
+                          <input
+                            type="email"
+                            formControlName="email"
+                            placeholder="Your email"
+                            i18n-placeholder="@@placeholder-email"
+                            matInput
+                            />
+                          @if (hasError('email', 'required')) {
+                            <mat-error i18n="@@error-email-required"
+                              >Email is required</mat-error
+                              >
+                            }
+                            @if (hasError('email', '!required')) {
+                              <mat-error i18n="@@error-email-invalid"
+                                >Email is invalid</mat-error
+                                >
+                              }
+                            </mat-form-field>
+                            <mat-form-field>
+                              <input
+                                type="password"
+                                formControlName="password"
+                                placeholder="Your password"
+                                i18n-placeholder="@@placeholder-password"
+                                matInput
+                                />
+                              <mat-error i18n="@@error-password-6-100">Has to be 6 - 100 characters long</mat-error>
+                            </mat-form-field>
+                            <mat-form-field>
+                              <input
+                                type="password"
+                                formControlName="confirmPassword"
+                                placeholder="Confirm password"
+                                i18n-placeholder="@@placeholder-confirm-password"
+                                matInput
+                                />
+                              @if (hasError('confirmPassword', 'required')) {
+                                <mat-error
+                                  i18n="@@error-confirm-password-required"
+                                  >Confirm password is required</mat-error
+                                  >
+                                }
+                                @if (hasError('confirmPassword', '!required')) {
+                                  <mat-error
+                                    i18n="@@error-confirm-password-not-the-same"
+                                    >Password and confirm password must be the same</mat-error
+                                    >
+                                  }
+                                </mat-form-field>
+                                <mat-checkbox formControlName="isFemale" matInput i18n="@@label-i-am-female">I am female</mat-checkbox>
+                              </mat-card-content>
+                              <mat-card-actions>
+                                <button type="submit" mat-raised-button color="primary" [disabled]="!registerForm.valid">
+                                  <ng-container i18n="@@action-register">Register</ng-container>
+                                </button>
+                              </mat-card-actions>
+                              <!-- /form body -->
+                            }
+                          </mat-card>
+                        </form>
+                      </section>

@@ -1,5 +1,5 @@
 @use "@angular/material" as mat;
-@use "src/app/app-theme-variables" as app;
+@use "../../../app-theme-variables" as app;
 
 .mat-mdc-list-item-icon {
   color: app.$app-icon-color;
