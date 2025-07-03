@@ -43,14 +43,8 @@
               <input type="number" formControlName="duration" placeholder="5" min="1" matInput />
               @if (hasError('duration', 'required')) {
                 <mat-error i18n="@@error-seizure-duration-required"
-                  >Seizure duration is required</mat-error
-                  >
-                }
-                @if (hasError('duration', '!required')) {
-                  <mat-error i18n="@@error-seizure-duration-invalid"
-                    >Seizure duration is invalid</mat-error
-                    >
-                  }
+                  >Seizure duration is required</mat-error>
+              }
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                   <mat-label i18n="@@label-seizure-type">Type</mat-label>
@@ -63,14 +57,8 @@
                   </mat-select>
                   @if (hasError('seizureType', 'required')) {
                     <mat-error i18n="@@error-seizure-type-required"
-                      >Seizure type is required</mat-error
-                      >
-                    }
-                    @if (hasError('seizureType', '!required')) {
-                      <mat-error i18n="@@error-seizure-type-invalid"
-                        >Seizure type is invalid</mat-error
-                        >
-                      }
+                      >Seizure type is required</mat-error>
+                  }
                     </mat-form-field>
                     <mat-form-field appearance="fill">
                       <mat-label i18n="@@label-seizure-triggers">Triggers</mat-label>
@@ -83,14 +71,8 @@
                       </mat-select>
                       @if (hasError('triggers', 'required')) {
                         <mat-error i18n="@@error-seizure-triggers-required"
-                          >Seizure triggers is required</mat-error
-                          >
-                        }
-                        @if (hasError('triggers', '!required')) {
-                          <mat-error i18n="@@error-seizure-triggers-invalid"
-                            >Seizure triggers is invalid</mat-error
-                            >
-                          }
+                          >Seizure triggers is required</mat-error>
+                      }
                         </mat-form-field>
                         <div>
                           @if (id) {
