@@ -17,7 +17,8 @@ $app-theme: mat.m2-define-light-theme(
   )
 );
 
-$app-foreground: map.get($app-theme, 'foreground');
-$app-background: map.get($app-theme, 'background');
+$app-color: map.get($app-theme, 'color');
+$app-foreground: map.get($app-color, 'foreground');
+$app-background: map.get($app-color, 'background');
 
 $app-icon-color: rgba(0, 0, 0, 0.54);
