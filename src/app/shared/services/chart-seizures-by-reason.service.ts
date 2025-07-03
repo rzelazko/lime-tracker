@@ -26,18 +26,25 @@ export class ChartSeizuresByReasonService extends ChartService {
 
   private aggregateSeizuresByReason(seizures: Seizure[]): ChartData {
     const reasonCounts: { [reason: string]: number } = {};
+    const UNKNOWN_KEY = 'unknown';
+    const UNKNOWN_LABEL = $localize`:@@seizure-type-other:Other / unknown`;
     for (const seizure of seizures) {
       if (seizure.triggers && seizure.triggers.length) {
         for (const trigger of seizure.triggers) {
           reasonCounts[trigger] = (reasonCounts[trigger] || 0) + 1;
         }
       } else {
-        reasonCounts['unknown'] = (reasonCounts['unknown'] || 0) + 1;
+        reasonCounts[UNKNOWN_KEY] = (reasonCounts[UNKNOWN_KEY] || 0) + 1;
       }
     }
+    // Map 'unknown' key to translated label for chart display
+    const data = Object.entries(reasonCounts).map(([reason, count]) => ({
+      x: reason === UNKNOWN_KEY ? UNKNOWN_LABEL : reason,
+      y: count
+    }));
     return {
-      data: Object.entries(reasonCounts).map(([reason, count]) => ({ x: reason, y: count })),
-      labels: Object.keys(reasonCounts),
+      data,
+      labels: data.map(d => d.x),
     };
   }
 }
