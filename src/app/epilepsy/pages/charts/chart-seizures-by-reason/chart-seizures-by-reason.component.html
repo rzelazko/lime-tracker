@@ -1,12 +1,13 @@
 <div *ngIf="chartOptions$ | async as chartOptions; else errorTpl">
-  <apx-chart
-    [series]="chartOptions.series"
-    [chart]="chartOptions.chart"
-    [labels]="chartOptions.labels"
-    [legend]="chartOptions.legend"
-    [title]="chartOptions.title"
-    [responsive]="chartOptions.responsive">
-  </apx-chart>
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [labels]="chartOptions.labels"
+      [legend]="chartOptions.legend"
+      [title]="chartOptions.title"
+      [responsive]="chartOptions.responsive"
+      [tooltip]="chartOptions.tooltip"
+    ></apx-chart>
 </div>
 <ng-template #errorTpl>
   <div *ngIf="chartError$ | async as error">{{ error }}</div>
