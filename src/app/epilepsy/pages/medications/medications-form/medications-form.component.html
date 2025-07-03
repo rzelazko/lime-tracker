@@ -90,12 +90,12 @@
                             <mat-label i18n="@@label-medication-start-date">Start date</mat-label>
                               <input
                                 formControlName="startDate"
-                                [matDatepicker]="picker"
+                                [matDatepicker]="startPicker"
                                 [max]="form.get('endDate')?.value || today.toDate()"
                                 matInput
                                 />
-                              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                              <mat-datepicker #picker></mat-datepicker>
+                              <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                              <mat-datepicker #startPicker></mat-datepicker>
 
                               @if (hasError('startDate', 'required')) {
                                 <mat-error i18n="@@error-start-date-required"
@@ -126,16 +126,16 @@
 
                                       @if (form.get('archived')?.value) {
                                         <mat-form-field appearance="fill">
-                                          <mat-label i18n="@@label-medication-end-date">End date</mat-label>
+                                        <mat-label i18n="@@label-medication-end-date">End date</mat-label>
                                             <input
                                               formControlName="endDate"
-                                              [matDatepicker]="picker"
+                                              [matDatepicker]="endPicker"
                                               [max]="today.toDate()"
                                               [min]="form.get('startDate')?.value"
                                               matInput
                                               />
-                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                            <mat-datepicker #picker></mat-datepicker>
+                                            <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+                                            <mat-datepicker #endPicker></mat-datepicker>
                                             @if (hasError('endDate', 'required')) {
                                               <mat-error i18n="@@error-end-date-required"
                                                 >End date is required</mat-error
