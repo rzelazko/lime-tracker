@@ -14,9 +14,9 @@
     class="flex-grow flex-col gap-normal justify-start items-start"
     >
     @if (error) {
-      <mat-error>
+      <mat-card class="app-error" color="warn">
         <span i18n="@@error-with-message">Error: {{ error }}</span>
-      </mat-error>
+      </mat-card>
     }
 
 
