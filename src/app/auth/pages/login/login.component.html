@@ -53,13 +53,13 @@
                 @if (hasError('email', 'required')) {
                   <mat-error i18n="@@error-email-required"
                     >Email is required</mat-error
-                    >
-                  }
-                  @if (hasError('email', '!required')) {
-                    <mat-error i18n="@@error-email-invalid"
-                      >Email is invalid</mat-error
-                      >
-                    }
+                  >
+                }
+                @if (hasError('email', 'email')) {
+                  <mat-error i18n="@@error-email-invalid"
+                    >Email is invalid</mat-error
+                  >
+                }
                   </mat-form-field>
                   <mat-form-field>
                     <input
