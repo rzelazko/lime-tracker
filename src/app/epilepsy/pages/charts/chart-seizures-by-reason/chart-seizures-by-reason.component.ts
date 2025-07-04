@@ -1,4 +1,5 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
+import { getApexPieTooltip } from '../utils/apex-tooltip.utils';
 import { ActivatedRoute } from '@angular/router';
 import { ApexNonAxisChartSeries, ApexChart, ApexResponsive, ApexLegend } from 'ng-apexcharts';
 import { Observable, of } from 'rxjs';
@@ -66,13 +67,7 @@ export class ChartSeizuresByReasonComponent implements OnInit {
         offsetX: this.titleOffset,
       },
       tooltip: {
-        custom: function({ series, seriesIndex, w }: any) {
-          const value = series[seriesIndex];
-          const total = series.reduce((a: number, b: number) => a + b, 0);
-          const percent = total ? ((value / total) * 100).toFixed(1) : '0.0';
-          const label = w.globals.labels[seriesIndex];
-          return `<div class="apexcharts-tooltip-title">${label}: ${percent}% (${value})</div>`;
-        }
+        custom: getApexPieTooltip
       },
       responsive: [
         {
