@@ -20,12 +20,22 @@ const translateManifests = async (sourceDirectory, destinationDirectory) => {
 
   for (const xlfPath of xliffFiles) {
     console.log("Processing Xliff file:", xlfPath);
-    const xliffData = await xml2js.parseStringPromise(fs.readFileSync(xlfPath), {
-      trim: true,
-      explicitArray: false,
-      attrNameProcessors: [nameToCamelCase],
-      tagNameProcessors: [nameToCamelCase],
-    });
+    let xliffData;
+    try {
+      xliffData = await xml2js.parseStringPromise(fs.readFileSync(xlfPath), {
+        trim: true,
+        explicitArray: false,
+        attrNameProcessors: [nameToCamelCase],
+        tagNameProcessors: [nameToCamelCase],
+      });
+    } catch (err) {
+      console.error(`Failed to parse XLIFF file: ${xlfPath}\nError:`, err);
+      continue;
+    }
+    if (!xliffData || !xliffData.xliff || !xliffData.xliff.file) {
+      console.error(`Invalid or missing XLIFF structure in file: ${xlfPath}`);
+      continue;
+    }
     const xliffFile = xliffData.xliff.file;
 
     const sourceLanguage = xliffFile.$.sourceLanguage;
@@ -36,7 +46,7 @@ const translateManifests = async (sourceDirectory, destinationDirectory) => {
     const manifestTemplate = fs.readFileSync(manifestTemplatePath, "utf8");
     const manifestOutput = manifestTemplate.replace(/"@@(.+)"/g, (match, key) => {
       const transUnit = xliffFile.body.transUnit.find((tu) => tu.$.id === key);
-      return JSON.stringify(transUnit.target || transUnit.source);
+      return JSON.stringify(transUnit && (transUnit.target || transUnit.source) || "");
     });
 
     const manifestDestinationPath = path.join(

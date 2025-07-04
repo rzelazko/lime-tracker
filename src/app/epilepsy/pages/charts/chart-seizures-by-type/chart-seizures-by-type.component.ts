@@ -1,4 +1,5 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
+import { getApexPieTooltip } from '../utils/apex-tooltip.utils';
 import { ActivatedRoute } from '@angular/router';
 import { ApexNonAxisChartSeries, ApexChart, ApexResponsive, ApexLegend } from 'ng-apexcharts';
 import { Observable, of } from 'rxjs';
@@ -65,6 +66,9 @@ export class ChartSeizuresByTypeComponent implements OnInit {
         text: $localize`:@@chart-seizures-by-type-title:Seizure types`,
         align: 'left',
         offsetX: this.titleOffset,
+      },
+      tooltip: {
+        custom: getApexPieTooltip
       },
       responsive: [
         {
