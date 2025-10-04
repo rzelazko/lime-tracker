@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { orderBy, where } from 'firebase/firestore';
 import Moment from 'moment';
 import { extendMoment } from 'moment-range';
-import { map, Observable } from 'rxjs';
+import { map, Observable, take } from 'rxjs';
 import { ChartData } from '../models/chart-data.model';
 import { Seizure } from '../models/seizure.model';
 import { ChartService } from './chart.service';
@@ -25,7 +25,10 @@ export class ChartHeatmapService extends ChartService {
         where('occurred', '>=', this.dateFrom.toDate()),
         where('occurred', '<=', this.dateTo.toDate()),
       ])
-      .pipe(map((seizures) => this.agregateSeizuresData(seizures)));
+      .pipe(
+        take(1),
+        map((seizures) => this.agregateSeizuresData(seizures))
+      );
   }
 
   private agregateSeizuresData(seizures: Seizure[]): ChartData[] {
