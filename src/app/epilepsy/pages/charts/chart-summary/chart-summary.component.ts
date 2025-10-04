@@ -2,7 +2,7 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApexAxisChartSeries, ApexYAxis } from 'ng-apexcharts';
 import { combineLatest, map, Observable, of } from 'rxjs';
-import { catchError, ignoreElements, switchMap } from 'rxjs/operators';
+import { catchError, ignoreElements, switchMap, distinctUntilChanged } from 'rxjs/operators';
 import { ChartData } from './../../../../shared/models/chart-data.model';
 import { ChartOptions } from './../../../../shared/models/chart-options.model';
 import { ChartSummaryService } from './../../../../shared/services/chart-summary.service';
@@ -24,7 +24,8 @@ export class ChartSummaryComponent implements OnInit {
   ngOnInit(): void {
     this.chartOptions$ = this.activatedRoute.params.pipe(
       map((routeParams): number | undefined => routeParams['year']),
-      switchMap((selectedYear) => {
+      distinctUntilChanged((a, b) => a === b),
+      switchMap((selectedYear: number | undefined) => {
         this.chartService.setYear(selectedYear);
         return combineLatest([
           this.chartService
