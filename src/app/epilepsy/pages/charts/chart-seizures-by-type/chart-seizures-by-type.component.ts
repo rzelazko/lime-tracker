@@ -3,7 +3,7 @@ import { getApexPieTooltip } from '../utils/apex-tooltip.utils';
 import { ActivatedRoute } from '@angular/router';
 import { ApexNonAxisChartSeries, ApexChart, ApexResponsive, ApexLegend } from 'ng-apexcharts';
 import { Observable, of } from 'rxjs';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { catchError, map, switchMap, distinctUntilChanged } from 'rxjs/operators';
 import { ChartData } from './../../../../shared/models/chart-data.model';
 import { ChartSeizuresByTypeService } from './../../../../shared/services/chart-seizures-by-type.service';
 
@@ -31,7 +31,8 @@ export class ChartSeizuresByTypeComponent implements OnInit {
           ? parsedYear
           : undefined;
       }),
-      switchMap((selectedYear) => {
+      distinctUntilChanged((a, b) => a === b),
+      switchMap((selectedYear: number | undefined) => {
         this.chartService.setYear(selectedYear);
         return this.chartService.seizureSerie();
       }),
