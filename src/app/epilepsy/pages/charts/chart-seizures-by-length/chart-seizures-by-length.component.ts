@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { catchError, map, Observable, of, switchMap, ignoreElements, distinctUntilChanged } from 'rxjs';
+import { catchError, map, Observable, of, switchMap, ignoreElements, distinctUntilChanged, shareReplay } from 'rxjs';
 import { ChartData } from './../../../../shared/models/chart-data.model';
 import { ChartOptions } from './../../../../shared/models/chart-options.model';
 import { ChartSeizuresByLengthService } from './../../../../shared/services/chart-seizures-by-length.service';
@@ -28,7 +28,8 @@ export class ChartSeizuresByLengthComponent implements OnInit {
       switchMap((selectedYear: number | undefined) => {
         this.chartService.setYear(selectedYear);
         return this.chartService.seizureSerie();
-      })
+      }),
+      shareReplay({ bufferSize: 1, refCount: true })
     );
 
     this.chartOptions$ = dataStream$.pipe(
