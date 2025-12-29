@@ -28,6 +28,7 @@ describe('ErrorCardComponent', () => {
     component.error = 'Sample error';
 
     // when
+    component['cdr'].markForCheck();
     fixture.detectChanges();
 
     // then
@@ -41,6 +42,7 @@ describe('ErrorCardComponent', () => {
     component.error = '';
 
     // when
+    component['cdr'].markForCheck();
     fixture.detectChanges();
 
     // then

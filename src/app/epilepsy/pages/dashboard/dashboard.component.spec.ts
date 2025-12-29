@@ -28,7 +28,7 @@ describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let dashboardServiceSpy: jasmine.SpyObj<DashboardService>;
   let authServiceSpy: jasmine.SpyObj<AuthService>;
-  
+
   let fixture: ComponentFixture<DashboardComponent>;
 
   const mockUserData: UserData = {
@@ -165,7 +165,7 @@ describe('DashboardComponent', () => {
 
   it('should show error if medicaments data throw error', async () => {
     // given
-    const errorMsg = 'Some medicaments error!';
+    const errorMsg = 'simulated medicaments error for test!';
     dashboardServiceSpy.currentMedications.and.returnValue(throwError(() => new Error(errorMsg)));
     dashboardServiceSpy.lastSeizures.and.returnValue(of());
     dashboardServiceSpy.lastEvents.and.returnValue(of());
@@ -254,7 +254,7 @@ describe('DashboardComponent', () => {
 
   it('should show error if last seizure data throw error', async () => {
     // given
-    const errorMsg = 'Some last seizure error!';
+    const errorMsg = 'simulated last seizure error for test!';
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(throwError(() => new Error(errorMsg)));
     dashboardServiceSpy.lastEvents.and.returnValue(of());
@@ -353,7 +353,7 @@ describe('DashboardComponent', () => {
 
   it('should show error if events data throw error', async () => {
     // given
-    const errorMsg = 'Some events error!';
+    const errorMsg = 'simulated events error for test!';
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(of());
     dashboardServiceSpy.lastEvents.and.returnValue(throwError(() => new Error(errorMsg)));
@@ -479,7 +479,7 @@ describe('DashboardComponent', () => {
   it('should show error if last period data throw error', async () => {
     // given
     authServiceSpy.userDetails$.and.returnValue(of(mockUserData));
-    const errorMsg = 'Some last period error!';
+    const errorMsg = 'simulated last period error for test!';
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(of());
     dashboardServiceSpy.lastEvents.and.returnValue(of());

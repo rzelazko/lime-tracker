@@ -15,7 +15,7 @@ import { ChartHeatmapService } from './../../../../shared/services/chart-heatmap
 export class ChartHeatmapComponent implements OnInit {
   @Input() titleOffset: number = 0;
   plotOptions: ApexPlotOptions;
-  chartOptions$?: Observable<ChartOptions>;
+  chartOptions$?: Observable<ChartOptions | null>;
   chartError$?: Observable<string>;
 
   private chartService: ChartHeatmapService = inject(ChartHeatmapService);
@@ -57,13 +57,16 @@ export class ChartHeatmapComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.chartOptions$ = this.activatedRoute.params.pipe(
+    const dataStream$ = this.activatedRoute.params.pipe(
       map((routeParams): number | undefined => routeParams['year']),
       distinctUntilChanged((a, b) => a === b),
       switchMap((selectedYear: number | undefined) => {
         this.chartService.setYear(selectedYear);
         return this.chartService.seizureSerie();
-      }),
+      })
+    );
+
+    this.chartOptions$ = dataStream$.pipe(
       map((data: ChartData[]) => ({
         xaxis: {
           axisTicks: {
@@ -107,18 +110,19 @@ export class ChartHeatmapComponent implements OnInit {
         series: data,
         title: {
           text: $localize`:@@chart-heatmap-title:Seizures during a year`,
-          align: 'left',
+          align: 'left' as const,
           offsetX: this.titleOffset,
         },
         subtitle: {
           text: this.chartService.subtitle(),
-          align: 'left',
+          align: 'left' as const,
           offsetX: this.titleOffset,
         },
-      }))
+      } as any)),
+      catchError(() => of(null))
     );
 
-    this.chartError$ = this.chartOptions$.pipe(
+    this.chartError$ = dataStream$.pipe(
       ignoreElements(),
       catchError((error) => of($localize`:@@error-message:Error: ${error.message || error}`))
     );

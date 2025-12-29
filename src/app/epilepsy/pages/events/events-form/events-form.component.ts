@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import moment from 'moment';
@@ -12,9 +12,10 @@ import { DatesValidator } from './../../../../shared/validators/dates-validator'
     selector: 'app-events-form',
     templateUrl: './events-form.component.html',
     styleUrls: ['./events-form.component.scss'],
-    standalone: false
+    standalone: false,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class EventsFormComponent implements OnInit {
+export class EventsFormComponent implements OnInit, OnDestroy {
   submitting = false;
   today = moment();
   error?: string;
@@ -26,7 +27,8 @@ export class EventsFormComponent implements OnInit {
     private eventsService: EventsService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private fb: UntypedFormBuilder
+    private fb: UntypedFormBuilder,
+    private cdr: ChangeDetectorRef
   ) {
     this.form = this.fb.group({
       name: ['', [Validators.required]],
@@ -68,10 +70,16 @@ export class EventsFormComponent implements OnInit {
     }
 
     this.submitSubscription = submitObservable$
-    .pipe(finalize(() => this.submitting = false))
+    .pipe(finalize(() => {
+      this.submitting = false;
+      this.cdr.markForCheck();
+    }))
     .subscribe({
       next: () => this.router.navigate([$localize`:@@routerLink-epilepsy-events:/epilepsy/events`]),
-      error: (error) => (this.error = error.message),
+      error: (error) => {
+        this.error = error.message;
+        this.cdr.markForCheck();
+      },
     });
   }
 

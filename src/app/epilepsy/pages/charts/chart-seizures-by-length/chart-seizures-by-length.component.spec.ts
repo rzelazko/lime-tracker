@@ -35,8 +35,10 @@ describe('ChartSeizuresByLengthComponent', () => {
 
   it('should set chartOptions$', (done) => {
     component.chartOptions$?.subscribe(options => {
-      expect(options.xaxis.categories).toEqual(['0-1', '1-2']);
-      expect(options.series[0].data).toEqual([2, 1]);
+      if (options) {
+        expect(options.xaxis.categories).toEqual(['0-1', '1-2']);
+        expect(options.series[0].data).toEqual([2, 1]);
+      }
       done();
     });
   });

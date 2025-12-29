@@ -103,6 +103,7 @@ describe('EventsFormComponent', () => {
     // when
     formComponent.onSubmit();
     fixture.detectChanges();
+    fixture.detectChanges();
 
     // then
     const matError = fixture.debugElement.query(By.directive(MatError));

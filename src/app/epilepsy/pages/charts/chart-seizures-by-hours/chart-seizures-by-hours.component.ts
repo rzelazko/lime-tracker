@@ -13,7 +13,7 @@ import { ChartSeizuresByHoursService } from './../../../../shared/services/chart
 })
 export class ChartSeizuresByHoursComponent implements OnInit {
   @Input() titleOffset: number = 0;
-  chartOptions$?: Observable<ChartOptions>;
+  chartOptions$?: Observable<ChartOptions | null>;
   chartError$?: Observable<string>;
 
   constructor(
@@ -22,13 +22,16 @@ export class ChartSeizuresByHoursComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.chartOptions$ = this.activatedRoute.params.pipe(
+    const dataStream$ = this.activatedRoute.params.pipe(
       map((routeParams): number | undefined => routeParams['year']),
       distinctUntilChanged((a, b) => a === b),
       switchMap((selectedYear: number | undefined) => {
         this.chartService.setYear(selectedYear);
         return this.chartService.seizureSerie();
-      }),
+      })
+    );
+
+    this.chartOptions$ = dataStream$.pipe(
       map((data: ChartData) => ({
         xaxis: {
           axisTicks: {
@@ -59,18 +62,19 @@ export class ChartSeizuresByHoursComponent implements OnInit {
         series: [{ ...data, name: $localize`:@@title-seizures:Seizures` }],
         title: {
           text: $localize`:@@chart-seizures-by-hour-title:Amount of seizures per time of day`,
-          align: 'left',
+          align: 'left' as const,
           offsetX: this.titleOffset,
         },
         subtitle: {
           text: this.chartService.subtitle(),
-          align: 'left',
+          align: 'left' as const,
           offsetX: this.titleOffset,
         },
-      }))
+      } as any)),
+      catchError(() => of(null))
     );
 
-    this.chartError$ = this.chartOptions$.pipe(
+    this.chartError$ = dataStream$.pipe(
       ignoreElements(),
       catchError((error) => of($localize`:@@error-message:Error: ${error.message || error}`))
     );

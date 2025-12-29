@@ -95,7 +95,7 @@ describe('ChartSeizuresByHoursComponent', () => {
 
   it('should show error from Error object', () => {
     // given
-    chartServiceSpy.seizureSerie.and.returnValue(throwError(() => new Error('test message')));
+    chartServiceSpy.seizureSerie.and.returnValue(throwError(() => new Error('simulated error for test')));
 
     // when
     fixture.detectChanges();
@@ -105,12 +105,12 @@ describe('ChartSeizuresByHoursComponent', () => {
     expect(fixture.debugElement.queryAll(By.directive(ErrorCardComponent)).length).toBe(1);
     expect(
       fixture.debugElement.query(By.directive(ErrorCardComponent)).nativeElement.textContent
-    ).toContain('Error: test message');
+    ).toContain('Error: simulated error for test');
   });
 
   it('should show error from string', () => {
     // given
-    chartServiceSpy.seizureSerie.and.returnValue(throwError(() => `test message`));
+    chartServiceSpy.seizureSerie.and.returnValue(throwError(() => `simulated error for test`));
 
     // when
     fixture.detectChanges();
@@ -120,6 +120,6 @@ describe('ChartSeizuresByHoursComponent', () => {
     expect(fixture.debugElement.queryAll(By.directive(ErrorCardComponent)).length).toBe(1);
     expect(
       fixture.debugElement.query(By.directive(ErrorCardComponent)).nativeElement.textContent
-    ).toContain('Error: test message');
+    ).toContain('Error: simulated error for test');
   });
 });
