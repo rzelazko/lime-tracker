@@ -14,10 +14,10 @@
       "antVersion": "latest",
       "groovyVersion": "latest"
     },
-    "ghcr.io/devcontainers-contrib/features/angular-cli:2": {
+    "ghcr.io/devcontainers-extra/features/angular-cli:2": {
       "version": "latest"
     },
-    "ghcr.io/devcontainers-contrib/features/firebase-cli:2": {
+    "ghcr.io/devcontainers-extra/features/firebase-cli:2": {
       "version": "latest"
     },
     "ghcr.io/kreemer/features/chrometesting:1": {},

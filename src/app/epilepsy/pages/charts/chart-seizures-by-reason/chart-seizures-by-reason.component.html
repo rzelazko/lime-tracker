@@ -1,4 +1,5 @@
-<div *ngIf="chartOptions$ | async as chartOptions; else errorTpl">
+@if (chartOptions$ | async; as chartOptions) {
+  <div>
     <apx-chart
       [series]="chartOptions.series"
       [chart]="chartOptions.chart"
@@ -8,7 +9,9 @@
       [responsive]="chartOptions.responsive"
       [tooltip]="chartOptions.tooltip"
     ></apx-chart>
-</div>
-<ng-template #errorTpl>
-  <div *ngIf="chartError$ | async as error">{{ error }}</div>
-</ng-template>
+  </div>
+} @else {
+  @if (chartError$ | async; as error) {
+    <div>{{ error }}</div>
+  }
+}
