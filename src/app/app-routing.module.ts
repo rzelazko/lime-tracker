@@ -7,6 +7,7 @@ import { LogoutComponent } from './auth/pages/logout/logout.component';
 import { RegisterComponent } from './auth/pages/register/register.component';
 import { VerifyEmailComponent } from './auth/pages/verify-email/verify-email.component';
 import { ChartsComponent } from './epilepsy/pages/charts/charts.component';
+import { CompareComponent } from './epilepsy/pages/compare/compare.component';
 import { DashboardComponent } from './epilepsy/pages/dashboard/dashboard.component';
 import { EventsFormComponent } from './epilepsy/pages/events/events-form/events-form.component';
 import { EventsComponent } from './epilepsy/pages/events/events.component';
@@ -90,6 +91,13 @@ const routes: Routes = [
         component: ChartsComponent,
         title: $localize`:@@title-charts:Charts`,
         canActivate: [AuthGuard, YearInRangeGuard],
+        data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
+      },
+      {
+        path: $localize`:@@routing-compare:compare`,
+        component: CompareComponent,
+        title: $localize`:@@title-compare:Compare`,
+        canActivate: [AuthGuard],
         data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
       },
       {
