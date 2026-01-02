@@ -101,6 +101,13 @@ const routes: Routes = [
         data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
       },
       {
+        path: $localize`:@@routing-compare-results:compare/:by/:amount`,
+        component: CompareComponent,
+        title: $localize`:@@title-compare:Compare`,
+        canActivate: [AuthGuard],
+        data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
+      },
+      {
         path: $localize`:@@routing-periods:periods`,
         component: PeriodsComponent,
         title: $localize`:@@title-periods:Periods`,
