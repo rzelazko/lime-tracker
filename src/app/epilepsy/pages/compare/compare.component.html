@@ -7,8 +7,8 @@
       <mat-form-field appearance="fill">
         <mat-label i18n="@@label-by">By</mat-label>
         <mat-select formControlName="by">
-          <mat-option value="month" i18n="@@option-month">Month</mat-option>
-          <mat-option value="year" i18n="@@option-year">Year</mat-option>
+          <mat-option value="month" i18n="@@month">Month</mat-option>
+          <mat-option value="year" i18n="@@year">Year</mat-option>
         </mat-select>
         @if (hasError('by', 'required')) {
           <mat-error i18n="@@error-by-required">By field is required</mat-error>
@@ -36,9 +36,7 @@
           color="primary"
           [disabled]="!form.valid"
           i18n="@@action-show-results"
-        >
-          Show results
-        </button>
+        >Show results</button>
       </div>
     </form>
 </main>
