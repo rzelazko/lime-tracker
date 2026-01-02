@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { orderBy, where } from 'firebase/firestore';
 import Moment from 'moment';
 import { extendMoment } from 'moment-range';
-import { map, Observable } from 'rxjs';
+import { map, Observable, take } from 'rxjs';
 import { Seizure } from '../models/seizure.model';
 import { SeizuresService } from './seizures.service';
 import { ApexAxisChartSeries } from 'ng-apexcharts'; // Import this
@@ -35,6 +35,7 @@ export class ChartSeizuresByAmountService {
         where('occurred', '<=', dateTo.toDate()),
       ])
       .pipe(
+        take(1), // Add take(1) here to only take the first emission
         map((seizures) => {
           if (by === 'year') {
             return this.aggregateSeizuresByYear(seizures, amount);
@@ -71,7 +72,7 @@ export class ChartSeizuresByAmountService {
     // Create a series for each of the last 'amount' years
     for (let i = 0; i < amount; i++) {
       const year = currentYear - i;
-      const monthlyCounts: { x: string; y: number }[] = moment.monthsShort().map(m => ({ x: m, y: 0 }));
+      const monthlyCounts: { x: string; y: number }[] = moment.monthsShort().map((m: string) => ({ x: m, y: 0 }));
       series.push({
         name: year.toString(),
         data: monthlyCounts
