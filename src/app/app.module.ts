@@ -52,6 +52,7 @@ import { ChartSeizuresByReasonComponent } from './epilepsy/pages/charts/chart-se
 import { ChartSeizuresByLengthComponent } from './epilepsy/pages/charts/chart-seizures-by-length/chart-seizures-by-length.component';
 import { ChartSummaryComponent } from './epilepsy/pages/charts/chart-summary/chart-summary.component';
 import { ChartsComponent } from './epilepsy/pages/charts/charts.component';
+import { CompareComponent } from './epilepsy/pages/compare/compare.component';
 import { DashboardComponent } from './epilepsy/pages/dashboard/dashboard.component';
 import { EventsFormComponent } from './epilepsy/pages/events/events-form/events-form.component';
 import { EventsComponent } from './epilepsy/pages/events/events.component';
@@ -100,6 +101,7 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     ChartSeizuresByHoursComponent,
     ChartSeizuresByTypeComponent,
     ChartSummaryComponent,
+    CompareComponent,
     ConfirmDeleteDialogComponent,
     DashboardComponent,
     EventsFormComponent,
