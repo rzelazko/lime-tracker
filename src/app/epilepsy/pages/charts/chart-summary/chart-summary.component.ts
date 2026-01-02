@@ -71,7 +71,7 @@ export class ChartSummaryComponent implements OnInit {
       });
     }
 
-    if (eventsData && eventsData.data.length > 0) {
+    if (eventsData && eventsData.data.some((d) => d.y !== -1)) {
       yaxis.push({
         show: false,
         axisTicks: { show: false },
