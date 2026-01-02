@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {
   COMPARE_AMOUNT_MAX,
   COMPARE_AMOUNT_MIN,
+  COMPARE_BY_MONTH,
+  COMPARE_BY_YEAR,
 } from '../compare.component';
 
 @Component({
@@ -24,7 +26,7 @@ export class CompareByAmountComponent implements OnInit {
       const amount = params.get('amount');
 
       if (
-        (by !== 'month' && by !== 'year') ||
+        (by !== COMPARE_BY_MONTH && by !== COMPARE_BY_YEAR) ||
         amount === null ||
         isNaN(+amount) ||
         +amount < COMPARE_AMOUNT_MIN ||

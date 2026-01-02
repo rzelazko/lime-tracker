@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 
 export const COMPARE_AMOUNT_MIN = 1;
 export const COMPARE_AMOUNT_MAX = 5;
+export const COMPARE_BY_MONTH = 'month';
+export const COMPARE_BY_YEAR = 'year';
 
 @Component({
   selector: 'app-compare',
@@ -18,6 +20,8 @@ export class CompareComponent implements OnInit {
   form!: FormGroup;
   readonly COMPARE_AMOUNT_MIN = COMPARE_AMOUNT_MIN;
   readonly COMPARE_AMOUNT_MAX = COMPARE_AMOUNT_MAX;
+  readonly COMPARE_BY_MONTH = COMPARE_BY_MONTH;
+  readonly COMPARE_BY_YEAR = COMPARE_BY_YEAR;
 
   constructor() {}
 
