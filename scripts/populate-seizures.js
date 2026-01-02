@@ -8,7 +8,7 @@ const path = require('path');
  *
  * Usage:
  * export FIRESTORE_EMULATOR_HOST="localhost:8080" # Run on emulator instead of production
- * node scripts/populate-seizures.js
+ * node scripts/populate-seizures.js "2025-07-01"
  */
 
 initializeApp({
@@ -70,14 +70,27 @@ function getRandomSeizure(date) {
 
 async function populateSeizures() {
   const now = new Date();
-  const oneYearAgo = new Date(now);
-  oneYearAgo.setFullYear(now.getFullYear() - 1);
+  let startDate;
+  if (process.argv[2]) {
+    const parsedDate = new Date(process.argv[2]);
+    if (!isNaN(parsedDate.getTime())) {
+      startDate = parsedDate;
+      console.log(`Populating seizures starting from: ${startDate.toISOString().split('T')[0]}`);
+    } else {
+      console.warn(`Invalid date argument provided: ${process.argv[2]}. Falling back to one year ago.`);
+      startDate = new Date(now);
+      startDate.setFullYear(now.getFullYear() - 1);
+    }
+  } else {
+    startDate = new Date(now);
+    startDate.setFullYear(now.getFullYear() - 1);
+  }
 
   let batch = db.batch();
   let batchCount = 0;
   let total = 0;
 
-  for (let d = new Date(oneYearAgo); d <= now; d.setDate(d.getDate() + 1)) {
+  for (let d = new Date(startDate); d <= now; d.setDate(d.getDate() + 1)) {
     // 0-2 seizures per day
     const seizuresToday = getRandomInt(0, 2);
     for (let i = 0; i < seizuresToday; i++) {
