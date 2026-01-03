@@ -104,7 +104,7 @@ const routes: Routes = [
       {
         path: $localize`:@@routing-compare-results:compare/:by/:amount`,
         component: CompareByAmountComponent,
-        title: ($localize`:@@title-compare-by-amount:Compare By`),
+        title: $localize`:@@title-compare-by-amount:Compare By`,
         canActivate: [AuthGuard],
         data: { authGuardPipe: redirectUnauthorizedOrUnverifiedUser },
       },
