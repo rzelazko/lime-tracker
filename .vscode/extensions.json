@@ -4,7 +4,6 @@
     "Angular.ng-template",
     "manux54.angular-localization-helper",
     "dbaeumer.vscode-eslint",
-    "VisualStudioExptTeam.vscodeintellicode",
     "esbenp.prettier-vscode",
     "github.vscode-github-actions"
   ]
