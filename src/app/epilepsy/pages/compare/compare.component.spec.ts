@@ -6,8 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { Router } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
+import { Router, provideRouter } from '@angular/router';
 import { CompareComponent } from './compare.component';
 
 describe('CompareComponent', () => {
@@ -19,7 +18,6 @@ describe('CompareComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         ReactiveFormsModule,
-        RouterTestingModule,
         MatToolbarModule,
         MatFormFieldModule,
         MatSelectModule,
@@ -28,6 +26,7 @@ describe('CompareComponent', () => {
         NoopAnimationsModule,
       ],
       declarations: [CompareComponent],
+      providers: [provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(CompareComponent);
