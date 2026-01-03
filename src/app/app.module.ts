@@ -46,12 +46,15 @@ import { ConfirmDeleteDialogComponent } from './epilepsy/components/confirm-dele
 import { TableComponent } from './epilepsy/components/table/table.component';
 import { YearsnavComponent } from './epilepsy/components/yearsnav/yearsnav.component';
 import { ChartHeatmapComponent } from './epilepsy/pages/charts/chart-heatmap/chart-heatmap.component';
-import { ChartSeizuresByHoursComponent } from './epilepsy/pages/charts/chart-seizures-by-hours/chart-seizures-by-hours.component';
-import { ChartSeizuresByTypeComponent } from './epilepsy/pages/charts/chart-seizures-by-type/chart-seizures-by-type.component';
-import { ChartSeizuresByReasonComponent } from './epilepsy/pages/charts/chart-seizures-by-reason/chart-seizures-by-reason.component';
-import { ChartSeizuresByLengthComponent } from './epilepsy/pages/charts/chart-seizures-by-length/chart-seizures-by-length.component';
-import { ChartSummaryComponent } from './epilepsy/pages/charts/chart-summary/chart-summary.component';
 import { ChartsComponent } from './epilepsy/pages/charts/charts.component';
+import { ChartSeizuresByAmountComponent } from './epilepsy/pages/charts/chart-seizures-by-amount/chart-seizures-by-amount.component';
+import { ChartSeizuresByHoursComponent } from './epilepsy/pages/charts/chart-seizures-by-hours/chart-seizures-by-hours.component';
+import { ChartSeizuresByLengthComponent } from './epilepsy/pages/charts/chart-seizures-by-length/chart-seizures-by-length.component';
+import { ChartSeizuresByReasonComponent } from './epilepsy/pages/charts/chart-seizures-by-reason/chart-seizures-by-reason.component';
+import { ChartSeizuresByTypeComponent } from './epilepsy/pages/charts/chart-seizures-by-type/chart-seizures-by-type.component';
+import { ChartSummaryComponent } from './epilepsy/pages/charts/chart-summary/chart-summary.component';
+import { CompareByAmountComponent } from './epilepsy/pages/compare/compare-by-amount/compare-by-amount.component';
+import { CompareComponent } from './epilepsy/pages/compare/compare.component';
 import { DashboardComponent } from './epilepsy/pages/dashboard/dashboard.component';
 import { EventsFormComponent } from './epilepsy/pages/events/events-form/events-form.component';
 import { EventsComponent } from './epilepsy/pages/events/events.component';
@@ -95,11 +98,16 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     TimeSincePipe,
     // Components
     AppComponent,
-    ChartsComponent,
     ChartHeatmapComponent,
+    ChartsComponent,
+    ChartSeizuresByAmountComponent,
     ChartSeizuresByHoursComponent,
+    ChartSeizuresByLengthComponent,
+    ChartSeizuresByReasonComponent,
     ChartSeizuresByTypeComponent,
     ChartSummaryComponent,
+    CompareByAmountComponent,
+    CompareComponent,
     ConfirmDeleteDialogComponent,
     DashboardComponent,
     EventsFormComponent,
@@ -126,8 +134,6 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     UpdateDialogComponent,
     VerifyEmailComponent,
     YearsnavComponent
-    ,ChartSeizuresByReasonComponent
-    ,ChartSeizuresByLengthComponent
   ],
   exports: [],
   bootstrap: [AppComponent],

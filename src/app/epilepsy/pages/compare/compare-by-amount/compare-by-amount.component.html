@@ -1,0 +1,9 @@
+<mat-toolbar class="page-header" role="heading">
+  <h1 i18n="@@title-compare-by-amount">Compare By</h1>
+</mat-toolbar>
+
+<main>
+  @if (by && amount) {
+    <app-chart-seizures-by-amount [by]="by" [amount]="amount"></app-chart-seizures-by-amount>
+  }
+</main>
