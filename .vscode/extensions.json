@@ -6,7 +6,6 @@
     "dbaeumer.vscode-eslint",
     "VisualStudioExptTeam.vscodeintellicode",
     "esbenp.prettier-vscode",
-    "eamodio.gitlens",
     "github.vscode-github-actions"
   ]
 }
