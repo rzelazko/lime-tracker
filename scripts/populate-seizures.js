@@ -100,6 +100,11 @@ async function populateSeizures() {
     }
   }
 
+  if (startDate > endDate) {
+    console.error(`Error: Start date (${startDate.toISOString().split('T')[0]}) is after end date (${endDate.toISOString().split('T')[0]})`);
+    process.exit(1);
+  }
+
   let batch = db.batch();
   let batchCount = 0;
   let total = 0;
