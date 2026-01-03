@@ -124,7 +124,7 @@ async function populateSeizures() {
   if (batchCount > 0) {
     await batch.commit();
   }
-  console.log(`Inserted ${total} random seizures for the last year.`);
+  console.log(`Inserted ${total} random seizures from ${startDate.toISOString().split('T')[0]} to ${endDate.toISOString().split('T')[0]}.`);
   process.exit(0);
 }
 
