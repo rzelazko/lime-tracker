@@ -1,0 +1,42 @@
+<mat-toolbar class="page-header" role="heading">
+  <h1 i18n="@@title-compare">Compare</h1>
+</mat-toolbar>
+
+<main>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="flex-grow flex-col gap-normal justify-start items-start">
+      <mat-form-field appearance="fill">
+        <mat-label i18n="@@label-by">By</mat-label>
+        <mat-select formControlName="by">
+          <mat-option value="month" i18n="@@month">Month</mat-option>
+          <mat-option value="year" i18n="@@year">Year</mat-option>
+        </mat-select>
+        @if (hasError('by', 'required')) {
+          <mat-error i18n="@@error-by-required">By field is required</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label i18n="@@label-amount">Amount</mat-label>
+        <input type="number" formControlName="amount" [min]="COMPARE_AMOUNT_MIN" [max]="COMPARE_AMOUNT_MAX" matInput />
+        @if (hasError('amount', 'required')) {
+          <mat-error i18n="@@error-amount-required">Amount is required</mat-error>
+        }
+        @if (hasError('amount', 'min')) {
+          <mat-error i18n="@@error-amount-min">Amount must be at least {{COMPARE_AMOUNT_MIN}}</mat-error>
+        }
+        @if (hasError('amount', 'max')) {
+          <mat-error i18n="@@error-amount-max">Amount must be at most {{COMPARE_AMOUNT_MAX}}</mat-error>
+        }
+      </mat-form-field>
+
+      <div class="flex-row justify-end">
+        <button
+          type="submit"
+          mat-raised-button
+          color="primary"
+          [disabled]="!form.valid"
+          i18n="@@action-show-results"
+        >Show results</button>
+      </div>
+    </form>
+</main>

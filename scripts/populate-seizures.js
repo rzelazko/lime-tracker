@@ -8,7 +8,7 @@ const path = require('path');
  *
  * Usage:
  * export FIRESTORE_EMULATOR_HOST="localhost:8080" # Run on emulator instead of production
- * node scripts/populate-seizures.js
+ * node scripts/populate-seizures.js "2025-07-01" "2025-08-31" # From and to dates are optional
  */
 
 initializeApp({
@@ -69,15 +69,47 @@ function getRandomSeizure(date) {
 }
 
 async function populateSeizures() {
-  const now = new Date();
-  const oneYearAgo = new Date(now);
-  oneYearAgo.setFullYear(now.getFullYear() - 1);
+  const now = new Date(); // Current date and time, used as default for endDate and fallback for startDate
+  let startDate;
+  let endDate = now; // Default end date to current time
+
+  // Parse startDate from process.argv[2]
+  if (process.argv[2]) {
+    const parsedDate = new Date(process.argv[2]);
+    if (!isNaN(parsedDate.getTime())) {
+      startDate = parsedDate;
+      console.log(`Populating seizures starting from: ${startDate.toISOString().split('T')[0]}`);
+    } else {
+      console.warn(`Invalid start date argument provided: ${process.argv[2]}. Falling back to one year ago.`);
+      startDate = new Date(now);
+      startDate.setFullYear(now.getFullYear() - 1);
+    }
+  } else {
+    startDate = new Date(now);
+    startDate.setFullYear(now.getFullYear() - 1);
+  }
+
+  // Parse endDate from process.argv[3]
+  if (process.argv[3]) {
+    const parsedEndDate = new Date(process.argv[3]);
+    if (!isNaN(parsedEndDate.getTime())) {
+      endDate = parsedEndDate;
+      console.log(`Populating seizures up to: ${endDate.toISOString().split('T')[0]}`);
+    } else {
+      console.warn(`Invalid end date argument provided: ${process.argv[3]}. Falling back to current date.`);
+    }
+  }
+
+  if (startDate > endDate) {
+    console.error(`Error: Start date (${startDate.toISOString().split('T')[0]}) is after end date (${endDate.toISOString().split('T')[0]})`);
+    process.exit(1);
+  }
 
   let batch = db.batch();
   let batchCount = 0;
   let total = 0;
 
-  for (let d = new Date(oneYearAgo); d <= now; d.setDate(d.getDate() + 1)) {
+  for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
     // 0-2 seizures per day
     const seizuresToday = getRandomInt(0, 2);
     for (let i = 0; i < seizuresToday; i++) {
@@ -97,7 +129,7 @@ async function populateSeizures() {
   if (batchCount > 0) {
     await batch.commit();
   }
-  console.log(`Inserted ${total} random seizures for the last year.`);
+  console.log(`Inserted ${total} random seizures from ${startDate.toISOString().split('T')[0]} to ${endDate.toISOString().split('T')[0]}.`);
   process.exit(0);
 }
 
