@@ -71,12 +71,6 @@ import { MomentPipe } from './shared/pipes/moment.pipe';
 import { StartOfPipe } from './shared/pipes/start-of.pipe';
 import { TimeSincePipe } from './shared/pipes/time-since.pipe';
 
-let resolvePersistenceEnabled: (enabled: boolean) => void;
-
-export const persistenceEnabled = new Promise<boolean>((resolve) => {
-  resolvePersistenceEnabled = resolve;
-});
-
 @NgModule({
   declarations: [
     // Pipes
