@@ -1,16 +1,6 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { getAnalytics, provideAnalytics } from '@angular/fire/analytics';
-import { getApp, initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { connectAuthEmulator, getAuth, provideAuth } from '@angular/fire/auth';
-import {
-  connectFirestoreEmulator,
-  initializeFirestore,
-  persistentLocalCache,
-  persistentMultipleTabManager,
-  provideFirestore
-} from '@angular/fire/firestore';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatButtonModule } from '@angular/material/button';
@@ -177,29 +167,7 @@ export const persistenceEnabled = new Promise<boolean>((resolve) => {
     })
   ],
   providers: [
-    // Firebase
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAnalytics(() => getAnalytics()),
-    provideAuth(() => {
-      const auth = getAuth();
-      if (environment.useEmulators) {
-        connectAuthEmulator(auth, `http://${environment.emulatorHost}:9099`, {
-          disableWarnings: true
-        });
-      }
-      return auth;
-    }),
-    provideFirestore(() => {
-      const firestore = initializeFirestore(getApp(), {
-        localCache: persistentLocalCache({
-          tabManager: persistentMultipleTabManager()
-        })
-      });
-      if (environment.useEmulators) {
-        connectFirestoreEmulator(firestore, environment.emulatorHost, 8080);
-      }
-      return firestore;
-    }),
+    // Firebase initialization handled in src/app/shared/firebase.ts
     provideHttpClient(withInterceptorsFromDi())
   ]
 })
