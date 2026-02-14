@@ -1,14 +1,13 @@
 import { inject, Injectable, OnDestroy } from '@angular/core';
+import { auth, authState$ } from '../firebase';
 import {
-  Auth,
-  authState,
   createUserWithEmailAndPassword,
   sendEmailVerification,
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
   User
-} from '@angular/fire/auth';
+} from 'firebase/auth';
 import { FirebaseError } from 'firebase/app';
 import { BehaviorSubject, EMPTY, filter, firstValueFrom, Subscription, switchMap } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
@@ -20,11 +19,11 @@ import { UserDetailsService } from './user-details.service';
   providedIn: 'root'
 })
 export class AuthService implements OnDestroy {
-  private auth = inject(Auth);
+  private auth = auth;
   private user: User | null = null;
   private userData$: Observable<UserData>;
   private userDetailsService = inject(UserDetailsService);
-  private authState$ = authState(this.auth);
+  private authState$ = authState$();
   private authStateSubscription: Subscription;
   private userIdSubject$ = new BehaviorSubject<string>('');
   private userId$ = this.userIdSubject$.asObservable();

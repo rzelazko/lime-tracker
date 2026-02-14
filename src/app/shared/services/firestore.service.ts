@@ -1,15 +1,8 @@
-import { inject, Injectable } from '@angular/core';
-import {
-  collection,
-  collectionSnapshots,
-  docSnapshots,
-  DocumentData,
-  Firestore,
-  QueryConstraint,
-  writeBatch
-} from '@angular/fire/firestore';
+import { Injectable } from '@angular/core';
+import { collectionSnapshots, docSnapshots, firestore } from '../firebase';
 import {
   addDoc,
+  collection,
   CollectionReference,
   deleteDoc,
   doc,
@@ -18,8 +11,10 @@ import {
   setDoc,
   Timestamp,
   updateDoc,
+  writeBatch,
+  QueryConstraint,
   WriteBatch
-} from '@firebase/firestore';
+} from 'firebase/firestore';
 import moment from 'moment';
 import { Moment } from 'moment';
 import { defer, map } from 'rxjs';
@@ -29,11 +24,11 @@ import { defer, map } from 'rxjs';
 })
 export class FirestoreService {
   private batch?: WriteBatch;
-  private firestore: Firestore = inject(Firestore);
+  private firestore = firestore;
 
   list<T>(path: string, ...q: QueryConstraint[]) {
     const ref = collection(this.firestore, path) as CollectionReference<Partial<T>>;
-    return collectionSnapshots<Partial<T>>(query<Partial<T>, DocumentData>(ref, ...q)).pipe(
+    return collectionSnapshots<Partial<T>>(query(ref, ...q)).pipe(
       map((data) => this.convertSnapshots<T>(data))
     );
   }

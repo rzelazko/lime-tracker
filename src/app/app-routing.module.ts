@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { AuthGuard, AuthPipeGenerator, redirectLoggedInTo } from '@angular/fire/auth-guard';
+import { AuthGuard } from './shared/guards/auth-guard';
 import { RouterModule, Routes, TitleStrategy, provideRouter } from '@angular/router';
 import { map } from 'rxjs';
 import { LoginComponent } from './auth/pages/login/login.component';
@@ -26,18 +26,14 @@ import { LayoutAnonymousComponent } from './shared/layout/anonymous/anonymous.co
 import { LayoutAuthenticatedComponent } from './shared/layout/authenticated/authenticated.component';
 import { TemplatePageTitleStrategy } from './shared/services/template-page-title.strategy';
 
-const redirectLoggedInToDashboard = () =>
-  redirectLoggedInTo([$localize`:@@routerLink-epilepsy:/epilepsy`]);
-const redirectUnauthorizedOrUnverifiedUser: AuthPipeGenerator = () =>
-  map((user) => {
-    if (user) {
-      if (user.emailVerified) {
-        return true;
-      }
-      return [$localize`:@@routerLink-register-confirm:/register/confirm`];
-    }
-    return [$localize`:@@routerLink-login:/login`];
-  });
+const redirectLoggedInToDashboard = (user: any) => (user ? [$localize`:@@routerLink-epilepsy:/epilepsy`] : true);
+const redirectUnauthorizedOrUnverifiedUser = (user: any) => {
+  if (user) {
+    if (user.emailVerified) return true;
+    return [$localize`:@@routerLink-register-confirm:/register/confirm`];
+  }
+  return [$localize`:@@routerLink-login:/login`];
+};
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: $localize`:@@routerLink-login:/login` },

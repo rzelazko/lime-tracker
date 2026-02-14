@@ -1,5 +1,5 @@
 import { inject } from '@angular/core';
-import { startAfter } from '@angular/fire/firestore';
+import { startAfter } from 'firebase/firestore';
 import { DocumentReference, limit, orderBy, QueryConstraint } from 'firebase/firestore';
 import { map, Observable } from 'rxjs';
 import { filter, switchMap, tap } from 'rxjs/operators';
