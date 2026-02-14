@@ -1,6 +1,6 @@
 {
   "name": "lime-tracker",
-  "version": "1.0.71",
+  "version": "1.0.72",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --configuration=en",
