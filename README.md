@@ -72,6 +72,6 @@ Debugging information about NGSW can be found under URLs:
 - [Angular Material Components](https://material.angular.io/components/categories)
 - ~[Angular Flex Layout](https://github.com/angular/flex-layout)~ - project is dead, required features integrated into Lime Tracker
 - [Moment.js](https://momentjs.com/)
-- ~[Angular Fire](https://github.com/angular/angularfire)~ - project is rarly updated, use Firebase API directly
+- ~[Angular Fire](https://github.com/angular/angularfire)~ - project is rarely updated, use Firebase API directly
 - [Firebase API - Reference](https://firebase.google.com/docs/reference/js)
 - [ApexCharts - Examples](https://apexcharts.com/angular-chart-demos/)
