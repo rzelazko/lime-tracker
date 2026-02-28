@@ -119,8 +119,8 @@ export class ChartHeatmapComponent implements OnInit {
           align: 'left',
           offsetX: this.titleOffset,
         },
-      })),
-      catchError(() => of(null as any))
+      } as ChartOptions)),
+      catchError(() => of(null))
     );
 
     this.chartError$ = data$.pipe(

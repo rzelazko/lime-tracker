@@ -84,7 +84,8 @@ export class PeriodsFormComponent implements OnInit, OnDestroy {
       .subscribe({
         next: () => this.router.navigate([$localize`:@@routerLink-epilepsy-periods:/epilepsy/periods`]),
         error: (error) => {
-          this.error = error.message;
+          const safeError = error?.message || error?.error?.message || error?.statusText || JSON.stringify(error) || String(error);
+          this.error = safeError;
           this.cdr.markForCheck();
         }
       });

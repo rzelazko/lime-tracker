@@ -19,7 +19,7 @@ export class ChartSeizuresByAmountComponent implements OnInit, OnChanges {
   @Input() amount: number = 5;
   @Input() titleOffset = 0;
 
-  chartOptions$?: Observable<ChartOptions>;
+  chartOptions$?: Observable<ChartOptions | null>;
   chartError$?: Observable<string>;
 
   constructor(private chartService: ChartSeizuresByAmountService) {}
@@ -81,8 +81,8 @@ export class ChartSeizuresByAmountComponent implements OnInit, OnChanges {
             align: 'left',
             offsetX: this.titleOffset,
         }
-      })),
-      catchError(() => of(null as any))
+      } as ChartOptions)),
+      catchError(() => of(null))
     );
 
     this.chartError$ = data$.pipe(
