@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,7 +13,8 @@ import { DatesValidator } from './../../../../shared/validators/dates-validator'
     selector: 'app-periods-form',
     templateUrl: './periods-form.component.html',
     styleUrls: ['./periods-form.component.scss'],
-    standalone: false
+    standalone: false,
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PeriodsFormComponent implements OnInit {
   submitting = false;
@@ -27,7 +28,8 @@ export class PeriodsFormComponent implements OnInit {
     private periodsService: PeriodsService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private fb: UntypedFormBuilder
+    private fb: UntypedFormBuilder,
+    private cdr: ChangeDetectorRef
   ) {
     this.form = this.fb.group(
       {
@@ -74,10 +76,16 @@ export class PeriodsFormComponent implements OnInit {
     }
 
     this.submitSubscription = submitObservable$
-      .pipe(finalize(() => (this.submitting = false)))
+      .pipe(finalize(() => {
+        this.submitting = false;
+        this.cdr.markForCheck();
+      }))
       .subscribe({
         next: () => this.router.navigate([$localize`:@@routerLink-epilepsy-periods:/epilepsy/periods`]),
-        error: (error) => (this.error = error.message),
+        error: (error) => {
+          this.error = error.message;
+          this.cdr.markForCheck();
+        }
       });
   }
 

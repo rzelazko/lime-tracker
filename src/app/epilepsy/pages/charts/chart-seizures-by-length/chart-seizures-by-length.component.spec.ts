@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { of, throwError } from 'rxjs';
 import { ChartSeizuresByLengthService } from './../../../../shared/services/chart-seizures-by-length.service';
+import { MockApexChartsComponent } from './../../../../shared/testing/mock-apex-charts.component';
 import { ChartSeizuresByLengthComponent } from './chart-seizures-by-length.component';
 
 // Mock service
@@ -21,7 +22,8 @@ describe('ChartSeizuresByLengthComponent', () => {
       providers: [
         { provide: ChartSeizuresByLengthService, useClass: MockChartSeizuresByLengthService },
         { provide: ActivatedRoute, useValue: { params: of({ year: '2021' }) } }
-      ]
+      ],
+      imports: [MockApexChartsComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ChartSeizuresByLengthComponent);

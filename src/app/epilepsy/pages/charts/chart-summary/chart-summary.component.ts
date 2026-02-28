@@ -22,7 +22,7 @@ export class ChartSummaryComponent implements OnInit {
   private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
 
   ngOnInit(): void {
-    this.chartOptions$ = this.activatedRoute.params.pipe(
+    const data$ = this.activatedRoute.params.pipe(
       map((routeParams): number | undefined => routeParams['year']),
       distinctUntilChanged((a, b) => a === b),
       switchMap((selectedYear: number | undefined) => {
@@ -35,13 +35,17 @@ export class ChartSummaryComponent implements OnInit {
             .seizureSerie()
             .pipe(map((data) => ({ name: $localize`:@@title-seizures:Seizures`, ...data }))),
         ]);
-      }),
-      map(([eventsData, seizuresData]) =>
-        this.toChartOptions(eventsData, seizuresData)
-      )
+      })
     );
 
-    this.chartError$ = this.chartOptions$.pipe(
+    this.chartOptions$ = data$.pipe(
+      map(([eventsData, seizuresData]) =>
+        this.toChartOptions(eventsData, seizuresData)
+      ),
+      catchError(() => of(null as any))
+    );
+
+    this.chartError$ = data$.pipe(
       ignoreElements(),
       catchError((error) => of($localize`:@@error-message:Error: ${error.message || error}`))
     );

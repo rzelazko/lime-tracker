@@ -106,6 +106,7 @@ describe('ReportsComponent', () => {
 
     // when
     fixture.detectChanges();
+    fixture.detectChanges();
 
     // then
     expect(component).toBeTruthy();

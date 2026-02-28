@@ -22,13 +22,16 @@ export class ChartSeizuresByLengthComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.chartOptions$ = this.activatedRoute.params.pipe(
+    const data$ = this.activatedRoute.params.pipe(
       map((routeParams): number | undefined => routeParams['year']),
       distinctUntilChanged((a, b) => a === b),
       switchMap((selectedYear: number | undefined) => {
         this.chartService.setYear(selectedYear);
         return this.chartService.seizureSerie();
-      }),
+      })
+    );
+
+    this.chartOptions$ = data$.pipe(
       map((data: ChartData) => ({
         xaxis: {
           axisTicks: {
@@ -71,10 +74,11 @@ export class ChartSeizuresByLengthComponent implements OnInit {
           align: 'left',
           offsetX: this.titleOffset,
         },
-      }))
+      })),
+      catchError(() => of(null as any))
     );
 
-    this.chartError$ = this.chartOptions$.pipe(
+    this.chartError$ = data$.pipe(
       ignoreElements(),
       catchError((error) => of($localize`:@@chart-error:Error: ${error.message || error}`))
     );
