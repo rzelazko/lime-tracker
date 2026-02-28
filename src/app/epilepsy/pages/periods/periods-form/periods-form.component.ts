@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -16,7 +16,7 @@ import { DatesValidator } from './../../../../shared/validators/dates-validator'
     standalone: false,
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PeriodsFormComponent implements OnInit {
+export class PeriodsFormComponent implements OnInit, OnDestroy {
   submitting = false;
   today = moment();
   error?: string;
@@ -63,6 +63,7 @@ export class PeriodsFormComponent implements OnInit {
 
   onSubmit(): void {
     this.submitting = true;
+    this.cdr.markForCheck();
     const formData: Partial<Period> = {
       startDate: moment(this.form.value.startDate),
       endDate: this.form.value.endDate ? moment(this.form.value.endDate) : undefined,

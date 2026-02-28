@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { catchError, map, Observable, of, ignoreElements } from 'rxjs';
+import { catchError, map, Observable, of, ignoreElements, shareReplay } from 'rxjs';
 import { ChartOptions } from '../../../../shared/models/chart-options.model';
 import { ChartSeizuresByAmountService } from '../../../../shared/services/chart-seizures-by-amount.service';
 import { ApexAxisChartSeries } from 'ng-apexcharts';
@@ -35,7 +35,9 @@ export class ChartSeizuresByAmountComponent implements OnInit, OnChanges {
   }
 
   private loadChart(): void {
-    const data$ = this.chartService.seizureSerie(this.by, this.amount);
+    const data$ = this.chartService.seizureSerie(this.by, this.amount).pipe(
+      shareReplay(1)
+    );
 
     this.chartOptions$ = data$.pipe(
       map((seriesData: ApexAxisChartSeries) => ({

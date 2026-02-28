@@ -2,7 +2,7 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApexAxisChartSeries, ApexYAxis } from 'ng-apexcharts';
 import { combineLatest, map, Observable, of } from 'rxjs';
-import { catchError, ignoreElements, switchMap, distinctUntilChanged } from 'rxjs/operators';
+import { catchError, ignoreElements, switchMap, distinctUntilChanged, shareReplay } from 'rxjs/operators';
 import { ChartData } from './../../../../shared/models/chart-data.model';
 import { ChartOptions } from './../../../../shared/models/chart-options.model';
 import { ChartSummaryService } from './../../../../shared/services/chart-summary.service';
@@ -15,7 +15,7 @@ import { ChartSummaryService } from './../../../../shared/services/chart-summary
 })
 export class ChartSummaryComponent implements OnInit {
   @Input() titleOffset: number = 0;
-  chartOptions$?: Observable<ChartOptions>;
+  chartOptions$?: Observable<ChartOptions | null>;
   chartError$?: Observable<string>;
 
   private chartService: ChartSummaryService = inject(ChartSummaryService);
@@ -35,14 +35,14 @@ export class ChartSummaryComponent implements OnInit {
             .seizureSerie()
             .pipe(map((data) => ({ name: $localize`:@@title-seizures:Seizures`, ...data }))),
         ]);
-      })
+      }),
+      shareReplay({ bufferSize: 1, refCount: true })
     );
 
     this.chartOptions$ = data$.pipe(
       map(([eventsData, seizuresData]) =>
         this.toChartOptions(eventsData, seizuresData)
-      ),
-      catchError(() => of(null as any))
+      )
     );
 
     this.chartError$ = data$.pipe(
