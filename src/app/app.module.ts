@@ -1,6 +1,6 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, provideZoneChangeDetection } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatButtonModule } from '@angular/material/button';
@@ -161,6 +161,7 @@ import { TimeSincePipe } from './shared/pipes/time-since.pipe';
     })
   ],
   providers: [
+    provideZoneChangeDetection(),
     // Firebase initialization handled in src/app/shared/firebase.ts
     provideHttpClient(withInterceptorsFromDi())
   ]

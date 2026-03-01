@@ -335,35 +335,35 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-amount/chart-seizures-by-amount.component.ts</context>
-          <context context-type="linenumber">61</context>
+          <context context-type="linenumber">65</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-amount/chart-seizures-by-amount.component.ts</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-hours/chart-seizures-by-hours.component.ts</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-hours/chart-seizures-by-hours.component.ts</context>
+          <context context-type="linenumber">57</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-hours/chart-seizures-by-hours.component.ts</context>
           <context context-type="linenumber">63</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-hours/chart-seizures-by-hours.component.ts</context>
-          <context context-type="linenumber">51</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-hours/chart-seizures-by-hours.component.ts</context>
-          <context context-type="linenumber">53</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-hours/chart-seizures-by-hours.component.ts</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-length/chart-seizures-by-length.component.ts</context>
+          <context context-type="linenumber">56</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-length/chart-seizures-by-length.component.ts</context>
-          <context context-type="linenumber">52</context>
+          <context context-type="linenumber">58</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-length/chart-seizures-by-length.component.ts</context>
-          <context context-type="linenumber">54</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-length/chart-seizures-by-length.component.ts</context>
-          <context context-type="linenumber">61</context>
+          <context context-type="linenumber">65</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-summary/chart-summary.component.ts</context>
@@ -1303,7 +1303,7 @@
         <target>Napady w trakcie roku</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-heatmap/chart-heatmap.component.ts</context>
-          <context context-type="linenumber">109</context>
+          <context context-type="linenumber">113</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error-message" datatype="html">
@@ -1311,11 +1311,7 @@
         <target>Błąd: <x id="PH" equiv-text="error.message || error"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-heatmap/chart-heatmap.component.ts</context>
-          <context context-type="linenumber">123</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-hours/chart-seizures-by-hours.component.ts</context>
-          <context context-type="linenumber">75</context>
+          <context context-type="linenumber">128</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-type/chart-seizures-by-type.component.ts</context>
@@ -1323,7 +1319,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-summary/chart-summary.component.ts</context>
-          <context context-type="linenumber">46</context>
+          <context context-type="linenumber">50</context>
         </context-group>
       </trans-unit>
       <trans-unit id="year" datatype="html">
@@ -1331,7 +1327,7 @@
         <target>Rok</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-amount/chart-seizures-by-amount.component.ts</context>
-          <context context-type="linenumber">51</context>
+          <context context-type="linenumber">55</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/compare/compare.component.html</context>
@@ -1343,7 +1339,7 @@
         <target>Miesiąc</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-amount/chart-seizures-by-amount.component.ts</context>
-          <context context-type="linenumber">51</context>
+          <context context-type="linenumber">55</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/compare/compare.component.html</context>
@@ -1355,7 +1351,7 @@
         <target>Ilość napadów na rok</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-amount/chart-seizures-by-amount.component.ts</context>
-          <context context-type="linenumber">71</context>
+          <context context-type="linenumber">75</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chart-seizures-by-month-title" datatype="html">
@@ -1363,7 +1359,7 @@
         <target>Ilość napadów na miesiąc</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-amount/chart-seizures-by-amount.component.ts</context>
-          <context context-type="linenumber">71</context>
+          <context context-type="linenumber">75</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chart-seizures-subtitle" datatype="html">
@@ -1371,7 +1367,7 @@
         <target>Ostatnie <x id="PH" equiv-text="this.amount"/> lat</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-amount/chart-seizures-by-amount.component.ts</context>
-          <context context-type="linenumber">76</context>
+          <context context-type="linenumber">80</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chart-error" datatype="html">
@@ -1379,11 +1375,15 @@
         <target>Błąd: <x id="PH" equiv-text="error.message || error"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-amount/chart-seizures-by-amount.component.ts</context>
-          <context context-type="linenumber">85</context>
+          <context context-type="linenumber">90</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-hours/chart-seizures-by-hours.component.ts</context>
+          <context context-type="linenumber">80</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-length/chart-seizures-by-length.component.ts</context>
-          <context context-type="linenumber">79</context>
+          <context context-type="linenumber">83</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-reason/chart-seizures-by-reason.component.ts</context>
@@ -1395,7 +1395,7 @@
         <target>Godzina</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-hours/chart-seizures-by-hours.component.ts</context>
-          <context context-type="linenumber">44</context>
+          <context context-type="linenumber">48</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chart-seizures-by-hour-title" datatype="html">
@@ -1403,7 +1403,7 @@
         <target>Liczba ataków na porę dnia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-hours/chart-seizures-by-hours.component.ts</context>
-          <context context-type="linenumber">61</context>
+          <context context-type="linenumber">65</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chart-seizures-by-length-axis-x" datatype="html">
@@ -1411,7 +1411,7 @@
         <target>Czas trwania (min)</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-length/chart-seizures-by-length.component.ts</context>
-          <context context-type="linenumber">44</context>
+          <context context-type="linenumber">48</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chart-seizures-by-length-title" datatype="html">
@@ -1419,7 +1419,7 @@
         <target>Długość napadów</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-length/chart-seizures-by-length.component.ts</context>
-          <context context-type="linenumber">65</context>
+          <context context-type="linenumber">69</context>
         </context-group>
       </trans-unit>
       <trans-unit id="chart-seizures-by-reason-title" datatype="html">
@@ -1443,7 +1443,7 @@
         <target>Napady, leki i wydarzenia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-summary/chart-summary.component.ts</context>
-          <context context-type="linenumber">99</context>
+          <context context-type="linenumber">103</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routerLink-epilepsy-charts" datatype="html">
@@ -1607,7 +1607,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.ts</context>
-          <context context-type="linenumber">109</context>
+          <context context-type="linenumber">114</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
@@ -1651,7 +1651,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods-form/periods-form.component.ts</context>
-          <context context-type="linenumber">79</context>
+          <context context-type="linenumber">85</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
@@ -1715,7 +1715,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.ts</context>
-          <context context-type="linenumber">73</context>
+          <context context-type="linenumber">78</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
@@ -2371,7 +2371,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.ts</context>
-          <context context-type="linenumber">85</context>
+          <context context-type="linenumber">90</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/profile/pages/manage-profile/manage-profile.component.html</context>

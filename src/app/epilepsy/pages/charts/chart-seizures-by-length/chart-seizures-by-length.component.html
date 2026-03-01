@@ -1,13 +1,17 @@
-<div *ngIf="chartOptions$ | async as chartOptions">
-  <apx-chart
-    [series]="chartOptions.series"
-    [chart]="{ type: 'bar', height: 340 }"
-    [xaxis]="chartOptions.xaxis"
-    [yaxis]="chartOptions.yaxis"
-    [title]="chartOptions.title"
-    [subtitle]="chartOptions.subtitle"
-  ></apx-chart>
-</div>
-<div *ngIf="chartError$ | async as error" class="error">
-  {{ error }}
-</div>
+@if (chartOptions$ | async; as chartOptions) {
+  <div>
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="{ type: 'bar', height: 340 }"
+      [xaxis]="chartOptions.xaxis"
+      [yaxis]="chartOptions.yaxis"
+      [title]="chartOptions.title"
+      [subtitle]="chartOptions.subtitle"
+    ></apx-chart>
+  </div>
+}
+@if (chartError$ | async; as error) {
+  <div class="error">
+    {{ error }}
+  </div>
+}

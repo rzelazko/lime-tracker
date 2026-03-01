@@ -2,7 +2,7 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApexAxisChartSeries, ApexYAxis } from 'ng-apexcharts';
 import { combineLatest, map, Observable, of } from 'rxjs';
-import { catchError, ignoreElements, switchMap, distinctUntilChanged } from 'rxjs/operators';
+import { catchError, ignoreElements, switchMap, distinctUntilChanged, shareReplay } from 'rxjs/operators';
 import { ChartData } from './../../../../shared/models/chart-data.model';
 import { ChartOptions } from './../../../../shared/models/chart-options.model';
 import { ChartSummaryService } from './../../../../shared/services/chart-summary.service';
@@ -15,14 +15,14 @@ import { ChartSummaryService } from './../../../../shared/services/chart-summary
 })
 export class ChartSummaryComponent implements OnInit {
   @Input() titleOffset: number = 0;
-  chartOptions$?: Observable<ChartOptions>;
+  chartOptions$?: Observable<ChartOptions | null>;
   chartError$?: Observable<string>;
 
   private chartService: ChartSummaryService = inject(ChartSummaryService);
   private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
 
   ngOnInit(): void {
-    this.chartOptions$ = this.activatedRoute.params.pipe(
+    const data$ = this.activatedRoute.params.pipe(
       map((routeParams): number | undefined => routeParams['year']),
       distinctUntilChanged((a, b) => a === b),
       switchMap((selectedYear: number | undefined) => {
@@ -36,12 +36,16 @@ export class ChartSummaryComponent implements OnInit {
             .pipe(map((data) => ({ name: $localize`:@@title-seizures:Seizures`, ...data }))),
         ]);
       }),
+      shareReplay({ bufferSize: 1, refCount: true })
+    );
+
+    this.chartOptions$ = data$.pipe(
       map(([eventsData, seizuresData]) =>
         this.toChartOptions(eventsData, seizuresData)
       )
     );
 
-    this.chartError$ = this.chartOptions$.pipe(
+    this.chartError$ = data$.pipe(
       ignoreElements(),
       catchError((error) => of($localize`:@@error-message:Error: ${error.message || error}`))
     );

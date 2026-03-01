@@ -16,10 +16,13 @@ describe('ErrorCardComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ErrorCardComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
+    // when
+    fixture.detectChanges();
+
+    // then
     expect(component).toBeTruthy();
   });
 

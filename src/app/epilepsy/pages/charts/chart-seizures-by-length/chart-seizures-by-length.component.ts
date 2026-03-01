@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { catchError, map, Observable, of, switchMap, ignoreElements, distinctUntilChanged } from 'rxjs';
+import { catchError, map, Observable, of, switchMap, ignoreElements, distinctUntilChanged, shareReplay } from 'rxjs';
 import { ChartData } from './../../../../shared/models/chart-data.model';
 import { ChartOptions } from './../../../../shared/models/chart-options.model';
 import { ChartSeizuresByLengthService } from './../../../../shared/services/chart-seizures-by-length.service';
@@ -22,13 +22,17 @@ export class ChartSeizuresByLengthComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.chartOptions$ = this.activatedRoute.params.pipe(
+    const data$ = this.activatedRoute.params.pipe(
       map((routeParams): number | undefined => routeParams['year']),
       distinctUntilChanged((a, b) => a === b),
       switchMap((selectedYear: number | undefined) => {
         this.chartService.setYear(selectedYear);
         return this.chartService.seizureSerie();
       }),
+      shareReplay({ bufferSize: 1, refCount: true })
+    );
+
+    this.chartOptions$ = data$.pipe(
       map((data: ChartData) => ({
         xaxis: {
           axisTicks: {
@@ -74,7 +78,7 @@ export class ChartSeizuresByLengthComponent implements OnInit {
       }))
     );
 
-    this.chartError$ = this.chartOptions$.pipe(
+    this.chartError$ = data$.pipe(
       ignoreElements(),
       catchError((error) => of($localize`:@@chart-error:Error: ${error.message || error}`))
     );
