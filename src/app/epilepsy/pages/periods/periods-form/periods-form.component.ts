@@ -62,7 +62,12 @@ export class PeriodsFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
+    if (this.submitting) {
+      return;
+    }
+
     this.submitting = true;
+    this.submitSubscription?.unsubscribe();
     this.cdr.markForCheck();
     const formData: Partial<Period> = {
       startDate: moment(this.form.value.startDate),
@@ -84,7 +89,14 @@ export class PeriodsFormComponent implements OnInit, OnDestroy {
       .subscribe({
         next: () => this.router.navigate([$localize`:@@routerLink-epilepsy-periods:/epilepsy/periods`]),
         error: (error) => {
-          const safeError = error?.message || error?.error?.message || error?.statusText || JSON.stringify(error) || String(error);
+          let safeError = error?.message || error?.error?.message || error?.statusText;
+          if (!safeError) {
+            try {
+              safeError = JSON.stringify(error);
+            } catch {
+              safeError = String(error);
+            }
+          }
           this.error = safeError;
           this.cdr.markForCheck();
         }
