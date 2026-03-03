@@ -1,28 +1,12 @@
 // For format details, see https://aka.ms/devcontainer.json.
 // For config options, see the README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node.
 {
-  "name": "Node.js & TypeScript",
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
-  "mounts": ["source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached"],
-  // Features to add to the dev container. More info: https://containers.dev/features.
-  "features": {
-    "ghcr.io/devcontainers/features/java:1": {
-      "version": "latest",
-      "jdkDistro": "open",
-      "gradleVersion": "latest",
-      "mavenVersion": "latest",
-      "antVersion": "latest",
-      "groovyVersion": "latest"
-    },
-    "ghcr.io/devcontainers-contrib/features/angular-cli:2": {
-      "version": "latest"
-    },
-    "ghcr.io/devcontainers-contrib/features/firebase-cli:2": {
-      "version": "latest"
-    },
-    "ghcr.io/kreemer/features/chrometesting:1": {},
-    "ghcr.io/wxw-matt/devcontainer-features/command_runner:0": {}
+  "name": "Debian Devcontainer",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
   },
+  "mounts": ["source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached"],
   // Configure tool-specific properties.
   "customizations": {
     "vscode": {
@@ -36,15 +20,16 @@
     }
   },
   "remoteEnv": {
-    "CHROME_BIN": "/usr/local/bin/chrome"
-  }
+    "CHROME_BIN": "/usr/bin/chromium",
+    "SHELL": "/bin/bash"
+  },
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  // "forwardPorts": [],
+  "forwardPorts": [4200, 4400],
 
   // Use 'postCreateCommand' to run commands after the container is created.
-  // "postCreateCommand": "yarn install",
+  "postCreateCommand": "bash -c 'source /usr/local/share/nvm/nvm.sh && nvm install && nvm use && npm install && npx ng completion'",
 
   // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-  // "remoteUser": "root"
+  "remoteUser": "root"
 }
