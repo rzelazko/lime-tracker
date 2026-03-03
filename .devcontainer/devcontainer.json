@@ -6,7 +6,7 @@
     "dockerfile": "Dockerfile",
     "context": ".."
   },
-  "mounts": ["source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached"],
+  "mounts": ["source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached"],
   // Configure tool-specific properties.
   "customizations": {
     "vscode": {
