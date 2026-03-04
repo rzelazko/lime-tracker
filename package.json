@@ -43,7 +43,7 @@
     "@angular/localize": "^21.2.0",
     "@types/jasmine": "^5.1.8",
     "@types/node": "^25.3.2",
-    "firebase-tools": "^14.11.2",
+    "firebase-tools": "^15.8.0",
     "jasmine-core": "^6.1.0",
     "karma": "~6.4.4",
     "karma-chrome-launcher": "~3.2.0",
