@@ -35,11 +35,9 @@ export class ChartSeizuresByAmountComponent implements OnInit, OnChanges {
   }
 
   private loadChart(): void {
-    const data$ = this.chartService.seizureSerie(this.by, this.amount).pipe(
-      shareReplay(1)
-    );
+    const data$ = this.chartService.seizureSerie(this.by, this.amount);
 
-    this.chartOptions$ = data$.pipe(
+    const options$ = data$.pipe(
       map((seriesData: ApexAxisChartSeries) => ({
         xaxis: {
           axisTicks: {
@@ -82,10 +80,14 @@ export class ChartSeizuresByAmountComponent implements OnInit, OnChanges {
             offsetX: this.titleOffset,
         }
       } as ChartOptions)),
+      shareReplay(1)
+    );
+
+    this.chartOptions$ = options$.pipe(
       catchError(() => of(null))
     );
 
-    this.chartError$ = data$.pipe(
+    this.chartError$ = options$.pipe(
       ignoreElements(),
       catchError((error) => of($localize`:@@chart-error:Error: ${error.message || error}`))
     );

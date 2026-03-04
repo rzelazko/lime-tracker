@@ -64,7 +64,7 @@ export class ChartHeatmapComponent implements OnInit {
         this.chartService.setYear(selectedYear);
         return this.chartService.seizureSerie();
       }),
-      shareReplay(1)
+      shareReplay({ bufferSize: 1, refCount: true })
     );
 
     this.chartOptions$ = data$.pipe(

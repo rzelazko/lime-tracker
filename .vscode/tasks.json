@@ -15,7 +15,7 @@
             "regexp": "Starting emulators"
           },
           "endsPattern": {
-            "regexp": "Emulator Hub running"
+            "regexp": ".*All emulators ready.*"
           }
         }
       }
@@ -33,7 +33,7 @@
             "regexp": "(.*?)"
           },
           "endsPattern": {
-            "regexp": "bundle generation complete"
+            "regexp": ".*bundle generation complete\\..*"
           }
         }
       }
@@ -51,7 +51,7 @@
             "regexp": "(.*?)"
           },
           "endsPattern": {
-            "regexp": "bundle generation complete"
+            "regexp": ".*bundle generation complete\\..*"
           }
         }
       }
@@ -77,7 +77,7 @@
             "regexp": "(.*?)"
           },
           "endsPattern": {
-            "regexp": "bundle generation complete"
+            "regexp": ".*bundle generation complete\\..*"
           }
         }
       }
