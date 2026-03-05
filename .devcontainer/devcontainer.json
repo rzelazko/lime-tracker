@@ -6,7 +6,10 @@
     "dockerfile": "Dockerfile",
     "context": ".."
   },
-  "mounts": ["source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached"],
+  "mounts": [
+    "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,consistency=cached",
+    "source=continue-data,target=/root/.continue,type=volume"
+  ],
   // Configure tool-specific properties.
   "customizations": {
     "vscode": {
@@ -15,7 +18,8 @@
         "manux54.angular-localization-helper",
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
-        "github.vscode-github-actions"
+        "github.vscode-github-actions",
+        "continue.continue"
       ]
     }
   },
