@@ -36,7 +36,7 @@ export class AppUpdateService implements OnDestroy {
     const everySixHours$ = interval(6 * 60 * 60 * 1000);
     const everySixHoursOnceAppIsStable$ = concat(appIsStable$, everySixHours$);
 
-    everySixHoursOnceAppIsStable$.subscribe(async () => {
+    everySixHoursOnceAppIsStable$.pipe(takeUntil(this.destroy$)).subscribe(async () => {
       try {
         const updateFound = await this.updates.checkForUpdate();
         if (updateFound) {
