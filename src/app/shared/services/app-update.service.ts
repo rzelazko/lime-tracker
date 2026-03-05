@@ -1,17 +1,33 @@
-import { ApplicationRef, Injectable, isDevMode } from '@angular/core';
+import { ApplicationRef, Injectable, isDevMode, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SwUpdate } from '@angular/service-worker';
-import { concat, first, interval } from 'rxjs';
+import { concat, first, interval, Subject, takeUntil } from 'rxjs';
 import { UpdateDialogComponent } from './../components/update-dialog/update-dialog.component';
 @Injectable({
   providedIn: 'root',
 })
-export class AppUpdateService {
+export class AppUpdateService implements OnDestroy {
+  private destroy$ = new Subject<void>();
+
   constructor(
     private appRef: ApplicationRef,
     private readonly updates: SwUpdate,
     private dialog: MatDialog
-  ) {}
+  ) {
+    // Handle unrecoverable states - critical for iOS Safari
+    this.updates.unrecoverable
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((event) => {
+        console.error('Service worker unrecoverable error:', event.reason);
+        // Force reload to recover - necessary on iOS Safari
+        document.location.reload();
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
   checkForUpdate() {
     // Allow the app to stabilize first, before starting
