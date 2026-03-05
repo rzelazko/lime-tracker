@@ -2,7 +2,7 @@ const fs = require("fs-extra");
 const path = require("path");
 const xml2js = require("xml2js");
 
-const translateManifests = async (sourceDirectory, destinationDirectory) => {
+const translateManifests = async (sourceDirectory, destinationDirectory, appVersion) => {
   const xliffFiles = fs
     .readdirSync(path.join(sourceDirectory, "locale"))
     .map((xlfPath) => path.join(sourceDirectory, "locale", xlfPath));
@@ -44,7 +44,15 @@ const translateManifests = async (sourceDirectory, destinationDirectory) => {
     const language = targetLanguage || sourceLanguage;
 
     const manifestTemplate = fs.readFileSync(manifestTemplatePath, "utf8");
-    const manifestOutput = manifestTemplate.replace(/"@@(.+)"/g, (match, key) => {
+    
+    // Inject version from package.json FIRST (before translation processing)
+    let manifestOutput = manifestTemplate.replace(
+      /"@@app-version"/g,
+      `"${appVersion}"`
+    );
+    
+    // Then process translations (exclude already-replaced version)
+    manifestOutput = manifestOutput.replace(/"@@(.+)"/g, (match, key) => {
       const transUnit = xliffFile.body.transUnit.find((tu) => tu.$.id === key);
       return JSON.stringify(transUnit && (transUnit.target || transUnit.source) || "");
     });
@@ -72,11 +80,12 @@ const copyDefaultLang = (destinationDirectory) => {
 const main = async () => {
   const packageJson = require(path.join(__dirname, "..", "package.json"));
   const appName = packageJson.name;
+  const appVersion = packageJson.version;
 
   const sourceDirectory = path.join(__dirname, "..", "src");
   const destinationDirectory = path.join(__dirname, "..", "dist", appName, "browser");
 
-  await translateManifests(sourceDirectory, destinationDirectory);
+  await translateManifests(sourceDirectory, destinationDirectory, appVersion);
   copyDefaultLang(destinationDirectory);
 };
 
