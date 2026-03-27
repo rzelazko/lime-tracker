@@ -14,7 +14,7 @@ export class UpdateDialogComponent implements OnInit {
 
   onClose(): void {
     this.ngZone.run(() => {
-      this.dialogRef.close();
+      this.dialogRef.close(true);
     });
   }
 }
