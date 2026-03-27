@@ -52,9 +52,9 @@ export class AppUpdateService implements OnDestroy {
     this.isUpdateDialogOpen = true;
     const dialogRef = this.dialog.open(UpdateDialogComponent);
 
-    dialogRef.afterClosed().subscribe(() => {
+    dialogRef.afterClosed().subscribe(result => {
       this.isUpdateDialogOpen = false;
-      this.doAppUpdate();
+      if (result === true || result === 'accepted') this.doAppUpdate();
     });
   }
 
