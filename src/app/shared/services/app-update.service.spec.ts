@@ -9,7 +9,7 @@ import { AppUpdateService } from './app-update.service';
 describe('AppUpdateService', () => {
   let service: AppUpdateService;
   let appIsStable$: BehaviorSubject<boolean>;
-  let afterClosed$: Subject<void>;
+  let afterClosed$: Subject<boolean | undefined>;
   let dialogRefSpy: jasmine.SpyObj<MatDialogRef<UpdateDialogComponent>>;
   let dialogSpy: jasmine.SpyObj<MatDialog>;
   let swUpdateSpy: jasmine.SpyObj<SwUpdate>;
@@ -18,7 +18,7 @@ describe('AppUpdateService', () => {
     jasmine.clock().install();
 
     appIsStable$ = new BehaviorSubject(false);
-    afterClosed$ = new Subject<void>();
+    afterClosed$ = new Subject<boolean | undefined>();
     dialogRefSpy = jasmine.createSpyObj('MatDialogRef', ['afterClosed']);
     dialogSpy = jasmine.createSpyObj('MatDialog', ['open']);
     swUpdateSpy = jasmine.createSpyObj(
@@ -90,7 +90,7 @@ describe('AppUpdateService', () => {
 
     expect(dialogSpy.open).toHaveBeenCalledTimes(1);
 
-    afterClosed$.next();
+    afterClosed$.next(true);
     flushMicrotasks();
 
     expect(service.doAppUpdate).toHaveBeenCalledTimes(1);
