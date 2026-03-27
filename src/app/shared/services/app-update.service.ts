@@ -1,13 +1,19 @@
 import { ApplicationRef, Injectable, isDevMode, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SwUpdate } from '@angular/service-worker';
-import { concat, first, interval, Subject, takeUntil } from 'rxjs';
+import { first, fromEvent, interval, merge, Subject, takeUntil } from 'rxjs';
 import { UpdateDialogComponent } from './../components/update-dialog/update-dialog.component';
 @Injectable({
   providedIn: 'root',
 })
 export class AppUpdateService implements OnDestroy {
+  private static readonly PERIODIC_UPDATE_CHECK_INTERVAL = 6 * 60 * 60 * 1000;
+  private static readonly MIN_UPDATE_CHECK_INTERVAL = 60 * 1000;
+
   private destroy$ = new Subject<void>();
+  private isUpdateCheckInProgress = false;
+  private isUpdateDialogOpen = false;
+  private lastUpdateCheckAt = 0;
 
   constructor(
     private appRef: ApplicationRef,
@@ -30,40 +36,79 @@ export class AppUpdateService implements OnDestroy {
   }
 
   checkForUpdate() {
-    // Allow the app to stabilize first, before starting
-    // polling for updates with `interval()`.
-    const appIsStable$ = this.appRef.isStable.pipe(first((isStable) => isStable === true));
-    const everySixHours$ = interval(6 * 60 * 60 * 1000);
-    const everySixHoursOnceAppIsStable$ = concat(appIsStable$, everySixHours$);
-
-    everySixHoursOnceAppIsStable$.pipe(takeUntil(this.destroy$)).subscribe(async () => {
-      try {
-        const updateFound = await this.updates.checkForUpdate();
-        if (updateFound) {
-          console.log('A new version is available');
-          this.showAppUpdateAlert();
-        } else {
-          console.log('Already on the latest version');
-        }
-      } catch (err) {
-        if (isDevMode()) {
-          console.info('Service workers for PWA disabled');
-        } else {
-          console.error('Failed to check for updates:', err);
-        }
-      }
-    });
+    this.appRef.isStable
+      .pipe(first((isStable) => isStable), takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.bindRuntimeUpdateChecks();
+        void this.performUpdateCheck(true);
+      });
   }
 
   showAppUpdateAlert() {
+    if (this.isUpdateDialogOpen) {
+      return;
+    }
+
+    this.isUpdateDialogOpen = true;
     const dialogRef = this.dialog.open(UpdateDialogComponent);
 
     dialogRef.afterClosed().subscribe(() => {
+      this.isUpdateDialogOpen = false;
       this.doAppUpdate();
     });
   }
 
   doAppUpdate() {
     this.updates.activateUpdate().then(() => document.location.reload());
+  }
+
+  private bindRuntimeUpdateChecks() {
+    merge(
+      interval(AppUpdateService.PERIODIC_UPDATE_CHECK_INTERVAL),
+      fromEvent(window, 'focus'),
+      fromEvent(window, 'online'),
+      fromEvent(window, 'pageshow'),
+      fromEvent(document, 'visibilitychange')
+    )
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((event) => {
+        if (event.type === 'visibilitychange' && document.visibilityState !== 'visible') {
+          return;
+        }
+
+        void this.performUpdateCheck();
+      });
+  }
+
+  private async performUpdateCheck(force = false) {
+    if (this.isUpdateCheckInProgress) {
+      return;
+    }
+
+    const now = Date.now();
+    if (!force && now - this.lastUpdateCheckAt < AppUpdateService.MIN_UPDATE_CHECK_INTERVAL) {
+      return;
+    }
+
+    this.isUpdateCheckInProgress = true;
+    this.lastUpdateCheckAt = now;
+
+    try {
+      const updateFound = await this.updates.checkForUpdate();
+      if (updateFound) {
+        console.log('A new version is available');
+        this.showAppUpdateAlert();
+      } else {
+        console.log('Already on the latest version');
+      }
+    } catch (err) {
+      if (isDevMode()) {
+        console.info('Service workers for PWA disabled');
+      } else {
+        console.error('Failed to check for updates:', err);
+      }
+    } finally {
+      this.isUpdateCheckInProgress = false;
+    }
   }
 }
