@@ -76,6 +76,7 @@ describe('AppUpdateService', () => {
 
   it('opens the update dialog only once until it is closed', fakeAsync(() => {
     swUpdateSpy.checkForUpdate.and.resolveTo(true);
+    spyOn(service, 'doAppUpdate');
 
     service.checkForUpdate();
     appIsStable$.next(true);
@@ -92,6 +93,6 @@ describe('AppUpdateService', () => {
     afterClosed$.next();
     flushMicrotasks();
 
-    expect(swUpdateSpy.activateUpdate).toHaveBeenCalledTimes(1);
+    expect(service.doAppUpdate).toHaveBeenCalledTimes(1);
   }));
 });

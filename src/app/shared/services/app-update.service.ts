@@ -63,8 +63,13 @@ export class AppUpdateService implements OnDestroy {
   }
 
   private bindRuntimeUpdateChecks() {
+    interval(AppUpdateService.PERIODIC_UPDATE_CHECK_INTERVAL)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        void this.performUpdateCheck();
+      });
+
     merge(
-      interval(AppUpdateService.PERIODIC_UPDATE_CHECK_INTERVAL),
       fromEvent(window, 'focus'),
       fromEvent(window, 'online'),
       fromEvent(window, 'pageshow'),
