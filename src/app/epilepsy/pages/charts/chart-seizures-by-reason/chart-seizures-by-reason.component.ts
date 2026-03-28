@@ -2,7 +2,7 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import { getApexPieTooltip } from '../utils/apex-tooltip.utils';
 import { ActivatedRoute } from '@angular/router';
 import { ApexNonAxisChartSeries, ApexChart, ApexResponsive, ApexLegend } from 'ng-apexcharts';
-import { Observable, of, startWith } from 'rxjs';
+import { Observable, of, merge } from 'rxjs';
 import { catchError, map, switchMap, distinctUntilChanged } from 'rxjs/operators';
 import { ChartData } from './../../../../shared/models/chart-data.model';
 import { ChartSeizuresByReasonService } from './../../../../shared/services/chart-seizures-by-reason.service';
@@ -22,9 +22,11 @@ export class ChartSeizuresByReasonComponent implements OnInit {
   private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
 
   ngOnInit(): void {
-    const routeParams$ = this.activatedRoute?.params ?? of(this.activatedRoute?.snapshot?.params ?? {});
+    const routeParams$ = merge(
+      of(this.activatedRoute.snapshot.params),
+      this.activatedRoute.params
+    );
     const dataStream$ = routeParams$.pipe(
-      startWith(this.activatedRoute?.snapshot?.params ?? {}),
       map((routeParams): number | undefined => routeParams['year']),
       map((year) => {
         const parsedYear = year ? parseInt(year.toString(), 10) : undefined;
