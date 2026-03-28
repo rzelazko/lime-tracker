@@ -1,5 +1,7 @@
 FROM mcr.microsoft.com/devcontainers/base:bookworm
 
+EXPOSE 4200
+
 ENV NVM_DIR=/usr/local/share/nvm
 COPY .nvmrc /tmp/.nvmrc
 RUN mkdir -p "$NVM_DIR" && \
