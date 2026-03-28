@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { catchError, map, Observable, of, switchMap, ignoreElements, distinctUntilChanged, shareReplay } from 'rxjs';
+import { catchError, map, Observable, of, switchMap, ignoreElements, distinctUntilChanged, shareReplay, startWith } from 'rxjs';
 import { ChartData } from './../../../../shared/models/chart-data.model';
 import { ChartOptions } from './../../../../shared/models/chart-options.model';
 import { ChartSeizuresByLengthService } from './../../../../shared/services/chart-seizures-by-length.service';
@@ -22,7 +22,9 @@ export class ChartSeizuresByLengthComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const data$ = this.activatedRoute.params.pipe(
+    const routeParams$ = this.activatedRoute?.params ?? of(this.activatedRoute?.snapshot?.params ?? {});
+    const data$ = routeParams$.pipe(
+      startWith(this.activatedRoute?.snapshot?.params ?? {}),
       map((routeParams): number | undefined => routeParams['year']),
       distinctUntilChanged((a, b) => a === b),
       switchMap((selectedYear: number | undefined) => {

@@ -1,5 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, convertToParamMap, Router } from '@angular/router';
+import { of, startWith } from 'rxjs';
 import {
   COMPARE_AMOUNT_MAX,
   COMPARE_AMOUNT_MIN,
@@ -21,7 +22,8 @@ export class CompareByAmountComponent implements OnInit {
   amount: number | null = null;
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params) => {
+    const routeParamMap$ = this.route?.paramMap ?? of(this.route?.snapshot?.paramMap ?? convertToParamMap({}));
+    routeParamMap$.pipe(startWith(this.route?.snapshot?.paramMap ?? convertToParamMap({}))).subscribe((params) => {
       const by = params.get('by');
       const amount = params.get('amount');
 

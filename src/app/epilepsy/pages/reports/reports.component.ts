@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { catchError, EMPTY, Observable, Subscription } from 'rxjs';
+import { catchError, EMPTY, Observable, startWith, Subscription } from 'rxjs';
 import { Report } from './../../../shared/models/report.model';
 import { ReportsService } from './../../../shared/services/reports.service';
 
@@ -21,7 +21,10 @@ export class ReportsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.report$ = this.reportsService.getReports();
-    this.routeSubscription = this.activatedRoute.params.subscribe((routeParams) => {
+    const routeParams$ = this.activatedRoute?.params ?? EMPTY;
+    this.routeSubscription = routeParams$.pipe(
+      startWith(this.activatedRoute?.snapshot?.params ?? {})
+    ).subscribe((routeParams) => {
       this.selectedYear = routeParams['year'];
       this.report$ = this.reportsService.getReports(this.selectedYear);
     });

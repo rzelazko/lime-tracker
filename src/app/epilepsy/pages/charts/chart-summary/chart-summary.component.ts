@@ -1,7 +1,7 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApexAxisChartSeries, ApexYAxis } from 'ng-apexcharts';
-import { combineLatest, map, Observable, of } from 'rxjs';
+import { combineLatest, map, Observable, of, startWith } from 'rxjs';
 import { catchError, ignoreElements, switchMap, distinctUntilChanged, shareReplay } from 'rxjs/operators';
 import { ChartData } from './../../../../shared/models/chart-data.model';
 import { ChartOptions } from './../../../../shared/models/chart-options.model';
@@ -22,7 +22,9 @@ export class ChartSummaryComponent implements OnInit {
   private activatedRoute: ActivatedRoute = inject(ActivatedRoute);
 
   ngOnInit(): void {
-    const data$ = this.activatedRoute.params.pipe(
+    const routeParams$ = this.activatedRoute?.params ?? of(this.activatedRoute?.snapshot?.params ?? {});
+    const data$ = routeParams$.pipe(
+      startWith(this.activatedRoute?.snapshot?.params ?? {}),
       map((routeParams): number | undefined => routeParams['year']),
       distinctUntilChanged((a, b) => a === b),
       switchMap((selectedYear: number | undefined) => {
