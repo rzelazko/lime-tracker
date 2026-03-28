@@ -28,7 +28,7 @@ describe('ChartHeatmapComponent', () => {
       'subtitle',
       'seizureSerie'
     ]);
-    const activatedRouteMockObj = { params: of({ year: '2021' }) };
+    const activatedRouteMockObj = { params: of({ year: '2021' }), snapshot: { params: { year: '2021' } } };
 
     await TestBed.configureTestingModule({
       declarations: [ChartHeatmapComponent, ErrorCardComponent],

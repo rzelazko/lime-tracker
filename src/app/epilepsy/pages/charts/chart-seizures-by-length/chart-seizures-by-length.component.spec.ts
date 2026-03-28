@@ -21,7 +21,7 @@ describe('ChartSeizuresByLengthComponent', () => {
       declarations: [ChartSeizuresByLengthComponent],
       providers: [
         { provide: ChartSeizuresByLengthService, useClass: MockChartSeizuresByLengthService },
-        { provide: ActivatedRoute, useValue: { params: of({ year: '2021' }) } }
+        { provide: ActivatedRoute, useValue: { params: of({ year: '2021' }), snapshot: { params: { year: '2021' } } } }
       ],
       imports: [MockApexChartsComponent]
     }).compileComponents();

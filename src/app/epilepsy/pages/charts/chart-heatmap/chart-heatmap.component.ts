@@ -1,7 +1,7 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApexPlotOptions } from 'ng-apexcharts';
-import { catchError, ignoreElements, map, Observable, of, switchMap, distinctUntilChanged, shareReplay } from 'rxjs';
+import { catchError, ignoreElements, map, Observable, of, switchMap, distinctUntilChanged, shareReplay, merge } from 'rxjs';
 import { ChartData } from './../../../../shared/models/chart-data.model';
 import { ChartOptions } from './../../../../shared/models/chart-options.model';
 import { ChartHeatmapService } from './../../../../shared/services/chart-heatmap.service';
@@ -57,7 +57,11 @@ export class ChartHeatmapComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const data$ = this.activatedRoute.params.pipe(
+    const routeParams$ = merge(
+      of(this.activatedRoute.snapshot.params),
+      this.activatedRoute.params
+    );
+    const data$ = routeParams$.pipe(
       map((routeParams): number | undefined => routeParams['year']),
       distinctUntilChanged((a, b) => a === b),
       switchMap((selectedYear: number | undefined) => {
