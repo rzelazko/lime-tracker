@@ -52,6 +52,14 @@ export class AuthService implements OnDestroy {
     return this.userId$;
   }
 
+  authStateProvider$(): Observable<User | null> {
+    return this.authState$;
+  }
+
+  isLoggedIn(): boolean {
+    return !!this.user;
+  }
+
   userDetails$(): Observable<UserData> {
     return this.userData$;
   }

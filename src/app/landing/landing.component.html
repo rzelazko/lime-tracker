@@ -1,0 +1,91 @@
+<mat-toolbar class="landing-toolbar">
+  <span class="landing-logo"><mat-icon svgIcon="logo" class="logo"></mat-icon> <span class="landing-logo-text" i18n="@@landing-logo">Lime Tracker</span></span>
+  <span class="spacer"></span>
+  <ng-container *ngIf="user$ | async as user; else authButtons">
+    <a mat-flat-button color="primary" routerLink="/epilepsy" i18n-routerLink="@@routerLink-epilepsy" i18n="@@landing-cta-get-started">Get Started</a>
+  </ng-container>
+  <ng-template #authButtons>
+    <div class="auth-buttons">
+      <a mat-stroked-button routerLink="/login" i18n-routerLink="@@routerLink-login" i18n="@@action-login">Log in</a>
+      <a mat-flat-button color="primary" routerLink="/register" i18n-routerLink="@@routerLink-register" i18n="@@action-register">Register</a>
+    </div>
+  </ng-template>
+  <button mat-icon-button [matMenuTriggerFor]="langMenu" aria-label="Select language"
+    i18n-aria-label="@@landing-language-select">
+    <mat-icon>language</mat-icon>
+  </button>
+  <mat-menu #langMenu="matMenu">
+    <a mat-menu-item href="/pl">Polski</a>
+    <a mat-menu-item href="/en">English</a>
+  </mat-menu>
+</mat-toolbar>
+
+<main class="landing-content">
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-image-wrapper">
+        <img src="assets/hero/dashboard-showcase.png" alt="Lime Tracker Dashboard" loading="lazy" />
+      </div>
+
+      <div class="hero-content">
+        <h1 i18n="@@landing-hero-title">Understand Your Epilepsy. Take Control.</h1>
+        <p i18n="@@landing-hero-subtitle">The secure, modern seizure tracker that transforms data into actionable health
+          insights for you and your care team.</p>
+        
+        <div class="hero-slogans">
+          <div class="slogan">
+            <mat-icon>check_circle</mat-icon>
+            <span i18n="@@landing-slogan-track">Track every moment with precision</span>
+          </div>
+          <div class="slogan">
+            <mat-icon>insights</mat-icon>
+            <span i18n="@@landing-slogan-insights">Discover patterns in your data</span>
+          </div>
+          <div class="slogan">
+            <mat-icon>security</mat-icon>
+            <span i18n="@@landing-slogan-secure">Your health data is always secure</span>
+          </div>
+          <div class="slogan">
+            <mat-icon>hand_holding_heart</mat-icon>
+            <span i18n="@@landing-slogan-care">Share with your care team instantly</span>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <a mat-stroked-button routerLink="/register" i18n-routerLink="@@routerLink-register" class="cta-button" i18n="@@landing-cta-get-started">Get Started</a>
+          <button mat-flat-button color="primary" (click)="installPWA()" i18n="@@landing-cta-install-app">Install as App</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <h2 i18n="@@landing-features-title">Features Designed for You</h2>
+    <div class="feature-grid">
+      <mat-card>
+        <mat-card-header>
+          <mat-icon mat-card-avatar>timer</mat-icon>
+          <mat-card-title i18n="@@landing-feature-seizure-tracking-title">Seizure Tracking</mat-card-title>
+        </mat-card-header>
+        <mat-card-content i18n="@@landing-feature-seizure-tracking-desc">Easily log seizure duration, type, and severity
+          with a few taps.</mat-card-content>
+      </mat-card>
+      <mat-card>
+        <mat-card-header>
+          <mat-icon mat-card-avatar>trending_up</mat-icon>
+          <mat-card-title i18n="@@landing-feature-data-visualization-title">Data Visualization</mat-card-title>
+        </mat-card-header>
+        <mat-card-content i18n="@@landing-feature-data-visualization-desc">Analyze trends with powerful, interactive
+          heatmaps and charts.</mat-card-content>
+      </mat-card>
+      <mat-card>
+        <mat-card-header>
+          <mat-icon mat-card-avatar>medication</mat-icon>
+          <mat-card-title i18n="@@landing-feature-medication-management-title">Medication Management</mat-card-title>
+        </mat-card-header>
+        <mat-card-content i18n="@@landing-feature-medication-management-desc">Stay on top of your doses and track the
+          impact on your seizure control.</mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+</main>

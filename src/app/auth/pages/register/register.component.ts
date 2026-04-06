@@ -33,7 +33,11 @@ export class RegisterComponent implements OnInit {
 
   @ViewChild('formDirective') private formDirective?: NgForm;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.auth.isLoggedIn()) {
+      this.router.navigate([$localize`:@@routerLink-epilepsy:/epilepsy`]);
+    }
+  }
 
   onSubmit(): void {
     this.isLoading = true;
