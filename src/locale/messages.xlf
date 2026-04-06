@@ -10,15 +10,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/login/login.component.ts</context>
-          <context context-type="linenumber">29</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/auth/pages/login/login.component.ts</context>
-          <context context-type="linenumber">37</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/auth/pages/register/register.component.ts</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">35</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.html</context>
@@ -41,7 +33,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/auth/pages/register/register.component.ts</context>
-          <context context-type="linenumber">46</context>
+          <context context-type="linenumber">44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routerLink-login" datatype="html">
@@ -2184,7 +2176,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.html</context>
-          <context context-type="linenumber">51,52</context>
+          <context context-type="linenumber">55,56</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routerLink-register" datatype="html">
@@ -2195,7 +2187,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.html</context>
-          <context context-type="linenumber">51</context>
+          <context context-type="linenumber">55</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/layout/anonymous/anonymous.component.html</context>
@@ -2213,49 +2205,49 @@
         <source>Understand Your Epilepsy. Take Control.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.html</context>
-          <context context-type="linenumber">27,28</context>
+          <context context-type="linenumber">31,32</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-hero-subtitle" datatype="html">
         <source>The secure, modern seizure tracker that transforms data into actionable health insights for you and your care team.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.html</context>
-          <context context-type="linenumber">28,31</context>
+          <context context-type="linenumber">32,35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-slogan-track" datatype="html">
         <source>Track every moment with precision</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.html</context>
-          <context context-type="linenumber">34,36</context>
+          <context context-type="linenumber">38,40</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-slogan-insights" datatype="html">
         <source>Discover patterns in your data</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.html</context>
-          <context context-type="linenumber">38,40</context>
+          <context context-type="linenumber">42,44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-slogan-secure" datatype="html">
         <source>Your health data is always secure</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.html</context>
-          <context context-type="linenumber">42,44</context>
+          <context context-type="linenumber">46,48</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-slogan-care" datatype="html">
         <source>Share with your care team instantly</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.html</context>
-          <context context-type="linenumber">46,48</context>
+          <context context-type="linenumber">50,52</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-cta-install-app" datatype="html">
         <source>Install as App</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.html</context>
-          <context context-type="linenumber">52,55</context>
+          <context context-type="linenumber">56,59</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-features-title" datatype="html">
@@ -2318,14 +2310,14 @@
         <source>Lime Tracker helps you securely track epilepsy seizures, medications, and triggers. Visualize your progress with easy-to-use charts and stay in control of your health.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.ts</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">40</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-meta-keywords" datatype="html">
         <source>epilepsy tracker, seizure diary, health monitoring, PWA, data visualization</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.ts</context>
-          <context context-type="linenumber">45</context>
+          <context context-type="linenumber">44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error404-title" datatype="html">
