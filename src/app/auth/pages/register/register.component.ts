@@ -34,9 +34,7 @@ export class RegisterComponent implements OnInit {
   @ViewChild('formDirective') private formDirective?: NgForm;
 
   ngOnInit(): void {
-    if (this.auth.isLoggedIn()) {
-      this.router.navigate([$localize`:@@routerLink-epilepsy:/epilepsy`]);
-    }
+    // Auth redirect handled by AuthGuard in routing config
   }
 
   onSubmit(): void {

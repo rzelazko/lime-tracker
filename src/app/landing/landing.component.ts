@@ -35,16 +35,14 @@ export class LandingComponent implements OnInit {
 
   ngOnInit() {
     this.title.setTitle($localize`:@@landing-page-title:Lime Tracker - Understand Your Epilepsy Data`);
-    this.meta.addTags([
-      {
-        name: 'description',
-        content: $localize`:@@landing-meta-description:Lime Tracker helps you securely track epilepsy seizures, medications, and triggers. Visualize your progress with easy-to-use charts and stay in control of your health.`,
-      },
-      {
-        name: 'keywords',
-        content: $localize`:@@landing-meta-keywords:epilepsy tracker, seizure diary, health monitoring, PWA, data visualization`,
-      },
-    ]);
+    this.meta.updateTag({
+      name: 'description',
+      content: $localize`:@@landing-meta-description:Lime Tracker helps you securely track epilepsy seizures, medications, and triggers. Visualize your progress with easy-to-use charts and stay in control of your health.`,
+    });
+    this.meta.updateTag({
+      name: 'keywords',
+      content: $localize`:@@landing-meta-keywords:epilepsy tracker, seizure diary, health monitoring, PWA, data visualization`,
+    });
   }
 
   installPWA() {
