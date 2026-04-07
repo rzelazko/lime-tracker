@@ -6,6 +6,7 @@ import { LoginComponent } from './auth/pages/login/login.component';
 import { LogoutComponent } from './auth/pages/logout/logout.component';
 import { RegisterComponent } from './auth/pages/register/register.component';
 import { VerifyEmailComponent } from './auth/pages/verify-email/verify-email.component';
+import { LandingComponent } from './landing/landing.component';
 import { ChartsComponent } from './epilepsy/pages/charts/charts.component';
 import { CompareComponent } from './epilepsy/pages/compare/compare.component';
 import { CompareByAmountComponent } from './epilepsy/pages/compare/compare-by-amount/compare-by-amount.component';
@@ -36,12 +37,11 @@ const redirectUnauthorizedOrUnverifiedUser = (user: any) => {
 };
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: $localize`:@@routerLink-login:/login` },
+  { path: '', pathMatch: 'full', component: LandingComponent },
   {
     path: '',
     component: LayoutAnonymousComponent,
     children: [
-      { path: '', pathMatch: 'full', redirectTo: $localize`:@@routerLink-login:/login` },
       {
         path: $localize`:@@routing-login:login`,
         component: LoginComponent,

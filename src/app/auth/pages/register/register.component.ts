@@ -33,7 +33,9 @@ export class RegisterComponent implements OnInit {
 
   @ViewChild('formDirective') private formDirective?: NgForm;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // Auth redirect handled by AuthGuard in routing config
+  }
 
   onSubmit(): void {
     this.isLoading = true;

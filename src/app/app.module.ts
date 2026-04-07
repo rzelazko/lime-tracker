@@ -28,6 +28,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { environment } from './../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './auth/pages/login/login.component';
 import { LogoutComponent } from './auth/pages/logout/logout.component';
 import { RegisterComponent } from './auth/pages/register/register.component';
@@ -122,6 +123,7 @@ import { TimeSincePipe } from './shared/pipes/time-since.pipe';
   exports: [],
   bootstrap: [AppComponent],
   imports: [
+    LandingComponent,
     // Angular
     AppRoutingModule,
     BrowserAnimationsModule,

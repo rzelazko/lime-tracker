@@ -29,5 +29,18 @@ export class AppComponent implements OnInit {
 
   async ngOnInit() {
     this.updateService.checkForUpdate();
+
+    // Handle PWA installation prompt
+    window.addEventListener('beforeinstallprompt', (event) => {
+      // Prevent the mini-infobar from appearing on mobile
+      event.preventDefault();
+      // Store the event so it can be triggered later
+      (window as any).deferredPrompt = event;
+    });
+
+    // Clear the deferredPrompt when the app is installed
+    window.addEventListener('appinstalled', () => {
+      (window as any).deferredPrompt = null;
+    });
   }
 }
