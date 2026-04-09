@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { orderBy, where } from 'firebase/firestore';
-import { map, Observable, take } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { ChartData } from '../models/chart-data.model';
 import { Seizure } from '../models/seizure.model';
 import { ChartService } from './chart.service';
@@ -22,7 +22,6 @@ export class ChartSeizuresByTypeService extends ChartService {
         where('occurred', '<=', this.dateTo.toDate()),
       ])
       .pipe(
-        take(1),
         map((seizures) => this.aggregateSeizuresByType(seizures))
       );
   }
