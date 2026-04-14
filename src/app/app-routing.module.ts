@@ -37,7 +37,13 @@ const redirectUnauthorizedOrUnverifiedUser = (user: any) => {
 };
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', component: LandingComponent },
+  {
+    path: '',
+    pathMatch: 'full',
+    component: LandingComponent,
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectLoggedInToDashboard },
+  },
   {
     path: '',
     component: LayoutAnonymousComponent,
