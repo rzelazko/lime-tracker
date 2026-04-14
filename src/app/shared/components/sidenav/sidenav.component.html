@@ -52,6 +52,11 @@
   }
 
   <mat-divider></mat-divider>
+  @if (canInstallPwa$ | async) {
+    <mat-list-item><a mat-list-item (click)="installPwa()">
+      <mat-icon matListItemIcon>download</mat-icon> <span i18n="@@sidenav-install-app">Install App</span>
+    </a></mat-list-item>
+  }
   <mat-list-item><a mat-list-item routerLink="/account" i18n-routerLink="@@routerLink-account" routerLinkActive="active"
     (click)="onClose()">
     <mat-icon matListItemIcon>person</mat-icon> <span i18n="@@title-profile">Manage account</span>

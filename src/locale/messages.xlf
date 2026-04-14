@@ -529,7 +529,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
-          <context context-type="linenumber">57,58</context>
+          <context context-type="linenumber">62,63</context>
         </context-group>
       </trans-unit>
       <trans-unit id="seizure-trigger-lights" datatype="html">
@@ -929,7 +929,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">64</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login-action" datatype="html">
@@ -2247,77 +2247,77 @@
         <source>Install as App</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.html</context>
-          <context context-type="linenumber">56,59</context>
+          <context context-type="linenumber">57,60</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-features-title" datatype="html">
         <source>Features Designed for You</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.html</context>
-          <context context-type="linenumber">63,65</context>
+          <context context-type="linenumber">65,67</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-feature-seizure-tracking-title" datatype="html">
         <source>Seizure Tracking</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.html</context>
-          <context context-type="linenumber">68,70</context>
+          <context context-type="linenumber">70,72</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-feature-seizure-tracking-desc" datatype="html">
         <source>Easily log seizure duration, type, and severity with a few taps.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.html</context>
-          <context context-type="linenumber">70,73</context>
+          <context context-type="linenumber">72,75</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-feature-data-visualization-title" datatype="html">
         <source>Data Visualization</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.html</context>
-          <context context-type="linenumber">76,78</context>
+          <context context-type="linenumber">78,80</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-feature-data-visualization-desc" datatype="html">
         <source>Analyze trends with powerful, interactive heatmaps and charts.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.html</context>
-          <context context-type="linenumber">78,81</context>
+          <context context-type="linenumber">80,83</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-feature-medication-management-title" datatype="html">
         <source>Medication Management</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.html</context>
-          <context context-type="linenumber">84,86</context>
+          <context context-type="linenumber">86,88</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-feature-medication-management-desc" datatype="html">
         <source>Stay on top of your doses and track the impact on your seizure control.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.html</context>
-          <context context-type="linenumber">86,89</context>
+          <context context-type="linenumber">88,91</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-page-title" datatype="html">
         <source>Lime Tracker - Understand Your Epilepsy Data</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.ts</context>
-          <context context-type="linenumber">37</context>
+          <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-meta-description" datatype="html">
         <source>Lime Tracker helps you securely track epilepsy seizures, medications, and triggers. Visualize your progress with easy-to-use charts and stay in control of your health.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.ts</context>
-          <context context-type="linenumber">40</context>
+          <context context-type="linenumber">44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-meta-keywords" datatype="html">
         <source>epilepsy tracker, seizure diary, health monitoring, PWA, data visualization</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.ts</context>
-          <context context-type="linenumber">44</context>
+          <context context-type="linenumber">48</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error404-title" datatype="html">
@@ -2413,14 +2413,154 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
-          <context context-type="linenumber">55</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-dialog-title" datatype="html">
+        <source>Install App</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">1,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-ios-intro" datatype="html">
+        <source>To install this app on your iPhone or iPad:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">6,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-ios-step1" datatype="html">
+        <source>Tap the <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Share<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> button</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">9,10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-ios-step1-suffix" datatype="html">
+        <source>in the Safari toolbar</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">11,13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-ios-step2" datatype="html">
+        <source>Scroll down and tap <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>&quot;Add to Home Screen&quot;<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">13,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-ios-step3" datatype="html">
+        <source>Tap <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>&quot;Add&quot;<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> in the top right corner</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">14,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-ios-note" datatype="html">
+        <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;"/>info<x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Note: This app must be installed from Safari. If you&apos;re using another browser, please open this page in Safari first. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">17,20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-chrome-intro" datatype="html">
+        <source>To install this app:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">24,26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-chrome-step1" datatype="html">
+        <source>Click the <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>menu icon<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> (three dots) in the top right corner of your browser</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">26,27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-chrome-step2" datatype="html">
+        <source>Select <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>&quot;Install Lime Tracker&quot;<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> or <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>&quot;Add to Home screen&quot;<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">27,28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-chrome-step3" datatype="html">
+        <source>Follow the prompts to complete installation</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">28,32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-other-intro" datatype="html">
+        <source>Your browser may support installing this app as a Progressive Web App (PWA).</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">34,36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-supported-browsers" datatype="html">
+        <source>Supported browsers:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">37,39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-chrome-version" datatype="html">
+        <source>(desktop and Android)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">39,40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-edge-version" datatype="html">
+        <source>(desktop and mobile)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">40,41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-safari-version" datatype="html">
+        <source>(iOS 11.3+)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">41,42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-samsung-version" datatype="html">
+        <source>(Android)</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">42,46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-other-note" datatype="html">
+        <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;"/>lightbulb<x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Tip: Look for an &quot;Install&quot; or &quot;Add to Home Screen&quot; option in your browser&apos;s menu. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">47,50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dialog-action-close" datatype="html">
+        <source>Close</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">54,56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sidenav-install-app" datatype="html">
+        <source>Install App</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
+          <context context-type="linenumber">57,59</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-logout" datatype="html">
         <source>Log out</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
-          <context context-type="linenumber">61,62</context>
+          <context context-type="linenumber">66,67</context>
         </context-group>
       </trans-unit>
       <trans-unit id="update-dialog-title" datatype="html">

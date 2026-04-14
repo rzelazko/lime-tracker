@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import moment from 'moment';
 import 'moment/locale/pl'; // moment used to work without explicit import, but now it doesn't
 import { AppUpdateService } from './shared/services/app-update.service';
+import { PwaInstallService } from './shared/services/pwa-install.service';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ export class AppComponent implements OnInit {
   logoURL = 'assets/lime.svg';
   private domSanitizer: DomSanitizer = inject(DomSanitizer);
   private updateService: AppUpdateService = inject(AppUpdateService);
+  private pwaInstallService: PwaInstallService = inject(PwaInstallService);
   private matIconRegistry: MatIconRegistry = inject(MatIconRegistry);
 
   constructor(@Inject(LOCALE_ID) locale?: string) {
@@ -29,18 +31,6 @@ export class AppComponent implements OnInit {
 
   async ngOnInit() {
     this.updateService.checkForUpdate();
-
-    // Handle PWA installation prompt
-    window.addEventListener('beforeinstallprompt', (event) => {
-      // Prevent the mini-infobar from appearing on mobile
-      event.preventDefault();
-      // Store the event so it can be triggered later
-      (window as any).deferredPrompt = event;
-    });
-
-    // Clear the deferredPrompt when the app is installed
-    window.addEventListener('appinstalled', () => {
-      (window as any).deferredPrompt = null;
-    });
+    this.pwaInstallService.init();
   }
 }
