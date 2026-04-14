@@ -14,6 +14,8 @@ export class PwaInstallService {
   constructor(private dialog: MatDialog) {}
 
   init(): void {
+    this.installableSubject.next(this.canInstall());
+
     // Handle beforeinstallprompt event (Chrome, Edge, etc.)
     window.addEventListener('beforeinstallprompt', (event: Event) => {
       // Prevent the mini-infobar from appearing on mobile

@@ -2736,7 +2736,7 @@
       </trans-unit>
       <trans-unit id="install-pwa-ios-note" datatype="html">
         <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;"/>info<x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Note: This app must be installed from Safari. If you're using another browser, please open this page in Safari first. </source>
-        <target>Uwaga: Ta aplikacja musi być zainstalowana z Safari. Jeśli używasz innej przeglądarki, otwórz tę stronę najpierw w Safari.</target>
+        <target><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;"/>info<x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Uwaga: Ta aplikacja musi być zainstalowana z Safari. Jeśli używasz innej przeglądarki, otwórz tę stronę najpierw w Safari.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
           <context context-type="linenumber">17,20</context>
@@ -2824,7 +2824,7 @@
       </trans-unit>
       <trans-unit id="install-pwa-other-note" datatype="html">
         <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;"/>lightbulb<x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Tip: Look for an "Install" or "Add to Home Screen" option in your browser's menu. </source>
-        <target>Wskazówka: Poszukaj opcji "Zainstaluj" lub "Dodaj do ekranu głównego" w menu przeglądarki.</target>
+        <target><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;"/>lightbulb<x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Wskazówka: Poszukaj opcji "Zainstaluj" lub "Dodaj do ekranu głównego" w menu przeglądarki.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
           <context context-type="linenumber">47,50</context>

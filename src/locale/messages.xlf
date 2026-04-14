@@ -2459,7 +2459,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="install-pwa-ios-note" datatype="html">
-        <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;"/>info<x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Note: This app must be installed from Safari. If you&apos;re using another browser, please open this page in Safari first. </source>
+        <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;"/>info<x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Note: This app must be installed from Safari. If you&apos;re using another browser, please open this page in Safari first.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
           <context context-type="linenumber">17,20</context>
@@ -2536,7 +2536,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="install-pwa-other-note" datatype="html">
-        <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;"/>lightbulb<x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Tip: Look for an &quot;Install&quot; or &quot;Add to Home Screen&quot; option in your browser&apos;s menu. </source>
+        <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;"/>lightbulb<x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Tip: Look for an &quot;Install&quot; or &quot;Add to Home Screen&quot; option in your browser&apos;s menu.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
           <context context-type="linenumber">47,50</context>
