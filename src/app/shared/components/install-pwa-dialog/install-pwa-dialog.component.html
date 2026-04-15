@@ -1,0 +1,55 @@
+<h2 mat-dialog-title i18n="@@install-pwa-dialog-title">Install App</h2>
+
+<mat-dialog-content>
+  <!-- iOS Instructions -->
+  <div *ngIf="platform === 'ios'" class="install-instructions">
+    <p i18n="@@install-pwa-ios-intro">To install this app on your iPhone or iPad:</p>
+    <ol class="install-steps">
+      <li>
+        <span i18n="@@install-pwa-ios-step1">Tap the <strong>Share</strong> button</span>
+        <mat-icon class="share-icon">ios_share</mat-icon>
+        <span i18n="@@install-pwa-ios-step1-suffix">in the Safari toolbar</span>
+      </li>
+      <li i18n="@@install-pwa-ios-step2">Scroll down and tap <strong>"Add to Home Screen"</strong></li>
+      <li i18n="@@install-pwa-ios-step3">Tap <strong>"Add"</strong> in the top right corner</li>
+    </ol>
+    <p class="install-note" i18n="@@install-pwa-ios-note">
+      <mat-icon>info</mat-icon>
+      Note: This app must be installed from Safari. If you're using another browser, please open this page in Safari first.
+    </p>
+  </div>
+
+  <!-- Chrome/Edge Instructions (fallback if native prompt not available) -->
+  <div *ngIf="platform === 'chrome'" class="install-instructions">
+    <p i18n="@@install-pwa-chrome-intro">To install this app:</p>
+    <ol class="install-steps">
+      <li i18n="@@install-pwa-chrome-step1">Click the <strong>menu icon</strong> (three dots) in the top right corner of your browser</li>
+      <li i18n="@@install-pwa-chrome-step2">Select <strong>"Install Lime Tracker"</strong> or <strong>"Add to Home screen"</strong></li>
+      <li i18n="@@install-pwa-chrome-step3">Follow the prompts to complete installation</li>
+    </ol>
+  </div>
+
+  <!-- Other browsers -->
+  <div *ngIf="platform === 'other'" class="install-instructions">
+    <p i18n="@@install-pwa-other-intro">Your browser may support installing this app as a Progressive Web App (PWA).</p>
+    
+    <div class="browser-support">
+      <h4 i18n="@@install-pwa-supported-browsers">Supported browsers:</h4>
+      <ul>
+        <li><strong>Chrome</strong> <span i18n="@@install-pwa-chrome-version">(desktop and Android)</span></li>
+        <li><strong>Edge</strong> <span i18n="@@install-pwa-edge-version">(desktop and mobile)</span></li>
+        <li><strong>Safari</strong> <span i18n="@@install-pwa-safari-version">(iOS 11.3+)</span></li>
+        <li><strong>Samsung Internet</strong> <span i18n="@@install-pwa-samsung-version">(Android)</span></li>
+      </ul>
+    </div>
+
+    <p class="install-note" i18n="@@install-pwa-other-note">
+      <mat-icon>lightbulb</mat-icon>
+      Tip: Look for an "Install" or "Add to Home Screen" option in your browser's menu.
+    </p>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button (click)="onClose()" i18n="@@dialog-action-close">Close</button>
+</mat-dialog-actions>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../shared/services/auth.service';
+import { PwaInstallService } from '../shared/services/pwa-install.service';
 import { Observable } from 'rxjs';
 import { User } from 'firebase/auth';
 
@@ -28,9 +29,12 @@ import { User } from 'firebase/auth';
 })
 export class LandingComponent implements OnInit {
   user$: Observable<User | null>;
+  canInstallPwa$: Observable<boolean>;
+  private pwaInstallService: PwaInstallService = inject(PwaInstallService);
 
   constructor(private title: Title, private meta: Meta, private authService: AuthService) {
     this.user$ = this.authService.authStateProvider$();
+    this.canInstallPwa$ = this.pwaInstallService.installable$;
   }
 
   ngOnInit() {
@@ -46,26 +50,6 @@ export class LandingComponent implements OnInit {
   }
 
   installPWA() {
-    const deferredPrompt = (window as any).deferredPrompt;
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      // Wait for the user to respond to the prompt
-      deferredPrompt.userChoice.then((choiceResult: any) => {
-        if (choiceResult.outcome === 'accepted') {
-          console.log('User accepted the install prompt');
-        } else {
-          console.log('User dismissed the install prompt');
-        }
-        // Clear the deferredPrompt
-        (window as any).deferredPrompt = null;
-      });
-    } else {
-      // Fallback: try to open the app in standalone mode or show instructions
-      if (window.matchMedia('(display-mode: standalone)').matches) {
-        alert('App is already installed!');
-      } else {
-        alert('Installation prompt is not available. Try refreshing the page or check if you\'re using a supported browser.');
-      }
-    }
+    this.pwaInstallService.install();
   }
 }

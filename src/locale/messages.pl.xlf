@@ -63,7 +63,7 @@
         <target>logowanie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">46</context>
+          <context context-type="linenumber">52</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-logout" datatype="html">
@@ -71,7 +71,7 @@
         <target>wyloguj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">52</context>
+          <context context-type="linenumber">58</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-register" datatype="html">
@@ -79,7 +79,7 @@
         <target>rejestracja</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">56</context>
+          <context context-type="linenumber">62</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-register-confirm" datatype="html">
@@ -87,7 +87,7 @@
         <target>rejestracja/potwierdz</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">62</context>
+          <context context-type="linenumber">68</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-verify-email" datatype="html">
@@ -95,7 +95,7 @@
         <target>Zweryfikuj Adres Email</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">64</context>
+          <context context-type="linenumber">70</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-epilepsy" datatype="html">
@@ -103,7 +103,7 @@
         <target>epilepsja</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">69</context>
+          <context context-type="linenumber">75</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-dashboard" datatype="html">
@@ -111,7 +111,7 @@
         <target>Pulpit</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">75</context>
+          <context context-type="linenumber">81</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
@@ -127,7 +127,7 @@
         <target>wykresy</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">80</context>
+          <context context-type="linenumber">86</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-charts" datatype="html">
@@ -135,11 +135,11 @@
         <target>Wykresy</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">82</context>
+          <context context-type="linenumber">88</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">89</context>
+          <context context-type="linenumber">95</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/charts.component.html</context>
@@ -155,7 +155,7 @@
         <target>wykresy/:year</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">87</context>
+          <context context-type="linenumber">93</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-compare" datatype="html">
@@ -163,7 +163,7 @@
         <target>porownaj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">94</context>
+          <context context-type="linenumber">100</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-compare" datatype="html">
@@ -171,7 +171,7 @@
         <target>Porównaj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">96</context>
+          <context context-type="linenumber">102</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/compare/compare.component.html</context>
@@ -187,7 +187,7 @@
         <target>porownaj/:by/:amount</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">101</context>
+          <context context-type="linenumber">107</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-compare-by-amount" datatype="html">
@@ -195,7 +195,7 @@
         <target>Porównaj Po</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">103</context>
+          <context context-type="linenumber">109</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/compare/compare-by-amount/compare-by-amount.component.html</context>
@@ -207,7 +207,7 @@
         <target>okresy</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">108</context>
+          <context context-type="linenumber">114</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-periods" datatype="html">
@@ -215,7 +215,7 @@
         <target>Okresy</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">110</context>
+          <context context-type="linenumber">116</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
@@ -243,7 +243,7 @@
         <target>okresy/dodaj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">115</context>
+          <context context-type="linenumber">121</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-add-period" datatype="html">
@@ -251,7 +251,7 @@
         <target>Dodaj Okres</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">117</context>
+          <context context-type="linenumber">123</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods-form/periods-form.component.html</context>
@@ -263,7 +263,7 @@
         <target>okresy/aktualizuj/:id</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">122</context>
+          <context context-type="linenumber">128</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-update-period" datatype="html">
@@ -271,7 +271,7 @@
         <target>Aktualizuj informacje o okresie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">124</context>
+          <context context-type="linenumber">130</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/periods/periods-form/periods-form.component.html</context>
@@ -283,7 +283,7 @@
         <target>raporty</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">129</context>
+          <context context-type="linenumber">135</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-reports" datatype="html">
@@ -291,11 +291,11 @@
         <target>Raporty</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">131</context>
+          <context context-type="linenumber">137</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">138</context>
+          <context context-type="linenumber">144</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/reports/reports.component.html</context>
@@ -311,7 +311,7 @@
         <target>raporty/:year</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">136</context>
+          <context context-type="linenumber">142</context>
         </context-group>
       </trans-unit>
       <trans-unit id="routing-seizures" datatype="html">
@@ -319,7 +319,7 @@
         <target>napady</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">143</context>
+          <context context-type="linenumber">149</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-seizures" datatype="html">
@@ -327,7 +327,7 @@
         <target>Napady</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">145</context>
+          <context context-type="linenumber">151</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-seizures-by-amount/chart-seizures-by-amount.component.ts</context>
@@ -383,7 +383,7 @@
         <target>napady/dodaj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">150</context>
+          <context context-type="linenumber">156</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-add-seizure" datatype="html">
@@ -391,7 +391,7 @@
         <target>Dodaj Napad</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">152</context>
+          <context context-type="linenumber">158</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
@@ -403,7 +403,7 @@
         <target>napady/aktualizuj/:id</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">157</context>
+          <context context-type="linenumber">163</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-update-seizure" datatype="html">
@@ -411,7 +411,7 @@
         <target>Aktualizuj Dane Napadu</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">159</context>
+          <context context-type="linenumber">165</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/seizures/seizures-form/seizures-form.component.html</context>
@@ -423,7 +423,7 @@
         <target>leki</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">164</context>
+          <context context-type="linenumber">170</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-medications" datatype="html">
@@ -431,7 +431,7 @@
         <target>Leki</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">166</context>
+          <context context-type="linenumber">172</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/dashboard/dashboard.component.html</context>
@@ -451,7 +451,7 @@
         <target>leki/dodaj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">171</context>
+          <context context-type="linenumber">177</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-add-medication" datatype="html">
@@ -459,7 +459,7 @@
         <target>Dodaj Lek</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">173</context>
+          <context context-type="linenumber">179</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
@@ -471,7 +471,7 @@
         <target>leki/aktualizuj/:id</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">178</context>
+          <context context-type="linenumber">184</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-update-medication" datatype="html">
@@ -479,7 +479,7 @@
         <target>Aktualizuj Lek</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">180</context>
+          <context context-type="linenumber">186</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/medications/medications-form/medications-form.component.html</context>
@@ -491,7 +491,7 @@
         <target>wydarzenia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">185</context>
+          <context context-type="linenumber">191</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-events" datatype="html">
@@ -499,7 +499,7 @@
         <target>Wydarzenia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">187</context>
+          <context context-type="linenumber">193</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/charts/chart-summary/chart-summary.component.ts</context>
@@ -523,7 +523,7 @@
         <target>wydarzenia/dodaj</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">192</context>
+          <context context-type="linenumber">198</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-add-event" datatype="html">
@@ -531,7 +531,7 @@
         <target>Dodaj Zdarzenie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">194</context>
+          <context context-type="linenumber">200</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
@@ -543,7 +543,7 @@
         <target>wydarzenia/aktualizuj/:id</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">199</context>
+          <context context-type="linenumber">205</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-update-event" datatype="html">
@@ -551,7 +551,7 @@
         <target>Aktualizuj Zdarzenie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">201</context>
+          <context context-type="linenumber">207</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/epilepsy/pages/events/events-form/events-form.component.html</context>
@@ -563,7 +563,7 @@
         <target>konto</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">208</context>
+          <context context-type="linenumber">214</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-profile" datatype="html">
@@ -571,11 +571,11 @@
         <target>Twoje konto</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app-routing.module.ts</context>
-          <context context-type="linenumber">214</context>
+          <context context-type="linenumber">220</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
-          <context context-type="linenumber">57,58</context>
+          <context context-type="linenumber">62,63</context>
         </context-group>
       </trans-unit>
       <trans-unit id="seizure-trigger-lights" datatype="html">
@@ -1023,7 +1023,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">64</context>
         </context-group>
       </trans-unit>
       <trans-unit id="login-action" datatype="html">
@@ -2495,7 +2495,7 @@
         <target>Zainstaluj jako aplikację</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.html</context>
-          <context context-type="linenumber">56,59</context>
+          <context context-type="linenumber">57,60</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-features-title" datatype="html">
@@ -2503,7 +2503,7 @@
         <target>Funkcje stworzone dla Ciebie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.html</context>
-          <context context-type="linenumber">63,65</context>
+          <context context-type="linenumber">65,67</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-feature-seizure-tracking-title" datatype="html">
@@ -2511,7 +2511,7 @@
         <target>Rejestrowanie napadów</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.html</context>
-          <context context-type="linenumber">68,70</context>
+          <context context-type="linenumber">70,72</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-feature-seizure-tracking-desc" datatype="html">
@@ -2519,7 +2519,7 @@
         <target>Łatwo rejestruj czas trwania, rodzaj i nasilenie napadu kilkoma dotknięciami.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.html</context>
-          <context context-type="linenumber">70,73</context>
+          <context context-type="linenumber">72,75</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-feature-data-visualization-title" datatype="html">
@@ -2527,7 +2527,7 @@
         <target>Wizualizacja danych</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.html</context>
-          <context context-type="linenumber">76,78</context>
+          <context context-type="linenumber">78,80</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-feature-data-visualization-desc" datatype="html">
@@ -2535,7 +2535,7 @@
         <target>Analizuj trendy za pomocą potężnych, interaktywnych map cieplnych i wykresów.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.html</context>
-          <context context-type="linenumber">78,81</context>
+          <context context-type="linenumber">80,83</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-feature-medication-management-title" datatype="html">
@@ -2543,7 +2543,7 @@
         <target>Zarządzanie lekami</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.html</context>
-          <context context-type="linenumber">84,86</context>
+          <context context-type="linenumber">86,88</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-feature-medication-management-desc" datatype="html">
@@ -2551,7 +2551,7 @@
         <target>Kontroluj dawkowanie i obserwuj wpływ na kontrolę napadów.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.html</context>
-          <context context-type="linenumber">86,89</context>
+          <context context-type="linenumber">88,91</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-page-title" datatype="html">
@@ -2559,7 +2559,7 @@
         <target>Lime Tracker - zrozum dane o swojej epilepsji</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.ts</context>
-          <context context-type="linenumber">37</context>
+          <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-meta-description" datatype="html">
@@ -2567,7 +2567,7 @@
         <target>Lime Tracker pomaga bezpiecznie śledzić napady epileptyczne, leki i czynniki wyzwalające. Wizualizuj swoje postępy za pomocą łatwych w obsłudze wykresów i zachowaj kontrolę nad swoim zdrowiem.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.ts</context>
-          <context context-type="linenumber">40</context>
+          <context context-type="linenumber">44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing-meta-keywords" datatype="html">
@@ -2575,7 +2575,7 @@
         <target>tracker epilepsji, dziennik napadów, monitorowanie zdrowia, PWA, wizualizacja danych</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/landing/landing.component.ts</context>
-          <context context-type="linenumber">44</context>
+          <context context-type="linenumber">48</context>
         </context-group>
       </trans-unit>
       <trans-unit id="error404-title" datatype="html">
@@ -2683,7 +2683,167 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
-          <context context-type="linenumber">55</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-dialog-title" datatype="html">
+        <source>Install App</source>
+        <target>Zainstaluj aplikację</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">1,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-ios-intro" datatype="html">
+        <source>To install this app on your iPhone or iPad:</source>
+        <target>Aby zainstalować tę aplikację na iPhonie lub iPadzie:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">6,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-ios-step1" datatype="html">
+        <source>Tap the <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Share<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> button</source>
+        <target>Stuknij przycisk <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Udostępnij<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">9,10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-ios-step1-suffix" datatype="html">
+        <source>in the Safari toolbar</source>
+        <target>na pasku narzędzi Safari</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">11,13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-ios-step2" datatype="html">
+        <source>Scroll down and tap <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>"Add to Home Screen"<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
+        <target>Przewiń w dół i stuknij <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>"Dodaj do ekranu głównego"<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">13,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-ios-step3" datatype="html">
+        <source>Tap <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>"Add"<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> in the top right corner</source>
+        <target>Stuknij <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>"Dodaj"<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> w prawym górnym rogu</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">14,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-ios-note" datatype="html">
+        <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;"/>info<x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Note: This app must be installed from Safari. If you're using another browser, please open this page in Safari first. </source>
+        <target><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;"/>info<x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Uwaga: Ta aplikacja musi być zainstalowana z Safari. Jeśli używasz innej przeglądarki, otwórz tę stronę najpierw w Safari.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">17,20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-chrome-intro" datatype="html">
+        <source>To install this app:</source>
+        <target>Aby zainstalować tę aplikację:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">24,26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-chrome-step1" datatype="html">
+        <source>Click the <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>menu icon<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> (three dots) in the top right corner of your browser</source>
+        <target>Kliknij <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>ikonę menu<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> (trzy kropki) w prawym górnym rogu przeglądarki</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">26,27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-chrome-step2" datatype="html">
+        <source>Select <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>"Install Lime Tracker"<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> or <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>"Add to Home screen"<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></source>
+        <target>Wybierz <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>"Zainstaluj Lime Tracker"<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> lub <x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>"Dodaj do ekranu głównego"<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">27,28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-chrome-step3" datatype="html">
+        <source>Follow the prompts to complete installation</source>
+        <target>Postępuj zgodnie z instrukcjami, aby ukończyć instalację</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">28,32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-other-intro" datatype="html">
+        <source>Your browser may support installing this app as a Progressive Web App (PWA).</source>
+        <target>Twoja przeglądarka może obsługiwać instalowanie tej aplikacji jako Progressive Web App (PWA).</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">34,36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-supported-browsers" datatype="html">
+        <source>Supported browsers:</source>
+        <target>Obsługiwane przeglądarki:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">37,39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-chrome-version" datatype="html">
+        <source>(desktop and Android)</source>
+        <target>(desktop i Android)</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">39,40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-edge-version" datatype="html">
+        <source>(desktop and mobile)</source>
+        <target>(desktop i urządzenia mobilne)</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">40,41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-safari-version" datatype="html">
+        <source>(iOS 11.3+)</source>
+        <target>(iOS 11.3+)</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">41,42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-samsung-version" datatype="html">
+        <source>(Android)</source>
+        <target>(Android)</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">42,46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="install-pwa-other-note" datatype="html">
+        <source><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;"/>lightbulb<x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Tip: Look for an "Install" or "Add to Home Screen" option in your browser's menu. </source>
+        <target><x id="START_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;mat-icon&gt;"/>lightbulb<x id="CLOSE_TAG_MAT_ICON" ctype="x-mat_icon" equiv-text="&lt;/mat-icon&gt;"/> Wskazówka: Poszukaj opcji "Zainstaluj" lub "Dodaj do ekranu głównego" w menu przeglądarki.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">47,50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dialog-action-close" datatype="html">
+        <source>Close</source>
+        <target>Zamknij</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/install-pwa-dialog/install-pwa-dialog.component.html</context>
+          <context context-type="linenumber">54,56</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sidenav-install-app" datatype="html">
+        <source>Install App</source>
+        <target>Zainstaluj aplikację</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
+          <context context-type="linenumber">57,59</context>
         </context-group>
       </trans-unit>
       <trans-unit id="title-logout" datatype="html">
@@ -2691,7 +2851,7 @@
         <target>Wyloguj się</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/components/sidenav/sidenav.component.html</context>
-          <context context-type="linenumber">61,62</context>
+          <context context-type="linenumber">66,67</context>
         </context-group>
       </trans-unit>
       <trans-unit id="update-dialog-title" datatype="html">

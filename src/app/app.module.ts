@@ -62,6 +62,7 @@ import { ErrorModalComponent } from './shared/components/error-modal/error-modal
 import { HeaderComponent } from './shared/components/header/header.component';
 import { SidenavComponent } from './shared/components/sidenav/sidenav.component';
 import { UpdateDialogComponent } from './shared/components/update-dialog/update-dialog.component';
+import { InstallPwaDialogComponent } from './shared/components/install-pwa-dialog/install-pwa-dialog.component';
 import { ErrorCardComponent } from './shared/error-card/error-card.component';
 import { LayoutAnonymousComponent } from './shared/layout/anonymous/anonymous.component';
 import { LayoutAuthenticatedComponent } from './shared/layout/authenticated/authenticated.component';
@@ -100,6 +101,7 @@ import { TimeSincePipe } from './shared/pipes/time-since.pipe';
     ErrorCardComponent,
     ErrorModalComponent,
     HeaderComponent,
+    InstallPwaDialogComponent,
     LayoutAnonymousComponent,
     LayoutAuthenticatedComponent,
     LoginComponent,
