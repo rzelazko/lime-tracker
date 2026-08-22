@@ -1,4 +1,4 @@
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed } from '@angular/core/testing';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -9,7 +9,7 @@ import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { User } from 'firebase/auth';
 import moment from 'moment';
-import { delay, of, throwError } from 'rxjs';
+import { of, Subject, throwError } from 'rxjs';
 import { UserData } from './../../../auth/models/user-details.model';
 import { ErrorCardComponent } from './../../../shared/error-card/error-card.component';
 import { Event } from './../../../shared/models/event.model';
@@ -181,11 +181,12 @@ describe('DashboardComponent', () => {
     expect(errorCardElement.nativeElement.textContent).toContain(errorMsg);
   });
 
-  it('should show loading indicator on medicaments data load', fakeAsync(() => {
+  it('should show loading indicator on medicaments data load', () => {
     // given
     const spinnerElementQuery = By.css('.medications mat-progress-spinner');
     const medications: Medication[] = [];
-    dashboardServiceSpy.currentMedications.and.returnValue(of(medications).pipe(delay(100)));
+    const medicationsSubject = new Subject<Medication[]>();
+    dashboardServiceSpy.currentMedications.and.returnValue(medicationsSubject);
     dashboardServiceSpy.lastSeizures.and.returnValue(of());
     dashboardServiceSpy.lastEvents.and.returnValue(of());
     dashboardServiceSpy.lastPeriods.and.returnValue(of());
@@ -197,10 +198,10 @@ describe('DashboardComponent', () => {
 
     // then
     expect(fixture.debugElement.queryAll(spinnerElementQuery).length).toBe(1);
-    tick(100);
+    medicationsSubject.next(medications);
     fixture.detectChanges();
     expect(fixture.debugElement.queryAll(spinnerElementQuery).length).toBe(0);
-  }));
+  });
 
   // ------------------------------------------------------------------------------
   // Seizures section
@@ -270,12 +271,13 @@ describe('DashboardComponent', () => {
     expect(errorCardElement.nativeElement.textContent).toContain(errorMsg);
   });
 
-  it('should show loading indicator on last seizure data load', fakeAsync(() => {
+  it('should show loading indicator on last seizure data load', () => {
     // given
     const spinnerElementQuery = By.css('.last-seizure mat-progress-spinner');
     const seizures: Seizure[] = [];
+    const seizuresSubject = new Subject<Seizure[]>();
     dashboardServiceSpy.currentMedications.and.returnValue(of());
-    dashboardServiceSpy.lastSeizures.and.returnValue(of(seizures).pipe(delay(100)));
+    dashboardServiceSpy.lastSeizures.and.returnValue(seizuresSubject);
     dashboardServiceSpy.lastEvents.and.returnValue(of());
     dashboardServiceSpy.lastPeriods.and.returnValue(of());
 
@@ -286,10 +288,10 @@ describe('DashboardComponent', () => {
 
     // then
     expect(fixture.debugElement.queryAll(spinnerElementQuery).length).toBe(1);
-    tick(100);
+    seizuresSubject.next(seizures);
     fixture.detectChanges();
     expect(fixture.debugElement.queryAll(spinnerElementQuery).length).toBe(0);
-  }));
+  });
 
   // ------------------------------------------------------------------------------
   // Events section
@@ -369,13 +371,14 @@ describe('DashboardComponent', () => {
     expect(errorCardElement.nativeElement.textContent).toContain(errorMsg);
   });
 
-  it('should show loading indicator on events data load', fakeAsync(() => {
+  it('should show loading indicator on events data load', () => {
     // given
     const spinnerElementQuery = By.css('.events mat-progress-spinner');
     const events: Event[] = [];
+    const eventsSubject = new Subject<Event[]>();
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(of());
-    dashboardServiceSpy.lastEvents.and.returnValue(of(events).pipe(delay(100)));
+    dashboardServiceSpy.lastEvents.and.returnValue(eventsSubject);
     dashboardServiceSpy.lastPeriods.and.returnValue(of());
 
     // when
@@ -385,10 +388,10 @@ describe('DashboardComponent', () => {
 
     // then
     expect(fixture.debugElement.queryAll(spinnerElementQuery).length).toBe(1);
-    tick(100);
+    eventsSubject.next(events);
     fixture.detectChanges();
     expect(fixture.debugElement.queryAll(spinnerElementQuery).length).toBe(0);
-  }));
+  });
 
   // ------------------------------------------------------------------------------
   // Periods section
@@ -495,15 +498,16 @@ describe('DashboardComponent', () => {
     expect(errorCardElement.nativeElement.textContent).toContain(errorMsg);
   });
 
-  it('should show loading indicator on last period data load', fakeAsync(() => {
+  it('should show loading indicator on last period data load', () => {
     // given
     authServiceSpy.userDetails$.and.returnValue(of(mockUserData));
     const spinnerElementQuery = By.css('.last-period mat-progress-spinner');
     const periods: Period[] = [];
+    const periodsSubject = new Subject<Period[]>();
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(of());
     dashboardServiceSpy.lastEvents.and.returnValue(of());
-    dashboardServiceSpy.lastPeriods.and.returnValue(of(periods).pipe(delay(100)));
+    dashboardServiceSpy.lastPeriods.and.returnValue(periodsSubject);
 
     // when
     fixture = TestBed.createComponent(DashboardComponent);
@@ -512,19 +516,21 @@ describe('DashboardComponent', () => {
 
     // then
     expect(fixture.debugElement.queryAll(spinnerElementQuery).length).toBe(1);
-    tick(100);
+    periodsSubject.next(periods);
     fixture.detectChanges();
     expect(fixture.debugElement.queryAll(spinnerElementQuery).length).toBe(0);
-  }));
+  });
 
-  it('should show loading indicator on user details data load', fakeAsync(() => {
+  it('should show loading indicator on user details data load', () => {
     // given
-    authServiceSpy.userDetails$.and.returnValue(of(mockUserData).pipe(delay(100)));
+    const userDetailsSubject = new Subject<UserData>();
+    authServiceSpy.userDetails$.and.returnValue(userDetailsSubject);
     const spinnerElementQuery = By.css('.last-period mat-progress-spinner');
     dashboardServiceSpy.currentMedications.and.returnValue(of());
     dashboardServiceSpy.lastSeizures.and.returnValue(of());
     dashboardServiceSpy.lastEvents.and.returnValue(of());
-    dashboardServiceSpy.lastPeriods.and.returnValue(of([]).pipe(delay(100)));
+    const periodsSubject = new Subject<Period[]>();
+    dashboardServiceSpy.lastPeriods.and.returnValue(periodsSubject);
 
     // when
     fixture = TestBed.createComponent(DashboardComponent);
@@ -533,12 +539,12 @@ describe('DashboardComponent', () => {
 
     // then
     expect(fixture.debugElement.queryAll(spinnerElementQuery).length).toBe(1);
-    tick(100);
-    fixture.detectChanges(); // tick - load user data
-    tick(100);
-    fixture.detectChanges(); // tick - load periods
+    userDetailsSubject.next(mockUserData);
+    fixture.detectChanges(); // load user data
+    periodsSubject.next([]);
+    fixture.detectChanges(); // load periods
     expect(fixture.debugElement.queryAll(spinnerElementQuery).length).toBe(0);
-  }));
+  });
 
   it('should not display last period if not a female', fakeAsync(() => {
     // given
