@@ -15,7 +15,7 @@
         <mat-progress-spinner mode="indeterminate" [diameter]="20"></mat-progress-spinner>
       }
       @if (!submitting) {
-        <mat-slide-toggle i18n="@@label-i-am-female" [checked]="userData.isFemale" (change)="onChange($event)">I am female</mat-slide-toggle>
+        <mat-slide-toggle i18n="@@label-track-period" [checked]="userData.isFemale" (change)="onChange($event)">Period tracking</mat-slide-toggle>
       }
     </div>
     <mat-divider class="row"></mat-divider>
