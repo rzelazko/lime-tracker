@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, convertToParamMap, Router } from '@angular/router';
 import { of, startWith } from 'rxjs';
 import {
@@ -12,6 +12,7 @@ import {
   selector: 'app-compare-by-amount',
   templateUrl: './compare-by-amount.component.html',
   styleUrl: './compare-by-amount.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class CompareByAmountComponent implements OnInit {

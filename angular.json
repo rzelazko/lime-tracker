@@ -52,7 +52,9 @@
               "node_modules/apexcharts/dist/apexcharts.min.js"
             ],
             "allowedCommonJsDependencies": [
-              "moment-range"
+              "moment",
+              "moment-range",
+              "moment/locale/pl"
             ],
             "serviceWorker": "ngsw-config.json",
             "browser": "src/main.ts",

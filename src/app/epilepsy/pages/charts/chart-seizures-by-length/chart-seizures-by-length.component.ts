@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { catchError, map, Observable, of, switchMap, ignoreElements, distinctUntilChanged, shareReplay, merge } from 'rxjs';
 import { ChartData } from './../../../../shared/models/chart-data.model';
@@ -9,6 +9,7 @@ import { ChartSeizuresByLengthService } from './../../../../shared/services/char
     selector: 'app-chart-seizures-by-length',
     templateUrl: './chart-seizures-by-length.component.html',
     styleUrls: ['./chart-seizures-by-length.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ChartSeizuresByLengthComponent implements OnInit {
@@ -62,7 +63,7 @@ export class ChartSeizuresByLengthComponent implements OnInit {
             text: $localize`:@@title-seizures:Seizures`,
           },
           labels: {
-            formatter: (value: number, opts: { dataPointIndex: number }) => value.toFixed(0),
+            formatter: (value: number) => value.toFixed(0),
           },
         },
         series: [{

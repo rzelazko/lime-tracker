@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApexAxisChartSeries, ApexYAxis } from 'ng-apexcharts';
 import { combineLatest, merge, Observable, of } from 'rxjs';
@@ -11,6 +11,7 @@ import { ChartSummaryService } from './../../../../shared/services/chart-summary
     selector: 'app-chart-summary',
     templateUrl: './chart-summary.component.html',
     styleUrls: ['./chart-summary.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ChartSummaryComponent implements OnInit {
@@ -91,7 +92,7 @@ export class ChartSummaryComponent implements OnInit {
         min: 0,
         tickAmount: 2,
         labels: {
-          formatter: (value: number, opts: { dataPointIndex: number }) =>
+          formatter: (value: number, opts?: { dataPointIndex?: number }) =>
             this.labelFormatter(value, opts, eventsData?.labels),
         },
       });
@@ -119,9 +120,10 @@ export class ChartSummaryComponent implements OnInit {
     };
   };
 
-  private labelFormatter = (value: number, opts: { dataPointIndex: number }, labels?: string[]) => {
-    if (labels && labels[opts?.dataPointIndex]) {
-      return labels[opts.dataPointIndex];
+  private labelFormatter = (value: number, opts?: { dataPointIndex?: number }, labels?: string[]) => {
+    const index = opts?.dataPointIndex;
+    if (labels && index !== undefined && labels[index]) {
+      return labels[index];
     }
     return value.toFixed(0);
   };

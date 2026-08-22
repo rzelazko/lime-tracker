@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { formFieldHasError } from '../../../shared/services/form-field-has-error';
 import { Router } from '@angular/router';
@@ -12,6 +12,7 @@ export const COMPARE_BY_YEAR = 'year';
   selector: 'app-compare',
   templateUrl: './compare.component.html',
   styleUrl: './compare.component.scss',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class CompareComponent implements OnInit {

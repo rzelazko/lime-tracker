@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { TrackingCore } from './../../../shared/models/tracking-core.model';
@@ -9,6 +9,7 @@ import { TableComponent } from './../../components/table/table.component';
     selector: 'app-periods',
     templateUrl: './periods.component.html',
     styleUrls: ['./periods.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class PeriodsComponent implements OnInit {

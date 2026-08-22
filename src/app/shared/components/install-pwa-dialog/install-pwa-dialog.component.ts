@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 export type PwaInstallPlatform = 'ios' | 'chrome' | 'other';
@@ -11,6 +11,7 @@ interface InstallPwaDialogData {
   selector: 'app-install-pwa-dialog',
   templateUrl: './install-pwa-dialog.component.html',
   styleUrls: ['./install-pwa-dialog.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class InstallPwaDialogComponent {

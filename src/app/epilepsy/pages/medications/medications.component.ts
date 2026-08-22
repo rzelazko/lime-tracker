@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import moment from 'moment';
 import { Subscription } from 'rxjs';
@@ -11,6 +11,7 @@ import { TableComponent } from './../../components/table/table.component';
     selector: 'app-medications',
     templateUrl: './medications.component.html',
     styleUrls: ['./medications.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class MedicationsComponent implements OnInit, OnDestroy {

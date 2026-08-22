@@ -1,4 +1,4 @@
-import { Component, inject, Inject, LOCALE_ID, OnInit } from '@angular/core';
+import { Component, inject, Inject, LOCALE_ID, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import moment from 'moment';
@@ -10,6 +10,7 @@ import { PwaInstallService } from './shared/services/pwa-install.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class AppComponent implements OnInit {

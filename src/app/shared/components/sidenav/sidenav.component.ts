@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Inject, LOCALE_ID, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Inject, LOCALE_ID, OnInit, Output, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserData } from 'src/app/auth/models/user-details.model';
 import { AuthService } from './../../../shared/services/auth.service';
@@ -8,6 +8,7 @@ import { PwaInstallService } from './../../../shared/services/pwa-install.servic
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class SidenavComponent implements OnInit {

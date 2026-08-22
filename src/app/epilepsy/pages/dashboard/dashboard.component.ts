@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Duration } from 'moment';
 import { catchError, Observable, throwError } from 'rxjs';
 import { UserData } from './../../../auth/models/user-details.model';
@@ -14,6 +14,7 @@ import { UserDetailsService } from './../../../shared/services/user-details.serv
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class DashboardComponent implements OnInit {

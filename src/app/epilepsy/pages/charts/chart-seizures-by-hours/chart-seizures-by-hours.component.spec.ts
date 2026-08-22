@@ -1,4 +1,4 @@
-import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
@@ -9,7 +9,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ActivatedRoute } from '@angular/router';
-import { delay, of, throwError } from 'rxjs';
+import { of, Subject, throwError } from 'rxjs';
 import { ErrorCardComponent } from './../../../../shared/error-card/error-card.component';
 import { ChartData } from './../../../../shared/models/chart-data.model';
 import { ChartSeizuresByHoursService } from './../../../../shared/services/chart-seizures-by-hours.service';
@@ -63,22 +63,21 @@ describe('ChartSeizuresByHoursComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should show progress spinner on load', fakeAsync(() => {
+  it('should show progress spinner on load', () => {
     // given
     const chartData: ChartData = { data: [] };
-    chartServiceSpy.seizureSerie.and.returnValue(of(chartData).pipe(delay(100)));
+    const subject = new Subject<ChartData>();
+    chartServiceSpy.seizureSerie.and.returnValue(subject);
 
     // when
     fixture.detectChanges();
 
     // then
     expect(fixture.debugElement.queryAll(By.directive(MatProgressSpinner)).length).toBe(1);
-    fixture.detectChanges();
-    tick(100);
+    subject.next(chartData);
     fixture.detectChanges();
     expect(fixture.debugElement.queryAll(By.directive(MatProgressSpinner)).length).toBe(0);
-    flush();
-  }));
+  });
 
   it('should show chart when seizureSerie ready', async () => {
     // given

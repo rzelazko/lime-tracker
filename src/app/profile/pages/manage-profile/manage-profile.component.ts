@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { finalize, Observable, Subscription, switchMap } from 'rxjs';
 import { UserData } from 'src/app/auth/models/user-details.model';
@@ -9,6 +9,7 @@ import { UserDetailsService } from './../../../shared/services/user-details.serv
   selector: 'app-manage-profile',
   templateUrl: './manage-profile.component.html',
   styleUrls: ['./manage-profile.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class ManageProfileComponent implements OnInit, OnDestroy {

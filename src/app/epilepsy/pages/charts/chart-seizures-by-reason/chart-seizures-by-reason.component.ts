@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { getApexPieTooltip } from '../utils/apex-tooltip.utils';
 import { ActivatedRoute } from '@angular/router';
 import { ApexNonAxisChartSeries, ApexChart, ApexResponsive, ApexLegend } from 'ng-apexcharts';
@@ -11,6 +11,7 @@ import { ChartSeizuresByReasonService } from './../../../../shared/services/char
   selector: 'app-chart-seizures-by-reason',
   templateUrl: './chart-seizures-by-reason.component.html',
   styleUrls: ['./chart-seizures-by-reason.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class ChartSeizuresByReasonComponent implements OnInit {

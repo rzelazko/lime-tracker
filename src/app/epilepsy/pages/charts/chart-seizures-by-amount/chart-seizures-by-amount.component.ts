@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { catchError, map, Observable, of, ignoreElements, shareReplay } from 'rxjs';
 import { ChartOptions } from '../../../../shared/models/chart-options.model';
 import { ChartSeizuresByAmountService } from '../../../../shared/services/chart-seizures-by-amount.service';
@@ -12,6 +12,7 @@ const moment = extendMoment(Moment as any);
   selector: 'app-chart-seizures-by-amount',
   templateUrl: './chart-seizures-by-amount.component.html',
   styleUrls: ['./chart-seizures-by-amount.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class ChartSeizuresByAmountComponent implements OnInit, OnChanges {

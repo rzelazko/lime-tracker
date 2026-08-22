@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import moment, { Moment } from 'moment';
 import { interval, map, Observable } from 'rxjs';
 import { UserData } from '../../models/user-details.model';
@@ -8,6 +8,7 @@ import { AuthService } from './../../../shared/services/auth.service';
   selector: 'app-verify-email',
   templateUrl: './verify-email.component.html',
   styleUrls: ['./verify-email.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false
 })
 export class VerifyEmailComponent implements OnInit {

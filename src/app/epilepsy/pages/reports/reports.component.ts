@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { catchError, EMPTY, Observable, startWith, Subscription } from 'rxjs';
 import { Report } from './../../../shared/models/report.model';
@@ -8,6 +8,7 @@ import { ReportsService } from './../../../shared/services/reports.service';
     selector: 'app-reports',
     templateUrl: './reports.component.html',
     styleUrls: ['./reports.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ReportsComponent implements OnInit, OnDestroy {

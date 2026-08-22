@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'apx-chart',
   template: '<div></div>',
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: true
 })
 export class MockApexChartsComponent {

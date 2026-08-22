@@ -1,11 +1,12 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Observable, Subscription, map } from 'rxjs';
 
 @Component({
     selector: 'app-epilepsy',
     templateUrl: './authenticated.component.html',
     styleUrls: ['./authenticated.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class LayoutAuthenticatedComponent implements OnInit, OnDestroy {
