@@ -131,7 +131,7 @@
                                               formControlName="endDate"
                                               [matDatepicker]="endPicker"
                                               [max]="today.toDate()"
-                                              [min]="form.get('startDate')?.value"
+                                              [min]="$safeNavigationMigration(form.get('startDate')?.value)"
                                               matInput
                                               />
                                             <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>

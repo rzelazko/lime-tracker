@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { TrackingCore } from './../../../shared/models/tracking-core.model';
@@ -9,6 +9,7 @@ import { TableComponent } from './../../components/table/table.component';
     selector: 'app-seizures',
     templateUrl: './seizures.component.html',
     styleUrls: ['./seizures.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class SeizuresComponent implements OnInit, OnDestroy {

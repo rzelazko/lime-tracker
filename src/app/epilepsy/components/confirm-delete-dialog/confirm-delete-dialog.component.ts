@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Event } from './../../../shared/models/event.model';
 import { Medication } from './../../../shared/models/medication.model';
@@ -10,6 +10,7 @@ import { TrackingCore } from './../../../shared/models/tracking-core.model';
     selector: 'app-confirm-delete-dialog',
     templateUrl: './confirm-delete-dialog.component.html',
     styleUrls: ['./confirm-delete-dialog.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ConfirmDeleteDialogComponent implements OnInit {

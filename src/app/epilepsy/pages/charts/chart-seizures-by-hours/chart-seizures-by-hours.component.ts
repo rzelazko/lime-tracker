@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { catchError, ignoreElements, map, Observable, of, switchMap, distinctUntilChanged, shareReplay, merge } from 'rxjs';
 import { ChartData } from './../../../../shared/models/chart-data.model';
@@ -9,6 +9,7 @@ import { ChartSeizuresByHoursService } from './../../../../shared/services/chart
     selector: 'app-chart-seizures-by-hours',
     templateUrl: './chart-seizures-by-hours.component.html',
     styleUrls: ['./chart-seizures-by-hours.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ChartSeizuresByHoursComponent implements OnInit {
@@ -61,7 +62,7 @@ export class ChartSeizuresByHoursComponent implements OnInit {
             text: $localize`:@@title-seizures:Seizures`,
           },
           labels: {
-            formatter: (value: number, opts: { dataPointIndex: number }) => value.toFixed(0),
+            formatter: (value: number) => value.toFixed(0),
           },
         },
         series: [{ ...data, name: $localize`:@@title-seizures:Seizures` }],

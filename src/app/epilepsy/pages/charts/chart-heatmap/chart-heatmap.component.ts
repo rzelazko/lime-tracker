@@ -1,4 +1,4 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApexPlotOptions } from 'ng-apexcharts';
 import { catchError, ignoreElements, map, Observable, of, switchMap, distinctUntilChanged, shareReplay, merge } from 'rxjs';
@@ -10,6 +10,7 @@ import { ChartHeatmapService } from './../../../../shared/services/chart-heatmap
     selector: 'app-chart-heatmap',
     templateUrl: './chart-heatmap.component.html',
     styleUrls: ['./chart-heatmap.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
 export class ChartHeatmapComponent implements OnInit {
