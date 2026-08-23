@@ -1,6 +1,6 @@
 import { Component, inject, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { finalize, Observable, Subscription, switchMap } from 'rxjs';
+import { finalize, Observable, Subscription, switchMap, take } from 'rxjs';
 import { UserData } from 'src/app/auth/models/user-details.model';
 import { AuthService } from './../../../shared/services/auth.service';
 import { UserDetailsService } from './../../../shared/services/user-details.service';
@@ -35,6 +35,7 @@ export class ManageProfileComponent implements OnInit, OnDestroy {
     this.submitSubscription = this.auth
       .userIdProvider$()
       .pipe(
+        take(1),
         switchMap((userId) => this.userDetails.setIsFemale(userId, event.checked)),
         finalize(() => (this.submitting = false))
       )
