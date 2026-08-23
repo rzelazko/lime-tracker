@@ -5,3 +5,10 @@ main {
 .row {
   margin-bottom: 1em;
 }
+
+.toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  height: 2.5rem;
+}

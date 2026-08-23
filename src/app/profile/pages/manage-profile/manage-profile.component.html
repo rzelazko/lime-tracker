@@ -11,12 +11,12 @@
       </div>
     }
     <div class="row">
-      @if (!error && submitting) {
-        <mat-progress-spinner mode="indeterminate" [diameter]="20"></mat-progress-spinner>
-      }
-      @if (!submitting) {
-        <mat-slide-toggle i18n="@@label-track-period" [checked]="userData.isFemale" (change)="onChange($event)">Period tracking</mat-slide-toggle>
-      }
+      <div class="toggle-row">
+        <mat-slide-toggle i18n="@@label-track-period" [checked]="userData.isFemale" [disabled]="submitting" (change)="onChange($event)">Period tracking</mat-slide-toggle>
+        @if (submitting) {
+          <mat-progress-spinner mode="indeterminate" [diameter]="20"></mat-progress-spinner>
+        }
+      </div>
     </div>
     <mat-divider class="row"></mat-divider>
     <div class="row">
