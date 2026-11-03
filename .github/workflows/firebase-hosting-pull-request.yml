@@ -32,7 +32,7 @@ jobs:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_LIME_TRACKER_COM }}'
           projectId: lime-tracker-com
-          # Pinned: firebase-tools >= 15.34.1 checks serviceusage.services.get,
-          # which the deploy service account lacks. Unpin once fixed upstream:
-          # https://github.com/firebase/firebase-tools/issues/11335
-          firebaseToolsVersion: '15.34.0'
+          # Keep in sync with the firebase-tools devDependency. firebase-tools
+          # >= 15.34.1 requires the deploy service account to have
+          # roles/serviceusage.serviceUsageConsumer.
+          firebaseToolsVersion: '15.34.2'
